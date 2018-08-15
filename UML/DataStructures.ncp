@@ -1,0 +1,97 @@
+<Project>
+  <Name>DataStructures</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Tree</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Interface">
+        <Name>ITree</Name>
+        <Access>Public</Access>
+        <Location left="54" top="37" />
+        <Size width="303" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public INode&lt;T&gt; addChild(INode&lt;T&gt; node, T element)</Member>
+        <Member type="Method">public Iterable&lt;INode&lt;T&gt;&gt; getChildren(INode&lt;T&gt; node)</Member>
+        <Member type="Method">public INode&lt;T&gt; getParent(INode&lt;T&gt; node)</Member>
+        <Member type="Method">public INode&lt;T&gt; getRoot()</Member>
+        <Member type="Method">public void remove(INode&lt;T&gt; node)</Member>
+        <Member type="Method">public INode&lt;T&gt; setRoot(T elem)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IPowerfulTree</Name>
+        <Access>Public</Access>
+        <Location left="70" top="374" />
+        <Size width="221" height="175" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public INode&lt;T&gt; getNode(T element)</Member>
+        <Member type="Method">public Iterable&lt;T&gt; inorder()</Member>
+        <Member type="Method">public Iterable&lt;T&gt; postorder()</Member>
+        <Member type="Method">public Iterable&lt;T&gt; preorder()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>INode</Name>
+        <Access>Public</Access>
+        <Location left="550" top="37" />
+        <Size width="162" height="167" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">T getElement()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>Box</Name>
+        <Access>Default</Access>
+        <Location left="653" top="318" />
+        <Size width="228" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private T element = null</Member>
+        <Member type="Constructor">Box(T element)</Member>
+        <Member type="Method">T getElement()</Member>
+        <Member type="Method">public boolean equals(Object obj)</Member>
+        <Member type="Method">public int hashCode()</Member>
+        <Member type="Method">public String toString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>NodeTree</Name>
+        <Access>Default</Access>
+        <Location left="513" top="620" />
+        <Size width="221" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private List&lt;INode&lt;T&gt;&gt; children = new LinkedList&lt;INode&lt;T&gt;&gt;()</Member>
+        <Member type="Field">private INode&lt;T&gt; parent = null</Member>
+        <Member type="Method">public List&lt;INode&lt;T&gt;&gt; getChildren()</Member>
+        <Member type="Method">public INode&lt;T&gt; getParent()</Member>
+        <Member type="Constructor">public NodeTree(INode&lt;T&gt; parent)</Member>
+        <Member type="Constructor">public NodeTree()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>171</X>
+          <Y>349</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>205</X>
+          <Y>241</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="3" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="0" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
