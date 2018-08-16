@@ -2,7 +2,7 @@ package DataStructures.Tree;
 
 import java.util.*;
 
-public interface IPowerfulTree extends ITree {
+public interface IPowerfulTree<T> extends ITree<T> {
 
 	public INode<T> getNode(T element);
 

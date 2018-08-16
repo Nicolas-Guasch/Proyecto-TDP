@@ -2,7 +2,8 @@ package DataStructures.Tree;
 
 import java.util.*;
 
-class Box implements INode {
+class Box <T> implements INode<T>
+{
 
 	private T element; // readonly
 
@@ -10,21 +11,25 @@ class Box implements INode {
 		this.element = element;
 	}
 
-	T getElement() {
+	public Box() {
+		element = null;
+	}
+
+	public T getElement() {
 		return element;
 	}
 
 	public boolean equals(INode<T> other) {
-		return other.element == element;
+		return other.getElement() == element;
 	}
 
 	public int hashCode() 
 	{
-		return element == null? super().hashCode : element.hashCode();		
+		return element == null? super.hashCode() : element.hashCode();
 	}
 
 	public String toString() {
-		return "node whith ("+element+")",
+		return "node whith ("+element+")";
 	}
 
 }

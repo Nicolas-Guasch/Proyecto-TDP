@@ -1,6 +1,10 @@
+
 package DataStructures.Tree;
 
-public interface INode<T>
-{
+import java.util.*;
+
+public interface INode <T>{
+
+	T getElement();
 
 }
