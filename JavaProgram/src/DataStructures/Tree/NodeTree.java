@@ -2,7 +2,7 @@ package DataStructures.Tree;
 
 import java.util.*;
 
-class NodeTree extends Box {
+class NodeTree <T> extends Box <T> {
 
 	private List<INode<T>> children;
 	private INode<T> parent;
@@ -22,7 +22,7 @@ class NodeTree extends Box {
 
 	public NodeTree() {
 		super();
-		children = new LinkedList<INode<T>>();
+		children = new LinkedList<>();
 		parent = null;
 	}
 
