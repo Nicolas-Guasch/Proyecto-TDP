@@ -2,19 +2,22 @@ package Engine;
 
 import DataStructures.Tree.*;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.sql.Time;
+import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.function.*;
 
 public class Core // Singletone
 {
+    public static final int FPS = 60;
+
     private static Core instance;
     public static Core getInstance()
     {
-        instance = instance == null ? new Core() : instance;
+        if (instance == null)
+            instance = new Core();
+        else
+            instance = instance;
         return instance;
     }
 
@@ -29,7 +32,7 @@ public class Core // Singletone
     //sorted map cause get the min is true order 1
     private SortedMap<Long,Queue<Runnable>> TasksForFrame;
 
-    private GameObject DummyRoot;
+    private GameObject DummyRoot(){return GameObject.GetRoot();};
 
     private boolean exit = false;
 
@@ -76,34 +79,45 @@ public class Core // Singletone
             TasksForFrame.get(currentFrame-1).forEach(Runnable::run);
             TasksForFrame.remove(currentFrame-1);
         }
+        DummyRoot().preorderUpdate();
     }
 
     private void clean()
     {
-        DummyRoot = new GameObject();
+
         toDoStartQueue = new LinkedBlockingQueue<>(); // diamond expression, cuz we love the new java ♥
         TasksForFrame = new TreeMap<>();
         currentFrame = 0;
         exit = false;
     }
 
-    private void mainLoop(){
-        while(!exit)
-        {
-            // arranca el frame Stampear tiempo
-            endOfFrame();
-            /*
-            * do
-            *   todos.fixedupdate(deltatime)
-            *   while tengotiempo
-            * */
-            // si tiempo + 1/60 = actaltiempo seguir
-        }
+    private void physicsStuff()
+    {
+        DummyRoot().preorderFixedUpdate();
     }
 
+    public void Start(){
+        mainLoop();
+    }
 
+    private void mainLoop(){
+        long stampPerFrame;
+        int millsPerFrame = 1000/FPS; //estimated
+        //int fordebug = 2;
+        while(!exit)
+        {
+            //fordebug = 0;
+            stampPerFrame = Clock.currentTimeMillis();
+            endOfFrame();
 
-
-
+            do
+            {
+                physicsStuff();
+                //fordebug ++;
+                //System.out.println(fordebug +" -- "+ Clock.currentTimeMillis());
+            }
+            while(Clock.currentTimeMillis() - stampPerFrame < millsPerFrame);
+        }
+    }
 
 }

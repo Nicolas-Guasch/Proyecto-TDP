@@ -10,13 +10,16 @@ public class Vector2
 
     private float x,y;
 
+    public float x(){return x;}
+    public float y(){return y;}
+
     public Vector2(float x , float y)
     {
         this.x = x;
         this.y = y;
     }
 
-    public Vector2 mas(Vector2 other)
+    public Vector2 sum(Vector2 other)
     {
         return new Vector2(x+other.x ,  y+other.y);
     }
@@ -25,7 +28,7 @@ public class Vector2
         return new Vector2(x*real,y*real);
     }
 
-    public float large()
+    public float length()
     {
         return (float)Math.sqrt(x*x + y*y);
     }
@@ -41,11 +44,16 @@ public class Vector2
     {
         if(x== 0 && y==0)
             throw new EngineException("the zero vector does not have a versor");
-        return this.div(large());
+        return this.div(length());
     }
 
-    public Vector2 less(){
+    public Vector2 opposite(){
         return prod(-1);
+    }
+
+
+    public String toString(){
+        return String.format("(%s,%s)",x,y);
     }
 
 

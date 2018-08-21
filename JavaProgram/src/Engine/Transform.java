@@ -19,5 +19,10 @@ public class Transform extends Component
     public void setPosition(Vector2 position) {
         this.position = position;
     }
+
+    public void MoveTowards(Vector2 direction){
+        position = position.sum(direction);
+    }
+
 }
 

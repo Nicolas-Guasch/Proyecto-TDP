@@ -9,13 +9,16 @@ abstract class Component
 
     void Update(){}
     void Start() {}
-    void FixedUpdate(){}
+    void FixedUpdate(float deltaTime){}
     void OnEnable(){}
     void OnDisable(){}
     void Awake(){}
 
+    // mas adelante implementar el tweener
 
-    private _gameObject ref = null;
+    Transform transform(){return gameObject().transform();}
+
+    private GameObject _gameObject = null;
     public void setGameObject(GameObject ref){//readOnlySetter
         if(_gameObject == null)
         _gameObject = ref;
@@ -29,11 +32,7 @@ abstract class Component
 
     public Component getComponent(Class<Component> ComponentType)
     {
-        return gameObject.GetComponent(ComponentType);
+        return gameObject().GetComponent(ComponentType);
     }
-
-
-
-
 }
 
