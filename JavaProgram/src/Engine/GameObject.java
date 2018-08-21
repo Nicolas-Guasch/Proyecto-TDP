@@ -43,6 +43,8 @@ public class GameObject
         children = new LinkedList<>();
         components = new HashMap<>();
         AddComponent(Transform.class);
+        preorderAwake();
+        preorderStart();
     }
 
     void recursiveUpdate() // make it in preorder
@@ -55,21 +57,21 @@ public class GameObject
         });
     }
 
-    void recursiveStart(){
+    void preorderStart(){
         componentsSorteds.forEach((comp)->{
             Core.getInstance().AddAnStart(comp);
         });
         children.forEach((son)->{
-            son.recursiveStart();
+            son.preorderStart();
         });
     }
 
-    void recursiveAwake(){
+    void preorderAwake(){
         componentsSorteds.forEach((comp)->{
             comp.Awake();
         });
         children.forEach((son)->{
-            son.recursiveAwake();
+            son.preorderAwake();
         });
     }
 

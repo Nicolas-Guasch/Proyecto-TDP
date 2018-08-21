@@ -29,15 +29,13 @@ public class Core // Singletone
     //sorted map cause get the min is true order 1
     private SortedMap<Long,Queue<Runnable>> TasksForFrame;
 
-
     private GameObject DummyRoot;
+
+    private boolean exit = false;
 
     private Core()
     {
-        DummyRoot = new GameObject();
-        toDoStartQueue = new LinkedBlockingQueue<>(); // diamond expression, cuz we love the new java ♥
-        TasksForFrame = new TreeMap<>();
-        currentFrame = 0;
+        clean();
     }
 
     // frames must be 0 based (put 0 for do at end of current frame)
@@ -79,6 +77,32 @@ public class Core // Singletone
             TasksForFrame.remove(currentFrame-1);
         }
     }
+
+    private void clean()
+    {
+        DummyRoot = new GameObject();
+        toDoStartQueue = new LinkedBlockingQueue<>(); // diamond expression, cuz we love the new java ♥
+        TasksForFrame = new TreeMap<>();
+        currentFrame = 0;
+        exit = false;
+    }
+
+    private void mainLoop(){
+        while(!exit)
+        {
+            // arranca el frame Stampear tiempo
+            endOfFrame();
+            /*
+            * do
+            *   todos.fixedupdate(deltatime)
+            *   while tengotiempo
+            * */
+            // si tiempo + 1/60 = actaltiempo seguir
+        }
+    }
+
+
+
 
 
 

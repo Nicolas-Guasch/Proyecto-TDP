@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c46b7187-e90d-43df-831c-f604ffc0ee48" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/Aver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/Component.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/Core.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/GameObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/Tester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/TimeLineException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/Transform.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/Vector2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaProgram/src/DataStructures/DataStructures.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaProgram/src/Engine/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/Core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaProgram/src/Engine/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/GameObject.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,21 +20,23 @@
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.21" value="1" />
+          <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.64" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="8459" />
+          <entry key="dummy" value="14" />
+          <entry key="java" value="8853" />
           <entry key="txt" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8459" />
-          <entry key="PLAIN_TEXT" value="20" />
+          <entry key="JAVA" value="8853" />
+          <entry key="PLAIN_TEXT" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -112,13 +105,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Core.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+            <state relative-caret-position="176">
+              <caret line="97" column="22" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#819#820#0" expanded="true" />
+                <element signature="e#842#843#0" expanded="true" />
                 <element signature="e#1650#1651#0" expanded="true" />
                 <element signature="e#1695#1696#0" expanded="true" />
               </folding>
@@ -139,15 +134,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/GameObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="195">
+              <caret line="73" column="32" lean-forward="true" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1833#1834#0" expanded="true" />
-                <element signature="e#1865#1866#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -178,12 +171,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Component.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
+            <state relative-caret-position="484">
               <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
-              <folding>
-                <element signature="e#239#240#0" expanded="true" />
-                <element signature="e#266#267#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -247,8 +236,8 @@
         <option value="$PROJECT_DIR$/JavaProgram/src/Engine/Transform.java" />
         <option value="$PROJECT_DIR$/JavaProgram/src/Engine/TimeLineException.java" />
         <option value="$PROJECT_DIR$/JavaProgram/src/Engine/Component.java" />
-        <option value="$PROJECT_DIR$/JavaProgram/src/Engine/Core.java" />
         <option value="$PROJECT_DIR$/JavaProgram/src/Engine/GameObject.java" />
+        <option value="$PROJECT_DIR$/JavaProgram/src/Engine/Core.java" />
       </list>
     </option>
   </component>
@@ -272,8 +261,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -303,7 +291,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -375,8 +364,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49913943" visible="true" weight="0.19894099" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49913943" visible="true" weight="0.20196672" />
       <window_info id="Structure" order="1" sideWeight="0.5008606" side_tool="true" weight="0.24676375" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -402,7 +392,7 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="PlantUML" order="7" />
-      <window_info active="true" anchor="right" id="Maven Projects" order="8" visible="true" weight="0.07261725" />
+      <window_info anchor="right" id="Maven Projects" order="8" visible="true" weight="0.07261725" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -477,6 +467,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Component.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Transform.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -495,37 +492,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Component.java">
+    <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/GameObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+        <state relative-caret-position="195">
+          <caret line="73" column="32" lean-forward="true" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
           <folding>
-            <element signature="e#239#240#0" expanded="true" />
-            <element signature="e#266#267#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Core.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+        <state relative-caret-position="176">
+          <caret line="97" column="22" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+            <element signature="e#842#843#0" expanded="true" />
             <element signature="e#1650#1651#0" expanded="true" />
             <element signature="e#1695#1696#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/GameObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1833#1834#0" expanded="true" />
-            <element signature="e#1865#1866#0" expanded="true" />
           </folding>
         </state>
       </provider>
