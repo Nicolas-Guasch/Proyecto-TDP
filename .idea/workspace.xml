@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c46b7187-e90d-43df-831c-f604ffc0ee48" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/Hierarchy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/IActivable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/IComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaProgram/src/Engine/Aver.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/Aver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaProgram/src/Engine/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaProgram/src/Engine/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/Core.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaProgram/src/Engine/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaProgram/src/Engine/Tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaProgram/src/Engine/Tester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,7 +18,7 @@
     <session id="1240650993">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.21" value="1" />
@@ -40,13 +32,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="14" />
-          <entry key="java" value="14549" />
+          <entry key="java" value="14637" />
           <entry key="txt" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="14549" />
+          <entry key="JAVA" value="14637" />
           <entry key="PLAIN_TEXT" value="34" />
         </counts>
       </usages-collector>
@@ -102,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/GameObject.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="262">
-              <caret line="93" column="5" lean-forward="true" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
+              <caret line="93" column="5" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1786#1787#0" expanded="true" />
@@ -118,11 +110,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/IComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="88">
+              <caret line="4" column="62" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -131,7 +123,7 @@
         <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/IActivable.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="44">
-              <caret line="2" column="17" lean-forward="true" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -140,7 +132,7 @@
         <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Hierarchy.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="364">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#143#144#0" expanded="true" />
@@ -162,11 +154,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Transform.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="220">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -175,7 +167,7 @@
         <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Clock.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="276">
-              <caret line="49" column="42" lean-forward="true" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+              <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1197#1198#0" expanded="true" />
@@ -189,7 +181,7 @@
         <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Component.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="262">
-              <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+              <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
               <folding>
                 <element signature="e#431#432#0" expanded="true" />
                 <element signature="e#478#479#0" expanded="true" />
@@ -275,10 +267,10 @@
         <option value="$PROJECT_DIR$/JavaProgram/src/Engine/Component.java" />
         <option value="$PROJECT_DIR$/JavaProgram/src/Engine/ISwitchable.java" />
         <option value="$PROJECT_DIR$/JavaProgram/src/Engine/IActivable.java" />
-        <option value="$PROJECT_DIR$/JavaProgram/src/Engine/IComponent.java" />
         <option value="$PROJECT_DIR$/JavaProgram/src/Engine/IGameObject.java" />
         <option value="$PROJECT_DIR$/JavaProgram/src/Engine/GameObject.java" />
         <option value="$PROJECT_DIR$/JavaProgram/src/Engine/Hierarchy.java" />
+        <option value="$PROJECT_DIR$/JavaProgram/src/Engine/IComponent.java" />
       </list>
     </option>
   </component>
@@ -294,7 +286,7 @@
     <option name="width" value="1296" />
     <option name="height" value="1000" />
   </component>
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
@@ -326,7 +318,7 @@
               <item name="Proyecto-TDP" type="462c0819:PsiDirectoryNode" />
               <item name="JavaProgram" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Engine" type="462c0819:PsiDirectoryNode" />
+              <item name="TinySound" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -338,7 +330,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/alvmi/IdeaProjects/Proyecto-TDP/JavaProgram/src/Engine/Tester.java" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534989641652" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534990854155" />
     <property name="jdk.selected.JAVA_MODULE" value="10" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -424,9 +416,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49913943" visible="true" weight="0.21116506" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49913943" visible="true" weight="0.21116506" />
       <window_info id="Structure" order="1" sideWeight="0.5008606" side_tool="true" weight="0.24676375" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -435,12 +426,12 @@
       <window_info id="Favorites" order="6" sideWeight="0.5008606" side_tool="true" weight="0.24676375" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27020785" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27020785" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290993" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.19976905" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.19976905" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3295082" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3295082" />
@@ -591,7 +582,7 @@
     <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Clock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
-          <caret line="49" column="42" lean-forward="true" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
+          <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1197#1198#0" expanded="true" />
@@ -603,7 +594,7 @@
     <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Component.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
-          <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
           <folding>
             <element signature="e#431#432#0" expanded="true" />
             <element signature="e#478#479#0" expanded="true" />
@@ -620,14 +611,7 @@
     <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/IActivable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
-          <caret line="2" column="17" lean-forward="true" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/IComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -641,7 +625,7 @@
     <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Hierarchy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#143#144#0" expanded="true" />
@@ -653,7 +637,7 @@
     <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/GameObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
-          <caret line="93" column="5" lean-forward="true" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
+          <caret line="93" column="5" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1786#1787#0" expanded="true" />
@@ -670,8 +654,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/Transform.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="220">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaProgram/src/Engine/IComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="62" selection-start-line="4" selection-start-column="62" selection-end-line="4" selection-end-column="62" />
         </state>
       </provider>
     </entry>
