@@ -16,7 +16,7 @@ public class Clock // NO! I don't want a singletone
     public static void Start()
     {
 
-        initialTime = System.currentTimeMillis();
+        initialTime = currentTimeMillis();
 
         Reloj.start();
 
@@ -32,7 +32,7 @@ public class Clock // NO! I don't want a singletone
 
     public static float Time()//returns float seconds
     {
-        return System.currentTimeMillis()/1000f;
+        return currentTimeMillis()/1000f;
     }
 
     public static void StampSomething(Object reference)
@@ -49,12 +49,11 @@ public class Clock // NO! I don't want a singletone
     {
         if(!stamps.containsKey(reference))
             throw new RuntimeException("This Object has not reference");
-        return (stamps.get(reference) - System.currentTimeMillis()) / 1000f;
+        return (stamps.get(reference) - currentTimeMillis()) / 1000f;
     }
 
     public static long currentTimeMillis()
     {
-
         return Reloj.current;
     }
 

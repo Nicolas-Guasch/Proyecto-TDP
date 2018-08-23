@@ -2,11 +2,7 @@ package Engine;
 
 public class Transform extends Component
 {
-
-
     private Vector2 position;
-
-
     public Transform()
     {
         position = Vector2.ORIGIN;

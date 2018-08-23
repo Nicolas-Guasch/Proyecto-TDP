@@ -34,5 +34,8 @@ abstract class Component
     {
         return gameObject().GetComponent(ComponentType);
     }
+
+
+
 }
 
