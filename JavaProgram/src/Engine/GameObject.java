@@ -38,13 +38,18 @@ public class GameObject
             instance.Awake();
             Core.getInstance().AddAnStart(instance);
         }
-        catch (Exception e){System.out.println("problems with the engine, better call Marcos");}
+        catch (Exception e){System.out.println("problems with the engine, Make sure you dont" +
+                " try to insert an abstract class or with not public constructor, then.... call Marcos");}
         return instance;
     }
 
+    void Remove(Component c)
+    {
+        componentsSorteds.remove(c);
+        components.remove(c.getClass());
+    }
 
-
-    public GameObject(GameObject parent)
+    GameObject(GameObject parent)
     {
         this();
         this.parent = parent;
@@ -52,7 +57,7 @@ public class GameObject
     }
 
     private static GameObject root;
-    public static GameObject GetRoot()
+    static GameObject GetRoot()
     {
         if (root != null)
             root = root;
@@ -62,6 +67,7 @@ public class GameObject
     }
 
     private Transform _transform;
+
     public Transform transform(){
         return _transform;
     }
@@ -115,13 +121,19 @@ public class GameObject
         });
     }
 
-    public GameObject getParent() {
+    GameObject getParent() {
         return parent;
     }
 
-    public void setParent(GameObject parent) {
+    void setParent(GameObject parent) {
         this.parent = parent;
     }
+
+    Iterable<GameObject> children()
+    {
+        return children;
+    }
+
 
     // ----------- inner classes ----------------
     private class DuplicateComponentException extends RuntimeException {

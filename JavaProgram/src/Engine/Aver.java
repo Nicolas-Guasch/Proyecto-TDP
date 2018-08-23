@@ -3,6 +3,10 @@ package Engine;
 public class Aver extends Component
 {
 
+    public Aver(){
+
+    }
+
     int cants = 0;
 
     public void Awake(){
