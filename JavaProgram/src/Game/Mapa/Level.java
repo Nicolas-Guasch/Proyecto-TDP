@@ -1,30 +1,38 @@
 package Game.Mapa;
 
-public abstract class Level {
+public class Level {
     protected EnemyFactory enemyFactory;
-    protected int cantEnemies;
-    protected int killedEnemies=0;
+    protected int remainingEnemies;
+    protected int killedEnemies;
+    protected boolean levelEnd;
 
-    public Level(EnemyFactory factory, int enemies){
-        cantEnemies=enemies;
-        enemyFactory= factory;
+    public Level(){
+        killedEnemies=0;
+        remainingEnemies=20;
+        enemyFactory= new EnemyFactoryLow();
     }
 
-    public int RemainingEnemies(){
-        return cantEnemies-killedEnemies;
+    public int GetRemainingEnemies(){
+        return remainingEnemies;
     }
 
     public EnemyFactory GetFactory(){
         return enemyFactory;
     }
     //True si no hay más enemigos.
-    public boolean KillEnemy(){
+    public void KillEnemy(){
         killedEnemies++;
-        return RemainingEnemies()==0;
+        if(remainingEnemies==0){
+            levelEnd=true;// Observer Notificar fin de nivel
+        }
     }
 
     // Se debe retornar el proximo nivel. Si no hay próximo se retorna nulo
-    public abstract Level NextLevel();
+    public void NextLevel(){
+        if(levelEnd){
+            //Aumentar enemigos o cambiar la factory
+        }
+    }
 
 
 

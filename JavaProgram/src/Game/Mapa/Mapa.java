@@ -5,9 +5,9 @@ public class Mapa {
     protected Level level;
 
     public Mapa(){
-        level = new LevelOne();
+        level = new Level();
     }
 
-    public void CreateEnemies(){}
+    public void createEnemies(){}
 
 }
