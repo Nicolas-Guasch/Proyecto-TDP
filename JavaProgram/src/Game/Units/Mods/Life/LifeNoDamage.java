@@ -1,4 +1,4 @@
-package Game.Characters.Life;
+package Game.Units.Mods.Life;
 
 public class LifeNoDamage extends Life {
 

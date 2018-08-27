@@ -1,6 +1,10 @@
-package Game.Characters.Kinematic;
+package Game.Units.Mods.Kinematic;
 
 public class KinematicJugador extends Kinematic{
+
+    public KinematicJugador(int x) {
+        super(x);
+    }
 
     @Override
     public void move() {

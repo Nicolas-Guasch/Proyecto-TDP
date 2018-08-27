@@ -1,5 +1,5 @@
 package Game.Mapa;
-import Game.Characters.Enemy;
+import Game.Units.Enemies.Enemy;
 
 public abstract class EnemyFactory {
 

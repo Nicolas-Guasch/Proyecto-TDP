@@ -1,18 +1,20 @@
-package Game.Characters;
+package Game.Units;
 
-import Game.Characters.Kinematic.Kinematic;
-import Game.Characters.Life.Life;
+import Game.Units.Mods.Fighter.Fighter;
+import Game.Units.Mods.Kinematic.Kinematic;
+import Game.Units.Mods.Life.Life;
 
 public abstract class BasicUnit{
 
     protected Life life;
     protected Kinematic kinematic;
-    protected Shooter shooter;
+    protected Fighter fighter;
+    protected Collision collision;
 
-    public BasicUnit(Life f,Kinematic k, Shooter s){
-        life=f;
+    public BasicUnit(Life l,Kinematic k, Fighter f){
+        life=l;
         kinematic=k;
-        shooter=s;
+        fighter =f;
     }
 
     public int getLife(){
@@ -40,14 +42,15 @@ public abstract class BasicUnit{
     }
 
     public void setImpact(int x){
-        shooter.setImpact(x);
+        fighter.setImpact(x);
     }
 
     public int getImpact(){
-        return shooter.getImpact();
+        return fighter.getImpact();
     }
 
     public abstract void accept(Collision c); // c.visit(this)
+
 
 
 

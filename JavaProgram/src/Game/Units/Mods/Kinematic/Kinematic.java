@@ -1,10 +1,16 @@
-package Game.Characters.Kinematic;
+package Game.Units.Mods.Kinematic;
 
 public abstract class Kinematic{
 
     protected int speed;
     protected int auxSpeed;
     protected boolean altered;
+
+    public Kinematic(int x){
+        speed=x;
+        auxSpeed=x;
+        altered=false;
+    }
 
     public void setSpeed(int x){
         speed=x;

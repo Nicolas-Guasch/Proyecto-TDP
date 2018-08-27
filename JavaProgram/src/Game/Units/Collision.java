@@ -1,6 +1,6 @@
-package Game.Characters;
+package Game.Units;
 
-public class Collision {
+public interface Collision {
 
     //Patron visitor. Aqui se resuelven cuando dos objetos colisionan
 }
