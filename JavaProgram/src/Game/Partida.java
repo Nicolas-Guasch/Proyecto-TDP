@@ -1,11 +1,13 @@
 package Game;
 
-public class Partida {
+import java.util.concurrent.SubmissionPublisher;
+
+public class Partida extends SubmissionPublisher {
 
     private int score = 0;
 
-    public void setScore(int x){
-        score=x;
+    public void addScore(int x){
+        score+=x;
     }
 
     public int getScore() {

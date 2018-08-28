@@ -1,29 +1,21 @@
 package Game.Units.Mods.Kinematic;
 
-public abstract class Kinematic{
+import Game.Units.Mod;
+
+public abstract class Kinematic extends Mod {
 
     protected int speed;
-    protected int auxSpeed;
-    protected boolean altered;
 
     public Kinematic(int x){
         speed=x;
-        auxSpeed=x;
-        altered=false;
     }
 
     public void setSpeed(int x){
         speed=x;
-        auxSpeed=x;
-        altered=false;
     }
 
     public int getSpeed(){
         return speed;
-    }
-
-    public boolean isAltered(){
-        return altered;
     }
 
     public abstract void move();

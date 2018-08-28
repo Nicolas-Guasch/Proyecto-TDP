@@ -1,6 +1,8 @@
 package Game.Units.Mods.Fighter;
 
-public abstract class Fighter {
+import Game.Units.Mod;
+
+public abstract class Fighter extends Mod {
 
     protected int impact;
     protected Weapon weapon;
@@ -16,6 +18,14 @@ public abstract class Fighter {
 
     public int getImpact(){
         return impact;
+    }
+
+    public void loseWeapon(){
+        weapon=null;
+    }
+
+    public void loadWeapon(Weapon w){
+        weapon=w;
     }
 
     public abstract void attack();

@@ -7,6 +7,12 @@ public class KinematicNone extends Kinematic{
     }
     @Override
     public void move() {
-        // Vacio(?
+        // Vacio(? Por supuesto.
     }
+
+    @Override
+    public void setSpeed(int x) {
+
+    }
+
 }

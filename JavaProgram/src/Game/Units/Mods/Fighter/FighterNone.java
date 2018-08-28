@@ -9,4 +9,9 @@ public class FighterNone extends Fighter {
 
     @Override
     public void setImpact(int x) {}
+
+    @Override
+    public void loadWeapon(Weapon w) {
+
+    }
 }

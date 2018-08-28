@@ -1,6 +1,8 @@
 package Game.Units.Mods.Life;
 
-public class Life {
+import Game.Units.Mod;
+
+public class Life extends Mod {
 
     protected int life;
 

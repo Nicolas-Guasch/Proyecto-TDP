@@ -1,6 +1,8 @@
 package Game.Mapa;
 
-public class Level {
+import java.util.concurrent.SubmissionPublisher;
+
+public class Level extends SubmissionPublisher {
     protected EnemyFactory enemyFactory;
     protected int remainingEnemies;
     protected int killedEnemies;
