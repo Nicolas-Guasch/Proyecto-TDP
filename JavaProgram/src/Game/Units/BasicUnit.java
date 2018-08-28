@@ -6,7 +6,9 @@ import Game.Units.Mods.Life.Life;
 
 import java.util.concurrent.Flow;
 
-public abstract class BasicUnit implements Flow.Subscriber {
+
+//TODO: hacer iupdatable
+public abstract class BasicUnit implements Flow.Subscriber{
 
     protected Life life;
     protected Kinematic kinematic;

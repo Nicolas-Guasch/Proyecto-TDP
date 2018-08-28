@@ -6,7 +6,8 @@ import Game.Units.Enemies.Enemy;
 import Game.Units.Enemies.ShotEnemy;
 import Game.Units.Obstacles.Obstacle;
 
-public class OnCollidePlayer implements OnCollide {
+public class
+OnCollidePlayer implements OnCollide {
     @Override
     public void collideEnemy(Enemy e) {
 
