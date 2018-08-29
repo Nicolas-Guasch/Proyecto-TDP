@@ -72,6 +72,11 @@ public class GameObject
         return _transform;
     }
 
+    public GameObject AddLastChild()
+    {
+        return new GameObject(this);
+    }
+
     private GameObject()
     {
         parent = null;
