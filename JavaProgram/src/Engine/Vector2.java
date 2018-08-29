@@ -1,12 +1,16 @@
 package Engine;
 
-public class Vector2
+import Components.IReadOnlyMemento;
+
+public class Vector2 implements IReadOnlyMemento<Vector2>
 {
-    public static final Vector2 ORIGIN = new Vector2(0,0);
-    public static final Vector2 UP = new Vector2(0,1);
-    public static final Vector2 DOWN = new Vector2(0,-1);
-    public static final Vector2 LEFT = new Vector2(-1,0);
-    public static final Vector2 RIGHT = new Vector2(1,0);
+    public static final Vector2 ORIGIN(){return new Vector2(0,0);}
+    public static final Vector2 UP (){   return new Vector2(0,1);}
+    public static final Vector2 DOWN (){ return new Vector2(0,-1);}
+    public static final Vector2 LEFT (){ return new Vector2(-1,0);}
+    public static final Vector2 RIGHT (){return new Vector2(1,0);}
+
+    public static float Epsilon = 0.01f;
 
     private float x,y;
 
@@ -22,6 +26,11 @@ public class Vector2
     public Vector2 sum(Vector2 other)
     {
         return new Vector2(x+other.x ,  y+other.y);
+    }
+
+    public Vector2 minus(Vector2 other)
+    {
+        return new Vector2(x-other.x ,  y-other.y);
     }
 
     public Vector2 prod(float real){
@@ -56,6 +65,36 @@ public class Vector2
         return String.format("(%s,%s)",x,y);
     }
 
+    @Override
+    public String save()
+    {
+        return String.format("%s,%s",x,y);
+    }
+
+    public Vector2 load(String data)
+    {
+        Vector2 ret = ORIGIN();
+        try{
+            String[] a = data.split(",");
+            float X = Float.parseFloat(a[0]);
+            float Y = Float.parseFloat(a[1]);
+            ret = new Vector2(X,Y);
+        }
+        catch (Exception e){
+            System.out.println("Bad Format, value will be origin vector");
+        }
+        return ret;
+    }
+
+    public boolean near(Vector2 other)
+    {
+        return other.minus(this).length()< Epsilon;
+    }
+
+    public boolean equals(Vector2 other)
+    {
+        return other.x() == x && other.y() == y;
+    }
 
     /*inner class*/
     private class EngineException extends RuntimeException {

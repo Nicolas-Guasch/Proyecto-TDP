@@ -1,11 +1,13 @@
 package Engine;
 
+import Components.IPrototype;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class GameObject
+public class GameObject implements IPrototype<GameObject>
 {
     private List<GameObject> children;
     private Map<Class<Component>,Component> components;
@@ -137,6 +139,20 @@ public class GameObject
     Iterable<GameObject> children()
     {
         return children;
+    }
+
+    @Override
+    public GameObject clone()
+    {
+        if(this == root)
+        {
+            throw new CoreException("You can't clone the root Game Object");
+        }
+        GameObject g = new GameObject(parent);
+        components.forEach((k,v)->{
+            g.AddComponent(k).copy(v);
+        });
+        return g;
     }
 
 

@@ -1,0 +1,18 @@
+
+    }
+
+
+    //Save current internal status
+    @Override
+    public String save() 
+    {
+        return "";
+    }
+
+    //Load status from data
+    @Override
+    public void load(String data) 
+    {
+
+    }
+}

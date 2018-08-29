@@ -1,7 +1,9 @@
 package Engine;
 
 
-abstract class Component implements IComponent
+import Components.IPrototype;
+
+abstract class Component <Son extends Component<Son>> implements IComponent
 {
 
     private GameObject _Node_gameObject = null;
@@ -49,15 +51,14 @@ abstract class Component implements IComponent
         return gameObject().GetComponent(ComponentType);
     }
 
-    protected static void Destroy(Component c)
+    protected static<Son extends Component<Son>> void Destroy(Son c)
     {
         Core.getInstance().waitForFrames(()->
         {
             c.OnDestroy();
             c.gameObject().Remove(c);
-        }
-        ,0);
-
+        },
+        0);
     }
 
 
@@ -82,6 +83,7 @@ abstract class Component implements IComponent
         this.active = active;
     }
 
-
+    public abstract void copy(Son s);
+    public abstract Son clone();
 }
 

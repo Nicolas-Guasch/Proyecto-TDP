@@ -6,7 +6,7 @@ public class HiloDeReloj extends  Thread
     public void run() {
         super.run();
         current = 0;
-        while (true){
+        while (true) {
             try {
                 Thread.sleep(1);
                 current++;

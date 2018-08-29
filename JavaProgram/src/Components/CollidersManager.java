@@ -12,9 +12,13 @@ public class CollidersManager extends MonoBehaviour
         if(instance == null)
         {
             GameObject g = Hierarchy.CurrentHierarchy().AddChildInFirstLine();
-            g.AddComponent(CollidersManager.class);
+            instance = g.AddComponent(CollidersManager.class);
         }
         return instance;
     }
 
+    public void Update()
+    {
+
+    }
 }

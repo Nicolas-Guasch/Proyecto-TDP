@@ -3,17 +3,15 @@ package Engine;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class Core // Singletone
+class Core // Singletone
 {
-    public static final int FPS = 60;
+    private static final int FPS = 60;
 
     private static Core instance;
-    public static Core getInstance()
+    static Core getInstance()
     {
         if (instance == null)
             instance = new Core();
-        else
-            instance = instance;
         return instance;
     }
 
@@ -23,12 +21,12 @@ public class Core // Singletone
     private long currentFrame;
 
 
-    private Queue<Component> toDoStartQueue , toDoStartQueueBackup;
+    private Queue<Component> toDoStartQueue;
 
     //sorted map cause get the min is true order 1
     private SortedMap<Long,Queue<Runnable>> TasksForFrame;
 
-    private GameObject DummyRoot(){return GameObject.GetRoot();};
+    private GameObject DummyRoot(){return GameObject.GetRoot();}
 
     private boolean exit = false;
 
@@ -61,14 +59,10 @@ public class Core // Singletone
     private void endOfFrame()
     {
         // Start's --------
-        toDoStartQueueBackup = new LinkedBlockingQueue<>();
-        toDoStartQueueBackup.addAll(toDoStartQueue);
+        Queue<Component> toDoStartQueueBackup = new LinkedBlockingQueue<>(toDoStartQueue);
         toDoStartQueue = new LinkedBlockingQueue<>();
-        toDoStartQueueBackup.forEach((item)->{
-            item.Start();
-        });
+        toDoStartQueueBackup.forEach(Component::Start);
         toDoStartQueueBackup.clear();
-        toDoStartQueueBackup = null;
         currentFrame ++;
         //Tasks ---------
         if(TasksForFrame.containsKey(currentFrame-1)){
@@ -80,7 +74,6 @@ public class Core // Singletone
 
     private void clean()
     {
-
         toDoStartQueue = new LinkedBlockingQueue<>(); // diamond expression, cuz we love the new java ♥
         TasksForFrame = new TreeMap<>();
         currentFrame = 0;
@@ -92,7 +85,8 @@ public class Core // Singletone
         DummyRoot().preorderFixedUpdate();
     }
 
-    public void Start(){
+    void Start()
+    {
         mainLoop();
     }
 

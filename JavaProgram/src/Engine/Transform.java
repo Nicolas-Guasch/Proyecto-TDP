@@ -1,12 +1,13 @@
 package Engine;
 
-public class Transform extends Component
+public class Transform extends Component<Transform>
 {
     private Vector2 position;
     public Transform()
     {
-        position = Vector2.ORIGIN;
+        this(Vector2.ORIGIN());
     }
+    private Transform(Vector2 position){this.position = position;}
 
     public Vector2 getPosition() {
         return position;
@@ -20,5 +21,16 @@ public class Transform extends Component
         position = position.sum(direction);
     }
 
+    @Override
+    public void copy(Transform s) {
+        position = s.position;
+    }
+
+    @Override
+    public Transform clone() {
+        Transform t = new Transform();
+        t.position = position;
+        return t;
+    }
 }
 

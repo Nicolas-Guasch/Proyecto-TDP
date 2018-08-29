@@ -1,0 +1,26 @@
+
+{
+
+    //Runs Once at Start of the object
+    void Start() 
+    {
+
+    }
+
+    //Runs once per frame
+    void Update() 
+    {
+
+    }
+
+    /**
+     * Runs faster than Update
+     * @param deltaTime time between last fixedUpdate (0 if it's the first)
+     */
+    void FixedUpdate(float deltaTime) 
+    {
+        
+    }
+
+    //Deep Copy (Important to implement)
+    @Override
