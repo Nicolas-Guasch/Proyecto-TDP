@@ -11,44 +11,44 @@ import java.util.Map;
 public class GameObject implements IPrototype<GameObject>
 {
 
-
-
-
-
-
-
-
-
     private List<GameObject> children;
     private Map<Class<Component>,Component> components;
     private List<Component> componentsSorteds; // keep sorted the calls
 
     private GameObject parent;
 
+    // broadcasters
     public static Broadcaster<Component> OnComponentCreated;
+    public static Broadcaster<GameObject> OnGameObjectDestroyed;
+    //invokers
     private static Invoker<Component> invokerComponentCreated;
+    private static Invoker<GameObject> invokerGameObjectDestroyed;
 
-
+    //TODO : Destroy (GameObject g) invocar al ondestroy de los objetos
+    // y broadcastear
 
     // those both are the dirtiest methods ever
     public <C extends Component<C>> C GetComponent(Class<C> X)
     {
+
+        C ret = null;
+        if(components.containsKey(X))
+        {
+            ret = (C) components.get(X.getClass());
+
+        }
+        return ret;
+    }
+
+    public <C extends Component> C AddComponent(Class<C> X)
+    {
+        C instance = null;
         if(OnComponentCreated == null)
         {
             BroadcasterPackage<Component> p = BroadcasterFactory.GetBroadcaster();
             OnComponentCreated = p.Broadcaster;
             invokerComponentCreated = p.Invoker;
         }
-        C ret = null;
-        if(components.containsKey(X))
-        {
-            ret = (C) components.get(X.getClass());
-        }
-        return ret;
-    }
-    public <C extends Component> C AddComponent(Class<C> X)
-    {
-        C instance = null;
         try {
             java.lang.reflect.Constructor<C> cons = X.getConstructor();
             instance = cons.newInstance();
@@ -56,6 +56,7 @@ public class GameObject implements IPrototype<GameObject>
                 throw new DuplicateComponentException("The Game Object already had a component of type "+X.getName());
             components.put((Class<Component>) X,instance);
             componentsSorteds.add(instance);
+            invokerComponentCreated.Invoke(instance);
             instance.setGameObject(this);
             instance.Awake();
             Core.getInstance().AddAnStart(instance);
@@ -174,6 +175,11 @@ public class GameObject implements IPrototype<GameObject>
             g.AddComponent(k).copy(v);
         });
         return g;
+    }
+
+    public void reportCollision(CollisionData data)
+    {
+        componentsSorteds.forEach((c)->c.OnCollisionEnter(data));
     }
 
 

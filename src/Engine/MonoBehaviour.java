@@ -17,6 +17,6 @@ public abstract class MonoBehaviour<Son extends  MonoBehaviour<Son>> extends Com
     void OnDisable(){}
     void OnDestroy(){}
     void Awake(){}
-    public void OnCollisionEnter(CollisionData data){}
+    void OnCollisionEnter(CollisionData data){}
 
 }

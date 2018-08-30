@@ -20,6 +20,7 @@ abstract class Component <Son extends Component<Son>> implements IComponent
     void OnDisable(){}
     void OnDestroy(){}
     void Awake(){}
+    void OnCollisionEnter(CollisionData data){}
 
 
 

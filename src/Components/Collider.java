@@ -34,10 +34,7 @@ public class Collider extends MonoBehaviour<Collider> // Transform position must
                         Math.min(topRight().y(),c.topRight().y()));
         if(lw.x() <= up.x() && lw.y() <= up.y() ) // si colisiona:
         {
-            data = new CollisionData();
-            data.ContactPoint = lw.sum(up).div(2); // (lw+up)/2
-            data.Mine = this;
-            data.Their = c;
+            data = new CollisionData(this,c,lw.sum(up).div(2));// (lw+up)/2
         }
         return data;
     }
