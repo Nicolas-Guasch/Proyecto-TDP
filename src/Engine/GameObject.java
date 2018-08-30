@@ -1,5 +1,6 @@
 package Engine;
 
+import Broadcaster.*;
 import Components.IPrototype;
 
 import java.util.HashMap;
@@ -9,16 +10,35 @@ import java.util.Map;
 
 public class GameObject implements IPrototype<GameObject>
 {
+
+
+
+
+
+
+
+
+
     private List<GameObject> children;
     private Map<Class<Component>,Component> components;
     private List<Component> componentsSorteds; // keep sorted the calls
 
     private GameObject parent;
 
+    public static Broadcaster<Component> OnComponentCreated;
+    private static Invoker<Component> invokerComponentCreated;
+
+
 
     // those both are the dirtiest methods ever
-    public <C extends Component> C GetComponent(Class<C> X)
+    public <C extends Component<C>> C GetComponent(Class<C> X)
     {
+        if(OnComponentCreated == null)
+        {
+            BroadcasterPackage<Component> p = BroadcasterFactory.GetBroadcaster();
+            OnComponentCreated = p.Broadcaster;
+            invokerComponentCreated = p.Invoker;
+        }
         C ret = null;
         if(components.containsKey(X))
         {
@@ -88,6 +108,7 @@ public class GameObject implements IPrototype<GameObject>
         preorderAwake();
         preorderStart();
         _transform = AddComponent(Transform.class);
+
     }
 
     void preorderFixedUpdate(){

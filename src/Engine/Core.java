@@ -1,12 +1,21 @@
 package Engine;
 
+import Broadcaster.*;
+
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
 class Core // Singletone
 {
-    private static final int FPS = 60;
 
+
+
+
+    public Broadcaster<Float> OnFixedUpdate;
+    private Invoker<Float> invokerOnFixedUpdate;
+
+
+    private static final int FPS = 60;
     private static Core instance;
     static Core getInstance()
     {
@@ -74,6 +83,9 @@ class Core // Singletone
 
     private void clean()
     {
+        BroadcasterPackage<Float> pack = BroadcasterFactory.GetBroadcaster();
+        invokerOnFixedUpdate = pack.Invoker;
+        OnFixedUpdate = pack.Broadcaster;
         toDoStartQueue = new LinkedBlockingQueue<>(); // diamond expression, cuz we love the new java ♥
         TasksForFrame = new TreeMap<>();
         currentFrame = 0;
@@ -93,18 +105,17 @@ class Core // Singletone
     private void mainLoop(){
         long stampPerFrame;
         int millsPerFrame = 1000/FPS; //estimated
-        //int fordebug = 2;
+        float elapsed = 0;
+        Clock.StampSomething(this);
         while(!exit)
         {
-            //fordebug = 0;
+            elapsed = Clock.TimeElapsed(this);
             stampPerFrame = Clock.currentTimeMillis();
             endOfFrame();
-
             do
             {
                 physicsStuff();
-                //fordebug ++;
-                //System.out.println(fordebug +" -- "+ Clock.currentTimeMillis());
+                invokerOnFixedUpdate.Invoke(elapsed);
             }
             while(Clock.currentTimeMillis() - stampPerFrame < millsPerFrame);
         }
