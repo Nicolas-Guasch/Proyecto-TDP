@@ -8,6 +8,7 @@ public abstract class CharacterPuppet<Son extends CharacterPuppet<Son>> extends 
 {
     public void Move(Vector2 direction)
     {
+        //
 
     }
 
