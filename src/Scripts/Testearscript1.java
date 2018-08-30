@@ -26,8 +26,7 @@ public class Testearscript1 extends MonoBehaviour<Testearscript1>
     }
 
     //Deep Copy (Important to implement)
-    @Override    public void copy(Testearscript1 s) 
-
+    @Override    public void copy(Testearscript1 s)
     {
 
     }
