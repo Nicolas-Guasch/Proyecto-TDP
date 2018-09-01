@@ -1,17 +1,16 @@
 package Game.Units.Mods.Fighter;
 
+import Game.Units.UnitData;
+
 public class FighterNone extends Fighter {
-    public FighterNone() {
-        super(0, null);
-    }
 
-    public void attack(){}
+    public void attack(UnitData data){}
 
     @Override
-    public void setImpact(int x) {}
+    public void setImpact(UnitData data,int x) {}
 
     @Override
-    public void loadWeapon(Weapon w) {
+    public void loadWeapon(UnitData data,Weapon w) {
 
     }
 }

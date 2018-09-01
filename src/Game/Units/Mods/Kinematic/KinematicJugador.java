@@ -1,13 +1,11 @@
 package Game.Units.Mods.Kinematic;
 
+import Game.Units.UnitData;
+
 public class KinematicJugador extends Kinematic{
 
-    public KinematicJugador(int x) {
-        super(x);
-    }
-
     @Override
-    public void move() {
+    public void move(UnitData data) {
         //Como sea que se mueva el jugador
     }
 }

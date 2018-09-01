@@ -1,21 +1,26 @@
 package Game.Units;
 
+import Engine.MonoBehaviour;
+
 import Game.Units.Mods.Fighter.Fighter;
+import Game.Units.Mods.Fighter.FighterNone;
+import Game.Units.Mods.Fighter.Weapon;
 import Game.Units.Mods.Kinematic.Kinematic;
+import Game.Units.Mods.Kinematic.KinematicNone;
 import Game.Units.Mods.Life.Life;
 
-import java.util.concurrent.Flow;
+public abstract class BasicUnit extends MonoBehaviour<BasicUnit>{
 
-
-//TODO: hacer iupdatable
-public abstract class BasicUnit implements Flow.Subscriber{
-
+    protected UnitData data;
     protected Life life;
     protected Kinematic kinematic;
     protected Fighter fighter;
     protected OnCollide onCollide;
     protected int points;
-    protected Flow.Subscription subscription;
+
+    public BasicUnit(){
+
+    }
 
     public BasicUnit(Life l,Kinematic k, Fighter f){
         life=l;
@@ -24,36 +29,52 @@ public abstract class BasicUnit implements Flow.Subscriber{
         points=0;
     }
 
-    public int getLife(){
-        return life.getLife();
+    public BasicUnit(Life l,Fighter f){
+        life=l;
+        fighter=f;
+        kinematic=new KinematicNone();
     }
 
-    public void setLife(int x){
-        life.setLife(x);
+    public BasicUnit(Life l, Kinematic k){
+        life=l;
+        kinematic=k;
+        fighter=new FighterNone();
     }
 
-    public void takeDamage(int x){
-        life.takeDamage(x);
+    public int getLife() {
+        return life.getLife(data);
     }
 
-    public void setSpeed(int x){
-        kinematic.setSpeed(x);
+    public void setLife(int l) {
+        life.setLife(data,l);
     }
 
-    public int getSpeed(){
-        return kinematic.getSpeed();
+    public void setImpact(int x) {
+        fighter.setImpact(data,x);
     }
 
-    public void move(){
-        kinematic.move();
+    public int getImpact() {
+        return fighter.getImpact(data);
     }
 
-    public void setImpact(int x){
-        fighter.setImpact(x);
+
+    public void loseWeapon() {
+        fighter.loseWeapon(data);
     }
 
-    public int getImpact(){
-        return fighter.getImpact();
+
+    public void loadWeapon(Weapon w) {
+        fighter.loadWeapon(data,w);
+    }
+
+
+    public void setSpeed(int x) {
+        kinematic.setSpeed(data,x);
+    }
+
+
+    public int getSpeed() {
+        return kinematic.getSpeed(data);
     }
 
     public abstract void accept(OnCollide c); // c.visit(this)
@@ -86,24 +107,9 @@ public abstract class BasicUnit implements Flow.Subscriber{
         return points;
     }
 
-
-    @Override
-    public void onSubscribe(Flow.Subscription subscription) {
-
+    public void setData(UnitData d){
+        data=d;
     }
 
-    @Override
-    public void onNext(Object o) {
-
-    }
-
-    @Override
-    public void onError(Throwable throwable) {
-
-    }
-
-    @Override
-    public void onComplete() {
-
-    }
 }
+

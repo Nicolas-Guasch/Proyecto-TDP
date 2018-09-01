@@ -1,18 +1,21 @@
 package Game.Units.Mods.Life;
 
+import Game.Units.UnitData;
+
 public class LifeNoDamage extends Life {
 
-    public LifeNoDamage(int l) {
-        super(l);
+    @Override
+    public void takeDamage(UnitData data,int punch) {
+
     }
 
     @Override
-    public void takeDamage(int punch) {
-        super.takeDamage(0);
+    protected void inCritic(UnitData data) {
+
     }
 
     @Override
-    public void setLife(int x) {
+    public void setLife(UnitData data,int x) {
         //Bloquea el set
     }
 }

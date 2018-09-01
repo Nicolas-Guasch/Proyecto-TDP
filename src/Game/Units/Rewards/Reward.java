@@ -8,8 +8,8 @@ import Game.Units.Mods.Life.Life;
 
 public abstract class Reward extends BasicUnit {
 
-    public Reward(Life l, Kinematic k) {
-        super(l, k, new FighterNone());
+    public Reward() {
+
     }
 
     @Override
