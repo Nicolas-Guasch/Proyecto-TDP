@@ -17,7 +17,8 @@ public class GameSettings
     //--------------------------------
 
     // ------ Configurations -----
-    public final short FPS = 60;
+    public final short FPS = 10;
+
 
 
 

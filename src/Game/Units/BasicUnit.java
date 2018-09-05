@@ -1,7 +1,5 @@
 package Game.Units;
 
-import Engine.MonoBehaviour;
-
 import Game.Units.Mods.Fighter.Fighter;
 import Game.Units.Mods.Fighter.FighterNone;
 import Game.Units.Mods.Fighter.Weapon;
@@ -9,7 +7,7 @@ import Game.Units.Mods.Kinematic.Kinematic;
 import Game.Units.Mods.Kinematic.KinematicNone;
 import Game.Units.Mods.Life.Life;
 
-public abstract class BasicUnit extends MonoBehaviour<BasicUnit>{
+public abstract class BasicUnit{
 
     protected UnitData data;
     protected Life life;

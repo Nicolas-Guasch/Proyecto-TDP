@@ -47,6 +47,7 @@ public final class Core
 
     private void clean() // Initializer
     {
+        Clock.Start();
         BroadcasterPackage<Float> packP = BroadcasterFactory.GetBroadcaster();
         invokerOnPhysicsUpdate = packP.Invoker;
         onPhysicsUpdate = packP.Broadcaster;
@@ -58,6 +59,7 @@ public final class Core
         TasksForFrame = new TreeMap<>();// diamond expression, cuz we love the new java ♥
         currentFrame = 0;
         exit = false;
+
     }
     private void endOfFrame()
     {
@@ -73,15 +75,16 @@ public final class Core
         long stampPerFrame;
         int millsPerFrame = 1000/FPS; //estimated
         float elapsed = 0;
-        Clock.StampSomething(this);
         while(!exit)
         {
-            elapsed = Clock.TimeElapsed(this);
+
             stampPerFrame = Clock.currentTimeMillis();
+            elapsed = Clock.currentTimeMillis();
             endOfFrame();
             do
             {
-                invokerOnPhysicsUpdate.Invoke(elapsed);
+                elapsed = Clock.currentTimeMillis() - elapsed;
+                invokerOnPhysicsUpdate.Invoke(elapsed/1000);
             }
             while(Clock.currentTimeMillis() - stampPerFrame < millsPerFrame);
         }

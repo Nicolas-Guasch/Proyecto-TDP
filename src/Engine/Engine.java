@@ -37,12 +37,12 @@ class Engine implements IEngine
     {
         onUpdate.Suscribe((o)->component.Update());
     }
-    //TODO: guardar una tabla hash de los components para desuscribirlos mas fasil luego
+    //TODO: guardar une HashMap de los components para desuscribirlos mas fasil luego
 
     @Override
     public void SuscribeToPhysicsUpdate(Component component)
     {
-
+        onPhysicsUpdate.Suscribe((t)->component.PhysicsUpdate(t));
     }
 
     @Override
@@ -84,7 +84,7 @@ class Engine implements IEngine
     @Override
     public void Start()
     {
-
+        core.Start();
     }
 
     @Override

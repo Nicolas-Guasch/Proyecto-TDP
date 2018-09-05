@@ -1,8 +1,7 @@
 package Game;
 
-import java.util.concurrent.SubmissionPublisher;
-// que carajo es SubmissionPublisher ???????
-public class Partida extends SubmissionPublisher {
+public class Match
+{
 
     private int score = 0;
 

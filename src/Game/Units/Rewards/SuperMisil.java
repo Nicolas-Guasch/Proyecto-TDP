@@ -7,7 +7,6 @@ import Game.Units.Mods.Life.Life;
 import Game.Units.Mods.Life.LifeNoCritic;
 import Game.Units.Obstacles.OnCollideObstacleAll;
 import Game.Units.OnCollide;
-import Scripts.IMonoBehaviour;
 
 import java.awt.image.ImageConsumer;
 
@@ -25,23 +24,7 @@ public class SuperMisil extends Reward{
 
     }
 
-    @Override
-    public void copy(BasicUnit s) {
 
-    }
 
-    @Override
-    public SuperMisil clone() {
-        return null;
-    }
 
-    @Override
-    public String save() {
-        return null;
-    }
-
-    @Override
-    public void load(String data) {
-
-    }
 }

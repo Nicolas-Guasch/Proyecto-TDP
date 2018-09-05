@@ -12,8 +12,9 @@ final class HiloDeReloj extends  Thread
             super.run();
             do
             {
-                current = System.currentTimeMillis();
-                //Thread.sleep(1);
+                //current = System.currentTimeMillis();
+                current = current+1;
+                Thread.sleep(1);
             } while (runClock);
         }
         catch (Exception e)//dejarlo aca por si vuelvo a poner el thread.sleep
@@ -23,8 +24,11 @@ final class HiloDeReloj extends  Thread
     }
 
     @Override
-    public synchronized void start() {
+    public synchronized void start()
+    {
+        runClock=true;
         super.start();
+
     }
 
     public synchronized void stopClock()

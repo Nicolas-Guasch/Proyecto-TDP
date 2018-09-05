@@ -1,6 +1,5 @@
 package Game.Units.Obstacles;
 
-import Entities.CharacterData;
 import Game.Units.Mods.Fighter.Weapon;
 import Game.Units.UnitData;
 
