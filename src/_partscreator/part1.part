@@ -1,4 +1,0 @@
-package Scripts;
-import Engine.MonoBehaviour;
-
-public class {0} extends MonoBehaviour<{0}>

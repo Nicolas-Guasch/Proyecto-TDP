@@ -1,8 +1,6 @@
-package Engine;
+package Engine.Components;
 
-import Components.IReadOnlyMemento;
-
-public class Vector2 implements IReadOnlyMemento<Vector2>
+public class Vector2
 {
     public static final Vector2 ORIGIN(){return new Vector2(0,0);}
     public static final Vector2 UP (){   return new Vector2(0,1);}
@@ -65,11 +63,7 @@ public class Vector2 implements IReadOnlyMemento<Vector2>
         return String.format("(%s,%s)",x,y);
     }
 
-    @Override
-    public String save()
-    {
-        return String.format("%s,%s",x,y);
-    }
+
 
     public Vector2 load(String data)
     {

@@ -1,5 +1,7 @@
 package Entities;
 
+import Engine.Components.Vector2;
+
 public class PlayerPuppet extends CharacterPuppet<PlayerPuppet>
 {
 
@@ -24,5 +26,20 @@ public class PlayerPuppet extends CharacterPuppet<PlayerPuppet>
     @Override
     public PlayerPuppet clone() {
         return null;
+    }
+
+    @Override
+    public void Move(Vector2 direction) {
+
+    }
+
+    @Override
+    public void Shoot(Vector2 direction) {
+
+    }
+
+    @Override
+    public void Death() {
+
     }
 }

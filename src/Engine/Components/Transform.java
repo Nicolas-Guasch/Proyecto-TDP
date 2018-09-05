@@ -1,6 +1,8 @@
-package Engine;
+package Engine.Components;
 
-public class Transform extends Component<Transform>
+import Engine.Component;
+
+public class Transform extends Component
 {
     private Vector2 position;
     public Transform()
@@ -21,16 +23,5 @@ public class Transform extends Component<Transform>
         position = position.sum(direction);
     }
 
-    @Override
-    public void copy(Transform s) {
-        position = s.position;
-    }
-
-    @Override
-    public Transform clone() {
-        Transform t = new Transform();
-        t.position = position;
-        return t;
-    }
 }
 

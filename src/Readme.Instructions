@@ -1,7 +1,0 @@
-para crear una clase hija de Monobehaviour solo es necesario dar el comando (en esta carpeta)
-
-createScript MiClase
-
-tambien puedo crear varias de una sola vez asi:
-
-createScript MiClase OtraClase OtraMas

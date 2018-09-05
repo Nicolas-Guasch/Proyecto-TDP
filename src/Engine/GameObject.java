@@ -1,193 +1,85 @@
 package Engine;
 
-import Broadcaster.*;
-import Components.IPrototype;
+import Engine.Components.Transform;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Consumer;
 
-public class GameObject implements IPrototype<GameObject>
+public class GameObject
 {
 
-    private List<GameObject> children;
-    private Map<Class<Component>,Component> components;
-    private List<Component> componentsSorteds; // keep sorted the calls
+    private static GameObject root;
+    public static GameObject getRoot()
+    {
+        if (root == null)
+        {
+            root = new GameObject();
+        }
+        return root;
+    }
 
+
+    // ---------- Vars ------------
+    private Collection<GameObject> children;
+    private Collection<Component> components;
     private GameObject parent;
+    private Transform transform;
 
-    // broadcasters
-    public static Broadcaster<Component> OnComponentCreated;
-    public static Broadcaster<GameObject> OnGameObjectDestroyed;
-    //invokers
-    private static Invoker<Component> invokerComponentCreated;
-    private static Invoker<GameObject> invokerGameObjectDestroyed;
-
-    //TODO : Destroy (GameObject g) invocar al ondestroy de los objetos
-    // y broadcastear
-
-    // those both are the dirtiest methods ever
-    public <C extends Component<C>> C GetComponent(Class<C> X)
+    // --------- Constructors-----------
+    private GameObject()
     {
-
-        C ret = null;
-        if(components.containsKey(X))
-        {
-            ret = (C) components.get(X.getClass());
-
-        }
-        return ret;
+        parent = null;
+        children = new LinkedList<>();
+        components = new LinkedList<>();
+        transform = new Transform();//each GameObject has a transform
+        components.add(transform);
     }
-
-    public <C extends Component> C AddComponent(Class<C> X)
-    {
-        C instance = null;
-        if(OnComponentCreated == null)
-        {
-            BroadcasterPackage<Component> p = BroadcasterFactory.GetBroadcaster();
-            OnComponentCreated = p.Broadcaster;
-            invokerComponentCreated = p.Invoker;
-        }
-        try {
-            java.lang.reflect.Constructor<C> cons = X.getConstructor();
-            instance = cons.newInstance();
-            if(components.containsKey(X))
-                throw new DuplicateComponentException("The Game Object already had a component of type "+X.getName());
-            components.put((Class<Component>) X,instance);
-            componentsSorteds.add(instance);
-            invokerComponentCreated.Invoke(instance);
-            instance.setGameObject(this);
-            instance.Awake();
-            Core.getInstance().AddAnStart(instance);
-        }
-        catch (Exception e){System.out.println("problems with the engine, Make sure you dont" +
-                " try to insert an abstract class or with not public constructor, then.... call Marcos");}
-        return instance;
-    }
-
-    void Remove(Component c)
-    {
-        componentsSorteds.remove(c);
-        components.remove(c.getClass());
-    }
-
-    GameObject(GameObject parent)
+    private GameObject(GameObject parent)
     {
         this();
         this.parent = parent;
         this.parent.children.add(this);
     }
-
-    private static GameObject root;
-    static GameObject GetRoot()
+    //------------- Components Handling --------------
+    public void addComponent(Component c)
     {
-        if (root != null)
-            root = root;
-        else
-            root = new GameObject();
-        return root;
+        components.add(c);
+    }
+    public Iterable<Component> getComponents()
+    {
+        return components;
+    }
+    public void sendMessage(Consumer<Component> consumer)
+    {
+        components.forEach(consumer);
     }
 
-    private Transform _transform;
 
-    public Transform transform(){
-        return _transform;
-    }
-
-    public GameObject AddLastChild()
+    // -------- As a Tree -------
+    public GameObject addChild() // the only way to create a new gameobject from outside
     {
         return new GameObject(this);
     }
-
-    private GameObject()
+    void removeComponent(Component c)
     {
-        parent = null;
-        children = new LinkedList<>();
-        components = new HashMap<>();
-        componentsSorteds = new LinkedList<>();
-        preorderAwake();
-        preorderStart();
-        _transform = AddComponent(Transform.class);
-
+        components.remove(c);
     }
-
-    void preorderFixedUpdate(){
-        componentsSorteds.forEach((comp)->{
-            comp.FixedUpdate(Clock.HasStamp(comp)?Clock.TimeElapsed(comp):0);
-            Clock.StampSomething(comp);
-        });
-        children.forEach((son)->{
-            son.preorderFixedUpdate();
-        });
-    }
-
-    void preorderUpdate() // make it in preorder
+    public GameObject getParent()
     {
-        componentsSorteds.forEach((comp)->{
-            comp.Update();
-        });
-        children.forEach((son)->{
-            son.preorderUpdate();
-        });
-    }
-
-    void preorderStart(){
-        componentsSorteds.forEach((comp)->{
-            Core.getInstance().AddAnStart(comp);
-        });
-        children.forEach((son)->{
-            son.preorderStart();
-        });
-    }
-
-    void preorderAwake(){
-        componentsSorteds.forEach((comp)->{
-            comp.Awake();
-        });
-        children.forEach((son)->{
-            son.preorderAwake();
-        });
-    }
-
-    GameObject getParent() {
         return parent;
     }
-
-    void setParent(GameObject parent) {
-        this.parent = parent;
-    }
-
-    Iterable<GameObject> children()
+    public Iterable<GameObject> children()
     {
         return children;
     }
-
-    @Override
-    public GameObject clone()
+    public Transform getTransform()
     {
-        if(this == root)
-        {
-            throw new CoreException("You can't clone the root Game Object");
-        }
-        GameObject g = new GameObject(parent);
-        components.forEach((k,v)->{
-            g.AddComponent(k).copy(v);
-        });
-        return g;
-    }
-
-    public void reportCollision(CollisionData data)
-    {
-        componentsSorteds.forEach((c)->c.OnCollisionEnter(data));
+        return transform;
     }
 
 
-    // ----------- inner classes ----------------
-    private class DuplicateComponentException extends RuntimeException {
-        public DuplicateComponentException(String s) {
-            super(s);
-        }
-    }
+    //TODO : Destroy (GameObject g) invocar al ondestroy de los components
+    // y broadcastear
+
 }
 

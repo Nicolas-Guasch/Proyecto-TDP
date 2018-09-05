@@ -1,25 +1,35 @@
 package Engine;
 
-public class HiloDeReloj extends  Thread
+final class HiloDeReloj extends  Thread
 {
+
+    private volatile boolean runClock = true;
+    public volatile long current;
     @Override
     public void run() {
-        super.run();
-        current = 0;
-        while (true) {
-            try {
-                Thread.sleep(1);
-                current++;
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        try
+        {
+            super.run();
+            do
+            {
+                current = System.currentTimeMillis();
+                //Thread.sleep(1);
+            } while (runClock);
+        }
+        catch (Exception e)//dejarlo aca por si vuelvo a poner el thread.sleep
+        {
+            e.printStackTrace();
         }
     }
-
-    public long current;
 
     @Override
     public synchronized void start() {
         super.start();
     }
+
+    public synchronized void stopClock()
+    {
+        runClock = false;
+    }
+
 }

@@ -1,7 +1,7 @@
 package Entities;
 
 import Engine.MonoBehaviour;
-import Engine.Vector2;
+import Engine.Components.Vector2;
 
 
 public abstract class CharacterPuppet<Son extends CharacterPuppet<Son>> extends MonoBehaviour<Son>

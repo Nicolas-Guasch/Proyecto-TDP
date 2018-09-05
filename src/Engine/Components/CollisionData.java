@@ -1,18 +1,16 @@
-package Engine;
-
-import Components.Collider;
+package Engine.Components;
 
 public class CollisionData
 {
-    private Collider mine;
-    private Collider their;
+    private RectangleCollider mine;
+    private RectangleCollider their;
     private Vector2 contactPoint;
 
-    public Collider Mine () {return mine;}
-    public Collider Their () {return their;}
+    public RectangleCollider Mine () {return mine;}
+    public RectangleCollider Their () {return their;}
     public Vector2 ContactPoint(){return contactPoint;}
 
-    public CollisionData(Collider mine, Collider their , Vector2 contactPoint)
+    public CollisionData(RectangleCollider mine, RectangleCollider their , Vector2 contactPoint)
     {
         this.mine = mine;
         this.their = their;

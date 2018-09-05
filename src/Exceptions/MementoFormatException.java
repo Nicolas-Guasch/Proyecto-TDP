@@ -1,4 +1,4 @@
-package Components;
+package Exceptions;
 
 public class MementoFormatException extends RuntimeException{
     public MementoFormatException(String s) {

@@ -1,6 +1,6 @@
-package Engine;
+package Engine.Components;
 
-interface IActivable
+public interface IActivable
 {
     boolean isActive();
     void setActive(boolean active);
