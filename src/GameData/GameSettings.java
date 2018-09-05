@@ -4,7 +4,7 @@ public class GameSettings
 {
     // Singleton
     private static GameSettings instance;
-    public static GameSettings Instance()
+    public static GameSettings GetInstance()
     {
         if(instance==null)
         {

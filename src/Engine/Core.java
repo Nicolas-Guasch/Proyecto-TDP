@@ -8,7 +8,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public final class Core
 {
     // ------- Const --------------
-    private final short FPS = GameSettings.Instance().FPS;
+    private final short FPS = GameSettings.GetInstance().FPS;
 
     // --------Singleton Stuff---------
     private static Core instance;
