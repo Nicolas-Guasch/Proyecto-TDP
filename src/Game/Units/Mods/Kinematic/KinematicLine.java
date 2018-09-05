@@ -2,10 +2,10 @@ package Game.Units.Mods.Kinematic;
 
 import Game.Units.UnitData;
 
-public class KinematicEnemyKamikaze extends Kinematic{
+public class KinematicLine extends Kinematic {
 
     @Override
     public void move(UnitData data) {
-        //Como sea que se mueva el kamikaze
+        //la unidad se mueve en linea recta
     }
 }

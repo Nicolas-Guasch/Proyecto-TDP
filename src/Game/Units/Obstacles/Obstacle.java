@@ -8,7 +8,7 @@ import Game.Units.Mods.Life.Life;
 
 public abstract class Obstacle extends BasicUnit {
     public Obstacle(Life l, Fighter f) {
-        super(l, new KinematicNone(),f);
+        super(l,f);
     }
 
     @Override

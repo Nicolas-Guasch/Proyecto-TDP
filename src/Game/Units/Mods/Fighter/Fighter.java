@@ -1,33 +1,26 @@
 package Game.Units.Mods.Fighter;
 
 import Game.Units.Mod;
+import Game.Units.UnitData;
 
 public abstract class Fighter extends Mod {
 
-    protected int impact;
-    protected Weapon weapon;
-
-    public Fighter(int i, Weapon w){
-        impact=i;
-        weapon=w;
+    public void setImpact(UnitData data,int x){
+        data.setImpact(x);
     }
 
-    public void setImpact(int x){
-        impact=x;
+    public int getImpact(UnitData data){
+        return data.getImpact();
     }
 
-    public int getImpact(){
-        return impact;
+    public void loseWeapon(UnitData data){
+        data.loseWeapon();
     }
 
-    public void loseWeapon(){
-        weapon=null;
+    public void loadWeapon(UnitData data,Weapon w){
+        data.loadWeapon(w);
     }
 
-    public void loadWeapon(Weapon w){
-        weapon=w;
-    }
-
-    public abstract void attack();
+    public abstract void attack(UnitData data);
 
 }

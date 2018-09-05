@@ -1,17 +1,16 @@
 package Game.Units.Mods.Kinematic;
 
+import Game.Units.UnitData;
+
 public class KinematicNone extends Kinematic{
 
-    public KinematicNone(){
-        super(0);
-    }
     @Override
-    public void move() {
+    public void move(UnitData data) {
         // Vacio(? Por supuesto.
     }
 
     @Override
-    public void setSpeed(int x) {
+    public void setSpeed(UnitData data,int x) {
 
     }
 
