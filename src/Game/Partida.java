@@ -1,7 +1,7 @@
 package Game;
 
 import java.util.concurrent.SubmissionPublisher;
-
+// que carajo es SubmissionPublisher ???????
 public class Partida extends SubmissionPublisher {
 
     private int score = 0;
@@ -14,4 +14,6 @@ public class Partida extends SubmissionPublisher {
         return score;
     }
 
+    public void resetScore()
+    {score = 0;}
 }

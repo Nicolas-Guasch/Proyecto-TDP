@@ -22,7 +22,13 @@ def create(classname):
 	f = open(filename(classname),"w+")
 	f.write(contenido)
 	f.close()
-	print("Template Created guachin")
+	
 
 for cl in classes:
+	X = ''
+	if(len(classes)>1)
+		X='s'
 	create(cl)
+	print("Template{0} Created{0} guachin".format(X))
+
+	#;)
