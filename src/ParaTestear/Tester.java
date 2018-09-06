@@ -1,19 +1,35 @@
 package ParaTestear;
 
-import Engine.Component;
+import Engine.Components.Vector2;
+import Engine.GameObject;
 import Engine.IEngine;
-import ShowThings.Windor;
+import RenderingSystem.Renderizable;
+import RenderingSystem.SpriteData;
+import RenderingSystem.Window;
+
+import javax.swing.*;
 
 public class Tester
 {
     public static void main(String[]a)
     {
-        Component c = new Comportamiento();
-        Component w = new Windor();
+        Window w = Window.GetInstance();
+
+        ComportamientoTester c = new ComportamientoTester();
+        Renderizable r = new Renderizable(new SpriteData(Paths.Alcon,new Vector2(100,100)));
+
+        GameObject g = GameObject.getRoot().addChild();
+
+        g.addComponent(r);
+        g.addComponent(c);
+
         IEngine eng = Engine.EngineFactory.Instance().get();
-        //eng.SuscribeToPhysicsUpdate(c);
+
+        eng.SuscribeToUpdate(g);
         eng.SuscribeToUpdate(w);
-        ((Windor) w).Show();
+
+        ((Window) w).Show();
+        r.Show();
         eng.Start();
 
     }

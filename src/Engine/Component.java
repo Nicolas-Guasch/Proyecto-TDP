@@ -14,6 +14,7 @@ public abstract class Component implements IActivable
     * these functions are optional to override
     * its why these aren't abstracts
     */
+    public void Start(){}
     public void Update(){}
 
     /**

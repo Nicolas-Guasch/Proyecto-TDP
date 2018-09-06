@@ -22,8 +22,8 @@ class Engine implements IEngine
     @Override
     public void SuscribeToUpdate(GameObject object)
     {
-
-        object.getComponents().forEach((c)->onUpdate.Suscribe((o)->c.Update()));
+        onUpdate.Suscribe((o)->object.Update());
+        //object.getComponents().forEach((c)->onUpdate.Suscribe((o)->c.Update()));
     }
 
     @Override

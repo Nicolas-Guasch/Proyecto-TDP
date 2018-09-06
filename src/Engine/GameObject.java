@@ -44,6 +44,8 @@ public class GameObject
     public void addComponent(Component c)
     {
         components.add(c);
+        c.setGameObject(this);
+        c.Start();
     }
     public Iterable<Component> getComponents()
     {
@@ -75,6 +77,12 @@ public class GameObject
     public Transform getTransform()
     {
         return transform;
+    }
+
+    public void Update()
+    {
+        components.forEach((c)->c.Update());
+        children.forEach((c)->c.Update());
     }
 
 

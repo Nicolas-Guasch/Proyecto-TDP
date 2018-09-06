@@ -50,7 +50,7 @@ public class Vector2
     public Vector2 versor()
     {
         if(x== 0 && y==0)
-            throw new EngineException("the zero vector does not have a versor");
+            return ORIGIN();
         return this.div(length());
     }
 
