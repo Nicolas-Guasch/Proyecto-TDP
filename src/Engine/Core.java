@@ -71,22 +71,25 @@ public final class Core
         }
         invokerOnUpdate.Invoke(null);
     }
+
+
+
     private void mainLoop(){
         long stampPerFrame;
-        int millsPerFrame = 1000/FPS; //estimated
-        float elapsed = 0;
+        long nanosperframe = (long)(1e9/FPS); //estimated
+        float prev = 0f;
+        float act;
         while(!exit)
         {
-
-            stampPerFrame = Clock.currentTimeMillis();
-            elapsed = Clock.currentTimeMillis();
+            stampPerFrame = Clock.currentTimeNanos();
             endOfFrame();
             do
             {
-                elapsed = Clock.currentTimeMillis() - elapsed;
-                invokerOnPhysicsUpdate.Invoke(elapsed/1000);
+                act = Clock.currentTimeNanos();
+                invokerOnPhysicsUpdate.Invoke((act-prev)/1_000_000_000f);
+                prev = act;
             }
-            while(Clock.currentTimeMillis() - stampPerFrame < millsPerFrame);
+            while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe);
         }
     }
 

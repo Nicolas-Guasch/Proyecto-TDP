@@ -10,7 +10,7 @@ public class Tester
         Component c = new Comportamiento();
         IEngine eng = Engine.EngineFactory.Instance().get();
         eng.SuscribeToPhysicsUpdate(c);
-        eng.SuscribeToUpdate(c);
+        //eng.SuscribeToUpdate(c);
         eng.Start();
     }
 }

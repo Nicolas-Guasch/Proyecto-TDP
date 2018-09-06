@@ -50,6 +50,11 @@ public class Clock // NO! I don't want a singleton
         return (currentTimeMillis() - stamps.get(reference)) / 1000f;
     }
 
+    public static long currentTimeNanos()
+    {
+        return System.nanoTime();
+    }
+
     public static long currentTimeMillis()
     {
         return thread.current;
