@@ -6,11 +6,14 @@ import java.util.Random;
 
 public class Comportamiento extends Component
 {
+
+
     Double G;
     int i;
     public Comportamiento()
     {
         i=0;
+
     }
 
     public void Update()
