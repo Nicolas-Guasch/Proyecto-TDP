@@ -41,11 +41,12 @@ public class GameObject
         this.parent.children.add(this);
     }
     //------------- Components Handling --------------
-    public void addComponent(Component c)
+    public<S extends Component> S addComponent(S c)
     {
         components.add(c);
         c.setGameObject(this);
         c.Start();
+        return c;
     }
     public Iterable<Component> getComponents()
     {

@@ -73,10 +73,9 @@ public final class Core
     }
 
 
-
     private void mainLoop(){
         long stampPerFrame;
-        long nanosperframe = (long)(1e9/FPS); //estimated
+        long nanosperframe = (long)(1e9/FPS);
         float prev = 0f;
         float act;
         while(!exit)

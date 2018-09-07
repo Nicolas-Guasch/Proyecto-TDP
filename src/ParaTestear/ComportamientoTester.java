@@ -1,14 +1,12 @@
 package ParaTestear;
 
 import Engine.Component;
-import Engine.Components.Vector2;
+import Engine.Vector2;
 import Engine.GameObject;
 import InputManager.ContinueKeyInput;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.Random;
 
 public class ComportamientoTester extends Component

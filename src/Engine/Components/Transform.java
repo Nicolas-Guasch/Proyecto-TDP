@@ -1,6 +1,7 @@
 package Engine.Components;
 
 import Engine.Component;
+import Engine.Vector2;
 
 public class Transform extends Component
 {

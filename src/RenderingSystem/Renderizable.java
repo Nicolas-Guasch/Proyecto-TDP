@@ -1,7 +1,7 @@
 package RenderingSystem;
 
 import Engine.Component;
-import Engine.Components.Vector2;
+import Engine.Vector2;
 import GameData.GameSettings;
 
 import javax.swing.*;
@@ -13,8 +13,8 @@ public class Renderizable extends Component
     private boolean visible = false;
     private static float h = GameSettings.GetInstance().sizeWindow.height;
     private static float w = GameSettings.GetInstance().sizeWindow.width;
-
-
+    private int radius;
+    private boolean rotable = true;
     public Renderizable(SpriteData data)
     {
         label = new JLabel();
@@ -22,7 +22,14 @@ public class Renderizable extends Component
         label.setBounds(0,0,data.getWidth(),data.getHeight());//TODO: cambiar esto
 
         label.setVisible(false);
-        Window.GetInstance().AddLabel(label);
+        Window.GetInstance().AddJComponent(label);
+        radius = 40;
+    }
+
+    public Renderizable(SpriteData data, int Radio)
+    {
+        this(data);
+        this.radius = Radio;
     }
 
     public void Start()
@@ -51,13 +58,22 @@ public class Renderizable extends Component
 
     private void Volver()
     {
-        int c = 30;
-        Vector2 v = transform().getPosition();
-        if(transform().getPosition().x()>(w/2)+2*c){
-            transform().setPosition(new Vector2(-(w/2)-c,v.y()));
-        }
-        if(transform().getPosition().x()<-(w/2)-2*c){
-            transform().setPosition(new Vector2((w/2)+c,v.y()));
+        if(rotable)
+        {
+            int c = radius;
+            Vector2 v = transform().getPosition();
+            if(v.x()>(w/2)+2*c){
+                transform().setPosition(new Vector2(-(w/2)-c,v.y()));
+            }
+            if(v.x()<-(w/2)-2*c){
+                transform().setPosition(new Vector2((w/2)+c,v.y()));
+            }
+            if(v.y()>(h/2)+2*c){
+                transform().setPosition(new Vector2(v.x(),-(h/2)-c));
+            }
+            if(v.y()<-(h/2)-2*c){
+                transform().setPosition(new Vector2(v.x(),(h/2)+c));
+            }
         }
     }
 
@@ -75,5 +91,9 @@ public class Renderizable extends Component
     private Dimension Lerp(Vector2 vec)
     {
         return new Dimension((int)(vec.x()+w/2) ,(int)((h/2)-vec.y()));
+    }
+
+    public void setRotable(boolean rotable) {
+        this.rotable = rotable;
     }
 }

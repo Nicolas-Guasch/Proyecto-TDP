@@ -29,7 +29,7 @@ public abstract class Component implements IActivable
 
 
 
-    // TODO: mas adelante implementar el tweener
+    // TODO: mas adelante si hay tiempo implementar el tweener
 
     public Transform transform()
     {

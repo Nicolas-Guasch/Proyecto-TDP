@@ -2,6 +2,7 @@ package RenderingSystem;
 
 import Engine.Component;
 import GameData.GameSettings;
+import ParaTestear.Paths;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,15 +30,16 @@ public class Window extends Component
         wind = new JFrame();
         wind.setSize(new Dimension(settings.sizeWindow.width+10,settings.sizeWindow.height+30));
         wind.setVisible(false);
-        wind.setBackground(Color.BLACK);
+        //wind.setBackground(Color.BLACK);
+        wind.setContentPane(new JLabel(new ImageIcon(Paths.Background)));
         wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wind.setLayout(null);
         container = wind.getContentPane();
-        container.setBackground(settings.background);
+        //container.setBackground(settings.background);
+
+        container.setBackground(new Color(0,0,0,0));
         container.setBounds(0,0,0,0);
         container.setSize(settings.sizeWindow);
-
-
 
     }
     public void Update()
@@ -50,9 +52,9 @@ public class Window extends Component
         wind.setVisible(true);
     }
 
-    public void AddLabel(JComponent label)
+    public void AddJComponent(JComponent jcomp)
     {
-        container.add(label);
+        container.add(jcomp);
     }
     public void Remove(JComponent component)
     {

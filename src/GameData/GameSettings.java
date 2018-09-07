@@ -28,7 +28,7 @@ public class GameSettings
     // ------ Configurations -----
     public final short FPS = 60;
     public final Color background = new Color(20,25,20);
-    public final Dimension sizeWindow = new Dimension(800,600);
+    public final Dimension sizeWindow = new Dimension(1280,739);
 
 
 

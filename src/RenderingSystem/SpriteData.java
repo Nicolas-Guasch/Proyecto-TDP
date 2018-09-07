@@ -1,6 +1,6 @@
 package RenderingSystem;
 
-import Engine.Components.Vector2;
+import Engine.Vector2;
 
 import javax.swing.*;
 

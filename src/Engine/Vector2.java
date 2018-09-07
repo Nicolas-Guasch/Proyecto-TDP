@@ -1,4 +1,4 @@
-package Engine.Components;
+package Engine;
 
 public class Vector2
 {

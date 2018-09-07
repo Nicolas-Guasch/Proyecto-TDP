@@ -1,5 +1,7 @@
 package Engine.Components;
 
+import Engine.Vector2;
+
 public class CollisionData
 {
     private RectangleCollider mine;

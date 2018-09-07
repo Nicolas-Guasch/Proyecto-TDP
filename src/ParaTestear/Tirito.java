@@ -1,7 +1,7 @@
 package ParaTestear;
 
 import Engine.Component;
-import Engine.Components.Vector2;
+import Engine.Vector2;
 
 public class Tirito extends Component
 {
