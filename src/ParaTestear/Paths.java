@@ -1,10 +1,11 @@
 package ParaTestear;
+import java.net.URL;
 
 public class Paths
-{//TODO: Usar URL y getClass().getResource()
-    public static final String NaveTester = "src/ParaTestear/bv.png";
-    public static final String Alcon = "src/ParaTestear/alcon.png";
-    public static final String Bala = "src/ParaTestear/bala.png";
-    public static final String Background = "src/ParaTestear/fondo.png";
-    public static final String DeathStar = "src/ParaTestear/deathstar.png";
+{
+    public static final URL NaveTester = Paths.class.getResource("bv.png");
+    public static final URL Alcon = Paths.class.getResource("alcon.png");
+    public static final URL Bala = Paths.class.getResource("bala.png");
+    public static final URL Background = Paths.class.getResource("fondo.png");
+    public static final URL DeathStar = Paths.class.getResource("deathstar.png");
 }

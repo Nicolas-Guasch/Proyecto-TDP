@@ -3,13 +3,14 @@ package RenderingSystem;
 import Engine.Vector2;
 
 import javax.swing.*;
+import java.net.URL;
 
 public class SpriteData
 {
     private  Icon icon;
     private int width;
     private int height;
-    public SpriteData(String path, Vector2 size)
+    public SpriteData(URL path, Vector2 size)
     {
         width = (int)size.x();
         height =(int) size.y();

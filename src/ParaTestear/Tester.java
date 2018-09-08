@@ -11,6 +11,7 @@ public class Tester
 {
     public static void main(String[]a)
     {
+        System.out.println(Paths.Background);
         Window w = Window.GetInstance();
         IEngine eng = Engine.EngineFactory.Instance().get();
         ComportamientoTester c = new ComportamientoTester();
