@@ -27,6 +27,7 @@ public class Renderizable extends Component
     public void Start()
     {
         label.setTransform(transform());
+        Window.GetInstance().SetZ(label,transform().getZcomponent(),true);
         transform().setPosition(Vector2.ORIGIN());
     }
 

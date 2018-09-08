@@ -8,15 +8,17 @@ import java.util.function.Consumer;
 public class GameObject
 {
 
+    // ------ RootControlStuff --------
     private static GameObject root;
     public static GameObject getRoot()
     {
         if (root == null)
         {
-            root = new GameObject();
+            root = new GameObject(null);
         }
         return root;
     }
+    private GameObject(){}
 
 
     // ---------- Vars ------------
@@ -25,21 +27,24 @@ public class GameObject
     private GameObject parent;
     private Transform transform;
 
-    // --------- Constructors-----------
-    private GameObject()
+    // --------- Constructor-----------
+
+    private GameObject(GameObject parent)
     {
-        parent = null;
         children = new LinkedList<>();
         components = new LinkedList<>();
         transform = new Transform();//each GameObject has a transform
+
         components.add(transform);
-    }
-    private GameObject(GameObject parent)
-    {
-        this();
         this.parent = parent;
-        this.parent.children.add(this);
+
+        if(parent!=null)
+        {
+            this.parent.children.add(this);
+            transform.SetFromPrototype(parent.transform);
+        }
     }
+
     //------------- Components Handling --------------
     public<S extends Component> S addComponent(S c)
     {
@@ -61,13 +66,13 @@ public class GameObject
     // -------- As a Tree -------
 
 
-    public GameObject addChild(Iterable<Component> components) // the only way to create a new gameobject from outside
+    public final GameObject addChild(Iterable<Component> components) // the only way to create a new gameobject from outside
     {
         GameObject g = new GameObject(this);
         components.forEach(g::addComponent);
         return g;
     }
-    public GameObject addChild() // the only way to create a new gameobject from outside
+    public final GameObject addChild() // the only way to create a new gameobject from outside
     {
         return new GameObject(this);
     }

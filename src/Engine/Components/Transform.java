@@ -7,6 +7,7 @@ public final class Transform extends Component
 {
     private Vector2 position;
     private Vector2 top = Vector2.UP();
+    private float Zcomponent = 0;
     // Top of the sprite always look this way
 
 
@@ -14,8 +15,10 @@ public final class Transform extends Component
     {
         this(Vector2.ORIGIN());
     }
+
     private Transform(Vector2 position)
         {
+
             this.position = position;
         }
 
@@ -42,6 +45,19 @@ public final class Transform extends Component
 
     public void resetTop(){
         this.top = Vector2.UP();
+    }
+    public void SetFromPrototype(Transform prototype)
+    {
+        this.position = prototype.position;
+        this.top = prototype.top;
+        this.Zcomponent = prototype.Zcomponent;
+    }
+    public float getZcomponent() {
+        return Zcomponent;
+    }
+
+    public void setZcomponent(float zcomponent) {
+        Zcomponent = zcomponent;
     }
 }
 

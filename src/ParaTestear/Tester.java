@@ -15,16 +15,18 @@ public class Tester
         System.out.println(Paths.Background);
         Window w = Window.GetInstance();
         IEngine eng = Engine.EngineFactory.Instance().get();
+
         ComportamientoTester c = new ComportamientoTester();
         MouseFollower mf = new MouseFollower();
         Renderizable r = new Renderizable(new SpriteData(Paths.Alcon,new Vector2(100,100)));
 
         GameObject g = GameObject.getRoot().addChild();
+        g.getTransform().setTop(new Vector2(2,1));
+        g.getTransform().setZcomponent(8);
         g.addComponent(r);
         g.addComponent(c);
         g.addComponent(mf);
 
-        g.getTransform().setTop(new Vector2(2,1));
 
         Renderizable death = new Renderizable(new SpriteData(Paths.DeathStar,new Vector2(500,500)));
         GameObject ds = GameObject.getRoot().addChild();

@@ -10,6 +10,7 @@ public class SpriteData
     private  Icon icon;
     private int width;
     private int height;
+
     public SpriteData(URL path, Vector2 size)
     {
         width = (int)size.x();

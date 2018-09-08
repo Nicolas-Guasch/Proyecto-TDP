@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.net.URL;
+import java.util.*;
 
 public class Window extends Component
 {
@@ -25,22 +26,26 @@ public class Window extends Component
     private JPanel panel;
     private GameSettings settings = GameSettings.GetInstance();
     private Container container;
+
+    private LayerTable<Float,JComponent> Zfactor;
+
     private Window()
     {
-       //inicializo ventana
+       // ------- Frame initialize ---------
         wind = new JFrame();
         wind.setSize(new Dimension(settings.sizeWindow.width+10,settings.sizeWindow.height+30));
         wind.setVisible(false);
-        //wind.setBackground(Color.BLACK);
+        wind.setBackground(Color.BLACK);
         wind.setContentPane(new JLabel(new ImageIcon(Paths.Background)));
         wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wind.setLayout(null);
         container = wind.getContentPane();
-        //container.setBackground(settings.background);
-
         container.setBackground(new Color(0,0,0,0));
         container.setBounds(0,0,0,0);
         container.setSize(settings.sizeWindow);
+
+        //------- z Sorting -----------
+        Zfactor = new LayerTable<>();
 
     }
     public void Update()
@@ -56,6 +61,7 @@ public class Window extends Component
     public void AddJComponent(JComponent jcomp)
     {
         container.add(jcomp);
+        Zfactor.putOrMove(0f,jcomp);
     }
     public void Remove(JComponent component)
     {
@@ -78,4 +84,31 @@ public class Window extends Component
     {
         wind.removeKeyListener(keyListener);
     }
+
+    public void SetZ(JComponent jcomp, float zcomponent, boolean ReSortNow)
+    {
+        Zfactor.putOrMove(zcomponent,jcomp);
+        if(ReSortNow)
+        {
+            ReSort();
+        }
+    }
+    public void SetZ(JComponent jcomp, float zcomponent)
+    {
+        Zfactor.putOrMove(zcomponent,jcomp);
+    }
+
+    public void ReSort()
+    {
+        int i = 0;
+        for(Map.Entry<Float, JComponent> entry : Zfactor)
+        {
+            container.setComponentZOrder(entry.getValue(),i);
+            i++;
+        }
+    }
+
+
+
+
 }
