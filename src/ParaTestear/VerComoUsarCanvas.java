@@ -1,6 +1,8 @@
 package ParaTestear;
 
 
+import RenderingSystem.LayerTable;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -49,10 +51,6 @@ public class VerComoUsarCanvas
         container.setComponentZOrder(lab2,1);
 
 
-        TreeMap<Float,Object> p = new TreeMap<>();
-        p.put(0.123f,"e");
-        p.put(0.123f,"g");
-        System.out.println(p.size());
 
 
         wind.addKeyListener(new KeyListener() {

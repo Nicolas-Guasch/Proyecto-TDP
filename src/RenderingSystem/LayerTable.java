@@ -74,6 +74,7 @@ public class LayerTable<KeyType extends Comparable<KeyType>,ValueType> implement
             map.put(key,layer);
         }
         layer.addComponent(value);
+        reverse.put(value,layer);
         count++;
     }
 
