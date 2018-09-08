@@ -30,38 +30,37 @@ public class ComportamientoTester extends Component
     {
         GameObject tirito = gameObject().addChild();
         int oper = new Random().nextInt(11);
-        tirito.addComponent(new Tirito(Vector2.UP().prod(ShootPower),oper));
+        tirito.addComponent(new Tirito(transform().getTop().prod(ShootPower),oper));
         Renderizable rend = new Renderizable(new SpriteData(Paths.NaveTester,new Vector2(20,20)));
         rend.Show();
 
         tirito.addComponent(rend);
+        tirito.getTransform().setPosition(transform().getPosition().sum(transform().getTop().prod(20)));
 
-        tirito.getTransform().setPosition(transform().getPosition().sum(new Vector2(35,20)));
-        System.out.println("tirito");
     }
 
 
     public void Update()
     {
-        float x=0;
-        float y=0;
+        Vector2 move = Vector2.ORIGIN();
         if(W.Happens())
         {
-            y++;
-        }
-        if(A.Happens())
-        {
-            x--;
+            move = transform().getTop();
         }
         if(S.Happens())
         {
-            y--;
+            move = move.minus(transform().getTop());
         }
+        if(A.Happens())
+        {
+            move = move.sum(transform().getTop().rotateUnary(-.2f));
+        }
+
         if(D.Happens())
         {
-            x++;
+            move = move.sum(transform().getTop().rotateUnary(.2f));
         }
-        transform().MoveTowards(new Vector2(x,y).versor().prod(Speed));
+        transform().MoveTowards(move.prod(Speed));
         if(Space.Happens())
         {
             Speed*= 1.03f;

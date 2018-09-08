@@ -27,7 +27,10 @@ public abstract class Component implements IActivable
     public void OnDestroy(){}
     public void OnCollisionEnter(CollisionData data){}
 
-
+    public final void DestroyComponent()
+    {
+        OnDestroy();
+    }
 
     // TODO: mas adelante si hay tiempo implementar el tweener
 

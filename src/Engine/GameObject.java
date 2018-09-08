@@ -59,6 +59,14 @@ public class GameObject
 
 
     // -------- As a Tree -------
+
+
+    public GameObject addChild(Iterable<Component> components) // the only way to create a new gameobject from outside
+    {
+        GameObject g = new GameObject(this);
+        components.forEach(g::addComponent);
+        return g;
+    }
     public GameObject addChild() // the only way to create a new gameobject from outside
     {
         return new GameObject(this);
@@ -86,6 +94,11 @@ public class GameObject
         children.forEach((c)->c.Update());
     }
 
+    public void Destroy()
+    {
+        children.forEach(c->Destroy());
+        components.forEach(c->c.DestroyComponent());
+    }
 
     //TODO : Destroy (GameObject g) invocar al ondestroy de los components
     // y broadcastear

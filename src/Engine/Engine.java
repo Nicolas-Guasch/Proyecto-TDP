@@ -72,13 +72,13 @@ class Engine implements IEngine
     @Override
     public void WaitForFrames(Runnable action, int frames)
     {
-
+        core.waitForFrames(action,frames);
     }
 
     @Override
     public void WaitForSeconds(Runnable action, float seconds)
     {
-
+        core.waitForSeconds(action,seconds);
     }
 
     @Override

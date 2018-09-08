@@ -98,6 +98,13 @@ public final class Core
         mainLoop();
     }
     // frames must be 0 based (put 0 for do at end of current frame)
+
+
+
+    public void waitForSeconds(Runnable action, float seconds)
+    {
+        waitForFrames(action,(int)seconds/FPS); // TODO: desmanijear
+    }
     void waitForFrames(Runnable function, int frames)
     {
         if(frames<0)
@@ -108,7 +115,6 @@ public final class Core
             LinkedBlockingQueue<Runnable> q = new LinkedBlockingQueue<>();
             q.add(function);
             TasksForFrame.put(targetFrame, q);
-
         }
         else{TasksForFrame.get(targetFrame).add(function);}
     }
@@ -120,4 +126,6 @@ public final class Core
     {
         return onUpdate;
     }
+
+
 }

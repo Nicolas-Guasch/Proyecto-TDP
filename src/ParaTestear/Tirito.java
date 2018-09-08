@@ -14,7 +14,7 @@ public class Tirito extends Component
         this.oper = oper;
     }
 
-    int i=0;
+    int i=2;
     boolean derecha = true;
     boolean rare = true;
 
@@ -23,7 +23,7 @@ public class Tirito extends Component
     @Override
     public void Update()
     {
-        transform().MoveTowards(Speed.sum(Vector2.RIGHT().prod(i)));
+        transform().MoveTowards(Speed.sum(Speed.versor().rotateUnary(0.03f).prod(i)));
         if(transform().getPosition().length()>10000){
             Speed = Speed.opposite();
         }
@@ -39,6 +39,5 @@ public class Tirito extends Component
             }
             i = derecha ?i+1 : i-1;
         }
-
     }
 }

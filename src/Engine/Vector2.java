@@ -62,9 +62,34 @@ public class Vector2
     public String toString(){
         return String.format("(%s,%s)",x,y);
     }
+    public Vector2 rotate(float angle)
+    {
+        Vector2 self = this;
+        return new Vector2((float)(self.x * Math.cos(angle)  - self.y * Math.sin(angle)) ,(float) (self.x * Math.sin(angle) + self.y * Math.cos(angle)));
+    }
+    public float getAngle(Vector2 other)
+    {
+        return (float) Math.atan2( x*other.y - y*other.x, x*other.x + y*other.y );
+    }
 
+    /**
+     *
+     * @param angle range[-1,1] -1
+     * in case you want to perform a counter-clockwise rotation put an -1,
+     * but if you want to rotate clockwise put positive values
+     * @return new vector rotated
+     */
+    public Vector2 rotateUnary(float angle)
+    {
+        Vector2 self = this;
+        float a = (float) Math.PI * angle *2;
+        return new Vector2((float)(self.x * Math.cos(a)  - self.y * Math.sin(a)) ,(float) (self.x * Math.sin(a) + self.y * Math.cos(a)));
+    }
 
-
+    public float getUnaryAngle(Vector2 other)
+    {
+        return (float) (Math.atan2( x*other.y - y*other.x, x*other.x + y*other.y )/(Math.PI*2));
+    }
     public Vector2 load(String data)
     {
         Vector2 ret = ORIGIN();
