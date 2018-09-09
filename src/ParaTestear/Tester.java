@@ -13,36 +13,59 @@ public class Tester
     public static void main(String[]a)
     {
         System.out.println(Paths.Background);
-        Window w = Window.GetInstance();
+        Window window = Window.GetInstance();
         IEngine eng = Engine.EngineFactory.Instance().get();
 
+
+        // --------- Crear a Solo --------
+        GameObject solo = GameObject.getRoot().addChild();
+        solo.getTransform().setTop(new Vector2(2,1));
+        solo.getTransform().setZcomponent(-8);
+        solo.getTransform().setPosition(new Vector2(-400,-400));
         ComportamientoTester c = new ComportamientoTester();
-        MouseFollower mf = new MouseFollower();
-        Renderizable r = new Renderizable(new SpriteData(Paths.Alcon,new Vector2(100,100)));
 
-        GameObject g = GameObject.getRoot().addChild();
-        g.getTransform().setTop(new Vector2(2,1));
-        g.getTransform().setZcomponent(8);
-        g.addComponent(r);
-        g.addComponent(c);
-        g.addComponent(mf);
+        Renderizable rendSolo = new Renderizable(new SpriteData(Paths.Alcon,new Vector2(100,100)));
+        solo.addComponent(rendSolo);
+        rendSolo.Show();
+        solo.addComponent(c);
 
 
+        // ------- Crear a Vader --------
+
+        GameObject vader = GameObject.getRoot().addChild();
+        vader.getTransform().setPosition(new Vector2(10,10));
+        vader.addComponent(new Renderizable(new SpriteData(Paths.Vader,new Vector2(250,250)))).Show();
+        vader.addComponent(new ComportamientoKamikazee(solo.getTransform(),2));
+        vader.getTransform().setZcomponent(-5);
+        vader.addComponent(new StormTheFront(60,40));
+
+
+        // --------- Crear un par de chavoncitos que se mueven random ---------
+
+
+
+
+
+        //--------- Crear la DeathStar ----------
+        GameObject deathStar = GameObject.getRoot().addChild();
+        deathStar.getTransform().setPosition(new Vector2(-500,400));
         Renderizable death = new Renderizable(new SpriteData(Paths.DeathStar,new Vector2(500,500)));
-        GameObject ds = GameObject.getRoot().addChild();
-        ds.addComponent(death);
         death.Show();
-        ds.addComponent(new AlwaysLateral(new Vector2(1,0.05f)));
-        ds.getTransform().setPosition(new Vector2(-500,400));
+        deathStar.addComponent(death);
+        deathStar.addComponent(new AlwaysLateral(new Vector2(1,0.05f)));
 
 
-        //TODO : Acordarme de darle SHOW a los Renderizables
+
+        //TODO : Acordarme de siempre darle show() a los Renderizables
+
+        // ------ suscribo la raiz de objetos y la ventana al engine
         eng.SuscribeToUpdate(GameObject.getRoot());
-        eng.SuscribeToUpdate(w);
+        eng.SuscribeToUpdate(window);
 
-        ((Window) w).Show();
-        r.Show();
+        // -------- muestro la ventana y arranco el motor -------
+
+        SoundManager.Instance().ImperialMarchPlay();
+        window.Show();
         eng.Start();
-
     }
 }

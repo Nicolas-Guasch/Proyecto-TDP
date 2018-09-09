@@ -13,9 +13,9 @@ public class AlwaysLateral extends Component
         this.vector = vector;
     }
 
-    public void Update(){
-
+    public void Update()
+    {
         transform().MoveTowards(vector);
-
+        transform().setTop(vector);
     }
 }

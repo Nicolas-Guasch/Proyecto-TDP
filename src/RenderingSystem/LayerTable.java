@@ -50,7 +50,20 @@ public class LayerTable<KeyType extends Comparable<KeyType>,ValueType> implement
         count -= l.Count();
         return l;
     }
-
+    public void removeOne(ValueType value)
+    {
+        Layer<KeyType,ValueType> l = reverse.getOrDefault(value,null);
+        if(l!=null)
+        {
+            KeyType k = l.getSortFactor();
+            l.removeComponent(value);
+            if(l.Count()<=0)
+            {
+                map.remove(k);
+            }
+            count--;
+        }
+    }
     public void putOrMove(KeyType key, ValueType value)
     {
         Layer<KeyType,ValueType> layer = reverse.getOrDefault(value,null);
@@ -88,4 +101,6 @@ public class LayerTable<KeyType extends Comparable<KeyType>,ValueType> implement
         }
         return ret.iterator();
     }
+
+
 }

@@ -23,5 +23,10 @@ public class Broadcaster<P>
     {
         list.remove(listener);
     }
+
+    public void Clean()
+    {
+        list.clear();
+    }
 }
 

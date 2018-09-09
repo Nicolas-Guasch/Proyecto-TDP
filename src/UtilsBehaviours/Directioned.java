@@ -13,6 +13,7 @@ public class Directioned extends Component
     @Override
     public void Update()
     {
-        transform().MoveTowards(Direction);
+        if(gameObject()!=null)
+            transform().MoveTowards(Direction);
     }
 }

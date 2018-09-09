@@ -65,6 +65,7 @@ public class Window extends Component
     }
     public void Remove(JComponent component)
     {
+        Zfactor.removeOne(component);
         container.remove(component);
     }
     public void AddInput(MouseListener mouseListener)

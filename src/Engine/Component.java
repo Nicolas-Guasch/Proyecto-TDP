@@ -29,6 +29,7 @@ public abstract class Component implements IActivable
 
     public final void DestroyComponent()
     {
+        _Node_gameObject = null;
         OnDestroy();
     }
 

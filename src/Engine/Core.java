@@ -78,18 +78,25 @@ public final class Core
         long nanosperframe = (long)(1e9/FPS);
         float prev = 0f;
         float act;
+
         while(!exit)
         {
-            stampPerFrame = Clock.currentTimeNanos();
-            endOfFrame();
-            do
-            {
-                act = Clock.currentTimeNanos();
-                invokerOnPhysicsUpdate.Invoke((act-prev)/1_000_000_000f);
-                prev = act;
+            try{
+
+                stampPerFrame = Clock.currentTimeNanos();
+                endOfFrame();
+                do
+                {
+                    act = Clock.currentTimeNanos();
+                    invokerOnPhysicsUpdate.Invoke((act-prev)/1_000_000_000f);
+                    prev = act;
+                }
+                while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe);
+
             }
-            while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe);
+            catch (Exception e){e.printStackTrace();}
         }
+
     }
 
     // --------- public stuff -----------

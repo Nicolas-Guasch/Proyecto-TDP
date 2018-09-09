@@ -95,12 +95,18 @@ public class GameObject
 
     public void Update()
     {
-        components.forEach((c)->c.Update());
+        components.forEach((c)->{
+            if(c.isActive())
+            {
+                c.Update();
+            }
+        });
         children.forEach((c)->c.Update());
     }
 
     public void Destroy()
     {
+        parent.children.remove(this);
         children.forEach(c->Destroy());
         components.forEach(c->c.DestroyComponent());
     }

@@ -6,15 +6,15 @@ import Engine.EngineFactory;
 public final class VolatileComponent extends Component
 {
 
-    private float lifeSeconds;
-    public VolatileComponent(float lifeSeconds)
+    private int frameDuration;
+    public VolatileComponent(int lifeFrames)
     {
-        this.lifeSeconds = lifeSeconds;
+        frameDuration = lifeFrames;
     }
 
     @Override
     public void Start()
     {
-        EngineFactory.Instance().get().WaitForSeconds(()->gameObject().Destroy(),lifeSeconds);
+        EngineFactory.Instance().get().WaitForFrames(()->gameObject().Destroy(),frameDuration);
     }
 }
