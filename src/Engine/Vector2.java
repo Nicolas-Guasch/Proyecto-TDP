@@ -1,5 +1,7 @@
 package Engine;
 
+import java.util.Random;
+
 public class Vector2
 {
     public static final Vector2 ORIGIN(){return new Vector2(0,0);}
@@ -8,9 +10,26 @@ public class Vector2
     public static final Vector2 LEFT (){ return new Vector2(-1,0);}
     public static final Vector2 RIGHT (){return new Vector2(1,0);}
 
+    public static final Vector2 UP (float x){   return new Vector2(0,x);}
+    public static final Vector2 DOWN (float x){ return new Vector2(0,-x);}
+    public static final Vector2 LEFT (float x){ return new Vector2(-x,0);}
+    public static final Vector2 RIGHT (float x){return new Vector2(x,0);}
+
     public static float Epsilon = 0.01f;
 
     private float x,y;
+
+    public static Vector2 Random()
+    {
+        return UP().rotate(new Random().nextFloat());
+    }
+
+    public static Vector2 Random(float large)
+    {
+        return Random().prod(large);
+    }
+
+
 
     public float x(){return x;}
     public float y(){return y;}
@@ -113,6 +132,22 @@ public class Vector2
     public boolean equals(Vector2 other)
     {
         return other.x() == x && other.y() == y;
+    }
+
+    public Vector2 swapped()
+    {
+        return new Vector2(y,x);
+    }
+
+
+    public Vector2 mirrorY()
+    {
+        return new Vector2(-x,y);
+    }
+
+    public Vector2 mirrorX()
+    {
+        return new Vector2(x,-y);
     }
 
     /*inner class*/

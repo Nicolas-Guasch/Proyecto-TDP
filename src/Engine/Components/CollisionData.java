@@ -2,17 +2,17 @@ package Engine.Components;
 
 import Engine.Vector2;
 
-public class CollisionData
+public class CollisionData<ColliderType extends AbstractCollider<ColliderType>>
 {
-    private RectangleCollider mine;
-    private RectangleCollider their;
+    private ColliderType mine;
+    private ColliderType their;
     private Vector2 contactPoint;
 
-    public RectangleCollider Mine () {return mine;}
-    public RectangleCollider Their () {return their;}
+    public ColliderType Mine () {return mine;}
+    public ColliderType Their () {return their;}
     public Vector2 ContactPoint(){return contactPoint;}
 
-    public CollisionData(RectangleCollider mine, RectangleCollider their , Vector2 contactPoint)
+    public CollisionData(ColliderType mine, ColliderType their , Vector2 contactPoint)
     {
         this.mine = mine;
         this.their = their;
@@ -20,7 +20,7 @@ public class CollisionData
     }
     public CollisionData invert()
     {
-        return new CollisionData(their, mine, contactPoint);
+        return new CollisionData<ColliderType>(their, mine, contactPoint);
     }
 
 }

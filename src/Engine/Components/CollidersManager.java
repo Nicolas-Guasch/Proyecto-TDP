@@ -1,11 +1,12 @@
 package Engine.Components;
 
+import Engine.Component;
 import Engine.EngineFactory;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class CollidersManager
+public class CollidersManager extends Component
 {
     private static CollidersManager instance;
     public static CollidersManager GetInstance(){
@@ -16,28 +17,51 @@ public class CollidersManager
         return instance;
     }
 
-    private List<RectangleCollider> colliders;
+    private List<AbstractCollider> colliders;
     private CollidersManager()
     {
         colliders = new LinkedList<>();
-        EngineFactory.Instance().get().SuscribeToPhysicsUpdate(this::FixedUpdate);
+        EngineFactory.Instance().get().SuscribeToUpdate(this);
     }
 
-    private void FixedUpdate(float delta)
+    public void Update()
     {
-        //TODO: HAY UN CUADRATICO POR FRAMEEEEE!!!, hay que desmanijear esto (pero primero testear)
-        for (RectangleCollider c : colliders) {
-            for (RectangleCollider d : colliders) {
+        Check();
+    }
+
+
+    public void PhysicsUpdate(float deltaTime)
+    {
+        Check();
+    }
+
+    private void Check()
+    {
+        for (AbstractCollider c : colliders) {
+            for (AbstractCollider d : colliders) {
                 CollisionData data = d.CheckCollision(c);
-                if (data != null)
+                CollisionData data2 = c.CheckCollision(d);
+                if (data != null && data2!=null && d!=c)
                 {
-                    d.gameObject().sendMessage((x)->x.OnCollisionEnter(data));
-                    c.gameObject().sendMessage((x)->x.OnCollisionEnter(data.invert()));
+                    if(d.gameObject()!=null && d.isActive()) {
+                        d.gameObject().sendMessage((x) -> x.OnCollisionEnter(data));
+                    }
+                    if( c.gameObject()!=null && c.isActive())
+                    {
+                        c.gameObject().sendMessage((x)->x.OnCollisionEnter(data2));
+                    }
                 }
             }
         }
     }
 
 
-
+    public void addCollider(AbstractCollider collider)
+    {
+        colliders.add(collider);
+    }
+    public void removeCollider(AbstractCollider collider)
+    {
+        colliders.remove(collider);
+    }
 }

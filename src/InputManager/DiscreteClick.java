@@ -1,17 +1,13 @@
 package InputManager;
 
 import Broadcaster.*;
-import Engine.Component;
 import Engine.EngineFactory;
-import RenderingSystem.Window;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.Collection;
-import java.util.HashSet;
-
-public class DiscreteKeyInput extends AbstractDiscreteInput
+public class DiscreteClick extends AbstractDiscreteInput
 {
+
+
+
 
 
     //bool says if isPressed
@@ -22,13 +18,20 @@ public class DiscreteKeyInput extends AbstractDiscreteInput
     private DummyComponent Dummy;
     private boolean lastStatus;
 
-
-    public DiscreteKeyInput(String chars)
+    public DiscreteClick()
+    {
+        this(0);
+    }
+    public DiscreteClick(int mouseClick)
+    {
+        initialize(mouseClick);
+    }
+    public void initialize(int mouseClick)
     {
         BroadcasterPackage<Boolean> pack = BroadcasterFactory.GetBroadcaster();
         onAction = pack.Broadcaster;
         invokerOnAction = pack.Invoker;
-        related = new ContinueKeyInput(chars);
+        related = new ContinueClick(mouseClick);
         Dummy = new DummyComponent(this::Update);
         EngineFactory.Instance().get().SuscribeToUpdate(Dummy);
     }

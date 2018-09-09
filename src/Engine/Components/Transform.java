@@ -59,5 +59,19 @@ public final class Transform extends Component
     public void setZcomponent(float zcomponent) {
         Zcomponent = zcomponent;
     }
+
+    public Vector2 getTop(float large)
+    {
+        return getTop().prod(large);
+    }
+
+    public void rotate(float angle)
+    {
+        top = top.rotate(angle);
+    }
+    public void rotateUnary(float angle)
+    {
+        top = top.rotateUnary(angle);
+    }
 }
 

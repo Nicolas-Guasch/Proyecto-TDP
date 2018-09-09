@@ -20,7 +20,7 @@ public class SpriteRenderer extends JLabel
         Graphics2D gx = (Graphics2D) g;
         if(transform != null)
         {
-            gx.rotate(transform.getTop().getAngle(Vector2.UP()) , getWidth() / 2, getHeight() / 2);
+            gx.rotate(transform.getTop().getAngle(Vector2.UP()) , getWidth() /2, getHeight()/2 );
         }
         super.paintComponent(g);
     }

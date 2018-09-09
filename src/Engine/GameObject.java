@@ -1,5 +1,7 @@
 package Engine;
 
+import Engine.Components.AbstractCollider;
+import Engine.Components.CollidersManager;
 import Engine.Components.Transform;
 
 import java.util.*;
@@ -46,6 +48,21 @@ public class GameObject
     }
 
     //------------- Components Handling --------------
+
+    private AbstractCollider collider;
+    public <S extends AbstractCollider> S addCollider(S c)
+    {
+        if(collider == null) {
+            collider = c;
+            components.add(c);
+            c.setGameObject(this);
+            c.Start();
+            CollidersManager.GetInstance().addCollider(collider);
+        }
+        return c;
+    }
+
+
     public<S extends Component> S addComponent(S c)
     {
         components.add(c);
@@ -107,12 +124,14 @@ public class GameObject
     public void Destroy()
     {
         parent.children.remove(this);
-        children.forEach(c->Destroy());
+        new LinkedList<>(children).forEach(c->c.Destroy());
+        children.clear();
         components.forEach(c->c.DestroyComponent());
     }
 
-    //TODO : Destroy (GameObject g) invocar al ondestroy de los components
-    // y broadcastear
-
+    public <Col extends AbstractCollider<Col>> Col getCollider()
+    {
+        return (Col) collider;
+    }
 }
 

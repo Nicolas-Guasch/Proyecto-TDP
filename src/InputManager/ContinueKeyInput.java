@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 import java.util.Collection;
 import java.util.HashSet;
 
-public class ContinueKeyInput
+public class ContinueKeyInput extends AbstractContinueInput
 {
     private KeyListener Listener;
     private Collection<Character> mychars;

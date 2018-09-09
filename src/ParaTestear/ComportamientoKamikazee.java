@@ -22,9 +22,9 @@ public class ComportamientoKamikazee extends Component
         if(gameObject()!=null) // TODO: desmanijear
         {
             Vector2 v = target.getPosition().minus(transform().getPosition()).versor().prod(speed);
+            v = v.sum(Vector2.Random(0.3f));
             transform().MoveTowards(v);
             transform().setTop(v);
-
         }
     }
 }

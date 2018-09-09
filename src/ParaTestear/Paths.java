@@ -14,6 +14,7 @@ public class Paths
     public static final URL TIE = Paths.class.getResource("tie_normal.png");
     public static final URL TIE2 = Paths.class.getResource("tie2.png");
     public static final URL Laser = Paths.class.getResource("laser.png");
+    public static final URL LaserBlue = Paths.class.getResource("laserBlue.png");
 
 
     // -------------SOUNDS --------------

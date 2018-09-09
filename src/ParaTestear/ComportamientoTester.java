@@ -3,8 +3,7 @@ package ParaTestear;
 import Engine.Component;
 import Engine.Vector2;
 import Engine.GameObject;
-import InputManager.ContinueKeyInput;
-import InputManager.DiscreteKeyInput;
+import InputManager.*;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 
@@ -12,8 +11,8 @@ import java.util.Random;
 
 public class ComportamientoTester extends Component
 {
-    private ContinueKeyInput W,A,S,D,Space;
-    private DiscreteKeyInput E,X;
+    private AbstractContinueInput W,A,S,D, ClickCont;
+    private AbstractDiscreteInput E,X,Space,Shoot;
     private float Speed=16;
     private float ShootPower=8;
 
@@ -26,12 +25,15 @@ public class ComportamientoTester extends Component
 
         E = new DiscreteKeyInput("eE");
         X = new DiscreteKeyInput("xX");
-        Space = new ContinueKeyInput(" ");
+        Space = new DiscreteKeyInput(" ");
+        Shoot = new DiscreteClick(1);
+
+        ClickCont = new ContinueClick(1);
     }
 
     @Override
     public void Start() {
-        E.OnAction().Suscribe((b)->
+        Shoot.OnAction().Suscribe((b)->
         {
             if(b){
                 Shoot();
@@ -49,7 +51,7 @@ public class ComportamientoTester extends Component
 
     public void Shoot()
     {
-        LaserMaker.create(gameObject(),Speed*ShootPower);
+        LaserMaker.createBlue(gameObject(),ShootPower);
 
     }
 
@@ -57,33 +59,19 @@ public class ComportamientoTester extends Component
     public void Update()
     {
         Vector2 move = Vector2.ORIGIN();
-
-
         Vector2 top = transform().getTop();
+
+
         if(A.Happens())
         {
-            top = top.rotateUnary(0.001f*Speed);
-
+            move = Vector2.LEFT(Speed);
         }
         if(D.Happens())
         {
-            top = top.rotateUnary(-0.001f*Speed);
+            move = move.sum(Vector2.RIGHT(Speed));
         }
 
-        transform().setTop(top);
-
-
-
-        if(W.Happens())
-        {
-            move = transform().getTop();
-        }
-        if(S.Happens())
-        {
-            move = move.minus(transform().getTop());
-        }
-
-        transform().MoveTowards(move.prod(Speed));
+        transform().MoveTowards(move);
 
 
     }
