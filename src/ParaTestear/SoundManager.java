@@ -3,8 +3,9 @@ package ParaTestear;
 
 
 import SoundSystem.*;
+import Stuff.Paths;
 
-public class SoundManager
+public final class SoundManager
 {
 
     private Sound pew;
@@ -40,4 +41,9 @@ public class SoundManager
         imperialMarch.stop();
     }
 
+    public void SoloShoot()
+    {
+        //TODO : add other sound
+        Pew();
+    }
 }

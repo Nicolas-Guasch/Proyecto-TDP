@@ -2,7 +2,8 @@ package RenderingSystem;
 
 import Engine.Component;
 import GameData.GameSettings;
-import ParaTestear.Paths;
+import Stuff.Paths;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +24,7 @@ public class Window extends Component
         return instance;
     }
     private JFrame wind;
-    private JPanel panel;
+    private JPanel ui;
     private GameSettings settings = GameSettings.GetInstance();
     private Container container;
 
@@ -33,8 +34,10 @@ public class Window extends Component
     {
        // ------- Frame initialize ---------
         wind = new JFrame();
-        wind.setSize(new Dimension(settings.sizeWindow.width+10,settings.sizeWindow.height+30));
+
+        wind.setSize(new Dimension(settings.sizeWindow.width+600,settings.sizeWindow.height+30));
         wind.setVisible(false);
+        wind.setResizable(false);
         wind.setBackground(Color.BLACK);
         wind.setContentPane(new JLabel(new ImageIcon(Paths.Background)));
         wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,6 +70,7 @@ public class Window extends Component
     {
         Zfactor.removeOne(component);
         container.remove(component);
+
     }
     public void AddInput(MouseListener mouseListener)
     {

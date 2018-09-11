@@ -1,0 +1,1001 @@
+<Project>
+  <Name>asdasd</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>builder ships</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>ShipStation</Name>
+        <Access>Public</Access>
+        <Location left="241" top="153" />
+        <Size width="211" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private ShipBuilder builder</Member>
+        <Member type="Method">public void setBuilder(ShipBuilder s)</Member>
+        <Member type="Method">public Ship getShip()</Member>
+        <Member type="Method">public void ensambleShip()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>Director
+</Text>
+        <Location left="297" top="51" />
+        <Size width="160" height="50" />
+      </Entity>
+      <Entity type="Class">
+        <Name>ShipBuilder</Name>
+        <Access>Public</Access>
+        <Location left="596" top="153" />
+        <Size width="217" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">protected Ship ship</Member>
+        <Member type="Method">public Ship getShip()</Member>
+        <Member type="Method">public abstract void createShip()</Member>
+        <Member type="Method">public abstract void buildCollider()</Member>
+        <Member type="Method">public abstract void buildRenderer()</Member>
+        <Member type="Method">public abstract void buildPuppet()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SoloShipBuilder</Name>
+        <Access>Public</Access>
+        <Location left="493" top="523" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public Ship getShip()</Member>
+        <Member type="Method">public void createShip()</Member>
+        <Member type="Method">public void buildCollider()</Member>
+        <Member type="Method">public void buildRenderer()</Member>
+        <Member type="Method">public void buildPuppet()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>VaderShipBuilder</Name>
+        <Access>Public</Access>
+        <Location left="800" top="523" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public Ship getShip()</Member>
+        <Member type="Method">public void createShip()</Member>
+        <Member type="Method">public void buildCollider()</Member>
+        <Member type="Method">public void buildRenderer()</Member>
+        <Member type="Method">public void buildPuppet()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>Abstract Builder
+</Text>
+        <Location left="690" top="28" />
+        <Size width="160" height="50" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>builder.createShip();
+builder.buildCollider();
+builder.buildRenderer();
+builder.buildPuppet();</Text>
+        <Location left="52" top="346" />
+        <Size width="160" height="89" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>ConcreteBuilder
+</Text>
+        <Location left="493" top="824" />
+        <Size width="160" height="75" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>ConcreteBuilder
+</Text>
+        <Location left="763" top="824" />
+        <Size width="160" height="75" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>Ship Station
+</Text>
+        <Location left="40" top="24" />
+        <Size width="160" height="54" />
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="3" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>724</X>
+          <Y>394</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="0" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Comment" first="6" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>216</X>
+          <Y>281</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Comment" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>367</X>
+          <Y>128</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Comment" first="5" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Comment" first="8" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Comment" first="7" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>visitorColliders</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>CollisionManager</Name>
+        <Access>Public</Access>
+        <Location left="322" top="85" />
+        <Size width="363" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">private void CheckCollision(ICollisionable mine, ICollisionable their)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Checker</Name>
+        <Access>Public</Access>
+        <Location left="762" top="85" />
+        <Size width="226" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private PoligonalCollider PolMine</Member>
+        <Member type="Field">private ICollisionable their</Member>
+        <Member type="Method">public void CheckTheir(PoligonalCollider p)</Member>
+        <Member type="Method">public void CheckTheir(CirclelCollider p)</Member>
+        <Member type="Method">public void CheckMine(PoligonalCollider p)</Member>
+        <Member type="Method">public void CheckMine(CirclelCollider p)</Member>
+        <Member type="Method">public CollisionData getData()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CollisionsSolver</Name>
+        <Access>Public</Access>
+        <Location left="1111" top="85" />
+        <Size width="394" height="169" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public CollisionData checkCollision(PoligonalCollider c, PoligonalCollider d)</Member>
+        <Member type="Method">public CollisionData checkCollision(CircleCollider c, CircleCollider d)</Member>
+        <Member type="Method">public CollisionData checkCollision(PoligonalCollider c, CircleCollider d)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ICollisionable</Name>
+        <Access>Public</Access>
+        <Location left="354" top="312" />
+        <Size width="281" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void getCheckingMine(Checker c)</Member>
+        <Member type="Method">void getCheckingTheir(Checker c)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>PoligonalCollider</Name>
+        <Access>Public</Access>
+        <Location left="227" top="603" />
+        <Size width="222" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void getCheckingMine(Checker c)</Member>
+        <Member type="Method">void getCheckingTheir(Checker c)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>CircleCollider</Name>
+        <Access>Public</Access>
+        <Location left="511" top="603" />
+        <Size width="229" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void getCheckingMine(Checker c)</Member>
+        <Member type="Method">void getCheckingTheir(Checker c)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>Checker c = new Checker();
+mine.getCheckingMine(c);
+mine.getCheckingTheir(c);
+</Text>
+        <Location left="97" top="167" />
+        <Size width="160" height="134" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>c.CheckMine(this);</Text>
+        <Location left="814" top="603" />
+        <Size width="160" height="75" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>c.CheckTheir(this);</Text>
+        <Location left="814" top="728" />
+        <Size width="160" height="75" />
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Realization" first="5" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>495</X>
+          <Y>448</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="4" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="0" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Comment" first="7" second="5">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>765</X>
+          <Y>683</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Comment" first="8" second="5">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>767</X>
+          <Y>699</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Comment" first="6" second="0">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>282</X>
+          <Y>221</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>297</X>
+          <Y>164</Y>
+        </BendPoint>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Level factory</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Level</Name>
+        <Access>Public</Access>
+        <Location left="339" top="67" />
+        <Size width="280" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">protected EnemiesStructure enemiesStructure</Member>
+        <Member type="Field">protected Ship player</Member>
+        <Member type="Field">protected List&lt;Misc&gt; miscThings</Member>
+        <Member type="Method">public abstract void start()</Member>
+        <Member type="Method">public abstract void end()</Member>
+        <Member type="Method">public void createBoss()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LevelOne</Name>
+        <Access>Public</Access>
+        <Location left="225" top="484" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void start()</Member>
+        <Member type="Method">public void end()</Member>
+        <Member type="Method">public void createBoss()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LevelTwo</Name>
+        <Access>Public</Access>
+        <Location left="421" top="484" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void start()</Member>
+        <Member type="Method">public void end()</Member>
+        <Member type="Method">public void createBoss()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LevelThree</Name>
+        <Access>Public</Access>
+        <Location left="618" top="484" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void start()</Member>
+        <Member type="Method">public void end()</Member>
+        <Member type="Method">public void createBoss()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LevelGiver</Name>
+        <Access>Public</Access>
+        <Location left="1036" top="56" />
+        <Size width="177" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">protected Level level</Member>
+        <Member type="Method">public abstract void makeLevel()</Member>
+        <Member type="Method">public final Level getLevel()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LevelOneGetter</Name>
+        <Access>Public</Access>
+        <Location left="870" top="484" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void makeLevel()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LevelTwoGetter</Name>
+        <Access>Public</Access>
+        <Location left="1058" top="485" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void makeLevel()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LevelThreeGetter</Name>
+        <Access>Public</Access>
+        <Location left="1243" top="484" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void makeLevel()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>uses</Text>
+        <Location left="802" top="822" />
+        <Size width="50" height="50" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>level = makeLevel();
+</Text>
+        <Location left="1283" top="77" />
+        <Size width="160" height="50" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>return level;</Text>
+        <Location left="1315" top="167" />
+        <Size width="90" height="50" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>level = new LevelThree();</Text>
+        <Location left="1467" top="609" />
+        <Size width="160" height="50" />
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>292</X>
+          <Y>459</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>482</X>
+          <Y>316</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="2" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>494</X>
+          <Y>315</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="3" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>510</X>
+          <Y>311</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1111</X>
+          <Y>302</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="6" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1125</X>
+          <Y>298</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1137</X>
+          <Y>297</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="5" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>952</X>
+          <Y>725</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>697</X>
+          <Y>745</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="6" second="2">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1130</X>
+          <Y>726</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>515</X>
+          <Y>775</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="7" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1317</X>
+          <Y>745</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>325</X>
+          <Y>805</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Comment" first="9" second="4">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1258</X>
+          <Y>104</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1240</X>
+          <Y>148</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Comment" first="10" second="4">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1290</X>
+          <Y>194</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1244</X>
+          <Y>167</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Comment" first="11" second="7">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1432</X>
+          <Y>562</Y>
+        </BendPoint>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>SoundManager</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Component</Name>
+        <Access>Public</Access>
+        <Location left="736" top="68" />
+        <Size width="202" height="101" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public Transform transform()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AudioManager</Name>
+        <Access>Public</Access>
+        <Location left="315" top="68" />
+        <Size width="277" height="249" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static AudioManager instance</Member>
+        <Member type="Field">private Collection&lt;AudioReceiber&gt; receibers</Member>
+        <Member type="Method">public static AudioManager getInstance()</Member>
+        <Member type="Method">public void broadcast(Sound sound, Vector2 origin)</Member>
+        <Member type="Method">public void Suscribe(AudioReceiber ar)</Member>
+        <Member type="Method">public void Unsuscribe(AudioReceiber ar)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AudioSource</Name>
+        <Access>Public</Access>
+        <Location left="965" top="470" />
+        <Size width="165" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">privateSound sound</Member>
+        <Member type="Method">public void playSound()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AudioReceiber</Name>
+        <Access>Public</Access>
+        <Location left="690" top="470" />
+        <Size width="245" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void play(Sound sound, Vector2 origin)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>for(AudioReceiber ar : receibers){
+   ar.play(sound,origin);
+}</Text>
+        <Location left="11" top="158" />
+        <Size width="201" height="75" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>float pan = calculatePan(origin, transform().position());
+float vol = calculateVol(origin, transform().position());
+sound.setPan(pan);
+sound.setVolume(vol);
+sound.play();</Text>
+        <Location left="315" top="537" />
+        <Size width="297" height="136" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>AudioManager.getInstance().broadcast(sound,transform().position());</Text>
+        <Location left="1181" top="637" />
+        <Size width="215" height="75" />
+      </Entity>
+      <Entity type="Interface">
+        <Name>Sound</Name>
+        <Access>Public</Access>
+        <Location left="1125" top="98" />
+        <Size width="178" height="155" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void play()</Member>
+        <Member type="Method">void setPan(float pan)</Member>
+        <Member type="Method">void setVol(float vol)</Member>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="2" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1066</X>
+          <Y>445</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>878</X>
+          <Y>203</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="2" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1040</X>
+          <Y>443</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>634</X>
+          <Y>150</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>660</X>
+          <Y>492</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="3" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Comment" first="4" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>237</X>
+          <Y>184</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>290</X>
+          <Y>199</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Comment" first="5" second="3">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>637</X>
+          <Y>613</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>665</X>
+          <Y>546</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Comment" first="6" second="2">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1155</X>
+          <Y>663</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1155</X>
+          <Y>570</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="2" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1155</X>
+          <Y>525</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1212</X>
+          <Y>282</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="3" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>856</X>
+          <Y>809</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1471</X>
+          <Y>196</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>InputSource</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>InputSource</Name>
+        <Access>Public</Access>
+        <Location left="942" top="56" />
+        <Size width="238" height="194" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">protected AbstractContinueInput Left</Member>
+        <Member type="Field">protected AbstractContinueInput Left</Member>
+        <Member type="Field">protected AbstractContinueInput Left</Member>
+        <Member type="Field">protected AbstractContinueInput Left</Member>
+        <Member type="Field">protected AbstractDiscreteInput Shoot</Member>
+        <Member type="Field">protected AbstractDirectionalInput Front</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>getters for each</Text>
+        <Location left="800" top="56" />
+        <Size width="111" height="50" />
+      </Entity>
+      <Entity type="Class">
+        <Name>HumanLateral</Name>
+        <Access>Public</Access>
+        <Location left="380" top="557" />
+        <Size width="162" height="144" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>HumanFullMove</Name>
+        <Access>Public</Access>
+        <Location left="558" top="557" />
+        <Size width="162" height="144" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>HumanMouseFollower</Name>
+        <Access>Public</Access>
+        <Location left="196" top="558" />
+        <Size width="162" height="143" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>Set Inputs for diferents gamemods</Text>
+        <Location left="380" top="924" />
+        <Size width="160" height="75" />
+      </Entity>
+      <Entity type="Class">
+        <Name>AI</Name>
+        <Access>Public</Access>
+        <Location left="919" top="557" />
+        <Size width="162" height="144" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">protected Transform target</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AIBobaFet</Name>
+        <Access>Public</Access>
+        <Location left="1518" top="925" />
+        <Size width="162" height="138" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AIDrunkGuy</Name>
+        <Access>Public</Access>
+        <Location left="676" top="924" />
+        <Size width="162" height="131" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AIKamikazee</Name>
+        <Access>Public</Access>
+        <Location left="853" top="924" />
+        <Size width="162" height="131" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>BossAI</Name>
+        <Access>Public</Access>
+        <Location left="1705" top="543" />
+        <Size width="162" height="144" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AISmartHunter</Name>
+        <Access>Public</Access>
+        <Location left="1035" top="924" />
+        <Size width="162" height="131" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AITopLine</Name>
+        <Access>Public</Access>
+        <Location left="1217" top="925" />
+        <Size width="162" height="130" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AIThrawn</Name>
+        <Access>Public</Access>
+        <Location left="1728" top="925" />
+        <Size width="162" height="138" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AIDarthVader</Name>
+        <Access>Public</Access>
+        <Location left="1925" top="925" />
+        <Size width="162" height="138" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Comment">
+        <Text>first boss
+</Text>
+        <Location left="1549" top="1080" />
+        <Size width="64" height="50" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>second boss
+</Text>
+        <Location left="1756" top="1091" />
+        <Size width="99" height="50" />
+      </Entity>
+      <Entity type="Comment">
+        <Text>final boss
+</Text>
+        <Location left="1961" top="1091" />
+        <Size width="80" height="50" />
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Comment" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>897</X>
+          <Y>131</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>917</X>
+          <Y>231</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="2" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>461</X>
+          <Y>506</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1035</X>
+          <Y>323</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="3" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>639</X>
+          <Y>532</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1034</X>
+          <Y>290</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1035</X>
+          <Y>293</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Comment" first="5" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Comment" first="5" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Comment" first="5" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="6" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1034</X>
+          <Y>290</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="8" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="9" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>935</X>
+          <Y>890</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1000</X>
+          <Y>733</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="11" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="12" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="10" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="13" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1787</X>
+          <Y>712</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="14" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Comment" first="15" second="7">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1522</X>
+          <Y>1094</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Comment" first="16" second="13">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1722</X>
+          <Y>1113</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Comment" first="17" second="14">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1935</X>
+          <Y>1110</Y>
+        </BendPoint>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>

@@ -15,9 +15,12 @@ public final class VolatileComponent extends Component
     @Override
     public void Start()
     {
-        EngineFactory.Instance().get().WaitForFrames(()->{
-            if(gameObject()!=null)
-                gameObject().Destroy();
-        },frameDuration);
+        EngineFactory.Instance().get().WaitForFrames(this::run,frameDuration);
+    }
+
+    private void run() {
+        if (gameObject() != null){
+            gameObject().Destroy();
+        }
     }
 }

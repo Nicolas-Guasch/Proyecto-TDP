@@ -2,12 +2,7 @@ package ParaTestear;
 
 import Engine.Component;
 import Engine.Vector2;
-import Engine.GameObject;
 import InputManager.*;
-import RenderingSystem.Renderizable;
-import RenderingSystem.SpriteData;
-
-import java.util.Random;
 
 public class ComportamientoTester extends Component
 {
@@ -22,17 +17,16 @@ public class ComportamientoTester extends Component
         A = new ContinueKeyInput("aA");
         S = new ContinueKeyInput("sS");
         D = new ContinueKeyInput("dD");
-
         E = new DiscreteKeyInput("eE");
         X = new DiscreteKeyInput("xX");
         Space = new DiscreteKeyInput(" ");
         Shoot = new DiscreteClick(1);
-
         ClickCont = new ContinueClick(1);
     }
 
     @Override
-    public void Start() {
+    public void Start()
+    {
         Shoot.OnAction().Suscribe((b)->
         {
             if(b){
@@ -51,8 +45,7 @@ public class ComportamientoTester extends Component
 
     public void Shoot()
     {
-        LaserMaker.createBlue(gameObject(),ShootPower);
-
+        LaserMaker.laserSolo(gameObject(),ShootPower);
     }
 
 

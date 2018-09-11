@@ -3,6 +3,7 @@ package Engine;
 import Engine.Components.AbstractCollider;
 import Engine.Components.CollidersManager;
 import Engine.Components.Transform;
+import RenderingSystem.Renderizable;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -83,7 +84,7 @@ public class GameObject
     // -------- As a Tree -------
 
 
-    public final GameObject addChild(Iterable<Component> components) // the only way to create a new gameobject from outside
+    public final<C extends Component> GameObject addChild(Iterable<C> components) // the only way to create a new gameobject from outside
     {
         GameObject g = new GameObject(this);
         components.forEach(g::addComponent);
@@ -123,15 +124,89 @@ public class GameObject
 
     public void Destroy()
     {
+        components.forEach(c->c.setActive(false));
         parent.children.remove(this);
         new LinkedList<>(children).forEach(c->c.Destroy());
         children.clear();
         components.forEach(c->c.DestroyComponent());
+        if(collider!=null)
+        {
+            CollidersManager.GetInstance().removeCollider(collider);
+        }
+        collider = null;
+        if(onDestroy != null)
+            onDestroy.run();
     }
+
+    private Runnable onDestroy;
+    public void setOnDestroy(Runnable r)
+    {
+        onDestroy = r;
+    }
+
+    public void SetEnabled(boolean enabled)
+    {
+        components.forEach(c ->c.setActive(enabled));
+        children.forEach(c->c.SetEnabled(enabled));
+    }
+
 
     public <Col extends AbstractCollider<Col>> Col getCollider()
     {
         return (Col) collider;
     }
+
+    public int Size()
+    {
+        if(children.size()==0)
+        {
+            return 1;
+        }
+        else{
+            int c = 0;
+            for (GameObject x : children) {
+                c += x.Size();
+            }
+            return c;
+        }
+    }
+
+    public int SizeComps()
+    {
+        if(children.size()==0)
+        {
+            return components.size();
+        }
+        else{
+            int c = 0;
+            for (GameObject x : children) {
+                c += x.SizeComps();
+            }
+            return c;
+        }
+    }
+
+
+    private Renderizable renderer;
+    public void addRenderer(Renderizable rend)
+    {
+        if(renderer!=rend){
+
+            if(!components.contains(rend))
+            {
+
+                addComponent(rend);
+            }
+            renderer = rend;
+        }
+    }
+
+
+
+    public Renderizable getRenderer() {
+        return renderer;
+    }
+
+
 }
 

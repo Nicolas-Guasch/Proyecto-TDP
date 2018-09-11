@@ -14,7 +14,7 @@ public class DeathOnCollision extends Component
             EngineFactory.Instance().get().WaitForFrames(()->{
                 if(gameObject()!=null)
                     gameObject().Destroy();
-            },0);
+            },1);
         }
     }
 }

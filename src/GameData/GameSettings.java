@@ -1,5 +1,9 @@
 package GameData;
 
+import Engine.Vector2;
+import RenderingSystem.RenderingTools;
+import UtilsBehaviours.Bounds;
+
 import java.awt.*;
 
 public class GameSettings
@@ -31,12 +35,11 @@ public class GameSettings
     public final Dimension sizeWindow = new Dimension(1280,739);
 
 
-
-
-
-
-
-
-
-
+    public Bounds bounds()
+    {
+        Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
+        Vector2 topRight = bottomRight.mirrorX();
+        Vector2 bottomLeft = bottomRight.mirrorY();
+        return new Bounds(topRight,bottomLeft);
+    }
 }

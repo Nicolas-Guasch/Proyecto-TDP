@@ -12,12 +12,15 @@ public class Renderizable extends Component
     private boolean visible = false;
     private static float h = GameSettings.GetInstance().sizeWindow.height;
     private static float w = GameSettings.GetInstance().sizeWindow.width;
+    private SpriteData spriteData;
 
     public Renderizable(SpriteData data)
     {
         label = new SpriteRenderer();
         //label = new JLabel();
+
         label.setIcon(data.icon());
+        spriteData = data;
         label.setBounds(0,0,data.getWidth(),data.getHeight());//TODO: cambiar esto
         label.setVisible(false);
         Window.GetInstance().AddJComponent(label);
@@ -41,6 +44,12 @@ public class Renderizable extends Component
         visible = true;
         label.setVisible(visible);
     }
+    public void Hide()
+    {
+        visible = false;
+        label.setVisible(false);
+    }
+
     public void Update()
     {
         //Volver();
@@ -48,6 +57,16 @@ public class Renderizable extends Component
         {
             ChangePosition();
         }
+    }
+
+    @Override
+    public void OnEnable() {
+        Show();
+    }
+
+    @Override
+    public void OnDisable() {
+        Hide();
     }
 
     public Vector2 getSize()
@@ -66,5 +85,22 @@ public class Renderizable extends Component
     }
 
 
+    public boolean equals(Object o)
+    {
+        Renderizable other;
+        try{
+            other = (Renderizable)o;
+        }
+        catch (Exception c){return false;}
+        return other.spriteData == spriteData;
 
+    }
+    public Renderizable clone()
+    {
+        return new Renderizable(spriteData);
+    }
+
+    public SpriteData getSpriteData() {
+        return spriteData;
+    }
 }

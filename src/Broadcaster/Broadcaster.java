@@ -13,7 +13,8 @@ public class Broadcaster<P>
     }
     void Invoke(P p)
     {
-        list.forEach((c)-> c.accept(p));
+        //para evitar errores de concurrencia
+        new LinkedList<>(list).forEach((c)-> c.accept(p));
     }
     public void Suscribe(Consumer<P> listener)
     {

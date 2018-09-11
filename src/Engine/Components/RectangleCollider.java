@@ -9,8 +9,6 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider> // Tr
     private Vector2 Dimensions;
     private Transform transform;
 
-
-
     public RectangleCollider(Vector2 dimensions)
     {
         Dimensions = dimensions;
@@ -49,6 +47,11 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider> // Tr
             data = new CollisionData<RectangleCollider>(this, c, lw.sum(up).div(2));// (lw+up)/2
         }
         return data;
+    }
+
+    @Override
+    public RectangleCollider clone() {
+        return new RectangleCollider(Dimensions);
     }
 
 

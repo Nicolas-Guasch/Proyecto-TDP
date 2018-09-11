@@ -24,4 +24,8 @@ public abstract class AbstractCollider<ColliderType extends AbstractCollider<Col
     public void setDamage(float damage) {
         this.damage = damage;
     }
+    public abstract ColliderType clone();
+
+
+
 }

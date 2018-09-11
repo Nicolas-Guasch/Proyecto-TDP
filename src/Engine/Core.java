@@ -25,9 +25,9 @@ public final class Core
     // -------- Broadcasters----------
 
     private Broadcaster<Float> onPhysicsUpdate;
-    private Broadcaster onUpdate;
+    private Broadcaster<Object> onUpdate;
     private Invoker<Float> invokerOnPhysicsUpdate;
-    private Invoker invokerOnUpdate;
+    private Invoker<Object> invokerOnUpdate;
 
 
 
@@ -72,6 +72,7 @@ public final class Core
         invokerOnUpdate.Invoke(null);
     }
 
+    public static long lastRetard = 0;//just for testing
 
     private void mainLoop(){
         long stampPerFrame;
@@ -91,8 +92,9 @@ public final class Core
                     invokerOnPhysicsUpdate.Invoke((act-prev)/1_000_000_000f);
                     prev = act;
                 }
-                while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe);
+                while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe - lastRetard);
 
+                lastRetard = (Clock.currentTimeNanos() - stampPerFrame) - nanosperframe;
             }
             catch (Exception e){e.printStackTrace();}
         }
@@ -129,7 +131,7 @@ public final class Core
     {
         return onPhysicsUpdate;
     }
-    Broadcaster getUpdater()
+    Broadcaster<Object> getUpdater()
     {
         return onUpdate;
     }

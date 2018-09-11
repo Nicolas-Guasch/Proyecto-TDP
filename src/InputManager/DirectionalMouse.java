@@ -7,13 +7,19 @@ import RenderingSystem.RenderingTools;
 import java.awt.*;
 import java.awt.event.MouseListener;
 
-public class DirectionalMouse
+public class DirectionalMouse extends AbstractDirectionalInput
 {
     private Transform reference;
     private MouseListener listener;
     public DirectionalMouse(Transform reference)
     {
         this.reference = reference;
+    }
+
+    @Override
+    public void Destroy()
+    {
+        //dont need to destroy this
     }
 
     public Vector2 Direction()

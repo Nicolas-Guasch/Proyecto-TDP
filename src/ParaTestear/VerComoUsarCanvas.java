@@ -2,6 +2,7 @@ package ParaTestear;
 
 
 import RenderingSystem.LayerTable;
+import Stuff.Paths;
 
 import javax.swing.*;
 import java.awt.*;

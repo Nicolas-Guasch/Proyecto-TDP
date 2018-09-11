@@ -9,7 +9,7 @@ class Engine implements IEngine
 
     private Core core;
     private Broadcaster<Float> onPhysicsUpdate;
-    private Broadcaster onUpdate;
+    private Broadcaster <Object> onUpdate;
 
     Engine()
     {

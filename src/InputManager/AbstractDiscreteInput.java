@@ -1,6 +1,6 @@
 package InputManager;
 
-import Broadcaster.Broadcaster;
+import Broadcaster.*;
 import Engine.EngineFactory;
 
 public abstract class AbstractDiscreteInput
@@ -10,3 +10,4 @@ public abstract class AbstractDiscreteInput
     public abstract boolean IsActive();
     public abstract Broadcaster<Boolean> OnAction();
 }
+

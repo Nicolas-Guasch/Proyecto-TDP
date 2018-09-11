@@ -6,6 +6,7 @@ import Engine.GameObject;
 import Engine.Vector2;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
+import Stuff.Paths;
 import UtilsBehaviours.Directioned;
 
 import java.util.Collection;

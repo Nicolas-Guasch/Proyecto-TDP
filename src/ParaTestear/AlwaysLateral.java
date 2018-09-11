@@ -6,7 +6,7 @@ import Engine.Vector2;
 public class AlwaysLateral extends Component
 {
 
-    private Vector2 vector;
+    protected Vector2 vector;
 
     public AlwaysLateral(Vector2 vector)
     {

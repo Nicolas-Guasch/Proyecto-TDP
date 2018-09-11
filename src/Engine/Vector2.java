@@ -21,7 +21,7 @@ public class Vector2
 
     public static Vector2 Random()
     {
-        return UP().rotate(new Random().nextFloat());
+        return UP().rotate(new Random(UP().hashCode()).nextFloat());
     }
 
     public static Vector2 Random(float large)
@@ -78,9 +78,6 @@ public class Vector2
     }
 
 
-    public String toString(){
-        return String.format("(%s,%s)",x,y);
-    }
     public Vector2 rotate(float angle)
     {
         Vector2 self = this;
@@ -150,10 +147,20 @@ public class Vector2
         return new Vector2(x,-y);
     }
 
+    public Vector2 withLength(float speed)
+    {
+        return versor().prod(speed);
+    }
+
     /*inner class*/
     private class EngineException extends RuntimeException {
         public EngineException(String msg) {
             super(msg);
         }
+    }
+
+    public String toString()
+    {
+        return String.format("(%f,%f)",x,y);
     }
 }
