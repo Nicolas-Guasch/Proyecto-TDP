@@ -1,7 +1,6 @@
 package ParaTestear;
 
 import Engine.Component;
-import Engine.GameObject;
 import Engine.Vector2;
 
 public class StormTheFront extends Component
@@ -27,7 +26,7 @@ public class StormTheFront extends Component
     {
         if(i>=freq)
         {
-            Vector2 point = transform().getPosition().sum(transform().getTop().prod(10));
+            Vector2 point = transform().position().sum(transform().getTop().prod(10));
 
             Vector2 desph = transform().getTop().swapped();
 

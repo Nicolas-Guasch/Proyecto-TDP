@@ -1,31 +1,21 @@
 package Engine.Components;
 
 import Engine.Component;
+import Entities.Entity;
 
-public abstract class AbstractCollider<ColliderType extends AbstractCollider<ColliderType>> extends Component implements Hazardous
+public abstract class AbstractCollider<ColliderType extends AbstractCollider<ColliderType>> extends Component
 {
-    public abstract CollisionData<ColliderType> CheckCollision(ColliderType c );
 
-    private boolean hazardous = false;
-    private float damage;
-
-    public final boolean isHazardous() {
-        return hazardous;
-    }
-    public final void setHazardous(boolean hazardous)
+    protected Entity entity;
+    public AbstractCollider(Entity entity)
     {
-        this.hazardous = hazardous;
+        this.entity = entity;
     }
-    @Override
-    public float getDamage() {
-        return damage;
+    public Entity getEntity()
+    {
+        return entity;
     }
 
-    public void setDamage(float damage) {
-        this.damage = damage;
-    }
-    public abstract ColliderType clone();
-
-
+    public abstract CollisionData CheckCollision(ColliderType c );
 
 }

@@ -1,4 +1,4 @@
-package Ships.Entities;
+package Entities;
 
 import Broadcaster.*;
 import Engine.Component;

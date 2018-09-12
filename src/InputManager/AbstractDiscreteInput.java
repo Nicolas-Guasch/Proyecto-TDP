@@ -1,7 +1,6 @@
 package InputManager;
 
 import Broadcaster.*;
-import Engine.EngineFactory;
 
 public abstract class AbstractDiscreteInput
 {

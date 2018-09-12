@@ -1,17 +1,23 @@
 package Engine.Components;
 
-import Engine.Component;
 import Engine.Vector2;
+import RenderingSystem.SpriteData;
+import Entities.Entity;
 
 
-public class RectangleCollider extends AbstractCollider<RectangleCollider> // Transform position must be in the middle
+public class RectangleCollider extends AbstractCollider<RectangleCollider>
 {
-    private Vector2 Dimensions;
+    private Vector2 dimensions;
     private Transform transform;
 
-    public RectangleCollider(Vector2 dimensions)
+    public RectangleCollider(Vector2 dimensions, Entity entity)
     {
-        Dimensions = dimensions;
+        super(entity);
+        this.dimensions = dimensions;
+    }
+    public RectangleCollider(SpriteData spriteData, Entity entity)
+    {
+        this(new Vector2(spriteData.getWidth(),spriteData.getHeight()),entity);
     }
 
     @Override
@@ -23,12 +29,12 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider> // Tr
 
     private Vector2 bottomLeft()
     { //pos+dim/2
-        return transform.getPosition().minus(Dimensions.div(2));
+        return transform.position().minus(dimensions.div(2));
     }
     private Vector2 topRight()
     {//pos-dim/2
 
-        return transform.getPosition().sum(Dimensions.div(2));
+        return transform.position().sum(dimensions.div(2));
     }
 
 
@@ -44,14 +50,9 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider> // Tr
                         Math.min(topRight().y(),c.topRight().y()));
         if(lw.x() <= up.x() && lw.y() <= up.y() ) // si colisiona:
         {
-            data = new CollisionData<RectangleCollider>(this, c, lw.sum(up).div(2));// (lw+up)/2
+            data = new CollisionData<>(this, c, lw.sum(up).div(2));// (lw+up)/2
         }
         return data;
-    }
-
-    @Override
-    public RectangleCollider clone() {
-        return new RectangleCollider(Dimensions);
     }
 
 

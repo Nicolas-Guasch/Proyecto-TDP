@@ -1,13 +1,5 @@
 package InputSource;
 
-import Engine.Components.Transform;
-import InputManager.ContinueKeyInput;
-import InputManager.DirectionalMouse;
-import InputManager.DiscreteClick;
-import InputManager.DummyContinueInput;
-
-import java.awt.event.MouseEvent;
-
 public abstract class InputSourceBuilder
 {
     protected InputSource inpSource;

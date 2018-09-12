@@ -22,8 +22,8 @@ public class MirrorBounds extends Component
     @Override
     public void Update()
     {
-        float x = transform().getPosition().x();
-        float y = transform().getPosition().y();
+        float x = transform().position().x();
+        float y = transform().position().y();
 
         if(x > topRight.x())
         {

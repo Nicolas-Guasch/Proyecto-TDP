@@ -1,7 +1,7 @@
-package Ships.Builder;
+package Entities.Builder;
 
 import Exceptions.BuilderExcption;
-import Ships.Entities.Ship;
+import Entities.Ship;
 
 public class ShipIndustry
 {
@@ -23,10 +23,10 @@ public class ShipIndustry
     public void assembleShip()
     {
         builder.createShip();
-        builder.createBulletLauncher();
+        builder.createWeapon();
         builder.createCollider();
         builder.createController();
         builder.createRenderer();
-
+        builder.setData();
     }
 }

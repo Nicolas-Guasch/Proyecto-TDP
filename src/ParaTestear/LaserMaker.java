@@ -24,7 +24,7 @@ public class LaserMaker
         g.addComponent(c2);
         g.addComponent(rend);
         rend.Show();
-        g.getTransform().setPosition(parent.getTransform().getPosition());
+        g.getTransform().setPosition(parent.getTransform().position());
         SoundManager.Instance().Pew();
         return g;
     }
@@ -39,7 +39,7 @@ public class LaserMaker
         g.addComponent(c2);
         g.addComponent(rend);
         rend.Show();
-        g.getTransform().setPosition(parent.getTransform().getPosition());
+        g.getTransform().setPosition(parent.getTransform().position());
         SoundManager.Instance().Pew();
         return g;
     }
@@ -54,7 +54,7 @@ public class LaserMaker
         g.addComponent(c2);
         g.addComponent(rend);
         rend.Show();
-        g.getTransform().setPosition(parent.getTransform().getPosition());
+        g.getTransform().setPosition(parent.getTransform().position());
         SoundManager.Instance().Pew();
         return g;
     }
@@ -73,7 +73,7 @@ public class LaserMaker
         g.addCollider(new RectangleCollider(new Vector2(DataBlue.getWidth(),DataBlue.getHeight()))).setHazardous(true);
         g.addComponent(new DeathIfTouchHazardous());
         rend.Show();
-        g.getTransform().setPosition(parent.getTransform().getPosition());
+        g.getTransform().setPosition(parent.getTransform().position());
         SoundManager.Instance().Pew();
         return g;
     }

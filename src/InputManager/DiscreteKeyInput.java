@@ -1,14 +1,7 @@
 package InputManager;
 
 import Broadcaster.*;
-import Engine.Component;
 import Engine.EngineFactory;
-import RenderingSystem.Window;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.Collection;
-import java.util.HashSet;
 
 public class DiscreteKeyInput extends AbstractDiscreteInput
 {

@@ -152,6 +152,14 @@ public class Vector2
         return versor().prod(speed);
     }
 
+    public Vector2 right() {
+        return new Vector2(y,-x);
+    }
+    public Vector2 right(float length) {
+        return new Vector2(y,-x).withLength(length);
+    }
+
+
     /*inner class*/
     private class EngineException extends RuntimeException {
         public EngineException(String msg) {

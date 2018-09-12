@@ -18,7 +18,7 @@ public class SwapBounds extends Component
 
     public void Update()
     {
-        Vector2 v = transform().getPosition();
+        Vector2 v = transform().position();
         if(v.x()>(w/2)+2*paddingX)
         {
             transform().setPosition(new Vector2(-(w/2)-paddingX,v.y()));

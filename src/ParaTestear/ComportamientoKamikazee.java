@@ -23,9 +23,10 @@ public class ComportamientoKamikazee extends Component
         EngineFactory.Instance().get().WaitForFrames(this::ActiveColl,10);
     }
 
-    private void ActiveColl()
+    private void ActiveColl() // must check nulls, this could fail
     {
-        gameObject().getCollider().setActive(true);
+        if(gameObject()!=null && gameObject().getCollider()!=null)
+            gameObject().getCollider().setActive(true);
     }
 
 
@@ -37,7 +38,7 @@ public class ComportamientoKamikazee extends Component
         {
 
 
-            Vector2 v = target.getPosition().minus(transform().getPosition()).versor().prod(speed);
+            Vector2 v = target.position().minus(transform().position()).versor().prod(speed);
             v = v.sum(Vector2.Random(0.3f));
             transform().MoveTowards(v);
             transform().setTop(v);

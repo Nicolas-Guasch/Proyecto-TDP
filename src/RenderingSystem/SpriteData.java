@@ -15,9 +15,13 @@ public class SpriteData
     {
         width = (int)size.x();
         height =(int) size.y();
-
         icon = new ImageIcon(path);
-
+    }
+    public SpriteData(URL path)
+    {
+        icon = new ImageIcon(path);
+        width = icon.getIconWidth();
+        height = icon.getIconHeight();
     }
 
     public Icon icon() {

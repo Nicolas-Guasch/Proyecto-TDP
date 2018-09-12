@@ -24,7 +24,7 @@ public class Tirito extends Component
     public void Update()
     {
         transform().MoveTowards(Speed.sum(Speed.versor().rotateUnary(0.03f).prod(i)));
-        if(transform().getPosition().length()>10000){
+        if(transform().position().length()>10000){
             Speed = Speed.opposite();
         }
         if(rare){

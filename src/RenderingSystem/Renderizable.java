@@ -77,7 +77,7 @@ public class Renderizable extends Component
 
     private void ChangePosition()
     {
-        Dimension d = RenderingTools.WorldToCanvas(transform().getPosition());
+        Dimension d = RenderingTools.WorldToCanvas(transform().position());
         var x = d.width;
         var y = d.height;
 

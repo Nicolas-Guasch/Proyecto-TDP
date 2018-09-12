@@ -22,7 +22,7 @@ public final class Transform extends Component
             this.position = position;
         }
 
-    public Vector2 getPosition() {
+    public Vector2 position() {
         return position;
     }
 

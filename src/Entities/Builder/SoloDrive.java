@@ -1,4 +1,4 @@
-package Ships.Builder;
+package Entities.Builder;
 
 import Engine.Component;
 import Engine.Vector2;

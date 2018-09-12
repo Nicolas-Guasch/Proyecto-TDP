@@ -1,11 +1,7 @@
 package UtilsBehaviours;
 
 import Engine.Component;
-import Engine.Vector2;
 import InputManager.DirectionalMouse;
-import RenderingSystem.RenderingTools;
-
-import java.awt.*;
 
 public class MouseFollower extends Component
 {

@@ -12,12 +12,11 @@ import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import RenderingSystem.Window;
-import Ships.Builder.ShipIndustry;
-import Ships.Builder.SoloShipBuilder;
-import Ships.Entities.Ship;
+import Entities.Builder.ShipIndustry;
+import Entities.Builder.SoloShipBuilder;
+import Entities.Ship;
 import Stuff.Paths;
 import UtilsBehaviours.MirrorBounds;
-import UtilsBehaviours.MouseFollower;
 
 import java.util.Random;
 

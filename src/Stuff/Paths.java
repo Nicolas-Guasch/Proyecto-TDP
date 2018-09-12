@@ -16,7 +16,6 @@ public class Paths
     public static final URL Laser = Paths.class.getResource("laser.png");
     public static final URL LaserBlue = Paths.class.getResource("laserBlue.png");
 
-
     // -------------SOUNDS --------------
 
     public static final URL Pew = Paths.class.getResource("pew.wav");

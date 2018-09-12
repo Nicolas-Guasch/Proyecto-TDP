@@ -1,6 +1,6 @@
-package Ships.Builder;
+package Entities.Builder;
 
-import Ships.Entities.Ship;
+import Entities.Ship;
 
 public abstract class ShipBuilder
 {
@@ -23,5 +23,9 @@ public abstract class ShipBuilder
 
     public abstract void createController();
 
-    public abstract void createBulletLauncher();
+    public abstract void createWeapon();
+
+    public abstract void setData();
+
+
 }

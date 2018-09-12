@@ -1,7 +1,5 @@
 package InputManager;
 
-import RenderingSystem.Window;
-
 public abstract class AbstractContinueInput
 {
     public abstract boolean Happens();
