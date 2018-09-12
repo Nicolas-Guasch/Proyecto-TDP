@@ -26,9 +26,6 @@ public class Ship implements Entity
         Referenced = referenced;
     }
 
-    public AbstractShooter getShooter() {
-        return Shooter;
-    }
 
     public float hazard() {
         return collisionDamage;

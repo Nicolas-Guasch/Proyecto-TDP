@@ -55,25 +55,11 @@ public class Tester
         rendSolo.Show();
         solo.getTransform().setPosition(new Vector2(0, -250));
     */
-
-        Normal(1,topRight,bottomLeft,solo);
-        Normal(2,topRight,bottomLeft,solo);
-        Normal(3,topRight,bottomLeft,solo);
-        Normal(4,topRight,bottomLeft,solo);
-        Normal(5,topRight,bottomLeft,solo);
-        Normal(6,topRight,bottomLeft,solo);
-        Normal(7,topRight,bottomLeft,solo);
-
-        CreateMareado(4,topRight,bottomLeft);
-        CreateMareado(3,topRight,bottomLeft);
-        Kamik(4,solo,topRight,bottomLeft);
-        Kamik(2,solo,topRight,bottomLeft);
-        Kamik(1,solo,topRight,bottomLeft);
-        Kamik(3,solo,topRight,bottomLeft);
-        Kamik(5,solo,topRight,bottomLeft);
-        Kamik(6,solo,topRight,bottomLeft);
-        Kamik(7,solo,topRight,bottomLeft);
-        Kamik(8,solo,topRight,bottomLeft);
+        for(int i = 0 ; i< 30 ; i++) {
+            Normal(i, topRight, bottomLeft, solo);
+        }
+        //CreateMareado(4,topRight,bottomLeft);
+        //CreateMareado(3,topRight,bottomLeft);
 
 
 
@@ -124,7 +110,7 @@ public class Tester
         chavon.getTransform().setPosition(new Vector2(i*100-500,250 + (i%2==0?100:0)));
         chavon.getTransform().setTop(Vector2.DOWN());
         chavon.getTransform().setZcomponent(-7);
-        chavon.addCollider(new RectangleCollider(new Vector2(40,40)));
+        //chavon.addCollider(new RectangleCollider(new Vector2(40,40)));
         chavon.addComponent(new DeathIfTouchHazardous());
         chavon.addComponent(new MirrorBounds(topRight,bottomLeft));
         //if(new Random().nextBoolean())
@@ -134,13 +120,16 @@ public class Tester
     private static void Normal(int i, Vector2 topRight, Vector2 bottomLeft, GameObject solo)
     {
         GameObject chavon = GameObject.getRoot().addChild();
-        chavon.addComponent(new Renderizable(new SpriteData(Paths.TIE,new Vector2(200,200)))).Show();
-        chavon.addComponent(new ComportamientoNormal());
+        var sd = new SpriteData(Paths.TIE);
+        chavon.addComponent(new Renderizable(sd)).Show();
         chavon.addComponent(new DummyShooters(3*new Random(i).nextInt(50),5, 20));
-        chavon.getTransform().setPosition(new Vector2(i*100-500,250 + (i%2==0?100:0)));
+        chavon.getTransform().setPosition(new Vector2(i*35-600,250 + (i%2==0?100:0)));
         chavon.getTransform().setTop(Vector2.DOWN());
         chavon.getTransform().setZcomponent(-7);
-        chavon.addCollider(new RectangleCollider(new Vector2(40,40)));
+        Ship s = new Ship();
+        s.setDamage(0);
+        s.setReferenced(chavon);
+        chavon.addCollider(new RectangleCollider(sd,s));
         chavon.addComponent(new ChangeIfTouchHazardous(new ComportamientoKamikazee(solo.getTransform(), 4)));
 
         chavon.addComponent(new MirrorBounds(topRight,bottomLeft));
@@ -151,12 +140,16 @@ public class Tester
     private static void Kamik(int i, GameObject solo, Vector2 bottomLeft, Vector2 topRight)
     {
         GameObject kamikaz = GameObject.getRoot().addChild();
-        kamikaz.addComponent(new Renderizable(new SpriteData(Paths.Vader, new Vector2(200, 200)))).Show();
+        var sd = new SpriteData(Paths.Vader);
+        kamikaz.addComponent(new Renderizable(sd)).Show();
         kamikaz.addComponent(new ComportamientoKamikazee(solo.getTransform(), 4));
         kamikaz.getTransform().setZcomponent(-9);
         kamikaz.addComponent(new StormTheFront(60, 40, 30));
         kamikaz.getTransform().setPosition(new Vector2(i*500-1000, 400));
-        kamikaz.addCollider(new RectangleCollider(new Vector2(80, 80)));
+        Ship s = new Ship();
+        s.setDamage(0);
+        s.setReferenced(kamikaz);
+        kamikaz.addCollider(new RectangleCollider(sd,s));
         kamikaz.addComponent(new DeathIfTouchHazardous());
         kamikaz.addComponent(new MirrorBounds(topRight,bottomLeft));
        // if(new Random().nextBoolean())

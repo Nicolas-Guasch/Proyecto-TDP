@@ -4,6 +4,7 @@ import Engine.Component;
 import Engine.Components.RectangleCollider;
 import Engine.GameObject;
 import Engine.Vector2;
+import Entities.Bullet;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Stuff.Paths;
@@ -64,16 +65,19 @@ public class LaserMaker
     public static GameObject laserSolo(GameObject parent, float speed)
     {
         GameObject g = parent.addChild();
-        Component c1 = new VolatileComponent(4123);
+        Bullet b = new Bullet(90,g);
+        Component c1 = new VolatileComponent(2123);
         Component c2 = new AlwaysLateral(g.getTransform().getTop().prod(speed));
         Renderizable rend = new Renderizable(DataBlue);
         g.addComponent(c1);
         g.addComponent(c2);
         g.addComponent(rend);
-        g.addCollider(new RectangleCollider(new Vector2(DataBlue.getWidth(),DataBlue.getHeight()))).setHazardous(true);
-        g.addComponent(new DeathIfTouchHazardous());
+
+        g.addCollider(new RectangleCollider(new Vector2(10,40),b));
+
+        g.addComponent(new DeathIfTouchSomething());
         rend.Show();
-        g.getTransform().setPosition(parent.getTransform().position());
+        g.getTransform().setPosition(parent.getTransform().position().sum(parent.getTransform().getTop(80)));
         SoundManager.Instance().Pew();
         return g;
     }

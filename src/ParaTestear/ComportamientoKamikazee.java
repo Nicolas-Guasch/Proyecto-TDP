@@ -46,7 +46,7 @@ public class ComportamientoKamikazee extends Component
     }
     @Override
     public void OnCollisionEnter(CollisionData data) {
-        if(data.Their().isHazardous())
+        if(data.Their().getEntity().hazard()>1)
         {
             data.Mine().setActive(false);
 

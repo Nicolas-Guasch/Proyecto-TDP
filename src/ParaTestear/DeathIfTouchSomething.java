@@ -3,14 +3,14 @@ package ParaTestear;
 import Engine.Component;
 import Engine.Components.CollisionData;
 import Engine.EngineFactory;
-import Engine.GameObject;
 
-public class DeathIfTouchHazardous extends Component
+public class DeathIfTouchSomething extends Component
 {
+
 
     @Override
     public void OnCollisionEnter(CollisionData data) {
-        if(data.Their().getEntity().hazard()>0)
+
         {
             data.Mine().setActive(false);
             if(gameObject()!=null)

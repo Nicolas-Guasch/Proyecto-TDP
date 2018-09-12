@@ -14,12 +14,12 @@ import UtilsBehaviours.MouseFollower;
 public class SoloShipBuilder extends ShipBuilder
 {
     private static float SoloBulletsSpeed = 34;
-    private static float SoloCollisionHazzard = 100;
+    private static float SoloCollisionHazzard = 0;
 
 
     private GameObject solo;
 
-    private SpriteData SoloData =  new SpriteData(Paths.Alcon, new Vector2(100, 100));
+    private SpriteData SoloData =  new SpriteData(Paths.Alcon);
 
     public SoloShipBuilder()
     {
@@ -37,7 +37,7 @@ public class SoloShipBuilder extends ShipBuilder
     @Override
     public void createCollider()
     {
-        solo.addCollider(new RectangleCollider(SoloData,ship));
+        solo.addCollider(new RectangleCollider(new Vector2(40,40),ship));
     }
 
     @Override
