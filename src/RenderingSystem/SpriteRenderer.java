@@ -10,6 +10,7 @@ public class SpriteRenderer extends JLabel
 {
     private static final long serialVersionUID = 1L;
     private Transform transform;
+
     public SpriteRenderer()
     {
 
