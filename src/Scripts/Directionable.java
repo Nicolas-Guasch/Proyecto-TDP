@@ -4,7 +4,7 @@ import Engine.Component;
 import Engine.Components.Transform;
 import Engine.Vector2;
 
-import UtilsBehaviours.Directioned;
+
 
 public class Directionable extends Component
 {

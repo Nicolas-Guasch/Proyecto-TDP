@@ -1,6 +1,7 @@
 package Engine.Components;
 
 import Engine.Component;
+import Engine.EngineFactory;
 import Engine.Vector2;
 
 public final class Transform extends Component
@@ -35,7 +36,7 @@ public final class Transform extends Component
     }
 
 
-    public Vector2 getTop() {
+    public Vector2 top() {
         return top;
     }
 
@@ -60,9 +61,9 @@ public final class Transform extends Component
         Zcomponent = zcomponent;
     }
 
-    public Vector2 getTop(float large)
+    public Vector2 top(float large)
     {
-        return getTop().prod(large);
+        return top().prod(large);
     }
 
     public void rotate(float angle)
@@ -72,6 +73,14 @@ public final class Transform extends Component
     public void rotateUnary(float angle)
     {
         top = top.rotateUnary(angle);
+    }
+
+    public void DoMove(Vector2 vector2, int inframes) {
+        //TODO: hacer tipo tween
+        EngineFactory.Instance().get().WaitForFrames(()->
+        {
+            setPosition(vector2);
+        },inframes);
     }
 }
 

@@ -29,7 +29,7 @@ public class DiscreteKeyInput extends AbstractDiscreteInput
 
     private void Update()
     {
-        if(lastStatus != related.Happens())
+        if(lastStatus != related.happens())
         {
             invokerOnAction.Invoke(!lastStatus);
             lastStatus = !lastStatus;

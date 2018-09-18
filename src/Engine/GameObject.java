@@ -66,7 +66,8 @@ public class GameObject
 
     public<S extends Component> S addComponent(S c)
     {
-        components.add(c);
+        Core.getInstance().waitForFrames(()->components.add(c),1);
+
         c.setGameObject(this);
         c.Start();
         return c;
@@ -94,9 +95,10 @@ public class GameObject
     {
         return new GameObject(this);
     }
-    void removeComponent(Component c)
+    public void removeComponent(Component c)
     {
         components.remove(c);
+        c.DestroyComponent();
     }
     public GameObject getParent()
     {
@@ -119,7 +121,9 @@ public class GameObject
                 c.Update();
             }
         });
-        children.forEach((c)->c.Update());
+        //para evitar una excepcion
+        //children.forEach((c)->c.Update()); <- tendria que quedar asi
+        new LinkedList<>(children).forEach((c)->c.Update());
     }
 
     public void Destroy()
@@ -188,7 +192,7 @@ public class GameObject
 
 
     private Renderizable renderer;
-    public void addRenderer(Renderizable rend)
+    public void setRenderer(Renderizable rend)
     {
         if(renderer!=rend){
 
@@ -208,5 +212,8 @@ public class GameObject
     }
 
 
+    public Iterable<GameObject> getChildren() {
+        return children;
+    }
 }
 

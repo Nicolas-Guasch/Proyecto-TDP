@@ -8,10 +8,7 @@ public class MirrorBounds extends Component
 
     private Vector2 topRight, bottomLeft;
 
-    public MirrorBounds(Bounds bounds)
-    {
-        this(bounds.getTopRight(),bounds.getBottomLeft());
-    }
+
 
     public MirrorBounds(Vector2 topRight, Vector2 bottomLeft)
     {

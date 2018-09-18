@@ -18,6 +18,7 @@ public class Hunter extends Component
     public void Update() {
         Vector2 dir = toFollow.position().minus(transform().position()).withLength(speed);
         transform().MoveTowards(dir);
+        transform().setTop(dir);
     }
 }
 

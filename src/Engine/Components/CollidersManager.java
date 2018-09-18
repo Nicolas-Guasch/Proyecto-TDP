@@ -35,27 +35,20 @@ public class CollidersManager extends Component
         Check();
     }
 
-    private void Check()
-    {
-        for (AbstractCollider c : colliders) {
-            for (AbstractCollider d : colliders) {
+    private void Check() {
+        colliders.forEach(c ->
+        {
+            colliders.stream().filter(d -> d.gameObject() != null && d.isActive() && c.gameObject() != null && c.isActive()).forEach(d ->
+            {
                 CollisionData data = d.CheckCollision(c);
                 CollisionData data2 = c.CheckCollision(d);
-                if (data != null && data2!=null && d!=c)
-                {
-                    if(d.gameObject()!=null && d.isActive()) {
-                        d.gameObject().sendMessage((x) -> x.OnCollisionEnter(data));
-                    }
-                    if( c.gameObject()!=null && c.isActive())
-                    {
-                        c.gameObject().sendMessage((x)->x.OnCollisionEnter(data2));
-                    }
+                if (data != null && data2 != null && d != c) {
+                    d.getEntity().reportCollision(data);
+                    c.getEntity().reportCollision(data2);
                 }
-            }
-        }
+            });
+        });
     }
-
-
     public void addCollider(AbstractCollider collider)
     {
         colliders.add(collider);

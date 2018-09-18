@@ -18,7 +18,7 @@ public class DummyContinueInput extends AbstractContinueInput
     }
 
     @Override
-    public boolean Happens() {
+    public boolean happens() {
         return happens;
     }
 

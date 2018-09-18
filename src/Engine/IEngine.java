@@ -1,5 +1,6 @@
 package Engine;
 
+import java.awt.event.KeyListener;
 import java.util.function.Consumer;
 
 public interface IEngine
@@ -23,10 +24,10 @@ public interface IEngine
 
     void Start();
     void Pause();
+    void Continue();
     void Stop();
     boolean isPaused();
 
 
-
-
+    CorePauser Pauser();
 }

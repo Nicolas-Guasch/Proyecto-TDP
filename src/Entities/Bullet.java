@@ -1,22 +1,21 @@
 package Entities;
 
+import Engine.Components.Transform;
 import Engine.GameObject;
+import Entities.Builders.IBullet;
 
-public class Bullet implements Entity
+public abstract class Bullet extends Entity implements IBullet
 {
-    private float hazard;
-    private GameObject referenced;
-
-    public Bullet(float hazard, GameObject referenced){
-        this.hazard = hazard;
-        this.referenced = referenced;
+    protected Bullet(GameObject referenced) {
+        super(referenced);
     }
     @Override
-    public float hazard() {
-        return hazard;
+    public Transform transform() {
+        return getReferenced().getTransform();
     }
 
-    public GameObject referenced() {
-        return referenced;
+    @Override
+    public Entity entity() {
+        return this;
     }
 }

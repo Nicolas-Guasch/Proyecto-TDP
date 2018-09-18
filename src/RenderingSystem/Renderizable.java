@@ -17,12 +17,15 @@ public class Renderizable extends Component
     public Renderizable(SpriteData data)
     {
         label = new SpriteRenderer();
+        //label = new JLabel();
+
         label.setIcon(data.icon());
         spriteData = data;
         label.setBounds(0,0,data.getWidth(),data.getHeight());//TODO: cambiar esto
         label.setVisible(false);
         Window.GetInstance().AddJComponent(label);
     }
+
 
     public void Start()
     {

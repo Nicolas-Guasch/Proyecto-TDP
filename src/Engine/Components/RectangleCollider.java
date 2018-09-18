@@ -39,7 +39,7 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
 
 
 
-    public CollisionData<RectangleCollider> CheckCollision(RectangleCollider c )
+    public CollisionData CheckCollision(RectangleCollider c )
     {
         CollisionData data = null;
         Vector2 lw =
@@ -50,7 +50,7 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
                         Math.min(topRight().y(),c.topRight().y()));
         if(lw.x() <= up.x() && lw.y() <= up.y() ) // si colisiona:
         {
-            data = new CollisionData<>(this, c, lw.sum(up).div(2));// (lw+up)/2
+            data = new CollisionData(entity, c.entity, lw.sum(up).div(2));// (lw+up)/2
         }
         return data;
     }

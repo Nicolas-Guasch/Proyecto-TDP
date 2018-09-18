@@ -159,6 +159,11 @@ public class Vector2
         return new Vector2(y,-x).withLength(length);
     }
 
+    public float distanceTo(Vector2 other)
+    {
+        return minus(other).length();
+    }
+
 
     /*inner class*/
     private class EngineException extends RuntimeException {

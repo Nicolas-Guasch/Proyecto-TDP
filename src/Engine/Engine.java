@@ -90,8 +90,14 @@ class Engine implements IEngine
     @Override
     public void Pause()
     {
-
+        core.setPaused(true);
     }
+
+    @Override
+    public void Continue() {
+        core.setPaused(false);
+    }
+
 
     @Override
     public void Stop()
@@ -102,7 +108,12 @@ class Engine implements IEngine
     @Override
     public boolean isPaused()
     {
-        return false;
+        return core.isPaused();
+    }
+
+    @Override
+    public CorePauser Pauser() {
+        return CorePauser.Instance();
     }
 
     @Override

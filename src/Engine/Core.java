@@ -12,6 +12,8 @@ public final class Core
 
     // --------Singleton Stuff---------
     private static Core instance;
+    private boolean paused = false;
+
     static Core getInstance()
     {
         if (instance == null)
@@ -82,21 +84,24 @@ public final class Core
 
         while(!exit)
         {
-            try{
+            if(paused) continue;
 
-                stampPerFrame = Clock.currentTimeNanos();
-                endOfFrame();
-                do
-                {
-                    act = Clock.currentTimeNanos();
-                    invokerOnPhysicsUpdate.Invoke((act-prev)/1_000_000_000f);
-                    prev = act;
+                try{
+
+                    stampPerFrame = Clock.currentTimeNanos();
+                    endOfFrame();
+                    do
+                    {
+                        act = Clock.currentTimeNanos();
+                        invokerOnPhysicsUpdate.Invoke((act-prev)/1_000_000_000f);
+                        prev = act;
+                    }
+                    while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe - lastRetard);
+
+                    lastRetard = (Clock.currentTimeNanos() - stampPerFrame) - nanosperframe;
                 }
-                while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe - lastRetard);
+                catch (Exception e){e.printStackTrace();}
 
-                lastRetard = (Clock.currentTimeNanos() - stampPerFrame) - nanosperframe;
-            }
-            catch (Exception e){e.printStackTrace();}
         }
 
     }
@@ -137,4 +142,13 @@ public final class Core
     }
 
 
+    public void setPaused(boolean p)
+    {
+        paused = p;
+    }
+
+    public boolean isPaused()
+    {
+        return  paused;
+    }
 }

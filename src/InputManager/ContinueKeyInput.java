@@ -41,7 +41,7 @@ public class ContinueKeyInput extends AbstractContinueInput
         };
         Window.GetInstance().AddInput(Listener);
     }
-    public boolean Happens()
+    public boolean happens()
     {
         return happens;
     }

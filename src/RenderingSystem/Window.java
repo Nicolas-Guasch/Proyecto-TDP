@@ -1,21 +1,23 @@
 package RenderingSystem;
 
+import UI.*;
 import Engine.Component;
 import GameData.GameSettings;
 import Stuff.Paths;
-
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
-import java.net.URL;
-import java.util.*;
+import java.util.Map;
 
 public class Window extends Component
 {
 
     private static Window instance;
+    private final UI ui;
+
+
     public static Window GetInstance()
     {
         if(instance==null){
@@ -24,11 +26,17 @@ public class Window extends Component
         return instance;
     }
     private JFrame wind;
-    private JPanel ui;
+
+
+
+
     private GameSettings settings = GameSettings.GetInstance();
     private Container container;
 
     private LayerTable<Float,JComponent> Zfactor;
+
+
+
 
     private Window()
     {
@@ -42,13 +50,31 @@ public class Window extends Component
         wind.setContentPane(new JLabel(new ImageIcon(Paths.Background)));
         wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wind.setLayout(null);
+        wind.setUndecorated(true);
+       //wind.pack();
+        //wind.setLocationRelativeTo(null);
+        //wind.setVisible(true);
         container = wind.getContentPane();
         container.setBackground(new Color(0,0,0,0));
         container.setBounds(0,0,0,0);
         container.setSize(settings.sizeWindow);
 
+
+
         //------- z Sorting -----------
         Zfactor = new LayerTable<>();
+
+        // ------- Pause stuff ------
+
+        ui = UI.getInstance();
+        var panelUI = ui.getUIPanel();
+        panelUI.setBounds(0,0,0,0);
+        panelUI.setSize(settings.sizeWindow);
+        container.add(panelUI);
+
+        SetZ(panelUI,222190,false);
+
+
 
     }
     public void Update()
@@ -114,6 +140,12 @@ public class Window extends Component
     }
 
 
+    public void ShowPause() {
+        ui.pause(true);
 
+    }
 
+    public void HidePause() {
+        ui.pause(false);
+    }
 }

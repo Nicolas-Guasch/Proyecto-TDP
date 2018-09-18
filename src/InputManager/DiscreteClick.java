@@ -6,10 +6,6 @@ import Engine.EngineFactory;
 public class DiscreteClick extends AbstractDiscreteInput
 {
 
-
-
-
-
     //bool says if isPressed
     private Broadcaster<Boolean> onAction;
     private Invoker<Boolean> invokerOnAction;
@@ -39,7 +35,7 @@ public class DiscreteClick extends AbstractDiscreteInput
 
     private void Update()
     {
-        if(lastStatus != related.Happens())
+        if(lastStatus != related.happens())
         {
             invokerOnAction.Invoke(!lastStatus);
             lastStatus = !lastStatus;
