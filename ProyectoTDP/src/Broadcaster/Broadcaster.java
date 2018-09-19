@@ -1,7 +1,5 @@
-
-
-
 package Broadcaster;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -9,7 +7,6 @@ import java.util.function.Consumer;
 public class Broadcaster<P>
 {
     private List<Consumer<P>> list;
-    
     Broadcaster()
     {
         list = new LinkedList<>();

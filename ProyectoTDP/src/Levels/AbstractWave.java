@@ -12,5 +12,4 @@ public abstract class AbstractWave
     public abstract Iterable<EnemyShip> addEnemies(EnemyShipDirector director, int cant);
     public abstract void addReward(AbstractRewardFactory reward);
     public abstract boolean EmptyWave();
-
 }

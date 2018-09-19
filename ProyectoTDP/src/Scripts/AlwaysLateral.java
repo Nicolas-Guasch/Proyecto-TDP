@@ -1,4 +1,4 @@
-package ParaTestear;
+package Scripts;
 
 import Engine.Component;
 import Engine.Vector2;

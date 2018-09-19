@@ -27,11 +27,6 @@ public class LinedWave extends AbstractWave
     public static float ycoord = 300;
     public static Vector2 hyperspace = new Vector2(0,800);
 
-
-
-
-
-
     public LinedWave()
     {
         enemies = new LinkedList<>();

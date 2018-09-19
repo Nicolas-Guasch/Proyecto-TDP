@@ -4,7 +4,7 @@ import Engine.DoWhen;
 import Engine.GameObject;
 import Engine.Vector2;
 import GameData.GameSettings;
-import ParaTestear.AlwaysLateral;
+import Scripts.AlwaysLateral;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Stuff.Paths;
