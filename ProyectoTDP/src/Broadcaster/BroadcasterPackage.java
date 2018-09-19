@@ -1,7 +1,12 @@
 package Broadcaster;
 
-public class BroadcasterPackage<P>
+
+/**
+ *
+ *
+ */
+public class BroadcasterPackage<ParameterType>
 {
-    public Broadcaster<P> Broadcaster;
-    public Invoker<P> Invoker;
+    public IBroadcaster<ParameterType> Broadcaster;
+    public Invoker<ParameterType> Invoker;
 }

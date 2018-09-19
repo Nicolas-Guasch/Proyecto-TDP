@@ -1,11 +1,13 @@
 package Engine.Components;
 
 import Engine.Component;
-import Engine.EngineFactory;
+import Engine.EngineGetter;
 
 import java.util.LinkedList;
 import java.util.List;
 
+
+//TODO : modelar distinto, poner las capas
 public class CollidersManager extends Component
 {
     private static CollidersManager instance;
@@ -21,7 +23,7 @@ public class CollidersManager extends Component
     private CollidersManager()
     {
         colliders = new LinkedList<>();
-        EngineFactory.Instance().get().SuscribeToUpdate(this);
+        EngineGetter.Instance().get().SuscribeToUpdate(this);
     }
 
     public void Update()

@@ -1,4 +1,4 @@
-package Entities;
+package Exceptions;
 
 public class PlayerUninitializedException extends RuntimeException
 {

@@ -11,10 +11,16 @@ import RenderingSystem.SpriteData;
 import Scripts.DangerousHunter;
 import Stuff.Paths;
 
+
+
+/**
+ * Concrete EnemyBullet Builder for the Tester Boss
+ *
+ */
 public class BuilderBossBullets extends EnemyBulletBuilder
 {
     private static final SpriteData SPRITEDATA = new SpriteData(Paths.LaserRed,new Vector2(25,70));
-    private static final Vector2 TieWeaponPhaseshift = new Vector2(5,10);
+
     private final Transform tie;
     private final Transform target;
 

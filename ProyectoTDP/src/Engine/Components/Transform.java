@@ -1,9 +1,14 @@
 package Engine.Components;
 
 import Engine.Component;
-import Engine.EngineFactory;
+import Engine.EngineGetter;
 import Engine.Vector2;
 
+
+/**
+ * Implements the position and rotation of and 2D object, and provides
+ * the Z component sorting data
+ */
 public final class Transform extends Component
 {
     private Vector2 position;
@@ -77,7 +82,7 @@ public final class Transform extends Component
 
     public void DoMove(Vector2 vector2, int inframes) {
         //TODO: hacer tipo tween
-        EngineFactory.Instance().get().WaitForFrames(()->
+        EngineGetter.Instance().get().WaitForFrames(()->
         {
             setPosition(vector2);
         },inframes);

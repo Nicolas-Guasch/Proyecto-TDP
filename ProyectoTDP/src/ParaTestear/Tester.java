@@ -1,13 +1,8 @@
 package ParaTestear;
 
-import Engine.Core;
-import Engine.GameObject;
-import Engine.IEngine;
-import Engine.Vector2;
+import Engine.*;
 import GameData.GameSettings;
 import GameData.SoundManager;
-import InputManager.AbstractDiscreteInput;
-import InputManager.DiscreteKeyInput;
 import Levels.LevelOne;
 import Misc.DeathStar;
 import RenderingSystem.RenderingTools;
@@ -18,7 +13,7 @@ public class Tester
     public static void main(String[] a) {
 
         Window window = Window.GetInstance();
-        IEngine eng = Engine.EngineFactory.Instance().get();
+        IEngine eng = EngineGetter.Instance().get();
 
         window.AddInput(eng.Pauser());//para poner pausa
 
@@ -45,18 +40,12 @@ public class Tester
         //TODO : Acordarme de siempre darle show() a los Renderizables
 
         // ------ suscribo la raiz de objetos y la ventana al engine
-        eng.SuscribeToUpdate(GameObject.getRoot());
-        eng.SuscribeToPhysicsUpdate(GameObject.getRoot());
+
         eng.SuscribeToUpdate(window);
 
         //---------- Cosas de testing -----------
 
-        AbstractDiscreteInput testTree = new DiscreteKeyInput("pP");
-        testTree.OnAction().Suscribe((b)->{
-            System.out.println("Last retard: "+ Core.lastRetard);
-            System.out.println("Objects: "+GameObject.getRoot().Size());
-            System.out.println("Components: "+GameObject.getRoot().SizeComps());
-        });
+
 
 
         // -------- muestro la ventana y arranco el motor -------

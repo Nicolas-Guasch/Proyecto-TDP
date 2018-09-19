@@ -6,12 +6,12 @@ public class DummyDiscreteInput extends AbstractDiscreteInput
 {
 
     private boolean active = true;
-    private Broadcaster<Boolean> broadcaster;
+    private IBroadcaster<Boolean> broadcaster;
     private Invoker<Boolean> invoker;
 
     public DummyDiscreteInput()
     {
-        BroadcasterPackage<Boolean> pack = BroadcasterFactory.GetBroadcaster();
+        BroadcasterPackage<Boolean> pack = GetBroadcaster.GetBroadcaster();
         invoker = pack.Invoker;
         broadcaster = pack.Broadcaster;
     }
@@ -34,12 +34,12 @@ public class DummyDiscreteInput extends AbstractDiscreteInput
     }
 
     @Override
-    public boolean IsActive() {
+    public boolean isActive() {
         return active;
     }
 
     @Override
-    public Broadcaster<Boolean> OnAction() {
+    public IBroadcaster<Boolean> OnAction() {
         return broadcaster;
     }
 }

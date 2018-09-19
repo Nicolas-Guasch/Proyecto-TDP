@@ -3,7 +3,7 @@ package Entities.Weapons;
 import Engine.Components.Transform;
 import Engine.Vector2;
 import Entities.Builders.Directors.IBulletDirector;
-import Entities.Reaper;
+import Entities.TheGrimReaper;
 
 public class GenericalWeapon<BulletDirectorType extends IBulletDirector> extends Weapon
 {
@@ -38,8 +38,8 @@ public class GenericalWeapon<BulletDirectorType extends IBulletDirector> extends
             generator.assemble();
             var b = generator.get();
             b.transform().setPosition(point);
-            Reaper.Instance().add(b.entity());
-            Reaper.Instance().killIn(b.entity(),framesDuration);
+            TheGrimReaper.Instance().add(b.entity());
+            TheGrimReaper.Instance().killIn(b.entity(),framesDuration);
         }
     }
 

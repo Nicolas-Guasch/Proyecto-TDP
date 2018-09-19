@@ -1,5 +1,6 @@
 package Engine;
 
+//TODO: tratar de hacer un safe remove de esto
 final class HiloDeReloj extends  Thread
 {
 

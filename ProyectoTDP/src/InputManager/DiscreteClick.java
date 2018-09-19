@@ -1,13 +1,13 @@
 package InputManager;
 
 import Broadcaster.*;
-import Engine.EngineFactory;
+import Engine.EngineGetter;
 
 public class DiscreteClick extends AbstractDiscreteInput
 {
 
     //bool says if isPressed
-    private Broadcaster<Boolean> onAction;
+    private IBroadcaster<Boolean> onAction;
     private Invoker<Boolean> invokerOnAction;
 
     private AbstractContinueInput related;
@@ -24,12 +24,12 @@ public class DiscreteClick extends AbstractDiscreteInput
     }
     public void initialize(int mouseClick)
     {
-        BroadcasterPackage<Boolean> pack = BroadcasterFactory.GetBroadcaster();
+        BroadcasterPackage<Boolean> pack = GetBroadcaster.GetBroadcaster();
         onAction = pack.Broadcaster;
         invokerOnAction = pack.Invoker;
         related = new ContinueClick(mouseClick);
         Dummy = new DummyComponent(this::Update);
-        EngineFactory.Instance().get().SuscribeToUpdate(Dummy);
+        EngineGetter.Instance().get().SuscribeToUpdate(Dummy);
     }
 
 
@@ -42,7 +42,7 @@ public class DiscreteClick extends AbstractDiscreteInput
         }
     }
 
-    public boolean IsActive()
+    public boolean isActive()
     {
         return Dummy.isActive();
     }
@@ -57,10 +57,10 @@ public class DiscreteClick extends AbstractDiscreteInput
     {
         related.Destroy();
         onAction.Clean();
-        EngineFactory.Instance().get().UnsuscribeFromUpdate(Dummy);
+        EngineGetter.Instance().get().UnsuscribeFromUpdate(Dummy);
     }
 
-    public Broadcaster<Boolean> OnAction()
+    public IBroadcaster<Boolean> OnAction()
     {
         return onAction;
     }

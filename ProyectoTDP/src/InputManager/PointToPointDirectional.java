@@ -14,12 +14,16 @@ public class PointToPointDirectional extends AbstractDirectionalInput
     }
 
     @Override
-    public void Destroy() {
-        
+    public void Destroy()
+    {
+        destiny=null;
+        source=null;
     }
 
     @Override
     public Vector2 Direction() {
-        return destiny.position().minus(source.position()).versor();
+        if(destiny!=null && source!=null)
+            return destiny.position().minus(source.position()).versor();
+        return Vector2.ORIGIN();
     }
 }

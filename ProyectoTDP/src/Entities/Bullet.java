@@ -4,6 +4,10 @@ import Engine.Components.Transform;
 import Engine.GameObject;
 import Entities.Builders.IBullet;
 
+
+/**
+ * Models a bullet
+ */
 public abstract class Bullet extends Entity implements IBullet
 {
     protected Bullet(GameObject referenced) {
@@ -18,4 +22,6 @@ public abstract class Bullet extends Entity implements IBullet
     public Entity entity() {
         return this;
     }
+
+
 }

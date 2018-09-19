@@ -6,10 +6,11 @@ import RenderingSystem.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static javax.swing.JOptionPane.MESSAGE_PROPERTY;
-import static javax.swing.JOptionPane.showMessageDialog;
 
-public class CorePauser implements KeyListener
+/**
+ * Models de Pause of the Core DONT TOUCH
+ */
+public final class CorePauser implements KeyListener
 {
     private static CorePauser instance;
 

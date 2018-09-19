@@ -22,10 +22,10 @@ public class LinedWave extends AbstractWave
     private Map<EnemyShip, Vector2> ubications;
 
 
-    public static float xmax = -600;
-    public static float xmin = 500;
-    public static float ycoord = 300;
-    public static Vector2 hyperspace = new Vector2(0,800);
+    private static float xmax = -600;
+    private static float xmin = 500;
+    private static float ycoord = 300;
+    private static Vector2 hyperspace = new Vector2(0,800);
 
     public LinedWave()
     {
@@ -38,13 +38,13 @@ public class LinedWave extends AbstractWave
 
 
     @Override
-    public Component run() {
+    public void run() {
         running = true;
         enemies.forEach(this::MoveToPosition);
         ubications.clear();
         While wh = new While(this::Condition,this::Action);
         wh.Excecute();
-        return wh;
+
     }
 
     private boolean Condition() {

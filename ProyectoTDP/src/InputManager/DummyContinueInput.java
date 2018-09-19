@@ -24,6 +24,6 @@ public class DummyContinueInput extends AbstractContinueInput
 
     @Override
     public void Destroy() {
-        //nothing to do;
+        happens = false;
     }
 }

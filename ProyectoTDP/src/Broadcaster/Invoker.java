@@ -1,13 +1,13 @@
 package Broadcaster;
 
-public class Invoker<P>
+public class Invoker<ParameterType>
 {
-    private Broadcaster<P> broadcaster;
-    Invoker(Broadcaster<P> broad)
+    private Broadcaster<ParameterType> broadcaster;
+    Invoker(Broadcaster<ParameterType> broad)
     {
         broadcaster = broad;
     }
-    public void Invoke(P p)
+    public void Invoke(ParameterType p)
     {
         broadcaster.Invoke(p);
     }

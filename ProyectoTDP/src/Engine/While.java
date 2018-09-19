@@ -2,6 +2,10 @@ package Engine;
 
 import java.util.concurrent.Callable;
 
+/**
+ * Implements a concurrent While Cycle
+ * It will make a loop in each frame until the condition returns false
+ */
 public class While extends Component
 {
     private Callable<Boolean> condition;
@@ -9,23 +13,30 @@ public class While extends Component
 
 
     private boolean cond;
-
+    private boolean runs;
     public While(Callable<Boolean> condition, Runnable codeBlock) {
+        GameObject.getRoot().addChild().addComponent(this);
         this.condition = condition;
         this.codeBlock = codeBlock;
         cond = false;
+        runs = false;
     }
 
     @Override
     public void Update() {
-
-        if(checks()&&cond)
+        boolean check = checks();
+        if(check && cond)
         {
             codeBlock.run();
+            runs = true;
         }
         else
         {
             cond=false;
+        }
+        if(runs && !check) // si salio del ciclo while
+        {
+            gameObject().Destroy();
         }
     }
 
@@ -36,7 +47,7 @@ public class While extends Component
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return false; // if call throws an exception condition must be false for me
     }
 
 
@@ -46,20 +57,4 @@ public class While extends Component
         Update();
     }
 
-
-    public Runnable getCodeBlock() {
-        return codeBlock;
-    }
-
-    public void setCodeBlock(Runnable codeBlock) {
-        this.codeBlock = codeBlock;
-    }
-
-    public Callable<Boolean> getCondition() {
-        return condition;
-    }
-
-    public void setCondition(Callable<Boolean> condition) {
-        this.condition = condition;
-    }
 }

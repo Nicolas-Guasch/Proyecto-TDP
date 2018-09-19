@@ -3,8 +3,8 @@ package Entities.Builders.Concretes;
 import Engine.Components.RectangleCollider;
 import Engine.Components.Transform;
 import Engine.Vector2;
-import Entities.Behaviours.FreqShoot;
-import Entities.Behaviours.LinedEnemy;
+import Entities.Behaviours.FireFrequency;
+import Entities.Behaviours.HorizontalMoveShip;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
 import Entities.Builders.EnemyShipBuilder;
@@ -22,13 +22,6 @@ public class FirstBossBuilder extends EnemyShipBuilder
 {
 
     public final static SpriteData SPRITEDATA = new SpriteData(Paths.Vader,new Vector2(200,200));
-
-
-    public FirstBossBuilder()
-    {
-
-    }
-
 
 
     @Override
@@ -49,7 +42,7 @@ public class FirstBossBuilder extends EnemyShipBuilder
     @Override
     public void assembleBehaviours() {
         Transform target = LevelOne.Instance().player.getReferenced().getTransform();
-        ship.addBehaviour(new LinedEnemy(GameSettings.GetInstance().FirstBossSpeed,6));
+        ship.addBehaviour(new HorizontalMoveShip(GameSettings.GetInstance().FirstBossSpeed,6));
 
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director1 = new BulletDirector<>();
         director1.setBuilder(new BuilderBossBullets(
@@ -75,7 +68,7 @@ public class FirstBossBuilder extends EnemyShipBuilder
         bp.add(new GenericalWeapon<>(ship.getReferenced().getTransform(),director2,6));
         bp.add(new GenericalWeapon<>(ship.getReferenced().getTransform(),director2,8));
 
-        FreqShoot frqsh = new FreqShoot(5,bp);
+        FireFrequency frqsh = new FireFrequency(5,bp);
         ship.addBehaviour(frqsh);
         ship.getReferenced().getTransform().setTop(Vector2.DOWN());
         ship.setData(GameSettings.GetInstance().FirstBossData.clone());

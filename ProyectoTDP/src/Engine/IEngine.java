@@ -9,15 +9,11 @@ public interface IEngine
     void SuscribeToPhysicsUpdate(GameObject object);
     void SuscribeToUpdate(Component component);
     void SuscribeToPhysicsUpdate(Component component);
-    void SuscribeToUpdate(Consumer consumer);
-    void SuscribeToPhysicsUpdate(Consumer<Float> consumer);
 
     void UnsuscribeFromUpdate(GameObject object);
     void UnsuscribeFromPhysicsUpdate(GameObject object);
     void UnsuscribeFromUpdate(Component component);
     void UnsuscribeFromPhysicsUpdate(Component component);
-    void UnsuscribeFromUpdate(Consumer consumer);
-    void UnsuscribeFromPhysicsUpdate(Consumer<Float> consumer);
 
     void WaitForFrames(Runnable action, int frames);
     void WaitForSeconds(Runnable action, float seconds);
@@ -27,7 +23,6 @@ public interface IEngine
     void Continue();
     void Stop();
     boolean isPaused();
-
 
     CorePauser Pauser();
 }

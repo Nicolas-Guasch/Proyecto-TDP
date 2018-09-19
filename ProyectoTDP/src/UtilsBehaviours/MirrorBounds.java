@@ -8,7 +8,7 @@ public class MirrorBounds extends Component
 
     private Vector2 topRight, bottomLeft;
 
-
+    private float x,y;
 
     public MirrorBounds(Vector2 topRight, Vector2 bottomLeft)
     {
@@ -19,8 +19,8 @@ public class MirrorBounds extends Component
     @Override
     public void Update()
     {
-        float x = transform().position().x();
-        float y = transform().position().y();
+        x = transform().position().x();
+        y = transform().position().y();
 
         if(x > topRight.x())
         {

@@ -3,6 +3,7 @@ package Entities;
 import Engine.Components.CollisionData;
 import Engine.GameObject;
 
+
 public class EnemyBullet extends Bullet {
 
 	public EnemyBullet(GameObject referenced) {
@@ -46,6 +47,7 @@ public class EnemyBullet extends Bullet {
 	{
 		data.Their().collideWith(this);
 	}
+
 
 
 }

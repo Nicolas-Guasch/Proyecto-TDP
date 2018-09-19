@@ -1,6 +1,6 @@
 package Engine;
 
-import Broadcaster.Broadcaster;
+import Broadcaster.*;
 
 import java.util.function.Consumer;
 
@@ -8,8 +8,8 @@ class Engine implements IEngine
 {
 
     private Core core;
-    private Broadcaster<Float> onPhysicsUpdate;
-    private Broadcaster <Object> onUpdate;
+    private IBroadcaster<Float> onPhysicsUpdate;
+    private IBroadcaster <Object> onUpdate;
 
     Engine()
     {

@@ -15,10 +15,6 @@ import java.util.concurrent.Callable;
 
 public class UI
 {
-
-
-
-
     // ----------------------------
 
     private static UI instance;

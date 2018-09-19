@@ -1,12 +1,11 @@
 package InputManager;
 
 import Broadcaster.*;
+import Engine.Components.IActivable;
 
-public abstract class AbstractDiscreteInput
+public abstract class AbstractDiscreteInput implements IActivable
 {
     public abstract void Destroy();
-    public abstract void setActive(boolean active);
-    public abstract boolean IsActive();
-    public abstract Broadcaster<Boolean> OnAction();
+    public abstract IBroadcaster<Boolean> OnAction();
 }
 

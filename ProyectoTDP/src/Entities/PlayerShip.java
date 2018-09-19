@@ -2,6 +2,7 @@ package Entities;
 import Engine.Components.CollisionData;
 import Engine.GameObject;
 import Entities.Weapons.PlayerBagpack;
+import Exceptions.PlayerUninitializedException;
 import GameData.GameOver;
 import GameData.SoundManager;
 import InputManager.DiscreteClick;

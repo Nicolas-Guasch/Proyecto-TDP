@@ -3,15 +3,19 @@ package BufferSystem;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class Buffer<Prot extends IClonable<Prot>>
+/**
+ * Provides a way to make a buffer of a clonable type
+ * @param <PrototypeType> Prototype Type
+ */
+public class Buffer<PrototypeType extends IClonable<PrototypeType>>
 {
 
-    private Prot prototype;
+    private PrototypeType prototype;
     private int bufferSize;
     private int bufferMin;
-    private Queue<Prot> buffer;
+    private Queue<PrototypeType> buffer;
 
-    public Buffer(int bufferMin, int bufferSize, Prot prototype)
+    public Buffer(int bufferMin, int bufferSize, PrototypeType prototype)
     {
         buffer = new LinkedBlockingQueue<>();
         this.bufferSize = bufferSize;
@@ -31,25 +35,25 @@ public class Buffer<Prot extends IClonable<Prot>>
         }
     }
 
-    public void Recycle(Prot p)
+    public void Recycle(PrototypeType p)
     {
         buffer.add(p);
     }
 
-    public Collection<Prot> clearBuffer()
+    public Collection<PrototypeType> clearBuffer()
     {
-        Collection<Prot> ret = new LinkedList<>(buffer);
+        Collection<PrototypeType> ret = new LinkedList<>(buffer);
         buffer.clear();
         return ret;
     }
 
-    public Iterable<Prot> getBuffereds()
+    public Iterable<PrototypeType> getBuffereds()
     {
         check();
         return buffer;
     }
 
-    public Prot get()
+    public PrototypeType get()
     {
         check();
         return buffer.remove();
@@ -64,11 +68,11 @@ public class Buffer<Prot extends IClonable<Prot>>
         this.bufferSize = bufferSize;
     }
 
-    public Prot getPrototype() {
+    public PrototypeType getPrototype() {
         return prototype;
     }
 
-    public void setPrototype(Prot prototype) {
+    public void setPrototype(PrototypeType prototype) {
         this.prototype = prototype;
     }
 

@@ -2,6 +2,9 @@ package Engine;
 
 import java.util.Random;
 
+/**
+ * a Vector in R2 an his operations
+ */
 public class Vector2
 {
     public static final Vector2 ORIGIN(){return new Vector2(0,0);}
@@ -15,7 +18,7 @@ public class Vector2
     public static final Vector2 LEFT (float x){ return new Vector2(-x,0);}
     public static final Vector2 RIGHT (float x){return new Vector2(x,0);}
 
-    public static float Epsilon = 0.01f;
+    private static final float Epsilon = 0.01f;
 
     private float x,y;
 

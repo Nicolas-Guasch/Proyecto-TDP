@@ -2,17 +2,25 @@ package Engine;
 
 import java.util.concurrent.Callable;
 
+
+/**
+ * ensures that an action is executed at the moment when a condition is fulfilled
+ */
 public class DoWhen extends Component {
     private Callable<Boolean> condition;
     private Runnable codeBlock;
 
-
     private boolean cond;
 
-    public DoWhen(Callable<Boolean> condition, Runnable codeBlock) {
+    /**
+     *
+     * @param condition the condition to be fulfilled
+     * @param action the action to run
+     */
+    public DoWhen(Callable<Boolean> condition, Runnable action) {
         GameObject.getRoot().addChild().addComponent(this);
         this.condition = condition;
-        this.codeBlock = codeBlock;
+        this.codeBlock = action;
         cond = true;
     }
 

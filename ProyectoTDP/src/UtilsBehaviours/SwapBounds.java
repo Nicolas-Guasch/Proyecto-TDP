@@ -4,12 +4,14 @@ import Engine.Component;
 import Engine.Vector2;
 import GameData.GameSettings;
 
+
+//TODO: combinar con MirrorBounds y hacer uno que use todas las cualidades
 public class SwapBounds extends Component
 {
     private static float h = GameSettings.GetInstance().sizeWindow.height;
     private static float w = GameSettings.GetInstance().sizeWindow.width;
     private float paddingX,paddingY;
-
+    private Vector2 v;
     public SwapBounds(float letX, float letY)
     {
         this.paddingX = letX;
@@ -18,7 +20,7 @@ public class SwapBounds extends Component
 
     public void Update()
     {
-        Vector2 v = transform().position();
+        v = transform().position();
         if(v.x()>(w/2)+2*paddingX)
         {
             transform().setPosition(new Vector2(-(w/2)-paddingX,v.y()));

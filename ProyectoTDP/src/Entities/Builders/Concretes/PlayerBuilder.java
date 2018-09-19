@@ -14,7 +14,7 @@ import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Stuff.Paths;
 import UtilsBehaviours.MirrorBounds;
-import UtilsBehaviours.MouseFollower;
+import Entities.Behaviours.MouseFollower;
 
 public class PlayerBuilder extends PlayerShipBuilder
 {
@@ -46,11 +46,11 @@ public class PlayerBuilder extends PlayerShipBuilder
     public void assembleBehaviours() {
         BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
         director.setBuilder(new BulletPlayerBuilder(ship.getReferenced().getTransform()));
-        //ship.addBehaviour(new PlayerShooter(director));
 
 
 
-        //ship.addBehaviour(new PlayerMultipleFront(45,directors));
+
+
         ship.addWeapon(new GenericalWeapon<>(ship.getReferenced().getTransform(),director,1));
         ship.addWeapon(new GenericalWeapon<>(ship.getReferenced().getTransform(),director,2));
         ship.addWeapon(new GenericalWeapon<>(ship.getReferenced().getTransform(),director,3));

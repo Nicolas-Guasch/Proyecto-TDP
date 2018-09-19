@@ -3,8 +3,8 @@ package Entities.Builders.Concretes;
 import Engine.Components.RectangleCollider;
 import Engine.Components.Transform;
 import Engine.Vector2;
-import Entities.Behaviours.FreqShoot;
-import Entities.Behaviours.LinedEnemy;
+import Entities.Behaviours.FireFrequency;
+import Entities.Behaviours.HorizontalMoveShip;
 import Entities.Behaviours.LookTarget;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
@@ -50,7 +50,7 @@ public class TieHardBuilder extends EnemyShipBuilder
 
     @Override
     public void assembleBehaviours() {
-        ship.addBehaviour(new LinedEnemy(GameSettings.GetInstance().TieSpeed,101));
+        ship.addBehaviour(new HorizontalMoveShip(GameSettings.GetInstance().TieSpeed,101));
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
         BulletDirector<EnemyBullet, EnemyBulletBuilder> directorH = new BulletDirector<>();
         Transform target = LevelOne.Instance().player.getReferenced().getTransform();
@@ -70,7 +70,7 @@ public class TieHardBuilder extends EnemyShipBuilder
         ship.addWeapon(weap1);
         ship.addWeapon(weap2);
 
-        FreqShoot frqsh = new FreqShoot(10,bp);
+        FireFrequency frqsh = new FireFrequency(10,bp);
         ship.addBehaviour(frqsh);
         ship.getReferenced().getTransform().setTop(Vector2.DOWN());
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);

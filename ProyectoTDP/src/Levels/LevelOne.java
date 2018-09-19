@@ -9,7 +9,7 @@ import Entities.Builders.Directors.PlayerShipDirector;
 import Entities.Builders.EnemyShipBuilder;
 import Entities.EnemyShip;
 import Entities.PlayerShip;
-import Entities.Reaper;
+import Entities.TheGrimReaper;
 import GameData.GameSettings;
 import RenderingSystem.RenderingTools;
 
@@ -32,14 +32,14 @@ public class LevelOne {
 
     private EnemyShipDirector ties;
     private EnemyShipBuilder builder;
-    private Reaper lifeControl;
+    private TheGrimReaper lifeControl;
     public PlayerShip player;
     public EnemyShip currentBoss;
     private Component oldControl;
 
     public void runLevel() {
 
-        lifeControl = Reaper.Instance();
+        lifeControl = TheGrimReaper.Instance();
 
         initializePlayer();
 
@@ -64,13 +64,13 @@ public class LevelOne {
         Iterable<EnemyShip> it = wave.addEnemies(ties,cant);
         Component runner = wave.run();
         GameObject.getRoot().addChild().addComponent(runner);
-        it.forEach(e-> Reaper.Instance().add(e));
+        it.forEach(e-> TheGrimReaper.Instance().add(e));
         currentEnemies+=2;
         new DoWhen(wave::EmptyWave ,this::Next);
     }
 
     private void Next() {
-        EngineFactory.Instance().get().WaitForFrames(() ->
+        EngineGetter.Instance().get().WaitForFrames(() ->
         {
             if(currentEnemies % 10 != 0)
             {

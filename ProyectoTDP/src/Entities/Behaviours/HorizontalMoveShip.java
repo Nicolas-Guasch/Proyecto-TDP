@@ -4,15 +4,18 @@ import Engine.Component;
 import Engine.Vector2;
 import Tools.Random;
 
-public class LinedEnemy extends Component
+/**
+ *  Implements the horizontal movement of a ship
+ *  with a max*speed*2 as the max distance to do
+ */
+public class HorizontalMoveShip extends Component
 {
-    //Se mueve hacia los lados
 
     private final int max;
     private Vector2 dir;
     private int counter;
 
-    public LinedEnemy(float speed, int max)
+    public HorizontalMoveShip(float speed, int max)
     {
         this.max = max+ Random.value(0,4);
         this.dir = Vector2.LEFT(speed * Random.value());

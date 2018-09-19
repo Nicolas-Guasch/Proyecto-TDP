@@ -24,7 +24,7 @@ public class Bounds {
         this.topRight = topRight;
     }
 
-    public Bounds phaseShift(Vector2 phaseShift)
+    public Bounds sum(Vector2 phaseShift)
     {
         return new Bounds(topRight.sum(phaseShift),bottomLeft.sum(phaseShift));
     }

@@ -1,7 +1,7 @@
 
 package GameData;
 
-import Entities.Reaper;
+import Entities.TheGrimReaper;
 import UI.UI;
 
 public class GameOver
@@ -22,7 +22,7 @@ public class GameOver
     {
         SoundManager.Instance().gameOver();
         UI.getInstance().gameOver();
-        Reaper.Instance().KillThemAll();
+        TheGrimReaper.Instance().KillThemAll();
     }
 
 

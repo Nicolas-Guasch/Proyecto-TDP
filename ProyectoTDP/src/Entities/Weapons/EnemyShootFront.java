@@ -1,12 +1,12 @@
-package Entities.Behaviours;
+package Entities.Weapons;
 
 import Engine.Components.Transform;
 import Engine.Vector2;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
 import Entities.EnemyBullet;
-import Entities.Reaper;
-import Entities.Weapons.Weapon;
+import Entities.TheGrimReaper;
+
 
 public class EnemyShootFront extends Weapon
 {
@@ -45,8 +45,8 @@ public class EnemyShootFront extends Weapon
             getter.assemble();
             EnemyBullet b = getter.get();
             b.getReferenced().getTransform().setPosition(point);
-            Reaper.Instance().add(b);
-            Reaper.Instance().killIn(b,300);
+            TheGrimReaper.Instance().add(b);
+            TheGrimReaper.Instance().killIn(b,300);
     }
 
     @Override

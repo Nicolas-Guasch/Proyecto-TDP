@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 public class DirectionalMouse extends AbstractDirectionalInput
 {
     private Transform reference;
-    private MouseListener listener;
+
     public DirectionalMouse(Transform reference)
     {
         this.reference = reference;
@@ -19,15 +19,19 @@ public class DirectionalMouse extends AbstractDirectionalInput
     @Override
     public void Destroy()
     {
-        //dont need to destroy this
+        reference = null;
     }
 
     public Vector2 Direction()
     {
-        int mouseX = MouseInfo.getPointerInfo().getLocation().x;
-        int mouseY = MouseInfo.getPointerInfo().getLocation().y;
-        Vector2 mousePos = RenderingTools.CanvasToWorld(new Dimension(mouseX,mouseY));
-        return mousePos.minus(reference.position()).versor();
+        if(reference!=null)
+        {
+            int mouseX = MouseInfo.getPointerInfo().getLocation().x;
+            int mouseY = MouseInfo.getPointerInfo().getLocation().y;
+            Vector2 mousePos = RenderingTools.CanvasToWorld(new Dimension(mouseX,mouseY));
+            return mousePos.minus(reference.position()).versor();
+        }
+        return Vector2.ORIGIN();
     }
 
 }

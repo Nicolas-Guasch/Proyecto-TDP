@@ -5,7 +5,11 @@ import Exceptions.TimeLineException;
 import GameData.*;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
-public final class Core
+
+/**
+ * NO TOCAR!
+ */
+final class Core
 {
     // ------- Const --------------
     private final short FPS = GameSettings.GetInstance().FPS;
@@ -26,8 +30,8 @@ public final class Core
     }
     // -------- Broadcasters----------
 
-    private Broadcaster<Float> onPhysicsUpdate;
-    private Broadcaster<Object> onUpdate;
+    private IBroadcaster<Float> onPhysicsUpdate;
+    private IBroadcaster<Object> onUpdate;
     private Invoker<Float> invokerOnPhysicsUpdate;
     private Invoker<Object> invokerOnUpdate;
 
@@ -50,11 +54,11 @@ public final class Core
     private void clean() // Initializer
     {
         Clock.Start();
-        BroadcasterPackage<Float> packP = BroadcasterFactory.GetBroadcaster();
+        BroadcasterPackage<Float> packP = GetBroadcaster.GetBroadcaster();
         invokerOnPhysicsUpdate = packP.Invoker;
         onPhysicsUpdate = packP.Broadcaster;
 
-        BroadcasterPackage packU = BroadcasterFactory.GetBroadcaster();
+        BroadcasterPackage packU = GetBroadcaster.GetBroadcaster();
         invokerOnUpdate = packU.Invoker;
         onUpdate = packU.Broadcaster;
 
@@ -132,11 +136,11 @@ public final class Core
         }
         else{TasksForFrame.get(targetFrame).add(function);}
     }
-    Broadcaster<Float> getPhysicsUpdater()
+    IBroadcaster<Float> getPhysicsUpdater()
     {
         return onPhysicsUpdate;
     }
-    Broadcaster<Object> getUpdater()
+    IBroadcaster<Object> getUpdater()
     {
         return onUpdate;
     }

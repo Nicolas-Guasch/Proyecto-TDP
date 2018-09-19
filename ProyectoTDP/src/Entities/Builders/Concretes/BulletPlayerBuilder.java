@@ -11,6 +11,10 @@ import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Stuff.Paths;
 
+
+/**
+ * Concrete Builder for Player Bullets
+ */
 public class BulletPlayerBuilder extends PlayerBulletBuilder
 {
     private static final SpriteData SPRITEDATA = new SpriteData(Paths.LaserBlue,new Vector2(15,60));

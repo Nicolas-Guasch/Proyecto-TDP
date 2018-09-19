@@ -2,6 +2,10 @@ package Entities.Behaviours;
 
 import Engine.Component;
 
+/**
+ * Behaviour which implements lateral a vibration movement
+ * respect the front of the object
+ */
 public class Vibe extends Component
 {
 

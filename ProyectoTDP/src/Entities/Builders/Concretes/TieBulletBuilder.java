@@ -15,7 +15,7 @@ public class TieBulletBuilder extends EnemyBulletBuilder
 {
 
     private static final SpriteData SPRITEDATA = new SpriteData(Paths.Laser,new Vector2(15,60));
-    private static final Vector2 TieWeaponPhaseshift = new Vector2(5,10);
+
     private final Transform tie;
 
     public TieBulletBuilder(Transform tie)

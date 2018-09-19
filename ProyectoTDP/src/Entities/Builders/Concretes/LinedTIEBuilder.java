@@ -2,9 +2,9 @@ package Entities.Builders.Concretes;
 
 import Engine.Components.RectangleCollider;
 import Engine.Vector2;
-import Entities.Behaviours.EnemyShootFront;
-import Entities.Behaviours.FreqShoot;
-import Entities.Behaviours.LinedEnemy;
+import Entities.Weapons.EnemyShootFront;
+import Entities.Behaviours.FireFrequency;
+import Entities.Behaviours.HorizontalMoveShip;
 import Entities.Behaviours.LookTarget;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
@@ -49,14 +49,14 @@ public class LinedTIEBuilder extends EnemyShipBuilder
 
     @Override
     public void assembleBehaviours() {
-        ship.addBehaviour(new LinedEnemy(GameSettings.GetInstance().TieSpeed,101));
+        ship.addBehaviour(new HorizontalMoveShip(GameSettings.GetInstance().TieSpeed,101));
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
         director.setBuilder(new TieBulletBuilder(ship.getReferenced().getTransform()));
         int phaseshift = (prefSpriteData==SPRITEDATA2)?26:18;
         EnemyShootFront esf = new EnemyShootFront(phaseshift,director,ship.getReferenced().getTransform());
         var bp = ship.getBagpack();
         ship.addWeapon(esf);
-        FreqShoot frqsh = new FreqShoot(40,bp);
+        FireFrequency frqsh = new FireFrequency(40,bp);
         ship.addBehaviour(frqsh);
         ship.getReferenced().getTransform().setTop(Vector2.DOWN());
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);

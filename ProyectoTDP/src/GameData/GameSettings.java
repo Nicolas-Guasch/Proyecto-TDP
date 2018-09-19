@@ -22,6 +22,7 @@ public class GameSettings
         return instance;
     }
     private GameSettings(){
+        //TODO:
         //recordar que hay que
         //levantar un archivo con las settings aqui
     }

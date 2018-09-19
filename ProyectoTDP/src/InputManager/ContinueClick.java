@@ -13,7 +13,7 @@ public class ContinueClick extends AbstractContinueInput
 
     public ContinueClick()
     {
-        initialize(0);
+        initialize(1);
     }
     public ContinueClick(int mouseButton)
     {
