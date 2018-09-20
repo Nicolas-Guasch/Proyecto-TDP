@@ -43,7 +43,7 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
         EngineGetter.Instance().get().SuscribeToUpdate(outlineRend);
         outlineRend.Show();
         outline.setVisible(true);
-        //outline.setBounds(200,200,100,100);
+        //System.out.println(toString());
     }
 
     boolean actualized = false;
@@ -98,6 +98,7 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
 
     public CollisionData CheckCollision(RectangleCollider c )
     {
+        System.out.println(toString());
         CollisionData data = null;
         Vector2 bottom = bottomSide();
         Vector2 left = leftSide();
@@ -115,5 +116,17 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
         return data;
     }
 
+    public String toString(){
+        String res="";
+        res+="Position: "+transform.position().toString()+"\n";
+        res+="Dimensions: "+dimensions.toString()+"\n";
+        res+="Vertices: ";
+        for(Vector2 v:vertices())res+=" "+v.toString();
+        res+="\nBottomLeft: "+bottomLeft().toString()+" "+"\n";
+        res+="TopLeft: "+ (bottomLeft().sum(leftSide())).toString() +"\n";
+        res+="BottomRight: "+ (bottomLeft().sum(bottomSide())).toString() +"\n";
+        res+="TopRight: "+topRight()+"\n";
+        return res;
+    }
 
 }
