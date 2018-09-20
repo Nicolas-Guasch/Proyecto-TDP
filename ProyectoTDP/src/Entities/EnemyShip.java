@@ -32,7 +32,6 @@ public class EnemyShip extends Ship {
 
 	public void collideWith(PlayerBullet ent) {
 		data.setHealth(data.getHealth()-ent.getData().getDamage());
-		//System.out.println("Enemy life: "+data.getHealth());
 	}
 
 	public void collideWith(EnemyBullet ent) {

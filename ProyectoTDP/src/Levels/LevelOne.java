@@ -44,12 +44,13 @@ public class LevelOne {
         initializePlayer();
 
 
+
         ties = new EnemyShipDirector();
 
         Callable<Boolean> complete = UI.getInstance().startLevel(0);
 
         builder = new LinedTIEBuilder();
-        var dowh = new DoWhen(complete,()->
+        new DoWhen(complete,()->
         {
             SendWave(2);
         });
