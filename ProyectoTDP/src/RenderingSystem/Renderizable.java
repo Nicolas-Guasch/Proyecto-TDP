@@ -50,7 +50,11 @@ public class Renderizable extends Component
     public void Show()
     {
         visible = true;
-        label.setVisible(visible);
+        if(gameObject()!=null)
+        {
+            ChangePosition();
+            label.setVisible(visible);
+        }
     }
     public void Hide()
     {
@@ -65,6 +69,7 @@ public class Renderizable extends Component
         {
             ChangePosition();
         }
+        label.setVisible(visible);
     }
 
     @Override
