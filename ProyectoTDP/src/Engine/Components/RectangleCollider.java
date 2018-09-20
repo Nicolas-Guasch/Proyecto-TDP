@@ -101,9 +101,11 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
         CollisionData data = null;
         Vector2 bottom = bottomSide();
         Vector2 left = leftSide();
+        Vector2 vert = bottomLeft();
         for(Vector2 pto : c.vertices()) {
-            float prodBot = bottom.scalarProd(pto);
-            float prodLeft = left.scalarProd(pto);
+            Vector2 vertToPto = pto.minus(vert);
+            float prodBot = bottom.scalarProd(vertToPto);
+            float prodLeft = left.scalarProd(vertToPto);
             if (0 <= prodBot && prodBot <= bottom.lengthSq() &&  0 <= prodLeft && prodLeft <= left.lengthSq())// si colisiona:
             {
                 data = new CollisionData(entity, c.entity, pto);
