@@ -67,11 +67,6 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
 
         return transform.position().minus(bottomSide().div(2)).minus(leftSide().div(2));
     }
-    private Vector2 topRight()
-    {//pos-dim/2
-
-        return transform.position().sum(bottomSide().div(2)).sum(leftSide().div(2));
-    }
 
     private Vector2 bottomSide(){
         return transform.top(dimensions.x()).right();
@@ -96,21 +91,30 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
         return res;
     }
 
+    public float diagonalLength(){
+        return dimensions.length();
+    }
+
+    public float distToCenter(Vector2 v){
+        return transform.position().distanceTo(v);
+    }
+
     public CollisionData CheckCollision(RectangleCollider c )
     {
-        System.out.println(toString());
         CollisionData data = null;
-        Vector2 bottom = bottomSide();
-        Vector2 left = leftSide();
-        Vector2 vert = bottomLeft();
-        for(Vector2 pto : c.vertices()) {
-            Vector2 vertToPto = pto.minus(vert);
-            float prodBot = bottom.scalarProd(vertToPto);
-            float prodLeft = left.scalarProd(vertToPto);
-            if (0 <= prodBot && prodBot <= bottom.lengthSq() &&  0 <= prodLeft && prodLeft <= left.lengthSq())// si colisiona:
-            {
-                data = new CollisionData(entity, c.entity, pto);
-                break;
+        if(c.distToCenter(transform.position())<=dimensions.length()+c.diagonalLength()) {
+            Vector2 bottom = bottomSide();
+            Vector2 left = leftSide();
+            Vector2 vert = bottomLeft();
+            for (Vector2 pto : c.vertices()) {
+                Vector2 vertToPto = pto.minus(vert);
+                float prodBot = bottom.scalarProd(vertToPto);
+                float prodLeft = left.scalarProd(vertToPto);
+                if (0 <= prodBot && prodBot <= bottom.lengthSq() && 0 <= prodLeft && prodLeft <= left.lengthSq())// si colisiona:
+                {
+                    data = new CollisionData(entity, c.entity, pto);
+                    break;
+                }
             }
         }
         return data;
@@ -125,7 +129,6 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
         res+="\nBottomLeft: "+bottomLeft().toString()+" "+"\n";
         res+="TopLeft: "+ (bottomLeft().sum(leftSide())).toString() +"\n";
         res+="BottomRight: "+ (bottomLeft().sum(bottomSide())).toString() +"\n";
-        res+="TopRight: "+topRight()+"\n";
         return res;
     }
 
