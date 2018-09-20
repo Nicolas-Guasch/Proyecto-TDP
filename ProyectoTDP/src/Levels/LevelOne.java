@@ -62,8 +62,7 @@ public class LevelOne {
         LinedWave wave = new LinedWave();
         ties.setBuilder(builder);
         Iterable<EnemyShip> it = wave.addEnemies(ties,cant);
-        Component runner = wave.run();
-        GameObject.getRoot().addChild().addComponent(runner);
+        wave.run();
         it.forEach(e-> TheGrimReaper.Instance().add(e));
         currentEnemies+=2;
         new DoWhen(wave::EmptyWave ,this::Next);

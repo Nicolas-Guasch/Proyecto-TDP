@@ -46,30 +46,6 @@ class Engine implements IEngine
     }
 
     @Override
-    public void SuscribeToUpdate(Consumer consumer)
-    {
-        onUpdate.Suscribe(consumer);
-    }
-
-    @Override
-    public void SuscribeToPhysicsUpdate(Consumer<Float> consumer)
-    {
-
-    }
-
-    @Override
-    public void UnsuscribeFromUpdate(Consumer consumer)
-    {
-        onUpdate.Unsuscribe(consumer);
-    }
-
-    @Override
-    public void UnsuscribeFromPhysicsUpdate(Consumer<Float> consumer)
-    {
-
-    }
-
-    @Override
     public void WaitForFrames(Runnable action, int frames)
     {
         core.waitForFrames(action,frames);

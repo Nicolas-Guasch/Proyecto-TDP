@@ -1,19 +1,29 @@
 package Engine.Components;
 
+import java.awt.*;
+import java.util.Vector;
 import Engine.Vector2;
 import RenderingSystem.SpriteData;
 import Entities.Entity;
+import RenderingSystem.SpriteRenderer;
+import RenderingSystem.Window;
+
+import javax.swing.*;
 
 
 public class RectangleCollider extends AbstractCollider<RectangleCollider>
 {
     private Vector2 dimensions;
     private Transform transform;
+    private SpriteRenderer outline;
 
     public RectangleCollider(Vector2 dimensions, Entity entity)
     {
         super(entity);
         this.dimensions = dimensions;
+        outline = new SpriteRenderer();
+        outline.setBorder(BorderFactory.createLineBorder(Color.green));
+        Window.GetInstance().AddJComponent(outline);
     }
     public RectangleCollider(SpriteData spriteData, Entity entity)
     {
@@ -25,33 +35,62 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
         transform = gameObject().getTransform();
     }
 
+    public void Update(){
+        outline.setTransform(transform);
+        outline.setSize((int)dimensions.x(),(int)dimensions.y());
+        System.out.println(transform.position().x()+" "+transform.position().y());
+    }
+
     //TODO: hay que ver que pasa cuando se gira el tirito, cambiar algoritmo
     //TODO: Nico, aca entra en juego tu algoritmo
 
     private Vector2 bottomLeft()
     { //pos+dim/2
-        return transform.position().minus(dimensions.div(2));
+
+        return transform.position().minus(bottomSide().div(2)).minus(leftSide().div(2));
     }
     private Vector2 topRight()
     {//pos-dim/2
 
-        return transform.position().sum(dimensions.div(2));
+        return transform.position().sum(bottomSide().div(2)).sum(leftSide().div(2));
     }
 
+    private Vector2 bottomSide(){
+        return transform.top(dimensions.x()).right();
+    }
 
+    private Vector2 leftSide(){
+        return transform.top(dimensions.y());
+    }
+
+    public Iterable<Vector2> vertices(){
+        Vector<Vector2> res = new Vector<>();
+
+        Vector2 dy = transform.top(dimensions.y()).div(2),
+                dx = transform.top(dimensions.x()).div(2);
+        int dir[] = {-1,1};
+        for(int i=0;i<2;i++){
+            for(int j=0;j<2;j++){
+                Vector2 diag = dx.prod(dir[i]).sum(dy.prod(dir[j]));
+                res.add(transform.position().sum(diag));
+            }
+        }
+        return res;
+    }
 
     public CollisionData CheckCollision(RectangleCollider c )
     {
         CollisionData data = null;
-        Vector2 lw =
-                new Vector2(Math.max(bottomLeft().x(),c.bottomLeft().x()),
-                        Math.max(bottomLeft().y(),c.bottomLeft().y()));
-        Vector2 up =
-                new Vector2(Math.min(topRight().x(),c.topRight().x()),
-                        Math.min(topRight().y(),c.topRight().y()));
-        if(lw.x() <= up.x() && lw.y() <= up.y() ) // si colisiona:
-        {
-            data = new CollisionData(entity, c.entity, lw.sum(up).div(2));// (lw+up)/2
+        Vector2 bottom = bottomSide();
+        Vector2 left = leftSide();
+        for(Vector2 pto : c.vertices()) {
+            float prodBot = bottom.scalarProd(pto);
+            float prodLeft = left.scalarProd(pto);
+            if (0 <= prodBot && prodBot <= bottom.lengthSq() &&  0 <= prodLeft && prodLeft <= left.lengthSq())// si colisiona:
+            {
+                data = new CollisionData(entity, c.entity, pto);
+                break;
+            }
         }
         return data;
     }

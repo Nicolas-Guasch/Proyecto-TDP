@@ -57,10 +57,16 @@ public class Vector2
         return new Vector2(x*real,y*real);
     }
 
+    public float scalarProd(Vector2 other){
+        return x*other.x()+y*other.y();
+    }
+
     public float length()
     {
         return (float)Math.sqrt(x*x + y*y);
     }
+
+    public float lengthSq(){ return x*x+y*y;}
 
     public Vector2 div(float real)
     {
