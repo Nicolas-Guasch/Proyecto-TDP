@@ -9,6 +9,7 @@ import ParaTestear.SonRenderer;
 import RenderingSystem.SpriteData;
 import Entities.Entity;
 import RenderingSystem.SpriteRenderer;
+import RenderingSystem.Window;
 
 import javax.swing.*;
 
@@ -33,17 +34,29 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
     @Override
     public void Start() {
         transform = gameObject().getTransform();
-    }
-
-    public void Update()
-    {
         SonRenderer outlineRend = new SonRenderer();
         outline = new SpriteRenderer();
-        outline.setBorder(BorderFactory.createLineBorder(Color.green));
+
         outlineRend.setSprite(outline);
+        Window.GetInstance().AddJComponent(outline);
         outlineRend.setToFollow(transform());
         EngineGetter.Instance().get().SuscribeToUpdate(outlineRend);
         outlineRend.Show();
+        outline.setVisible(true);
+        //outline.setBounds(200,200,100,100);
+    }
+
+    boolean actualized = false;
+    public void Update()
+    {
+        if(!actualized && gameObject().getRenderer()!=null)
+        {
+            actualized = true;
+            gameObject().getRenderer().Sprite().setBorder(BorderFactory.createLineBorder(Color.green));
+
+        }
+
+
     }
 
     //TODO: hay que ver que pasa cuando se gira el tirito, cambiar algoritmo

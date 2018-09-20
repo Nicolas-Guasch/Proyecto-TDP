@@ -21,7 +21,7 @@ public class SonRenderer extends Renderizable {
 
     public void Start()
     {
-        Window.GetInstance().SetZ(label,transform().getZcomponent()-1,true);
+        Window.GetInstance().SetZ(label,transform().getZcomponent()-200,true);
         transform().setPosition(Vector2.ORIGIN());
     }
 
@@ -37,7 +37,6 @@ public class SonRenderer extends Renderizable {
         {
             ChangePosition();
         }
-
     }
     protected void ChangePosition()
     {

@@ -111,4 +111,8 @@ public class Renderizable extends Component
     public SpriteData getSpriteData() {
         return spriteData;
     }
+
+    public SpriteRenderer Sprite() {
+        return label;
+    }
 }
