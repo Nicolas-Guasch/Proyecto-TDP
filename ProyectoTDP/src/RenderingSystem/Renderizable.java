@@ -3,6 +3,7 @@ package RenderingSystem;
 import Engine.Component;
 import Engine.Vector2;
 import GameData.GameSettings;
+import SoundSystem.internal.UpdateRunner;
 
 import java.awt.*;
 
@@ -52,8 +53,7 @@ public class Renderizable extends Component
         visible = true;
         if(gameObject()!=null)
         {
-            ChangePosition();
-            label.setVisible(visible);
+            Update();
         }
     }
     public void Hide()
@@ -67,9 +67,16 @@ public class Renderizable extends Component
         //Volver();
         if(visible)
         {
+            label.setVisible(!transform().position().near(Vector2.ORIGIN()));
             ChangePosition();
+
         }
-        label.setVisible(visible);
+        else
+        {
+            label.setVisible(false);
+        }
+
+
     }
 
     @Override
