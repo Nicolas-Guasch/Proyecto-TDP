@@ -92,21 +92,30 @@ public class NicoCollider extends AbstractCollider<NicoCollider>
         return res;
     }
 
+    public float diagonalLength(){
+        return dimensions.length();
+    }
+
+    public float distToCenter(Vector2 v){
+        return transform.position().distanceTo(v);
+    }
+
     public CollisionData CheckCollision(NicoCollider c )
     {
-        //System.out.println(toString());
         CollisionData data = null;
-        Vector2 bottom = bottomSide();
-        Vector2 left = leftSide();
-        Vector2 vert = bottomLeft();
-        for(Vector2 pto : c.vertices()) {
-            Vector2 vertToPto = pto.minus(vert);
-            float prodBot = bottom.scalarProd(vertToPto);
-            float prodLeft = left.scalarProd(vertToPto);
-            if (0 <= prodBot && prodBot <= bottom.lengthSq() &&  0 <= prodLeft && prodLeft <= left.lengthSq())// si colisiona:
-            {
-                data = new CollisionData(entity, c.entity, pto);
-                break;
+        if(c.distToCenter(transform.position())<=dimensions.length()+c.diagonalLength()) {
+            Vector2 bottom = bottomSide();
+            Vector2 left = leftSide();
+            Vector2 vert = bottomLeft();
+            for (Vector2 pto : c.vertices()) {
+                Vector2 vertToPto = pto.minus(vert);
+                float prodBot = bottom.scalarProd(vertToPto);
+                float prodLeft = left.scalarProd(vertToPto);
+                if (0 <= prodBot && prodBot <= bottom.lengthSq() && 0 <= prodLeft && prodLeft <= left.lengthSq())// si colisiona:
+                {
+                    data = new CollisionData(entity, c.entity, pto);
+                    break;
+                }
             }
         }
         return data;

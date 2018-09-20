@@ -38,6 +38,14 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
     }
 
 
+    public float diagonalLength(){
+        return dimensions.length();
+    }
+
+    public float distToCenter(Vector2 v){
+        return transform.position().distanceTo(v);
+    }
+
     public CollisionData CheckCollision(RectangleCollider c )
     {
         if(c.transform().position().distanceTo(transform().position()) < c.ratio + ratio)
