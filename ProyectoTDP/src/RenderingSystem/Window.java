@@ -90,7 +90,7 @@ public class Window extends Component
     public void AddJComponent(JComponent jcomp)
     {
         container.add(jcomp);
-        Zfactor.putOrMove(0f,jcomp);
+        Zfactor.putOrMove(1f,jcomp);
     }
     public void Remove(JComponent component)
     {

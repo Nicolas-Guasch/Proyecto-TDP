@@ -2,11 +2,13 @@ package Engine.Components;
 
 import java.awt.*;
 import java.util.Vector;
+
+import Engine.EngineGetter;
 import Engine.Vector2;
+import ParaTestear.SonRenderer;
 import RenderingSystem.SpriteData;
 import Entities.Entity;
 import RenderingSystem.SpriteRenderer;
-import RenderingSystem.Window;
 
 import javax.swing.*;
 
@@ -21,9 +23,7 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
     {
         super(entity);
         this.dimensions = dimensions;
-        outline = new SpriteRenderer();
-        outline.setBorder(BorderFactory.createLineBorder(Color.green));
-        Window.GetInstance().AddJComponent(outline);
+
     }
     public RectangleCollider(SpriteData spriteData, Entity entity)
     {
@@ -35,10 +35,15 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
         transform = gameObject().getTransform();
     }
 
-    public void Update(){
-        outline.setTransform(transform);
-        outline.setSize((int)dimensions.x(),(int)dimensions.y());
-        System.out.println(transform.position().x()+" "+transform.position().y());
+    public void Update()
+    {
+        SonRenderer outlineRend = new SonRenderer();
+        outline = new SpriteRenderer();
+        outline.setBorder(BorderFactory.createLineBorder(Color.green));
+        outlineRend.setSprite(outline);
+        outlineRend.setToFollow(transform());
+        EngineGetter.Instance().get().SuscribeToUpdate(outlineRend);
+        outlineRend.Show();
     }
 
     //TODO: hay que ver que pasa cuando se gira el tirito, cambiar algoritmo

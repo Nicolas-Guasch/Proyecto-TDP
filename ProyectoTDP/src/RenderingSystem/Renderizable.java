@@ -8,11 +8,11 @@ import java.awt.*;
 
 public class Renderizable extends Component
 {
-    private SpriteRenderer label;
-    private boolean visible = false;
-    private static float h = GameSettings.GetInstance().sizeWindow.height;
-    private static float w = GameSettings.GetInstance().sizeWindow.width;
-    private SpriteData spriteData;
+    protected  SpriteRenderer label;
+    protected  boolean visible = false;
+    protected  static float h = GameSettings.GetInstance().sizeWindow.height;
+    protected  static float w = GameSettings.GetInstance().sizeWindow.width;
+    protected  SpriteData spriteData;
 
     public Renderizable(SpriteData data)
     {
@@ -22,6 +22,14 @@ public class Renderizable extends Component
         label.setIcon(data.icon());
         spriteData = data;
         label.setBounds(0,0,data.getWidth(),data.getHeight());//TODO: cambiar esto
+        label.setVisible(false);
+        Window.GetInstance().AddJComponent(label);
+    }
+
+    //just for testing //TODO: borrar luego de testear colliders
+    protected Renderizable()
+    {
+        label = new SpriteRenderer();
         label.setVisible(false);
         Window.GetInstance().AddJComponent(label);
     }
@@ -75,7 +83,7 @@ public class Renderizable extends Component
     }
 
 
-    private void ChangePosition()
+    protected void ChangePosition()
     {
         Dimension d = RenderingTools.WorldToCanvas(transform().position());
         var x = d.width;
