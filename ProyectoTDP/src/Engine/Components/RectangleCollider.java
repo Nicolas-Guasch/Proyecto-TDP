@@ -85,7 +85,7 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
         Vector<Vector2> res = new Vector<>();
 
         Vector2 dy = transform.top(dimensions.y()).div(2),
-                dx = transform.top(dimensions.x()).div(2);
+                dx = transform.top(dimensions.x()).right().div(2);
         int dir[] = {-1,1};
         for(int i=0;i<2;i++){
             for(int j=0;j<2;j++){
