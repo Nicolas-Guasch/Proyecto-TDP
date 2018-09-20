@@ -1,6 +1,6 @@
 package Entities.Builders;
 
-import Entities.Reward;
+import Entities.Rewards.Reward;
 
 public abstract class AbstractRewardFactory
 {

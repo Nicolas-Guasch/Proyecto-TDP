@@ -18,23 +18,12 @@ public class Renderizable extends Component
     public Renderizable(SpriteData data)
     {
         label = new SpriteRenderer();
-        //label = new JLabel();
-
         label.setIcon(data.icon());
         spriteData = data;
         label.setBounds(0,0,data.getWidth(),data.getHeight());//TODO: cambiar esto
         label.setVisible(false);
         Window.GetInstance().AddJComponent(label);
     }
-
-    //just for testing //TODO: borrar luego de testear colliders
-    protected Renderizable()
-    {
-        label = new SpriteRenderer();
-        label.setVisible(false);
-        Window.GetInstance().AddJComponent(label);
-    }
-
 
     public void Start()
     {
@@ -64,12 +53,11 @@ public class Renderizable extends Component
 
     public void Update()
     {
-        //Volver();
+
         if(visible)
         {
             label.setVisible(!transform().position().near(Vector2.ORIGIN()));
             ChangePosition();
-
         }
         else
         {

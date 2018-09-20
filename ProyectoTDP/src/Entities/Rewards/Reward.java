@@ -1,7 +1,8 @@
-package Entities;
+package Entities.Rewards;
 
 import Engine.Components.CollisionData;
 import Engine.GameObject;
+import Entities.*;
 
 public abstract class Reward extends Entity
 {

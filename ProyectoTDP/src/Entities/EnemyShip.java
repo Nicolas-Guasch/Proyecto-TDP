@@ -2,6 +2,7 @@ package Entities;
 
 import Engine.Components.CollisionData;
 import Engine.GameObject;
+import Entities.Rewards.Reward;
 import Entities.Weapons.EnemyBagpack;
 import Entities.Weapons.WeaponSet;
 

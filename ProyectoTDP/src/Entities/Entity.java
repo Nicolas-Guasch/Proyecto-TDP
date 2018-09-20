@@ -4,6 +4,7 @@ import Engine.Component;
 import Engine.Components.AbstractCollider;
 import Engine.Components.CollisionData;
 import Engine.GameObject;
+import Entities.Rewards.Reward;
 import RenderingSystem.Renderizable;
 
 public abstract class Entity {
@@ -23,6 +24,7 @@ public abstract class Entity {
 	public void setData(EntityData data)
 	{
 		this.data = data;
+
 	}
 
 	public EntityData getData()

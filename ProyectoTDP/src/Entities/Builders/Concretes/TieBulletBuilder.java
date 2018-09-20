@@ -1,6 +1,6 @@
 package Entities.Builders.Concretes;
 
-import Engine.Components.RectangleCollider;
+import Engine.Components.CircleCollider;
 import Engine.Components.Transform;
 import Engine.Vector2;
 import Entities.Behaviours.SimpleBullet;
@@ -35,7 +35,7 @@ public class TieBulletBuilder extends EnemyBulletBuilder
     @Override
     public void assembleCollider()
     {
-        RectangleCollider collider = new RectangleCollider(SPRITEDATA,bullet);
+        CircleCollider collider = new CircleCollider(SPRITEDATA,bullet);
         bullet.setCollider(collider);
     }
 

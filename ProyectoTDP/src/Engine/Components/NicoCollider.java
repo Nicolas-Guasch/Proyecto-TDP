@@ -3,7 +3,6 @@ package Engine.Components;
 import Engine.EngineGetter;
 import Engine.Vector2;
 import Entities.Entity;
-import ParaTestear.SonRenderer;
 import RenderingSystem.SpriteData;
 import RenderingSystem.SpriteRenderer;
 import RenderingSystem.Window;
@@ -30,16 +29,6 @@ public class NicoCollider extends AbstractCollider<NicoCollider>
     @Override
     public void Start() {
         transform = gameObject().getTransform();
-        SonRenderer outlineRend = new SonRenderer();
-        outline = new SpriteRenderer();
-
-        outlineRend.setSprite(outline);
-        Window.GetInstance().AddJComponent(outline);
-        outlineRend.setToFollow(transform());
-        EngineGetter.Instance().get().SuscribeToUpdate(outlineRend);
-        outlineRend.Show();
-        outline.setVisible(true);
-        //System.out.println(toString());
     }
 
     boolean actualized = false;

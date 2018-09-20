@@ -1,6 +1,6 @@
 package Entities.Builders.Concretes;
 
-import Engine.Components.RectangleCollider;
+import Engine.Components.CircleCollider;
 import Engine.Vector2;
 import Entities.Weapons.EnemyShootFront;
 import Entities.Behaviours.FireFrequency;
@@ -43,7 +43,7 @@ public class LinedTIEBuilder extends EnemyShipBuilder
     @Override
     public void assembleCollider()
     {
-        RectangleCollider rec = new RectangleCollider(new Vector2(40,40),ship);
+        CircleCollider rec = new CircleCollider(new Vector2(40,40),ship);
         ship.setCollider(rec);
     }
 

@@ -1,12 +1,11 @@
 package Levels;
 
-import Engine.Component;
 import Engine.Vector2;
 import Engine.While;
 import Entities.Builders.AbstractRewardFactory;
 import Entities.Builders.Directors.EnemyShipDirector;
 import Entities.EnemyShip;
-import Entities.Reward;
+import Entities.Rewards.Reward;
 
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
