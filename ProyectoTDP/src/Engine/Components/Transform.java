@@ -12,9 +12,8 @@ import Engine.Vector2;
 public final class Transform extends Component
 {
     private Vector2 position;
-    private Vector2 top = Vector2.UP();
+    private Vector2 top = Vector2.UP(); // Top of the sprite always look this way
     private float Zcomponent = 0;
-    // Top of the sprite always look this way
 
 
     public Transform()
