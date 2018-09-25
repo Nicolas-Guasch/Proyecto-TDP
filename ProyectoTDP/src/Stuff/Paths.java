@@ -18,7 +18,7 @@ public class Paths
     public static final URL TIESUPER = Paths.class.getResource("supertie.png");
     public static final URL WHITETIE = Paths.class.getResource("whitetie.png");
     public static final URL Laser = Paths.class.getResource("laser.png");
-    public static final URL LaserBlue = Paths.class.getResource("laserBlue.png");
+    public static final URL LaserBlue = Paths.class.getResource("laserblue.png");
     public static final URL LaserRed = Paths.class.getResource("laserrojo.png");
     public static final URL Pause = Paths.class.getResource("wooky.png");
     public static final URL Level1 = Paths.class.getResource("levintro1.png");
