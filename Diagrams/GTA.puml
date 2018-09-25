@@ -25,16 +25,19 @@ class Inmueble{
     +getPrecio():int
     +getEnVenta():boolean
     +getCapital():float
+    +getAutos():Collection<auto>
+    +guardarAuto(auto:Auto):void
 }
 
 class Tommy{
     #Dinero:int
-    +getCapital():float
+    +CalcularCapital():float
     +puedePagar(auto:Auto):boolean
     +comprar(auto:Auto):void
     +buscarInmueble():void
     +getDinero():int
-    +getCapitalTotal():float
+    +CalcularCapitalTotal():float
+    +hayGarageLibre():boolean
 }
 
 class Carl{
@@ -72,9 +75,10 @@ Inmueble --o "*" Auto :-AutosGarage
 
 Tommy --> Handy : -handy
 Tommy --> Carl  : -carl
-Carl --> Tommy  : -tommy
-
 Tommy --> CiudadTommy  : -ciudad
+Tommy --o "*" Inmueble : -inmuebles
+
+Carl --> Tommy  : -tommy
 Carl --> CiudadCarl  : -ciudad
 
 @enduml

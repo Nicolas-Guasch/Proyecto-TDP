@@ -1,0 +1,21 @@
+@startuml
+actor client
+client -> Tommy: CalcularCapital()
+activate Tommy
+collections Inmueble
+Tommy -> Inmueble: inmuebles
+Inmueble --> Tommy:
+activate Inmueble
+|||
+Tommy -> Tommy : float:sumaCapital
+loop for each Inmueble in Inmuebles
+
+Tommy -> Inmueble: getCapital()
+Inmueble --> Tommy: float:capital
+Tommy -> Tommy: sumaCapital+capital
+end
+deactivate Inmueble
+Tommy --> client : sumaCapital
+deactivate Tommy
+
+@enduml
