@@ -1,12 +1,11 @@
 package Levels;
 
-import Engine.Component;
 import Engine.Vector2;
 import Engine.While;
 import Entities.Builders.AbstractRewardFactory;
 import Entities.Builders.Directors.EnemyShipDirector;
 import Entities.EnemyShip;
-import Entities.Reward;
+import Entities.Rewards.Reward;
 
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -44,12 +43,12 @@ public class LinedWave extends AbstractWave
         ubications.clear();
         While wh = new While(this::Condition,this::Action);
         wh.Excecute();
-
     }
 
     private boolean Condition() {
         return enemies.size()<=0;
     }
+    // borrar seguramente
     public void Action()
     {
         enemies.forEach(e->{if(e.getData().getHealth()<=0)death.add(e);});

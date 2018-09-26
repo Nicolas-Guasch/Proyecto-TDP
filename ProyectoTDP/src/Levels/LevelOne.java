@@ -1,4 +1,11 @@
 package Levels;
+import Entities.*;
+import Entities.Builders.Directors.BulletDirector;
+import Entities.Builders.PlayerBulletBuilder;
+import Entities.Rewards.WeaponReward;
+import Entities.Weapons.AngularWeapon;
+import Entities.Weapons.GenericalWeapon;
+import Entities.Weapons.Weapon;
 import UI.*;
 import Engine.*;
 import Engine.Components.Transform;
@@ -7,9 +14,6 @@ import Entities.Builders.Concretes.*;
 import Entities.Builders.Directors.EnemyShipDirector;
 import Entities.Builders.Directors.PlayerShipDirector;
 import Entities.Builders.EnemyShipBuilder;
-import Entities.EnemyShip;
-import Entities.PlayerShip;
-import Entities.TheGrimReaper;
 import GameData.GameSettings;
 import RenderingSystem.RenderingTools;
 
@@ -44,12 +48,26 @@ public class LevelOne {
         initializePlayer();
 
 
+        // just for testing
+
+        GameObject premio = GameObject.getRoot().addChild();
+        WeaponReward rew = new WeaponReward(premio);
+        BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
+        director.setBuilder(new BulletPlayerBuilder(player.getReferenced().getTransform()));
+        Weapon wea = new AngularWeapon<>(player.getReferenced().getTransform(),director,5);
+        rew.setWeapon(wea);
+        premio.getTransform().setPosition(new Vector2(0,400));
+        rew.setData(new EntityData(100,100,100));
+        TheGrimReaper.Instance().add(rew);
+
+         // end just for testing
+
         ties = new EnemyShipDirector();
 
         Callable<Boolean> complete = UI.getInstance().startLevel(0);
 
         builder = new LinedTIEBuilder();
-        var dowh = new DoWhen(complete,()->
+        new DoWhen(complete,()->
         {
             SendWave(2);
         });

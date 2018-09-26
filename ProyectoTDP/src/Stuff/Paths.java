@@ -25,6 +25,7 @@ public class Paths
     public static final URL Level2 = Paths.class.getResource("levintro2.png");
     public static final URL GameOver = Paths.class.getResource("gameover.png");
     public static final URL LIFE = Paths.class.getResource("life.png");
+    public static final URL MonedaArma = Paths.class.getResource("monedaarma.gif");
 
     // -------------SOUNDS --------------
 

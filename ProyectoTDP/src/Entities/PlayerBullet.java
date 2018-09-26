@@ -2,6 +2,7 @@ package Entities;
 
 import Engine.Components.CollisionData;
 import Engine.GameObject;
+import Entities.Rewards.Reward;
 
 public class PlayerBullet extends Bullet {
 

@@ -11,6 +11,7 @@ import java.util.function.Consumer;
 public class GameObject
 {
 
+
     // ------ RootControlStuff --------
     private static GameObject root;
     public static GameObject getRoot()

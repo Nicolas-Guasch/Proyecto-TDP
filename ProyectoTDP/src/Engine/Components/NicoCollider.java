@@ -3,26 +3,25 @@ package Engine.Components;
 import Engine.EngineGetter;
 import Engine.Vector2;
 import Entities.Entity;
-
 import RenderingSystem.SpriteData;
 import RenderingSystem.SpriteRenderer;
 import RenderingSystem.Window;
 
 import java.util.Vector;
 
-public class RectangleCollider extends AbstractCollider<RectangleCollider>
+public class NicoCollider extends AbstractCollider<NicoCollider>
 {
     private Vector2 dimensions;
     private Transform transform;
     private SpriteRenderer outline;
 
-    public RectangleCollider(Vector2 dimensions, Entity entity)
+    public NicoCollider(Vector2 dimensions, Entity entity)
     {
         super(entity);
         this.dimensions = dimensions;
 
     }
-    public RectangleCollider(SpriteData spriteData, Entity entity)
+    public NicoCollider(SpriteData spriteData, Entity entity)
     {
         this(new Vector2(spriteData.getWidth(),spriteData.getHeight()),entity);
     }
@@ -30,7 +29,6 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
     @Override
     public void Start() {
         transform = gameObject().getTransform();
-        //System.out.println(toString());
     }
 
     boolean actualized = false;
@@ -91,7 +89,7 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
         return transform.position().distanceTo(v);
     }
 
-    public CollisionData CheckCollision(RectangleCollider c )
+    public CollisionData CheckCollision(NicoCollider c )
     {
         CollisionData data = null;
         if(c.distToCenter(transform.position())<=dimensions.length()+c.diagonalLength()) {

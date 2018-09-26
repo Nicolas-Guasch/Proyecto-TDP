@@ -2,6 +2,7 @@ package Entities;
 
 import Engine.Components.CollisionData;
 import Engine.GameObject;
+import Entities.Rewards.Reward;
 import Entities.Weapons.EnemyBagpack;
 import Entities.Weapons.WeaponSet;
 
@@ -32,7 +33,6 @@ public class EnemyShip extends Ship {
 
 	public void collideWith(PlayerBullet ent) {
 		data.setHealth(data.getHealth()-ent.getData().getDamage());
-		//System.out.println("Enemy life: "+data.getHealth());
 	}
 
 	public void collideWith(EnemyBullet ent) {

@@ -1,6 +1,7 @@
 package Entities;
 import Engine.Components.CollisionData;
 import Engine.GameObject;
+import Entities.Rewards.Reward;
 import Entities.Weapons.PlayerBagpack;
 import Exceptions.PlayerUninitializedException;
 import GameData.GameOver;

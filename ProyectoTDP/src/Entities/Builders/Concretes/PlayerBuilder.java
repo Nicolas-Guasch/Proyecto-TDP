@@ -1,6 +1,6 @@
 package Entities.Builders.Concretes;
 
-import Engine.Components.RectangleCollider;
+import Engine.Components.CircleCollider;
 import Engine.Vector2;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.PlayerBulletBuilder;
@@ -38,7 +38,7 @@ public class PlayerBuilder extends PlayerShipBuilder
 
     @Override
     public void assembleCollider() {
-        RectangleCollider rec = new RectangleCollider(new Vector2(50,50),ship);
+        CircleCollider rec = new CircleCollider(80,ship);
         ship.setCollider(rec);
     }
 
@@ -54,7 +54,7 @@ public class PlayerBuilder extends PlayerShipBuilder
         ship.addWeapon(new GenericalWeapon<>(ship.getReferenced().getTransform(),director,1));
         ship.addWeapon(new GenericalWeapon<>(ship.getReferenced().getTransform(),director,2));
         ship.addWeapon(new GenericalWeapon<>(ship.getReferenced().getTransform(),director,3));
-        ship.addWeapon(new LateralizedWeapon<>(ship.getReferenced().getTransform(),director,9));
+        //ship.addWeapon(new LateralizedWeapon<>(ship.getReferenced().getTransform(),director,9));
 
 
 
