@@ -3,16 +3,34 @@ actor client
 client -> Tommy: CalcularCapital()
 activate Tommy
 collections Inmueble
-Tommy -> Inmueble: inmuebles
-Inmueble --> Tommy:
-activate Inmueble
-|||
-Tommy -> Tommy : float:sumaCapital
-loop for each Inmueble in Inmuebles
+Tommy -> Tommy: Collection<Inmueble>
+Tommy -> Tommy : sumaCapital
 
+loop for each Inmueble in Collection<Inmueble>
 Tommy -> Inmueble: getCapital()
-Inmueble --> Tommy: float:capital
-Tommy -> Tommy: sumaCapital+capital
+activate Inmueble
+Inmueble --> Tommy:capitalInmueble
+Tommy -> Tommy: sumaCapital+capitalInmueble
+Tommy -> Inmueble: getAutos()
+Inmueble --> Tommy: Collection<Auto>
+deactivate Inmueble
+|||
+collections Auto
+    loop for each Auto in Collection<Auto>
+        Tommy -> Auto: getPatente()
+        activate Auto
+        Auto  --> Tommy: patente
+        Tommy -> Handy: estaRobado(patente)
+        activate Handy
+        Handy --> Tommy: robado
+        deactivate Handy
+        Tommy -> Auto: getCapital(robado)
+        Auto --> Tommy: capitalAuto
+        deactivate Auto
+        Tommy -> Tommy: sumaCapital+capitalAuto
+
+
+    end
 end
 deactivate Inmueble
 Tommy --> client : sumaCapital

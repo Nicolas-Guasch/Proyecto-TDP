@@ -1,0 +1,28 @@
+@startuml
+Tommy -> Carl : encontrarAuto(marca:String,color:String,capaciad:int)
+activate Carl
+Carl -> CiudadCarl :getAutos():Collection<Auto>
+activate CiudadCarl
+CiudadCarl -> Ciudad :getAutos():Collection<Auto>
+activate Ciudad
+Ciudad --> CiudadCarl :Collection<Auto>:autos
+deactivate Ciudad
+CiudadCarl --> Carl : Collection<Auto>:autos
+deactivate CiudadCarl
+collections Auto
+loop for each auto in autos
+Carl -> Auto: getMarca())
+Auto --> Carl: String: marcaAuto
+Carl -> Auto: getColor())
+Auto --> Carl: String: colorAuto
+Carl -> Auto: getCapacidad())
+Auto --> Carl: int: capacidadAuto
+opt marca not equals marcaAuto or color not equals colorAuto or capacidad not equals capacidadAuto
+Carl -> Carl : armarEspecial()
+end
+
+end
+
+
+
+@enduml
