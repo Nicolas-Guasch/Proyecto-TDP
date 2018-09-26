@@ -41,10 +41,9 @@ note right : X es siempre un numero diferente
 Carl -> Carl : capacidad=4
 create AutoEspecial
 Carl -> AutoEspecial : new Auto(color,patente,capacidad)
-activate AutoEspecial
-AutoEspecial --> Carl
-
-
+AutoEspecial --> Carl: auto
+Carl --> Tommy: auto
+deactivate Carl
 
 
 @enduml
