@@ -1,0 +1,5 @@
+name : "ShipPlayer"
+speed : 5
+weapons: "", 2
+collider: 135x135
+

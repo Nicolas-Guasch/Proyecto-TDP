@@ -76,7 +76,7 @@ public class LayerTable<KeyType extends Comparable<KeyType>,ValueType> implement
             {
                 map.remove(layer.getSortFactor());
             }
-            count--; //para valancear con el count++;
+            count--; //para balancear con el count++;
         }
 
         layer = map.getOrDefault(key,null);

@@ -1,8 +1,11 @@
 package Entities.Weapons;
 
 import Engine.Components.Transform;
+
 import Engine.Vector2;
+
 import Entities.Builders.Directors.IBulletDirector;
+
 import Entities.TheGrimReaper;
 
 public class AngularWeapon<BulletDirectorType extends IBulletDirector> extends Weapon
@@ -29,14 +32,17 @@ public class AngularWeapon<BulletDirectorType extends IBulletDirector> extends W
         float pedazo = (tot_ang/(cantShoots-1));
         float first = (pedazo*((cantShoots-1)/-2f));
         Vector2 desph = reference.top().right();
+
         if (cantShoots % 2 == 0){
             point = point.sum(desph.prod(-phaseShift / 2));
             point = point.sum(desph.prod(-phaseShift * cantShoots / 2));
         }
+
         else
         {
             point = point.sum(desph.prod(-phaseShift * (cantShoots+1) / 2));
         }
+
         for (int i=0; i<cantShoots ; i++) {
             point = point.sum(desph.prod(phaseShift));
             generator.create();
@@ -47,6 +53,7 @@ public class AngularWeapon<BulletDirectorType extends IBulletDirector> extends W
             TheGrimReaper.Instance().add(b.entity());
             TheGrimReaper.Instance().killIn(b.entity(),framesDuration);
         }
+
     }
 
     @Override

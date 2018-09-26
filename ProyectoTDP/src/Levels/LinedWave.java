@@ -43,12 +43,12 @@ public class LinedWave extends AbstractWave
         ubications.clear();
         While wh = new While(this::Condition,this::Action);
         wh.Excecute();
-
     }
 
     private boolean Condition() {
         return enemies.size()<=0;
     }
+    // borrar seguramente
     public void Action()
     {
         enemies.forEach(e->{if(e.getData().getHealth()<=0)death.add(e);});
