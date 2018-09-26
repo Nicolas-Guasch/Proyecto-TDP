@@ -8,31 +8,34 @@ class Auto{
     #capacidad : int
     ==Constructor==
     +Auto(marca:String,color:String,patente:String,precio:int, capaciad:int)
+    +Auto(color:String,patente:String,capaciad:int)
     ==
     +getCapacidad() : int
     +getPatente() : int
     +getPrecio() : String
+    +getMarca() : String
+    +getCapital(estaDenunciado: boolean):float
+    +cumpleEspecifiaciones(marca:String,color:String,capacidad:int):boolean
 }
 
 class Inmueble{
     #enVenta : boolean
     #precio : int
     #cantidadMaximaAutos: int
-    #capital : float
     ==Constructor==
     +Inmueble(cantidadMaximaAutos:int,precio:int)
     ==
     +getPrecio():int
     +getEnVenta():boolean
     +getCapital():float
-    +getAutos():Collection<auto>
+    +getAutos():Collection<Auto>
     +guardarAuto(auto:Auto):void
 }
 
 class Tommy{
     #Dinero:int
     +CalcularCapital():float
-    +puedePagar(auto:Auto):boolean
+    +puedePagar(precio:int):boolean
     +comprar(auto:Auto):void
     +buscarInmueble():void
     +getDinero():int
@@ -41,27 +44,27 @@ class Tommy{
 }
 
 class Carl{
-    +encontrarAuto(marca:String,color:String,capaciad:int)
-    +encontrarAuto()
+    +encontrarAuto(marca:String,color:String,capaciad:int):Auto
+    +encontrarAuto():Auto
     -armarEspecial():Auto
 }
 
 class Handy{
-    estaRobado(Patente:String):boolean
+    +estaRobado(Patente:String):boolean
 }
 
 class Ciudad{
-    +getInmuebles():Collection<Inmuebles>
-    +getAutos():Collection<Autos>
+    +getInmuebles():Collection<Inmueble>
+    +getAutos():Collection<Auto>
     +agregarAuto(auto:Auto):void
 }
 
 class CiudadTommy{
-    +getInmuebles():Collection<Inmuebles>
+    +getInmuebles():Collection<Inmueble>
 }
 
 class CiudadCarl{
-    +getAutos():Collection<Autos>
+    +getAutos():Collection<Auto>
     +agregarAuto(auto:Auto):void
 }
 
