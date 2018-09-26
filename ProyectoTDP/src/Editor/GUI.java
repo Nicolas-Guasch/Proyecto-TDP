@@ -57,17 +57,13 @@ public class GUI
 
 
     public GUI() {
+
         frame = new JFrame();
+
         initialize();
-
         labels();
-
-
-
         buttons();
-
         centerData();
-
         listeners();
         shipData();
 
