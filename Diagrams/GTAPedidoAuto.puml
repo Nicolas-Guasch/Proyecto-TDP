@@ -5,23 +5,45 @@ Carl -> CiudadCarl :getAutos():Collection<Auto>
 activate CiudadCarl
 CiudadCarl -> Ciudad :getAutos():Collection<Auto>
 activate Ciudad
-Ciudad --> CiudadCarl :Collection<Auto>:autos
+Ciudad --> CiudadCarl :Collection<Auto>
 deactivate Ciudad
-CiudadCarl --> Carl : Collection<Auto>:autos
+CiudadCarl --> Carl : Collection<Auto>
 deactivate CiudadCarl
 collections Auto
-loop for each auto in autos
-Carl -> Auto: getMarca())
-Auto --> Carl: String: marcaAuto
-Carl -> Auto: getColor())
-Auto --> Carl: String: colorAuto
-Carl -> Auto: getCapacidad())
-Auto --> Carl: int: capacidadAuto
-opt marca not equals marcaAuto or color not equals colorAuto or capacidad not equals capacidadAuto
-Carl -> Carl : armarEspecial()
+loop para cada auto in Collection<Auto>
+    Carl -> Auto: getMarca())
+    Auto --> Carl: marca
+    Carl -> Auto: getColor())
+    Auto --> Carl: color
+    Carl -> Auto: getCapacidad())
+    Auto --> Carl: capacidad
+    Carl -> Auto : cumpleEspecificaciones(marca,color,capacidad)
+    Auto --> Carl : cumple
+    opt cumple
+        Carl -> Auto : getPrecio()
+        Auto --> Carl : precio
+        Carl -> Carl: extraPorPedido
+        Carl -> Tommy : puedePagar(precio+extraPorPedido)
+        activate Tommy
+        Tommy --> Carl : puede
+        deactivate Tommy
+        opt puede
+            Carl --> Tommy :auto
+        end
+        |||
+    end
 end
 
-end
+Carl -> Carl : armarEspecial()
+Carl -> Carl : color = negro
+Carl -> Carl : patente = BAT-MAN-X
+note right : X es siempre un numero diferente
+Carl -> Carl : capacidad=4
+create AutoEspecial
+Carl -> AutoEspecial : new Auto(color,patente,capacidad)
+activate AutoEspecial
+AutoEspecial --> Carl
+
 
 
 

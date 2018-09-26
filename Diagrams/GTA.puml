@@ -8,12 +8,14 @@ class Auto{
     #capacidad : int
     ==Constructor==
     +Auto(marca:String,color:String,patente:String,precio:int, capaciad:int)
+    +Auto(color:String,patente:String,capaciad:int)
     ==
     +getCapacidad() : int
     +getPatente() : int
     +getPrecio() : String
     +getMarca() : String
     +getCapital(estaDenunciado: boolean):float
+    +cumpleEspecifiaciones(marca:String,color:String,capacidad:int):boolean
 }
 
 class Inmueble{
@@ -33,7 +35,7 @@ class Inmueble{
 class Tommy{
     #Dinero:int
     +CalcularCapital():float
-    +puedePagar(auto:Auto):boolean
+    +puedePagar(precio:int):boolean
     +comprar(auto:Auto):void
     +buscarInmueble():void
     +getDinero():int
