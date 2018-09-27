@@ -17,14 +17,24 @@ public class AssetStore
         checknullmap();
         if(!map.containsKey(name.toLowerCase()))
         {
-            URL img = AssetStore.class.getResource("./"+name+".png");
-            if(img==null)img=AssetStore.class.getResource("./"+name+".gif");
+            URL img = getURL(name+".png");
+            if(img==null)img=getURL(name+".gif");
             if(img==null)System.out.println(name+" not found");
             map.put(name.toLowerCase(),new ImageIcon(img));
             // luego cambiar por
             //levantar el .meta y ver el icon posta
         }
         return map.get(name.toLowerCase());
+    }
+
+    private static URL getURL(String file){
+        String [] subfolders = {"","Video/","UI/","Stuff/","Ships/","Bullets/"};
+        URL res=null;
+        for(String f:subfolders){
+            res = AssetStore.class.getResource("./"+f+file);
+            if(res!=null)return res;
+        }
+        return null;
     }
 
     private static void checknullmap() {

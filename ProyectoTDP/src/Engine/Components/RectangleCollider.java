@@ -46,8 +46,6 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
 
     }
 
-    //TODO: hay que ver que pasa cuando se gira el tirito, cambiar algoritmo
-    //TODO: Nico, aca entra en juego tu algoritmo
 
     private Vector2 bottomLeft()
     { //pos+dim/2
