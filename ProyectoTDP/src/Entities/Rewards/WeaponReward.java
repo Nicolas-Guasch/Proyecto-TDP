@@ -9,7 +9,6 @@ import Entities.Weapons.Weapon;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Scripts.Directionable;
-import Stuff.Paths;
 
 public class WeaponReward extends Reward
 {
@@ -21,7 +20,7 @@ public class WeaponReward extends Reward
     public WeaponReward(GameObject referenced)
     {
         super(referenced);
-        var sd = new SpriteData(Paths.MonedaArma, new Vector2(400,400));
+        var sd = new SpriteData("MonedaArma", new Vector2(400,400));
         renderer = new Renderizable(sd);
         referenced.setRenderer(renderer);
         referenced.addCollider(new CircleCollider(100,this));

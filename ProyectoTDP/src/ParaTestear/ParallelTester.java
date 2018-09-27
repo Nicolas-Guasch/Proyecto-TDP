@@ -1,6 +1,7 @@
 package ParaTestear;
 
-import Stuff.Paths;
+import Assets.AssetStore;
+import Assets.AssetStore;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +20,7 @@ public class ParallelTester
         cont.setLayout(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        var label = new JLabel(new ImageIcon(Paths.LIFE));
+        var label = new JLabel(AssetStore.getIcon("life"));
         label.setBounds(40,40,300,300);
         cont.add(label);
         label.setHorizontalAlignment(0);

@@ -1,6 +1,7 @@
 package Entities.Builders.Concretes;
 
 import Engine.Components.CircleCollider;
+import Engine.Components.RectangleCollider;
 import Engine.Vector2;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.PlayerBulletBuilder;
@@ -12,14 +13,13 @@ import GameData.GameSettings;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Stuff.Paths;
 import UtilsBehaviours.MirrorBounds;
 import Entities.Behaviours.MouseFollower;
 
 public class PlayerBuilder extends PlayerShipBuilder
 {
 
-    public final static SpriteData SPRITEDATA = new SpriteData(Paths.Alcon,new Vector2(100,100));
+    public final static SpriteData SPRITEDATA = new SpriteData("shipplayer",new Vector2(200,200));
     private int cantShoots = 1;
 
 
@@ -38,7 +38,8 @@ public class PlayerBuilder extends PlayerShipBuilder
 
     @Override
     public void assembleCollider() {
-        CircleCollider rec = new CircleCollider(80,ship);
+        CircleCollider rec = new CircleCollider(new Vector2(135,135),ship);
+        //RectangleCollider rec = new RectangleCollider(new Vector2(135,135),ship);
         ship.setCollider(rec);
     }
 

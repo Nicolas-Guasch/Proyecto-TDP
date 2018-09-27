@@ -9,7 +9,6 @@ import GameData.SoundManager;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Scripts.DangerousHunter;
-import Stuff.Paths;
 
 
 
@@ -19,7 +18,7 @@ import Stuff.Paths;
  */
 public class BuilderBossBullets extends EnemyBulletBuilder
 {
-    private static final SpriteData SPRITEDATA = new SpriteData(Paths.LaserRed,new Vector2(25,70));
+    private static final SpriteData SPRITEDATA = new SpriteData("redbullet",new Vector2(80,80));
 
     private final Transform tie;
     private final Transform target;

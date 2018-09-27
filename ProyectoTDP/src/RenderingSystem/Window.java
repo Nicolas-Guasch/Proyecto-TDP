@@ -1,9 +1,9 @@
 package RenderingSystem;
 
+import Assets.AssetStore;
 import UI.*;
 import Engine.Component;
 import GameData.GameSettings;
-import Stuff.Paths;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,7 +47,7 @@ public class Window extends Component
         wind.setVisible(false);
         wind.setResizable(false);
         wind.setBackground(Color.BLACK);
-        wind.setContentPane(new JLabel(new ImageIcon(Paths.Background)));
+        wind.setContentPane(new JLabel(AssetStore.getIcon("fondo")));
         wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wind.setLayout(null);
         wind.setUndecorated(true);

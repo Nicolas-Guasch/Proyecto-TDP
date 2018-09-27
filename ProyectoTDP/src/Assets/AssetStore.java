@@ -1,6 +1,5 @@
 package Assets;
 
-import Stuff.Paths;
 
 import javax.swing.*;
 import java.net.URL;
@@ -9,7 +8,7 @@ import java.util.Map;
 
 public class AssetStore
 {
-    public static URL BlueBullet = Paths.class.getResource("fondo.meta");
+    //public static URL BlueBullet = AssetStore.class.getResource("fondo.meta");
 
 
     private static Map<String,Icon> map;
@@ -18,7 +17,10 @@ public class AssetStore
         checknullmap();
         if(!map.containsKey(name.toLowerCase()))
         {
-            map.put(name.toLowerCase(),new ImageIcon(AssetStore.class.getResource(name+".png")));
+            URL img = AssetStore.class.getResource("./"+name+".png");
+            if(img==null)img=AssetStore.class.getResource("./"+name+".gif");
+            if(img==null)System.out.println(name+" not found");
+            map.put(name.toLowerCase(),new ImageIcon(img));
             // luego cambiar por
             //levantar el .meta y ver el icon posta
         }

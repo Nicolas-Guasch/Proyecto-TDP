@@ -15,16 +15,15 @@ import Levels.LevelOne;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Stuff.Paths;
 import Tools.Random;
 import UtilsBehaviours.MirrorBounds;
 
 public class LinedTIEBuilder extends EnemyShipBuilder
 {
 
-    public final static SpriteData SPRITEDATA = new SpriteData(Paths.WHITETIE,new Vector2(200,200));
-    public final static SpriteData SPRITEDATA2 = new SpriteData(Paths.Vader,new Vector2(200,200));
-    private SpriteData prefSpriteData = new SpriteData(Paths.TIE2,new Vector2(200,200));
+    public final static SpriteData SPRITEDATA = new SpriteData("whitetie",new Vector2(200,200));
+    public final static SpriteData SPRITEDATA2 = new SpriteData("vadership",new Vector2(200,200));
+    private SpriteData prefSpriteData = new SpriteData("commontie2",new Vector2(200,200));
 
     public LinedTIEBuilder()
     {

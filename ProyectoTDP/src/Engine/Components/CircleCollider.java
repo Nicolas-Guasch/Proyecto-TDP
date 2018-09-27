@@ -42,5 +42,15 @@ public class CircleCollider extends AbstractCollider<CircleCollider>
         return null;
     }
 
+    public CollisionData CheckCollision(RectangleCollider c){
+        for(Vector2 v:c.vertices()){
+            if(v.distanceTo(transform.position()) < ratio)
+            {
+                return new CollisionData(entity,c.entity,v);
+            }
+        }
+        return null;
+    }
 
 }
+

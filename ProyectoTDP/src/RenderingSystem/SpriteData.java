@@ -1,5 +1,7 @@
 package RenderingSystem;
 
+import Assets.AssetStore;
+
 import Engine.Vector2;
 
 import javax.swing.*;
@@ -11,15 +13,15 @@ public class SpriteData
     private int width;
     private int height;
 
-    public SpriteData(URL path, Vector2 size)
+    public SpriteData(String name, Vector2 size)
     {
         width = (int)size.x();
         height =(int) size.y();
-        icon = new ImageIcon(path);
+        icon = AssetStore.getIcon(name);
     }
-    public SpriteData(URL path)
+    public SpriteData(String name)
     {
-        icon = new ImageIcon(path);
+        icon = AssetStore.getIcon(name);
         width = icon.getIconWidth();
         height = icon.getIconHeight();
     }

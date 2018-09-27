@@ -16,15 +16,14 @@ import Levels.LevelOne;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Stuff.Paths;
 import Tools.Random;
 import UtilsBehaviours.MirrorBounds;
 
 public class TieMediumBuilder extends EnemyShipBuilder
 {
 
-    public final static SpriteData SPRITEDATA = new SpriteData(Paths.TIE3,new Vector2(200,200));
-    public final static SpriteData SPRITEDATA2 = new SpriteData(Paths.TIESUPER,new Vector2(200,200));
+    public final static SpriteData SPRITEDATA = new SpriteData("commontie3",new Vector2(200,200));
+    public final static SpriteData SPRITEDATA2 = new SpriteData("hybridtie",new Vector2(140,140));
 
 
 

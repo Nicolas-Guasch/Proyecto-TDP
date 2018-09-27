@@ -8,7 +8,6 @@ import Scripts.AlwaysRotate;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Stuff.Paths;
 import UtilsBehaviours.MirrorBounds;
 
 public class DeathStar {
@@ -28,7 +27,7 @@ public class DeathStar {
         deathStar.addComponent(new MirrorBounds(topRight.prod(1.4f), bottomLeft.prod(1.4f)));
         deathStar.addComponent(new AlwaysLateral(Vector2.Random()));
         deathStar.addComponent(new AlwaysRotate(0.04f));
-        deathStar.getTransform().setZcomponent(93);Renderizable death = new Renderizable(new SpriteData(Paths.DeathStar, new Vector2(500, 500)));
+        deathStar.getTransform().setZcomponent(93);Renderizable death = new Renderizable(new SpriteData("DeathStar", new Vector2(500, 500)));
         death.Show();deathStar.addComponent(death);
     }
 }

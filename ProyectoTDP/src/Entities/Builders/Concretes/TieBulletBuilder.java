@@ -9,12 +9,11 @@ import GameData.GameSettings;
 import GameData.SoundManager;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Stuff.Paths;
 
 public class TieBulletBuilder extends EnemyBulletBuilder
 {
 
-    private static final SpriteData SPRITEDATA = new SpriteData(Paths.Laser,new Vector2(15,60));
+    private static final SpriteData SPRITEDATA = new SpriteData("bluebullet",new Vector2(80,80));
 
     private final Transform tie;
 

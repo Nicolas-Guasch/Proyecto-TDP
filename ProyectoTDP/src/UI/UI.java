@@ -1,5 +1,6 @@
 package UI;
 
+import Assets.AssetStore;
 import Engine.DoWhen;
 import Engine.GameObject;
 import Engine.Vector2;
@@ -7,7 +8,6 @@ import GameData.GameSettings;
 import Scripts.AlwaysLateral;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Stuff.Paths;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -41,23 +41,23 @@ public class UI
 
 
     private UI(){
-        uiPanel = new JLabel(new ImageIcon(Paths.Background));
+        uiPanel = new JLabel(new ImageIcon("fondo"));
 
         // --------------levels--------------
         levels = new ArrayList<>();
-        levels.add(new SpriteData(Paths.Level1));
-        levels.add(new SpriteData(Paths.Level2));
+        levels.add(new SpriteData("levintro1"));
+        levels.add(new SpriteData("levintro2"));
 
 
         // ------------ pause prompt -------------
-        pausePrompt = new JLabel(new ImageIcon(Paths.Pause));
+        pausePrompt = new JLabel(new ImageIcon("wooky"));
         pausePrompt.setBounds(200,200,624,312);
         uiPanel.add(pausePrompt);
         pausePrompt.setVisible(false);
 
         // --------- game over --------------
 
-        gameOver = new SpriteData(Paths.GameOver);
+        gameOver = new SpriteData("gameover");
 
 
         // --------- LifeBar -------------
@@ -65,7 +65,7 @@ public class UI
 
 
 
-        var jl =new JLabel(new ImageIcon(Paths.LIFE));
+        var jl =new JLabel(AssetStore.getIcon("life"));
         jl.setHorizontalAlignment(SwingConstants.LEFT);
 
         lifeBar = jl;

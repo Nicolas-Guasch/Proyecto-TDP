@@ -16,12 +16,11 @@ import Levels.LevelOne;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Scripts.Hunter;
-import Stuff.Paths;
 
 public class FirstBossBuilder extends EnemyShipBuilder
 {
 
-    public final static SpriteData SPRITEDATA = new SpriteData(Paths.Vader,new Vector2(200,200));
+    public final static SpriteData SPRITEDATA = new SpriteData("vadership",new Vector2(200,200));
 
 
     @Override

@@ -5,7 +5,7 @@ package GameData;
 import Engine.Components.Transform;
 import Engine.Vector2;
 import SoundSystem.*;
-import Stuff.Paths;
+import Audio.AudioManager;
 import Tools.Random;
 
 import java.util.Collection;
@@ -38,12 +38,12 @@ public final class SoundManager
         Musics = new LinkedList<>();
 
         TinySound.init();
-        pew  = TinySound.loadSound(Paths.Pew);
-        pew2  = TinySound.loadSound(Paths.Pew2);
-        tie  = TinySound.loadSound(Paths.TieAttack);
-        vaderBreath  = TinySound.loadSound(Paths.VaderBreath);
-        imperialMarch  = TinySound.loadMusic(Paths.ImperialMarch);
-        menu  = TinySound.loadMusic(Paths.Menu);
+        pew  = TinySound.loadSound(AudioManager.Pew);
+        pew2  = TinySound.loadSound(AudioManager.Pew2);
+        tie  = TinySound.loadSound(AudioManager.TieAttack);
+        vaderBreath  = TinySound.loadSound(AudioManager.VaderBreath);
+        imperialMarch  = TinySound.loadMusic(AudioManager.ImperialMarch);
+        menu  = TinySound.loadMusic(AudioManager.Menu);
         imperialMarch.setVolume(0.2f);
         menu.setVolume(0.3f);
 

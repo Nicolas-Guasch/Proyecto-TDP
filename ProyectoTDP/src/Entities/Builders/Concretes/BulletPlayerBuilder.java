@@ -9,7 +9,6 @@ import GameData.GameSettings;
 import GameData.SoundManager;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Stuff.Paths;
 
 
 /**
@@ -17,7 +16,7 @@ import Stuff.Paths;
  */
 public class BulletPlayerBuilder extends PlayerBulletBuilder
 {
-    private static final SpriteData SPRITEDATA = new SpriteData(Paths.LaserBlue,new Vector2(15,60));
+    private static final SpriteData SPRITEDATA = new SpriteData("bluebullet",new Vector2(80,80));
 
     private final Transform solo;
 

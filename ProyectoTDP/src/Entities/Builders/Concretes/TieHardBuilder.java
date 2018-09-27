@@ -18,13 +18,12 @@ import Levels.LevelOne;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Stuff.Paths;
 import UtilsBehaviours.MirrorBounds;
 
 public class TieHardBuilder extends EnemyShipBuilder
 {
 
-    public final static SpriteData SPRITEDATA = new SpriteData(Paths.WHITETIE,new Vector2(200,200));
+    public final static SpriteData SPRITEDATA = new SpriteData("whitetie",new Vector2(200,200));
 
 
 
