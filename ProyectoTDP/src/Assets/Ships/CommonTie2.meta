@@ -1,0 +1,5 @@
+name : "CommonTie2"
+speed : 5
+weapons: "commonWeaponTie", 2
+collider: 96x96
+

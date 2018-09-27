@@ -1,0 +1,5 @@
+name : "HybridTie"
+speed : 5
+weapons: "FrontalWeapon2", 2
+collider: 96x96
+

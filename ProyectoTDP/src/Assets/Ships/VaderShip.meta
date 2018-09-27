@@ -1,0 +1,5 @@
+name : "VaderShip"
+speed : 5
+weapons: "", 2
+collider: 130x130
+
