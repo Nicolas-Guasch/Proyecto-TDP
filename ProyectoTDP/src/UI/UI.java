@@ -50,7 +50,7 @@ public class UI
 
 
         // ------------ pause prompt -------------
-        pausePrompt = new JLabel(new ImageIcon("wooky"));
+        pausePrompt = new JLabel(AssetStore.getIcon("wooky"));
         pausePrompt.setBounds(200,200,624,312);
         uiPanel.add(pausePrompt);
         pausePrompt.setVisible(false);
