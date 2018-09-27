@@ -1,14 +1,12 @@
 package Entities.Builders.Concretes;
 
-import Engine.Components.CircleCollider;
-import Engine.Components.RectangleCollider;
+import Collisions.CircleCollider;
 import Engine.Vector2;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.PlayerBulletBuilder;
 import Entities.Builders.PlayerShipBuilder;
 import Entities.PlayerBullet;
 import Entities.Weapons.GenericalWeapon;
-import Entities.Weapons.LateralizedWeapon;
 import GameData.GameSettings;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;

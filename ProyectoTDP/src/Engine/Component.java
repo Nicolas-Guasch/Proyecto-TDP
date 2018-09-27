@@ -1,7 +1,7 @@
 package Engine;
 
 
-import Engine.Components.CollisionData;
+import Collisions.CollisionData;
 import Engine.Components.IActivable;
 import Engine.Components.Transform;
 

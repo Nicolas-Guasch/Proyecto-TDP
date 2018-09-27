@@ -1,17 +1,11 @@
-package Engine.Components;
+package Collisions;
 
-import java.awt.*;
-import java.util.Vector;
-
-import Engine.EngineGetter;
+import Engine.Components.Transform;
 import Engine.Vector2;
 
 import RenderingSystem.SpriteData;
 import Entities.Entity;
 import RenderingSystem.SpriteRenderer;
-import RenderingSystem.Window;
-
-import javax.swing.*;
 
 
 public class OldCollider extends AbstractCollider<OldCollider>

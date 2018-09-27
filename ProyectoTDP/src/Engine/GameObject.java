@@ -1,7 +1,7 @@
 package Engine;
 
-import Engine.Components.AbstractCollider;
-import Engine.Components.CollidersManager;
+import Collisions.AbstractCollider;
+import Collisions.CollidersManager;
 import Engine.Components.Transform;
 import RenderingSystem.Renderizable;
 

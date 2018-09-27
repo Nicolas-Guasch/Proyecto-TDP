@@ -1,9 +1,9 @@
-package Engine.Components;
+package Collisions;
 
+import Engine.Components.Transform;
 import Engine.Vector2;
 import RenderingSystem.SpriteData;
 import Entities.Entity;
-import RenderingSystem.SpriteRenderer;
 
 
 public class CircleCollider extends AbstractCollider<CircleCollider>

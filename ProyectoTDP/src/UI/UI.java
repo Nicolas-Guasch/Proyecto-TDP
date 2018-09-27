@@ -36,11 +36,14 @@ public class UI
     private JLabel pausePrompt;
     private JLabel loosePrompt;
 
+    private JLabel score;
+
     private ArrayList<SpriteData> levels;
     private SpriteData gameOver;
 
 
     private UI(){
+
         uiPanel = new JLabel(new ImageIcon("fondo"));
 
         // --------------levels--------------
@@ -62,15 +65,23 @@ public class UI
 
         // --------- LifeBar -------------
 
-
-
-
         var jl =new JLabel(AssetStore.getIcon("life"));
         jl.setHorizontalAlignment(SwingConstants.LEFT);
 
         lifeBar = jl;
         lifeBar.setBounds(20,20,lifeBarHeight,30);
         uiPanel.add(lifeBar);
+
+
+
+        // ------------- score ---------
+
+        score = new Score();
+        score.setBounds(650,10,300,50);
+        uiPanel.add(score);
+
+
+
 
 
 

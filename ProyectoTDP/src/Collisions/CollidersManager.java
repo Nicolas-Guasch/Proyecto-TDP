@@ -1,4 +1,4 @@
-package Engine.Components;
+package Collisions;
 
 import Engine.Component;
 import Engine.EngineGetter;
@@ -30,13 +30,13 @@ public class CollidersManager extends Component
     {
         Check();
     }
-
+/*
 
     public void PhysicsUpdate(float deltaTime)
     {
         Check();
     }
-
+*/
     private void Check() {
         colliders.forEach(c ->
         {

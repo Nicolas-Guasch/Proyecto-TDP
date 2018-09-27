@@ -1,8 +1,8 @@
 package Entities;
 
 import Engine.Component;
-import Engine.Components.AbstractCollider;
-import Engine.Components.CollisionData;
+import Collisions.AbstractCollider;
+import Collisions.CollisionData;
 import Engine.GameObject;
 import Entities.Rewards.Reward;
 import RenderingSystem.Renderizable;

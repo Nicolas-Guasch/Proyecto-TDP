@@ -1,12 +1,11 @@
-package Engine.Components;
+package Collisions;
 
-import Engine.EngineGetter;
+import Engine.Components.Transform;
 import Engine.Vector2;
 import Entities.Entity;
 
 import RenderingSystem.SpriteData;
 import RenderingSystem.SpriteRenderer;
-import RenderingSystem.Window;
 
 import java.util.Vector;
 
@@ -22,10 +21,7 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
         this.dimensions = dimensions;
 
     }
-    public RectangleCollider(SpriteData spriteData, Entity entity)
-    {
-        this(new Vector2(spriteData.getWidth(),spriteData.getHeight()),entity);
-    }
+
 
     @Override
     public void Start() {

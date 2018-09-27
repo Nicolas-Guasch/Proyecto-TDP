@@ -1,7 +1,6 @@
 package Entities.Builders.Concretes;
 
-import Engine.Components.CircleCollider;
-import Engine.Components.RectangleCollider;
+import Collisions.CircleCollider;
 import Engine.Vector2;
 import Entities.Behaviours.FireFrequency;
 import Entities.Behaviours.HorizontalMoveShip;

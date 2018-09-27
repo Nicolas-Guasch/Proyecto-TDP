@@ -1,4 +1,4 @@
-package Engine.Components;
+package Collisions;
 
 import Engine.Vector2;
 import Entities.Entity;

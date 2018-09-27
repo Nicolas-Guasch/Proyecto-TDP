@@ -1,10 +1,11 @@
 package Entities;
 
-import Engine.Components.CollisionData;
+import Collisions.CollisionData;
 import Engine.GameObject;
 import Entities.Rewards.Reward;
 import Entities.Weapons.EnemyBagpack;
 import Entities.Weapons.WeaponSet;
+import GameData.CurrentMatchData;
 
 public class EnemyShip extends Ship {
 
@@ -52,5 +53,11 @@ public class EnemyShip extends Ship {
 
 	public WeaponSet getBagpack() {
 		return weapons;
+	}
+
+	@Override
+	public void onDeath() {
+		super.onDeath();
+		CurrentMatchData.getMatchData().incScore(1);
 	}
 }

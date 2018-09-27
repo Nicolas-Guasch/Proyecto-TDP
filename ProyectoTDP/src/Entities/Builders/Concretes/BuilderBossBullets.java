@@ -1,6 +1,7 @@
 package Entities.Builders.Concretes;
 
-import Engine.Components.CircleCollider;
+import Collisions.CircleCollider;
+import Collisions.ColliderProvider;
 import Engine.Components.Transform;
 import Engine.Vector2;
 import Entities.Builders.EnemyBulletBuilder;
@@ -41,7 +42,8 @@ public class BuilderBossBullets extends EnemyBulletBuilder
     @Override
     public void assembleCollider()
     {
-        CircleCollider collider = new CircleCollider(SPRITEDATA,bullet);
+
+        CircleCollider collider = ColliderProvider.getInstance().getCircleCollider(SPRITEDATA,bullet);
         bullet.setCollider(collider);
     }
 

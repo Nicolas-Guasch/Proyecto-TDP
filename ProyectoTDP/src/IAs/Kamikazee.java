@@ -7,10 +7,10 @@ import Entities.PlayerShip;
 public class Kamikazee extends AIQueryDecorator
 {
 
-    public Kamikazee(EntityQuery decorated)
-    {
+    public Kamikazee(EntityQuery decorated) {
         super(decorated);
-        this.decorated = new WatchAnother(PlayerShip.getInstance().getReferenced().getTransform(),decorated);
+        this.decorated = new WatchAnother(PlayerShip.getInstance().getReferenced().getTransform(), decorated);
+
     }
 
     @Override

@@ -1,6 +1,6 @@
 package Entities.Rewards;
 
-import Engine.Components.CollisionData;
+import Collisions.CollisionData;
 import Engine.GameObject;
 import Entities.*;
 

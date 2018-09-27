@@ -1,7 +1,6 @@
 package Entities.Builders.Concretes;
 
-import Engine.Components.CircleCollider;
-import Engine.Components.RectangleCollider;
+import Collisions.CircleCollider;
 import Engine.Components.Transform;
 import Engine.Vector2;
 import Entities.Behaviours.SimpleBullet;
@@ -14,7 +13,7 @@ import RenderingSystem.SpriteData;
 public class TieBulletBuilder extends EnemyBulletBuilder
 {
 
-    private static final SpriteData SPRITEDATA = new SpriteData("bluebullet",new Vector2(80,80));
+    private static final SpriteData SPRITEDATA = new SpriteData("greenbullet",new Vector2(80,80));
 
     private final Transform tie;
 

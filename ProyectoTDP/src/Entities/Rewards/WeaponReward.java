@@ -1,6 +1,6 @@
 package Entities.Rewards;
 
-import Engine.Components.CircleCollider;
+import Collisions.CircleCollider;
 import Engine.GameObject;
 import Engine.Vector2;
 import Entities.EnemyShip;

@@ -17,8 +17,9 @@ public class HorizontalMoveShip extends Component
 
     public HorizontalMoveShip(float speed, int max)
     {
-        this.max = max+ Random.value(0,4);
-        this.dir = Vector2.LEFT(speed * Random.value()).prod(8);
+        this.max = max+ Random.value(1,3);
+        this.dir = Vector2.LEFT(speed * Random.value()*4);
+
     }
 
     public void Update()
