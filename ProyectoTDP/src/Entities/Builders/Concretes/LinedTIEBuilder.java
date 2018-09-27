@@ -1,6 +1,7 @@
 package Entities.Builders.Concretes;
 
 import Engine.Components.CircleCollider;
+import Engine.Components.RectangleCollider;
 import Engine.Vector2;
 import Entities.Weapons.EnemyShootFront;
 import Entities.Behaviours.FireFrequency;
@@ -23,18 +24,18 @@ public class LinedTIEBuilder extends EnemyShipBuilder
 
     public final static SpriteData SPRITEDATA = new SpriteData("whitetie",new Vector2(200,200));
     public final static SpriteData SPRITEDATA2 = new SpriteData("vadership",new Vector2(200,200));
-    private SpriteData prefSpriteData = new SpriteData("commontie2",new Vector2(200,200));
+    private SpriteData prefSpriteData;// = new SpriteData("commontie2",new Vector2(200,200));
 
     public LinedTIEBuilder()
     {
-        prefSpriteData = SPRITEDATA;
+        prefSpriteData = Random.bool()?SPRITEDATA:SPRITEDATA2;
     }
 
 
     @Override
     public void assembleSprite()
     {
-        Renderizable rend = Random.bool()? new Renderizable(SPRITEDATA) : new Renderizable(SPRITEDATA2);
+        Renderizable rend = new Renderizable(prefSpriteData);
         ship.setRenderer(rend);
         rend.Show();
     }
@@ -42,7 +43,12 @@ public class LinedTIEBuilder extends EnemyShipBuilder
     @Override
     public void assembleCollider()
     {
-        CircleCollider rec = new CircleCollider(new Vector2(40,40),ship);
+        //CircleCollider rec = new CircleCollider(new Vector2(40,40),ship);
+        Vector2 dim;
+        if(prefSpriteData==SPRITEDATA)dim = new Vector2(40,40);
+        else dim=new Vector2(130,130);
+        CircleCollider rec = new CircleCollider(dim,ship);
+        //RectangleCollider rec = new RectangleCollider(dim,ship);
         ship.setCollider(rec);
     }
 

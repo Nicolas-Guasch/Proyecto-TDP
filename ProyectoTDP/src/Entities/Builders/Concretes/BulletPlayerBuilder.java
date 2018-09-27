@@ -1,6 +1,7 @@
 package Entities.Builders.Concretes;
 
 import Engine.Components.CircleCollider;
+import Engine.Components.RectangleCollider;
 import Engine.Components.Transform;
 import Engine.Vector2;
 import Entities.Behaviours.SimpleBullet;
@@ -38,6 +39,7 @@ public class BulletPlayerBuilder extends PlayerBulletBuilder
     public void assembleCollider()
     {
         CircleCollider collider = new CircleCollider(SPRITEDATA,bullet);
+        //RectangleCollider collider = new RectangleCollider(new Vector2(20,50),bullet);
         bullet.setCollider(collider);
     }
 

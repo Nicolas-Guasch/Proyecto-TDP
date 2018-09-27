@@ -106,6 +106,7 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
                     break;
                 }
             }
+            //if(data==null)data = c.CheckCollision(this);
         }
         return data;
     }

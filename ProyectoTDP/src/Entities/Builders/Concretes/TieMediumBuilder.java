@@ -1,6 +1,7 @@
 package Entities.Builders.Concretes;
 
 import Engine.Components.CircleCollider;
+import Engine.Components.RectangleCollider;
 import Engine.Vector2;
 import Entities.Behaviours.FireFrequency;
 import Entities.Behaviours.HorizontalMoveShip;
@@ -46,7 +47,8 @@ public class TieMediumBuilder extends EnemyShipBuilder
     @Override
     public void assembleCollider()
     {
-        CircleCollider rec = new CircleCollider(new Vector2(40,40),ship);
+        CircleCollider rec = new CircleCollider(new Vector2(130,130),ship);
+        //RectangleCollider rec = new RectangleCollider(new Vector2(130,130),ship);
         ship.setCollider(rec);
     }
 
