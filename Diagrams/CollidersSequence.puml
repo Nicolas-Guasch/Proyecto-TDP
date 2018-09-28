@@ -1,0 +1,64 @@
+@startuml
+[-> ColliderManager : Update()
+activate ColliderManager
+ColliderManager -> ColliderManager: Check()
+activate ColliderManager
+loop for each colliderA in Collection<Collider>
+    loop for each colliderB in Collection<Collider>
+        collections Collider
+        opt IsActive(ColliderA) and IsActive(ColliderB)
+               ColliderManager -> ColliderA : CheckCollision()
+               activate ColliderA
+               note left: checks if A collides with B
+               ColliderManager <-- ColliderA: CollisionAB:Boolean
+               deactivate ColliderA
+
+               ColliderManager -> ColliderB : CheckCollision()
+               activate ColliderB
+               note left: checks if B collides with A
+               ColliderManager <-- ColliderB: CollisionBA:Boolean
+               deactivate ColliderB
+
+               opt CollisionAB == true and CollisionBA == true
+
+                    ColliderManager -> ColliderA: getEntity()
+                    activate ColliderA
+                    ColliderManager <-- ColliderA: EntityA
+                    deactivate ColliderA
+
+                    ColliderManager -> ColliderB: getEntity()
+                    activate ColliderB
+                    ColliderManager <-- ColliderB: EntityB
+                    deactivate ColliderB
+
+                    ColliderManager -> EntityA as "EntityA: Enemy": ReportCollision(EntityB)
+                        activate EntityA
+                        EntityA -> EntityB as "EntityB:Player": collideWith(this)
+                        activate EntityB
+                        note right: vida-= enemy.choque
+                        EntityA <-- EntityB
+                        deactivate EntityB
+                        ColliderManager <-- EntityA
+                        deactivate EntityA
+
+                    ColliderManager -> EntityB: ReportCollision(EntityA)
+                        activate EntityB
+                        EntityB -> EntityA: collideWith(this)
+                        activate EntityA
+                        note left: vida-= enemy.choque
+                        EntityB <-- EntityA
+                        deactivate EntityA
+                        ColliderManager <-- EntityB
+                        deactivate EntityB
+
+
+
+               end
+        end
+    end
+end
+
+deactivate ColliderManager
+[<-- ColliderManager
+deactivate ColliderManager
+@enduml
