@@ -24,7 +24,7 @@ public class Vector2
 
     public static Vector2 Random()
     {
-        return UP().rotate(new Random(UP().hashCode()).nextFloat());
+        return UP().rotate(new Random(UP().hashCode()).nextFloat()*192/new Random().nextInt());
     }
 
     public static Vector2 Random(float large)
