@@ -2,7 +2,7 @@ package IAs;
 
 import Engine.Vector2;
 import Entities.Entity;
-import Entities.PlayerShip;
+import Entities.Ships.PlayerShip;
 
 public class Kamikazee extends AIQueryDecorator
 {

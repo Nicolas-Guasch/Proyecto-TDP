@@ -3,8 +3,8 @@ package Levels;
 import Engine.Vector2;
 import Engine.While;
 import Entities.Builders.AbstractRewardFactory;
-import Entities.Builders.Directors.EnemyShipDirector;
-import Entities.EnemyShip;
+import Entities.Ships.EnemyShipDirector;
+import Entities.Ships.EnemyShip;
 import Entities.Rewards.Reward;
 
 import java.util.*;
@@ -24,7 +24,7 @@ public class LinedWave extends AbstractWave
     private static float xmax = -600;
     private static float xmin = 500;
     private static float ycoord = 300;
-    private static Vector2 hyperspace = new Vector2(0,800);
+    private static Vector2 hyperspace = new Vector2(200,200);
 
     public LinedWave()
     {
@@ -60,12 +60,13 @@ public class LinedWave extends AbstractWave
 
     @Override
     public Iterable<EnemyShip> addEnemies(EnemyShipDirector director, int cant) {
-        float phaseshift = (xmax-xmin)/cant;
+        float phaseShift = (xmax-xmin)/cant;
+        var x = xmin;
         for(int i=0 ; i<cant ; i++)
         {
             director.create();
             director.assemble();
-            var x = xmin+ phaseshift*i;
+            x += phaseShift;
             var enemy = director.get();
             enemy.getReferenced().getTransform().setPosition(hyperspace);
             ubications.put(enemy,new Vector2(x,ycoord));
@@ -89,6 +90,8 @@ public class LinedWave extends AbstractWave
 
     private void MoveToPosition(EnemyShip en)
     {
+        if(!ubications.containsKey(en))
+            new Exception("-- error en wave -- ").printStackTrace();
         en.getReferenced().getTransform().DoMove(
                 ubications.get(en), 5
         );

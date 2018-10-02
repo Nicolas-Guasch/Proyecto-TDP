@@ -1,7 +1,7 @@
-package Entities.Builders.Directors;
+package Entities.Ships;
 
-import Entities.Builders.PlayerShipBuilder;
-import Entities.PlayerShip;
+import Entities.Ships.PlayerShipBuilder;
+import Entities.Ships.PlayerShip;
 
 public class PlayerShipDirector
 {
@@ -17,8 +17,9 @@ public class PlayerShipDirector
 
     public void assemble(){
         builder.assembleSprite();
-        builder.assembleCollider();
+        builder.assembleHitBox();
         builder.assembleBehaviours();
+        builder.assembleWeapons();
         builder.assembleData();
     }
 

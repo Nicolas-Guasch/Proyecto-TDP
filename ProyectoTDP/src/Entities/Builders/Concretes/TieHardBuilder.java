@@ -1,6 +1,7 @@
 package Entities.Builders.Concretes;
 
-import Collisions.CircleCollider;
+import Collisions.HitBox;
+import Collisions.HitBoxesManager;
 import Engine.Components.Transform;
 import Engine.Vector2;
 import Entities.Behaviours.FireFrequency;
@@ -8,13 +9,14 @@ import Entities.Behaviours.HorizontalMoveShip;
 import Entities.Behaviours.LookTarget;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
-import Entities.Builders.EnemyShipBuilder;
+import Entities.Ships.EnemyShipBuilder;
 import Entities.EnemyBullet;
 import Entities.EntityData;
+import Entities.Ships.PlayerShip;
 import Entities.Weapons.GenericalWeapon;
 import Entities.Weapons.LateralizedWeapon;
 import GameData.GameSettings;
-import Levels.LevelOne;
+
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
@@ -37,15 +39,20 @@ public class TieHardBuilder extends EnemyShipBuilder
     {
         Renderizable rend = new Renderizable(SPRITEDATA);
         ship.setRenderer(rend);
-        rend.Show();
+        rend.show();
     }
 
     @Override
-    public void assembleCollider()
+    public void assembleHitBox()
     {
-        CircleCollider rec = new CircleCollider(new Vector2(40,40),ship);
-        //RectangleCollider rec = new RectangleCollider(new Vector2(40,40),ship);
-        ship.setCollider(rec);
+        var hb = HitBox.getOne(new Vector2(40,40),ship);
+        HitBoxesManager.getInstance().addHitBox(hb,HitBoxesManager.ENEMIES);
+        ship.setHitBox(hb);
+    }
+
+    @Override
+    public void assembleWeapons() {
+
     }
 
     @Override
@@ -53,7 +60,7 @@ public class TieHardBuilder extends EnemyShipBuilder
         ship.addBehaviour(new HorizontalMoveShip(GameSettings.GetInstance().TieSpeed,101));
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
         BulletDirector<EnemyBullet, EnemyBulletBuilder> directorH = new BulletDirector<>();
-        Transform target = LevelOne.Instance().player.getReferenced().getTransform();
+        Transform target = PlayerShip.getInstance().getReferenced().getTransform();
 
         var bullbuilder = new TieBulletBuilder(ship.getReferenced().getTransform());
         directorH.setBuilder(new BuilderBossBullets(
@@ -78,7 +85,7 @@ public class TieHardBuilder extends EnemyShipBuilder
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();
         ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f),bottomLeft.prod(1.2f)));
-        ship.addBehaviour(new LookTarget(LevelOne.Instance().player.getReferenced().getTransform()));
+        ship.addBehaviour(new LookTarget(PlayerShip.getInstance().getReferenced().getTransform()));
     }
 
     @Override

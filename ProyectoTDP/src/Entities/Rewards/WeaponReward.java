@@ -1,10 +1,11 @@
 package Entities.Rewards;
 
-import Collisions.CircleCollider;
+import Collisions.HitBox;
+import Collisions.HitBoxesManager;
 import Engine.GameObject;
 import Engine.Vector2;
-import Entities.EnemyShip;
-import Entities.PlayerShip;
+import Entities.Ships.EnemyShip;
+import Entities.Ships.PlayerShip;
 import Entities.Weapons.Weapon;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
@@ -23,9 +24,12 @@ public class WeaponReward extends Reward
         var sd = new SpriteData("MonedaArma", new Vector2(400,400));
         renderer = new Renderizable(sd);
         referenced.setRenderer(renderer);
-        referenced.addCollider(new CircleCollider(100,this));
+
+        var hitBox = HitBox.getOne(100,100,this);
+        HitBoxesManager.getInstance().addHitBox(hitBox,HitBoxesManager.REWARDS);
+        referenced.addHitBox(hitBox);
         referenced.addComponent(new Directionable(new Vector2(0,-5)));
-        renderer.Show();
+        renderer.show();
     }
 
     @Override

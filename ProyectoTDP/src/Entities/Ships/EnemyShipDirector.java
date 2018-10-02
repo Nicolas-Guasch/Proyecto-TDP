@@ -1,7 +1,7 @@
-package Entities.Builders.Directors;
+package Entities.Ships;
 
-import Entities.Builders.EnemyShipBuilder;
-import Entities.EnemyShip;
+import Entities.Ships.EnemyShipBuilder;
+import Entities.Ships.EnemyShip;
 
 public class EnemyShipDirector
 {
@@ -17,8 +17,9 @@ public class EnemyShipDirector
 
     public void assemble(){
         builder.assembleSprite();
-        builder.assembleCollider();
+        builder.assembleHitBox();
         builder.assembleBehaviours();
+        builder.assembleWeapons();
         builder.assembleData();
     }
 

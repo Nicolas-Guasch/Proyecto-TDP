@@ -1,6 +1,7 @@
-package Entities;
+package Entities.Ships;
 import Collisions.CollisionData;
 import Engine.GameObject;
+import Entities.EnemyBullet;
 import Entities.Rewards.Reward;
 import Entities.Weapons.PlayerBagpack;
 import Exceptions.PlayerUninitializedException;
@@ -11,7 +12,6 @@ import InputManager.DiscreteKeyInput;
 import UI.UI;
 
 public class PlayerShip extends Ship {
-
 
 	//TODO: is the only player on scene must be a singleton
 	private static PlayerShip instance;
@@ -37,31 +37,8 @@ public class PlayerShip extends Ship {
 
 	private PlayerShip(GameObject referenced) {
 		super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
+
 		SoundManager.Instance().setTransformListener(this.getReferenced().getTransform());
-	}
-
-	public void collideWith(PlayerShip ent) {
-
-	}
-
-
-	public void collideWith(EnemyShip ent) {
-
-	}
-
-
-	public void collideWith(ObstacleBidirectional ent) {
-
-	}
-
-
-	public void collideWith(ObstacleMonoDirectional ent) {
-
-	}
-
-
-	public void collideWith(PlayerBullet ent) {
-
 	}
 
 

@@ -28,7 +28,7 @@ public class DeathStar {
         deathStar.addComponent(new AlwaysLateral(Vector2.Random()));
         deathStar.addComponent(new AlwaysRotate(0.04f));
         deathStar.getTransform().setZcomponent(493);Renderizable death = new Renderizable(new SpriteData("DeathStar", new Vector2(500, 500)));
-        death.Show();deathStar.addComponent(death);
+        death.show();deathStar.addComponent(death);
     }
 }
 

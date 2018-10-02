@@ -1,6 +1,7 @@
 package Entities.Builders.Concretes;
 
-import Collisions.CircleCollider;
+import Collisions.HitBox;
+import Collisions.HitBoxesManager;
 import Engine.Components.Transform;
 import Engine.Vector2;
 import Entities.Behaviours.SimpleBullet;
@@ -27,16 +28,16 @@ public class TieBulletBuilder extends EnemyBulletBuilder
     {
         Renderizable rend = new Renderizable(SPRITEDATA);
         bullet.getReferenced().setRenderer(rend);
-        rend.Show();
+        rend.show();
         SoundManager.Instance().Pew(tie.position()); // plays tie shoot sound
     }
 
     @Override
-    public void assembleCollider()
+    public void assembleHitBox()
     {
-        CircleCollider collider = new CircleCollider(new Vector2(20,50),bullet);
-        //RectangleCollider collider = new RectangleCollider(new Vector2(20,50),bullet);
-        bullet.setCollider(collider);
+        var hitBox = HitBox.getOne(new Vector2(20,50),bullet);
+        HitBoxesManager.getInstance().addHitBox(hitBox,HitBoxesManager.ENEMYBULLET);
+        bullet.setHitBox(hitBox);
     }
 
     @Override

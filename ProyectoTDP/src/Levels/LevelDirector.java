@@ -15,7 +15,7 @@ public class LevelDirector
     }
     private LevelDirector(){}
 
-    private Level currenteLevel;
+    public Level currenteLevel;
 
 
 }

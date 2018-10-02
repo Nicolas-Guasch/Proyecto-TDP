@@ -173,6 +173,28 @@ public class Vector2
         return minus(other).length();
     }
 
+    public Vector2 half() {
+        return new Vector2(x/2,y/2);
+    }
+
+    public boolean over(Vector2 v) {
+        return y > v.y;
+    }
+
+    public boolean under(Vector2 v)
+    {
+        return y<v.y();
+    }
+
+    public boolean onLeft(Vector2 v)
+    {
+        return x<v.x;
+    }
+
+    public boolean onRight(Vector2 v)
+    {
+        return x>v.x;
+    }
 
     /*inner class*/
     private class EngineException extends RuntimeException {

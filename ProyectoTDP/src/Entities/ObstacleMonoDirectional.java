@@ -4,6 +4,8 @@ import Engine.Component;
 import Collisions.CollisionData;
 import Engine.GameObject;
 import Entities.Rewards.Reward;
+import Entities.Ships.EnemyShip;
+import Entities.Ships.PlayerShip;
 
 public class ObstacleMonoDirectional extends Entity {
 

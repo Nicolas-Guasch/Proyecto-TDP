@@ -1,9 +1,8 @@
 package Levels;
 
-import Engine.Component;
 import Entities.Builders.AbstractRewardFactory;
-import Entities.Builders.Directors.EnemyShipDirector;
-import Entities.EnemyShip;
+import Entities.Ships.EnemyShipDirector;
+import Entities.Ships.EnemyShip;
 
 public abstract class AbstractWave
 {

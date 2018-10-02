@@ -1,6 +1,7 @@
 package Entities.Builders.Concretes;
 
-import Collisions.CircleCollider;
+import Collisions.HitBox;
+import Collisions.HitBoxesManager;
 import Engine.Components.Transform;
 import Engine.Vector2;
 import Entities.Behaviours.SimpleBullet;
@@ -30,16 +31,16 @@ public class BulletPlayerBuilder extends PlayerBulletBuilder
     {
         Renderizable rend = new Renderizable(SPRITEDATA);
         bullet.getReferenced().setRenderer(rend);
-        rend.Show();
+        rend.show();
         SoundManager.Instance().SoloShoot();
     }
 
     @Override
-    public void assembleCollider()
+    public void assembleHitBox()
     {
-        CircleCollider collider = new CircleCollider(SPRITEDATA,bullet);
-        //RectangleCollider collider = new RectangleCollider(new Vector2(20,50),bullet);
-        bullet.setCollider(collider);
+        HitBox hb = HitBox.getOne(20,50,bullet);
+        HitBoxesManager.getInstance().addHitBox(hb,HitBoxesManager.PLAYERBULLET);
+        bullet.setHitBox(hb);
     }
 
     @Override

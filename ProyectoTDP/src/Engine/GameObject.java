@@ -1,7 +1,7 @@
 package Engine;
 
-import Collisions.AbstractCollider;
-import Collisions.CollidersManager;
+import Collisions.HitBox;
+import Collisions.HitBoxesManager;
 import Engine.Components.Transform;
 import RenderingSystem.Renderizable;
 
@@ -55,15 +55,14 @@ public class GameObject
 
     //------------- Components Handling --------------
 
-    private AbstractCollider collider;
-    public <S extends AbstractCollider> S addCollider(S c)
+    private HitBox hitbox;
+    public HitBox addHitBox(HitBox c)
     {
-        if(collider == null) {
-            collider = c;
+        if(hitbox == null) {
+            hitbox = c;
             components.add(c);
             c.setGameObject(this);
             c.Start();
-            CollidersManager.GetInstance().addCollider(collider);
         }
         return c;
     }
@@ -102,8 +101,11 @@ public class GameObject
     }
     public void removeComponent(Component c)
     {
-        components.remove(c);
-        c.DestroyComponent();
+        if(components.contains(c))
+        {
+            components.remove(c);
+            c.DestroyComponent();
+        }
     }
     public GameObject getParent()
     {
@@ -138,11 +140,11 @@ public class GameObject
         new LinkedList<>(children).forEach(c->c.Destroy());
         children.clear();
         components.forEach(c->c.DestroyComponent());
-        if(collider!=null)
+        if(hitbox !=null)
         {
-            CollidersManager.GetInstance().removeCollider(collider);
+            HitBoxesManager.getInstance().removeHitBox(hitbox);
         }
-        collider = null;
+        hitbox = null;
         if(onDestroy != null)
             onDestroy.run();
     }
@@ -160,12 +162,12 @@ public class GameObject
     }
 
 
-    public <Col extends AbstractCollider<Col>> Col getCollider()
+    public HitBox getHitbox()
     {
-        return (Col) collider;
+        return hitbox;
     }
 
-    public int Size()
+    public int size()
     {
         if(children.size()==0)
         {
@@ -174,7 +176,7 @@ public class GameObject
         else{
             int c = 0;
             for (GameObject x : children) {
-                c += x.Size();
+                c += x.size();
             }
             return c;
         }

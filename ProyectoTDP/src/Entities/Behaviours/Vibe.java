@@ -32,6 +32,7 @@ public class Vibe extends Component
         pos = pos.sum(right);
 
         transform().setPosition(pos);
+        //transform().setTop(transform().top().sum(right));
         i++;
     }
 }

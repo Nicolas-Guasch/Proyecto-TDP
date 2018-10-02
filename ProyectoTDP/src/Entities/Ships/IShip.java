@@ -1,4 +1,4 @@
-package Entities;
+package Entities.Ships;
 
 import Entities.Weapons.Weapon;
 

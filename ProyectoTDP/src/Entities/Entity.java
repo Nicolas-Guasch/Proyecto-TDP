@@ -1,10 +1,12 @@
 package Entities;
 
+import Collisions.HitBox;
 import Engine.Component;
-import Collisions.AbstractCollider;
 import Collisions.CollisionData;
 import Engine.GameObject;
 import Entities.Rewards.Reward;
+import Entities.Ships.EnemyShip;
+import Entities.Ships.PlayerShip;
 import RenderingSystem.Renderizable;
 
 public abstract class Entity {
@@ -24,7 +26,6 @@ public abstract class Entity {
 	public void setData(EntityData data)
 	{
 		this.data = data;
-
 	}
 
 	public EntityData getData()
@@ -37,10 +38,10 @@ public abstract class Entity {
 		referenced.setRenderer(rend);
 	}
 
-	//Collider must be attatched to this Entity
-	public void setCollider(AbstractCollider collider)
+	//Collider must be attatched to this Entity and to layer
+	public void setHitBox(HitBox hitBox)
 	{
-		referenced.addCollider(collider);
+		referenced.addHitBox(hitBox);
 	}
 
 	public void addBehaviour(Component comp) {
@@ -55,25 +56,21 @@ public abstract class Entity {
 	}
 
 
-	//TODO: no funca la sobrecarga, preguntar
-	//en la catedra como hacer
-	//placeholder dejo todos los metodos
-	//public void collideWith(Entity ent){System.out.println("Esto no anda");}
 
 
-	public abstract void collideWith(PlayerShip ent);
+	public void collideWith(PlayerShip ent){}
 
-	public abstract void collideWith(EnemyShip ent);
+	public void collideWith(EnemyShip ent){}
 
-	public abstract void collideWith(ObstacleBidirectional ent);
+	public void collideWith(ObstacleBidirectional ent){}
 
-	public abstract void collideWith(ObstacleMonoDirectional ent);
+	public void collideWith(ObstacleMonoDirectional ent){}
 
-	public abstract void collideWith(PlayerBullet ent);
+	public void collideWith(PlayerBullet ent){}
 
-	public abstract void collideWith(EnemyBullet ent);
+	public void collideWith(EnemyBullet ent){}
 
-	public abstract void collideWith(Reward ent);
+	public void collideWith(Reward ent){}
 
 	public abstract void reportCollision(CollisionData data);
 

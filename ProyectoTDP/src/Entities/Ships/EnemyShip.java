@@ -1,7 +1,11 @@
-package Entities;
+package Entities.Ships;
 
 import Collisions.CollisionData;
 import Engine.GameObject;
+import Entities.EnemyBullet;
+import Entities.ObstacleBidirectional;
+import Entities.ObstacleMonoDirectional;
+import Entities.PlayerBullet;
 import Entities.Rewards.Reward;
 import Entities.Weapons.EnemyBagpack;
 import Entities.Weapons.WeaponSet;
@@ -33,7 +37,9 @@ public class EnemyShip extends Ship {
 	}
 
 	public void collideWith(PlayerBullet ent) {
-		data.setHealth(data.getHealth()-ent.getData().getDamage());
+		var dam = ent.getData().getDamage();
+		if(data!=null)
+		data.setHealth(data.getHealth()-dam);
 	}
 
 	public void collideWith(EnemyBullet ent) {

@@ -1,19 +1,17 @@
+/*
 package Levels;
 import Entities.*;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.PlayerBulletBuilder;
 import Entities.Rewards.WeaponReward;
+import Entities.Ships.*;
 import Entities.Weapons.AngularWeapon;
-import Entities.Weapons.GenericalWeapon;
 import Entities.Weapons.Weapon;
 import UI.*;
 import Engine.*;
 import Engine.Components.Transform;
 import Entities.Behaviours.PlayerLateralController;
 import Entities.Builders.Concretes.*;
-import Entities.Builders.Directors.EnemyShipDirector;
-import Entities.Builders.Directors.PlayerShipDirector;
-import Entities.Builders.EnemyShipBuilder;
 import GameData.GameSettings;
 import RenderingSystem.RenderingTools;
 
@@ -114,12 +112,12 @@ public class LevelOne {
 
     private void initializePlayer() {
         PlayerShipDirector pdir = new PlayerShipDirector();
-        pdir.setBuilder(new PlayerBuilder(3));
+        pdir.setBuilder(new PlayerShipMaker());
         pdir.create();
         pdir.assemble();
         player = pdir.get();
         player.getReferenced().getTransform().setPosition(new Vector2(0, -300));
-        player.getReferenced().getTransform().setTop(Vector2.UP());
+
         lifeControl.add(player); // si te matan chau
         player.getReferenced().getTransform().setZcomponent(-20);
 
@@ -150,3 +148,5 @@ public class LevelOne {
     }
 
 }
+
+*/

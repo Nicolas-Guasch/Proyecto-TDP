@@ -1,7 +1,7 @@
-package Entities.Builders;
+package Entities.Ships;
 
 import Engine.GameObject;
-import Entities.PlayerShip;
+import Entities.Ships.PlayerShip;
 
 public abstract class PlayerShipBuilder
 {
@@ -18,7 +18,8 @@ public abstract class PlayerShipBuilder
         return ship;
     }
     public abstract void assembleSprite();
-    public abstract void assembleCollider();
+    public abstract void assembleWeapons();
+    public abstract void assembleHitBox();
     public abstract void assembleBehaviours();
     public abstract void assembleData();
 }

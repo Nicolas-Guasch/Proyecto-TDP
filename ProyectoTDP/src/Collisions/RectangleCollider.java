@@ -1,3 +1,4 @@
+/*
 package Collisions;
 
 import Engine.Components.Transform;
@@ -19,7 +20,6 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
     {
         super(entity);
         this.dimensions = dimensions;
-
     }
 
 
@@ -36,10 +36,7 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
         {
             actualized = true;
             //gameObject().getRenderer().Sprite().setBorder(BorderFactory.createLineBorder(Color.green));
-
         }
-
-
     }
 
 
@@ -120,3 +117,4 @@ public class RectangleCollider extends AbstractCollider<RectangleCollider>
         return res;
     }
 }
+*/

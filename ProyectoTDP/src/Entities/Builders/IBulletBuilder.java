@@ -6,7 +6,7 @@ public interface IBulletBuilder<BulletType extends IBullet>
     void create();
     BulletType get();
     void assembleSprite();
-    void assembleCollider();
+    void assembleHitBox();
     void assembleBehaviours();
     void assembleData();
 

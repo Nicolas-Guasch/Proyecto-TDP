@@ -1,17 +1,19 @@
 package Entities.Builders.Concretes;
 
-import Collisions.CircleCollider;
+import Collisions.HitBox;
+import Collisions.HitBoxesManager;
 import Engine.Vector2;
+import Entities.Ships.PlayerShip;
 import Entities.Weapons.EnemyShootFront;
 import Entities.Behaviours.FireFrequency;
 import Entities.Behaviours.HorizontalMoveShip;
 import Entities.Behaviours.LookTarget;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
-import Entities.Builders.EnemyShipBuilder;
+import Entities.Ships.EnemyShipBuilder;
 import Entities.EnemyBullet;
 import GameData.GameSettings;
-import Levels.LevelOne;
+
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
@@ -36,19 +38,26 @@ public class LinedTIEBuilder extends EnemyShipBuilder
     {
         Renderizable rend = new Renderizable(prefSpriteData);
         ship.setRenderer(rend);
-        rend.Show();
+        rend.show();
     }
 
     @Override
-    public void assembleCollider()
+    public void assembleHitBox()
     {
         //CircleCollider rec = new CircleCollider(new Vector2(40,40),ship);
         Vector2 dim;
         if(prefSpriteData==SPRITEDATA)dim = new Vector2(40,40);
         else dim=new Vector2(130,130);
-        CircleCollider rec = new CircleCollider(dim,ship);
-        //RectangleCollider rec = new RectangleCollider(dim,ship);
-        ship.setCollider(rec);
+
+        var hitBox = HitBox.getOne(dim,ship);
+        HitBoxesManager.getInstance().addHitBox(hitBox,HitBoxesManager.ENEMIES);
+        ship.setHitBox(hitBox);
+
+    }
+
+    @Override
+    public void assembleWeapons() {
+
     }
 
     @Override
@@ -69,7 +78,7 @@ public class LinedTIEBuilder extends EnemyShipBuilder
         Vector2 bottomLeft = bottomRight.mirrorY();
         ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f),bottomLeft.prod(1.2f)));
         if(Random.bool())
-            ship.addBehaviour(new LookTarget(LevelOne.Instance().player.getReferenced().getTransform()));
+            ship.addBehaviour(new LookTarget(PlayerShip.getInstance().getReferenced().getTransform()));
     }
 
     @Override

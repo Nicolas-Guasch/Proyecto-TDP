@@ -18,7 +18,7 @@ public class BulletDirector<BulletType extends IBullet,BuilderType extends IBull
 
     public void assemble(){
         builder.assembleSprite();
-        builder.assembleCollider();
+        builder.assembleHitBox();
         builder.assembleBehaviours();
         builder.assembleData();
     }

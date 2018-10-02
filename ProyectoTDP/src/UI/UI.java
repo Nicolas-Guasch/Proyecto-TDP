@@ -96,7 +96,7 @@ public class UI
         goprompt.addComponent(al);
         goprompt.setRenderer(rend);
         goprompt.getTransform().setPosition(Vector2.DOWN(600));
-        rend.Show();
+        rend.show();
         Callable<Boolean> completed = ()-> goprompt.getTransform().position().y()>500;
         new DoWhen(completed, goprompt::Destroy);
         return completed;

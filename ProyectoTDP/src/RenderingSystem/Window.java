@@ -50,7 +50,7 @@ public class Window extends Component
         wind.setContentPane(new JLabel(AssetStore.getIcon("fondo")));
         wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wind.setLayout(null);
-        wind.setUndecorated(true);
+        //wind.setUndecorated(true);
        //wind.pack();
         //wind.setLocationRelativeTo(null);
         //wind.setVisible(true);

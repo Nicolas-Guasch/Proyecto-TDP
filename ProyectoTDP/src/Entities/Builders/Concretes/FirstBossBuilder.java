@@ -1,18 +1,20 @@
 package Entities.Builders.Concretes;
 
-import Collisions.CircleCollider;
+import Collisions.HitBox;
+import Collisions.HitBoxesManager;
 import Engine.Components.Transform;
 import Engine.Vector2;
 import Entities.Behaviours.FireFrequency;
 import Entities.Behaviours.HorizontalMoveShip;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
-import Entities.Builders.EnemyShipBuilder;
+import Entities.Ships.EnemyShipBuilder;
 import Entities.EnemyBullet;
+import Entities.Ships.PlayerShip;
 import Entities.Weapons.GenericalWeapon;
 import Entities.Weapons.LateralizedWeapon;
 import GameData.GameSettings;
-import Levels.LevelOne;
+
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Scripts.Hunter;
@@ -28,20 +30,25 @@ public class FirstBossBuilder extends EnemyShipBuilder
     {
         Renderizable rend = new Renderizable(SPRITEDATA);
         ship.setRenderer(rend);
-        rend.Show();
+        rend.show();
     }
 
     @Override
-    public void assembleCollider()
+    public void assembleHitBox()
     {
-        CircleCollider rec = new CircleCollider(new Vector2(130,130),ship);
-        //RectangleCollider rec = new RectangleCollider(new Vector2(130,130),ship);
-        ship.setCollider(rec);
+        HitBox rec = HitBox.getOne(new Vector2(130,130),ship);
+        HitBoxesManager.getInstance().addHitBox(rec,HitBoxesManager.ENEMIES);
+        ship.setHitBox(rec);
+    }
+
+    @Override
+    public void assembleWeapons() {
+
     }
 
     @Override
     public void assembleBehaviours() {
-        Transform target = LevelOne.Instance().player.getReferenced().getTransform();
+        Transform target = PlayerShip.getInstance().getReferenced().getTransform();
         ship.addBehaviour(new HorizontalMoveShip(GameSettings.GetInstance().FirstBossSpeed,6));
 
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director1 = new BulletDirector<>();

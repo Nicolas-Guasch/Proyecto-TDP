@@ -1,0 +1,38 @@
+package IAs;
+
+import Engine.Component;
+import Entities.Ships.Ship;
+
+//Must be attatched to a ship
+public class Pilot extends Component
+{
+    private final Ship ship;
+    private EntityQuery handler;
+    private float Speed;
+
+    public Pilot(EntityQuery handler, Ship ship, float speed) {
+        this.handler = handler;
+        this.ship = ship;
+        Speed = speed;
+    }
+
+    @Override
+    public void Update()
+    {
+        var top = handler.whereToSee(ship);
+        transform().setTop(top);
+        transform().MoveTowards(handler.whereToMove(ship).withLength(Speed));
+    }
+
+    public EntityQuery getHandler() {
+        return handler;
+    }
+
+    public void setHandler(EntityQuery handler) {
+        this.handler = handler;
+    }
+
+
+
+
+}

@@ -3,7 +3,6 @@ package RenderingSystem;
 import Engine.Component;
 import Engine.Vector2;
 import GameData.GameSettings;
-import SoundSystem.internal.UpdateRunner;
 
 import java.awt.*;
 
@@ -37,7 +36,7 @@ public class Renderizable extends Component
         Window.GetInstance().Remove(label);
     }
 
-    public void Show()
+    public void show()
     {
         visible = true;
         if(gameObject()!=null)
@@ -69,7 +68,7 @@ public class Renderizable extends Component
 
     @Override
     public void OnEnable() {
-        Show();
+        show();
     }
 
     @Override

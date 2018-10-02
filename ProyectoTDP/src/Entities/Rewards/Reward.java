@@ -3,6 +3,8 @@ package Entities.Rewards;
 import Collisions.CollisionData;
 import Engine.GameObject;
 import Entities.*;
+import Entities.Ships.EnemyShip;
+import Entities.Ships.PlayerShip;
 
 public abstract class Reward extends Entity
 {

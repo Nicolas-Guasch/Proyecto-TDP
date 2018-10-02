@@ -3,6 +3,7 @@ package Engine.Components;
 import Engine.Component;
 import Engine.EngineGetter;
 import Engine.Vector2;
+import Levels.Vector3;
 
 
 /**
@@ -79,6 +80,14 @@ public final class Transform extends Component
         top = top.rotateUnary(angle);
     }
 
+
+
+    public void setPosition(Vector3 v) {
+        setPosition(v.xy());
+        setZcomponent(v.z());
+    }
+
+
     public void DoMove(Vector2 vector2, int inframes) {
         //TODO: hacer tipo tween
         EngineGetter.Instance().get().WaitForFrames(()->
@@ -86,5 +95,8 @@ public final class Transform extends Component
             setPosition(vector2);
         },inframes);
     }
+
+
+
 }
 
