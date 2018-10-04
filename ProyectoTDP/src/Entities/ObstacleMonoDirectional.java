@@ -6,8 +6,9 @@ import Engine.GameObject;
 import Entities.Rewards.Reward;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
+import GenericVisitor.Visitor;
 
-public class ObstacleMonoDirectional extends Entity {
+public class ObstacleMonoDirectional extends Entity<ObstacleMonoDirectional> {
 
 	public ObstacleMonoDirectional(GameObject referenced) {
 		super(referenced);
@@ -54,5 +55,10 @@ public class ObstacleMonoDirectional extends Entity {
 	public void reportCollision(CollisionData data)
 	{
 		data.Their().collideWith(this);
+	}
+
+	@Override
+	public void accept(Visitor<ObstacleMonoDirectional> obstacleMonoDirectionalVisitor) {
+		obstacleMonoDirectionalVisitor.visit(this);
 	}
 }

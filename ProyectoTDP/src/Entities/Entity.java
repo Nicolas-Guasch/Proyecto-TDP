@@ -7,16 +7,27 @@ import Engine.GameObject;
 import Entities.Rewards.Reward;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
+import GenericVisitor.Visitable;
 import RenderingSystem.Renderizable;
 
-public abstract class Entity {
+public abstract class Entity<Son extends Entity<Son>> implements Visitable<Son> {
 
 	private GameObject referenced;
 	protected EntityData data; // tiene setter y getter, pero la hago protected por comodidad
 
+	private Runnable doOnDeath;
 
+	public void setDoOnDeath(Runnable doOnDeath) {
+		this.doOnDeath = doOnDeath;
 
-	public void onDeath(){}
+	}
+
+	public void onDeath(){
+		if(doOnDeath !=null)
+		{
+			doOnDeath.run();
+		}
+	}
 
 	protected Entity(GameObject referenced)
 	{

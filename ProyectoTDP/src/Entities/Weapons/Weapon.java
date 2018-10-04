@@ -13,6 +13,10 @@ public abstract class Weapon<BulletDirectorType extends IBulletDirector>
 
     public abstract void Shoot();
     public abstract void Destroy();
+    public boolean isEmpty()
+    {
+        return false;
+    }
 
 
 

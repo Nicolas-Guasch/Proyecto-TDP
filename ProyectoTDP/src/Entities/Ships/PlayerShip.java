@@ -7,11 +7,12 @@ import Entities.Weapons.PlayerBagpack;
 import Exceptions.PlayerUninitializedException;
 import GameData.GameOver;
 import GameData.SoundManager;
+import GenericVisitor.Visitor;
 import InputManager.DiscreteClick;
 import InputManager.DiscreteKeyInput;
 import UI.UI;
 
-public class PlayerShip extends Ship {
+public class PlayerShip extends Ship<PlayerShip> {
 
 	//TODO: is the only player on scene must be a singleton
 	private static PlayerShip instance;
@@ -54,7 +55,7 @@ public class PlayerShip extends Ship {
 	}
 
 
-	public void collideWith(Reward ent) {
+	public void collideWith(Reward ent)  {
 
 	}
 
@@ -71,4 +72,8 @@ public class PlayerShip extends Ship {
 		UI.getInstance().PlayerLife((int) cantLife);
 	}
 
+	@Override
+	public void accept(Visitor<PlayerShip> playerShipVisitor) {
+		playerShipVisitor.visit(this);
+	}
 }

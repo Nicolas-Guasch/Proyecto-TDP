@@ -5,8 +5,9 @@ import Engine.GameObject;
 import Entities.Rewards.Reward;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
+import GenericVisitor.Visitor;
 
-public class PlayerBullet extends Bullet {
+public class PlayerBullet extends Bullet<PlayerBullet> {
 
 	public PlayerBullet(GameObject referenced) {
 		super(referenced);
@@ -19,6 +20,7 @@ public class PlayerBullet extends Bullet {
 
 	public void collideWith(EnemyShip ent) {
 		data.setHealth(0);
+
 	}
 
 	public void collideWith(ObstacleBidirectional ent) {
@@ -41,12 +43,17 @@ public class PlayerBullet extends Bullet {
 	}
 
 
-	public void collideWith(Reward ent) {
+	public void collideWith(Reward ent)  {
 
 	}
 
 	@Override
 	public void reportCollision(CollisionData data) {
 		data.Their().collideWith(this);
+	}
+
+	@Override
+	public void accept(Visitor<PlayerBullet> playerBulletVisitor) {
+		playerBulletVisitor.visit(this);
 	}
 }

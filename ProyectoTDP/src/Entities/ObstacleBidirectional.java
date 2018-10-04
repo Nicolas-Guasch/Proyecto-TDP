@@ -6,8 +6,9 @@ import Engine.GameObject;
 import Entities.Rewards.Reward;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
+import GenericVisitor.Visitor;
 
-public class ObstacleBidirectional extends Entity {
+public class ObstacleBidirectional extends Entity<ObstacleBidirectional> {
 
 	public ObstacleBidirectional(GameObject referenced) {
 		super(referenced);
@@ -45,13 +46,17 @@ public class ObstacleBidirectional extends Entity {
 	public void collideWith(EnemyBullet ent) {
 
 	}
-
-	public void collideWith(Reward ent) {
+	public void collideWith(Reward ent)  {
 
 	}
 
 	public void reportCollision(CollisionData data)
 	{
 		data.Their().collideWith(this);
+	}
+
+	@Override
+	public void accept(Visitor<ObstacleBidirectional> obstacleBidirectionalVisitor) {
+		obstacleBidirectionalVisitor.visit(this);
 	}
 }

@@ -6,31 +6,24 @@ import Entities.Weapons.Weapon;
 import Entities.Weapons.WeaponSet;
 import IAs.Pilot;
 
-public abstract class Ship
+public abstract class Ship<Son extends Ship<Son>>
         /*<MyType extends Ship<MyType,OponentType>, OponentType extends Ship<OponentType, MyType>> */
-        extends Entity implements IShip
+        extends Entity<Son> implements IShip
 {
     protected WeaponSet weapons;
-    protected Pilot pilot;
+    private Pilot pilot;
 
-    protected Ship(GameObject referenced, WeaponSet weapons) {
+    Ship(GameObject referenced, WeaponSet weapons) {
         super(referenced);
         this.weapons = weapons;
     }
 
-    private Runnable doOnDeath;
 
-    public void setDoOnDeath(Runnable doOnDeath) {
-        this.doOnDeath = doOnDeath;
-    }
 
     public void onDeath()
     {
         super.onDeath();
-        if(doOnDeath !=null)
-        {
-            doOnDeath.run();
-        }
+
         weapons.setActive(false);
     }
 

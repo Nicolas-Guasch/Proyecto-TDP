@@ -41,6 +41,15 @@ public class PlayerBagpack extends WeaponSet
     {
         index++;
         index = (index < weapons.size()) ? index : 0;
+        if(!weapons.isEmpty())
+        {
+            Weapon w = weapons.get(index);
+            if(w.isEmpty())
+            {
+                weapons.remove(w);
+                switchCurrent();
+            }
+        }
     }
 
     @Override
@@ -52,6 +61,10 @@ public class PlayerBagpack extends WeaponSet
     {
         if(!weapons.isEmpty())
         {
+            if(weapons.get(index).isEmpty())
+            {
+                switchCurrent();
+            }
             weapons.get(index).Shoot();
         }
     }

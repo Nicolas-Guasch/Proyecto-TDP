@@ -32,7 +32,7 @@ public class LevelA extends Component implements Level
     public LevelA()
     {
         running = false;
-        enemies = new EnemiesList();
+        enemies = EnemiesManager.getInstance().getStructure();
         enemiesDirector = new EnemyShipDirector();
         initialize();
         gameObjectStuff();
@@ -68,13 +68,10 @@ public class LevelA extends Component implements Level
 
         currentBuilder = new WhiteTieMaker();
         enemiesDirector.setBuilder(currentBuilder);
-        initial_positions =parsePositions(positions);
+        initial_positions = parsePositions(positions);
         new DeathStar().get();
 
     }
-
-
-
 
     @Override
     public void run(Runnable onWin, Runnable onLoose)

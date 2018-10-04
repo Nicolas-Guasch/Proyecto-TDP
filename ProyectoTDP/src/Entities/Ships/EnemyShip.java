@@ -10,10 +10,9 @@ import Entities.Rewards.Reward;
 import Entities.Weapons.EnemyBagpack;
 import Entities.Weapons.WeaponSet;
 import GameData.CurrentMatchData;
+import GenericVisitor.Visitor;
 
-import java.util.Collection;
-
-public class EnemyShip extends Ship {
+public class EnemyShip extends Ship<EnemyShip> {
 
 
 
@@ -49,8 +48,7 @@ public class EnemyShip extends Ship {
 
 	}
 
-
-	public void collideWith(Reward ent) {
+	public void collideWith(Reward ent)  {
 
 	}
 
@@ -73,4 +71,8 @@ public class EnemyShip extends Ship {
 	}
 
 
+	@Override
+	public void accept(Visitor<EnemyShip> visitableVisitor) {
+		visitableVisitor.visit(this);
+	}
 }

@@ -6,8 +6,10 @@ import Engine.Vector2;
 import Entities.Builders.Concretes.BulletPlayerBuilder;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.PlayerBulletBuilder;
+import Entities.Bullets.ColdFireMaker;
 import Entities.PlayerBullet;
 import Entities.Weapons.GenericalWeapon;
+import Entities.Weapons.IceWeapon;
 import Entities.Weapons.LateralizedWeapon;
 import GameData.GameSettings;
 import IAs.*;
@@ -78,9 +80,16 @@ collider: 130x130
     public void assembleWeapons()
     {
         BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
+
         director.setBuilder(new BulletPlayerBuilder(ship.getReferenced().getTransform()));
         ship.addWeapon(new GenericalWeapon<>(ship.getReferenced().getTransform(),director,2));
         ship.addWeapon(new LateralizedWeapon<>(ship.getReferenced().getTransform(),director,3));
+
+        BulletDirector<PlayerBullet, PlayerBulletBuilder> iceDirector = new BulletDirector<>();
+        iceDirector.setBuilder(new ColdFireMaker());
+        ship.addWeapon(new IceWeapon<>(ship.getReferenced().getTransform(),iceDirector,2));
+
+
 
     }
 

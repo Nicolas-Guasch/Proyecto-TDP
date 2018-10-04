@@ -2,6 +2,7 @@
 package GameData;
 
 import Engine.EngineGetter;
+import Engine.While;
 import Entities.TheGrimReaper;
 import UI.UI;
 
@@ -24,6 +25,7 @@ public class GameOver
         SoundManager.Instance().gameOver();
         UI.getInstance().gameOver();
         TheGrimReaper.Instance().KillThemAll();
+        new While(()->true,() -> TheGrimReaper.Instance().KillThemAll()).Excecute();
         EngineGetter.Instance().get().WaitForFrames(()->System.exit(0),500);
     }
 

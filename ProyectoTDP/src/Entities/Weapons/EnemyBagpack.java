@@ -20,6 +20,7 @@ public class EnemyBagpack extends WeaponSet
         {
             index++;
             index = (index < weapons.size()) ? index : 0;
+
         }
     }
 

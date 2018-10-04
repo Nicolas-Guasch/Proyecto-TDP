@@ -8,7 +8,7 @@ import Entities.Builders.IBullet;
 /**
  * Models a bullet
  */
-public abstract class Bullet extends Entity implements IBullet
+public abstract class Bullet<BulletType extends Bullet<BulletType>> extends Entity<BulletType> implements IBullet
 {
     protected Bullet(GameObject referenced) {
         super(referenced);

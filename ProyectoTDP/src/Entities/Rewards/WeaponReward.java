@@ -7,11 +7,12 @@ import Engine.Vector2;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
 import Entities.Weapons.Weapon;
+import GenericVisitor.Visitor;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Scripts.Directionable;
 
-public class WeaponReward extends Reward
+public class WeaponReward extends Reward<WeaponReward>
 {
 
     private Weapon weapon;
@@ -51,5 +52,10 @@ public class WeaponReward extends Reward
 
     public void setWeapon(Weapon wea) {
         weapon = wea;
+    }
+
+    @Override
+    public void accept(Visitor<WeaponReward> weaponRewardVisitor) {
+        weaponRewardVisitor.visit(this);
     }
 }

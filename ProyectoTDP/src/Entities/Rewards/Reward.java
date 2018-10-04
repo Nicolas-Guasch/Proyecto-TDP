@@ -6,7 +6,7 @@ import Entities.*;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
 
-public abstract class Reward extends Entity
+public abstract class Reward<RewardType extends Reward<RewardType>> extends Entity<RewardType> // TODO: desgeneralizar
 {
 
     public Reward(GameObject referenced) {
