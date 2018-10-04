@@ -5,9 +5,9 @@ import Entities.EnemyBullet;
 import Entities.Rewards.Reward;
 import Entities.Weapons.PlayerBagpack;
 import Exceptions.PlayerUninitializedException;
-import GameData.GameOver;
+import GameData.LostOrWin;
 import GameData.SoundManager;
-import GenericVisitor.Visitor;
+import GenericVisitor.MonoVisitor;
 import InputManager.DiscreteClick;
 import InputManager.DiscreteKeyInput;
 import UI.UI;
@@ -37,7 +37,7 @@ public class PlayerShip extends Ship<PlayerShip> {
 	@Override
 	public void onDeath() {
 		super.onDeath();
-		GameOver.getInstance().MakeGameOver();
+		LostOrWin.getInstance().MakeGameOver();
 	}
 
 	private PlayerShip(GameObject referenced) {
@@ -46,6 +46,12 @@ public class PlayerShip extends Ship<PlayerShip> {
 		SoundManager.Instance().setTransformListener(this.getReferenced().getTransform());
 	}
 
+	public void collideWith(EnemyShip enemyShip)
+	{
+		float damage = enemyShip.getData().getDamage() - data.getShield();
+		damage = damage>=0 ? damage : 0;
+		setLife(data.getHealth() - damage);
+	}
 
 	public void collideWith(EnemyBullet ent)
 	{
@@ -73,7 +79,7 @@ public class PlayerShip extends Ship<PlayerShip> {
 	}
 
 	@Override
-	public void accept(Visitor<PlayerShip> playerShipVisitor) {
+	public void accept(MonoVisitor<PlayerShip> playerShipVisitor) {
 		playerShipVisitor.visit(this);
 	}
 }

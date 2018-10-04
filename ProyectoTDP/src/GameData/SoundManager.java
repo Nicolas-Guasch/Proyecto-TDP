@@ -159,4 +159,8 @@ public final class SoundManager
     public void gameOver() {
         //TODO: cargar cancion de game over
     }
+
+    public void YouWin() {
+
+    }
 }

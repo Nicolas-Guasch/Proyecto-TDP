@@ -6,7 +6,7 @@ import Engine.GameObject;
 import Entities.Rewards.Reward;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
-import GenericVisitor.Visitor;
+import GenericVisitor.MonoVisitor;
 
 public class ObstacleBidirectional extends Entity<ObstacleBidirectional> {
 
@@ -56,7 +56,7 @@ public class ObstacleBidirectional extends Entity<ObstacleBidirectional> {
 	}
 
 	@Override
-	public void accept(Visitor<ObstacleBidirectional> obstacleBidirectionalVisitor) {
+	public void accept(MonoVisitor<ObstacleBidirectional> obstacleBidirectionalVisitor) {
 		obstacleBidirectionalVisitor.visit(this);
 	}
 }

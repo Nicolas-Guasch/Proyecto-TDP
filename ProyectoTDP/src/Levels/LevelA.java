@@ -5,14 +5,20 @@ import Engine.Components.Transform;
 import Engine.GameObject;
 import Entities.Rewards.RewardFactory;
 import Entities.Ships.*;
+import Entities.Ships.EnemiesBuilders.FastTieMaker;
+import Entities.Ships.EnemiesBuilders.VaderTieMaker;
 import Entities.Ships.EnemiesBuilders.WhiteTieMaker;
 
 import Entities.TheGrimReaper;
+import IAs.*;
+import InputManager.DirectionalMouse;
+import InputManager.DirectionalWASD;
 import Misc.DeathStar;
 import Tools.Random;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.logging.Handler;
 
 public class LevelA extends Component implements Level
 {
@@ -22,7 +28,11 @@ public class LevelA extends Component implements Level
 
     private EnemiesStructure enemies;
     EnemyShipDirector enemiesDirector;
-    EnemyShipBuilder currentBuilder;
+    EnemyShipBuilder[] currentBuilder;
+    EnemyShipBuilder currentBuilderBoss;
+
+    boolean bossRunning;
+
     private boolean running;
     private Collection<Vector3> initial_positions;
 
@@ -36,6 +46,7 @@ public class LevelA extends Component implements Level
         enemiesDirector = new EnemyShipDirector();
         initialize();
         gameObjectStuff();
+        bossRunning = false;
 
     }
 
@@ -64,10 +75,15 @@ public class LevelA extends Component implements Level
     private void initialize()
     {
         String positions = "-300,100 -100,150 100,200 300,150 " +
-                           "-300,200 -100,300 100,100 300,300" ; //TODO: levantar de archivo
+                           "-300,200 -100,300 100,100 300,300 "+
+                           "-300,300 -100,250 100,0 300,250"; //TODO: levantar de archivo
 
-        currentBuilder = new WhiteTieMaker();
-        enemiesDirector.setBuilder(currentBuilder);
+        currentBuilder = new EnemyShipBuilder[2];
+        currentBuilder[0] = new WhiteTieMaker();
+        currentBuilder[1] = new FastTieMaker();
+        currentBuilderBoss = new VaderTieMaker();
+
+        enemiesDirector.setBuilder(currentBuilder[0]);
         initial_positions = parsePositions(positions);
         new DeathStar().get();
 
@@ -91,7 +107,7 @@ public class LevelA extends Component implements Level
         pdir.setBuilder(new PlayerShipMaker());
         pdir.create();
         pdir.assemble();
-
+        UI.UI.getInstance().startLevel(0);
         player = pdir.get();
         player.getReferenced().getTransform().setPosition(new Vector3(0, -300,-20));
 
@@ -99,9 +115,12 @@ public class LevelA extends Component implements Level
     }
     private void createEnemies()
     {
-        int setRew = Random.value(2,4);
+        int setRew = Random.value(3,7);
+        int i=0;
         for(var pos : initial_positions)
         {
+            i++;
+            enemiesDirector.setBuilder(currentBuilder[i%2]);
             setRew--;
             enemiesDirector.create();
             enemiesDirector.assemble();
@@ -109,6 +128,11 @@ public class LevelA extends Component implements Level
             enemies.addEnemy(ship);
             ship.getReferenced().getTransform().setPosition(pos);
             TheGrimReaper.Instance().add(ship);
+            if(setRew==2)
+            {
+                Transform t = ship.getReferenced().getTransform();
+                ship.setDoOnDeath(()-> RewardFactory.getWeaponIceReward(t));
+            }
             if(setRew==0)
             {
                 Transform t = ship.getReferenced().getTransform();
@@ -130,14 +154,47 @@ public class LevelA extends Component implements Level
 
         if(enemies.remaining() <= 0)
         {
-            onWin.run();
-            setActive(false);
+            if(bossRunning)
+            {
+                onWin.run();
+                setActive(false);
+                return;
+            }
+            else
+            {
+                enableWS();
+                runBoss();
+                return;
+            }
         }
         if(!player.alive())
         {
             onLoose.run();
             setActive(false);
         }
+    }
+
+    private void enableWS() {
+
+        var handler = player.getPilot().getHandler();
+        DirectionalMouse direction = new DirectionalMouse(player.getReferenced().getTransform());
+        DirectionalWASD move = new DirectionalWASD();
+        handler = new PlayerMove(handler,move,direction);
+        handler = new Slippery(handler);
+        player.getPilot().setHandler(handler);
+
+    }
+
+    private void runBoss()
+    {
+        bossRunning = true;
+        enemiesDirector.setBuilder(currentBuilderBoss);
+        enemiesDirector.create();
+        enemiesDirector.assemble();
+        EnemyShip ship = enemiesDirector.get();
+        enemies.addEnemy(ship);
+        ship.getReferenced().getTransform().setPosition(new Vector3(0,300,z));
+        TheGrimReaper.Instance().add(ship);
     }
 
     @Override

@@ -40,6 +40,7 @@ public class UI
 
     private ArrayList<SpriteData> levels;
     private SpriteData gameOver;
+    private SpriteData win;
 
 
     private UI(){
@@ -52,15 +53,18 @@ public class UI
         levels.add(new SpriteData("levintro2"));
 
 
+
         // ------------ pause prompt -------------
         pausePrompt = new JLabel(AssetStore.getIcon("wooky"));
         pausePrompt.setBounds(200,200,624,312);
         uiPanel.add(pausePrompt);
         pausePrompt.setVisible(false);
 
+
         // --------- game over --------------
 
         gameOver = new SpriteData("gameover");
+        win = new SpriteData("youwin");
 
 
         // --------- LifeBar -------------
@@ -124,6 +128,8 @@ public class UI
     }
 
 
-
-
+    public Callable<Boolean> win()
+    {
+        return moviblePrompt(win);
+    }
 }

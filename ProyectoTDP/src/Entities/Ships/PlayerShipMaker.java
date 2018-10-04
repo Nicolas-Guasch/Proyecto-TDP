@@ -85,9 +85,6 @@ collider: 130x130
         ship.addWeapon(new GenericalWeapon<>(ship.getReferenced().getTransform(),director,2));
         ship.addWeapon(new LateralizedWeapon<>(ship.getReferenced().getTransform(),director,3));
 
-        BulletDirector<PlayerBullet, PlayerBulletBuilder> iceDirector = new BulletDirector<>();
-        iceDirector.setBuilder(new ColdFireMaker());
-        ship.addWeapon(new IceWeapon<>(ship.getReferenced().getTransform(),iceDirector,2));
 
 
 

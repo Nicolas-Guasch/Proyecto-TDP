@@ -3,6 +3,8 @@ package Entities.Bullets;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import Engine.Components.Transform;
+import Engine.EngineGetter;
+import Engine.GameObject;
 import Entities.Behaviours.SimpleBullet;
 import Entities.Builders.PlayerBulletBuilder;
 import Entities.Ships.PlayerShip;
@@ -30,7 +32,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
 
     @Override
     public void assembleHitBox() {
-        HitBox hb = HitBox.getOne(40,90,bullet);
+        HitBox hb = HitBox.getOne(30,50,bullet);
         HitBoxesManager.getInstance().addHitBox(hb,HitBoxesManager.PLAYERBULLET);
         bullet.setHitBox(hb);
     }
@@ -41,7 +43,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
         var playerT = PlayerShip.getInstance().getReferenced().getTransform();
         tr.setPosition(playerT.position3());
         tr.setTop(playerT.top());
-        bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().SoloBulletSpeed*4));
+        bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().SoloBulletSpeed*0.5f));
         // ----------- Ice Effect ------------
         bullet.setDoOnDeath(this::onColdFire);
     }
@@ -56,7 +58,13 @@ public class ColdFireMaker extends PlayerBulletBuilder {
 
     private void onColdFire()
     {
+        GameObject g = GameObject.getRoot().addChild();
+        Renderizable rend = new Renderizable(new SpriteData("coldfireexplo"));
+        g.setRenderer(rend);
+        rend.show();
         var t = bullet.getReferenced().getTransform();
+        g.getTransform().setPosition(t.position3());
+        EngineGetter.Instance().get().WaitForFrames(g::Destroy,10);
         EnemiesManager.getInstance().computeOperation(new FreezeVisitor(5, t, 200));
     }
 }

@@ -7,7 +7,7 @@ import Engine.Vector2;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
 import Entities.Weapons.Weapon;
-import GenericVisitor.Visitor;
+import GenericVisitor.MonoVisitor;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Scripts.Directionable;
@@ -19,11 +19,10 @@ public class WeaponReward extends Reward<WeaponReward>
     //private SpriteRenderer renderer = new SpriteRenderer(new SpriteData(Paths.MonedaArma, new Vector2(400,400)));
     private Renderizable renderer;
 
-    public WeaponReward(GameObject referenced)
+    public WeaponReward(GameObject referenced, SpriteData sprite)
     {
         super(referenced);
-        var sd = new SpriteData("MonedaArma", new Vector2(400,400));
-        renderer = new Renderizable(sd);
+        renderer = new Renderizable(sprite);
         referenced.setRenderer(renderer);
 
         var hitBox = HitBox.getOne(100,100,this);
@@ -55,7 +54,7 @@ public class WeaponReward extends Reward<WeaponReward>
     }
 
     @Override
-    public void accept(Visitor<WeaponReward> weaponRewardVisitor) {
+    public void accept(MonoVisitor<WeaponReward> weaponRewardVisitor) {
         weaponRewardVisitor.visit(this);
     }
 }

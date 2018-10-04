@@ -2,6 +2,7 @@ package ParaTestear;
 
 import Engine.*;
 import GameData.GameSettings;
+import GameData.LostOrWin;
 import GameData.SoundManager;
 
 import Levels.LevelA;
@@ -20,7 +21,7 @@ public class Tester
 
 
         var level = new LevelA();
-        level.run(()->{level.run(Tester::ganar,Tester::perder);}, Tester::perder);
+        level.run(Tester::ganar, Tester::perder);
         //new DeathStar().get();
 
 
@@ -31,6 +32,7 @@ public class Tester
     }
 
     private static void ganar() {
+        LostOrWin.getInstance().MakeYouWin();
         System.out.println("ganaste");
     }
 

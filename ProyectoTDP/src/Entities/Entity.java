@@ -81,8 +81,11 @@ public abstract class Entity<Son extends Entity<Son>> implements Visitable<Son> 
 
 	public void collideWith(EnemyBullet ent){}
 
+	//visit
 	public void collideWith(Reward ent){}
 
+
+	//accept
 	public abstract void reportCollision(CollisionData data);
 
 	public boolean alive() {

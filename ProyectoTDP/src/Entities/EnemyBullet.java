@@ -5,7 +5,7 @@ import Engine.GameObject;
 import Entities.Rewards.Reward;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
-import GenericVisitor.Visitor;
+import GenericVisitor.MonoVisitor;
 
 
 public class EnemyBullet extends Bullet<EnemyBullet> {
@@ -53,7 +53,7 @@ public class EnemyBullet extends Bullet<EnemyBullet> {
 
 
 	@Override
-	public void accept(Visitor<EnemyBullet> enemyBulletVisitor) {
+	public void accept(MonoVisitor<EnemyBullet> enemyBulletVisitor) {
 		enemyBulletVisitor.visit(this);
 	}
 }

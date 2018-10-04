@@ -1,7 +1,7 @@
 package Levels;
 
 import Entities.Ships.EnemyShip;
-import GenericVisitor.Visitor;
+import GenericVisitor.MonoVisitor;
 
 public class EnemiesManager
 {
@@ -28,7 +28,7 @@ public class EnemiesManager
         return currentStructure;
     }
 
-    public void computeOperation(Visitor<EnemyShip> visitor)
+    public void computeOperation(MonoVisitor<EnemyShip> visitor)
     {
         currentStructure.forEach(visitor::visit);
     }

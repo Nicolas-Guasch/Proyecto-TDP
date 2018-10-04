@@ -2,10 +2,9 @@ package GenericVisitor;
 
 import Engine.Components.Transform;
 import Engine.EngineGetter;
-import Engine.Vector2;
 import Entities.Ships.EnemyShip;
 
-public class FreezeVisitor implements Visitor<EnemyShip>
+public class FreezeVisitor implements MonoVisitor<EnemyShip>
 {
 
     private final float time;

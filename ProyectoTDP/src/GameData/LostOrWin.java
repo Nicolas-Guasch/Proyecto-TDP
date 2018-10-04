@@ -6,19 +6,26 @@ import Engine.While;
 import Entities.TheGrimReaper;
 import UI.UI;
 
-public class GameOver
+public class LostOrWin
 {
-    private static GameOver instance;
+    private static LostOrWin instance;
 
-    public static GameOver getInstance()
+    public static LostOrWin getInstance()
     {
         if(instance == null)
         {
-            instance = new GameOver();
+            instance = new LostOrWin();
         }
         return instance;
     }
-    private GameOver(){}
+    private LostOrWin(){}
+
+    public void MakeYouWin()
+    {
+        SoundManager.Instance().YouWin();
+        UI.getInstance().win();
+        EngineGetter.Instance().get().WaitForFrames(()->System.exit(0),500);
+    }
 
     public void MakeGameOver()
     {

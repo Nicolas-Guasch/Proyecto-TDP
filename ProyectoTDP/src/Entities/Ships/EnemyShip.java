@@ -10,7 +10,7 @@ import Entities.Rewards.Reward;
 import Entities.Weapons.EnemyBagpack;
 import Entities.Weapons.WeaponSet;
 import GameData.CurrentMatchData;
-import GenericVisitor.Visitor;
+import GenericVisitor.MonoVisitor;
 
 public class EnemyShip extends Ship<EnemyShip> {
 
@@ -72,7 +72,7 @@ public class EnemyShip extends Ship<EnemyShip> {
 
 
 	@Override
-	public void accept(Visitor<EnemyShip> visitableVisitor) {
+	public void accept(MonoVisitor<EnemyShip> visitableVisitor) {
 		visitableVisitor.visit(this);
 	}
 }

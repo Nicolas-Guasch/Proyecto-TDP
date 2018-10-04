@@ -2,6 +2,8 @@ package Tools;
 
 public class Random
 {
+
+
     /**
      *
      * @return random float value between 0 and 1
