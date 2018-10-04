@@ -79,12 +79,6 @@ public class UI
         score = new Score();
         score.setBounds(650,10,300,50);
         uiPanel.add(score);
-
-
-
-
-
-
     }
 
     private Callable<Boolean> moviblePrompt(SpriteData prompt)

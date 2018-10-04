@@ -17,6 +17,7 @@ public class TheGrimReaper extends Component
 {
     private static TheGrimReaper instance;
     private static float far = 1500;
+    private Queue<Entity> toAdd;
 
 
     public static TheGrimReaper Instance()
@@ -35,6 +36,7 @@ public class TheGrimReaper extends Component
     {
         entities = new LinkedList<>();
         toDestroy = new LinkedBlockingQueue<>();
+        toAdd = new LinkedBlockingQueue<>();
     }
 
     @Override
@@ -45,19 +47,18 @@ public class TheGrimReaper extends Component
         {
             toDestroy.remove().getReferenced().Destroy();
         }
-        entities.forEach((e)->{
-            if(e.getData().getHealth()<=0 || e.getReferenced().getTransform().position().length()> far){
-                toDestroy.add(e);
-                e.onDeath();
-            }
-        });
+        while(!toAdd.isEmpty())
+        {
+            entities.add(toAdd.remove());
+        }
+        entities.forEach(this::accept);
         toDestroy.forEach((e)->entities.remove(e));
 
     }
 
     public void add(Entity ent)
     {
-        entities.add(ent);
+        toAdd.add(ent);
     }
     public void remove(Entity ent)
     {
@@ -72,6 +73,13 @@ public class TheGrimReaper extends Component
         for(var ent : entities)
         {
             killIn(ent,1);
+        }
+    }
+
+    private void accept(Entity e) {
+        if (e.getData().getHealth() <= 0 || e.getReferenced().getTransform().position().length() > far) {
+            toDestroy.add(e);
+            e.onDeath();
         }
     }
 }

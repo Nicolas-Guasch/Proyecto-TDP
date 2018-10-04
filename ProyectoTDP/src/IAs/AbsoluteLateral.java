@@ -9,13 +9,15 @@ public class AbsoluteLateral  extends AIQueryDecorator
     private int i;
     private int speed;
 
-    public AbsoluteLateral(int steps, EntityQuery decorated)
+    public AbsoluteLateral(EntityQuery decorated, int steps)
     {
         super(decorated);
         i=0;
         this.steps = steps;
         speed = 1;
     }
+
+
 
     @Override
     public Vector2 whereToMove(Entity ent)
@@ -24,8 +26,9 @@ public class AbsoluteLateral  extends AIQueryDecorator
         {
             speed *= -1;
             i=0;
+            i++;
         }
-        return Vector2.RIGHT(speed).sum(whereToMove(ent));
+        return Vector2.RIGHT(speed).sum(decorated.whereToMove(ent));
     }
 
     @Override

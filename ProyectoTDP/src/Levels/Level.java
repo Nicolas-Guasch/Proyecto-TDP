@@ -1,9 +1,10 @@
 package Levels;
 
-public class Level
+public interface Level
 {
 
-
-
+    void run(Runnable onWin, Runnable onLoose);
+    boolean isRunning();
+    void destroy();
 
 }

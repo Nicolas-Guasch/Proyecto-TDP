@@ -13,7 +13,7 @@ public class RelativeLateral extends AIQueryDecorator
     private int steps;
     private int i;
     private int speed;
-    public RelativeLateral(int steps, EntityQuery decorated)
+    public RelativeLateral( EntityQuery decorated,int steps)
     {
         super(decorated);
         i=0;

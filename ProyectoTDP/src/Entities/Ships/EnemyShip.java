@@ -11,7 +11,10 @@ import Entities.Weapons.EnemyBagpack;
 import Entities.Weapons.WeaponSet;
 import GameData.CurrentMatchData;
 
+import java.util.Collection;
+
 public class EnemyShip extends Ship {
+
 
 
 
@@ -62,8 +65,12 @@ public class EnemyShip extends Ship {
 	}
 
 	@Override
-	public void onDeath() {
+	public void onDeath()
+	{
+
 		super.onDeath();
 		CurrentMatchData.getMatchData().incScore(1);
 	}
+
+
 }

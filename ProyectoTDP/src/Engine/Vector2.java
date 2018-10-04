@@ -24,12 +24,14 @@ public class Vector2
 
     public static Vector2 Random()
     {
-        return UP().rotate(new Random(UP().hashCode()).nextFloat()*192/new Random().nextInt());
+        float x = new Random(UP().hashCode()).nextFloat()*191/new Random().nextInt();
+        float y = new Random(DOWN().hashCode()).nextFloat()*System.nanoTime()*7/new Random().nextInt();
+        return new Vector2(x,y).versor();
     }
 
     public static Vector2 Random(float large)
     {
-        return Random().prod(large);
+        return Random().withLength(large);
     }
 
 
@@ -77,7 +79,7 @@ public class Vector2
 
     public Vector2 versor()
     {
-        if(x== 0 && y==0)
+        if(length()<0.001f)
             return ORIGIN();
         return this.div(length());
     }

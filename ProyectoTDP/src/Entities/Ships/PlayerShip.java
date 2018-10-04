@@ -47,7 +47,6 @@ public class PlayerShip extends Ship {
 		float damage = ent.getData().getDamage() - data.getShield();
 		damage = damage>=0 ? damage : 0;
 		setLife(data.getHealth() - damage);
-		System.out.println("Player Life: "+data.getHealth());
 	}
 
 

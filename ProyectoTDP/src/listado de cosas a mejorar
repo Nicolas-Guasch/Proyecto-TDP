@@ -1,0 +1,23 @@
+----
+
+el premio se le asigna a algun enemigo
+al morir ejecuta una funcion que lo lanza
+PERO ....
+si perdes, automaticamente el grimreaper mata a todos
+incluyendolo
+y el premio igual cae
+
+
+    .....
+
+
+soluciones posibles:
+
+    darle al reaper un estado en el cual
+    solo elimina todos los elemenotos una y otra vez
+  pro:
+    saldría andando
+  contra:
+    es un poco bastante chancho
+
+----

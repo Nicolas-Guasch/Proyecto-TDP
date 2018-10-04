@@ -18,7 +18,19 @@ public abstract class Ship
         this.weapons = weapons;
     }
 
-    public void onDeath(){
+    private Runnable doOnDeath;
+
+    public void setDoOnDeath(Runnable doOnDeath) {
+        this.doOnDeath = doOnDeath;
+    }
+
+    public void onDeath()
+    {
+        super.onDeath();
+        if(doOnDeath !=null)
+        {
+            doOnDeath.run();
+        }
         weapons.setActive(false);
     }
 

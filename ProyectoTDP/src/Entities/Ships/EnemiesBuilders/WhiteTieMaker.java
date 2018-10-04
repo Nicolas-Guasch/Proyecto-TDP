@@ -15,6 +15,8 @@ import Entities.Ships.PlayerShip;
 import Entities.Weapons.EnemyShootFront;
 import Entities.Weapons.WeaponSet;
 import GameData.GameSettings;
+import IAs.*;
+import Levels.Vector3;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
@@ -57,10 +59,21 @@ public class WhiteTieMaker extends EnemyShipBuilder
         ship.addBehaviour(fireFrequency);
 
         // --------------- configuro el piloto -----------------
-        //GameSettings.GetInstance().getSpeed("whitetie");
+        //GameSettings.GetInstance().getSpeed("whitetie"); //TODO: implementar esto
+        EntityQuery handler = new DummyEntityQuery();
+        //handler = new RelativeLateral(handler,50);
+        handler = new AbsoluteLateral(handler,50);
+        handler = new Slippery(handler); // ver como queda sino sacar
+        Pilot pilot = new Pilot(handler,ship,15f);
+        ship.setPilot(pilot);
 
+    }
+
+    @Override
+    public void assembleBehaviours() {
         // ---------------- hago que mire hacia abajo ----------
         ship.getReferenced().getTransform().setTop(Vector2.DOWN());
+        // ---------------- hago que "pege la vuelta" -------------
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();
@@ -70,12 +83,7 @@ public class WhiteTieMaker extends EnemyShipBuilder
     }
 
     @Override
-    public void assembleBehaviours() {
-
-    }
-
-    @Override
     public void assembleData() {
-
+        ship.setData(GameSettings.GetInstance().TieData.clone());
     }
 }

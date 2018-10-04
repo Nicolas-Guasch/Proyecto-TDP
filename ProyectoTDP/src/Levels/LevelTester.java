@@ -9,6 +9,7 @@ import Entities.Weapons.Weapon;
 import InputManager.AbstractDiscreteInput;
 import InputManager.DiscreteClick;
 import InputManager.DiscreteKeyInput;
+import Misc.DeathStar;
 import UI.*;
 import Engine.*;
 import Engine.Components.Transform;
@@ -68,15 +69,7 @@ public class LevelTester extends Component {
 
         // --------  premio -------
 
-        GameObject premio = GameObject.getRoot().addChild();
-        WeaponReward rew = new WeaponReward(premio);
-        BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
-        director.setBuilder(new BulletPlayerBuilder(player.getReferenced().getTransform()));
-        Weapon wea = new AngularWeapon<>(player.getReferenced().getTransform(),director,5);
-        rew.setWeapon(wea);
-        premio.getTransform().setPosition(new Vector2(0,400));
-        rew.setData(new EntityData(100,100,100));
-        TheGrimReaper.Instance().add(rew);
+
 
         // --------- enemies stuff -------
 
@@ -85,6 +78,13 @@ public class LevelTester extends Component {
         var complete = UI.getInstance().startLevel(0);
         builder = new TieMediumBuilder();
         new DoWhen(complete,this::SendWave);
+
+
+
+        /// ------------- dEATH sTAR ----------
+
+        new DeathStar().get();
+
 
     }
 

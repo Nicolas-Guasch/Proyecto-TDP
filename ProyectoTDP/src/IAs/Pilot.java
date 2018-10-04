@@ -21,7 +21,7 @@ public class Pilot extends Component
     {
         var top = handler.whereToSee(ship);
         transform().setTop(top);
-        transform().MoveTowards(handler.whereToMove(ship).withLength(Speed));
+        transform().MoveTowards(handler.whereToMove(ship).prod(Speed));
     }
 
     public EntityQuery getHandler() {

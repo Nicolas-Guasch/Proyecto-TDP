@@ -2,6 +2,7 @@ package Assets;
 
 
 import javax.swing.*;
+import java.awt.*;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,5 +40,9 @@ public class AssetStore
 
     private static void checknullmap() {
         map = map==null ?new HashMap<>() : map;
+    }
+
+    public static Image getImage(String filename) {
+        return((ImageIcon)getIcon(filename)).getImage();
     }
 }

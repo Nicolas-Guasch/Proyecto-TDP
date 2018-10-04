@@ -10,12 +10,10 @@ import Entities.PlayerBullet;
 import Entities.Weapons.GenericalWeapon;
 import Entities.Weapons.LateralizedWeapon;
 import GameData.GameSettings;
-import IAs.DummyEntityQuery;
-import IAs.EntityQuery;
-import IAs.Pilot;
-import IAs.PlayerMove;
+import IAs.*;
 import InputManager.DirectionalMouse;
 import InputManager.DirectionalWASD;
+import Levels.Vector3;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
@@ -59,7 +57,9 @@ collider: 130x130
         DirectionalWASD move = new DirectionalWASD();
         move.lockY();
         handler = new PlayerMove(handler,move,direction);
-        Pilot pilot = new Pilot(handler,ship,10f);
+        ship.getReferenced().getTransform().setPosition(new Vector3(0, -700,-20));
+        handler = new Slippery(handler);
+        Pilot pilot = new Pilot(handler,ship,15f);
         ship.setPilot(pilot);
 
         // ------- Mirror effect ----------

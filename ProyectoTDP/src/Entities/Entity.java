@@ -74,4 +74,7 @@ public abstract class Entity {
 
 	public abstract void reportCollision(CollisionData data);
 
+	public boolean alive() {
+		return getData().getHealth() > 0;
+	}
 }

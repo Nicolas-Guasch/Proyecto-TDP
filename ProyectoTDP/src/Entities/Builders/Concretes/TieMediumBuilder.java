@@ -90,8 +90,8 @@ public class TieMediumBuilder extends EnemyShipBuilder
     public void assembleData()
     {
         EntityData data = GameSettings.GetInstance().TieData.clone();
-        data.setHealth(data.getHealth()*2);
-        data.setDamage(data.getDamage()*2);
+        data.setHealth(data.getHealth());
+        data.setDamage(data.getDamage());
         ship.setData(data);
     }
 }

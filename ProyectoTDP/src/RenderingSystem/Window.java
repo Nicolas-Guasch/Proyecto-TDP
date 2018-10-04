@@ -15,7 +15,7 @@ public class Window extends Component
 {
 
     private static Window instance;
-    private final UI ui;
+    private UI ui;
 
 
     public static Window GetInstance()
@@ -40,7 +40,11 @@ public class Window extends Component
 
     private Window()
     {
-       // ------- Frame initialize ---------
+       initializer();
+    }
+
+    private void initializer() {
+        // ------- Frame initialize ---------
         wind = new JFrame();
 
         wind.setSize(new Dimension(settings.sizeWindow.width+600,settings.sizeWindow.height+30));
@@ -51,7 +55,7 @@ public class Window extends Component
         wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wind.setLayout(null);
         //wind.setUndecorated(true);
-       //wind.pack();
+        //wind.pack();
         //wind.setLocationRelativeTo(null);
         //wind.setVisible(true);
         container = wind.getContentPane();
@@ -74,9 +78,16 @@ public class Window extends Component
 
         SetZ(panelUI,222190,false);
 
+        //------------ set cursor image----------
 
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image image = AssetStore.getImage("mouseAim");
+        Cursor c = toolkit.createCustomCursor(image , new Point(wind.getX(),
+                wind.getY()), "img");
+        wind.setCursor (c);
 
     }
+
     public void Update()
     {
         wind.repaint(); //preguntar a biondi cuando hay que hacer el repaint

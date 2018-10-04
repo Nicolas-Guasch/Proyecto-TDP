@@ -4,6 +4,7 @@ import Engine.*;
 import GameData.GameSettings;
 import GameData.SoundManager;
 
+import Levels.LevelA;
 import Levels.LevelTester;
 import Misc.DeathStar;
 import RenderingSystem.RenderingTools;
@@ -17,7 +18,9 @@ public class Tester
         IEngine eng = EngineGetter.Instance().get();
         window.AddInput(eng.Pauser());//para poner pausa
 
-        LevelTester.Instance().runLevel();
+
+        var level = new LevelA();
+        level.run(Tester::ganar, Tester::perder);
         //new DeathStar().get();
 
 
@@ -25,6 +28,14 @@ public class Tester
         SoundManager.Instance().ImperialMarchPlay();
         window.Show();
         eng.Start();
+    }
+
+    private static void ganar() {
+        System.out.println("ganaste");
+    }
+
+    private static void perder() {
+        System.out.println("perdiste");
     }
 
 }
