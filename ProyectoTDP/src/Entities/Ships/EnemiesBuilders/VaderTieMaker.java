@@ -59,10 +59,11 @@ public class VaderTieMaker extends EnemyShipBuilder
         ship.addWeapon(esf1);
         ship.addWeapon(esf1);
         ship.addWeapon(esf1);
+        ship.addWeapon(esf1);
 
 
         // --------------- configuro el arma para disparar cada 30 frames
-        int freq = 30;
+        int freq = 20;
         WeaponSet bp = ship.getBagpack();
         FireFrequency fireFrequency = new FireFrequency(freq,bp); // hace qeu dispare cada freq frames
         ship.addBehaviour(fireFrequency);
