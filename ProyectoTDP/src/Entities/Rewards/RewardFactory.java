@@ -1,7 +1,7 @@
 package Entities.Rewards;
 
+import Engine.Components.Transform;
 import Engine.GameObject;
-import Engine.Vector2;
 import Entities.Builders.Concretes.BulletPlayerBuilder;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.PlayerBulletBuilder;
@@ -15,7 +15,7 @@ import Entities.Weapons.Weapon;
 public class RewardFactory
 {
 
-    public static void getWeaponReward()
+    public static void getWeaponReward(Transform originPoint)
     {
         var player = PlayerShip.getInstance();
         GameObject premio = GameObject.getRoot().addChild();
@@ -24,8 +24,8 @@ public class RewardFactory
         director.setBuilder(new BulletPlayerBuilder(player.getReferenced().getTransform()));
         Weapon wea = new AngularWeapon<>(player.getReferenced().getTransform(),director,5);
         rew.setWeapon(wea);
-        premio.getTransform().setPosition(new Vector2(0,400));
-        rew.setData(new EntityData(100,100,100));
+        premio.getTransform().setPosition(originPoint.position3());
+        rew.setData(EntityData.WithEqualsValues(100));
         TheGrimReaper.Instance().add(rew);
     }
 

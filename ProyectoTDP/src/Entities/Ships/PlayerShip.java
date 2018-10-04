@@ -29,6 +29,10 @@ public class PlayerShip extends Ship {
 		return instance;
 	}
 
+	public static boolean isInitialited() {
+		return instance != null;
+	}
+
 	@Override
 	public void onDeath() {
 		super.onDeath();

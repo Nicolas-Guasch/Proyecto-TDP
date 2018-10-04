@@ -62,8 +62,8 @@ public class WhiteTieMaker extends EnemyShipBuilder
         //GameSettings.GetInstance().getSpeed("whitetie"); //TODO: implementar esto
         EntityQuery handler = new DummyEntityQuery();
         //handler = new RelativeLateral(handler,50);
-        handler = new AbsoluteLateral(handler,50);
-        handler = new Slippery(handler); // ver como queda sino sacar
+        handler = new AbsoluteLateral(handler,100);
+        handler = new Slippery(handler,200f, 0.3f); // ver como queda sino sacar
         Pilot pilot = new Pilot(handler,ship,15f);
         ship.setPilot(pilot);
 

@@ -97,6 +97,8 @@ public final class Transform extends Component
     }
 
 
-
+    public Vector3 position3() {
+        return new Vector3(position.x(),position.y(),Zcomponent);
+    }
 }
 

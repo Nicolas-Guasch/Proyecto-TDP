@@ -13,6 +13,10 @@ public final class EntityData
         this.shield = shield;
     }
 
+    public static EntityData WithEqualsValues(float v) {
+        return new EntityData(v,v,v);
+    }
+
     public EntityData clone()
     {
         return new EntityData(health,damage,shield);

@@ -1,6 +1,7 @@
 package Levels;
 
 import Engine.Component;
+import Engine.Components.Transform;
 import Engine.GameObject;
 import Entities.Rewards.RewardFactory;
 import Entities.Ships.*;
@@ -68,6 +69,7 @@ public class LevelA extends Component implements Level
         currentBuilder = new WhiteTieMaker();
         enemiesDirector.setBuilder(currentBuilder);
         initial_positions =parsePositions(positions);
+        new DeathStar().get();
 
     }
 
@@ -81,9 +83,9 @@ public class LevelA extends Component implements Level
         running = true;
         this.onLoose = onLoose;
         this.onWin = onWin;
-        initializePlayer();
+        if(!PlayerShip.isInitialited())
+            initializePlayer();
         createEnemies();
-        new DeathStar().get();
     }
 
     private void initializePlayer()
@@ -112,7 +114,8 @@ public class LevelA extends Component implements Level
             TheGrimReaper.Instance().add(ship);
             if(setRew==0)
             {
-                ship.setDoOnDeath(RewardFactory::getWeaponReward);
+                Transform t = ship.getReferenced().getTransform();
+                ship.setDoOnDeath(()-> RewardFactory.getWeaponReward(t));
             }
         }
     }

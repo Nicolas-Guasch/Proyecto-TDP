@@ -8,6 +8,7 @@ public class AbsoluteLateral  extends AIQueryDecorator
     private int steps;
     private int i;
     private int speed;
+    private boolean es_primer_pasada;
 
     public AbsoluteLateral(EntityQuery decorated, int steps)
     {
@@ -15,6 +16,7 @@ public class AbsoluteLateral  extends AIQueryDecorator
         i=0;
         this.steps = steps;
         speed = 1;
+        es_primer_pasada = true;
     }
 
 
@@ -22,13 +24,16 @@ public class AbsoluteLateral  extends AIQueryDecorator
     @Override
     public Vector2 whereToMove(Entity ent)
     {
-        if(i>=steps)
+        if(i>=steps || (es_primer_pasada && i>=steps/2))
         {
+            es_primer_pasada = false;
             speed *= -1;
             i=0;
-            i++;
         }
-        return Vector2.RIGHT(speed).sum(decorated.whereToMove(ent));
+        i++;
+        var vec = Vector2.RIGHT(speed).sum(decorated.whereToMove(ent));
+        return vec;
+
     }
 
     @Override

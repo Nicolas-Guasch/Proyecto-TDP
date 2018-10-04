@@ -20,7 +20,7 @@ public class Tester
 
 
         var level = new LevelA();
-        level.run(Tester::ganar, Tester::perder);
+        level.run(()->{level.run(Tester::ganar,Tester::perder);}, Tester::perder);
         //new DeathStar().get();
 
 
