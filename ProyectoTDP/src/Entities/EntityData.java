@@ -45,4 +45,8 @@ public final class EntityData
     public void setHealth(float health) {
         this.health = health;
     }
+
+    public void decHealth(float damage) {
+        health -= damage;
+    }
 }

@@ -40,11 +40,11 @@ public class ObstacleBidirectional extends Entity<ObstacleBidirectional> {
 	}
 
 	public void collideWith(PlayerBullet ent) {
-
+		data.decHealth(ent.getData().getDamage());
 	}
 
 	public void collideWith(EnemyBullet ent) {
-
+		data.decHealth(ent.getData().getDamage());
 	}
 	public void collideWith(Reward ent)  {
 

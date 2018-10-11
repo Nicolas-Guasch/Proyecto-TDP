@@ -113,7 +113,10 @@ public final class SoundManager
         else{
             vol =0;
         }
+
         vol *= 0.5f;
+
+
         // ------------- Pan -------------
 
         float pan = 1;

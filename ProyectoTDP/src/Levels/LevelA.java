@@ -2,7 +2,14 @@ package Levels;
 
 import Engine.Component;
 import Engine.Components.Transform;
+import Engine.EngineGetter;
 import Engine.GameObject;
+import Engine.Vector2;
+import Entities.Builders.Directors.ObstacleBidirectionalDirector;
+import Entities.Builders.Directors.ObstacleMonoDirectionalDirector;
+import Entities.ObstacleMonoDirectional;
+import Entities.Obstacles.NaveDuraObstacle;
+import Entities.Obstacles.NaveViejaImperioMaker;
 import Entities.Rewards.RewardFactory;
 import Entities.Ships.*;
 import Entities.Ships.EnemiesBuilders.FastTieMaker;
@@ -10,6 +17,7 @@ import Entities.Ships.EnemiesBuilders.VaderTieMaker;
 import Entities.Ships.EnemiesBuilders.WhiteTieMaker;
 
 import Entities.TheGrimReaper;
+import GameData.SoundManager;
 import IAs.*;
 import InputManager.DirectionalMouse;
 import InputManager.DirectionalWASD;
@@ -18,6 +26,7 @@ import Tools.Random;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Vector;
 import java.util.logging.Handler;
 
 public class LevelA extends Component implements Level
@@ -75,12 +84,12 @@ public class LevelA extends Component implements Level
     private void initialize()
     {
         String positions = "-300,100 -100,150 100,200 300,150 " +
-                           "-300,200 -100,300 100,100 300,300 "+
+                        //   "-300,200 -100,300 100,100 300,300 "+
                            "-300,300 -100,250 100,0 300,250"; //TODO: levantar de archivo
 
-        currentBuilder = new EnemyShipBuilder[2];
-        currentBuilder[0] = new WhiteTieMaker();
-        currentBuilder[1] = new FastTieMaker();
+        currentBuilder = new EnemyShipBuilder[]{new WhiteTieMaker(),
+                                                /*new FastTieMaker()*/};
+
         currentBuilderBoss = new VaderTieMaker();
 
         enemiesDirector.setBuilder(currentBuilder[0]);
@@ -92,14 +101,52 @@ public class LevelA extends Component implements Level
     @Override
     public void run(Runnable onWin, Runnable onLoose)
     {
-        setActive(true);
-        running = true;
-        this.onLoose = onLoose;
-        this.onWin = onWin;
         if(!PlayerShip.isInitialited())
-            initializePlayer();
-        createEnemies();
+        initializePlayer();
+
+        Runnable action = ()->
+        {
+            setActive(true);
+            running = true;
+            this.onLoose = onLoose;
+            this.onWin = onWin;
+
+            createEnemies();
+            createBarricades();
+        };
+        EngineGetter.Instance().get().WaitForFrames(action,480);
     }
+
+    private void createBarricades() {
+        ObstacleMonoDirectionalDirector monodi = new ObstacleMonoDirectionalDirector();
+        monodi.setBuilder(new NaveViejaImperioMaker());
+        monodi.create();
+        monodi.assemble();
+        var obstaculo = monodi.get();
+        obstaculo.getReferenced().getTransform().setPosition(new Vector3(90,-100,-90));
+        TheGrimReaper.Instance().add(obstaculo);
+
+        ObstacleBidirectionalDirector bid = new ObstacleBidirectionalDirector();
+        bid.setBuilder(new NaveDuraObstacle());
+
+        BidirectionalAt(Vector3.Get(230,-80,-90),Vector2.UP(),bid);
+        BidirectionalAt(Vector3.Get(-230,-80,-90),Vector2.UP(),bid);
+        BidirectionalAt(Vector3.Get(430,180,-90),Vector2.LEFT(),bid);
+        BidirectionalAt(Vector3.Get(-430,180,-90),Vector2.RIGHT(),bid);
+
+
+    }
+
+    private void BidirectionalAt(Vector3 point, Vector2 top,ObstacleBidirectionalDirector director)
+    {
+        director.create();
+        director.assemble();
+        var bidobs2 = director.get();
+        bidobs2.getReferenced().getTransform().setPosition(point);
+        bidobs2.getReferenced().getTransform().setTop(top);
+        TheGrimReaper.Instance().add(bidobs2);
+    }
+
 
     private void initializePlayer()
     {
@@ -120,7 +167,7 @@ public class LevelA extends Component implements Level
         for(var pos : initial_positions)
         {
             i++;
-            enemiesDirector.setBuilder(currentBuilder[i%2]);
+            enemiesDirector.setBuilder(currentBuilder[i%currentBuilder.length]);
             setRew--;
             enemiesDirector.create();
             enemiesDirector.assemble();
@@ -188,13 +235,27 @@ public class LevelA extends Component implements Level
     private void runBoss()
     {
         bossRunning = true;
-        enemiesDirector.setBuilder(currentBuilderBoss);
-        enemiesDirector.create();
-        enemiesDirector.assemble();
-        EnemyShip ship = enemiesDirector.get();
-        enemies.addEnemy(ship);
-        ship.getReferenced().getTransform().setPosition(new Vector3(0,300,z));
-        TheGrimReaper.Instance().add(ship);
+        setActive(false);
+
+        Runnable musicStuff = ()->{
+            SoundManager.Instance().VaderBreath();
+            SoundManager.Instance().ImperialMarchStop();
+
+        };
+        EngineGetter.Instance().get().WaitForFrames(musicStuff,120);
+
+        Runnable makeTheBoss = ()->{
+            setActive(true);
+            enemiesDirector.setBuilder(currentBuilderBoss);
+            enemiesDirector.create();
+            enemiesDirector.assemble();
+            EnemyShip ship = enemiesDirector.get();
+            enemies.addEnemy(ship);
+            ship.getReferenced().getTransform().setPosition(new Vector3(0,400,z));
+            TheGrimReaper.Instance().add(ship);
+        };
+        EngineGetter.Instance().get().WaitForFrames(makeTheBoss,120);
+
     }
 
     @Override

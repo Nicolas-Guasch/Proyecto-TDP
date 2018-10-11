@@ -55,9 +55,9 @@ public class GameSettings
 
 
 
-    public final EntityData PlayerData = new EntityData(500,150,7);
+    public final EntityData PlayerData = new EntityData(100,150,7);
     public final EntityData TieData = new EntityData(100,25,0);
-    public final EntityData TieBulletData = new EntityData(1,5,0);
+    public final EntityData TieBulletData = new EntityData(1,15,0);
     public final EntityData SoloBulletData = new EntityData(1,10,0);
     public final EntityData FirstBossData = new EntityData(800,1500,50);
 
