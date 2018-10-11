@@ -1,0 +1,57 @@
+@startuml
+
+class Atomizador{
+    +Atomizador(CreadorAtomos c)
+    ==Metodos==
+    +CrearAtomo():Atomo
+}
+
+abstract class Atomo{
+    #nombre: String
+    #masaAtomica: float
+
+    +GetNombre():String
+    +GetMasaAtomica():float
+}
+
+class Oxigeno{
+    #masa
+}
+
+class Hidrogeno{
+
+}
+
+class Carbono{
+
+}
+
+Oxigeno --|> Atomo
+Hidrogeno --|> Atomo
+Carbono --|> Atomo
+
+
+
+abstract class CreadorAtomos{
+    +CrearAtomos():Atomo
+}
+
+CreadorAtomos  "1"--o Atomizador : -creadorAtomos
+
+class CreadorOxigeno{
+    +CrearAtomos():Oxigeno
+}
+
+class CreadorHidrogeno{
+    +CrearAtomos():Hidrogeno
+}
+
+class CreadorCarbono{
+    +CrearAtomos():Carbono
+}
+
+CreadorOxigeno --|> CreadorAtomos
+CreadorCarbono --|> CreadorAtomos
+CreadorHidrogeno --|> CreadorAtomos
+
+@enduml
