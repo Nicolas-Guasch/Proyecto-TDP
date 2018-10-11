@@ -40,7 +40,7 @@ public class ObstacleMonoDirectional extends Entity<ObstacleMonoDirectional> {
 	}
 
 	public void collideWith(PlayerBullet ent) {
-
+		data.decHealth(ent.getData().getDamage());
 	}
 
 	public void collideWith(EnemyBullet ent) {

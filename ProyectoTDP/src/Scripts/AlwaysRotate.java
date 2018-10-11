@@ -7,11 +7,11 @@ public class AlwaysRotate extends Component {
 
     public AlwaysRotate(float v) 
     {
-        rot = v;        
+        rot = v;
     }
 
     @Override
     public void Update() {
-        transform().rotate(rot);
+        transform().setTop(transform().top().rotate(rot*100f));
     }
 }

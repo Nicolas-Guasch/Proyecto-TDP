@@ -25,10 +25,11 @@ public class DeathStar {
 
 
         deathStar.addComponent(new MirrorBounds(topRight.prod(1.4f), bottomLeft.prod(1.4f)));
-        deathStar.addComponent(new AlwaysLateral(Vector2.Random()));
-        deathStar.addComponent(new AlwaysRotate(0.04f));
+        deathStar.addComponent(new AlwaysLateral(Vector2.Random(0.5f)));
+        deathStar.addComponent(new AlwaysRotate(40f));
         deathStar.getTransform().setZcomponent(493);Renderizable death = new Renderizable(new SpriteData("DeathStar", new Vector2(500, 500)));
-        death.show();deathStar.addComponent(death);
+        death.show();
+        deathStar.addComponent(death);
     }
 }
 

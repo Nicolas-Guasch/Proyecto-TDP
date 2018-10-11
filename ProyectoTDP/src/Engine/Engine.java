@@ -23,13 +23,12 @@ class Engine implements IEngine
     public void SuscribeToUpdate(GameObject object)
     {
         onUpdate.Suscribe((o)->object.Update());
-        //object.getComponents().forEach((c)->onUpdate.Suscribe((o)->c.Update()));
     }
 
     @Override
     public void SuscribeToPhysicsUpdate(GameObject object)
     {
-        object.getComponents().forEach((c)->onPhysicsUpdate.Suscribe((t)->c.PhysicsUpdate(t)));
+        object.getComponents().forEach((c)->onPhysicsUpdate.Suscribe(c::PhysicsUpdate));
     }
 
     @Override
@@ -42,7 +41,7 @@ class Engine implements IEngine
     @Override
     public void SuscribeToPhysicsUpdate(Component component)
     {
-        onPhysicsUpdate.Suscribe((t)->component.PhysicsUpdate(t));
+        onPhysicsUpdate.Suscribe(component::PhysicsUpdate);
     }
 
     @Override

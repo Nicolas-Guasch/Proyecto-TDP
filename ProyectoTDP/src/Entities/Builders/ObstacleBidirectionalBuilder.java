@@ -5,16 +5,16 @@ import Entities.ObstacleBidirectional;
 
 public abstract class ObstacleBidirectionalBuilder
 {
-    protected ObstacleBidirectional bullet;
+    protected ObstacleBidirectional obst;
 
     public void create()
     {
         var go = GameObject.getRoot().addChild();
-        bullet = new ObstacleBidirectional(go);
+        obst = new ObstacleBidirectional(go);
     }
     public ObstacleBidirectional get()
     {
-        return bullet;
+        return obst;
     }
     public abstract void assembleSprite();
     public abstract void assembleCollider();

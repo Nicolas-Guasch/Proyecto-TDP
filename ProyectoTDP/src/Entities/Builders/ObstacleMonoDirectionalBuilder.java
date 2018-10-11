@@ -5,16 +5,16 @@ import Entities.ObstacleMonoDirectional;
 
 public abstract class ObstacleMonoDirectionalBuilder
 {
-    protected ObstacleMonoDirectional bullet;
+    protected ObstacleMonoDirectional obst;
 
     public void create()
     {
         var go = GameObject.getRoot().addChild();
-        bullet = new ObstacleMonoDirectional(go);
+        obst = new ObstacleMonoDirectional(go);
     }
     public ObstacleMonoDirectional get()
     {
-        return bullet;
+        return obst;
     }
     public abstract void assembleSprite();
     public abstract void assembleCollider();
