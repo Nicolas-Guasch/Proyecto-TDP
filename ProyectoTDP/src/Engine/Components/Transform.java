@@ -3,7 +3,7 @@ package Engine.Components;
 import Engine.Component;
 import Engine.EngineGetter;
 import Engine.Vector2;
-import Levels.Vector3;
+import TesterLevels.Vector3;
 
 
 /**

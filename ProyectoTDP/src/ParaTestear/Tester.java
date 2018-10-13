@@ -1,14 +1,10 @@
 package ParaTestear;
 
 import Engine.*;
-import GameData.GameSettings;
 import GameData.LostOrWin;
 import GameData.SoundManager;
 
-import Levels.LevelA;
-import Levels.LevelTester;
-import Misc.DeathStar;
-import RenderingSystem.RenderingTools;
+import TesterLevels.LevelA;
 import RenderingSystem.Window;
 
 public class Tester

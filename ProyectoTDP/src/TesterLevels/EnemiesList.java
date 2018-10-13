@@ -1,4 +1,4 @@
-package Levels;
+package TesterLevels;
 
 import Entities.Entity;
 import Entities.Ships.EnemyShip;

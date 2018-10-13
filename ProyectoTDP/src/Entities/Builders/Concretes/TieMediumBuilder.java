@@ -14,7 +14,7 @@ import Entities.EntityData;
 import Entities.Weapons.GenericalWeapon;
 import GameData.GameSettings;
 
-import Levels.LevelTester;
+import TesterLevels.LevelTester;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;

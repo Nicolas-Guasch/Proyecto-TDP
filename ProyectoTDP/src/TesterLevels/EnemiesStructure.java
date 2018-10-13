@@ -1,9 +1,6 @@
-package Levels;
+package TesterLevels;
 
 import Entities.Ships.EnemyShip;
-
-import java.util.Collection;
-import java.util.Iterator;
 
 //TODO: borrar Wave
 public abstract class EnemiesStructure implements Iterable<EnemyShip>

@@ -186,7 +186,7 @@ public class UI
         });
 
         bpm.setBounds(150,10,70,30);
-        //container.add(bpm);
+        container.add(bpm);
 
 
 

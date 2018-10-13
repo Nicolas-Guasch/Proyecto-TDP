@@ -1,4 +1,4 @@
-package Levels;
+package TesterLevels;
 
 import Entities.Builders.AbstractRewardFactory;
 import Entities.Ships.EnemyShipDirector;

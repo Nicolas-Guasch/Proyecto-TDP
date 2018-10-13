@@ -9,18 +9,15 @@ import Entities.Builders.Concretes.TieBulletBuilder;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
 import Entities.EnemyBullet;
-import Entities.Ships.EnemyShip;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.Ships.PlayerShip;
 import Entities.Weapons.EnemyShootFront;
 import Entities.Weapons.WeaponSet;
 import GameData.GameSettings;
 import IAs.*;
-import Levels.Vector3;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Tools.Random;
 import UtilsBehaviours.MirrorBounds;
 
 public class WhiteTieMaker extends EnemyShipBuilder

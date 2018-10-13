@@ -14,24 +14,21 @@ import UI.UI;
 
 public class PlayerShip extends Ship<PlayerShip> {
 
-	//TODO: is the only player on scene must be a singleton
+
 	private static PlayerShip instance;
-	public static void initialize(GameObject gameObject)
-	{
-		if(instance==null)
-		{
-			instance = new PlayerShip(gameObject);
-		}
-	}
+
 	public static PlayerShip getInstance()
 	{
-		if(instance==null)
-			throw new PlayerUninitializedException("You must initialize your player with Initialize(GameObject gameObject)");
 		return instance;
 	}
 
 	public static boolean isInitialited() {
 		return instance != null;
+	}
+
+	public static void initialize(GameObject go) {
+		assert !isInitialited();
+		instance = new PlayerShip(go);
 	}
 
 	@Override
@@ -41,6 +38,9 @@ public class PlayerShip extends Ship<PlayerShip> {
 	}
 
 	private PlayerShip(GameObject referenced) {
+
+		//super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteKeyInput(" cC")));
+
 		super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
 
 		SoundManager.Instance().setTransformListener(this.getReferenced().getTransform());

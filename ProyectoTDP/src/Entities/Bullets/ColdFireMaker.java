@@ -12,7 +12,7 @@ import Entities.TheGrimReaper;
 import GameData.GameSettings;
 import GameData.SoundManager;
 import GenericVisitor.FreezeVisitor;
-import Levels.EnemiesManager;
+import TesterLevels.EnemiesManager;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 

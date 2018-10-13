@@ -1,4 +1,4 @@
-package Levels;
+package TesterLevels;
 
 public class LevelDirector
 {

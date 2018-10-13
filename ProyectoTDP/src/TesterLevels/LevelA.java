@@ -1,4 +1,4 @@
-package Levels;
+package TesterLevels;
 
 import Engine.Component;
 import Engine.Components.Transform;
@@ -7,7 +7,6 @@ import Engine.GameObject;
 import Engine.Vector2;
 import Entities.Builders.Directors.ObstacleBidirectionalDirector;
 import Entities.Builders.Directors.ObstacleMonoDirectionalDirector;
-import Entities.ObstacleMonoDirectional;
 import Entities.Obstacles.NaveDuraObstacle;
 import Entities.Obstacles.NaveViejaImperioMaker;
 import Entities.Rewards.RewardFactory;
@@ -26,8 +25,6 @@ import Tools.Random;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Vector;
-import java.util.logging.Handler;
 
 public class LevelA extends Component implements Level
 {
@@ -56,7 +53,6 @@ public class LevelA extends Component implements Level
         initialize();
         gameObjectStuff();
         bossRunning = false;
-
     }
 
     private void gameObjectStuff()
@@ -84,11 +80,11 @@ public class LevelA extends Component implements Level
     private void initialize()
     {
         String positions = "-300,100 -100,150 100,200 300,150 " +
-                        //   "-300,200 -100,300 100,100 300,300 "+
+                           "-300,200 -100,300 100,100 300,300 "+
                            "-300,300 -100,250 100,0 300,250"; //TODO: levantar de archivo
 
         currentBuilder = new EnemyShipBuilder[]{new WhiteTieMaker(),
-                                                /*new FastTieMaker()*/};
+                                                new FastTieMaker()};
 
         currentBuilderBoss = new VaderTieMaker();
 

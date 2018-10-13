@@ -1,24 +1,11 @@
-package Levels;
+package TesterLevels;
 import Entities.*;
-import Entities.Builders.Directors.BulletDirector;
-import Entities.Builders.PlayerBulletBuilder;
-import Entities.Rewards.WeaponReward;
 import Entities.Ships.*;
-import Entities.Weapons.AngularWeapon;
-import Entities.Weapons.Weapon;
 import InputManager.AbstractDiscreteInput;
-import InputManager.DiscreteClick;
-import InputManager.DiscreteKeyInput;
 import Misc.DeathStar;
 import UI.*;
 import Engine.*;
-import Engine.Components.Transform;
-import Entities.Behaviours.PlayerLateralController;
 import Entities.Builders.Concretes.*;
-import GameData.GameSettings;
-import RenderingSystem.RenderingTools;
-
-import java.util.concurrent.Callable;
 
 
 public class LevelTester extends Component {
