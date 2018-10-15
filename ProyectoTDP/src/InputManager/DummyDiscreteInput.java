@@ -1,7 +1,7 @@
 package InputManager;
 
 import Broadcaster.*;
-
+@Deprecated
 public class DummyDiscreteInput extends AbstractDiscreteInput
 {
 

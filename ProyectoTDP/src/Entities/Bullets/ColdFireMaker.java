@@ -43,7 +43,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
         var playerT = PlayerShip.getInstance().getReferenced().getTransform();
         tr.setPosition(playerT.position3());
         tr.setTop(playerT.top());
-        bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().SoloBulletSpeed*0.5f));
+        bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().PlayerBulletSpeed *0.5f));
         // ----------- Ice Effect ------------
         bullet.setDoOnDeath(this::onColdFire);
     }

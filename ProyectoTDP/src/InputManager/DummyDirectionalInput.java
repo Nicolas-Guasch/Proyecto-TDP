@@ -2,6 +2,7 @@ package InputManager;
 
 import Engine.Vector2;
 
+@Deprecated
 public class DummyDirectionalInput extends AbstractDirectionalInput{
 
 

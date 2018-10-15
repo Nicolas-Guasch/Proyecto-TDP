@@ -1,41 +1,44 @@
 package ADTs;
 
 import Engine.Vector2;
+import UsefulInterfaces.IClonable;
 
-public class Rect {
-
-    private Vector2 topRight, bottomLeft;
+public final class Rect implements IClonable<Rect>
+{
+    private Vector2 max, min;
 
     public Rect(Vector2 topRight, Vector2 bottomLeft)
     {
-        this.topRight = topRight;
-        this.bottomLeft = bottomLeft;
+        this.max = topRight;
+        this.min = bottomLeft;
     }
 
-    public Vector2 center(){
-        return bottomLeft.sum(topRight).prod(0.5f);
-    }
-
-    public Vector2 getBottomLeft() {
-        return bottomLeft;
-    }
-
-    public Vector2 getTopRight() {
-        return topRight;
-    }
-
-    public void setTopRight(Vector2 topRight) {
-        this.topRight = topRight;
-    }
-
-    public Rect sum(Vector2 phaseShift)
+    public Vector2 center()
     {
-        return new Rect(topRight.sum(phaseShift),bottomLeft.sum(phaseShift));
+        return max.sum(min).prod(0.5f);
+    }
+
+    public Vector2 min() {
+        return min;
+    }
+
+    public Vector2 max() {
+        return max;
+    }
+
+    public Rect displaced(Vector2 phaseShift)
+    {
+        return new Rect(max.sum(phaseShift), min.sum(phaseShift));
     }
 
     public Rect prod(float factor)
     {
-        return new Rect(topRight.prod(factor),bottomLeft.prod(factor));
+        return new Rect(max.prod(factor), min.prod(factor));
     }
 
+
+    @Override
+    public Rect clone() {
+        return new Rect(min,max);
+    }
 }

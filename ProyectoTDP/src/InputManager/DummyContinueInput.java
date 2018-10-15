@@ -1,5 +1,8 @@
 package InputManager;
 
+
+
+@Deprecated
 public class DummyContinueInput extends AbstractContinueInput
 {
 

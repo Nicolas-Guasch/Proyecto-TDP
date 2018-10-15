@@ -48,7 +48,7 @@ public class BulletPlayerBuilder extends PlayerBulletBuilder
         Transform tr = bullet.getReferenced().getTransform();
         tr.setPosition(solo.position());
         tr.setTop(solo.top());
-        bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().SoloBulletSpeed));
+        bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().PlayerBulletSpeed));
         tr.setZcomponent(-10);
     }
 
