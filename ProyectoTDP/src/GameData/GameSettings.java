@@ -17,23 +17,27 @@ public class GameSettings
         return instance;
     }
 
-    public final float TieBulletSpeed = 10;
-    public final float TieSpeed = 2;
-    public final float FirstBossSpeed = 12;
-    public final float PlayerBulletSpeed = 12;
 
     private ISettingsParser parser;
-    public final short FPS = 60;
-    public final Dimension sizeWindow = new Dimension(1280,739);
 
+    // ---------- general settings -----------
+    public final short FPS; // must be 60
+    public final Dimension sizeWindow;
 
+    // --------- floats ----------
+    public final float
+            TieBulletSpeed,
+            TieSpeed,
+            FirstBossSpeed,
+            PlayerBulletSpeed;
 
     // --------- Entities Data ----------------
-    public final EntityData PlayerData;
-    public final EntityData TieData;
-    public final EntityData TieBulletData;
-    public final EntityData SoloBulletData;
-    public final EntityData FirstBossData;
+    public final EntityData
+            PlayerData,
+            TieData,
+            TieBulletData,
+            SoloBulletData,
+            FirstBossData;
 
     private GameSettings()
     {
@@ -45,8 +49,13 @@ public class GameSettings
         SoloBulletData = parser.getEntityData(EntityEnum.SoloBulletData);
         FirstBossData = parser.getEntityData(EntityEnum.FirstBossData);
 
+        TieBulletSpeed = parser.getFloat(FloatEnum.TieBulletSpeed);
+        TieSpeed = parser.getFloat(FloatEnum.TieSpeed);
+        FirstBossSpeed = parser.getFloat(FloatEnum.FirstBossSpeed);
+        PlayerBulletSpeed = parser.getFloat(FloatEnum.PlayerBulletSpeed);
 
-
+        sizeWindow = parser.sizeWindow();
+        FPS = (short) parser.FPS();
     }
 
     public Rect bounds()
