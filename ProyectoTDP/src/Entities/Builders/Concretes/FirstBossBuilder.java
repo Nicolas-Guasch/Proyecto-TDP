@@ -17,7 +17,7 @@ import GameData.GameSettings;
 
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Scripts.Hunter;
+import Scripts.HunterBullet;
 
 public class FirstBossBuilder extends EnemyShipBuilder
 {
@@ -79,7 +79,7 @@ public class FirstBossBuilder extends EnemyShipBuilder
         ship.addBehaviour(frqsh);
         ship.getReferenced().getTransform().setTop(Vector2.DOWN());
         ship.setData(GameSettings.GetInstance().FirstBossData.clone());
-        ship.addBehaviour(new Hunter(target,0.1f));
+        ship.addBehaviour(new HunterBullet(target,0.1f));
     }
 
     @Override

@@ -70,6 +70,7 @@ public class GameObject
 
     public<S extends Component> S addComponent(S c)
     {
+        assert c != null;
         Core.getInstance().waitForFrames(()->components.add(c),1);
 
         c.setGameObject(this);
