@@ -25,7 +25,7 @@ public class FreezeVisitor implements MonoVisitor<EnemyShip>
         {
             ship.getPilot().setActive(false);
             ship.getBagpack().setActive(false);
-            EngineGetter.Instance().get().WaitForFrames(() -> reactive(ship), (int)time*60);
+            EngineGetter.Instance().get().waitForFrames(() -> reactive(ship), (int)time*60);
         }
     }
 

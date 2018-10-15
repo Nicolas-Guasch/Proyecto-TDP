@@ -2,7 +2,6 @@ package Entities.Ships;
 
 import Engine.EngineGetter;
 import GenericVisitor.MonoVisitor;
-import GenericVisitor.Visitable;
 
 
 public class ShieldVisitor implements MonoVisitor<PlayerShip>
@@ -21,7 +20,7 @@ public class ShieldVisitor implements MonoVisitor<PlayerShip>
         Runnable restaurar = this::restaurar;
 
 
-        EngineGetter.Instance().get().WaitForFrames(restaurar,1200);
+        EngineGetter.Instance().get().waitForFrames(restaurar,1200);
 
     }
 

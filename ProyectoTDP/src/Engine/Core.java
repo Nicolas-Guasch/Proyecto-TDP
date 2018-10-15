@@ -54,11 +54,11 @@ final class Core
     private void clean() // Initializer
     {
         Clock.Start();
-        BroadcasterPackage<Float> packP = GetBroadcaster.GetBroadcaster();
+        BroadcasterPackage<Float> packP = ObserverSystem.getInstance().GetBroadcaster();
         invokerOnPhysicsUpdate = packP.Invoker;
         onPhysicsUpdate = packP.Broadcaster;
 
-        BroadcasterPackage packU = GetBroadcaster.GetBroadcaster();
+        BroadcasterPackage packU = ObserverSystem.getInstance().GetBroadcaster();
         invokerOnUpdate = packU.Invoker;
         onUpdate = packU.Broadcaster;
 

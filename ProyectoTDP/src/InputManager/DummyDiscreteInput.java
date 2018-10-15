@@ -11,7 +11,7 @@ public class DummyDiscreteInput extends AbstractDiscreteInput
 
     public DummyDiscreteInput()
     {
-        BroadcasterPackage<Boolean> pack = GetBroadcaster.GetBroadcaster();
+        BroadcasterPackage<Boolean> pack = ObserverSystem.getInstance().GetBroadcaster();
         invoker = pack.Invoker;
         broadcaster = pack.Broadcaster;
     }

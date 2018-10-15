@@ -24,12 +24,12 @@ public class DiscreteClick extends AbstractDiscreteInput
     }
     public void initialize(int mouseClick)
     {
-        BroadcasterPackage<Boolean> pack = GetBroadcaster.GetBroadcaster();
+        BroadcasterPackage<Boolean> pack = ObserverSystem.getInstance().GetBroadcaster();
         onAction = pack.Broadcaster;
         invokerOnAction = pack.Invoker;
         related = new ContinueClick(mouseClick);
         Dummy = new DummyComponent(this::Update);
-        EngineGetter.Instance().get().SuscribeToUpdate(Dummy);
+        EngineGetter.Instance().get().suscribeToUpdate(Dummy);
     }
 
 
@@ -57,7 +57,7 @@ public class DiscreteClick extends AbstractDiscreteInput
     {
         related.Destroy();
         onAction.Clean();
-        EngineGetter.Instance().get().UnsuscribeFromUpdate(Dummy);
+        EngineGetter.Instance().get().unsuscribeFromUpdate(Dummy);
     }
 
     public IBroadcaster<Boolean> OnAction()

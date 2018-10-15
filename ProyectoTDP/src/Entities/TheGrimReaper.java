@@ -66,7 +66,7 @@ public class TheGrimReaper extends Component
     }
     public void killIn(Entity ent, int frames)
     {
-        EngineGetter.Instance().get().WaitForFrames(()-> ent.getData().setHealth(-1),frames);
+        EngineGetter.Instance().get().waitForFrames(()-> ent.getData().setHealth(-1),frames);
     }
     public void KillThemAll()
     {

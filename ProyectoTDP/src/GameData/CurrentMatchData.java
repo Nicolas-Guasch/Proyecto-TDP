@@ -22,7 +22,7 @@ public class CurrentMatchData
 
     private CurrentMatchData()
     {
-        BroadcasterPackage<Integer> pack = GetBroadcaster.GetBroadcaster();
+        BroadcasterPackage<Integer> pack = ObserverSystem.getInstance().GetBroadcaster();
         invokerScoreChanges = pack.Invoker;
         OnScoreChanges = pack.Broadcaster;
     }

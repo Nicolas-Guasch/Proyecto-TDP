@@ -21,7 +21,7 @@ public class Tester
         //new DeathStar().get();
 
 
-        eng.SuscribeToUpdate(window);
+        eng.suscribeToUpdate(window);
         SoundManager.Instance().ImperialMarchPlay();
         window.Show();
         eng.Start();
