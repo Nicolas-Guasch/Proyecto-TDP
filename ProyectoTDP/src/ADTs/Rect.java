@@ -1,15 +1,19 @@
-package UtilsBehaviours;
+package ADTs;
 
 import Engine.Vector2;
 
-public class Bounds {
+public class Rect {
 
     private Vector2 topRight, bottomLeft;
 
-    public Bounds(Vector2 topRight, Vector2 bottomLeft)
+    public Rect(Vector2 topRight, Vector2 bottomLeft)
     {
         this.topRight = topRight;
         this.bottomLeft = bottomLeft;
+    }
+
+    public Vector2 center(){
+        return bottomLeft.sum(topRight).prod(0.5f);
     }
 
     public Vector2 getBottomLeft() {
@@ -24,14 +28,14 @@ public class Bounds {
         this.topRight = topRight;
     }
 
-    public Bounds sum(Vector2 phaseShift)
+    public Rect sum(Vector2 phaseShift)
     {
-        return new Bounds(topRight.sum(phaseShift),bottomLeft.sum(phaseShift));
+        return new Rect(topRight.sum(phaseShift),bottomLeft.sum(phaseShift));
     }
 
-    public Bounds prod(float factor)
+    public Rect prod(float factor)
     {
-        return new Bounds(topRight.prod(factor),bottomLeft.prod(factor));
+        return new Rect(topRight.prod(factor),bottomLeft.prod(factor));
     }
 
 }

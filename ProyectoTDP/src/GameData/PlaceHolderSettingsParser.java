@@ -13,20 +13,20 @@ public class PlaceHolderSettingsParser implements ISettingsParser
     private final EntityData SoloBulletData = new EntityData(1,10,0);
     private final EntityData FirstBossData = new EntityData(800,1500,50);
 
-    private Map<ParseEntityData,EntityData> mapeo;
+    private Map<EntityEnum,EntityData> mapeo;
 
     public PlaceHolderSettingsParser()
     {
         mapeo = new TreeMap<>();
-        mapeo.put(ParseEntityData.PlayerData,PlayerData);
-        mapeo.put(ParseEntityData.TieData,TieData);
-        mapeo.put(ParseEntityData.TieBulletData,TieBulletData);
-        mapeo.put(ParseEntityData.SoloBulletData,SoloBulletData);
-        mapeo.put(ParseEntityData.FirstBossData,FirstBossData);
+        mapeo.put(EntityEnum.PlayerData,PlayerData);
+        mapeo.put(EntityEnum.TieData,TieData);
+        mapeo.put(EntityEnum.TieBulletData,TieBulletData);
+        mapeo.put(EntityEnum.SoloBulletData,SoloBulletData);
+        mapeo.put(EntityEnum.FirstBossData,FirstBossData);
     }
 
     @Override
-    public EntityData getEntityData(ParseEntityData ref)
+    public EntityData getEntityData(EntityEnum ref)
     {
         return mapeo.get(ref);
     }

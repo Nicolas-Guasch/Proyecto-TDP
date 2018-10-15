@@ -46,7 +46,6 @@ public class DiscreteKeyInput extends AbstractDiscreteInput
         Dummy.setActive(active);
     }
 
-
     public void Destroy()
     {
         related.Destroy();

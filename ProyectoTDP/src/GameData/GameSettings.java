@@ -3,7 +3,7 @@ package GameData;
 import Engine.Vector2;
 import Entities.EntityData;
 import RenderingSystem.RenderingTools;
-import UtilsBehaviours.Bounds;
+import UtilsBehaviours.Rect;
 
 import java.awt.*;
 
@@ -26,15 +26,17 @@ public class GameSettings
 
 
     private GameSettings(){
-        //TODO:
-        //recordar que hay que
-        //levantar un archivo con las settings aqui
+
         parser = new PlaceHolderSettingsParser();
-        PlayerData = parser.getEntityData(ParseEntityData.PlayerData);
-        TieData = parser.getEntityData(ParseEntityData.TieData);
-        TieBulletData = parser.getEntityData(ParseEntityData.TieBulletData);
-        SoloBulletData = parser.getEntityData(ParseEntityData.SoloBulletData);
-        FirstBossData = parser.getEntityData(ParseEntityData.FirstBossData);
+
+
+        PlayerData = parser.getEntityData(EntityEnum.PlayerData);
+        TieData = parser.getEntityData(EntityEnum.TieData);
+        TieBulletData = parser.getEntityData(EntityEnum.TieBulletData);
+        SoloBulletData = parser.getEntityData(EntityEnum.SoloBulletData);
+        FirstBossData = parser.getEntityData(EntityEnum.FirstBossData);
+
+
 
 
     }
@@ -45,16 +47,15 @@ public class GameSettings
 
     // ------ Configurations -----
     public final short FPS = 60;
-    public final Color UIbgColor = new Color(35, 103, 191);
     public final Dimension sizeWindow = new Dimension(1280,739);
 
 
-    public Bounds bounds()
+    public Rect bounds()
     {
-        Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
+        Vector2 bottomRight = RenderingTools.CanvasToWorld(sizeWindow);
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();
-        return new Bounds(topRight,bottomLeft);
+        return new Rect(topRight,bottomLeft);
     }
 
     // --------- Entities Data ----------------
@@ -72,10 +73,11 @@ public class GameSettings
     public final EntityData TieBulletData ;
     public final EntityData SoloBulletData ;
     public final EntityData FirstBossData ;
-
 }
 
-enum ParseEntityData{
+
+
+enum EntityEnum {
     PlayerData,
     TieData,
     TieBulletData,

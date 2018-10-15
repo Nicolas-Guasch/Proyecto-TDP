@@ -4,6 +4,6 @@ import Entities.EntityData;
 
 public interface ISettingsParser
 {
-    EntityData getEntityData(ParseEntityData ref);
+    EntityData getEntityData(EntityEnum ref);
 }
 
