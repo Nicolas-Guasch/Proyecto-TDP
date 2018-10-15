@@ -4,12 +4,12 @@ import Engine.Component;
 import Engine.Components.Transform;
 import Engine.Vector2;
 
-public class Hunter extends Component
+public class HunterBullet extends Component
 {
     private final float speed;
     private Transform toFollow;
 
-    public Hunter(Transform toFollow, float speed) {
+    public HunterBullet(Transform toFollow, float speed) {
         this.toFollow = toFollow;
         this.speed  =speed;
     }

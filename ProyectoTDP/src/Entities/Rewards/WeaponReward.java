@@ -10,6 +10,7 @@ import Entities.Weapons.Weapon;
 import GenericVisitor.MonoVisitor;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
+import Scripts.AlwaysLateral;
 import Scripts.Directionable;
 
 public class WeaponReward extends Reward<WeaponReward>
@@ -28,7 +29,7 @@ public class WeaponReward extends Reward<WeaponReward>
         var hitBox = HitBox.getOne(100,100,this);
         HitBoxesManager.getInstance().addHitBox(hitBox,HitBoxesManager.REWARDS);
         referenced.addHitBox(hitBox);
-        referenced.addComponent(new Directionable(new Vector2(0,-5)));
+        referenced.addComponent(new AlwaysLateral(new Vector2(0,-5)));
         renderer.show();
     }
 
