@@ -90,7 +90,7 @@ public final class Transform extends Component
 
     public void DoMove(Vector2 vector2, int inframes) {
         //TODO: hacer tipo tween
-        EngineGetter.Instance().get().WaitForFrames(()->
+        EngineGetter.Instance().get().waitForFrames(()->
         {
             setPosition(vector2);
         },inframes);

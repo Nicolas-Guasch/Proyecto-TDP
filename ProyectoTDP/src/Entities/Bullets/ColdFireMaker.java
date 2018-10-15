@@ -64,7 +64,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
         rend.show();
         var t = bullet.getReferenced().getTransform();
         g.getTransform().setPosition(t.position3());
-        EngineGetter.Instance().get().WaitForFrames(g::Destroy,10);
+        EngineGetter.Instance().get().waitForFrames(g::Destroy,10);
         EnemiesManager.getInstance().computeOperation(new FreezeVisitor(5, t, 200));
     }
 }

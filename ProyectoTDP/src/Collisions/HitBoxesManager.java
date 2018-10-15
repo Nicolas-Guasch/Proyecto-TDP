@@ -15,7 +15,7 @@ public class HitBoxesManager extends Component
     public static HitBoxesManager getInstance(){
         if (instance == null) {
             instance = new HitBoxesManager();
-            EngineGetter.Instance().get().SuscribeToUpdate(instance);
+            EngineGetter.Instance().get().suscribeToUpdate(instance);
         }
         return instance;
     }

@@ -110,7 +110,7 @@ public class LevelA extends Component implements Level
             createEnemies();
             createBarricades();
         };
-        EngineGetter.Instance().get().WaitForFrames(action,480);
+        EngineGetter.Instance().get().waitForFrames(action,480);
     }
 
     private void createBarricades() {
@@ -238,7 +238,7 @@ public class LevelA extends Component implements Level
             SoundManager.Instance().ImperialMarchStop();
 
         };
-        EngineGetter.Instance().get().WaitForFrames(musicStuff,120);
+        EngineGetter.Instance().get().waitForFrames(musicStuff,120);
 
         Runnable makeTheBoss = ()->{
             setActive(true);
@@ -250,7 +250,7 @@ public class LevelA extends Component implements Level
             ship.getReferenced().getTransform().setPosition(new Vector3(0,400,z));
             TheGrimReaper.Instance().add(ship);
         };
-        EngineGetter.Instance().get().WaitForFrames(makeTheBoss,120);
+        EngineGetter.Instance().get().waitForFrames(makeTheBoss,120);
 
     }
 

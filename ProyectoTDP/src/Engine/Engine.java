@@ -20,38 +20,38 @@ class Engine implements IEngine
 
 
     @Override
-    public void SuscribeToUpdate(GameObject object)
+    public void suscribeToUpdate(GameObject object)
     {
         onUpdate.Suscribe((o)->object.Update());
     }
 
     @Override
-    public void SuscribeToPhysicsUpdate(GameObject object)
+    public void suscribeToPhysicsUpdate(GameObject object)
     {
         object.getComponents().forEach((c)->onPhysicsUpdate.Suscribe(c::PhysicsUpdate));
     }
 
     @Override
-    public void SuscribeToUpdate(Component component)
+    public void suscribeToUpdate(Component component)
     {
         onUpdate.Suscribe((o)->component.Update());
     }
     //TODO: guardar une HashMap de los components para desuscribirlos mas fasil luego
 
     @Override
-    public void SuscribeToPhysicsUpdate(Component component)
+    public void suscribeToPhysicsUpdate(Component component)
     {
         onPhysicsUpdate.Suscribe(component::PhysicsUpdate);
     }
 
     @Override
-    public void WaitForFrames(Runnable action, int frames)
+    public void waitForFrames(Runnable action, int frames)
     {
         core.waitForFrames(action,frames);
     }
 
     @Override
-    public void WaitForSeconds(Runnable action, float seconds)
+    public void waitForSeconds(Runnable action, float seconds)
     {
         core.waitForSeconds(action,seconds);
     }
@@ -92,25 +92,25 @@ class Engine implements IEngine
     }
 
     @Override
-    public void UnsuscribeFromPhysicsUpdate(Component component)
+    public void unsuscribeFromPhysicsUpdate(Component component)
     {
 
     }
 
     @Override
-    public void UnsuscribeFromUpdate(Component component)
+    public void unsuscribeFromUpdate(Component component)
     {
 
     }
 
     @Override
-    public void UnsuscribeFromPhysicsUpdate(GameObject object)
+    public void unsuscribeFromPhysicsUpdate(GameObject object)
     {
 
     }
 
     @Override
-    public void UnsuscribeFromUpdate(GameObject object)
+    public void unsuscribeFromUpdate(GameObject object)
     {
 
     }

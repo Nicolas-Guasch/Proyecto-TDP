@@ -18,12 +18,12 @@ public class DiscreteKeyInput extends AbstractDiscreteInput
 
     public DiscreteKeyInput(String chars)
     {
-        BroadcasterPackage<Boolean> pack = GetBroadcaster.GetBroadcaster();
+        BroadcasterPackage<Boolean> pack = ObserverSystem.getInstance().GetBroadcaster();
         onAction = pack.Broadcaster;
         invokerOnAction = pack.Invoker;
         related = new ContinueKeyInput(chars);
         Dummy = new DummyComponent(this::Update);
-        EngineGetter.Instance().get().SuscribeToUpdate(Dummy);
+        EngineGetter.Instance().get().suscribeToUpdate(Dummy);
     }
 
 
@@ -51,7 +51,7 @@ public class DiscreteKeyInput extends AbstractDiscreteInput
     {
         related.Destroy();
         onAction.Clean();
-        EngineGetter.Instance().get().UnsuscribeFromUpdate(Dummy);
+        EngineGetter.Instance().get().unsuscribeFromUpdate(Dummy);
     }
 
     public IBroadcaster<Boolean> OnAction()
