@@ -4,7 +4,7 @@ import Engine.GameObject;
 import Entities.EnemyBullet;
 import Entities.Rewards.Reward;
 import Entities.Weapons.PlayerBagpack;
-import GameData.LostOrWin;
+import GameData.MatchResult;
 import Audio.SoundManager;
 import GenericVisitor.MonoVisitor;
 import InputManager.DiscreteClick;
@@ -33,7 +33,7 @@ public class PlayerShip extends Ship<PlayerShip> {
 	@Override
 	public void onDeath() {
 		super.onDeath();
-		LostOrWin.getInstance().MakeGameOver();
+		MatchResult.getInstance().EmpireWins();
 	}
 
 	private PlayerShip(GameObject referenced) {

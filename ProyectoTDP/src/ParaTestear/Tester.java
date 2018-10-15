@@ -1,7 +1,7 @@
 package ParaTestear;
 
 import Engine.*;
-import GameData.LostOrWin;
+import GameData.MatchResult;
 import Audio.SoundManager;
 
 import TesterLevels.LevelA;
@@ -28,7 +28,7 @@ public class Tester
     }
 
     private static void ganar() {
-        LostOrWin.getInstance().MakeYouWin();
+        MatchResult.getInstance().AllianceWins();
         System.out.println("ganaste");
     }
 

@@ -21,10 +21,22 @@ public class GameSettings
         }
         return instance;
     }
+
+    private ISettingsParser parser;
+
+
     private GameSettings(){
         //TODO:
         //recordar que hay que
         //levantar un archivo con las settings aqui
+        parser = new PlaceHolderSettingsParser();
+        PlayerData = parser.getEntityData(ParseEntityData.PlayerData);
+        TieData = parser.getEntityData(ParseEntityData.TieData);
+        TieBulletData = parser.getEntityData(ParseEntityData.TieBulletData);
+        SoloBulletData = parser.getEntityData(ParseEntityData.SoloBulletData);
+        FirstBossData = parser.getEntityData(ParseEntityData.FirstBossData);
+
+
     }
 
 
@@ -55,10 +67,18 @@ public class GameSettings
 
 
 
-    public final EntityData PlayerData = new EntityData(5000,150,7);
-    public final EntityData TieData = new EntityData(100,25,0);
-    public final EntityData TieBulletData = new EntityData(1,15,0);
-    public final EntityData SoloBulletData = new EntityData(1,10,0);
-    public final EntityData FirstBossData = new EntityData(800,1500,50);
+    public final EntityData PlayerData ;
+    public final EntityData TieData ;
+    public final EntityData TieBulletData ;
+    public final EntityData SoloBulletData ;
+    public final EntityData FirstBossData ;
 
+}
+
+enum ParseEntityData{
+    PlayerData,
+    TieData,
+    TieBulletData,
+    SoloBulletData,
+    FirstBossData,
 }

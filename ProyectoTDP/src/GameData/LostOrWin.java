@@ -1,4 +1,3 @@
-
 package GameData;
 
 import Audio.SoundManager;
@@ -7,34 +6,35 @@ import Engine.While;
 import Entities.TheGrimReaper;
 import UI.UI;
 
-public class LostOrWin
-{
-    private static LostOrWin instance;
+public class LostOrWin implements ILostOrWin{
 
-    public static LostOrWin getInstance()
+    private boolean made;
+
+    public LostOrWin()
     {
-        if(instance == null)
-        {
-            instance = new LostOrWin();
+        made = false;
+    }
+
+    public void AllianceWins()
+    {
+        if (!made) {
+            SoundManager.Instance().YouWin();
+            UI.getInstance().win();
+            EngineGetter.Instance().get().waitForFrames(() -> System.exit(0), 500);
         }
-        return instance;
-    }
-    private LostOrWin(){}
-
-    public void MakeYouWin()
-    {
-        SoundManager.Instance().YouWin();
-        UI.getInstance().win();
-        EngineGetter.Instance().get().waitForFrames(()->System.exit(0),500);
+        made = true;
     }
 
-    public void MakeGameOver()
+    public void EmpireWins()
     {
-        SoundManager.Instance().gameOver();
-        UI.getInstance().gameOver();
-        TheGrimReaper.Instance().KillThemAll();
-        new While(()->true,() -> TheGrimReaper.Instance().KillThemAll()).Excecute();
-        EngineGetter.Instance().get().waitForFrames(()->System.exit(0),500);
+        if (!made) {
+            SoundManager.Instance().gameOver();
+            UI.getInstance().gameOver();
+            TheGrimReaper.Instance().KillThemAll();
+            new While(() -> true, () -> TheGrimReaper.Instance().KillThemAll()).Excecute();
+            EngineGetter.Instance().get().waitForFrames(() -> System.exit(0), 500);
+        }
+        made = true;
     }
 
 
