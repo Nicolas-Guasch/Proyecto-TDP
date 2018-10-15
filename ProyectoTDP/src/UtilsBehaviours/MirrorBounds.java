@@ -1,7 +1,7 @@
 package UtilsBehaviours;
 
 import Engine.Component;
-import Engine.Vector2;
+import ADTs.Vector2;
 
 public class MirrorBounds extends Component
 {

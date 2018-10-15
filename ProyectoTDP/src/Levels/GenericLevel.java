@@ -4,8 +4,7 @@ import Engine.Component;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.Ships.EnemyShipDirector;
-import Entities.Ships.PlayerShip;
-import TesterLevels.Vector3;
+import ADTs.Vector3;
 
 import java.util.Collection;
 

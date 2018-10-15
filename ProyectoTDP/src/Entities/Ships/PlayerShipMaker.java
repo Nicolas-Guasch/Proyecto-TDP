@@ -2,7 +2,7 @@ package Entities.Ships;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Engine.Vector2;
+import ADTs.Vector2;
 import Entities.Builders.Concretes.BulletPlayerBuilder;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.PlayerBulletBuilder;
@@ -13,7 +13,7 @@ import GameData.GameSettings;
 import IAs.*;
 import InputManager.DirectionalMouse;
 import InputManager.DirectionalWASD;
-import TesterLevels.Vector3;
+import ADTs.Vector3;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;

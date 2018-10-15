@@ -1,6 +1,5 @@
 package ADTs;
 
-import Engine.Vector2;
 import UsefulInterfaces.IClonable;
 
 public final class Rect implements IClonable<Rect>

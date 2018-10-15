@@ -3,9 +3,8 @@ package Collisions;
 import Engine.Component;
 import Engine.Components.Transform;
 import Engine.GameObject;
-import Engine.Vector2;
+import ADTs.Vector2;
 import Entities.Entity;
-import Entities.Rewards.WeaponReward;
 
 import java.util.Collection;
 import java.util.Vector;

@@ -2,12 +2,10 @@ package Entities.Obstacles;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Engine.Vector2;
 import Entities.Builders.ObstacleBidirectionalBuilder;
 import Entities.EntityData;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Scripts.AlwaysLateral;
 
 public class NaveDuraObstacle extends ObstacleBidirectionalBuilder {
 

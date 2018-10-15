@@ -1,6 +1,6 @@
 package TesterLevels;
 
-import Engine.Vector2;
+import ADTs.Vector2;
 import Engine.While;
 import Entities.Builders.AbstractRewardFactory;
 import Entities.Ships.EnemyShipDirector;

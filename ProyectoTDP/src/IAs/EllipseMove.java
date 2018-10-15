@@ -1,6 +1,6 @@
 package IAs;
 
-import Engine.Vector2;
+import ADTs.Vector2;
 import Entities.Entity;
 
 public class EllipseMove extends ParametricMove {

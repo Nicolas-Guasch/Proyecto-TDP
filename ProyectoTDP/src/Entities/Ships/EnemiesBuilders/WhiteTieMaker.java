@@ -2,7 +2,7 @@ package Entities.Ships.EnemiesBuilders;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Engine.Vector2;
+import ADTs.Vector2;
 import Entities.Behaviours.FireFrequency;
 import Entities.Behaviours.LookTarget;
 import Entities.Builders.Concretes.TieBulletBuilder;

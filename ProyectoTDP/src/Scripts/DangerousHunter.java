@@ -2,7 +2,6 @@ package Scripts;
 
 import Engine.Component;
 import Engine.Components.Transform;
-import Engine.Vector2;
 
 public class DangerousHunter extends Component
 {

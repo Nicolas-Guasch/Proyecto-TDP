@@ -1,7 +1,7 @@
 package Misc;
 
 import Engine.GameObject;
-import Engine.Vector2;
+import ADTs.Vector2;
 import GameData.GameSettings;
 import Scripts.AlwaysLateral;
 import Scripts.AlwaysRotate;

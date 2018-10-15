@@ -1,6 +1,6 @@
 package InputManager;
 
-import Engine.Vector2;
+import ADTs.Vector2;
 
 public class DirectionalWASD extends AbstractDirectionalInput
 {

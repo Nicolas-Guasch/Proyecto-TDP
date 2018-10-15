@@ -2,7 +2,7 @@ package Entities.Builders.Concretes;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Engine.Vector2;
+import ADTs.Vector2;
 import Entities.Behaviours.FireFrequency;
 import Entities.Behaviours.HorizontalMoveShip;
 import Entities.Behaviours.LookTarget;

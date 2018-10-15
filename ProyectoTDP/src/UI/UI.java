@@ -3,7 +3,7 @@ package UI;
 import Assets.AssetStore;
 import Engine.DoWhen;
 import Engine.GameObject;
-import Engine.Vector2;
+import ADTs.Vector2;
 import GameData.GameSettings;
 import Scripts.AlwaysLateral;
 import RenderingSystem.Renderizable;
@@ -34,7 +34,7 @@ public class UI
     private JComponent uiPanel;
 
     private JLabel pausePrompt;
-    private JLabel loosePrompt;
+    private JLabel losePrompt;
 
     private JLabel score;
 

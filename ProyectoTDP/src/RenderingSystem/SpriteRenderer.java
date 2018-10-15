@@ -1,7 +1,7 @@
 package RenderingSystem;
 
 import Engine.Components.Transform;
-import Engine.Vector2;
+import ADTs.Vector2;
 
 import javax.swing.*;
 import java.awt.*;

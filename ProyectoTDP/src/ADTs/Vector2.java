@@ -1,4 +1,4 @@
-package Engine;
+package ADTs;
 
 import java.util.Random;
 
@@ -24,9 +24,10 @@ public class Vector2
 
     public static Vector2 Random()
     {
-        float x = new Random(UP().hashCode()).nextFloat()*191/new Random().nextInt();
-        float y = new Random(DOWN().hashCode()).nextFloat()*System.nanoTime()*7/new Random().nextInt();
-        return new Vector2(x,y).versor();
+        float x = (float)Math.random()*2.0f-1.0f;
+        float y = (float)Math.sqrt(1-x*x);
+        if(Math.random()<0.5)y*=-1;
+        return new Vector2(x,y);
     }
 
     public static Vector2 Random(float large)

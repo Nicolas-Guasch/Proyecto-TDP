@@ -1,6 +1,4 @@
-package TesterLevels;
-
-import Engine.Vector2;
+package ADTs;
 
 public class Vector3{
     private final float z;
