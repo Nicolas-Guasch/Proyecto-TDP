@@ -16,7 +16,6 @@ class Score extends SpriteRenderer
     {
         setForeground(new Color(200,200,200));
         setFont(Font.decode("Star Jedi Hollow-40"));
-
         CurrentMatchData.getMatchData().OnScoreChanges.Suscribe(this::readChange);
     }
 
