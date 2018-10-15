@@ -82,6 +82,13 @@ public final class HitBox extends Component {
         if(isFar(other.transform) || other.distToCenter(transform.position()) > dimensions.length() + other.diagonalLength())
             return null;
 
+        Vector2 CollisionPoint = vertexInside(other);
+        if(CollisionPoint == null)CollisionPoint = other.vertexInside(this);
+        if(CollisionPoint != null)return new CollisionData(entity, other.entity, CollisionPoint);
+        return null;
+    }
+
+    private Vector2 vertexInside(HitBox other){
         var bottom = bottomSide();
         var left = leftSide();
         var vertex = bottomLeft();
@@ -91,12 +98,11 @@ public final class HitBox extends Component {
             var prodLeft = left.scalarProd(vertToPto);
             if (0 <= prodBot && prodBot <= bottom.lengthSq() && 0 <= prodLeft && prodLeft <= left.lengthSq())// si colisiona:
             {
-                return new CollisionData(entity, other.entity, pto);
+                return pto;
             }
         }
         return null;
     }
-
 
 
     private Vector2 bottomLeft() {
