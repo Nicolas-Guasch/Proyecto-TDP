@@ -16,7 +16,7 @@ import Entities.Ships.EnemiesBuilders.VaderTieMaker;
 import Entities.Ships.EnemiesBuilders.WhiteTieMaker;
 
 import Entities.TheGrimReaper;
-import GameData.SoundManager;
+import Audio.SoundManager;
 import IAs.*;
 import InputManager.DirectionalMouse;
 import InputManager.DirectionalWASD;

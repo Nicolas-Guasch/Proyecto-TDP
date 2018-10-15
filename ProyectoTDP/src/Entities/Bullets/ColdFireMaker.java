@@ -10,7 +10,7 @@ import Entities.Builders.PlayerBulletBuilder;
 import Entities.Ships.PlayerShip;
 import Entities.TheGrimReaper;
 import GameData.GameSettings;
-import GameData.SoundManager;
+import Audio.SoundManager;
 import GenericVisitor.FreezeVisitor;
 import TesterLevels.EnemiesManager;
 import RenderingSystem.Renderizable;

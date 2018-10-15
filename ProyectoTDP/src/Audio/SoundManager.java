@@ -1,11 +1,10 @@
-package GameData;
+package Audio;
 
 
 
 import Engine.Components.Transform;
 import Engine.Vector2;
 import SoundSystem.*;
-import Audio.AudioManager;
 import Tools.Random;
 
 import java.util.Collection;

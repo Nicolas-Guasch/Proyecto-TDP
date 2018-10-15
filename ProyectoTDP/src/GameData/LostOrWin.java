@@ -1,6 +1,7 @@
 
 package GameData;
 
+import Audio.SoundManager;
 import Engine.EngineGetter;
 import Engine.While;
 import Entities.TheGrimReaper;

@@ -7,7 +7,7 @@ import Engine.Vector2;
 import Entities.Behaviours.SimpleBullet;
 import Entities.Builders.PlayerBulletBuilder;
 import GameData.GameSettings;
-import GameData.SoundManager;
+import Audio.SoundManager;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 

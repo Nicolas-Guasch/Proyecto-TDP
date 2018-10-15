@@ -1,6 +1,6 @@
 package Engine;
 
-import GameData.SoundManager;
+import Audio.SoundManager;
 import RenderingSystem.Window;
 
 import java.awt.event.KeyEvent;

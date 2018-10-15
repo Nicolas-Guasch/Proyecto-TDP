@@ -2,7 +2,7 @@ package ParaTestear;
 
 import Engine.*;
 import GameData.LostOrWin;
-import GameData.SoundManager;
+import Audio.SoundManager;
 
 import TesterLevels.LevelA;
 import RenderingSystem.Window;
