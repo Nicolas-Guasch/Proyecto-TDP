@@ -15,14 +15,9 @@ import java.util.concurrent.Callable;
 
 public class UI
 {
-    // ----------------------------
+
 
     private static UI instance;
-    private final JComponent lifeBar;
-    private final int lifeBarHeight = 180;
-    private final float lifeMax = GameSettings.GetInstance().PlayerData.getHealth();
-
-
     public static UI getInstance()
     {
         if(instance==null)
@@ -31,6 +26,14 @@ public class UI
         }
         return instance;
     }
+
+
+
+
+
+
+    private final ShipStatus ShipStatus;
+
     private JComponent uiPanel;
 
     private JLabel pausePrompt;
@@ -68,14 +71,8 @@ public class UI
 
 
         // --------- LifeBar -------------
-
-        var jl =new JLabel(AssetStore.getIcon("life"));
-        jl.setHorizontalAlignment(SwingConstants.LEFT);
-
-        lifeBar = jl;
-        lifeBar.setBounds(20,20,lifeBarHeight,30);
-        uiPanel.add(lifeBar);
-
+        ShipStatus = new ShipStatus();
+        ShipStatus.foreach(uiPanel::add);
 
 
         // ------------- score ---------
@@ -83,6 +80,7 @@ public class UI
         score = new Score();
         score.setBounds(650,10,300,50);
         uiPanel.add(score);
+
     }
 
     private Callable<Boolean> moviblePrompt(SpriteData prompt)
@@ -124,7 +122,7 @@ public class UI
 
     public void PlayerLife(int life)
     {
-        lifeBar.setBounds(20,20, (int) ((life/lifeMax)*lifeBarHeight),30);
+        ShipStatus.PlayerLife(life);
     }
 
 
