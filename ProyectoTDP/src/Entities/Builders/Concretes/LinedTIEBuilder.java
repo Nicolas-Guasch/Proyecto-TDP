@@ -2,7 +2,7 @@ package Entities.Builders.Concretes;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Engine.Vector2;
+import ADTs.Vector2;
 import Entities.Ships.PlayerShip;
 import Entities.Weapons.EnemyShootFront;
 import Entities.Behaviours.FireFrequency;

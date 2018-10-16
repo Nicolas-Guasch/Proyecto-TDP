@@ -1,7 +1,7 @@
 package GameData;
 
 import ADTs.Rect;
-import Engine.Vector2;
+import ADTs.Vector2;
 import Entities.EntityData;
 import RenderingSystem.RenderingTools;
 

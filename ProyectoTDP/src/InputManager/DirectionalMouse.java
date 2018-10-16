@@ -1,11 +1,10 @@
 package InputManager;
 
 import Engine.Components.Transform;
-import Engine.Vector2;
+import ADTs.Vector2;
 import RenderingSystem.RenderingTools;
 
 import java.awt.*;
-import java.awt.event.MouseListener;
 
 public class DirectionalMouse extends AbstractDirectionalInput
 {

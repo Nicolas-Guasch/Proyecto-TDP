@@ -1,7 +1,7 @@
 package RenderingSystem;
 
 import Engine.Component;
-import Engine.Vector2;
+import ADTs.Vector2;
 import GameData.GameSettings;
 
 import java.awt.*;

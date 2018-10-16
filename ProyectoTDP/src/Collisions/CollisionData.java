@@ -1,6 +1,6 @@
 package Collisions;
 
-import Engine.Vector2;
+import ADTs.Vector2;
 import Entities.Entity;
 
 public class CollisionData

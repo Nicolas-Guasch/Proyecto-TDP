@@ -3,7 +3,7 @@ package Entities.Rewards;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import Engine.GameObject;
-import Engine.Vector2;
+import ADTs.Vector2;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
 import Entities.Weapons.Weapon;

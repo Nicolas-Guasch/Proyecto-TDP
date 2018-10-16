@@ -2,8 +2,8 @@ package Engine.Components;
 
 import Engine.Component;
 import Engine.EngineGetter;
-import Engine.Vector2;
-import TesterLevels.Vector3;
+import ADTs.Vector2;
+import ADTs.Vector3;
 
 
 /**

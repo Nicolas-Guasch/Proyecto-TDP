@@ -1,8 +1,7 @@
 package Scripts;
 
 import Engine.Component;
-import Engine.Components.Transform;
-import Engine.Vector2;
+import ADTs.Vector2;
 
 
 // lo usa la deathstar, no tocar!!

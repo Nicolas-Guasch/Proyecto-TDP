@@ -1,7 +1,7 @@
 package InputManager;
 
 import Engine.Components.Transform;
-import Engine.Vector2;
+import ADTs.Vector2;
 
 public class PointToPointDirectional extends AbstractDirectionalInput
 {

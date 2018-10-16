@@ -2,10 +2,9 @@ package RenderingSystem;
 
 import Assets.AssetStore;
 
-import Engine.Vector2;
+import ADTs.Vector2;
 
 import javax.swing.*;
-import java.net.URL;
 
 public class SpriteData
 {

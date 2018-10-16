@@ -3,7 +3,7 @@ package Entities.Builders.Concretes;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import Engine.Components.Transform;
-import Engine.Vector2;
+import ADTs.Vector2;
 import Entities.Builders.EnemyBulletBuilder;
 import GameData.GameSettings;
 import Audio.SoundManager;
