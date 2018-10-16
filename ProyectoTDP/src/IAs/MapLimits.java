@@ -15,7 +15,7 @@ public class MapLimits extends AIQueryDecorator
     }
 
     private Vector2 pos(Entity ent){
-        return ent.getReferenced().getTransform().position();
+        return ent.getReferenced().transform().position();
     }
 
     @Override

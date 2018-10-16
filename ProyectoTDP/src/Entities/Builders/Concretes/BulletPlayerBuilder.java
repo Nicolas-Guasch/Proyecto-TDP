@@ -45,10 +45,10 @@ public class BulletPlayerBuilder extends PlayerBulletBuilder
 
     @Override
     public void assembleBehaviours() {
-        Transform tr = bullet.getReferenced().getTransform();
+        Transform tr = bullet.getReferenced().transform();
         tr.setPosition(solo.position());
         tr.setTop(solo.top());
-        bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().PlayerBulletSpeed));
+        bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().PlayerBulletSpeed ));
         tr.setZcomponent(-10);
     }
 

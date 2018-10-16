@@ -4,7 +4,6 @@ import Assets.AssetStore;
 import Engine.DoWhen;
 import Engine.GameObject;
 import ADTs.Vector2;
-import GameData.GameSettings;
 import Scripts.AlwaysLateral;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
@@ -88,12 +87,12 @@ public class UI
         GameObject goprompt = GameObject.getRoot().addChild();
         AlwaysLateral al = new AlwaysLateral(Vector2.UP(3));
         Renderizable rend = new Renderizable(prompt);
-        goprompt.getTransform().setZcomponent(2);
+        goprompt.transform().setZcomponent(2);
         goprompt.addComponent(al);
         goprompt.setRenderer(rend);
-        goprompt.getTransform().setPosition(Vector2.DOWN(600));
+        goprompt.transform().setPosition(Vector2.DOWN(600));
         rend.show();
-        Callable<Boolean> completed = ()-> goprompt.getTransform().position().y()>500;
+        Callable<Boolean> completed = ()-> goprompt.transform().position().y()>500;
         new DoWhen(completed, goprompt::Destroy);
         return completed;
     }

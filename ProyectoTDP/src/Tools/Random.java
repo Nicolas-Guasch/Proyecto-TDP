@@ -22,6 +22,11 @@ public class Random
      */
     public static int value(int min,int max)
     {
+        if(max<min){
+            int aux = min;
+            min = max;
+            max = aux;
+        }
         int r = (max-min);
         return (int)((Math.abs((System.currentTimeMillis()*max>>7<<min)*System.nanoTime()))%r)+min;
     }

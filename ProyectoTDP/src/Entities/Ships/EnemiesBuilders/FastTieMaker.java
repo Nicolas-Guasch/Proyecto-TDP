@@ -45,8 +45,8 @@ public class FastTieMaker extends EnemyShipBuilder
 
         // -------------- creo el arma y la agrego ---------------
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
-        director.setBuilder(new TieBulletBuilder(ship.getReferenced().getTransform()));
-        EnemyShootFront esf = new EnemyShootFront(phaseshift,director,ship.getReferenced().getTransform());
+        director.setBuilder(new TieBulletBuilder(ship.getReferenced().transform()));
+        EnemyShootFront esf = new EnemyShootFront(phaseshift,director,ship.getReferenced().transform());
         ship.addWeapon(esf);
 
         // --------------- configuro el arma para disparar cada 40 frames
@@ -63,7 +63,7 @@ public class FastTieMaker extends EnemyShipBuilder
         abso.setRandomLevel(5);
         handler = abso;
         handler = new Slippery(handler,100f, 0.6f); // ver como queda sino sacar
-        handler = new Hybrid50Hunter(handler,PlayerShip.getInstance().getReferenced().getTransform());
+        handler = new Hybrid50Hunter(handler,PlayerShip.getInstance().getReferenced().transform());
         Pilot pilot = new Pilot(handler,ship,12f);
         ship.setPilot(pilot);
     }
@@ -71,14 +71,14 @@ public class FastTieMaker extends EnemyShipBuilder
     @Override
     public void assembleBehaviours() {
         // ---------------- hago que mire hacia abajo ----------
-        ship.getReferenced().getTransform().setTop(Vector2.DOWN());
+        ship.getReferenced().transform().setTop(Vector2.DOWN());
         // ---------------- hago que "pege la vuelta" -------------
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();
         ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f),bottomLeft.prod(1.2f)));
         // ----------------- que alguna nave random mire al player ------------
-        ship.addBehaviour(new LookTarget(PlayerShip.getInstance().getReferenced().getTransform()));
+        ship.addBehaviour(new LookTarget(PlayerShip.getInstance().getReferenced().transform()));
     }
 
     @Override

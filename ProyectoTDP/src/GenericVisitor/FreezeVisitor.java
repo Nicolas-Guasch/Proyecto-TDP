@@ -31,7 +31,7 @@ public class FreezeVisitor implements MonoVisitor<EnemyShip>
 
     private boolean precondition(EnemyShip ship)
     {
-        return ship.getReferenced().getTransform().position().distanceTo(center.position()) < ratio;
+        return ship.getReferenced().transform().position().distanceTo(center.position()) < ratio;
     }
 
     private void reactive(EnemyShip ship)

@@ -15,7 +15,7 @@ public abstract class Bullet<BulletType extends Bullet<BulletType>> extends Enti
     }
     @Override
     public Transform transform() {
-        return getReferenced().getTransform();
+        return getReferenced().transform();
     }
 
     @Override

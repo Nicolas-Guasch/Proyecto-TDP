@@ -116,7 +116,7 @@ public class GameObject
     {
         return children;
     }
-    public Transform getTransform()
+    public Transform transform()
     {
         return transform;
     }

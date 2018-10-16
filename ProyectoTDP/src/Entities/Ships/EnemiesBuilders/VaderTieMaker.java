@@ -36,7 +36,8 @@ public class VaderTieMaker extends EnemyShipBuilder
 
     @Override
     public void assembleHitBox() {
-        HitBox hb = HitBox.getOne(100,100,ship);
+        //deberia ser 100 x 100 pero asi se dificulta mas
+        HitBox hb = HitBox.getOne(80,80,ship);
         HitBoxesManager.getInstance().addHitBox(hb, HitBoxesManager.ENEMIES);
         ship.setHitBox(hb);
     }
@@ -47,14 +48,14 @@ public class VaderTieMaker extends EnemyShipBuilder
 
         // -------------- creo armas y las agrego ---------------
         BulletDirector<EnemyBullet, EnemyBulletBuilder> vaddir = new BulletDirector<>();
-        vaddir.setBuilder(new BuilderBossBullets(ship.getReferenced().getTransform(),PlayerShip.getInstance().getReferenced().getTransform()));
-        EnemyShootFront esf = new EnemyShootFront(phaseshift,vaddir,ship.getReferenced().getTransform());
+        vaddir.setBuilder(new BuilderBossBullets(ship.getReferenced().transform(),PlayerShip.getInstance().getReferenced().transform()));
+        EnemyShootFront esf = new EnemyShootFront(phaseshift,vaddir,ship.getReferenced().transform());
         ship.addWeapon(esf);
 
 
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
-        director.setBuilder(new TieBulletBuilder(ship.getReferenced().getTransform()));
-        EnemyShootFront esf1 = new EnemyShootFront(phaseshift,director,ship.getReferenced().getTransform());
+        director.setBuilder(new TieBulletBuilder(ship.getReferenced().transform()));
+        EnemyShootFront esf1 = new EnemyShootFront(phaseshift,director,ship.getReferenced().transform());
         ship.addWeapon(esf1);
         ship.addWeapon(esf1);
         ship.addWeapon(esf1);
@@ -82,19 +83,19 @@ public class VaderTieMaker extends EnemyShipBuilder
     @Override
     public void assembleBehaviours() {
         // ---------------- hago que mire hacia abajo ----------
-        ship.getReferenced().getTransform().setTop(Vector2.DOWN());
+        ship.getReferenced().transform().setTop(Vector2.DOWN());
         // ---------------- hago que "pege la vuelta" -------------
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();
         ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f),bottomLeft.prod(1.2f)));
         // ----------------- que alguna nave random mire al player ------------
-        ship.addBehaviour(new LookTarget(PlayerShip.getInstance().getReferenced().getTransform()));
+        ship.addBehaviour(new LookTarget(PlayerShip.getInstance().getReferenced().transform()));
     }
 
     @Override
     public void assembleData()
     {
-        ship.setData(EntityData.WithEqualsValues(600));
+        ship.setData(EntityData.WithEqualsValues(8000));
     }
 }

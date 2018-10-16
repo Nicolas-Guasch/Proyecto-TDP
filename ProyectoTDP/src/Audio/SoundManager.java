@@ -20,7 +20,8 @@ public final class SoundManager
     private Sound pew;
     private Sound pew2;
     private Sound tie;
-    private Music imperialMarch;
+    private Music musicGame;
+    private Music musicBoss;
     private Music menu;
     private Sound vaderBreath;
     private Transform listenPoint;
@@ -41,10 +42,11 @@ public final class SoundManager
         pew2  = TinySound.loadSound(AudioManager.Pew2);
         tie  = TinySound.loadSound(AudioManager.TieAttack);
         vaderBreath  = TinySound.loadSound(AudioManager.VaderBreath);
-        imperialMarch  = TinySound.loadMusic(AudioManager.ImperialMarch);
+        musicGame = TinySound.loadMusic(AudioManager.MusicGame);
         menu  = TinySound.loadMusic(AudioManager.Menu);
-        imperialMarch.setVolume(0.2f);
+        musicGame.setVolume(0.2f);
         menu.setVolume(0.3f);
+        musicBoss = TinySound.loadMusic(AudioManager.MusicBoss);
 
         menu.pause();
 
@@ -53,7 +55,8 @@ public final class SoundManager
         Sounds.add(pew2);
         Sounds.add(tie);
         Sounds.add(vaderBreath);
-        Musics.add(imperialMarch);
+        Musics.add(musicGame);
+        Musics.add(musicBoss);
 
 
     }
@@ -73,11 +76,11 @@ public final class SoundManager
     }
     public void ImperialMarchPlay()
     {
-        imperialMarch.play(true);
+        musicGame.play(true);
     }
     public void ImperialMarchStop()
     {
-        imperialMarch.stop();
+        musicGame.stop();
     }
 
     public void SoloShoot()
@@ -164,5 +167,12 @@ public final class SoundManager
 
     public void YouWin() {
 
+    }
+
+    public void MusicBoss() {
+        musicBoss.play(true);
+    }
+    public void MusicBossStop() {
+        musicBoss.stop();
     }
 }

@@ -36,7 +36,7 @@ public final class HitBox extends Component {
         }
         this.entity = entity;
         this.dimensions = dimensions;
-        transform = entity.getReferenced().getTransform();
+        transform = entity.getReferenced().transform();
     }
 
     public Entity getEntity() {

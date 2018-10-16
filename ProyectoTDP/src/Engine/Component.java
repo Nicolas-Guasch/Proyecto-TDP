@@ -64,7 +64,7 @@ public abstract class Component implements IActivable
 
     public Transform transform()
     {
-        return gameObject().getTransform();
+        return gameObject().transform();
     }
 
     protected void setGameObject(GameObject ref)

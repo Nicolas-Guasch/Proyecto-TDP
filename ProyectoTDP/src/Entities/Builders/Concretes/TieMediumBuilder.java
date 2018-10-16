@@ -62,11 +62,11 @@ public class TieMediumBuilder extends EnemyShipBuilder
     public void assembleBehaviours() {
         ship.addBehaviour(new HorizontalMoveShip(GameSettings.GetInstance().TieSpeed,101));
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
-        var bullbuilder = new TieBulletBuilder(ship.getReferenced().getTransform());
+        var bullbuilder = new TieBulletBuilder(ship.getReferenced().transform());
         director.setBuilder(bullbuilder);
 
         var bp = ship.getBagpack();
-        var weap = new GenericalWeapon<>(ship.getReferenced().getTransform(),director,3);
+        var weap = new GenericalWeapon<>(ship.getReferenced().transform(),director,3);
         weap.setPhaseShift(8);
         ship.addWeapon(weap);
 
@@ -82,8 +82,8 @@ public class TieMediumBuilder extends EnemyShipBuilder
 
 
         if(Random.bool())
-            ship.addBehaviour(new LookTarget(LevelTester.Instance().player.getReferenced().getTransform()));
-        ship.getReferenced().getTransform().setTop(Vector2.DOWN());
+            ship.addBehaviour(new LookTarget(LevelTester.Instance().player.getReferenced().transform()));
+        ship.getReferenced().transform().setTop(Vector2.DOWN());
     }
 
     @Override

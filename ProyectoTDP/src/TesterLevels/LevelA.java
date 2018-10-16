@@ -22,6 +22,7 @@ import IAs.*;
 import InputManager.DirectionalMouse;
 import InputManager.DirectionalWASD;
 import Misc.DeathStar;
+import Misc.Stars;
 import Tools.Random;
 
 import java.util.ArrayList;
@@ -92,6 +93,7 @@ public class LevelA extends Component implements Level
         enemiesDirector.setBuilder(currentBuilder[0]);
         initial_positions = parsePositions(positions);
         new DeathStar().get();
+        Stars.instanceOne();
 
     }
 
@@ -120,7 +122,7 @@ public class LevelA extends Component implements Level
         monodi.create();
         monodi.assemble();
         var obstaculo = monodi.get();
-        obstaculo.getReferenced().getTransform().setPosition(new Vector3(90,-100,-90));
+        obstaculo.getReferenced().transform().setPosition(new Vector3(90,-100,-90));
         TheGrimReaper.Instance().add(obstaculo);
 
         ObstacleBidirectionalDirector bid = new ObstacleBidirectionalDirector();
@@ -139,8 +141,8 @@ public class LevelA extends Component implements Level
         director.create();
         director.assemble();
         var bidobs2 = director.get();
-        bidobs2.getReferenced().getTransform().setPosition(point);
-        bidobs2.getReferenced().getTransform().setTop(top);
+        bidobs2.getReferenced().transform().setPosition(point);
+        bidobs2.getReferenced().transform().setTop(top);
         TheGrimReaper.Instance().add(bidobs2);
     }
 
@@ -153,7 +155,7 @@ public class LevelA extends Component implements Level
         pdir.assemble();
         UI.UI.getInstance().startLevel(0);
         player = pdir.get();
-        player.getReferenced().getTransform().setPosition(new Vector3(0, -300,-20));
+        player.getReferenced().transform().setPosition(new Vector3(0, -300,-20));
 
         TheGrimReaper.Instance().add(player);
     }
@@ -170,16 +172,16 @@ public class LevelA extends Component implements Level
             enemiesDirector.assemble();
             EnemyShip ship = enemiesDirector.get();
             enemies.addEnemy(ship);
-            ship.getReferenced().getTransform().setPosition(pos);
+            ship.getReferenced().transform().setPosition(pos);
             TheGrimReaper.Instance().add(ship);
             if(setRew==2)
             {
-                Transform t = ship.getReferenced().getTransform();
+                Transform t = ship.getReferenced().transform();
                 ship.setDoOnDeath(()-> RewardFactory.getWeaponIceReward(t));
             }
             if(setRew==0)
             {
-                Transform t = ship.getReferenced().getTransform();
+                Transform t = ship.getReferenced().transform();
                 ship.setDoOnDeath(()-> RewardFactory.getWeaponReward(t));
             }
         }
@@ -221,7 +223,7 @@ public class LevelA extends Component implements Level
     private void enableWS() {
 
         var handler = player.getPilot().getHandler();
-        DirectionalMouse direction = new DirectionalMouse(player.getReferenced().getTransform());
+        DirectionalMouse direction = new DirectionalMouse(player.getReferenced().transform());
         DirectionalWASD move = new DirectionalWASD();
         handler = new PlayerMove(handler,move,direction);
         handler = new Slippery(handler);
@@ -239,7 +241,12 @@ public class LevelA extends Component implements Level
             SoundManager.Instance().ImperialMarchStop();
 
         };
+        Runnable musicBoss = ()->{
+            SoundManager.Instance().MusicBoss();
+        };
+
         EngineGetter.Instance().get().waitForFrames(musicStuff,120);
+        EngineGetter.Instance().get().waitForFrames(musicBoss,240);
 
         Runnable makeTheBoss = ()->{
             setActive(true);
@@ -248,7 +255,7 @@ public class LevelA extends Component implements Level
             enemiesDirector.assemble();
             EnemyShip ship = enemiesDirector.get();
             enemies.addEnemy(ship);
-            ship.getReferenced().getTransform().setPosition(new Vector3(0,400,z));
+            ship.getReferenced().transform().setPosition(new Vector3(0,400,z));
             TheGrimReaper.Instance().add(ship);
         };
         EngineGetter.Instance().get().waitForFrames(makeTheBoss,120);

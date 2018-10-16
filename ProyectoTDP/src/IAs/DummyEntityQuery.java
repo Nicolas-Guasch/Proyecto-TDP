@@ -12,6 +12,6 @@ public class DummyEntityQuery implements EntityQuery
 
     @Override
     public Vector2 whereToSee(Entity ent) {
-        return ent.getReferenced().getTransform().top();
+        return ent.getReferenced().transform().top();
     }
 }

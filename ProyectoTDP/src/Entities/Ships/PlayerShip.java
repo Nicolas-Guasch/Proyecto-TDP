@@ -42,7 +42,7 @@ public class PlayerShip extends Ship<PlayerShip> {
 
 		super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
 
-		SoundManager.Instance().setTransformListener(this.getReferenced().getTransform());
+		SoundManager.Instance().setTransformListener(this.getReferenced().transform());
 	}
 
 	public void collideWith(EnemyShip enemyShip)

@@ -68,7 +68,7 @@ public class LinedWave extends AbstractWave
             director.assemble();
             x += phaseShift;
             var enemy = director.get();
-            enemy.getReferenced().getTransform().setPosition(hyperspace);
+            enemy.getReferenced().transform().setPosition(hyperspace);
             ubications.put(enemy,new Vector2(x,ycoord));
             enemies.add(enemy);
         }
@@ -92,7 +92,7 @@ public class LinedWave extends AbstractWave
     {
         if(!ubications.containsKey(en))
             new Exception("-- error en wave -- ").printStackTrace();
-        en.getReferenced().getTransform().DoMove(
+        en.getReferenced().transform().DoMove(
                 ubications.get(en), 5
         );
     }

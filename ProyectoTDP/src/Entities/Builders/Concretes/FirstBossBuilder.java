@@ -48,36 +48,36 @@ public class FirstBossBuilder extends EnemyShipBuilder
 
     @Override
     public void assembleBehaviours() {
-        Transform target = PlayerShip.getInstance().getReferenced().getTransform();
+        Transform target = PlayerShip.getInstance().getReferenced().transform();
         ship.addBehaviour(new HorizontalMoveShip(GameSettings.GetInstance().FirstBossSpeed,6));
 
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director1 = new BulletDirector<>();
         director1.setBuilder(new BuilderBossBullets(
-                ship.getReferenced().getTransform(),
+                ship.getReferenced().transform(),
                 target));
 
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director2 = new BulletDirector<EnemyBullet, EnemyBulletBuilder>();
-        director2.setBuilder(new TieBulletBuilder(ship.getReferenced().getTransform()));
+        director2.setBuilder(new TieBulletBuilder(ship.getReferenced().transform()));
 
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director3 = new BulletDirector<EnemyBullet, EnemyBulletBuilder>();
-        director3.setBuilder(new TieBulletBuilder(ship.getReferenced().getTransform()));
+        director3.setBuilder(new TieBulletBuilder(ship.getReferenced().transform()));
 
 
         int phaseshift = 22;
 
 
         var bp = ship.getBagpack();
-        LateralizedWeapon<BulletDirector<EnemyBullet, EnemyBulletBuilder>> g = new LateralizedWeapon<>(ship.getReferenced().getTransform(),director1,4);
+        LateralizedWeapon<BulletDirector<EnemyBullet, EnemyBulletBuilder>> g = new LateralizedWeapon<>(ship.getReferenced().transform(),director1,4);
         g.setPhaseShift(35);
         bp.add(g);
-        bp.add(new GenericalWeapon<>(ship.getReferenced().getTransform(),director2,2));
-        bp.add(new GenericalWeapon<>(ship.getReferenced().getTransform(),director2,4));
-        bp.add(new GenericalWeapon<>(ship.getReferenced().getTransform(),director2,6));
-        bp.add(new GenericalWeapon<>(ship.getReferenced().getTransform(),director2,8));
+        bp.add(new GenericalWeapon<>(ship.getReferenced().transform(),director2,2));
+        bp.add(new GenericalWeapon<>(ship.getReferenced().transform(),director2,4));
+        bp.add(new GenericalWeapon<>(ship.getReferenced().transform(),director2,6));
+        bp.add(new GenericalWeapon<>(ship.getReferenced().transform(),director2,8));
 
         FireFrequency frqsh = new FireFrequency(5,bp);
         ship.addBehaviour(frqsh);
-        ship.getReferenced().getTransform().setTop(Vector2.DOWN());
+        ship.getReferenced().transform().setTop(Vector2.DOWN());
         ship.setData(GameSettings.GetInstance().FirstBossData.clone());
         ship.addBehaviour(new HunterBullet(target,0.1f));
     }

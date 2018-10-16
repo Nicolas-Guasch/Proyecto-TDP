@@ -44,7 +44,7 @@ public class ShootFront extends Weapon
         getter.create();
         getter.assemble();
         EnemyBullet b = getter.get();
-        b.getReferenced().getTransform().setPosition(point);
+        b.getReferenced().transform().setPosition(point);
         TheGrimReaper.Instance().add(b);
         TheGrimReaper.Instance().killIn(b,300);
     }

@@ -42,7 +42,7 @@ public class TieBulletBuilder extends EnemyBulletBuilder
 
     @Override
     public void assembleBehaviours() {
-        Transform tr = bullet.getReferenced().getTransform();
+        Transform tr = bullet.getReferenced().transform();
         tr.setPosition(tie.position());
         tr.setTop(tie.top());
         bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().TieBulletSpeed));

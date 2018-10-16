@@ -43,7 +43,7 @@ public class LevelTester extends Component {
         pdir.create();
         pdir.assemble();
         player = pdir.get();
-        player.getReferenced().getTransform().setPosition(new Vector3(0, -300,-20));
+        player.getReferenced().transform().setPosition(new Vector3(0, -300,-20));
         lifeControl.add(player);
     }
 
