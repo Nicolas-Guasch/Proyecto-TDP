@@ -206,7 +206,6 @@ public class GameObject
 
             if(!components.contains(rend))
             {
-
                 addComponent(rend);
             }
             renderer = rend;

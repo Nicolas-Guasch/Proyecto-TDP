@@ -13,6 +13,7 @@ public class Renderizable extends Component
     protected  static float h = GameSettings.GetInstance().sizeWindow.height;
     protected  static float w = GameSettings.GetInstance().sizeWindow.width;
     protected  SpriteData spriteData;
+    private float zphaseshift=0;
 
     public Renderizable(SpriteData data)
     {
@@ -24,10 +25,20 @@ public class Renderizable extends Component
         Window.GetInstance().AddJComponent(label);
     }
 
+    public Renderizable(SpriteData data, float zphaseshift) {
+        label = new SpriteRenderer();
+        label.setIcon(data.icon());
+        spriteData = data;
+        label.setBounds(0,0,data.getWidth(),data.getHeight());//TODO: cambiar esto
+        label.setVisible(false);
+        Window.GetInstance().AddJComponent(label);
+        this.zphaseshift = zphaseshift;
+    }
+
     public void Start()
     {
         label.setTransform(transform());
-        Window.GetInstance().SetZ(label,transform().getZcomponent(),true);
+        Window.GetInstance().SetZ(label,transform().getZcomponent()+zphaseshift,true);
         transform().setPosition(Vector2.ORIGIN());
     }
 

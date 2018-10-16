@@ -38,6 +38,10 @@ collider: 130x130
         Renderizable rend = new Renderizable(data);
         rend.show();
         ship.setRenderer(rend);
+        SpriteData datashield = new SpriteData("shield");
+        Renderizable rendshield = new Renderizable(datashield,-1);
+        rendshield.show();
+        ship.setRenderer(rendshield);
     }
 
 
