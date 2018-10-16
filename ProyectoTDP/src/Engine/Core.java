@@ -80,6 +80,32 @@ final class Core
 
     public static long lastRetard = 0;//just for testing
 
+    private void mainLoopAlternativo() {
+        long stampPerFrame = Clock.currentTimeNanos();
+        long nanosperframe = (long) (1e9 / FPS);
+        float prev = 0f;
+        float act;
+
+        while (!exit) {
+            if (paused) continue;
+
+            try {
+
+                endOfFrame();
+                lastRetard = Clock.currentTimeNanos();
+                var tosleep = nanosperframe - (lastRetard-stampPerFrame);
+                sleep(tosleep);
+
+                stampPerFrame = Clock.currentTimeNanos();
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
     private void mainLoop(){
         long stampPerFrame;
         long nanosperframe = (long)(1e9/FPS);
@@ -94,13 +120,14 @@ final class Core
 
                     stampPerFrame = Clock.currentTimeNanos();
                     endOfFrame();
-                    do
-                    {
-                        act = Clock.currentTimeNanos();
-                        invokerOnPhysicsUpdate.Invoke((act-prev)/1_000_000_000f);
-                        prev = act;
-                    }
-                    while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe - lastRetard);
+
+                        do
+                        {
+                            act = Clock.currentTimeNanos();
+                            invokerOnPhysicsUpdate.Invoke((act-prev)/1_000_000_000f);
+                            prev = act;
+                        }
+                        while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe - lastRetard);
 
                     lastRetard = (Clock.currentTimeNanos() - stampPerFrame) - nanosperframe;
                 }
@@ -108,6 +135,15 @@ final class Core
 
         }
 
+    }
+
+    private void sleep(long time) {
+        if(time<=0) return;
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     // --------- public stuff -----------
