@@ -68,7 +68,7 @@ public class TieHardBuilder extends EnemyShipBuilder
                 target));
         director.setBuilder(bullbuilder);
 
-        var bp = ship.getBagpack();
+        var bp = ship.getBagPack();
         var weap = new GenericalWeapon<>(ship.referenced().transform(),director,4);
         var weap1 = new GenericalWeapon<>(ship.referenced().transform(),director,4);
         var weap2 = new LateralizedWeapon<>(ship.referenced().transform(),directorH,2);

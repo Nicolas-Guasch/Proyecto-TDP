@@ -5,7 +5,7 @@ import Entities.BarricadeEnem;
 import Entities.PlayerBullet;
 import Entities.Ships.EnemyShip;
 
-public class PlayerBulletVisitor extends VisitorEntitie
+public class PlayerBulletVisitor extends VisitorEntity
 {
 
     private final PlayerBullet bullet;

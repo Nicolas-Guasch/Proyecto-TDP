@@ -36,7 +36,7 @@ public class GameSettings
             PlayerData,
             TieData,
             TieBulletData,
-            SoloBulletData,
+            PlayerBulletData,
             FirstBossData;
 
     private GameSettings()
@@ -46,7 +46,7 @@ public class GameSettings
         PlayerData = parser.getEntityData(EntityEnum.PlayerData);
         TieData = parser.getEntityData(EntityEnum.TieData);
         TieBulletData = parser.getEntityData(EntityEnum.TieBulletData);
-        SoloBulletData = parser.getEntityData(EntityEnum.SoloBulletData);
+        PlayerBulletData = parser.getEntityData(EntityEnum.PlayerBulletData);
         FirstBossData = parser.getEntityData(EntityEnum.FirstBossData);
 
         TieBulletSpeed = parser.getFloat(FloatEnum.TieBulletSpeed);
@@ -66,6 +66,9 @@ public class GameSettings
         return new Rect(topRight,bottomLeft);
     }
 
+    public EntityData PlaceHolderData() {
+        return EntityData.WithEqualsValues(1);
+    }
 }
 
 
@@ -74,7 +77,7 @@ enum EntityEnum {
     PlayerData,
     TieData,
     TieBulletData,
-    SoloBulletData,
+    PlayerBulletData,
     FirstBossData,
 }
 

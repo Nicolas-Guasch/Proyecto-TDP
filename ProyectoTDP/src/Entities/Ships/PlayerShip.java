@@ -1,84 +1,58 @@
 package Entities.Ships;
-import Collisions.CollisionData;
 import Engine.GameObject;
-import Entities.EnemyBullet;
-import Entities.Rewards.Reward;
 import Entities.Weapons.PlayerBagpack;
+import EntitiesVisitor.PlayerVisitor;
+import EntitiesVisitor.VisitorEntity;
+import GameData.GameSettings;
 import GameData.MatchResult;
 import Audio.SoundManager;
-import GenericVisitor.MonoVisitor;
 import InputManager.DiscreteClick;
 import InputManager.DiscreteKeyInput;
 import UI.UI;
+import UtilsBehaviours.PlayerWatcher;
 
-public class PlayerShip extends Ship<PlayerShip> {
+public class PlayerShip extends Ship {
 
 
 	private static PlayerShip instance;
-
 	public static PlayerShip getInstance()
 	{
 		return instance;
 	}
-
-	public static boolean isInitialited() {
-		return instance != null;
+	public static boolean isUninitialized() {
+		return instance == null;
 	}
 
 	public static void initialize(GameObject go) {
-		assert !isInitialited();
+		assert isUninitialized();
 		instance = new PlayerShip(go);
+		go.addComponent(new PlayerWatcher(instance));
 	}
 
 	@Override
-	public void onDeath() {
+	public void onDeath()
+	{
 		super.onDeath();
 		MatchResult.getInstance().EmpireWins();
 	}
 
 	private PlayerShip(GameObject referenced) {
-
-		//super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteKeyInput(" cC")));
-
 		super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
-
 		SoundManager.Instance().setTransformListener(this.referenced().transform());
-	}
-
-	public void collideWith(EnemyShip enemyShip)
-	{
-		float damage = enemyShip.data().getDamage() - data.getShield();
-		damage = damage>=0 ? damage : 0;
-		setLife(data.getHealth() - damage);
-	}
-
-	public void collideWith(EnemyBullet ent)
-	{
-		float damage = ent.data().getDamage() - data.getShield();
-		damage = damage>=0 ? damage : 0;
-		setLife(data.getHealth() - damage);
-	}
-
-
-	public void collideWith(Reward ent)  {
-
+		visitor = new PlayerVisitor();
+		data = GameSettings.GetInstance().PlayerData;
 	}
 
 	@Override
-	public void reportCollision(CollisionData data)
-	{
-		data.Their().collideWith(this);
+	public void accept(VisitorEntity visitor) {
+		visitor.visit(this);
 	}
-
 
 	public void setLife(float cantLife)
 	{
 		data.setHealth(cantLife);
-		UI.getInstance().PlayerLife((int) cantLife);
+		UI.getInstance().playerLife((int) cantLife);
 	}
 
-	@Override
-	public void accept(MonoVisitor<PlayerShip> playerShipVisitor) {
-		playerShipVisitor.visit(this);
-	}
+
 }

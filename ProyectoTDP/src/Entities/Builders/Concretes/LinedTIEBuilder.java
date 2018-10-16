@@ -67,7 +67,7 @@ public class LinedTIEBuilder extends EnemyShipBuilder
         director.setBuilder(new TieBulletBuilder(ship.referenced().transform()));
         int phaseshift = (prefSpriteData==SPRITEDATA2)?26:18;
         EnemyShootFront esf = new EnemyShootFront(phaseshift,director,ship.referenced().transform());
-        var bp = ship.getBagpack();
+        var bp = ship.getBagPack();
         ship.addWeapon(esf);
         FireFrequency frqsh = new FireFrequency(40,bp);
         ship.addBehaviour(frqsh);

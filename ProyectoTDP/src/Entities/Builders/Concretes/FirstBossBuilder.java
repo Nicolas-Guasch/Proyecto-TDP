@@ -66,7 +66,7 @@ public class FirstBossBuilder extends EnemyShipBuilder
         int phaseshift = 22;
 
 
-        var bp = ship.getBagpack();
+        var bp = ship.getBagPack();
         LateralizedWeapon<BulletDirector<EnemyBullet, EnemyBulletBuilder>> g = new LateralizedWeapon<>(ship.referenced().transform(),director1,4);
         g.setPhaseShift(35);
         bp.add(g);

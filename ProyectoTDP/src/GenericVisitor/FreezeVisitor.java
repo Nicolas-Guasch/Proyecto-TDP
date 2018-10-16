@@ -3,8 +3,9 @@ package GenericVisitor;
 import Engine.Components.Transform;
 import Engine.EngineGetter;
 import Entities.Ships.EnemyShip;
+import EntitiesVisitor.VisitorEntity;
 
-public class FreezeVisitor implements MonoVisitor<EnemyShip>
+public class FreezeVisitor extends VisitorEntity
 {
 
     private final float time;
@@ -24,7 +25,7 @@ public class FreezeVisitor implements MonoVisitor<EnemyShip>
         if(precondition(ship))
         {
             ship.getPilot().setActive(false);
-            ship.getBagpack().setActive(false);
+            ship.getBagPack().setActive(false);
             EngineGetter.Instance().get().waitForFrames(() -> reactive(ship), (int)time*60);
         }
     }
@@ -37,7 +38,7 @@ public class FreezeVisitor implements MonoVisitor<EnemyShip>
     private void reactive(EnemyShip ship)
     {
         ship.getPilot().setActive(true);
-        ship.getBagpack().setActive(true);
+        ship.getBagPack().setActive(true);
     }
 
 

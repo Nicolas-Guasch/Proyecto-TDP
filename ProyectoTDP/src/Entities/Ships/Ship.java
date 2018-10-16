@@ -4,7 +4,6 @@ import Engine.GameObject;
 import Entities.Entity;
 import Entities.Weapons.Weapon;
 import Entities.Weapons.WeaponSet;
-import EntitiesVisitor.VisitorEntitie;
 import IAs.Pilot;
 
 public abstract class Ship extends Entity implements IShip
@@ -12,8 +11,8 @@ public abstract class Ship extends Entity implements IShip
     protected WeaponSet weapons;
     private Pilot pilot;
 
-    protected Ship(GameObject referenced, WeaponSet weapons, VisitorEntitie visitor) {
-        super(referenced,visitor);
+    protected Ship(GameObject referenced, WeaponSet weapons) {
+        super(referenced);
         this.weapons = weapons;
     }
 

@@ -1,13 +1,8 @@
 package Entities;
 
-import Collisions.CollisionData;
 import Engine.GameObject;
-import Entities.Rewards.Reward;
-import Entities.Ships.EnemyShip;
-import Entities.Ships.PlayerShip;
 import EntitiesVisitor.EnemyBulletVisitor;
-import EntitiesVisitor.VisitorEntitie;
-import GenericVisitor.MonoVisitor;
+import EntitiesVisitor.VisitorEntity;
 
 
 public class EnemyBullet extends Bullet {
@@ -18,7 +13,7 @@ public class EnemyBullet extends Bullet {
 	}
 
 	@Override
-	public void accept(VisitorEntitie visitor) {
+	public void accept(VisitorEntity visitor) {
 		visitor.visit(this);
 	}
 

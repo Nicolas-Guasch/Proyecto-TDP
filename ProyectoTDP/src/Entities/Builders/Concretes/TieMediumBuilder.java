@@ -65,7 +65,7 @@ public class TieMediumBuilder extends EnemyShipBuilder
         var bullbuilder = new TieBulletBuilder(ship.referenced().transform());
         director.setBuilder(bullbuilder);
 
-        var bp = ship.getBagpack();
+        var bp = ship.getBagPack();
         var weap = new GenericalWeapon<>(ship.referenced().transform(),director,3);
         weap.setPhaseShift(8);
         ship.addWeapon(weap);

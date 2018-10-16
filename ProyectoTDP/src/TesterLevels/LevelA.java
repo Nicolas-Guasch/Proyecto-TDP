@@ -100,7 +100,7 @@ public class LevelA extends Component implements Level
     @Override
     public void run(Runnable onWin, Runnable onLoose)
     {
-        if(!PlayerShip.isInitialited())
+        if(PlayerShip.isUninitialized())
         initializePlayer();
 
         Runnable action = ()->

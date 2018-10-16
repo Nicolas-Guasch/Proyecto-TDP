@@ -4,10 +4,8 @@ import Collisions.HitBox;
 import Engine.Component;
 import Collisions.CollisionData;
 import Engine.GameObject;
-import Entities.Rewards.Reward;
-import Entities.Ships.EnemyShip;
-import Entities.Ships.PlayerShip;
-import EntitiesVisitor.VisitorEntitie;
+import EntitiesVisitor.VisitorEntity;
+import GameData.GameSettings;
 import RenderingSystem.Renderizable;
 
 public abstract class Entity {
@@ -16,11 +14,11 @@ public abstract class Entity {
 	private Runnable doOnDeath;
 
 	protected EntityData data; // tiene setter y getter, pero la hago protected por comodidad
-	protected VisitorEntitie visitor;
+	protected VisitorEntity visitor;
 
 	protected Entity(GameObject referenced){
 		this.referenced = referenced;
-
+		data = GameSettings.GetInstance().PlaceHolderData();
 	}
 
 	public void onDeath(Runnable doOnDeath){
@@ -58,15 +56,16 @@ public abstract class Entity {
 		return referenced;
 	}
 	public boolean alive() {
+		if(data == null) return false;
 		return data().getHealth() > 0;
 	}
 	public final void reportCollision(CollisionData data){
 		data.Their().accept(visitor);
 	}
 	//implement with: visitor.visit(this);
-	public abstract void accept(VisitorEntitie visitor);
+	public abstract void accept(VisitorEntity visitor);
 
-	public void setVisitor(VisitorEntitie visitor) {
+	public void setVisitor(VisitorEntity visitor) {
 		this.visitor = visitor;
 	}
 }

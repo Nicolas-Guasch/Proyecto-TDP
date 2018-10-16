@@ -77,6 +77,7 @@ public class TheGrimReaper extends Component
     }
 
     private void accept(Entity e) {
+        if(e.data() == null) return;
         if (e.data().getHealth() <= 0 || e.referenced().transform().position().length() > far) {
             toDestroy.add(e);
             e.onDeath();

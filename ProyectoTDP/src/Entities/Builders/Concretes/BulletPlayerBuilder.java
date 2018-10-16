@@ -53,7 +53,8 @@ public class BulletPlayerBuilder extends PlayerBulletBuilder
     }
 
     @Override
-    public void assembleData() {
-        bullet.setData(GameSettings.GetInstance().SoloBulletData.clone());
+    public void assembleData()
+    {
+        bullet.setData(GameSettings.GetInstance().PlayerBulletData.clone());
     }
 }

@@ -51,7 +51,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
     @Override
     public void assembleData()
     {
-        bullet.setData(GameSettings.GetInstance().SoloBulletData.clone());
+        bullet.setData(GameSettings.GetInstance().PlayerBulletData.clone());
         bullet.data().setDamage(0);
         TheGrimReaper.Instance().add(bullet);
     }

@@ -1,10 +1,11 @@
 package Entities.Ships;
 
 import Engine.EngineGetter;
+import EntitiesVisitor.VisitorEntity;
 import GenericVisitor.MonoVisitor;
 
 
-public class ShieldVisitor implements MonoVisitor<PlayerShip>
+public class ShieldVisitor extends VisitorEntity
 {
 
     float prevShield;

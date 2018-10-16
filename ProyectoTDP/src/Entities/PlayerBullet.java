@@ -1,21 +1,18 @@
 package Entities;
 
-import Collisions.CollisionData;
 import Engine.GameObject;
-import Entities.Rewards.Reward;
-import Entities.Ships.EnemyShip;
-import Entities.Ships.PlayerShip;
 import EntitiesVisitor.PlayerBulletVisitor;
-import EntitiesVisitor.VisitorEntitie;
-import GenericVisitor.MonoVisitor;
+import EntitiesVisitor.VisitorEntity;
+import GameData.GameSettings;
 
 public class PlayerBullet extends Bullet {
 	public PlayerBullet(GameObject referenced) {
 		super(referenced);
 		visitor = new PlayerBulletVisitor(this);
+		data = GameSettings.GetInstance().PlayerBulletData;
 	}
 	@Override
-	public void accept(VisitorEntitie visitor) {
+	public void accept(VisitorEntity visitor) {
 		visitor.visit(this);
 	}
 }

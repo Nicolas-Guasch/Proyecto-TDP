@@ -119,7 +119,7 @@ public class UI
     }
 
 
-    public void PlayerLife(int life)
+    public void playerLife(int life)
     {
         ShipStatus.PlayerLife(life);
     }

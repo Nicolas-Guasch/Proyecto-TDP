@@ -7,20 +7,21 @@ import ADTs.Vector2;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
 import Entities.Weapons.Weapon;
+import EntitiesVisitor.VisitorEntity;
+import EntitiesVisitor.WeaponRewardVisitor;
 import GenericVisitor.MonoVisitor;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Scripts.AlwaysLateral;
 import Scripts.Directionable;
 
-public class WeaponReward extends Reward<WeaponReward>
+public class WeaponReward extends Reward
 {
 
     private Weapon weapon;
-    //private SpriteRenderer renderer = new SpriteRenderer(new SpriteData(Paths.MonedaArma, new Vector2(400,400)));
     private Renderizable renderer;
 
-    public WeaponReward(GameObject referenced, SpriteData sprite)
+    WeaponReward(GameObject referenced, SpriteData sprite)
     {
         super(referenced);
         renderer = new Renderizable(sprite);
@@ -33,29 +34,13 @@ public class WeaponReward extends Reward<WeaponReward>
         renderer.show();
     }
 
-    @Override
-    public void collideWith(PlayerShip ent)
-    {
-        if(weapon!=null)
-        {
-            ent.addWeapon(weapon);
-            weapon = null;
-            Destroy();
-        }
-    }
-
-    @Override
-    public void collideWith(EnemyShip ent) {
-
-    }
-
-
     public void setWeapon(Weapon wea) {
         weapon = wea;
+        visitor = new WeaponRewardVisitor(weapon,this);
     }
 
     @Override
-    public void accept(MonoVisitor<WeaponReward> weaponRewardVisitor) {
-        weaponRewardVisitor.visit(this);
+    public void accept(VisitorEntity visitor) {
+        visitor.visit(this);
     }
 }
