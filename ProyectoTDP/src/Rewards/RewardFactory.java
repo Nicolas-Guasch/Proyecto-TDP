@@ -1,4 +1,4 @@
-package Entities.Rewards;
+package Rewards;
 
 import Engine.Components.Transform;
 import Engine.GameObject;
@@ -9,6 +9,7 @@ import Entities.Bullets.ColdFireMaker;
 import Entities.EntityData;
 import Entities.PlayerBullet;
 import Entities.Ships.PlayerShip;
+import Entities.Ships.ShieldVisitor;
 import Entities.TheGrimReaper;
 import Entities.Weapons.AngularWeapon;
 import Entities.Weapons.IceWeapon;
@@ -17,6 +18,24 @@ import RenderingSystem.SpriteData;
 
 public class RewardFactory
 {
+
+    public static void getShieldReward(Transform originPoint)
+    {
+        var player = PlayerShip.getInstance();
+        GameObject premio = GameObject.getRoot().addChild();
+        var sd = new SpriteData("rewardshield");
+
+        var vis = new ShieldVisitor();
+        Reward rew = new GenericReward(premio,vis,sd);
+        vis.setReward(rew);
+
+
+        premio.transform().setPosition(originPoint.position3());
+        rew.setData(EntityData.WithEqualsValues(100));
+        TheGrimReaper.Instance().add(rew);
+    }
+
+
 
     public static void getWeaponReward(Transform originPoint)
     {
@@ -32,6 +51,8 @@ public class RewardFactory
         rew.setData(EntityData.WithEqualsValues(100));
         TheGrimReaper.Instance().add(rew);
     }
+
+
     public static void getWeaponIceReward(Transform originPoint)
     {
         var player = PlayerShip.getInstance();

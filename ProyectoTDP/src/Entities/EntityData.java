@@ -8,13 +8,17 @@ public final class EntityData
 
     public EntityData(float health, float damage, float shield)
     {
+        assert shield >=0 && shield <=1;
         this.health = health;
         this.damage = damage;
         this.shield = shield;
     }
 
     public static EntityData WithEqualsValues(float v) {
-        return new EntityData(v,v,v);
+        float shield = v;
+        shield = shield<0?0:shield;
+        shield = shield>1?1:shield;
+        return new EntityData(v,v,shield);
     }
 
     public EntityData clone()
@@ -35,6 +39,7 @@ public final class EntityData
     }
 
     public void setShield(float shield) {
+        assert shield >=0 && shield <=1;
         this.shield = shield;
     }
 
@@ -48,7 +53,7 @@ public final class EntityData
 
 
 
-    public void decHealth(float damage) {
-        health -= damage;
+    public void takeDamage(float damage) {
+        health -= damage*(1-shield);
     }
 }

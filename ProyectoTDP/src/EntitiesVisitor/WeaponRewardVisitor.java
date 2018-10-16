@@ -1,6 +1,6 @@
 package EntitiesVisitor;
 
-import Entities.Rewards.Reward;
+import Rewards.Reward;
 import Entities.Ships.PlayerShip;
 import Entities.Weapons.Weapon;
 

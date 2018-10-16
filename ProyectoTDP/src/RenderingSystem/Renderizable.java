@@ -55,7 +55,7 @@ public class Renderizable extends Component
             Update();
         }
     }
-    public void Hide()
+    public void hide()
     {
         visible = false;
         label.setVisible(false);
@@ -84,7 +84,7 @@ public class Renderizable extends Component
 
     @Override
     public void OnDisable() {
-        Hide();
+        hide();
     }
 
     public Vector2 getSize()

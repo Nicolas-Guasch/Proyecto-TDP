@@ -1,29 +1,22 @@
-package Entities.Rewards;
+package Rewards;
 
+import ADTs.Vector2;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import Engine.GameObject;
-import ADTs.Vector2;
-import Entities.Ships.EnemyShip;
-import Entities.Ships.PlayerShip;
-import Entities.Weapons.Weapon;
 import EntitiesVisitor.VisitorEntity;
-import EntitiesVisitor.WeaponRewardVisitor;
-import GenericVisitor.MonoVisitor;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Scripts.AlwaysLateral;
-import Scripts.Directionable;
 
-public class WeaponReward extends Reward
-{
+public class GenericReward extends Reward {
 
-    private Weapon weapon;
     private Renderizable renderer;
 
-    WeaponReward(GameObject referenced, SpriteData sprite)
-    {
+    public GenericReward(GameObject referenced, VisitorEntity visitor, SpriteData sprite) {
         super(referenced);
+        this.visitor = visitor;
+
         renderer = new Renderizable(sprite);
         referenced.setRenderer(renderer);
 
@@ -34,10 +27,7 @@ public class WeaponReward extends Reward
         renderer.show();
     }
 
-    public void setWeapon(Weapon wea) {
-        weapon = wea;
-        visitor = new WeaponRewardVisitor(weapon,this);
-    }
+
 
     @Override
     public void accept(VisitorEntity visitor) {

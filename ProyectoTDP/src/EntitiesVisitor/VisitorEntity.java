@@ -4,7 +4,7 @@ import Entities.BarricadeEnem;
 import Entities.BarricadeBoth;
 import Entities.EnemyBullet;
 import Entities.PlayerBullet;
-import Entities.Rewards.Reward;
+import Rewards.Reward;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
 

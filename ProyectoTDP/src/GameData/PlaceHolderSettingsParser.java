@@ -16,11 +16,11 @@ public class PlaceHolderSettingsParser implements ISettingsParser
 
 
     private final EntityData
-            PlayerData = new EntityData(500000000,150,70),
+            PlayerData = new EntityData(500,150,0),
             TieData = new EntityData(100,25,0),
             TieBulletData = new EntityData(1,15,0),
             SoloBulletData = new EntityData(1,10,0),
-            FirstBossData = new EntityData(800000,150,5000);
+            FirstBossData = new EntityData(800000,150,0);
 
 
     private final float

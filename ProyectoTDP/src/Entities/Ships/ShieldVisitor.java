@@ -1,33 +1,63 @@
 package Entities.Ships;
 
+import ADTs.Vector2;
 import Engine.EngineGetter;
 import EntitiesVisitor.VisitorEntity;
-import GenericVisitor.MonoVisitor;
+import RenderingSystem.Renderizable;
+import RenderingSystem.SpriteData;
+import Rewards.Reward;
 
 
 public class ShieldVisitor extends VisitorEntity
 {
 
+    private Reward reward;
     float prevShield;
     PlayerShip visitable;
 
+    private Renderizable rend_shield;
+    private Renderizable rend_ship;
 
-    @Override
-    public void visit(PlayerShip visitable)
-    {
-        this.visitable = visitable;
-        prevShield = visitable.data().getShield();
-        visitable.data().setShield(100000);
-        Runnable restaurar = this::restaurar;
-
-
-        EngineGetter.Instance().get().waitForFrames(restaurar,1200);
+    public ShieldVisitor(){
+        rend_shield = new Renderizable(new SpriteData("shield"),-1);
 
     }
 
-    private void restaurar()
+    public void setReward(Reward reward){
+        this.reward = reward;
+    }
+
+    @Override
+    public void visit(PlayerShip visitable){
+        Vector2 point = visitable.referenced().transform().position();
+
+        this.visitable = visitable;
+        prevShield = visitable.data().getShield();
+        System.out.println(prevShield+" <<----prev shield");
+        visitable.data().setShield(1); // invulnerable
+
+        rend_ship = visitable.referenced().getRenderer();
+        rend_shield.show();
+        rend_ship.gameObject().setRenderer(rend_shield);
+
+        Runnable restore = this::restore;
+
+        reward.Destroy();
+        reward.referenced().getHitbox().setActive(false);
+
+
+        visitable.referenced().transform().setPosition(point);
+
+        EngineGetter.Instance().get().waitForFrames(restore,1200);
+    }
+
+    private void restore()
     {
         visitable.data().setShield(prevShield);
+        if(rend_shield.gameObject() == null) return;
+        rend_shield.hide();
+        if(rend_ship.gameObject() == null) return;
+        rend_ship.gameObject().setRenderer(rend_ship);
     }
 
 }

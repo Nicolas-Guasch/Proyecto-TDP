@@ -12,6 +12,6 @@ public class EnemyBulletVisitor extends VisitorEntity {
 
     @Override
     public void visit(PlayerShip playerShip) {
-        playerShip.data().decHealth(bullet.data().getDamage());
+        playerShip.data().takeDamage(bullet.data().getDamage());
     }
 }

@@ -5,7 +5,7 @@ import Engine.While;
 import Entities.Builders.AbstractRewardFactory;
 import Entities.Ships.EnemyShipDirector;
 import Entities.Ships.EnemyShip;
-import Entities.Rewards.Reward;
+import Rewards.Reward;
 
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;

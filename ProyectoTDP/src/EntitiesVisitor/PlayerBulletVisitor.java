@@ -15,15 +15,15 @@ public class PlayerBulletVisitor extends VisitorEntity
     }
     public void visit(EnemyShip ent)
     {
-        ent.data().decHealth(bullet.data().getDamage());
+        ent.data().takeDamage(bullet.data().getDamage());
         bullet.data().setHealth(0);
     }
     public void visit(BarricadeBoth ent) {
-        ent.data().decHealth(bullet.data().getDamage());
+        ent.data().takeDamage(bullet.data().getDamage());
         bullet.data().setHealth(0);
     }
     public void visit(BarricadeEnem ent) {
-        ent.data().decHealth(bullet.data().getDamage());
+        ent.data().takeDamage(bullet.data().getDamage());
         bullet.data().setHealth(0);
     }
 }

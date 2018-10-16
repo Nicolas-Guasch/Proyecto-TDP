@@ -10,7 +10,7 @@ import Entities.Builders.Directors.ObstacleBidirectionalDirector;
 import Entities.Builders.Directors.ObstacleMonoDirectionalDirector;
 import Entities.Obstacles.NaveDuraObstacle;
 import Entities.Obstacles.NaveViejaImperioMaker;
-import Entities.Rewards.RewardFactory;
+import Rewards.RewardFactory;
 import Entities.Ships.*;
 import Entities.Ships.EnemiesBuilders.FastTieMaker;
 import Entities.Ships.EnemiesBuilders.VaderTieMaker;
@@ -183,6 +183,10 @@ public class LevelA extends Component implements Level
             {
                 Transform t = ship.referenced().transform();
                 ship.onDeath(()-> RewardFactory.getWeaponReward(t));
+            }
+            if(setRew==1){
+                Transform t = ship.referenced().transform();
+                ship.onDeath(()-> RewardFactory.getShieldReward(t));
             }
         }
     }
