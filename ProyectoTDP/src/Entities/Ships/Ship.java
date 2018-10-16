@@ -4,46 +4,38 @@ import Engine.GameObject;
 import Entities.Entity;
 import Entities.Weapons.Weapon;
 import Entities.Weapons.WeaponSet;
+import EntitiesVisitor.VisitorEntitie;
 import IAs.Pilot;
 
-public abstract class Ship<Son extends Ship<Son>>
-        /*<MyType extends Ship<MyType,OponentType>, OponentType extends Ship<OponentType, MyType>> */
-        extends Entity<Son> implements IShip
+public abstract class Ship extends Entity implements IShip
 {
     protected WeaponSet weapons;
     private Pilot pilot;
 
-    Ship(GameObject referenced, WeaponSet weapons) {
-        super(referenced);
+    protected Ship(GameObject referenced, WeaponSet weapons, VisitorEntitie visitor) {
+        super(referenced,visitor);
         this.weapons = weapons;
     }
 
-
-
-    public void onDeath()
-    {
+    public void onDeath(){
         super.onDeath();
-
         weapons.setActive(false);
+        if (pilot != null) {
+            pilot.setActive(false);
+        }
     }
 
-    public void addWeapon(Weapon p)
-    {
+    public void addWeapon(Weapon p){
         weapons.add(p);
     }
-    public void removeWeapon(Weapon p)
-    {
+    public void removeWeapon(Weapon p){
         weapons.remove(p);
     }
-
-
-    public void setPilot(Pilot pilot)
-    {
+    public void setPilot(Pilot pilot){
         this.pilot = pilot;
-        getReferenced().removeComponent(pilot);
-        getReferenced().addComponent(pilot);
+        referenced().removeComponent(pilot);
+        referenced().addComponent(pilot);
     }
-
     public Pilot getPilot() {
         return pilot;
     }

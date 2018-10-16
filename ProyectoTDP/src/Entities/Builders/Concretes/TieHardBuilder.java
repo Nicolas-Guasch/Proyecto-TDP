@@ -60,18 +60,18 @@ public class TieHardBuilder extends EnemyShipBuilder
         ship.addBehaviour(new HorizontalMoveShip(GameSettings.GetInstance().TieSpeed,101));
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
         BulletDirector<EnemyBullet, EnemyBulletBuilder> directorH = new BulletDirector<>();
-        Transform target = PlayerShip.getInstance().getReferenced().transform();
+        Transform target = PlayerShip.getInstance().referenced().transform();
 
-        var bullbuilder = new TieBulletBuilder(ship.getReferenced().transform());
+        var bullbuilder = new TieBulletBuilder(ship.referenced().transform());
         directorH.setBuilder(new BuilderBossBullets(
-                ship.getReferenced().transform(),
+                ship.referenced().transform(),
                 target));
         director.setBuilder(bullbuilder);
 
         var bp = ship.getBagpack();
-        var weap = new GenericalWeapon<>(ship.getReferenced().transform(),director,4);
-        var weap1 = new GenericalWeapon<>(ship.getReferenced().transform(),director,4);
-        var weap2 = new LateralizedWeapon<>(ship.getReferenced().transform(),directorH,2);
+        var weap = new GenericalWeapon<>(ship.referenced().transform(),director,4);
+        var weap1 = new GenericalWeapon<>(ship.referenced().transform(),director,4);
+        var weap2 = new LateralizedWeapon<>(ship.referenced().transform(),directorH,2);
         weap.setPhaseShift(8);
         ship.addWeapon(weap);
         ship.addWeapon(weap1);
@@ -79,13 +79,13 @@ public class TieHardBuilder extends EnemyShipBuilder
 
         FireFrequency frqsh = new FireFrequency(10,bp);
         ship.addBehaviour(frqsh);
-        ship.getReferenced().transform().setTop(Vector2.DOWN());
+        ship.referenced().transform().setTop(Vector2.DOWN());
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
 
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();
         ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f),bottomLeft.prod(1.2f)));
-        ship.addBehaviour(new LookTarget(PlayerShip.getInstance().getReferenced().transform()));
+        ship.addBehaviour(new LookTarget(PlayerShip.getInstance().referenced().transform()));
     }
 
     @Override

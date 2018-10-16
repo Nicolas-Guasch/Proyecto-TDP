@@ -64,21 +64,21 @@ public class LinedTIEBuilder extends EnemyShipBuilder
     public void assembleBehaviours() {
         ship.addBehaviour(new HorizontalMoveShip(GameSettings.GetInstance().TieSpeed,101));
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
-        director.setBuilder(new TieBulletBuilder(ship.getReferenced().transform()));
+        director.setBuilder(new TieBulletBuilder(ship.referenced().transform()));
         int phaseshift = (prefSpriteData==SPRITEDATA2)?26:18;
-        EnemyShootFront esf = new EnemyShootFront(phaseshift,director,ship.getReferenced().transform());
+        EnemyShootFront esf = new EnemyShootFront(phaseshift,director,ship.referenced().transform());
         var bp = ship.getBagpack();
         ship.addWeapon(esf);
         FireFrequency frqsh = new FireFrequency(40,bp);
         ship.addBehaviour(frqsh);
-        ship.getReferenced().transform().setTop(Vector2.DOWN());
+        ship.referenced().transform().setTop(Vector2.DOWN());
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
 
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();
         ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f),bottomLeft.prod(1.2f)));
         if(Random.bool())
-            ship.addBehaviour(new LookTarget(PlayerShip.getInstance().getReferenced().transform()));
+            ship.addBehaviour(new LookTarget(PlayerShip.getInstance().referenced().transform()));
     }
 
     @Override

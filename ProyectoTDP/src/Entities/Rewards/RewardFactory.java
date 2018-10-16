@@ -25,8 +25,8 @@ public class RewardFactory
         var sd = new SpriteData("5reward");
         WeaponReward rew = new WeaponReward(premio,sd);
         BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
-        director.setBuilder(new BulletPlayerBuilder(player.getReferenced().transform()));
-        Weapon wea = new AngularWeapon<>(player.getReferenced().transform(),director,5);
+        director.setBuilder(new BulletPlayerBuilder(player.referenced().transform()));
+        Weapon wea = new AngularWeapon<>(player.referenced().transform(),director,5);
         rew.setWeapon(wea);
         premio.transform().setPosition(originPoint.position3());
         rew.setData(EntityData.WithEqualsValues(100));
@@ -40,7 +40,7 @@ public class RewardFactory
         WeaponReward rew = new WeaponReward(premio,sd);
         BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
         director.setBuilder(new ColdFireMaker());
-        Weapon wea = new IceWeapon<>(player.getReferenced().transform(),director,5);
+        Weapon wea = new IceWeapon<>(player.referenced().transform(),director,5);
         rew.setWeapon(wea);
         premio.transform().setPosition(originPoint.position3());
         rew.setData(EntityData.WithEqualsValues(100));

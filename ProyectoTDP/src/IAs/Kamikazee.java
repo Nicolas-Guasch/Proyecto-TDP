@@ -9,14 +9,14 @@ public class Kamikazee extends AIQueryDecorator
 
     public Kamikazee(EntityQuery decorated) {
         super(decorated);
-        this.decorated = new WatchAnother(PlayerShip.getInstance().getReferenced().transform(), decorated);
+        this.decorated = new WatchAnother(PlayerShip.getInstance().referenced().transform(), decorated);
 
     }
 
     @Override
     public Vector2 whereToMove(Entity ent)
     {
-        return ent.getReferenced().transform().top();
+        return ent.referenced().transform().top();
     }
 
     @Override

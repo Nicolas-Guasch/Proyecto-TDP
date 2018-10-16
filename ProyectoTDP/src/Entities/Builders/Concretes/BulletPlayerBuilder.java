@@ -30,7 +30,7 @@ public class BulletPlayerBuilder extends PlayerBulletBuilder
     public void assembleSprite()
     {
         Renderizable rend = new Renderizable(SPRITEDATA);
-        bullet.getReferenced().setRenderer(rend);
+        bullet.referenced().setRenderer(rend);
         rend.show();
         SoundManager.Instance().SoloShoot();
     }
@@ -45,7 +45,7 @@ public class BulletPlayerBuilder extends PlayerBulletBuilder
 
     @Override
     public void assembleBehaviours() {
-        Transform tr = bullet.getReferenced().transform();
+        Transform tr = bullet.referenced().transform();
         tr.setPosition(solo.position());
         tr.setTop(solo.top());
         bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().PlayerBulletSpeed ));

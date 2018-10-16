@@ -51,7 +51,7 @@ public class LinedWave extends AbstractWave
     // borrar seguramente
     public void Action()
     {
-        enemies.forEach(e->{if(e.getData().getHealth()<=0)death.add(e);});
+        enemies.forEach(e->{if(e.data().getHealth()<=0)death.add(e);});
         while(!death.isEmpty())
         {
             enemies.remove(death.remove());
@@ -68,7 +68,7 @@ public class LinedWave extends AbstractWave
             director.assemble();
             x += phaseShift;
             var enemy = director.get();
-            enemy.getReferenced().transform().setPosition(hyperspace);
+            enemy.referenced().transform().setPosition(hyperspace);
             ubications.put(enemy,new Vector2(x,ycoord));
             enemies.add(enemy);
         }
@@ -92,7 +92,7 @@ public class LinedWave extends AbstractWave
     {
         if(!ubications.containsKey(en))
             new Exception("-- error en wave -- ").printStackTrace();
-        en.getReferenced().transform().DoMove(
+        en.referenced().transform().DoMove(
                 ubications.get(en), 5
         );
     }

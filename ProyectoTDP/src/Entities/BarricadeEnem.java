@@ -8,9 +8,9 @@ import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
 import GenericVisitor.MonoVisitor;
 
-public class ObstacleMonoDirectional extends Entity<ObstacleMonoDirectional> {
+public class BarricadeEnem extends Entity<BarricadeEnem> {
 
-	public ObstacleMonoDirectional(GameObject referenced) {
+	public BarricadeEnem(GameObject referenced) {
 		super(referenced);
 	}
 
@@ -31,16 +31,16 @@ public class ObstacleMonoDirectional extends Entity<ObstacleMonoDirectional> {
 
 	}
 
-	public void collideWith(ObstacleBidirectional ent) {
+	public void collideWith(BarricadeBoth ent) {
 
 	}
 
-	public void collideWith(ObstacleMonoDirectional ent) {
+	public void collideWith(BarricadeEnem ent) {
 
 	}
 
 	public void collideWith(PlayerBullet ent) {
-		data.decHealth(ent.getData().getDamage());
+		data.decHealth(ent.data().getDamage());
 	}
 
 	public void collideWith(EnemyBullet ent) {
@@ -58,7 +58,7 @@ public class ObstacleMonoDirectional extends Entity<ObstacleMonoDirectional> {
 	}
 
 	@Override
-	public void accept(MonoVisitor<ObstacleMonoDirectional> obstacleMonoDirectionalVisitor) {
+	public void accept(MonoVisitor<BarricadeEnem> obstacleMonoDirectionalVisitor) {
 		obstacleMonoDirectionalVisitor.visit(this);
 	}
 }

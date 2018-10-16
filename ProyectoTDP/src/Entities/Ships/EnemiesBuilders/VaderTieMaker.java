@@ -48,14 +48,14 @@ public class VaderTieMaker extends EnemyShipBuilder
 
         // -------------- creo armas y las agrego ---------------
         BulletDirector<EnemyBullet, EnemyBulletBuilder> vaddir = new BulletDirector<>();
-        vaddir.setBuilder(new BuilderBossBullets(ship.getReferenced().transform(),PlayerShip.getInstance().getReferenced().transform()));
-        EnemyShootFront esf = new EnemyShootFront(phaseshift,vaddir,ship.getReferenced().transform());
+        vaddir.setBuilder(new BuilderBossBullets(ship.referenced().transform(),PlayerShip.getInstance().referenced().transform()));
+        EnemyShootFront esf = new EnemyShootFront(phaseshift,vaddir,ship.referenced().transform());
         ship.addWeapon(esf);
 
 
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
-        director.setBuilder(new TieBulletBuilder(ship.getReferenced().transform()));
-        EnemyShootFront esf1 = new EnemyShootFront(phaseshift,director,ship.getReferenced().transform());
+        director.setBuilder(new TieBulletBuilder(ship.referenced().transform()));
+        EnemyShootFront esf1 = new EnemyShootFront(phaseshift,director,ship.referenced().transform());
         ship.addWeapon(esf1);
         ship.addWeapon(esf1);
         ship.addWeapon(esf1);
@@ -83,14 +83,14 @@ public class VaderTieMaker extends EnemyShipBuilder
     @Override
     public void assembleBehaviours() {
         // ---------------- hago que mire hacia abajo ----------
-        ship.getReferenced().transform().setTop(Vector2.DOWN());
+        ship.referenced().transform().setTop(Vector2.DOWN());
         // ---------------- hago que "pege la vuelta" -------------
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();
         ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f),bottomLeft.prod(1.2f)));
         // ----------------- que alguna nave random mire al player ------------
-        ship.addBehaviour(new LookTarget(PlayerShip.getInstance().getReferenced().transform()));
+        ship.addBehaviour(new LookTarget(PlayerShip.getInstance().referenced().transform()));
     }
 
     @Override

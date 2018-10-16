@@ -3,8 +3,8 @@ package Entities.Ships;
 import Collisions.CollisionData;
 import Engine.GameObject;
 import Entities.EnemyBullet;
-import Entities.ObstacleBidirectional;
-import Entities.ObstacleMonoDirectional;
+import Entities.BarricadeBoth;
+import Entities.BarricadeEnem;
 import Entities.PlayerBullet;
 import Entities.Rewards.Reward;
 import Entities.Weapons.EnemyBagpack;
@@ -23,23 +23,23 @@ public class EnemyShip extends Ship<EnemyShip> {
 	}
 
 	public void collideWith(PlayerShip ent) {
-		data.setHealth(data.getHealth()-ent.getData().getDamage());
+		data.setHealth(data.getHealth()-ent.data().getDamage());
 	}
 
 	public void collideWith(EnemyShip ent) {
 
 	}
 
-	public void collideWith(ObstacleBidirectional ent) {
+	public void collideWith(BarricadeBoth ent) {
 
 	}
 
-	public void collideWith(ObstacleMonoDirectional ent) {
+	public void collideWith(BarricadeEnem ent) {
 
 	}
 
 	public void collideWith(PlayerBullet ent) {
-		var dam = ent.getData().getDamage();
+		var dam = ent.data().getDamage();
 		if(data!=null)
 		data.setHealth(data.getHealth()-dam);
 	}

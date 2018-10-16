@@ -28,11 +28,11 @@ public class RelativeLateral extends AIQueryDecorator
             speed *= -1;
             i=0;
         }
-        return ent.getReferenced().transform().top().right(speed);
+        return ent.referenced().transform().top().right(speed);
     }
 
     @Override
     public Vector2 whereToSee(Entity ent) {
-        return ent.getReferenced().transform().top();
+        return ent.referenced().transform().top();
     }
 }

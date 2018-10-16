@@ -1,18 +1,18 @@
 package Entities.Builders;
 
 import Engine.GameObject;
-import Entities.ObstacleBidirectional;
+import Entities.BarricadeBoth;
 
 public abstract class ObstacleBidirectionalBuilder
 {
-    protected ObstacleBidirectional obst;
+    protected BarricadeBoth obst;
 
     public void create()
     {
         var go = GameObject.getRoot().addChild();
-        obst = new ObstacleBidirectional(go);
+        obst = new BarricadeBoth(go);
     }
-    public ObstacleBidirectional get()
+    public BarricadeBoth get()
     {
         return obst;
     }

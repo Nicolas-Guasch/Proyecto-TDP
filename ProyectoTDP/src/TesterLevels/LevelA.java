@@ -122,7 +122,7 @@ public class LevelA extends Component implements Level
         monodi.create();
         monodi.assemble();
         var obstaculo = monodi.get();
-        obstaculo.getReferenced().transform().setPosition(new Vector3(90,-100,-90));
+        obstaculo.referenced().transform().setPosition(new Vector3(90,-100,-90));
         TheGrimReaper.Instance().add(obstaculo);
 
         ObstacleBidirectionalDirector bid = new ObstacleBidirectionalDirector();
@@ -141,8 +141,8 @@ public class LevelA extends Component implements Level
         director.create();
         director.assemble();
         var bidobs2 = director.get();
-        bidobs2.getReferenced().transform().setPosition(point);
-        bidobs2.getReferenced().transform().setTop(top);
+        bidobs2.referenced().transform().setPosition(point);
+        bidobs2.referenced().transform().setTop(top);
         TheGrimReaper.Instance().add(bidobs2);
     }
 
@@ -155,7 +155,7 @@ public class LevelA extends Component implements Level
         pdir.assemble();
         UI.UI.getInstance().startLevel(0);
         player = pdir.get();
-        player.getReferenced().transform().setPosition(new Vector3(0, -300,-20));
+        player.referenced().transform().setPosition(new Vector3(0, -300,-20));
 
         TheGrimReaper.Instance().add(player);
     }
@@ -172,17 +172,17 @@ public class LevelA extends Component implements Level
             enemiesDirector.assemble();
             EnemyShip ship = enemiesDirector.get();
             enemies.addEnemy(ship);
-            ship.getReferenced().transform().setPosition(pos);
+            ship.referenced().transform().setPosition(pos);
             TheGrimReaper.Instance().add(ship);
             if(setRew==2)
             {
-                Transform t = ship.getReferenced().transform();
-                ship.setDoOnDeath(()-> RewardFactory.getWeaponIceReward(t));
+                Transform t = ship.referenced().transform();
+                ship.onDeath(()-> RewardFactory.getWeaponIceReward(t));
             }
             if(setRew==0)
             {
-                Transform t = ship.getReferenced().transform();
-                ship.setDoOnDeath(()-> RewardFactory.getWeaponReward(t));
+                Transform t = ship.referenced().transform();
+                ship.onDeath(()-> RewardFactory.getWeaponReward(t));
             }
         }
     }
@@ -223,7 +223,7 @@ public class LevelA extends Component implements Level
     private void enableWS() {
 
         var handler = player.getPilot().getHandler();
-        DirectionalMouse direction = new DirectionalMouse(player.getReferenced().transform());
+        DirectionalMouse direction = new DirectionalMouse(player.referenced().transform());
         DirectionalWASD move = new DirectionalWASD();
         handler = new PlayerMove(handler,move,direction);
         handler = new Slippery(handler);
@@ -255,7 +255,7 @@ public class LevelA extends Component implements Level
             enemiesDirector.assemble();
             EnemyShip ship = enemiesDirector.get();
             enemies.addEnemy(ship);
-            ship.getReferenced().transform().setPosition(new Vector3(0,400,z));
+            ship.referenced().transform().setPosition(new Vector3(0,400,z));
             TheGrimReaper.Instance().add(ship);
         };
         EngineGetter.Instance().get().waitForFrames(makeTheBoss,120);

@@ -25,7 +25,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
     public void assembleSprite() {
         SpriteData data = new SpriteData("coldfire");
         Renderizable rend = new Renderizable(data);
-        bullet.getReferenced().setRenderer(rend);
+        bullet.referenced().setRenderer(rend);
         rend.show();
         SoundManager.Instance().SoloShoot();
     }
@@ -39,20 +39,20 @@ public class ColdFireMaker extends PlayerBulletBuilder {
 
     @Override
     public void assembleBehaviours() {
-        Transform tr = bullet.getReferenced().transform();
-        var playerT = PlayerShip.getInstance().getReferenced().transform();
+        Transform tr = bullet.referenced().transform();
+        var playerT = PlayerShip.getInstance().referenced().transform();
         tr.setPosition(playerT.position3());
         tr.setTop(playerT.top());
         bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().PlayerBulletSpeed *0.5f));
         // ----------- Ice Effect ------------
-        bullet.setDoOnDeath(this::onColdFire);
+        bullet.onDeath(this::onColdFire);
     }
 
     @Override
     public void assembleData()
     {
         bullet.setData(GameSettings.GetInstance().SoloBulletData.clone());
-        bullet.getData().setDamage(0);
+        bullet.data().setDamage(0);
         TheGrimReaper.Instance().add(bullet);
     }
 
@@ -62,7 +62,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
         Renderizable rend = new Renderizable(new SpriteData("coldfireexplo"));
         g.setRenderer(rend);
         rend.show();
-        var t = bullet.getReferenced().transform();
+        var t = bullet.referenced().transform();
         g.transform().setPosition(t.position3());
         EngineGetter.Instance().get().waitForFrames(g::Destroy,10);
         EnemiesManager.getInstance().computeOperation(new FreezeVisitor(5, t, 200));

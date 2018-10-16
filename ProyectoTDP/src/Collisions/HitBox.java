@@ -36,7 +36,7 @@ public final class HitBox extends Component {
         }
         this.entity = entity;
         this.dimensions = dimensions;
-        transform = entity.getReferenced().transform();
+        transform = entity.referenced().transform();
     }
 
     public Entity getEntity() {
@@ -44,7 +44,7 @@ public final class HitBox extends Component {
     }
 
     private GameObject obj() {
-        return entity.getReferenced();
+        return entity.referenced();
     }
 
 

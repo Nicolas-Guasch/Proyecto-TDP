@@ -5,55 +5,21 @@ import Engine.GameObject;
 import Entities.Rewards.Reward;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
+import EntitiesVisitor.EnemyBulletVisitor;
+import EntitiesVisitor.VisitorEntitie;
 import GenericVisitor.MonoVisitor;
 
 
-public class EnemyBullet extends Bullet<EnemyBullet> {
+public class EnemyBullet extends Bullet {
 
 	public EnemyBullet(GameObject referenced) {
 		super(referenced);
-	}
-
-
-
-	public void collideWith(PlayerShip ent) {
-		data.setHealth(0);
-	}
-
-
-	public void collideWith(EnemyShip ent) {
-
-	}
-
-
-	public void collideWith(ObstacleBidirectional ent) {
-		data.setHealth(0);
-	}
-
-	public void collideWith(ObstacleMonoDirectional ent) {
-		// no tiene que pasar nada
-	}
-
-	public void collideWith(PlayerBullet ent) {
-
-	}
-
-	public void collideWith(EnemyBullet ent) {
-
-	}
-	public void collideWith(Reward ent)  {
-
+		visitor = new EnemyBulletVisitor(this);
 	}
 
 	@Override
-	public void reportCollision(CollisionData data)
-	{
-		data.Their().collideWith(this);
+	public void accept(VisitorEntitie visitor) {
+		visitor.visit(this);
 	}
 
-
-	@Override
-	public void accept(MonoVisitor<EnemyBullet> enemyBulletVisitor) {
-		enemyBulletVisitor.visit(this);
-	}
 }

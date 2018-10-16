@@ -45,7 +45,7 @@ public class TheGrimReaper extends Component
 
         while(!toDestroy.isEmpty())
         {
-            toDestroy.remove().getReferenced().Destroy();
+            toDestroy.remove().referenced().Destroy();
         }
         while(!toAdd.isEmpty())
         {
@@ -66,7 +66,7 @@ public class TheGrimReaper extends Component
     }
     public void killIn(Entity ent, int frames)
     {
-        EngineGetter.Instance().get().waitForFrames(()-> ent.getData().setHealth(-1),frames);
+        EngineGetter.Instance().get().waitForFrames(()-> ent.data().setHealth(-1),frames);
     }
     public void KillThemAll()
     {
@@ -77,7 +77,7 @@ public class TheGrimReaper extends Component
     }
 
     private void accept(Entity e) {
-        if (e.getData().getHealth() <= 0 || e.getReferenced().transform().position().length() > far) {
+        if (e.data().getHealth() <= 0 || e.referenced().transform().position().length() > far) {
             toDestroy.add(e);
             e.onDeath();
         }

@@ -1,0 +1,33 @@
+plan de ataque para refactoring de Entities
+
+separar en packages por: Creation - Behaviour
+
+Crear una clase abstracta para el visitor de las entidades y hacer heredar a las entidades por separado de una interfaz "IVisitable" 
+
+el collide with va a pasar a utilizar el visitor
+
+el objeto del tipo visitor va a estar contenido en la entidad
+
+----------------------------------------------------------
+
+interaccion reward - nave
+
+el reward es quien modifica a la nave, nave debe proveer de operaciones para que esto sea posible ( las
+que ya tiene, getPilot, addBehaviour )
+
+
+--------------------------------------------------------
+
+
+Marcos: 
+	empiezo por crear los visitors de contactos, luego entre todos nos metemos a modificar las clases 
+	de las entidades para integrar los visitores
+
+	Provablemente tengamos que crear builders nuevos para las entidades 
+				(se sustituyen fasilmente por suerte (gracias GOF <3 ) )
+
+
+
+
+
+

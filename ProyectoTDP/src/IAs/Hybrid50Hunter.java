@@ -14,9 +14,9 @@ public class Hybrid50Hunter extends AIQueryDecorator {
 
     @Override
     public Vector2 whereToMove(Entity ent) {
-        if(ent.getData().getHealth() < 50)
+        if(ent.data().getHealth() < 50)
         {
-            return decorated.whereToMove(ent).withLength(0.5f).sum(ent.getReferenced().transform().top(1.5f)).versor();
+            return decorated.whereToMove(ent).withLength(0.5f).sum(ent.referenced().transform().top(1.5f)).versor();
         }
         return decorated.whereToMove(ent);
     }

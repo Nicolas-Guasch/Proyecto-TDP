@@ -42,19 +42,19 @@ public class PlayerShip extends Ship<PlayerShip> {
 
 		super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
 
-		SoundManager.Instance().setTransformListener(this.getReferenced().transform());
+		SoundManager.Instance().setTransformListener(this.referenced().transform());
 	}
 
 	public void collideWith(EnemyShip enemyShip)
 	{
-		float damage = enemyShip.getData().getDamage() - data.getShield();
+		float damage = enemyShip.data().getDamage() - data.getShield();
 		damage = damage>=0 ? damage : 0;
 		setLife(data.getHealth() - damage);
 	}
 
 	public void collideWith(EnemyBullet ent)
 	{
-		float damage = ent.getData().getDamage() - data.getShield();
+		float damage = ent.data().getDamage() - data.getShield();
 		damage = damage>=0 ? damage : 0;
 		setLife(data.getHealth() - damage);
 	}

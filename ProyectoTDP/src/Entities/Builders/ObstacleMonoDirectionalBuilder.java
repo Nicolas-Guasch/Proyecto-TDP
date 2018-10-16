@@ -1,18 +1,18 @@
 package Entities.Builders;
 
 import Engine.GameObject;
-import Entities.ObstacleMonoDirectional;
+import Entities.BarricadeEnem;
 
 public abstract class ObstacleMonoDirectionalBuilder
 {
-    protected ObstacleMonoDirectional obst;
+    protected BarricadeEnem obst;
 
     public void create()
     {
         var go = GameObject.getRoot().addChild();
-        obst = new ObstacleMonoDirectional(go);
+        obst = new BarricadeEnem(go);
     }
-    public ObstacleMonoDirectional get()
+    public BarricadeEnem get()
     {
         return obst;
     }

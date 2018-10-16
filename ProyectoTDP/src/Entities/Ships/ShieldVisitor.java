@@ -15,8 +15,8 @@ public class ShieldVisitor implements MonoVisitor<PlayerShip>
     public void visit(PlayerShip visitable)
     {
         this.visitable = visitable;
-        prevShield = visitable.getData().getShield();
-        visitable.getData().setShield(100000);
+        prevShield = visitable.data().getShield();
+        visitable.data().setShield(100000);
         Runnable restaurar = this::restaurar;
 
 
@@ -26,7 +26,7 @@ public class ShieldVisitor implements MonoVisitor<PlayerShip>
 
     private void restaurar()
     {
-        visitable.getData().setShield(prevShield);
+        visitable.data().setShield(prevShield);
     }
 
 }

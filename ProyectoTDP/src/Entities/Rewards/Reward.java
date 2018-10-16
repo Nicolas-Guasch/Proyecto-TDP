@@ -18,17 +18,17 @@ public abstract class Reward<RewardType extends Reward<RewardType>> extends Enti
 
     public abstract void collideWith(EnemyShip ent) ;
 
-    public void collideWith(ObstacleBidirectional ent) {
+    public void collideWith(BarricadeBoth ent) {
 
     }
 
     protected void Destroy()
     {
-        getData().setHealth(-1);
+        data().setHealth(-1);
     }
 
 
-    public void collideWith(ObstacleMonoDirectional ent) {
+    public void collideWith(BarricadeEnem ent) {
 
     }
 

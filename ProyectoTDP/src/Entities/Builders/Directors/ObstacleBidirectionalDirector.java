@@ -1,7 +1,7 @@
 package Entities.Builders.Directors;
 
 import Entities.Builders.ObstacleBidirectionalBuilder;
-import Entities.ObstacleBidirectional;
+import Entities.BarricadeBoth;
 
 public class ObstacleBidirectionalDirector
 {
@@ -22,7 +22,7 @@ public class ObstacleBidirectionalDirector
         builder.assembleData();
     }
 
-    public ObstacleBidirectional get(){
+    public BarricadeBoth get(){
         return builder.get();
     }
 }

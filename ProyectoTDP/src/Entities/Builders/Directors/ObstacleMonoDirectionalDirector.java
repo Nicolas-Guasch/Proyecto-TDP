@@ -1,7 +1,7 @@
 package Entities.Builders.Directors;
 
 import Entities.Builders.ObstacleMonoDirectionalBuilder;
-import Entities.ObstacleMonoDirectional;
+import Entities.BarricadeEnem;
 
 public class ObstacleMonoDirectionalDirector
 {
@@ -22,7 +22,7 @@ public class ObstacleMonoDirectionalDirector
         builder.assembleData();
     }
 
-    public ObstacleMonoDirectional get(){
+    public BarricadeEnem get(){
         return builder.get();
     }
 }

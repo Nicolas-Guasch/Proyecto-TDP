@@ -7,19 +7,24 @@ import Engine.GameObject;
 import Entities.Rewards.Reward;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
-import GenericVisitor.Visitable;
+import EntitiesVisitor.VisitorEntitie;
 import RenderingSystem.Renderizable;
 
-public abstract class Entity<Son extends Entity<Son>> implements Visitable<Son> {
+public abstract class Entity {
 
 	private GameObject referenced;
-	protected EntityData data; // tiene setter y getter, pero la hago protected por comodidad
-
 	private Runnable doOnDeath;
 
-	public void setDoOnDeath(Runnable doOnDeath) {
-		this.doOnDeath = doOnDeath;
+	protected EntityData data; // tiene setter y getter, pero la hago protected por comodidad
+	protected VisitorEntitie visitor;
 
+	protected Entity(GameObject referenced){
+		this.referenced = referenced;
+
+	}
+
+	public void onDeath(Runnable doOnDeath){
+		this.doOnDeath = doOnDeath;
 	}
 
 	public void onDeath(){
@@ -28,67 +33,40 @@ public abstract class Entity<Son extends Entity<Son>> implements Visitable<Son> 
 			doOnDeath.run();
 		}
 	}
-
-	protected Entity(GameObject referenced)
-	{
-		this.referenced = referenced;
+	/**
+	 * IMPORTANT: you can set the data only once
+	 * @param data data to set
+	 */
+	public void setData(EntityData data){
+		if (this.data != null) {
+			this.data = data;
+		}
 	}
-
-	public void setData(EntityData data)
-	{
-		this.data = data;
-	}
-
-	public EntityData getData()
-	{
+	public EntityData data(){
 		return data;
 	}
-
-	public void setRenderer(Renderizable rend)
-	{
+	public void setRenderer(Renderizable rend){
 		referenced.setRenderer(rend);
 	}
-
-	//Collider must be attatched to this Entity and to layer
-	public void setHitBox(HitBox hitBox)
-	{
+	public void setHitBox(HitBox hitBox){
 		referenced.addHitBox(hitBox);
 	}
-
 	public void addBehaviour(Component comp) {
 		referenced.addComponent(comp);
 	}
-
-	public void removeBehaviour(Component comp) {
-		referenced.removeComponent(comp);
-	}
-	public GameObject getReferenced() {
+	public GameObject referenced() {
 		return referenced;
 	}
-
-
-
-
-	public void collideWith(PlayerShip ent){}
-
-	public void collideWith(EnemyShip ent){}
-
-	public void collideWith(ObstacleBidirectional ent){}
-
-	public void collideWith(ObstacleMonoDirectional ent){}
-
-	public void collideWith(PlayerBullet ent){}
-
-	public void collideWith(EnemyBullet ent){}
-
-	//visit
-	public void collideWith(Reward ent){}
-
-
-	//accept
-	public abstract void reportCollision(CollisionData data);
-
 	public boolean alive() {
-		return getData().getHealth() > 0;
+		return data().getHealth() > 0;
+	}
+	public final void reportCollision(CollisionData data){
+		data.Their().accept(visitor);
+	}
+	//implement with: visitor.visit(this);
+	public abstract void accept(VisitorEntitie visitor);
+
+	public void setVisitor(VisitorEntitie visitor) {
+		this.visitor = visitor;
 	}
 }

@@ -46,6 +46,8 @@ public final class EntityData
         this.health = health;
     }
 
+
+
     public void decHealth(float damage) {
         health -= damage;
     }

@@ -53,11 +53,11 @@ collider: 130x130
     {
         // ------- Pilot stuff -----------
         EntityQuery handler = new DummyEntityQuery();
-        DirectionalMouse direction = new DirectionalMouse(ship.getReferenced().transform());
+        DirectionalMouse direction = new DirectionalMouse(ship.referenced().transform());
         DirectionalWASD move = new DirectionalWASD();
         move.lockY();
         handler = new PlayerMove(handler,move,direction);
-        ship.getReferenced().transform().setPosition(new Vector3(0, -700,-20));
+        ship.referenced().transform().setPosition(new Vector3(0, -700,-20));
         handler = new Slippery(handler);
         Pilot pilot = new Pilot(handler,ship,15f);
         ship.setPilot(pilot);
@@ -79,9 +79,9 @@ collider: 130x130
     {
         BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
 
-        director.setBuilder(new BulletPlayerBuilder(ship.getReferenced().transform()));
-        ship.addWeapon(new GenericalWeapon<>(ship.getReferenced().transform(),director,2));
-        ship.addWeapon(new LateralizedWeapon<>(ship.getReferenced().transform(),director,3));
+        director.setBuilder(new BulletPlayerBuilder(ship.referenced().transform()));
+        ship.addWeapon(new GenericalWeapon<>(ship.referenced().transform(),director,2));
+        ship.addWeapon(new LateralizedWeapon<>(ship.referenced().transform(),director,3));
 
 
 

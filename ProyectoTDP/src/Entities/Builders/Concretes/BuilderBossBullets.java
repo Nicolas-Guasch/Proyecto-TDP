@@ -34,7 +34,7 @@ public class BuilderBossBullets extends EnemyBulletBuilder
     public void assembleSprite()
     {
         Renderizable rend = new Renderizable(SPRITEDATA);
-        bullet.getReferenced().setRenderer(rend);
+        bullet.referenced().setRenderer(rend);
         rend.show();
         SoundManager.Instance().Pew(tie.position()); // plays tie shoot sound
     }
@@ -49,7 +49,7 @@ public class BuilderBossBullets extends EnemyBulletBuilder
 
     @Override
     public void assembleBehaviours() {
-        Transform tr = bullet.getReferenced().transform();
+        Transform tr = bullet.referenced().transform();
         tr.setPosition(tie.position());
         tr.setTop(tie.top());
         bullet.addBehaviour(new DangerousHunter(
