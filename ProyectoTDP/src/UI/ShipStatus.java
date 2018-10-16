@@ -1,11 +1,13 @@
 package UI;
 
+import ADTs.Vector2;
 import Assets.AssetStore;
 import GameData.GameSettings;
 
 import javax.swing.*;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 import java.util.function.Consumer;
 
 public class ShipStatus implements UIComponent
@@ -13,30 +15,41 @@ public class ShipStatus implements UIComponent
     private final float lifeMax = GameSettings.GetInstance().PlayerData.getHealth();
     private final JComponent lifeBar;
     private final JComponent decorate;
-    private final int lifeBarHeight = 180;
+    private final int lifeBarHeight = 230;
+    private final Vector2 point;
     private List<JComponent> all;
 
-    public ShipStatus(){
+
+
+
+    public ShipStatus(Vector2 point)
+    {
+        this.point = point;
+        int x = (int) point.x();
+        int y = (int) point.y();
+
         JLabel jl =new JLabel(AssetStore.getIcon("life"));
         jl.setHorizontalAlignment(SwingConstants.LEFT);
 
         lifeBar = jl;
-        lifeBar.setBounds(85,62,lifeBarHeight,30);
+        lifeBar.setBounds(x,y,lifeBarHeight,10);
 
         decorate = new JLabel(AssetStore.getIcon("bigbar"));
-        decorate.setBounds(10,-50,250,255);
+        decorate.setBounds(x-88,y-170,345,350);
 
 
 
 
         all = new LinkedList<>();
-        all.add(lifeBar);
         all.add(decorate);
+        all.add(lifeBar);
     }
 
     public void PlayerLife(int life)
     {
-        lifeBar.setBounds(85,62, (int) ((life/lifeMax)*lifeBarHeight),30);
+        int x = (int) point.x();
+        int y = (int) point.y();
+        lifeBar.setBounds(x,y, (int) ((life/lifeMax)*lifeBarHeight),10);
     }
 
     @Override

@@ -71,7 +71,7 @@ public class UI
 
 
         // --------- LifeBar -------------
-        ShipStatus = new ShipStatus();
+        ShipStatus = new ShipStatus(new Vector2(100,100));
         ShipStatus.foreach(uiPanel::add);
 
 
