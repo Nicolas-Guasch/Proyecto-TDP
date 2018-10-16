@@ -33,6 +33,11 @@ public class Pilot extends Component
     }
 
 
+    public float speed() {
+        return Speed;
+    }
 
-
+    public void setSpeed(float v) {
+        Speed = v;
+    }
 }
