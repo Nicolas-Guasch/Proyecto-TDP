@@ -57,6 +57,7 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
     private void initenembuilds()
     {
         enemies.get(L1).add(new WhiteTieMaker());
+        enemies.get(L1).add(new FastTieMaker());
 
         enemies.get(L2).add(new WhiteTieMaker());
         enemies.get(L2).add(new FastTieMaker());
@@ -78,22 +79,22 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
     }
 
     private void initObsts() {
-        enemsPos.get(L1).add(new Vector2(-400,0));
-        enemsPos.get(L1).add(new Vector2(0,0));
-        enemsPos.get(L1).add(new Vector2(400,0));
+        obstpos.get(L1).add(new Vector2(-400,0));
+        obstpos.get(L1).add(new Vector2(10,0));
+        obstpos.get(L1).add(new Vector2(400,0));
     }
 
     private void initenempos()
     {
-        enemsPos.get(L1).add(new Vector2(-400/1.5f,350));
-        enemsPos.get(L1).add(new Vector2(-300/1.5f,350));
-        enemsPos.get(L1).add(new Vector2(-200/1.5f,350));
-        enemsPos.get(L1).add(new Vector2(-100/1.5f,350));
-        enemsPos.get(L1).add(new Vector2(000/1.5f,350));
-        enemsPos.get(L1).add(new Vector2(100/1.5f,350));
-        enemsPos.get(L1).add(new Vector2(200/1.5f,350));
-        enemsPos.get(L1).add(new Vector2(300/1.5f,350));
-        enemsPos.get(L1).add(new Vector2(400/1.5f,350));
+        enemsPos.get(L1).add(new Vector2(-400/1.5f,280));
+        enemsPos.get(L1).add(new Vector2(-300/1.5f,170));
+        enemsPos.get(L1).add(new Vector2(-200/1.5f,280));
+        enemsPos.get(L1).add(new Vector2(-100/1.5f,170));
+        enemsPos.get(L1).add(new Vector2(000/1.5f,280));
+        enemsPos.get(L1).add(new Vector2(100/1.5f,170));
+        enemsPos.get(L1).add(new Vector2(200/1.5f,280));
+        enemsPos.get(L1).add(new Vector2(300/1.5f,170));
+        enemsPos.get(L1).add(new Vector2(400/1.5f,250));
 
         enemsPos.get(L2).add(new Vector2(-400,550));
         enemsPos.get(L2).add(new Vector2(-300,550));

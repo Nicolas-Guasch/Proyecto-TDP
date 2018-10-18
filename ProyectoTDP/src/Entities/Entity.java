@@ -1,5 +1,6 @@
 package Entities;
 
+import Broadcaster.IBroadcaster;
 import Collisions.HitBox;
 import Engine.Component;
 import Collisions.CollisionData;
@@ -21,6 +22,11 @@ public abstract class Entity {
 		data = GameSettings.GetInstance().PlaceHolderData();
 	}
 
+
+	public IBroadcaster<Float> observerHealth(){
+		return data.getHealthObservable();
+	}
+
 	public void setOnDeath(Runnable doOnDeath){
 		this.doOnDeath = doOnDeath;
 	}
@@ -31,6 +37,8 @@ public abstract class Entity {
 			doOnDeath.run();
 		}
 	}
+
+
 	/**
 	 * IMPORTANT: you can set the data only once
 	 * @param data data to set

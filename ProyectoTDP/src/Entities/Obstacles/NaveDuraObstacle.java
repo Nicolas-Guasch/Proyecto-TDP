@@ -2,12 +2,12 @@ package Entities.Obstacles;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Entities.Builders.ObstacleBidirectionalBuilder;
+import Entities.Builders.BarricadeBothBuilder;
 import Entities.EntityData;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 
-public class NaveDuraObstacle extends ObstacleBidirectionalBuilder {
+public class NaveDuraObstacle extends BarricadeBothBuilder {
 
     @Override
     public void assembleSprite()

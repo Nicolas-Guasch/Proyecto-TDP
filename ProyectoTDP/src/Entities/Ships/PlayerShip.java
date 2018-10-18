@@ -1,4 +1,6 @@
 package Entities.Ships;
+
+import ADTs.Vector2;
 import Engine.GameObject;
 import Entities.Weapons.PlayerBagpack;
 import Entities.Weapons.WeaponSet;
@@ -9,7 +11,8 @@ import GameData.MatchResult;
 import Audio.SoundManager;
 import InputManager.DiscreteClick;
 import InputManager.DiscreteKeyInput;
-import UI.UI;
+
+import UI.ShipStatus;
 import UtilsBehaviours.PlayerWatcher;
 
 public class PlayerShip extends Ship {
@@ -28,6 +31,8 @@ public class PlayerShip extends Ship {
 		assert isUninitialized();
 		instance = new PlayerShip(go);
 		go.addComponent(new PlayerWatcher(instance));
+		var s = new ShipStatus(new Vector2(100,100), instance.observerHealth(),"bigbar",GameSettings.GetInstance().PlayerData.getHealth());
+		UI.UI.getInstance().addUIComponent(s);
 	}
 
 	@Override
@@ -55,7 +60,6 @@ public class PlayerShip extends Ship {
 	public void setLife(float cantLife)
 	{
 		data.setHealth(cantLife);
-		UI.getInstance().playerLife((int) cantLife);
 	}
 
 

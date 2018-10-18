@@ -1,18 +1,18 @@
 package Entities.Builders;
 
 import Engine.GameObject;
-import Entities.BarricadeBoth;
+import Entities.BarricadeEnem;
 
-public abstract class ObstacleBidirectionalBuilder
+public abstract class BarricadeEnemBuilder
 {
-    protected BarricadeBoth obst;
+    protected BarricadeEnem obst;
 
     public void create()
     {
         var go = GameObject.getRoot().addChild();
-        obst = new BarricadeBoth(go);
+        obst = new BarricadeEnem(go);
     }
-    public BarricadeBoth get()
+    public BarricadeEnem get()
     {
         return obst;
     }
@@ -21,4 +21,3 @@ public abstract class ObstacleBidirectionalBuilder
     public abstract void assembleBehaviours();
     public abstract void assembleData();
 }
-

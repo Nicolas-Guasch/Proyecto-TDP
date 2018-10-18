@@ -2,15 +2,13 @@ package Entities.Obstacles;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Entities.Builders.Directors.ObstacleMonoDirectionalDirector;
-import Entities.Builders.ObstacleBidirectionalBuilder;
-import Entities.Builders.ObstacleMonoDirectionalBuilder;
+import Entities.Builders.BarricadeEnemBuilder;
 import Entities.EntityData;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 
 //el obstaculo al que solo le pega el player
-public class NaveViejaImperioMaker extends ObstacleMonoDirectionalBuilder {
+public class NaveViejaImperioMaker extends BarricadeEnemBuilder {
     @Override
     public void assembleSprite()
     {

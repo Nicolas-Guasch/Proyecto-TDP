@@ -4,6 +4,7 @@ import Assets.AssetStore;
 import Engine.DoWhen;
 import Engine.GameObject;
 import ADTs.Vector2;
+import Entities.Ships.PlayerShip;
 import Scripts.AlwaysLateral;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
@@ -31,7 +32,7 @@ public class UI
 
 
 
-    private final ShipStatus ShipStatus;
+
 
     private JComponent uiPanel;
 
@@ -69,9 +70,9 @@ public class UI
         win = new SpriteData("youwin");
 
 
-        // --------- LifeBar -------------
-        ShipStatus = new ShipStatus(new Vector2(100,100));
-        ShipStatus.foreach(uiPanel::add);
+
+
+
 
 
         // ------------- score ---------
@@ -80,6 +81,10 @@ public class UI
         score.setBounds(650,10,300,50);
         uiPanel.add(score);
 
+    }
+
+    public void addUIComponent(UIComponent s){
+        s.foreach(uiPanel::add);
     }
 
     private Callable<Boolean> moviblePrompt(SpriteData prompt)
@@ -119,10 +124,7 @@ public class UI
     }
 
 
-    public void playerLife(int life)
-    {
-        ShipStatus.PlayerLife(life);
-    }
+
 
 
     public Callable<Boolean> win()

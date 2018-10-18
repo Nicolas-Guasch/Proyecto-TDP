@@ -1,51 +1,47 @@
 package Levels;
 
 
-import ADTs.Vector2;
-import ADTs.Vector3;
-import DataParsers.ILevelDataParser;
-import DataParsers.ParsersManager;
-import Engine.Components.Transform;
-import Engine.EngineGetter;
-import Entities.Ships.EnemyShip;
-import Entities.Ships.EnemyShipBuilder;
-import Entities.Ships.EnemyShipDirector;
-import Entities.Ships.PlayerShip;
-import Entities.EveryOne;
-import EntitiesVisitor.EnemiesCounter;
-import EntitiesVisitor.VisitorEntity;
-import EntitiesVisitor.WeaponSwitch;
-import Rewards.Reward;
-import Rewards.RewardFactory;
-import Rewards.RewardKey;
+import ADTs.*;
+import DataParsers.*;
+import Engine.Components.*;
+import Engine.*;
+import Entities.Builders.Directors.BarricadeBothDirector;
+import Entities.Builders.Directors.BarricadeEnemDirector;
+import Entities.Obstacles.NaveDuraObstacle;
+import Entities.Obstacles.NaveViejaImperioMaker;
+import Entities.Ships.*;
+import Entities.*;
+import EntitiesVisitor.*;
+import Rewards.*;
 
 
 import java.util.*;
 
-public final class Level extends AbstractLinkedLevel
+public final class Level extends AbstractLevel
 {
 
     private Collection<Reward> rewards;
     private ILevelDataParser parser;
     private EnemyShipDirector director;
+    private BarricadeBothDirector directorBboth;
+    private BarricadeEnemDirector directorBenem;
     private int number;
     private boolean levelRunning = false;
+
 
     //Requiere player ya instanciado
     Level(int number){
         parser = ParsersManager.getInstance().getLevelDataParser();
         parser.setKey("level"+number);
         director = new EnemyShipDirector();
+        directorBboth = new BarricadeBothDirector();
+        directorBenem = new BarricadeEnemDirector();
+        directorBboth.setBuilder(new NaveDuraObstacle());
+        directorBenem.setBuilder(new NaveViejaImperioMaker());
+
         this.number = number;
     }
 
-    @Override
-    public AbstractLinkedLevel nextLevel() {
-        if(number<=3){
-            return new Level(number+1);
-        }
-        return null;
-    }
 
     private EnemyShip getShip(){
         director.create();
@@ -57,13 +53,38 @@ public final class Level extends AbstractLinkedLevel
     public void assembleLevel() {
         EveryOne.getInstance().add(PlayerShip.getInstance());
         assembleEnemies();
+        assembleBarricades();
     }
 
-//un comentario para commitear algo
+    private Entity getBarricadeRandom(){
+        if(Math.abs(new Random().nextInt())%8>2){
+            directorBboth.create();
+            directorBboth.assemble();
+            return directorBboth.get();
+        }
+        else{
+            directorBenem.create();
+            directorBenem.assemble();
+            return directorBenem.get();
+        }
+    }
+
+    private void assembleBarricades() {
+        for(Vector2 v : parser.obstaclesPositions())
+        {
+            Entity e = getBarricadeRandom();
+            e.referenced().transform().setPosition(v.v3(2));
+
+            e.referenced().getRenderer().show();
+            EveryOne.getInstance().add(e);
+        }
+    }
+
+
     private <Type> Type getRandom(List<Type> c)
     {
         Collections.shuffle(c);
-        return c.get(0);
+        return c.get(new Random().nextInt(c.size()));
     }
 
     private Runnable ThrowAReward(RewardKey key, Transform tr){
@@ -90,21 +111,21 @@ public final class Level extends AbstractLinkedLevel
                 var onDeath =ThrowAReward(itRewards.next(),ship.referenced().transform());
                 ship.setOnDeath(onDeath);
             }
-            //ship.accept(weaponDisabler);
         }
-        EveryOne.getInstance().forEach(weaponDisabler);
-        VisitorEntity weaponEnabler = new WeaponSwitch(true);
-        EngineGetter.Instance().get().waitForFrames(()->EveryOne.getInstance().forEach(weaponEnabler),300);
-        EngineGetter.Instance().get().waitForFrames(()->levelRunning=true,30);
+        if(number==1){
+            EveryOne.getInstance().forEach(weaponDisabler);
+            VisitorEntity weaponEnabler = new WeaponSwitch(true);
+            EngineGetter.Instance().get().waitForFrames(()->EveryOne.getInstance().forEach(weaponEnabler),400);
+            EngineGetter.Instance().get().waitForFrames(()->levelRunning=true,30);
+        }
 
     }
 
     @Override
     public void startLevel()
     {
-
         PlayerShip.getInstance().referenced().transform().setPosition(new Vector3(0,-300,-90));
-
+        levelRunning = true;
     }
 
 
@@ -113,6 +134,8 @@ public final class Level extends AbstractLinkedLevel
         //si se pone ineficiente hago una lista de enemigos y tiro un stream
         EnemiesCounter counter = new EnemiesCounter();
         EveryOne.getInstance().fastForEach(counter);
+
+        System.out.println(counter.getCount() + "counter get count");
         return counter.getCount()==0 && levelRunning;
     }
 }

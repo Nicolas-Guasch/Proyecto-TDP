@@ -1,13 +1,13 @@
 package Entities.Builders.Directors;
 
-import Entities.Builders.ObstacleMonoDirectionalBuilder;
+import Entities.Builders.BarricadeEnemBuilder;
 import Entities.BarricadeEnem;
 
-public class ObstacleMonoDirectionalDirector
+public class BarricadeEnemDirector
 {
-    private ObstacleMonoDirectionalBuilder builder;
+    private BarricadeEnemBuilder builder;
 
-    public void setBuilder(ObstacleMonoDirectionalBuilder builder){
+    public void setBuilder(BarricadeEnemBuilder builder){
         this.builder = builder;
     }
 

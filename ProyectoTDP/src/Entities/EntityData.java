@@ -1,7 +1,18 @@
 package Entities;
 
+import Broadcaster.BroadcasterPackage;
+import Broadcaster.IBroadcaster;
+import Broadcaster.Invoker;
+import Broadcaster.ObserverSystem;
+import Collisions.HitBox;
+
 public final class EntityData
 {
+
+    private IBroadcaster<Float> HealthData;
+    private Invoker<Float> HealthDataInvoker;
+
+
     private float health;
     private float damage;
     private float shield;
@@ -12,6 +23,14 @@ public final class EntityData
         this.health = health;
         this.damage = damage;
         this.shield = shield;
+
+        BroadcasterPackage<Float> pack = ObserverSystem.getInstance().GetBroadcaster();
+        HealthData = pack.Broadcaster;
+        HealthDataInvoker = pack.Invoker;
+    }
+
+    public IBroadcaster<Float> getHealthObservable(){
+        return HealthData;
     }
 
     public static EntityData WithEqualsValues(float v) {
@@ -49,11 +68,13 @@ public final class EntityData
 
     public void setHealth(float health) {
         this.health = health;
+        HealthDataInvoker.Invoke(health);
     }
 
 
 
     public void takeDamage(float damage) {
         health -= damage*(1-shield);
+        HealthDataInvoker.Invoke(health);
     }
 }

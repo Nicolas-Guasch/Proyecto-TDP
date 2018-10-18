@@ -6,11 +6,10 @@ import Engine.Components.Transform;
 import Engine.EngineGetter;
 import Engine.GameObject;
 import ADTs.Vector2;
-import Entities.Builders.Directors.ObstacleBidirectionalDirector;
-import Entities.Builders.Directors.ObstacleMonoDirectionalDirector;
+import Entities.Builders.Directors.BarricadeBothDirector;
+import Entities.Builders.Directors.BarricadeEnemDirector;
 import Entities.Obstacles.NaveDuraObstacle;
 import Entities.Obstacles.NaveViejaImperioMaker;
-import Rewards.Reward;
 import Rewards.RewardFactory;
 import Entities.Ships.*;
 import Entities.Ships.EnemiesBuilders.FastTieMaker;
@@ -118,7 +117,7 @@ public class LevelA extends Component implements Level
     }
 
     private void createBarricades() {
-        ObstacleMonoDirectionalDirector monodi = new ObstacleMonoDirectionalDirector();
+        BarricadeEnemDirector monodi = new BarricadeEnemDirector();
         monodi.setBuilder(new NaveViejaImperioMaker());
         monodi.create();
         monodi.assemble();
@@ -126,7 +125,7 @@ public class LevelA extends Component implements Level
         obstaculo.referenced().transform().setPosition(new Vector3(90,-100,-90));
         EveryOne.getInstance().add(obstaculo);
 
-        ObstacleBidirectionalDirector bid = new ObstacleBidirectionalDirector();
+        BarricadeBothDirector bid = new BarricadeBothDirector();
         bid.setBuilder(new NaveDuraObstacle());
 
         BidirectionalAt(Vector3.Get(230,-80,-90),Vector2.UP(),bid);
@@ -137,7 +136,7 @@ public class LevelA extends Component implements Level
 
     }
 
-    private void BidirectionalAt(Vector3 point, Vector2 top,ObstacleBidirectionalDirector director)
+    private void BidirectionalAt(Vector3 point, Vector2 top, BarricadeBothDirector director)
     {
         director.create();
         director.assemble();

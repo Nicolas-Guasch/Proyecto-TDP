@@ -2,17 +2,17 @@ package UI;
 
 import ADTs.Vector2;
 import Assets.AssetStore;
+import Broadcaster.IBroadcaster;
 import GameData.GameSettings;
 
 import javax.swing.*;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Vector;
 import java.util.function.Consumer;
 
 public class ShipStatus implements UIComponent
 {
-    private final float lifeMax = GameSettings.GetInstance().PlayerData.getHealth();
+    private float lifeMax;
     private final JComponent lifeBar;
     private final JComponent decorate;
     private final int lifeBarHeight = 230;
@@ -22,8 +22,9 @@ public class ShipStatus implements UIComponent
 
 
 
-    public ShipStatus(Vector2 point)
+    public ShipStatus(Vector2 point, IBroadcaster<Float> shipHealth, String iconName, float lifemax)
     {
+        this.lifeMax =lifemax;
         this.point = point;
         int x = (int) point.x();
         int y = (int) point.y();
@@ -34,18 +35,17 @@ public class ShipStatus implements UIComponent
         lifeBar = jl;
         lifeBar.setBounds(x,y,lifeBarHeight,10);
 
-        decorate = new JLabel(AssetStore.getIcon("bigbar"));
+        decorate = new JLabel(AssetStore.getIcon(iconName));
         decorate.setBounds(x-88,y-170,345,350);
-
-
-
 
         all = new LinkedList<>();
         all.add(decorate);
         all.add(lifeBar);
+
+        shipHealth.Suscribe(this::HealthShip);
     }
 
-    public void PlayerLife(int life)
+    public void HealthShip(float life)
     {
         int x = (int) point.x();
         int y = (int) point.y();
