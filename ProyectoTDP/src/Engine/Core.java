@@ -120,14 +120,20 @@ final class Core
 
                     stampPerFrame = Clock.currentTimeNanos();
                     endOfFrame();
-
+                        /*
                         do
                         {
                             act = Clock.currentTimeNanos();
                             invokerOnPhysicsUpdate.Invoke((act-prev)/1_000_000_000f);
                             prev = act;
+
                         }
                         while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe - lastRetard);
+                        */
+                        while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe - lastRetard)
+                        {
+                            sleep(10);
+                        }
 
                     lastRetard = (Clock.currentTimeNanos() - stampPerFrame) - nanosperframe;
                 }

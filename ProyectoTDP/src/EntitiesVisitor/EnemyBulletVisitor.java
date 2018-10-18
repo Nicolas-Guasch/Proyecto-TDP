@@ -1,5 +1,6 @@
 package EntitiesVisitor;
 
+import Entities.BarricadeBoth;
 import Entities.EnemyBullet;
 import Entities.Ships.PlayerShip;
 
@@ -8,6 +9,11 @@ public class EnemyBulletVisitor extends VisitorEntity {
 
     public EnemyBulletVisitor(EnemyBullet enemyBullet) {
         this.bullet = enemyBullet;
+    }
+
+    @Override
+    public void visit(BarricadeBoth barricade) {
+        bullet.data().setHealth(-1);
     }
 
     @Override

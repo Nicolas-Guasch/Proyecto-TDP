@@ -37,8 +37,8 @@ public class PlayerShip extends Ship {
 	}
 
 	private PlayerShip(GameObject referenced) {
-		//super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
-		super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteKeyInput(" ")));
+		super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
+		//super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteKeyInput(" ")));
 		SoundManager.Instance().setTransformListener(this.referenced().transform());
 		visitor = new PlayerVisitor();
 		data = GameSettings.GetInstance().PlayerData;

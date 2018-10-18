@@ -20,7 +20,7 @@ import java.util.LinkedHashSet;
 public class Stars extends Component
 {
 
-    private static final int MaxStarsOnScreen = 400;
+    private static final int MaxStarsOnScreen = 50;
 
     private static int cantLModelsStars = 5;
     private static int cantModelsStars = 11;
@@ -83,7 +83,10 @@ public class Stars extends Component
 
     @Override
     public void Update() {
-        if(MaxStarsOnScreen < stars.size()) return;
+        if(MaxStarsOnScreen < stars.size()){
+            setActive(false);
+            return;
+        }
         if(i>=Random.value(2,40))
         {
             i=0;
