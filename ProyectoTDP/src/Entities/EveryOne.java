@@ -3,6 +3,7 @@ package Entities;
 import Engine.Component;
 import Engine.EngineGetter;
 import Engine.GameObject;
+import EntitiesVisitor.EnemiesCounter;
 import EntitiesVisitor.VisitorEntity;
 
 import java.util.Collection;
@@ -19,6 +20,7 @@ public class EveryOne extends Component
     private static EveryOne instance;
     private static float far = 1500;
     private Queue<Entity> toAdd;
+    private Queue<VisitorEntity> visitors;
 
 
     public static EveryOne getInstance()
@@ -38,6 +40,7 @@ public class EveryOne extends Component
         entities = new LinkedList<>();
         toDestroy = new LinkedBlockingQueue<>();
         toAdd = new LinkedBlockingQueue<>();
+        visitors = new LinkedBlockingQueue<>();
     }
 
     @Override
@@ -54,7 +57,7 @@ public class EveryOne extends Component
         }
         entities.forEach(this::accept);
         toDestroy.forEach((e)->entities.remove(e));
-
+        doForeach();
     }
 
     public void add(Entity ent)
@@ -77,8 +80,15 @@ public class EveryOne extends Component
         }
     }
 
+    private void doForeach(){
+        while(!visitors.isEmpty()){
+            var visitor = visitors.remove();
+            entities.forEach(e->e.accept(visitor));
+        }
+    }
+
     public void forEach(VisitorEntity visitor){
-        entities.forEach(e->e.accept(visitor));
+        visitors.add(visitor);
     }
 
     private void accept(Entity e) {
@@ -87,5 +97,9 @@ public class EveryOne extends Component
             toDestroy.add(e);
             e.onDeath();
         }
+    }
+
+    public void fastForEach(VisitorEntity visitor) {
+        entities.forEach(e->e.accept(visitor));
     }
 }

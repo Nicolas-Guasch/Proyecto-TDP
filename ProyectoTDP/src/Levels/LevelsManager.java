@@ -1,6 +1,8 @@
 package Levels;
 
 import Engine.Component;
+import Engine.EngineGetter;
+import Engine.GameObject;
 import Entities.Ships.PlayerShip;
 import GameData.MatchResult;
 import SoundSystem.internal.UpdateRunner;
@@ -17,6 +19,7 @@ public final class LevelsManager extends Component {
 	private AbstractLinkedLevel currentLevel;
 	private LevelsManager(){
 		currentLevel = new Level(1);
+		GameObject.getRoot().addChild().addComponent(this);
 	}
 
 	@Override

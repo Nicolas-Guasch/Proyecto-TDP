@@ -4,6 +4,7 @@ import Engine.*;
 import GameData.MatchResult;
 import Audio.SoundManager;
 
+import Levels.GameManager;
 import TesterLevels.LevelA;
 import RenderingSystem.Window;
 
@@ -16,9 +17,7 @@ public class Tester
         window.AddInput(eng.Pauser());//para poner pausa
 
 
-        var level = new LevelA();
-        level.run(Tester::ganar, Tester::perder);
-        //new DeathStar().get();
+        GameManager.getInstance().StartGame();
 
 
         eng.suscribeToUpdate(window);

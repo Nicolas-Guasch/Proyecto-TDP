@@ -1,6 +1,7 @@
 package Entities.Ships;
 import Engine.GameObject;
 import Entities.Weapons.PlayerBagpack;
+import Entities.Weapons.WeaponSet;
 import EntitiesVisitor.PlayerVisitor;
 import EntitiesVisitor.VisitorEntity;
 import GameData.GameSettings;
@@ -35,7 +36,9 @@ public class PlayerShip extends Ship {
 		super.onDeath();
 		MatchResult.getInstance().EmpireWins();
 	}
-
+	public WeaponSet getBagPack() {
+		return weapons;
+	}
 	private PlayerShip(GameObject referenced) {
 		super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
 		//super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteKeyInput(" ")));

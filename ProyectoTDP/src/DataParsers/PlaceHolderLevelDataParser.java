@@ -85,55 +85,55 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
 
     private void initenempos()
     {
-        enemsPos.get(L1).add(new Vector2(-400,-500));
-        enemsPos.get(L1).add(new Vector2(-300,-500));
-        enemsPos.get(L1).add(new Vector2(-200,-500));
-        enemsPos.get(L1).add(new Vector2(-100,-500));
-        enemsPos.get(L1).add(new Vector2(000,-500));
-        enemsPos.get(L1).add(new Vector2(100,-500));
-        enemsPos.get(L1).add(new Vector2(200,-500));
-        enemsPos.get(L1).add(new Vector2(300,-500));
-        enemsPos.get(L1).add(new Vector2(400,-500));
+        enemsPos.get(L1).add(new Vector2(-400/1.5f,350));
+        enemsPos.get(L1).add(new Vector2(-300/1.5f,350));
+        enemsPos.get(L1).add(new Vector2(-200/1.5f,350));
+        enemsPos.get(L1).add(new Vector2(-100/1.5f,350));
+        enemsPos.get(L1).add(new Vector2(000/1.5f,350));
+        enemsPos.get(L1).add(new Vector2(100/1.5f,350));
+        enemsPos.get(L1).add(new Vector2(200/1.5f,350));
+        enemsPos.get(L1).add(new Vector2(300/1.5f,350));
+        enemsPos.get(L1).add(new Vector2(400/1.5f,350));
 
-        enemsPos.get(L2).add(new Vector2(-400,-500));
-        enemsPos.get(L2).add(new Vector2(-300,-500));
-        enemsPos.get(L2).add(new Vector2(-200,-500));
-        enemsPos.get(L2).add(new Vector2(-100,-500));
-        enemsPos.get(L2).add(new Vector2(000,-500));
-        enemsPos.get(L2).add(new Vector2(100,-500));
-        enemsPos.get(L2).add(new Vector2(200,-500));
-        enemsPos.get(L2).add(new Vector2(300,-500));
-        enemsPos.get(L2).add(new Vector2(400,-500));
+        enemsPos.get(L2).add(new Vector2(-400,550));
+        enemsPos.get(L2).add(new Vector2(-300,550));
+        enemsPos.get(L2).add(new Vector2(-200,550));
+        enemsPos.get(L2).add(new Vector2(-100,550));
+        enemsPos.get(L2).add(new Vector2(000,550));
+        enemsPos.get(L2).add(new Vector2(100,550));
+        enemsPos.get(L2).add(new Vector2(200,550));
+        enemsPos.get(L2).add(new Vector2(300,550));
+        enemsPos.get(L2).add(new Vector2(400,550));
 
-        enemsPos.get(L2).add(new Vector2(-400,-700));
-        enemsPos.get(L2).add(new Vector2(-300,-700));
-        enemsPos.get(L2).add(new Vector2(-200,-700));
-        enemsPos.get(L2).add(new Vector2(-100,-700));
-        enemsPos.get(L2).add(new Vector2(000,-700));
-        enemsPos.get(L2).add(new Vector2(100,-700));
-        enemsPos.get(L2).add(new Vector2(200,-700));
-        enemsPos.get(L2).add(new Vector2(300,-700));
-        enemsPos.get(L2).add(new Vector2(400,-700));
+        enemsPos.get(L2).add(new Vector2(-400,550));
+        enemsPos.get(L2).add(new Vector2(-300,550));
+        enemsPos.get(L2).add(new Vector2(-200,550));
+        enemsPos.get(L2).add(new Vector2(-100,550));
+        enemsPos.get(L2).add(new Vector2(000,550));
+        enemsPos.get(L2).add(new Vector2(100,550));
+        enemsPos.get(L2).add(new Vector2(200,550));
+        enemsPos.get(L2).add(new Vector2(300,550));
+        enemsPos.get(L2).add(new Vector2(400,550));
 
-        enemsPos.get(L3).add(new Vector2(-400,-500));
-        enemsPos.get(L3).add(new Vector2(-300,-500));
-        enemsPos.get(L3).add(new Vector2(-200,-500));
-        enemsPos.get(L3).add(new Vector2(-100,-500));
-        enemsPos.get(L3).add(new Vector2(000,-500));
-        enemsPos.get(L3).add(new Vector2(100,-500));
-        enemsPos.get(L3).add(new Vector2(200,-500));
-        enemsPos.get(L3).add(new Vector2(300,-500));
-        enemsPos.get(L3).add(new Vector2(400,-500));
+        enemsPos.get(L3).add(new Vector2(-400,550));
+        enemsPos.get(L3).add(new Vector2(-300,550));
+        enemsPos.get(L3).add(new Vector2(-200,550));
+        enemsPos.get(L3).add(new Vector2(-100,550));
+        enemsPos.get(L3).add(new Vector2(000,550));
+        enemsPos.get(L3).add(new Vector2(100,550));
+        enemsPos.get(L3).add(new Vector2(200,550));
+        enemsPos.get(L3).add(new Vector2(300,550));
+        enemsPos.get(L3).add(new Vector2(400,550));
 
-        enemsPos.get(L3).add(new Vector2(-400,-700));
-        enemsPos.get(L3).add(new Vector2(-300,-700));
-        enemsPos.get(L3).add(new Vector2(-200,-700));
-        enemsPos.get(L3).add(new Vector2(-100,-700));
-        enemsPos.get(L3).add(new Vector2(000,-700));
-        enemsPos.get(L3).add(new Vector2(100,-700));
-        enemsPos.get(L3).add(new Vector2(200,-700));
-        enemsPos.get(L3).add(new Vector2(300,-700));
-        enemsPos.get(L3).add(new Vector2(400,-700));
+        enemsPos.get(L3).add(new Vector2(-400,500));
+        enemsPos.get(L3).add(new Vector2(-300,500));
+        enemsPos.get(L3).add(new Vector2(-200,500));
+        enemsPos.get(L3).add(new Vector2(-100,500));
+        enemsPos.get(L3).add(new Vector2(000,500));
+        enemsPos.get(L3).add(new Vector2(100,500));
+        enemsPos.get(L3).add(new Vector2(200,500));
+        enemsPos.get(L3).add(new Vector2(300,500));
+        enemsPos.get(L3).add(new Vector2(400,500));
 
     }
 

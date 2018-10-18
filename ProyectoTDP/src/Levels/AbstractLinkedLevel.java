@@ -4,16 +4,14 @@ public abstract class AbstractLinkedLevel
 {
     protected AbstractLinkedLevel nextLevel;
 
-    public AbstractLinkedLevel nextLevel() {
-        return nextLevel;
-    }
+    public abstract AbstractLinkedLevel nextLevel();
 
     public void setNextLevel(AbstractLinkedLevel level){
         nextLevel = level;
     }
 
     public boolean hasNext() {
-        return nextLevel !=null;
+        return nextLevel() !=null;
     }
 
     public abstract void assembleLevel();
