@@ -59,7 +59,7 @@ public final class Level extends AbstractLinkedLevel
         assembleEnemies();
     }
 
-
+//un comentario para commitear algo
     private <Type> Type getRandom(List<Type> c)
     {
         Collections.shuffle(c);
