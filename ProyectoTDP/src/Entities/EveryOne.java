@@ -3,6 +3,7 @@ package Entities;
 import Engine.Component;
 import Engine.EngineGetter;
 import Engine.GameObject;
+import EntitiesVisitor.VisitorEntity;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -13,17 +14,17 @@ import java.util.concurrent.LinkedBlockingQueue;
 /**
  * is just the fucking Grim Reaper
  */
-public class TheGrimReaper extends Component
+public class EveryOne extends Component
 {
-    private static TheGrimReaper instance;
+    private static EveryOne instance;
     private static float far = 1500;
     private Queue<Entity> toAdd;
 
 
-    public static TheGrimReaper Instance()
+    public static EveryOne getInstance()
     {
         if(instance == null){
-            instance = GameObject.getRoot().addChild().addComponent(new TheGrimReaper());
+            instance = GameObject.getRoot().addChild().addComponent(new EveryOne());
         }
         return instance;
     }
@@ -32,7 +33,7 @@ public class TheGrimReaper extends Component
     private Collection<Entity> entities;
     private Queue<Entity> toDestroy;
 
-    private TheGrimReaper()
+    private EveryOne()
     {
         entities = new LinkedList<>();
         toDestroy = new LinkedBlockingQueue<>();
@@ -74,6 +75,10 @@ public class TheGrimReaper extends Component
         {
             killIn(ent,1);
         }
+    }
+
+    public void forEach(VisitorEntity visitor){
+        entities.forEach(e->e.accept(visitor));
     }
 
     private void accept(Entity e) {

@@ -5,7 +5,7 @@ import ADTs.Vector2;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
 import Entities.EnemyBullet;
-import Entities.TheGrimReaper;
+import Entities.EveryOne;
 
 //TheWeapon "commonWeaponTie"
 public class EnemyShootFront extends Weapon
@@ -35,8 +35,8 @@ public class EnemyShootFront extends Weapon
             getter.assemble();
             EnemyBullet b = getter.get();
             b.referenced().transform().setPosition(point);
-            TheGrimReaper.Instance().add(b);
-            TheGrimReaper.Instance().killIn(b,300);
+            EveryOne.getInstance().add(b);
+            EveryOne.getInstance().killIn(b,300);
     }
 
     @Override

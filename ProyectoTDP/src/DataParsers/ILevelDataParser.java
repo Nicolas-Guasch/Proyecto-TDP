@@ -2,20 +2,22 @@ package DataParsers;
 
 import ADTs.Vector2;
 import Entities.Ships.EnemyShipBuilder;
-import Rewards.Reward;
 import Rewards.RewardKey;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface ILevelDataParser
 {
     /**
      * @param key key to find file data
      */
+
     void setKey(String key);
-    Collection<Vector2> enemiesPositions();
-    Collection<Vector2> obstaclesPositions();
-    Collection<EnemyShipBuilder> enemies();
-    Collection<RewardKey> rewards();
+
+    List<Vector2> enemiesPositions();
+    List<Vector2> obstaclesPositions();
+    List<EnemyShipBuilder> enemies();
+    List<RewardKey> rewards();
 
 }

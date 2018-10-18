@@ -10,13 +10,14 @@ import Entities.Builders.Directors.ObstacleBidirectionalDirector;
 import Entities.Builders.Directors.ObstacleMonoDirectionalDirector;
 import Entities.Obstacles.NaveDuraObstacle;
 import Entities.Obstacles.NaveViejaImperioMaker;
+import Rewards.Reward;
 import Rewards.RewardFactory;
 import Entities.Ships.*;
 import Entities.Ships.EnemiesBuilders.FastTieMaker;
 import Entities.Ships.EnemiesBuilders.VaderTieMaker;
 import Entities.Ships.EnemiesBuilders.WhiteTieMaker;
 
-import Entities.TheGrimReaper;
+import Entities.EveryOne;
 import Audio.SoundManager;
 import IAs.*;
 import InputManager.DirectionalMouse;
@@ -123,7 +124,7 @@ public class LevelA extends Component implements Level
         monodi.assemble();
         var obstaculo = monodi.get();
         obstaculo.referenced().transform().setPosition(new Vector3(90,-100,-90));
-        TheGrimReaper.Instance().add(obstaculo);
+        EveryOne.getInstance().add(obstaculo);
 
         ObstacleBidirectionalDirector bid = new ObstacleBidirectionalDirector();
         bid.setBuilder(new NaveDuraObstacle());
@@ -143,7 +144,7 @@ public class LevelA extends Component implements Level
         var bidobs2 = director.get();
         bidobs2.referenced().transform().setPosition(point);
         bidobs2.referenced().transform().setTop(top);
-        TheGrimReaper.Instance().add(bidobs2);
+        EveryOne.getInstance().add(bidobs2);
     }
 
 
@@ -157,7 +158,7 @@ public class LevelA extends Component implements Level
         player = pdir.get();
         player.referenced().transform().setPosition(new Vector3(0, -300,-20));
 
-        TheGrimReaper.Instance().add(player);
+        EveryOne.getInstance().add(player);
     }
     private void createEnemies()
     {
@@ -173,20 +174,20 @@ public class LevelA extends Component implements Level
             EnemyShip ship = enemiesDirector.get();
             enemies.addEnemy(ship);
             ship.referenced().transform().setPosition(pos);
-            TheGrimReaper.Instance().add(ship);
+            EveryOne.getInstance().add(ship);
             if(setRew==2)
             {
                 Transform t = ship.referenced().transform();
-                ship.onDeath(()-> RewardFactory.getWeaponIceReward(t));
+                ship.setOnDeath(()-> RewardFactory.getInstance().getReward(RewardFactory.WEAPONICEREWARD,t));
             }
             if(setRew==0)
             {
                 Transform t = ship.referenced().transform();
-                ship.onDeath(()-> RewardFactory.getWeaponReward(t));
+                ship.setOnDeath(()-> RewardFactory.getInstance().getReward(RewardFactory.WEAPON5REWARD,t));
             }
             if(setRew==1){
                 Transform t = ship.referenced().transform();
-                ship.onDeath(()-> RewardFactory.getShieldReward(t));
+                ship.setOnDeath(()-> RewardFactory.getInstance().getReward(RewardFactory.SHIELDREWARD,t));
             }
         }
     }
@@ -260,7 +261,7 @@ public class LevelA extends Component implements Level
             EnemyShip ship = enemiesDirector.get();
             enemies.addEnemy(ship);
             ship.referenced().transform().setPosition(new Vector3(0,400,z));
-            TheGrimReaper.Instance().add(ship);
+            EveryOne.getInstance().add(ship);
         };
         EngineGetter.Instance().get().waitForFrames(makeTheBoss,120);
 

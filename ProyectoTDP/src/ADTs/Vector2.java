@@ -199,6 +199,14 @@ public class Vector2
         return x>v.x;
     }
 
+    public Vector3 v3(float z) {
+        return new Vector3(x,y,z);
+    }
+
+    public Vector3 v3() {
+        return new Vector3(x,y,0);
+    }
+
     /*inner class*/
     private class EngineException extends RuntimeException {
         public EngineException(String msg) {

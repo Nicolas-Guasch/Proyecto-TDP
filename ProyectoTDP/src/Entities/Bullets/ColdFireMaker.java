@@ -8,7 +8,7 @@ import Engine.GameObject;
 import Entities.Behaviours.SimpleBullet;
 import Entities.Builders.PlayerBulletBuilder;
 import Entities.Ships.PlayerShip;
-import Entities.TheGrimReaper;
+import Entities.EveryOne;
 import GameData.GameSettings;
 import Audio.SoundManager;
 import GenericVisitor.FreezeVisitor;
@@ -45,7 +45,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
         tr.setTop(playerT.top());
         bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().PlayerBulletSpeed *0.5f));
         // ----------- Ice Effect ------------
-        bullet.onDeath(this::onColdFire);
+        bullet.setOnDeath(this::onColdFire);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
     {
         bullet.setData(GameSettings.GetInstance().PlayerBulletData.clone());
         bullet.data().setDamage(0);
-        TheGrimReaper.Instance().add(bullet);
+        EveryOne.getInstance().add(bullet);
     }
 
     private void onColdFire()

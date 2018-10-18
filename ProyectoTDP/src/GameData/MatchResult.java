@@ -1,12 +1,6 @@
 
 package GameData;
 
-import Audio.SoundManager;
-import Engine.EngineGetter;
-import Engine.While;
-import Entities.TheGrimReaper;
-import UI.UI;
-
 public class MatchResult implements ILostOrWin{
     private static MatchResult instance;
 

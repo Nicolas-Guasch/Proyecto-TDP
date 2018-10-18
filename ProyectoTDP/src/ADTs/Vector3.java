@@ -24,4 +24,8 @@ public class Vector3{
     {
         return z;
     }
+
+    public Vector2 v2() {
+        return new Vector2(x,y);
+    }
 }

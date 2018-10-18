@@ -7,17 +7,14 @@ import Entities.Ships.EnemyShipBuilder;
 import Rewards.RewardFactory;
 import Rewards.RewardKey;
 
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class PlaceHolderLevelDataParser implements ILevelDataParser
 {
 
-    private Map<String,Collection<Vector2>> enemsPos, obstpos;
-    private Map<String,Collection<EnemyShipBuilder>> enemies;
-    private Map<String,Collection<RewardKey>> rew;
+    private Map<String,List<Vector2>> enemsPos, obstpos;
+    private Map<String,List<EnemyShipBuilder>> enemies;
+    private Map<String,List<RewardKey>> rew;
 
     private String L1 = "level1";
     private String L2 = "level2";
@@ -146,22 +143,22 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
     }
 
     @Override
-    public Collection<Vector2> enemiesPositions() {
+    public List<Vector2> enemiesPositions() {
         return enemsPos.get(currentKey);
     }
 
     @Override
-    public Collection<Vector2> obstaclesPositions() {
+    public List<Vector2> obstaclesPositions() {
         return obstpos.get(currentKey);
     }
 
     @Override
-    public Collection<EnemyShipBuilder> enemies() {
+    public List<EnemyShipBuilder> enemies() {
         return enemies.get(currentKey);
     }
 
     @Override
-    public Collection<RewardKey> rewards() {
+    public List<RewardKey> rewards() {
         return rew.get(currentKey);
     }
 }

@@ -3,7 +3,7 @@ package GameData;
 import Audio.SoundManager;
 import Engine.EngineGetter;
 import Engine.While;
-import Entities.TheGrimReaper;
+import Entities.EveryOne;
 import UI.UI;
 
 public class LostOrWin implements ILostOrWin{
@@ -30,8 +30,8 @@ public class LostOrWin implements ILostOrWin{
         if (!made) {
             SoundManager.Instance().gameOver();
             UI.getInstance().gameOver();
-            TheGrimReaper.Instance().KillThemAll();
-            new While(() -> true, () -> TheGrimReaper.Instance().KillThemAll()).Excecute();
+            EveryOne.getInstance().KillThemAll();
+            new While(() -> true, () -> EveryOne.getInstance().KillThemAll()).Excecute();
             EngineGetter.Instance().get().waitForFrames(() -> System.exit(0), 500);
         }
         made = true;

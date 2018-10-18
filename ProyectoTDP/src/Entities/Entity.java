@@ -21,7 +21,7 @@ public abstract class Entity {
 		data = GameSettings.GetInstance().PlaceHolderData();
 	}
 
-	public void onDeath(Runnable doOnDeath){
+	public void setOnDeath(Runnable doOnDeath){
 		this.doOnDeath = doOnDeath;
 	}
 

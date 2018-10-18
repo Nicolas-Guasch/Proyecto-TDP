@@ -6,7 +6,7 @@ import ADTs.Vector2;
 import Entities.Behaviours.Vibe;
 import Entities.Builders.IBullet;
 import Entities.Builders.Directors.IBulletDirector;
-import Entities.TheGrimReaper;
+import Entities.EveryOne;
 import Tools.Random;
 
 public class LateralizedWeapon<DirectorType extends IBulletDirector> extends Weapon
@@ -53,8 +53,8 @@ public class LateralizedWeapon<DirectorType extends IBulletDirector> extends Wea
             b.transform().setPosition(point);
             b.entity().addBehaviour(new Vibe(12+Random.value(1,6),3+ Random.value()*2));
 
-            TheGrimReaper.Instance().add(b.entity());
-            TheGrimReaper.Instance().killIn(b.entity(),framesDuration);
+            EveryOne.getInstance().add(b.entity());
+            EveryOne.getInstance().killIn(b.entity(),framesDuration);
         }
     }
 

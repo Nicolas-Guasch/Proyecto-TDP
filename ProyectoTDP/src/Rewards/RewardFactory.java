@@ -10,7 +10,7 @@ import Entities.EntityData;
 import Entities.PlayerBullet;
 import Entities.Ships.PlayerShip;
 import Entities.Ships.ShieldVisitor;
-import Entities.TheGrimReaper;
+import Entities.EveryOne;
 import Entities.Weapons.AngularWeapon;
 import Entities.Weapons.IceWeapon;
 import Entities.Weapons.Weapon;
@@ -18,7 +18,6 @@ import RenderingSystem.SpriteData;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Callable;
 import java.util.function.Consumer;
 
 public class RewardFactory
@@ -66,7 +65,7 @@ public class RewardFactory
 
         premio.transform().setPosition(originPoint.position3());
         rew.setData(EntityData.WithEqualsValues(100));
-        TheGrimReaper.Instance().add(rew);
+        EveryOne.getInstance().add(rew);
     }
 
 
@@ -83,7 +82,7 @@ public class RewardFactory
         rew.setWeapon(wea);
         premio.transform().setPosition(originPoint.position3());
         rew.setData(EntityData.WithEqualsValues(100));
-        TheGrimReaper.Instance().add(rew);
+        EveryOne.getInstance().add(rew);
     }
 
 
@@ -99,7 +98,7 @@ public class RewardFactory
         rew.setWeapon(wea);
         premio.transform().setPosition(originPoint.position3());
         rew.setData(EntityData.WithEqualsValues(100));
-        TheGrimReaper.Instance().add(rew);
+        EveryOne.getInstance().add(rew);
     }
 
 

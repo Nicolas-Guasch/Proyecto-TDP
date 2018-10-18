@@ -6,7 +6,7 @@ import ADTs.Vector2;
 
 import Entities.Builders.Directors.IBulletDirector;
 
-import Entities.TheGrimReaper;
+import Entities.EveryOne;
 
 public class AngularWeapon<BulletDirectorType extends IBulletDirector> extends Weapon
 {
@@ -50,8 +50,8 @@ public class AngularWeapon<BulletDirectorType extends IBulletDirector> extends W
             var b = generator.get();
             b.transform().setPosition(point);
             b.transform().setTop(reference.top().rotate(-first-pedazo*i));
-            TheGrimReaper.Instance().add(b.entity());
-            TheGrimReaper.Instance().killIn(b.entity(),framesDuration);
+            EveryOne.getInstance().add(b.entity());
+            EveryOne.getInstance().killIn(b.entity(),framesDuration);
         }
 
     }

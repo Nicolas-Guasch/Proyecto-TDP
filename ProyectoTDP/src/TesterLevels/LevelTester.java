@@ -29,7 +29,7 @@ public class LevelTester extends Component {
     private LinedWave wave;
     private EnemyShipDirector ties;
     private EnemyShipBuilder builder;
-    private TheGrimReaper lifeControl;
+    private EveryOne lifeControl;
     public PlayerShip player;
 
     private Component oldControl;
@@ -50,7 +50,7 @@ public class LevelTester extends Component {
 
     public void runLevel() {
 
-        lifeControl = TheGrimReaper.Instance();
+        lifeControl = EveryOne.getInstance();
         initializePlayer();
 
 
@@ -84,7 +84,7 @@ public class LevelTester extends Component {
         ties.setBuilder(builder);
         Iterable<EnemyShip> it = wave.addEnemies(ties,8);
         wave.run();
-        it.forEach(e-> TheGrimReaper.Instance().add(e));
+        it.forEach(e-> EveryOne.getInstance().add(e));
     }
 
 }
