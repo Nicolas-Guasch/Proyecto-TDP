@@ -16,10 +16,44 @@ import Entities.Weapons.IceWeapon;
 import Entities.Weapons.Weapon;
 import RenderingSystem.SpriteData;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.function.Consumer;
+
 public class RewardFactory
 {
+    public static final RewardKey
+        SHIELDREWARD = RewardKey.get(),
+        WEAPON5REWARD = RewardKey.get(),
+        WEAPONICEREWARD = RewardKey.get();
 
-    public static void getShieldReward(Transform originPoint)
+
+    private static RewardFactory instance;
+    public static RewardFactory getInstance(){
+        instance = instance==null?new RewardFactory():instance;
+        return instance;
+    }
+
+    private Map<RewardKey, Consumer<Transform>> creators;
+
+    private RewardFactory(){
+        creators = new HashMap<>();
+        creators.put(WEAPON5REWARD,this::getWeaponReward);
+        creators.put(WEAPONICEREWARD,this::getWeaponIceReward);
+        creators.put(SHIELDREWARD,this::getShieldReward);
+    }
+
+    public void getReward(RewardKey key, Transform originPoint){
+        var op = creators.getOrDefault(key,null);
+        if(op!=null){
+          op.accept(originPoint);
+        }
+    }
+
+
+
+    private void getShieldReward(Transform originPoint)
     {
         var player = PlayerShip.getInstance();
         GameObject premio = GameObject.getRoot().addChild();
@@ -37,7 +71,7 @@ public class RewardFactory
 
 
 
-    public static void getWeaponReward(Transform originPoint)
+    private void getWeaponReward(Transform originPoint)
     {
         var player = PlayerShip.getInstance();
         GameObject premio = GameObject.getRoot().addChild();
@@ -53,7 +87,7 @@ public class RewardFactory
     }
 
 
-    public static void getWeaponIceReward(Transform originPoint)
+    private void getWeaponIceReward(Transform originPoint)
     {
         var player = PlayerShip.getInstance();
         GameObject premio = GameObject.getRoot().addChild();

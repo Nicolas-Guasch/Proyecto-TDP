@@ -11,7 +11,7 @@ public final class FileSys {
     private IFileManager currentFileManager;
 
     private FileSys(){
-        currentFileManager = new MonoThreadFileManager();
+        currentFileManager = new PlaceHolderFileManager();
     }
 
     public IFileManager GetFileManager(){

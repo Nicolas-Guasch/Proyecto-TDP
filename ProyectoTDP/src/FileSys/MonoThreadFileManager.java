@@ -3,23 +3,24 @@ package FileSys;
 class MonoThreadFileManager implements IFileManager {
 
 
+
     @Override
-    public void save(String path, String text, boolean append) {
+    public synchronized void save(String path, String text, boolean append) {
 
     }
 
     @Override
-    public String load(String path) {
+    public synchronized String load(String path) {
         return null;
     }
 
     @Override
-    public Iterable<String> loadLines(String path) {
+    public synchronized Iterable<String> loadLines(String path) {
         return null;
     }
 
     @Override
-    public Iterable<String> loadSplitedByRegex(String path, String regex) {
+    public synchronized Iterable<String> loadSplitedByRegex(String path, String regex) {
         return null;
     }
 }

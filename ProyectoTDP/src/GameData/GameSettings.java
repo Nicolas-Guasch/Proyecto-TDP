@@ -2,6 +2,7 @@ package GameData;
 
 import ADTs.Rect;
 import ADTs.Vector2;
+import DataParsers.ParsersManager;
 import Entities.EntityData;
 import RenderingSystem.RenderingTools;
 
@@ -41,7 +42,7 @@ public class GameSettings
 
     private GameSettings()
     {
-        parser = new PlaceHolderSettingsParser();
+        parser = ParsersManager.getInstance().getSettingsParser();
 
         PlayerData = parser.getEntityData(EntityEnum.PlayerData);
         TieData = parser.getEntityData(EntityEnum.TieData);
