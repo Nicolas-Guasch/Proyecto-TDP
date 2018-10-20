@@ -40,6 +40,10 @@ public class Vector2
     public float x(){return x;}
     public float y(){return y;}
 
+    public Vector2(double xx, double yy){
+        this((float)xx,(float)yy);
+    }
+
     public Vector2(float x , float y)
     {
         this.x = x;
@@ -205,6 +209,15 @@ public class Vector2
 
     public Vector3 v3() {
         return new Vector3(x,y,0);
+    }
+
+    public Vector2 withMaxLength(float max) {
+        if(length()<max){
+            return this;
+        }
+        else{
+            return withLength(max);
+        }
     }
 
     /*inner class*/

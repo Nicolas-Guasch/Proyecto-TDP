@@ -134,19 +134,16 @@ public final class Level extends AbstractLevel
         EnemiesCounter counter = new EnemiesCounter();
         EveryOne.getInstance().takeVisitor(counter);
 
-        System.out.println(counter.getCount() + "counter get count");
+
         return counter.getCount()==0 && levelRunning;
     }
 
     @Override
     public void clean() {
-        EveryOne.getInstance().killThemAll();
-        /*
-        *
+
         LinkedList<Entity> cosas = new LinkedList<>();
         VisitorEntity collector = new GetEnemiesAndBarricades(cosas);
         EveryOne.getInstance().takeVisitor(collector);
         cosas.forEach(e->e.data().setHealth(-1));
-        */
     }
 }

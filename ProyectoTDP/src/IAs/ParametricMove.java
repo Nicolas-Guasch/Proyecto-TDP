@@ -6,7 +6,7 @@ import Entities.Entity;
 public abstract class ParametricMove extends AIQueryDecorator{
 
     private int t;
-    private Vector2 lastDirection;
+    private Vector2 lastDirection = Vector2.DOWN();
 
     public ParametricMove(EntityQuery decorated) {
         super(decorated);

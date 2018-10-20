@@ -2,6 +2,7 @@ package DataParsers;
 
 import ADTs.Vector2;
 import Entities.Ships.EnemiesBuilders.FastTieMaker;
+import Entities.Ships.EnemiesBuilders.FullKamikazeeMaker;
 import Entities.Ships.EnemiesBuilders.WhiteTieMaker;
 import Entities.Ships.EnemyShipBuilder;
 import Rewards.RewardFactory;
@@ -56,8 +57,9 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
 
     private void initenembuilds()
     {
-        enemies.get(L1).add(new WhiteTieMaker());
-        enemies.get(L1).add(new FastTieMaker());
+        //enemies.get(L1).add(new WhiteTieMaker());
+        //enemies.get(L1).add(new FastTieMaker());
+        enemies.get(L1).add(new FullKamikazeeMaker());
 
         enemies.get(L2).add(new WhiteTieMaker());
         enemies.get(L2).add(new FastTieMaker());

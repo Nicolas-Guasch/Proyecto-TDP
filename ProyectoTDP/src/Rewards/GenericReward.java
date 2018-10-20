@@ -8,6 +8,7 @@ import EntitiesVisitor.VisitorEntity;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Scripts.AlwaysLateral;
+import Scripts.RewardMove;
 
 public class GenericReward extends Reward {
 
@@ -23,7 +24,7 @@ public class GenericReward extends Reward {
         var hitBox = HitBox.getOne(100,100,this);
         HitBoxesManager.getInstance().addHitBox(hitBox,HitBoxesManager.REWARDS);
         referenced.addHitBox(hitBox);
-        referenced.addComponent(new AlwaysLateral(new Vector2(0,-5)));
+        referenced.addComponent(new RewardMove(29));
         renderer.show();
     }
 

@@ -1,0 +1,32 @@
+Enemigos:
+
+	tipo 1 : (FullKamikazee)
+
+		no tienen arma, contador a random y luego tirarse
+		contra el player
+
+	tipo 2
+		
+		tiene arma, dispara desde arriba
+
+	tipo 3
+		
+		tiene armar, dispara desde arriba
+		cuando la vida es 20% desactiva el arma y se lanza hacia el player
+
+	tipo 4
+		
+		sin arma
+		se mueve aleatoriamente por el mapa a gran velocidad
+
+	tipo 5 
+
+		cazar al jugador hasta tener 50% de vida, luego
+		empezar a moverse aleatorio
+
+
+Premios: 
+	- agregar al premio un movimiento horizontal random al caer
+
+	- agregar mas armas como premio
+

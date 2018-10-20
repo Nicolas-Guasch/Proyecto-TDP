@@ -41,7 +41,7 @@ public class PlayerShip extends Ship {
 	public void onDeath()
 	{
 		super.onDeath();
-		MatchResult.getInstance().EmpireWins();
+		//MatchResult.getInstance().EmpireWins();
 	}
 	public WeaponSet getBagPack() {
 		return weapons;
