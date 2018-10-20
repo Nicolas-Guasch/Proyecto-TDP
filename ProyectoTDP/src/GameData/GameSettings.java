@@ -18,7 +18,9 @@ public class GameSettings
 
     public static GameSettings GetInstance()
     {
-        instance = instance==null?new GameSettings():instance;
+        if (null == instance) {
+            instance = new GameSettings();
+        }
         return instance;
     }
 
