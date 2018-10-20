@@ -30,7 +30,7 @@ public final class LevelsManager extends Component {
 	}
 
 	@Override
-	public void Update() {
+	public void update() {
 		if(!PlayerShip.getInstance().alive()){
 			MatchResult.getInstance().EmpireWins();
 			setActive(false);

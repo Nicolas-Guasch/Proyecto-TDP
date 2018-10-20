@@ -13,13 +13,13 @@ public class MouseFollower extends Component
     private AbstractDirectionalInput Dir;
 
     @Override
-    public void Start()
+    public void start()
     {
         Dir = new DirectionalMouse(transform());
     }
 
     @Override
-    public void Update()
+    public void update()
     {
         transform().setTop(Dir.Direction());
     }

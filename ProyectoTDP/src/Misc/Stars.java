@@ -82,7 +82,7 @@ public class Stars extends Component
     }
 
     @Override
-    public void Update() {
+    public void update() {
         if(MaxStarsOnScreen < stars.size()){
             setActive(false);
             return;

@@ -13,7 +13,7 @@ public class StarBeh extends Component
     }
 
     @Override
-    public void Update() {
+    public void update() {
         i++;
         if(i>=max){
             i=0;

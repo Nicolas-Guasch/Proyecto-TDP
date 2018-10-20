@@ -50,7 +50,7 @@ public class HitBoxesManager extends Component
 
     private long i=0;
     @Override
-    public void Update() {
+    public void update() {
         if(i<100L)
         {
             i++;return;

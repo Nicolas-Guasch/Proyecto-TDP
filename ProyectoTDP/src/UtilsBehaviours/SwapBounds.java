@@ -18,7 +18,7 @@ public class SwapBounds extends Component
         this.paddingY = letY;
     }
 
-    public void Update()
+    public void update()
     {
         v = transform().position();
         if(v.x()>(w/2)+2*paddingX)

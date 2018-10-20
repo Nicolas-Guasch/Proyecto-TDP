@@ -62,7 +62,7 @@ public class GameObject
             hitbox = c;
             components.add(c);
             c.setGameObject(this);
-            c.Start();
+            c.start();
         }
         return c;
     }
@@ -74,7 +74,7 @@ public class GameObject
         Core.getInstance().waitForFrames(()->components.add(c),1);
 
         c.setGameObject(this);
-        c.Start();
+        c.start();
         return c;
     }
     public Iterable<Component> getComponents()
@@ -126,12 +126,11 @@ public class GameObject
         components.forEach((c)->{
             if(c.isActive())
             {
-                c.Update();
+                c.update();
             }
         });
-        //para evitar una excepcion
-        //children.forEach((c)->c.Update()); <- tendria que quedar asi
         new LinkedList<>(children).forEach((c)->c.Update());
+        //TODO: hacer cola para add y remove
     }
 
     public void Destroy()

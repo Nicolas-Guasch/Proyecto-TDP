@@ -3,7 +3,6 @@ package Entities;
 import Engine.Component;
 import Engine.EngineGetter;
 import Engine.GameObject;
-import EntitiesVisitor.EnemiesCounter;
 import EntitiesVisitor.VisitorEntity;
 
 import java.util.Collection;
@@ -17,12 +16,11 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class EveryOne extends Component
 {
+    private static float far = 2000;
+
+
+
     private static EveryOne instance;
-    private static float far = 1500;
-    private Queue<Entity> toAdd;
-    private Queue<VisitorEntity> visitors;
-
-
     public static EveryOne getInstance()
     {
         if(instance == null){
@@ -31,8 +29,9 @@ public class EveryOne extends Component
         return instance;
     }
 
-
+    private Queue<VisitorEntity> visitors;
     private Collection<Entity> entities;
+    private Queue<Entity> toAdd;
     private Queue<Entity> toDestroy;
 
     private EveryOne()
@@ -43,10 +42,11 @@ public class EveryOne extends Component
         visitors = new LinkedBlockingQueue<>();
     }
 
-    @Override
-    public void Update()
-    {
 
+
+    @Override
+    public void update()
+    {
         while(!toDestroy.isEmpty())
         {
             toDestroy.remove().referenced().Destroy();
@@ -55,9 +55,9 @@ public class EveryOne extends Component
         {
             entities.add(toAdd.remove());
         }
-        entities.forEach(this::accept);
+        entities.forEach(this::checkDestroyable);
         toDestroy.forEach((e)->entities.remove(e));
-        doForeach();
+        acceptVisitors();
     }
 
     public void add(Entity ent)
@@ -66,32 +66,50 @@ public class EveryOne extends Component
     }
     public void remove(Entity ent)
     {
-        entities.remove(ent);
+        toDestroy.add(ent);
+
+        //TODO: puede ser peligroso, usar una cola auxiliar
     }
     public void killIn(Entity ent, int frames)
     {
         EngineGetter.Instance().get().waitForFrames(()-> ent.data().setHealth(-1),frames);
     }
-    public void KillThemAll()
+
+
+    /**
+     * Kill al entities
+     */
+    public void killThemAll()
     {
         for(var ent : entities)
         {
             killIn(ent,1);
         }
     }
-
-    private void doForeach(){
-        while(!visitors.isEmpty()){
-            var visitor = visitors.remove();
-            entities.forEach(e->e.accept(visitor));
-        }
-    }
-
-    public void forEach(VisitorEntity visitor){
+    /**
+     * send a visitor for each entity at the end of the cycle
+     * @param visitor visitor to send
+     */
+    public void takeLazyVisitor(VisitorEntity visitor){
         visitors.add(visitor);
     }
 
-    private void accept(Entity e) {
+    /**
+     * send a visitor for each entity
+     * (warning, this could be executed in the middle of the loop)
+     * @param visitor visitor to send
+     */
+    public void takeVisitor(VisitorEntity visitor) {
+        entities.forEach(e->e.accept(visitor));
+    }
+
+    private void acceptVisitors(){
+        while(!visitors.isEmpty()){
+            entities.forEach(e->e.accept(visitors.remove()));
+        }
+    }
+
+    private void checkDestroyable(Entity e) {
         if(e.data() == null) return;
         if (e.data().getHealth() <= 0 || e.referenced().transform().position().length() > far) {
             toDestroy.add(e);
@@ -99,7 +117,5 @@ public class EveryOne extends Component
         }
     }
 
-    public void fastForEach(VisitorEntity visitor) {
-        entities.forEach(e->e.accept(visitor));
-    }
+
 }

@@ -20,7 +20,7 @@ public class Vibe extends Component
     }
 
     @Override
-    public void Update() {
+    public void update() {
         if(i>=freq)
         {
             i=0;

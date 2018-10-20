@@ -198,7 +198,7 @@ public class LevelA extends Component implements Level
     }
 
     @Override
-    public void Update()
+    public void update()
     {
         if(!running) return;
 

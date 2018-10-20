@@ -23,7 +23,7 @@ public class While extends Component
     }
 
     @Override
-    public void Update() {
+    public void update() {
         boolean check = checks();
         if(check && cond)
         {
@@ -54,7 +54,7 @@ public class While extends Component
     public void Excecute()
     {
         cond = true;
-        Update();
+        update();
     }
 
 }

@@ -113,9 +113,9 @@ public final class Level extends AbstractLevel
             }
         }
         if(number==1){
-            EveryOne.getInstance().forEach(weaponDisabler);
+            EveryOne.getInstance().takeLazyVisitor(weaponDisabler);
             VisitorEntity weaponEnabler = new WeaponSwitch(true);
-            EngineGetter.Instance().get().waitForFrames(()->EveryOne.getInstance().forEach(weaponEnabler),400);
+            EngineGetter.Instance().get().waitForFrames(()->EveryOne.getInstance().takeLazyVisitor(weaponEnabler),400);
             EngineGetter.Instance().get().waitForFrames(()->levelRunning=true,30);
         }
 
@@ -133,7 +133,7 @@ public final class Level extends AbstractLevel
     public boolean completed() {
         //si se pone ineficiente hago una lista de enemigos y tiro un stream
         EnemiesCounter counter = new EnemiesCounter();
-        EveryOne.getInstance().fastForEach(counter);
+        EveryOne.getInstance().takeVisitor(counter);
 
         System.out.println(counter.getCount() + "counter get count");
         return counter.getCount()==0 && levelRunning;

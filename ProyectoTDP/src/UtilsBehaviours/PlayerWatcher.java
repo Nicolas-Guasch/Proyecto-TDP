@@ -13,7 +13,7 @@ public class PlayerWatcher extends Component {
     }
 
     @Override
-    public void Update()
+    public void update()
     {
         if(playerShip.data() == null) return;
         float recent = playerShip.data().getHealth();

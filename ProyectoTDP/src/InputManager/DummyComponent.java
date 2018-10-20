@@ -13,7 +13,7 @@ public final class DummyComponent extends Component
     }
 
     @Override
-    public void Update()
+    public void update()
     {
         onUpdate.run();
     }

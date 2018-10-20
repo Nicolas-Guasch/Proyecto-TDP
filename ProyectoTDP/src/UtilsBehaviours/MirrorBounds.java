@@ -17,7 +17,7 @@ public class MirrorBounds extends Component
     }
 
     @Override
-    public void Update()
+    public void update()
     {
         x = transform().position().x();
         y = transform().position().y();

@@ -30,8 +30,8 @@ public class LostOrWin implements ILostOrWin{
         if (!made) {
             SoundManager.Instance().gameOver();
             UI.getInstance().gameOver();
-            EveryOne.getInstance().KillThemAll();
-            new While(() -> true, () -> EveryOne.getInstance().KillThemAll()).Excecute();
+            EveryOne.getInstance().killThemAll();
+            new While(() -> true, () -> EveryOne.getInstance().killThemAll()).Excecute();
             EngineGetter.Instance().get().waitForFrames(() -> System.exit(0), 500);
         }
         made = true;

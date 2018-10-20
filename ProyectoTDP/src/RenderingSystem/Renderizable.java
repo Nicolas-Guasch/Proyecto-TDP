@@ -35,7 +35,7 @@ public class Renderizable extends Component
         this.zphaseshift = zphaseshift;
     }
 
-    public void Start()
+    public void start()
     {
         label.setTransform(transform());
         Window.GetInstance().SetZ(label,transform().getZcomponent()+zphaseshift,true);
@@ -52,7 +52,7 @@ public class Renderizable extends Component
         visible = true;
         if(gameObject()!=null)
         {
-            Update();
+            update();
         }
     }
     public void hide()
@@ -61,7 +61,7 @@ public class Renderizable extends Component
         label.setVisible(false);
     }
 
-    public void Update()
+    public void update()
     {
 
         if(visible)

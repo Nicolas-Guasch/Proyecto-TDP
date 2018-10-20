@@ -24,7 +24,7 @@ public class FireFrequency extends Component
     }
 
     @Override
-    public void Update()
+    public void update()
     {
         if(i>=freq)
         {

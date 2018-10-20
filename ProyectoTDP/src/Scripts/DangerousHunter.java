@@ -28,7 +28,7 @@ public class DangerousHunter extends Component
     }
 
     @Override
-    public void Update()
+    public void update()
     {
         if(currentSpeed<maxSpeed && currentSpeed>0)
         {

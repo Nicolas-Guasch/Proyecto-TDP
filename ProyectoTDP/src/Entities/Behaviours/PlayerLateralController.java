@@ -24,7 +24,7 @@ public class PlayerLateralController extends Component
     }
 
     @Override
-    public void Update()
+    public void update()
     {
         Vector2 move = Vector2.ORIGIN();
         if(left.happens())

@@ -17,7 +17,7 @@ public class Pilot extends Component
     }
 
     @Override
-    public void Update()
+    public void update()
     {
         var top = handler.whereToSee(ship);
         transform().setTop(top);

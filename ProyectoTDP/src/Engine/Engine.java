@@ -2,8 +2,6 @@ package Engine;
 
 import Broadcaster.*;
 
-import java.util.function.Consumer;
-
 class Engine implements IEngine
 {
 
@@ -34,7 +32,7 @@ class Engine implements IEngine
     @Override
     public void suscribeToUpdate(Component component)
     {
-        onUpdate.Suscribe((o)->component.Update());
+        onUpdate.Suscribe((o)->component.update());
     }
     //TODO: guardar une HashMap de los components para desuscribirlos mas fasil luego
 

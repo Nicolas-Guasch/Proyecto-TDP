@@ -11,8 +11,8 @@ import Engine.Components.Transform;
  *  la mayoría de los comportamientos de los objetos en el juego seran modelados
  *  por clases derivadas de esta
  *
- *  Se pueden sobreescribir las funciones de Start, Update, PhysicsUpdate(delta:float)
- *  OnDestroy, OnDisable, OnEnable, ademas de las de IActivable como lo son
+ *  Se pueden sobreescribir las funciones de start, update, physicsUpdate(delta:float)
+ *  onDestroy, onDisable, onEnable, ademas de las de IActivable como lo son
  *  setActive(active:boolean) y isActive:boolean
  *
  *  Ademas tenesmos acceso al transform del GameObject al cual modificamos su comportamiento
@@ -41,8 +41,8 @@ public abstract class Component implements IActivable
     * these functions are optional to override
     * its why these aren't abstracts
     */
-    public void Start(){}
-    public void Update(){}
+    public void start(){}
+    public void update(){}
 
     /**
      *

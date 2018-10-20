@@ -88,7 +88,7 @@ public class Window extends Component
 
     }
 
-    public void Update()
+    public void update()
     {
         wind.repaint(); //preguntar a biondi cuando hay que hacer el repaint
     }

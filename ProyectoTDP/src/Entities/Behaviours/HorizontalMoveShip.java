@@ -22,7 +22,7 @@ public class HorizontalMoveShip extends Component
 
     }
 
-    public void Update()
+    public void update()
     {
         if(counter <=max)
         {

@@ -25,7 +25,7 @@ public class DoWhen extends Component {
     }
 
     @Override
-    public void Update() {
+    public void update() {
 
         if (cond && checks())
         {
