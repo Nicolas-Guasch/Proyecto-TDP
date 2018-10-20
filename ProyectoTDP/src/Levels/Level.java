@@ -38,7 +38,6 @@ public final class Level extends AbstractLevel
         directorBenem = new BarricadeEnemDirector();
         directorBboth.setBuilder(new NaveDuraObstacle());
         directorBenem.setBuilder(new NaveViejaImperioMaker());
-
         this.number = number;
     }
 
@@ -137,5 +136,17 @@ public final class Level extends AbstractLevel
 
         System.out.println(counter.getCount() + "counter get count");
         return counter.getCount()==0 && levelRunning;
+    }
+
+    @Override
+    public void clean() {
+        EveryOne.getInstance().killThemAll();
+        /*
+        *
+        LinkedList<Entity> cosas = new LinkedList<>();
+        VisitorEntity collector = new GetEnemiesAndBarricades(cosas);
+        EveryOne.getInstance().takeVisitor(collector);
+        cosas.forEach(e->e.data().setHealth(-1));
+        */
     }
 }

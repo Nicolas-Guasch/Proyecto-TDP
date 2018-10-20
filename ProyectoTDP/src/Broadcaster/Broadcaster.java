@@ -34,6 +34,7 @@ public final class Broadcaster<ParameterType> implements IBroadcaster<ParameterT
             list.remove(toAdd.remove());
         }
         for (Consumer<ParameterType> c : list) {
+            if(c!=null)
             c.accept(parameter);
         }
     }

@@ -20,6 +20,7 @@ public class Pilot extends Component
     public void update()
     {
         var top = handler.whereToSee(ship);
+        if(transform()==null)return;
         transform().setTop(top);
         transform().MoveTowards(handler.whereToMove(ship).prod(Speed));
     }
@@ -39,5 +40,9 @@ public class Pilot extends Component
 
     public void setSpeed(float v) {
         Speed = v;
+    }
+
+    public Pilot clone(){
+        return new Pilot(handler,ship,speed());
     }
 }

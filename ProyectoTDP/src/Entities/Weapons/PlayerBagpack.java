@@ -28,6 +28,12 @@ public class PlayerBagpack extends WeaponSet
             shoot();
         }
     }
+    @Override
+    public WeaponSet clone() {
+        var n = new PlayerBagpack(Switch,Shoot);
+        weapons.forEach(n::add);
+        return n;
+    }
 
     private void _switch(boolean isPressed)
     {
@@ -84,6 +90,12 @@ public class PlayerBagpack extends WeaponSet
         if(weapons.isEmpty())
             throw new EmptyWeaponsBagpackException("The Bagpack is empty, use isEmpty");
         return weapons.get(index);
+    }
+
+    @Override
+    public void destroy() {
+        setActive(false);
+        weapons.clear();
     }
 
 }

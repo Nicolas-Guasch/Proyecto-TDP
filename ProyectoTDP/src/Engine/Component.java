@@ -64,6 +64,7 @@ public abstract class Component implements IActivable
 
     public Transform transform()
     {
+        if(gameObject()==null)return null;
         return gameObject().transform();
     }
 

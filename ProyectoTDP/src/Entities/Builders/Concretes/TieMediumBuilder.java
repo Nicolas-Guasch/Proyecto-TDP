@@ -11,10 +11,11 @@ import Entities.Builders.EnemyBulletBuilder;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.EnemyBullet;
 import Entities.EntityData;
+import Entities.Ships.PlayerShip;
 import Entities.Weapons.GenericalWeapon;
 import GameData.GameSettings;
 
-import TesterLevels.LevelTester;
+
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
@@ -82,7 +83,7 @@ public class TieMediumBuilder extends EnemyShipBuilder
 
 
         if(Random.bool())
-            ship.addBehaviour(new LookTarget(LevelTester.Instance().player.referenced().transform()));
+            ship.addBehaviour(new LookTarget(PlayerShip.getInstance().referenced().transform()));
         ship.referenced().transform().setTop(Vector2.DOWN());
     }
 

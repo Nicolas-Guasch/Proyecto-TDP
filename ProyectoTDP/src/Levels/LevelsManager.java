@@ -3,6 +3,7 @@ package Levels;
 import Engine.Component;
 import Engine.GameObject;
 import Entities.Ships.PlayerShip;
+import GameData.CurrentMatchData;
 import GameData.MatchResult;
 
 public final class LevelsManager extends Component {
@@ -32,6 +33,7 @@ public final class LevelsManager extends Component {
 	@Override
 	public void update() {
 		if(!PlayerShip.getInstance().alive()){
+
 			MatchResult.getInstance().EmpireWins();
 			setActive(false);
 			return;
@@ -53,12 +55,30 @@ public final class LevelsManager extends Component {
 	private boolean hasNextLevel(){
 		return currentLevel<levels.length-1;
 	}
-	private AbstractLevel currentLevel() {
+	public AbstractLevel currentLevel() {
 		return levels[currentLevel];
 	}
 
 	public void playLevel() {
+
 		currentLevel().assembleLevel();
 		currentLevel().startLevel();
+	}
+
+
+	private void moveTo(AbstractLevel level) {
+		currentLevel().clean();
+		currentLevel = find(level);
+		playLevel();
+	}
+
+	private int find(AbstractLevel level) {
+
+		for (int i = 0 ; i< levels.length ; i++){
+			if(level == levels[i]){
+				return i;
+			}
+		}
+		return -1;
 	}
 }

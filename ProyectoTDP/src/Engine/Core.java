@@ -137,7 +137,7 @@ final class Core
 
                     lastRetard = (Clock.currentTimeNanos() - stampPerFrame) - nanosperframe;
                 }
-                catch (Exception e){e.printStackTrace();}
+                catch (Exception e){e.printStackTrace();System.exit(-1);}
 
         }
 

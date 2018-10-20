@@ -59,8 +59,8 @@ public class ShipStatus implements UIComponent
     }
 
     @Override
-    public void foreach(Consumer<JComponent> visitor) {
-        all.forEach(visitor);
+    public void foreach(Consumer<JComponent> operation) {
+        all.forEach(operation);
     }
 
 

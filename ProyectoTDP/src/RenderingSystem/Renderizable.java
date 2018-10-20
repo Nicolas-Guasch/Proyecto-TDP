@@ -125,4 +125,8 @@ public class Renderizable extends Component
     public SpriteRenderer Sprite() {
         return label;
     }
+
+    public boolean isVisible() {
+        return visible;
+    }
 }

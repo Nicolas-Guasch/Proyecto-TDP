@@ -12,7 +12,7 @@ import Entities.EveryOne;
 import GameData.GameSettings;
 import Audio.SoundManager;
 import GenericVisitor.FreezeVisitor;
-import TesterLevels.EnemiesManager;
+
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 
@@ -65,6 +65,6 @@ public class ColdFireMaker extends PlayerBulletBuilder {
         var t = bullet.referenced().transform();
         g.transform().setPosition(t.position3());
         EngineGetter.Instance().get().waitForFrames(g::Destroy,10);
-        EnemiesManager.getInstance().computeOperation(new FreezeVisitor(5, t, 200));
+        EveryOne.getInstance().takeLazyVisitor(new FreezeVisitor(5, t, 200));
     }
 }

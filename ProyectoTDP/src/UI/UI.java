@@ -70,17 +70,11 @@ public class UI
         win = new SpriteData("youwin");
 
 
-
-
-
-
-
         // ------------- score ---------
 
         score = new Score();
         score.setBounds(650,10,300,50);
         uiPanel.add(score);
-
     }
 
     public void addUIComponent(UIComponent s){

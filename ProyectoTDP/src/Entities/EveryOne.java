@@ -18,8 +18,6 @@ public class EveryOne extends Component
 {
     private static float far = 2000;
 
-
-
     private static EveryOne instance;
     public static EveryOne getInstance()
     {
@@ -72,7 +70,11 @@ public class EveryOne extends Component
     }
     public void killIn(Entity ent, int frames)
     {
-        EngineGetter.Instance().get().waitForFrames(()-> ent.data().setHealth(-1),frames);
+        EngineGetter.Instance().get().waitForFrames(()-> {
+            if(ent.data()==null)return;
+            ent.data().setHealth(-1);
+
+        },frames);
     }
 
 
@@ -105,7 +107,8 @@ public class EveryOne extends Component
 
     private void acceptVisitors(){
         while(!visitors.isEmpty()){
-            entities.forEach(e->e.accept(visitors.remove()));
+            var vis = visitors.remove();
+            entities.forEach(e->e.accept(vis));
         }
     }
 

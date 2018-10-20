@@ -12,6 +12,8 @@ import Audio.SoundManager;
 import InputManager.DiscreteClick;
 import InputManager.DiscreteKeyInput;
 
+import Mementos.IMementoPlayer;
+import Mementos.MementoPlayer;
 import UI.ShipStatus;
 import UtilsBehaviours.PlayerWatcher;
 
@@ -60,6 +62,19 @@ public class PlayerShip extends Ship {
 	public void setLife(float cantLife)
 	{
 		data.setHealth(cantLife);
+	}
+
+	public IMementoPlayer makeMemento(){
+		return new MementoPlayer(weapons,getPilot());
+	}
+	public void loadMemento(IMementoPlayer memento){
+		getPilot().DestroyComponent();
+		setPilot(memento.getPilot());
+		weapons.destroy();
+		weapons = memento.getWeapons();
+		weapons.setActive(true);
+		getPilot().setActive(true);
+		setData(memento.getData());
 	}
 
 

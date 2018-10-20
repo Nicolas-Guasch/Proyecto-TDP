@@ -4,6 +4,8 @@ import Engine.Components.IActivable;
 
 public abstract class WeaponSet implements IActivable {
 
+    public abstract WeaponSet clone();
+
     private boolean active = true;
 
     @Override
@@ -49,4 +51,6 @@ public abstract class WeaponSet implements IActivable {
      * @return the current weapon selected
      */
     public abstract Weapon getCurrent();
+
+    public abstract void destroy();
 }

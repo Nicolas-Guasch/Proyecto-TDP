@@ -4,6 +4,7 @@ import ADTs.Rect;
 import ADTs.Vector2;
 import DataParsers.ParsersManager;
 import Entities.EntityData;
+import Entities.Weapons.WeaponSet;
 import RenderingSystem.RenderingTools;
 
 
@@ -11,7 +12,10 @@ import java.awt.*;
 
 public class GameSettings
 {
+
     private static GameSettings instance;
+    public final EntityData PlayerInitialData;
+
     public static GameSettings GetInstance()
     {
         instance = instance==null?new GameSettings():instance;
@@ -45,6 +49,7 @@ public class GameSettings
         parser = ParsersManager.getInstance().getSettingsParser();
 
         PlayerData = parser.getEntityData(EntityEnum.PlayerData);
+        PlayerInitialData = PlayerData.clone();
         TieData = parser.getEntityData(EntityEnum.TieData);
         TieBulletData = parser.getEntityData(EntityEnum.TieBulletData);
         PlayerBulletData = parser.getEntityData(EntityEnum.PlayerBulletData);
@@ -70,6 +75,7 @@ public class GameSettings
     public EntityData PlaceHolderData() {
         return EntityData.WithEqualsValues(1);
     }
+
 }
 
 

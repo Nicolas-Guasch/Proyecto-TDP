@@ -32,6 +32,7 @@ public class ShieldVisitor extends VisitorEntity
         Vector2 point = visitable.referenced().transform().position();
 
         this.visitable = visitable;
+        if(visitable.data()==null)return;
         prevShield = visitable.data().getShield();
         System.out.println(prevShield+" <<----prev shield");
         visitable.data().setShield(1); // invulnerable
