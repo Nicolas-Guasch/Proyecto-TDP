@@ -1,6 +1,7 @@
 package Levels;
 
 import Engine.Component;
+import Engine.EngineGetter;
 import Engine.GameObject;
 import Entities.Ships.PlayerShip;
 import GameData.CurrentMatchData;
@@ -33,7 +34,7 @@ public final class LevelsManager extends Component {
 	@Override
 	public void update() {
 		if(!PlayerShip.getInstance().alive()){
-			//MatchResult.getInstance().EmpireWins();
+			MatchResult.getInstance().EmpireWins();
 			setActive(false);
 			return;
 		}
@@ -42,7 +43,7 @@ public final class LevelsManager extends Component {
 			if(hasNextLevel()){
 				currentLevel().clean();
 				currentLevel++;
-				playLevel();
+				runTheLevel();
 			}
 			else{
 				MatchResult.getInstance().AllianceWins();
@@ -58,26 +59,17 @@ public final class LevelsManager extends Component {
 		return levels[currentLevel];
 	}
 
-	public void playLevel() {
-
+	private void runTheLevel()
+	{
+		UI.UI.getInstance().startLevel(currentLevel+1);
 		currentLevel().assembleLevel();
 		currentLevel().startLevel();
+		setActive(false);
+		EngineGetter.Instance().get().waitForFrames(()->{setActive(true);},5);
 	}
 
-
-	private void moveTo(AbstractLevel level) {
-		currentLevel().clean();
-		currentLevel = find(level);
-		playLevel();
-	}
-
-	private int find(AbstractLevel level) {
-
-		for (int i = 0 ; i< levels.length ; i++){
-			if(level == levels[i]){
-				return i;
-			}
-		}
-		return -1;
+	public void playLevel() {
+		UI.UI.getInstance().startLevel(0);// intro
+		EngineGetter.Instance().get().waitForFrames(this::runTheLevel,500);
 	}
 }

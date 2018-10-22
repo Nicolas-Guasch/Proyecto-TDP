@@ -17,7 +17,8 @@ public class CurrentMatchData
     //private int lifes = 5;
     private GameMemento checkPoint;
 
-    private void setCheckpoint(){
+/*
+*     private void setCheckpoint(){
         IMementoPlayer memplayer = PlayerShip.getInstance().makeMemento();
         AbstractLevel lev = LevelsManager.getInstance().currentLevel();
         checkPoint = new GameMemento(lev,memplayer);
@@ -26,7 +27,7 @@ public class CurrentMatchData
     private void loadCheckpoint(){
 //        LevelsManager.getInstance().moveTo(checkPoint.getLevel());
         PlayerShip.getInstance().loadMemento(checkPoint.getPlayerStatus());
-    }
+    }*/
 
     public static CurrentMatchData getMatchData()
     {

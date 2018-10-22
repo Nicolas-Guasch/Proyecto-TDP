@@ -2,6 +2,7 @@ package Levels;
 
 import ADTs.Vector2;
 import ADTs.Vector3;
+import Engine.EngineGetter;
 import Entities.Builders.Concretes.FirstBossBuilder;
 import Entities.Entity;
 import Entities.EntityData;
@@ -43,12 +44,17 @@ public class BossLevel extends AbstractLevel {
     public void startLevel() {
         var ShipStatus = new ShipStatus(new Vector2(100,200), vader.observerHealth(),"bossbar",vader.data().getHealth());
         UI.getInstance().addUIComponent(ShipStatus);
-
+        EngineGetter.Instance().get().waitForFrames(()->playing = true,3);
     }
 
     @Override
     public boolean completed() {
-        return playing && !vader.alive();
+        var ret = playing && !vader.alive();
+        if(ret){
+            System.out.println("BossLevel::completed");
+        }
+        return ret;
+
     }
 
     @Override

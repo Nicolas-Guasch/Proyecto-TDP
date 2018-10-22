@@ -52,8 +52,12 @@ public class UI
 
         // --------------levels--------------
         levels = new ArrayList<>();
+        levels.add(new SpriteData("intro"));
         levels.add(new SpriteData("levintro1"));
         levels.add(new SpriteData("levintro2"));
+        levels.add(new SpriteData("levintro3"));
+        levels.add(new SpriteData("finalboss"));
+        levels.add(new SpriteData("point"));
 
 
 
@@ -81,7 +85,7 @@ public class UI
         s.foreach(uiPanel::add);
     }
 
-    private Callable<Boolean> moviblePrompt(SpriteData prompt)
+    private Callable<Boolean> moviblePrompt(SpriteData prompt,int por)
     {
         GameObject goprompt = GameObject.getRoot().addChild();
         AlwaysLateral al = new AlwaysLateral(Vector2.UP(3));
@@ -89,9 +93,9 @@ public class UI
         goprompt.transform().setZcomponent(2);
         goprompt.addComponent(al);
         goprompt.setRenderer(rend);
-        goprompt.transform().setPosition(Vector2.DOWN(600));
+        goprompt.transform().setPosition(Vector2.DOWN(600f/por));
         rend.show();
-        Callable<Boolean> completed = ()-> goprompt.transform().position().y()>500;
+        Callable<Boolean> completed = ()-> goprompt.transform().position().y()>500f*por;
         new DoWhen(completed, goprompt::Destroy);
         return completed;
     }
@@ -100,8 +104,15 @@ public class UI
     //TODO: poner todos los niveles
     public Callable<Boolean> startLevel(int index)
     {
-        return moviblePrompt(levels.get(index));
+        return moviblePrompt(levels.get(index),1);
     }
+
+    public Callable<Boolean> startLevelByString(String name, int x)
+    {
+        return moviblePrompt(new SpriteData(name),x);
+    }
+
+
 
     public JComponent getUIPanel() {
         return uiPanel;
@@ -114,7 +125,7 @@ public class UI
 
     public Callable<Boolean> gameOver()
     {
-        return moviblePrompt(gameOver);
+        return moviblePrompt(gameOver,1);
     }
 
 
@@ -123,6 +134,6 @@ public class UI
 
     public Callable<Boolean> win()
     {
-        return moviblePrompt(win);
+        return moviblePrompt(win,1);
     }
 }

@@ -123,6 +123,7 @@ public final class Level extends AbstractLevel
     @Override
     public void startLevel()
     {
+
         PlayerShip.getInstance().referenced().transform().setPosition(new Vector3(0,-300,-90));
         levelRunning = true;
     }

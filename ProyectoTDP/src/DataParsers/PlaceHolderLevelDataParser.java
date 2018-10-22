@@ -95,13 +95,12 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
 
     private void initenempos()
     {
-        /*
         enemsPos.get(L1).add(new Vector2(-400/1.5f,280));
         enemsPos.get(L1).add(new Vector2(-300/1.5f,170));
         enemsPos.get(L1).add(new Vector2(-200/1.5f,280));
         enemsPos.get(L1).add(new Vector2(-100/1.5f,170));
         enemsPos.get(L1).add(new Vector2(000/1.5f,280));
-        enemsPos.get(L1).add(new Vector2(100/1.5f,170));*/ // TODO: descomentar
+        enemsPos.get(L1).add(new Vector2(100/1.5f,170));
         enemsPos.get(L1).add(new Vector2(200/1.5f,280));
         enemsPos.get(L1).add(new Vector2(300/1.5f,170));
         enemsPos.get(L1).add(new Vector2(400/1.5f,250));
