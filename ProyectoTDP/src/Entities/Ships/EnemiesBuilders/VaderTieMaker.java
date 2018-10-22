@@ -99,6 +99,7 @@ public class VaderTieMaker extends EnemyShipBuilder
     @Override
     public void assembleData()
     {
-        ship.setData(EntityData.WithEqualsValues(8000));
+        ship.setData(EntityData.WithEqualsValues(80));
+        ship.data().setShield(0);
     }
 }

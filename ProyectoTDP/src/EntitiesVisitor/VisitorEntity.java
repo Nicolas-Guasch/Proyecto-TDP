@@ -2,6 +2,7 @@ package EntitiesVisitor;
 
 import Entities.BarricadeEnem;
 import Entities.BarricadeBoth;
+import Entities.Bullets.FireShield;
 import Entities.EnemyBullet;
 import Entities.PlayerBullet;
 import Rewards.Reward;
@@ -16,6 +17,8 @@ public abstract  class VisitorEntity
     public void visit(BarricadeBoth barricade){}
     public void visit(PlayerBullet bullet){}
     public void visit(EnemyBullet bullet){}
+    public void visit(FireShield fireshield){}
+
     public void visit(Reward rew){}
 
 }

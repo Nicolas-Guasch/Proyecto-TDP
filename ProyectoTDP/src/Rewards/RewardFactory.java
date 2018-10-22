@@ -25,7 +25,8 @@ public class RewardFactory
     public static final RewardKey
         SHIELDREWARD = RewardKey.get(),
         WEAPON5REWARD = RewardKey.get(),
-        WEAPONICEREWARD = RewardKey.get();
+        WEAPONICEREWARD = RewardKey.get(),
+        FIRESHIELD = RewardKey.get();
 
 
     private static RewardFactory instance;
@@ -41,7 +42,9 @@ public class RewardFactory
         creators.put(WEAPON5REWARD,this::getWeaponReward);
         creators.put(WEAPONICEREWARD,this::getWeaponIceReward);
         creators.put(SHIELDREWARD,this::getShieldReward);
+        creators.put(FIRESHIELD,this::getFire);
     }
+
 
     public void getReward(RewardKey key, Transform originPoint){
         var op = creators.getOrDefault(key,null);
@@ -51,6 +54,20 @@ public class RewardFactory
     }
 
 
+    public void getFire(Transform originPoint){
+        var player = PlayerShip.getInstance();
+        GameObject premio = GameObject.getRoot().addChild();
+        var sd = new SpriteData("rewardfire");
+
+        var vis = new VisitorShieldFireReward();
+        Reward rew = new GenericReward(premio,vis,sd);
+        vis.setEntity(rew);
+
+
+        premio.transform().setPosition(originPoint.position3());
+        rew.setData(EntityData.WithEqualsValues(100));
+        EveryOne.getInstance().add(rew);
+    }
 
     private void getShieldReward(Transform originPoint)
     {

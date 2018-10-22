@@ -114,7 +114,7 @@ public final class Level extends AbstractLevel
         if(number==1){
             EveryOne.getInstance().takeLazyVisitor(weaponDisabler);
             VisitorEntity weaponEnabler = new WeaponSwitch(true);
-            EngineGetter.Instance().get().waitForFrames(()->EveryOne.getInstance().takeLazyVisitor(weaponEnabler),400);
+            EngineGetter.Instance().get().waitForFrames(()->EveryOne.getInstance().takeLazyVisitor(weaponEnabler),30);
             EngineGetter.Instance().get().waitForFrames(()->levelRunning=true,30);
         }
 

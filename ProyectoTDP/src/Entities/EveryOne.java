@@ -40,8 +40,6 @@ public class EveryOne extends Component
         visitors = new LinkedBlockingQueue<>();
     }
 
-
-
     @Override
     public void update()
     {
@@ -62,6 +60,7 @@ public class EveryOne extends Component
     {
         toAdd.add(ent);
     }
+
     public void remove(Entity ent)
     {
         toDestroy.add(ent);
