@@ -27,7 +27,8 @@ public class RewardFactory
         WEAPON5REWARD = RewardKey.get(),
         WEAPONICEREWARD = RewardKey.get(),
         SOLOSUPPORT = RewardKey.get(),
-        FIRESHIELD = RewardKey.get();
+        FIRESHIELD = RewardKey.get(),
+        HEALPOTION = RewardKey.get();
 
 
     private static RewardFactory instance;
@@ -45,6 +46,7 @@ public class RewardFactory
         creators.put(SHIELDREWARD,this::getShieldReward);
         creators.put(FIRESHIELD,this::getFire);
         creators.put(SOLOSUPPORT,new HanSoloAssistence());
+        creators.put(HEALPOTION,this::getHealPotion);
     }
 
 
@@ -53,6 +55,21 @@ public class RewardFactory
         if(op!=null){
           op.accept(originPoint);
         }
+    }
+
+    public void getHealPotion(Transform originPoint){
+        var player = PlayerShip.getInstance();
+        GameObject premio = GameObject.getRoot().addChild();
+        var sd = new SpriteData("only coin");
+
+        var vis = new VisitorHealPotion();
+        Entity rew = new GenericReward(premio,vis,sd);
+        vis.setReward(rew);
+
+
+        premio.transform().setPosition(originPoint.position3());
+        rew.setData(EntityData.WithEqualsValues(100));
+        EveryOne.getInstance().add(rew);
     }
 
 
