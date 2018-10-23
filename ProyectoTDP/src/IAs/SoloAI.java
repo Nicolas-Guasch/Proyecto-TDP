@@ -37,6 +37,9 @@ public class SoloAI extends AIQueryDecorator {
     private Vector2 getTarget(Entity ent){
         searchSomeEnemies(2); //se que es ineficiente :P
         EnemyShip ship;
+        if(enemies.size()<=0){
+            return Vector2.UP();
+        }
         ship = enemies.get(0);
         return ship.referenced().transform().position();
     }
