@@ -54,7 +54,6 @@ public class BossLevel extends AbstractLevel {
         var ret = playing && !vader.alive();
         if(ret){
             MatchResult.getInstance().AllianceWins();
-
         }
         return ret;
 
