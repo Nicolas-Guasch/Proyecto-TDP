@@ -15,7 +15,7 @@ public final class SoundManager
 
     private static final float MaxDist = 1000; //MaximaDistanciaAudicion
 
-
+    private Sound radio, quote;
 
     private Sound pew;
     private Sound pew2;
@@ -31,6 +31,8 @@ public final class SoundManager
 
     private boolean paused;
 
+    private Music currentTrack;
+
     private SoundManager()
     {
 
@@ -42,13 +44,17 @@ public final class SoundManager
         pew2  = TinySound.loadSound(AudioManager.Pew2);
         tie  = TinySound.loadSound(AudioManager.TieAttack);
         vaderBreath  = TinySound.loadSound(AudioManager.VaderBreath);
-        musicGame = TinySound.loadMusic(AudioManager.MusicGame);
-        menu  = TinySound.loadMusic(AudioManager.Menu);
-        musicGame.setVolume(0.2f);
-        menu.setVolume(0.3f);
+
+        menu = TinySound.loadMusic(AudioManager.MusicGame); //si, los swapee
+        musicGame  = TinySound.loadMusic(AudioManager.Menu);
+        radio = TinySound.loadSound(AudioManager.SOLORADIO);
+        quote = TinySound.loadSound(AudioManager.SOLOQUOTE);
+        musicGame.setVolume(0.6f);
+        menu.setVolume(0.5f);
         musicBoss = TinySound.loadMusic(AudioManager.MusicBoss);
 
         menu.pause();
+        currentTrack = musicGame;
 
 
         Sounds.add(pew);
@@ -77,6 +83,7 @@ public final class SoundManager
     public void ImperialMarchPlay()
     {
         musicGame.play(true);
+
     }
     public void ImperialMarchStop()
     {
@@ -99,6 +106,13 @@ public final class SoundManager
     {
 
         PlayAt(position, Random.value()>.5f?pew:pew2);
+    }
+
+    public void Quote(){
+        quote.play(0.6f);
+    }
+    public void Radio(){
+        radio.play(0.7f);
     }
 
 
@@ -152,7 +166,7 @@ public final class SoundManager
         }
         else
         {
-            Musics.forEach(Music::resume);
+            currentTrack.resume();
             menu.pause();
         }
     }
@@ -170,6 +184,7 @@ public final class SoundManager
     }
 
     public void MusicBoss() {
+        currentTrack = musicBoss;
         musicBoss.play(true);
     }
     public void MusicBossStop() {

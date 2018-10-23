@@ -15,6 +15,7 @@ import InputManager.DiscreteKeyInput;
 import Mementos.IMementoPlayer;
 import Mementos.MementoPlayer;
 import UI.ShipStatus;
+import UI.UIComponent;
 import UtilsBehaviours.PlayerWatcher;
 
 public class PlayerShip extends Ship {
@@ -33,9 +34,11 @@ public class PlayerShip extends Ship {
 		assert isUninitialized();
 		instance = new PlayerShip(go);
 		go.addComponent(new PlayerWatcher(instance));
-		var s = new ShipStatus(new Vector2(100,100), instance.observerHealth(),"bigbar",GameSettings.GetInstance().PlayerData.getHealth());
-		UI.UI.getInstance().addUIComponent(s);
+		instance.healthBar = new ShipStatus(new Vector2(100,100), instance.observerHealth(),"bigbar",GameSettings.GetInstance().PlayerData.getHealth());
+		UI.UI.getInstance().addUIComponent(instance.healthBar);
 	}
+
+	private UIComponent healthBar;
 
 	@Override
 	public void onDeath()
@@ -78,4 +81,7 @@ public class PlayerShip extends Ship {
 	}
 
 
+	public UIComponent getHealthBar() {
+		return healthBar;
+	}
 }

@@ -2,13 +2,13 @@ package Entities.Weapons;
 
 import java.util.ArrayList;
 
-public class EnemyBagpack extends WeaponSet
+public class EnemyArsenal extends WeaponSet
 {
 
     protected ArrayList<Weapon> weapons;
     private int index = 0;
 
-    public EnemyBagpack()
+    public EnemyArsenal()
     {
         weapons = new ArrayList<>();
     }
@@ -31,7 +31,7 @@ public class EnemyBagpack extends WeaponSet
 
     @Override
     public WeaponSet clone() {
-        var n = new EnemyBagpack();
+        var n = new EnemyArsenal();
         weapons.forEach(n::add);
         return n;
     }

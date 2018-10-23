@@ -69,15 +69,14 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
 
     private void initrew()
     {
-        //rew.get(L1).add(RewardFactory.FIRESHIELD);
-        //rew.get(L1).add(RewardFactory.FIRESHIELD);
-        //los comento para testear, TODO: descomentar luego
+
 
 
         rew.get(L1).add(RewardFactory.FIRESHIELD);
         rew.get(L1).add(RewardFactory.SHIELDREWARD);
         rew.get(L1).add(RewardFactory.WEAPON5REWARD);
         rew.get(L1).add(RewardFactory.WEAPONICEREWARD);
+        rew.get(L1).add(RewardFactory.SOLOSUPPORT);
 
         rew.get(L2).add(RewardFactory.SHIELDREWARD);
         rew.get(L2).add(RewardFactory.SHIELDREWARD);

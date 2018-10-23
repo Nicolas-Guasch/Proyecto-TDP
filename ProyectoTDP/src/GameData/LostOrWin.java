@@ -29,7 +29,7 @@ public class LostOrWin implements ILostOrWin{
     private void creditsAndClose()
     {
         EngineGetter.Instance().get().waitForFrames(() -> System.exit(0), 60*25);
-        UI.getInstance().startLevelByString("credits",2);
+        UI.getInstance().startLevelByString("credits",3);
     }
 
     public void EmpireWins()

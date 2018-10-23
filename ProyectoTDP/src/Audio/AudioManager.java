@@ -10,4 +10,6 @@ public class AudioManager{
     public static final URL Menu = AudioManager.class.getResource("menu.wav");
     public static final URL TieAttack = AudioManager.class.getResource("tieroar.wav");
     public static final URL VaderBreath = AudioManager.class.getResource("vaderbreath.wav");
+    public static final URL SOLOQUOTE = AudioManager.class.getResource("soloquote.wav");
+    public static final URL SOLORADIO = AudioManager.class.getResource("badfeeling.wav");
 }

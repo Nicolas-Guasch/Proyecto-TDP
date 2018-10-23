@@ -1,16 +1,14 @@
 package Rewards;
 
-import ADTs.Vector2;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import Engine.GameObject;
 import EntitiesVisitor.VisitorEntity;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Scripts.AlwaysLateral;
 import Scripts.RewardMove;
 
-public class GenericReward extends Reward {
+public class GenericReward extends Entity {
 
     private Renderizable renderer;
 

@@ -5,13 +5,13 @@ import Engine.EngineGetter;
 import EntitiesVisitor.VisitorEntity;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Rewards.Reward;
+import Rewards.Entity;
 
 
 public class ShieldVisitor extends VisitorEntity
 {
 
-    private Reward reward;
+    private Entity reward;
     float prevShield;
     PlayerShip visitable;
 
@@ -23,7 +23,7 @@ public class ShieldVisitor extends VisitorEntity
 
     }
 
-    public void setReward(Reward reward){
+    public void setReward(Entity reward){
         this.reward = reward;
     }
 

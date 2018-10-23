@@ -2,7 +2,6 @@ package Scripts;
 
 import ADTs.Vector2;
 import Engine.Component;
-import Rewards.Reward;
 
 import java.util.Random;
 

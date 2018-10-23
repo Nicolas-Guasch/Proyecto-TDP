@@ -63,7 +63,7 @@ public class TieMediumBuilder extends EnemyShipBuilder
     public void assembleBehaviours() {
         ship.addBehaviour(new HorizontalMoveShip(GameSettings.GetInstance().TieSpeed,101));
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
-        var bullbuilder = new TieBulletBuilder(ship.referenced().transform());
+        var bullbuilder = new BulletMaker(ship.referenced().transform());
         director.setBuilder(bullbuilder);
 
         var bp = ship.getBagPack();

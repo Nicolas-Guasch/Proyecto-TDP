@@ -81,6 +81,12 @@ public class UI
         uiPanel.add(score);
     }
 
+
+
+    public void removeUIComponent(UIComponent uiComponent) {
+        uiComponent.foreach(uiPanel::remove);
+    }
+
     public void addUIComponent(UIComponent s){
         s.foreach(uiPanel::add);
     }
@@ -93,7 +99,7 @@ public class UI
         goprompt.transform().setZcomponent(2);
         goprompt.addComponent(al);
         goprompt.setRenderer(rend);
-        goprompt.transform().setPosition(Vector2.DOWN(600f/por));
+        goprompt.transform().setPosition(Vector2.DOWN(600f*por));
         rend.show();
         Callable<Boolean> completed = ()-> goprompt.transform().position().y()>500f*por;
         new DoWhen(completed, goprompt::Destroy);
@@ -136,4 +142,6 @@ public class UI
     {
         return moviblePrompt(win,1);
     }
+
+
 }

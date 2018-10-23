@@ -21,6 +21,7 @@ import java.util.LinkedList;
 
 public class BossLevel extends AbstractLevel {
 
+    private ShipStatus ShipStatus;
     private EnemyShipDirector director;
     private boolean playing=false;
     EnemyShip vader;
@@ -43,7 +44,7 @@ public class BossLevel extends AbstractLevel {
 
     @Override
     public void startLevel() {
-        var ShipStatus = new ShipStatus(new Vector2(100,200), vader.observerHealth(),"bossbar",vader.data().getHealth());
+        ShipStatus = new ShipStatus(new Vector2(100,200), vader.observerHealth(),"bossbar",vader.data().getHealth());
         UI.getInstance().addUIComponent(ShipStatus);
         EngineGetter.Instance().get().waitForFrames(()->playing = true,3);
     }
@@ -53,6 +54,7 @@ public class BossLevel extends AbstractLevel {
         var ret = playing && !vader.alive();
         if(ret){
             MatchResult.getInstance().AllianceWins();
+
         }
         return ret;
 
@@ -61,5 +63,6 @@ public class BossLevel extends AbstractLevel {
     @Override
     public void clean() {
         vader.setData(EntityData.WithEqualsValues(-1));
+        UI.getInstance().removeUIComponent(ShipStatus);
     }
 }

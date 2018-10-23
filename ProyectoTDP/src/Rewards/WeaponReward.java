@@ -11,7 +11,7 @@ import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Scripts.AlwaysLateral;
 
-public class WeaponReward extends Reward
+public class WeaponReward extends Entity
 {
 
     private Weapon weapon;

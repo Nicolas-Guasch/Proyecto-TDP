@@ -1,8 +1,8 @@
 package Entities.Builders;
 
-import Rewards.Reward;
+import Rewards.Entity;
 
 public abstract class AbstractRewardFactory
 {
-    public abstract Reward get();
+    public abstract Entity get();
 }

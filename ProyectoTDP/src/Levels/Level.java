@@ -13,6 +13,7 @@ import Entities.Ships.*;
 import Entities.*;
 import EntitiesVisitor.*;
 import Rewards.*;
+import Rewards.Entity;
 
 
 import java.util.*;
@@ -20,7 +21,7 @@ import java.util.*;
 public final class Level extends AbstractLevel
 {
 
-    private Collection<Reward> rewards;
+    private Collection<Entity> rewards;
     private ILevelDataParser parser;
     private EnemyShipDirector director;
     private BarricadeBothDirector directorBboth;
@@ -55,7 +56,7 @@ public final class Level extends AbstractLevel
         assembleBarricades();
     }
 
-    private Entity getBarricadeRandom(){
+    private Entities.Entity getBarricadeRandom(){
         if(Math.abs(new Random().nextInt())%8>2){
             directorBboth.create();
             directorBboth.assemble();
@@ -71,7 +72,7 @@ public final class Level extends AbstractLevel
     private void assembleBarricades() {
         for(Vector2 v : parser.obstaclesPositions())
         {
-            Entity e = getBarricadeRandom();
+            Entities.Entity e = getBarricadeRandom();
             e.referenced().transform().setPosition(v.v3(2));
 
             e.referenced().getRenderer().show();
@@ -142,7 +143,7 @@ public final class Level extends AbstractLevel
     @Override
     public void clean() {
 
-        LinkedList<Entity> cosas = new LinkedList<>();
+        LinkedList<Entities.Entity> cosas = new LinkedList<>();
         VisitorEntity collector = new GetEnemiesAndBarricades(cosas);
         EveryOne.getInstance().takeVisitor(collector);
         cosas.forEach(e->e.data().setHealth(-1));

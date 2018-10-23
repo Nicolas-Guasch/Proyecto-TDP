@@ -1,7 +1,7 @@
 package Entities.Ships;
 
 import Engine.GameObject;
-import Entities.Weapons.EnemyBagpack;
+import Entities.Weapons.EnemyArsenal;
 import Entities.Weapons.WeaponSet;
 import EntitiesVisitor.EnemyVisitor;
 import EntitiesVisitor.VisitorEntity;
@@ -14,9 +14,9 @@ public class EnemyShip extends Ship {
 
 	public EnemyShip(GameObject referenced)
 	{
-		super(referenced,new EnemyBagpack());
+		super(referenced,new EnemyArsenal());
 		visitor = new EnemyVisitor(this);
-		data = GameSettings.GetInstance().TieData;
+		data = GameSettings.GetInstance().TieData.clone();
 	}
 
 	public void accept(VisitorEntity visitor) {

@@ -29,12 +29,14 @@ public class EveryOne extends Component
 
     private Queue<VisitorEntity> visitors;
     private Collection<Entity> entities;
+
     private Queue<Entity> toAdd;
     private Queue<Entity> toDestroy;
 
     private EveryOne()
     {
         entities = new LinkedList<>();
+
         toDestroy = new LinkedBlockingQueue<>();
         toAdd = new LinkedBlockingQueue<>();
         visitors = new LinkedBlockingQueue<>();
@@ -53,6 +55,7 @@ public class EveryOne extends Component
         }
         entities.forEach(this::checkDestroyable);
         toDestroy.forEach((e)->entities.remove(e));
+
         acceptVisitors();
     }
 
@@ -117,6 +120,12 @@ public class EveryOne extends Component
             toDestroy.add(e);
             e.onDeath();
         }
+    }
+
+    public Iterable<Entity> getEntities()
+    {
+        //return entities_BU;
+        return new LinkedList<>(entities); // no es tan eficiente pero me sirve
     }
 
 

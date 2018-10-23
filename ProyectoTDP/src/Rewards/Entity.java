@@ -3,10 +3,10 @@ package Rewards;
 import Engine.GameObject;
 import Entities.*;
 
-public abstract class Reward extends Entity // TODO: desgeneralizar
+public abstract class Entity extends Entities.Entity // TODO: desgeneralizar
 {
 
-    public Reward(GameObject referenced) {
+    public Entity(GameObject referenced) {
         super(referenced);
     }
 

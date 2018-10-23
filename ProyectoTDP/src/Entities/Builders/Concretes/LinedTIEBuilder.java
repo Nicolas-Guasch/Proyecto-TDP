@@ -4,7 +4,7 @@ import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import ADTs.Vector2;
 import Entities.Ships.PlayerShip;
-import Entities.Weapons.EnemyShootFront;
+import Entities.Weapons.ShotFront;
 import Entities.Behaviours.FireFrequency;
 import Entities.Behaviours.HorizontalMoveShip;
 import Entities.Behaviours.LookTarget;
@@ -64,9 +64,9 @@ public class LinedTIEBuilder extends EnemyShipBuilder
     public void assembleBehaviours() {
         ship.addBehaviour(new HorizontalMoveShip(GameSettings.GetInstance().TieSpeed,101));
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
-        director.setBuilder(new TieBulletBuilder(ship.referenced().transform()));
+        director.setBuilder(new BulletMaker(ship.referenced().transform()));
         int phaseshift = (prefSpriteData==SPRITEDATA2)?26:18;
-        EnemyShootFront esf = new EnemyShootFront(phaseshift,director,ship.referenced().transform());
+        ShotFront esf = new ShotFront(phaseshift,director,ship.referenced().transform());
         var bp = ship.getBagPack();
         ship.addWeapon(esf);
         FireFrequency frqsh = new FireFrequency(40,bp);

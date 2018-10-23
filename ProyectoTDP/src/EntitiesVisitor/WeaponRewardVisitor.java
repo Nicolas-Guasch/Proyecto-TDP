@@ -1,15 +1,15 @@
 package EntitiesVisitor;
 
-import Rewards.Reward;
+import Rewards.Entity;
 import Entities.Ships.PlayerShip;
 import Entities.Weapons.Weapon;
 
 public class WeaponRewardVisitor extends VisitorEntity
 {
     private Weapon weapon;
-    private final Reward related;
+    private final Entity related;
 
-    public WeaponRewardVisitor(Weapon weapon, Reward related)
+    public WeaponRewardVisitor(Weapon weapon, Entity related)
     {
         assert related!=null;
         assert weapon != null;

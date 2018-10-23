@@ -11,14 +11,14 @@ import Audio.SoundManager;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 
-public class TieBulletBuilder extends EnemyBulletBuilder
+public class BulletMaker extends EnemyBulletBuilder
 {
 
     private static final SpriteData SPRITEDATA = new SpriteData("greenbullet",new Vector2(80,80));
 
     private final Transform tie;
 
-    public TieBulletBuilder(Transform tie)
+    public BulletMaker(Transform tie)
     {
         this.tie = tie;
     }

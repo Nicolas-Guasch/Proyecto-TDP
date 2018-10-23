@@ -6,14 +6,13 @@ import ADTs.Vector2;
 import Entities.Behaviours.FireFrequency;
 import Entities.Behaviours.LookTarget;
 import Entities.Builders.Concretes.BuilderBossBullets;
-import Entities.Builders.Concretes.TieBulletBuilder;
+import Entities.Builders.Concretes.BulletMaker;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
 import Entities.EnemyBullet;
-import Entities.EntityData;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.Ships.PlayerShip;
-import Entities.Weapons.EnemyShootFront;
+import Entities.Weapons.ShotFront;
 import Entities.Weapons.WeaponSet;
 import GameData.GameSettings;
 import IAs.*;
@@ -49,13 +48,13 @@ public class VaderTieMaker extends EnemyShipBuilder
         // -------------- creo armas y las agrego ---------------
         BulletDirector<EnemyBullet, EnemyBulletBuilder> vaddir = new BulletDirector<>();
         vaddir.setBuilder(new BuilderBossBullets(ship.referenced().transform(),PlayerShip.getInstance().referenced().transform()));
-        EnemyShootFront esf = new EnemyShootFront(phaseshift,vaddir,ship.referenced().transform());
+        ShotFront esf = new ShotFront(phaseshift,vaddir,ship.referenced().transform());
         ship.addWeapon(esf);
 
 
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
-        director.setBuilder(new TieBulletBuilder(ship.referenced().transform()));
-        EnemyShootFront esf1 = new EnemyShootFront(phaseshift,director,ship.referenced().transform());
+        director.setBuilder(new BulletMaker(ship.referenced().transform()));
+        ShotFront esf1 = new ShotFront(phaseshift,director,ship.referenced().transform());
         ship.addWeapon(esf1);
         ship.addWeapon(esf1);
         ship.addWeapon(esf1);
@@ -64,7 +63,8 @@ public class VaderTieMaker extends EnemyShipBuilder
 
 
         // --------------- configuro el arma para disparar cada 30 frames
-        int freq = 20;
+        //int freq = 20;//TODO: volver a 20
+        int freq = 10;
         WeaponSet bp = ship.getBagPack();
         FireFrequency fireFrequency = new FireFrequency(freq,bp); // hace qeu dispare cada freq frames
         ship.addBehaviour(fireFrequency);
@@ -99,7 +99,7 @@ public class VaderTieMaker extends EnemyShipBuilder
     @Override
     public void assembleData()
     {
-        ship.setData(EntityData.WithEqualsValues(80));
+        ship.setData(GameSettings.GetInstance().FirstBossData.clone());
         ship.data().setShield(0);
     }
 }

@@ -6,6 +6,7 @@ import Engine.GameObject;
 import Entities.Ships.PlayerShip;
 import GameData.CurrentMatchData;
 import GameData.MatchResult;
+import UI.UI;
 
 public final class LevelsManager extends Component {
 
@@ -35,6 +36,7 @@ public final class LevelsManager extends Component {
 	public void update() {
 		if(!PlayerShip.getInstance().alive()){
 			MatchResult.getInstance().EmpireWins();
+			UI.getInstance().removeUIComponent(PlayerShip.getInstance().getHealthBar());
 			setActive(false);
 			return;
 		}
@@ -46,7 +48,8 @@ public final class LevelsManager extends Component {
 				runTheLevel();
 			}
 			else{
-				//MatchResult.getInstance().AllianceWins();
+				MatchResult.getInstance().AllianceWins();
+				UI.getInstance().removeUIComponent(PlayerShip.getInstance().getHealthBar());
 				setActive(false);
 			}
 		}
@@ -61,7 +64,7 @@ public final class LevelsManager extends Component {
 
 	private void runTheLevel()
 	{
-		UI.UI.getInstance().startLevel(currentLevel+1);
+		UI.getInstance().startLevel(currentLevel+1);
 		currentLevel().assembleLevel();
 		currentLevel().startLevel();
 		setActive(false);
@@ -69,7 +72,7 @@ public final class LevelsManager extends Component {
 	}
 
 	public void playLevel() {
-		UI.UI.getInstance().startLevel(0);// intro
+		UI.getInstance().startLevel(0);// intro
 		EngineGetter.Instance().get().waitForFrames(this::runTheLevel,500);
 	}
 }

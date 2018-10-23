@@ -57,10 +57,10 @@ public class FirstBossBuilder extends EnemyShipBuilder
                 target));
 
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director2 = new BulletDirector<EnemyBullet, EnemyBulletBuilder>();
-        director2.setBuilder(new TieBulletBuilder(ship.referenced().transform()));
+        director2.setBuilder(new BulletMaker(ship.referenced().transform()));
 
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director3 = new BulletDirector<EnemyBullet, EnemyBulletBuilder>();
-        director3.setBuilder(new TieBulletBuilder(ship.referenced().transform()));
+        director3.setBuilder(new BulletMaker(ship.referenced().transform()));
 
 
         int phaseshift = 22;

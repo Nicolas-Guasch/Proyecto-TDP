@@ -38,4 +38,8 @@ public abstract class Ship extends Entity implements IShip
     public Pilot getPilot() {
         return pilot;
     }
+
+    public WeaponSet getArsenal() {
+        return weapons;
+    }
 }

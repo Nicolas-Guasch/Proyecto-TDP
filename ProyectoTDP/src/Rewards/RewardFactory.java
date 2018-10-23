@@ -26,6 +26,7 @@ public class RewardFactory
         SHIELDREWARD = RewardKey.get(),
         WEAPON5REWARD = RewardKey.get(),
         WEAPONICEREWARD = RewardKey.get(),
+        SOLOSUPPORT = RewardKey.get(),
         FIRESHIELD = RewardKey.get();
 
 
@@ -43,6 +44,7 @@ public class RewardFactory
         creators.put(WEAPONICEREWARD,this::getWeaponIceReward);
         creators.put(SHIELDREWARD,this::getShieldReward);
         creators.put(FIRESHIELD,this::getFire);
+        creators.put(SOLOSUPPORT,new HanSoloAssistence());
     }
 
 
@@ -60,7 +62,7 @@ public class RewardFactory
         var sd = new SpriteData("rewardfire");
 
         var vis = new VisitorShieldFireReward();
-        Reward rew = new GenericReward(premio,vis,sd);
+        Entity rew = new GenericReward(premio,vis,sd);
         vis.setEntity(rew);
 
 
@@ -76,7 +78,7 @@ public class RewardFactory
         var sd = new SpriteData("rewardshield");
 
         var vis = new ShieldVisitor();
-        Reward rew = new GenericReward(premio,vis,sd);
+        Entity rew = new GenericReward(premio,vis,sd);
         vis.setReward(rew);
 
 

@@ -5,13 +5,13 @@ import Collisions.HitBoxesManager;
 import ADTs.Vector2;
 import Entities.Behaviours.FireFrequency;
 import Entities.Behaviours.LookTarget;
-import Entities.Builders.Concretes.TieBulletBuilder;
+import Entities.Builders.Concretes.BulletMaker;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
 import Entities.EnemyBullet;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.Ships.PlayerShip;
-import Entities.Weapons.EnemyShootFront;
+import Entities.Weapons.ShotFront;
 import Entities.Weapons.WeaponSet;
 import GameData.GameSettings;
 import IAs.*;
@@ -45,8 +45,8 @@ public class WhiteTieMaker extends EnemyShipBuilder
 
         // -------------- creo el arma y la agrego ---------------
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
-        director.setBuilder(new TieBulletBuilder(ship.referenced().transform()));
-        EnemyShootFront esf = new EnemyShootFront(phaseshift,director,ship.referenced().transform());
+        director.setBuilder(new BulletMaker(ship.referenced().transform()));
+        ShotFront esf = new ShotFront(phaseshift,director,ship.referenced().transform());
         ship.addWeapon(esf);
 
         // --------------- configuro el arma para disparar cada 40 frames

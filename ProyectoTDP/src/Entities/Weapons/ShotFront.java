@@ -4,18 +4,20 @@ import Engine.Components.Transform;
 import ADTs.Vector2;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
+import Entities.Builders.IBullet;
+import Entities.Bullet;
 import Entities.EnemyBullet;
 import Entities.EveryOne;
 
 //TheWeapon "commonWeaponTie"
-public class EnemyShootFront extends Weapon
+public class ShotFront extends Weapon
 {
 
-    private final BulletDirector<EnemyBullet, EnemyBulletBuilder> getter;
+    private final BulletDirector getter;
     private float phaseShift;
     private Transform reference;
 
-    public EnemyShootFront(float phaseShift, BulletDirector<EnemyBullet, EnemyBulletBuilder> getter, Transform reference)
+    public ShotFront(float phaseShift, BulletDirector getter, Transform reference)
     {
         super(getter);
         this.phaseShift = phaseShift;
@@ -33,10 +35,10 @@ public class EnemyShootFront extends Weapon
             phaseShift *= -1;
             getter.create();
             getter.assemble();
-            EnemyBullet b = getter.get();
-            b.referenced().transform().setPosition(point);
-            EveryOne.getInstance().add(b);
-            EveryOne.getInstance().killIn(b,300);
+            IBullet b = getter.get();
+            b.entity().referenced().transform().setPosition(point);
+            EveryOne.getInstance().add(b.entity());
+            EveryOne.getInstance().killIn(b.entity(),300);
     }
 
     @Override
