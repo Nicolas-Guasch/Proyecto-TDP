@@ -13,6 +13,7 @@ import Entities.Ships.EnemyShipDirector;
 import Entities.Ships.PlayerShip;
 import EntitiesVisitor.GetEnemiesAndBarricades;
 import EntitiesVisitor.VisitorEntity;
+import GameData.MatchResult;
 import UI.ShipStatus;
 import UI.UI;
 
@@ -51,7 +52,7 @@ public class BossLevel extends AbstractLevel {
     public boolean completed() {
         var ret = playing && !vader.alive();
         if(ret){
-            System.out.println("BossLevel::completed");
+            MatchResult.getInstance().AllianceWins();
         }
         return ret;
 

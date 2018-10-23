@@ -21,7 +21,6 @@ public class LostOrWin implements ILostOrWin{
             SoundManager.Instance().YouWin();
             UI.getInstance().win();
             EngineGetter.Instance().get().waitForFrames(this::creditsAndClose, 450);
-
         }
         made = true;
     }

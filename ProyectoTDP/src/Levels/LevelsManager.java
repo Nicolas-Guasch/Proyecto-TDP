@@ -46,7 +46,7 @@ public final class LevelsManager extends Component {
 				runTheLevel();
 			}
 			else{
-				MatchResult.getInstance().AllianceWins();
+				//MatchResult.getInstance().AllianceWins();
 				setActive(false);
 			}
 		}
