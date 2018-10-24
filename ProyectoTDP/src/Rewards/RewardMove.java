@@ -29,11 +29,11 @@ public class RewardMove extends Component
 
         if(transform().position().x()<minX){
             counter=1;
-            speed = Vector2.RIGHT();return;
+            speed = Vector2.RIGHT();
         }
         if(transform().position().x()>maxX){
             counter=1;
-            speed = Vector2.LEFT();return;
+            speed = Vector2.LEFT();
         }
         //----------- movimientos ---------
 
