@@ -6,7 +6,7 @@ import Engine.GameObject;
 import EntitiesVisitor.VisitorEntity;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Scripts.RewardMove;
+import Scripts.RewardLateralMovement;
 
 public class GenericReward extends Entity {
 
@@ -22,7 +22,7 @@ public class GenericReward extends Entity {
         var hitBox = HitBox.getOne(100,100,this);
         HitBoxesManager.getInstance().addHitBox(hitBox,HitBoxesManager.REWARDS);
         referenced.addHitBox(hitBox);
-        referenced.addComponent(new RewardMove(29));
+        referenced.addComponent(new RewardLateralMovement(29));
         renderer.show();
     }
 

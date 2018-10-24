@@ -5,13 +5,13 @@ import Engine.Component;
 
 import java.util.Random;
 
-public class RewardMove extends Component
+public class RewardLateralMovement extends Component
 {
 
     private float t;
     private int random_inc;
     private int dir =1;
-    public RewardMove(int seed){
+    public RewardLateralMovement(int seed){
         t =0;
         random_inc = Math.abs(new Random(seed).nextInt(3)) + 3;
         random_inc = random_inc/25;

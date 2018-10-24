@@ -10,7 +10,7 @@ import RenderingSystem.SpriteData;
 
 import java.util.function.Consumer;
 
-public class HanSoloAssistence implements Consumer<Transform> {
+public class MillenniumFalconHelpCoin implements Consumer<Transform> {
 
 
 
@@ -23,10 +23,12 @@ public class HanSoloAssistence implements Consumer<Transform> {
 
         var vis = new SoloSupportVisitor();
         Entity rew = new GenericReward(premio,vis,sd);
+
         vis.setEntity(rew);
 
 
         premio.transform().setPosition(originPoint.position3());
+        premio.addComponent(new RewardMove());
         rew.setData(EntityData.WithEqualsValues(100));
         EveryOne.getInstance().add(rew);
     }

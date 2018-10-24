@@ -14,8 +14,6 @@ import Entities.EveryOne;
 import Entities.Weapons.AngularWeapon;
 import Entities.Weapons.IceWeapon;
 import Entities.Weapons.Weapon;
-import EntitiesVisitor.VisitorHealPotion;
-import EntitiesVisitor.VisitorShieldFireReward;
 import RenderingSystem.SpriteData;
 
 import java.util.HashMap;
@@ -43,12 +41,12 @@ public class RewardFactory
 
     private RewardFactory(){
         creators = new HashMap<>();
-        creators.put(WEAPON5REWARD,this::getWeaponReward);
-        creators.put(WEAPONICEREWARD,this::getWeaponIceReward);
-        creators.put(SHIELDREWARD,this::getShieldReward);
-        creators.put(FIRESHIELD,this::getFire);
-        creators.put(SOLOSUPPORT,new HanSoloAssistence());
-        creators.put(HEALPOTION,this::getHealPotion);
+        creators.put(WEAPON5REWARD,new WeaponFiveCoin());
+        creators.put(WEAPONICEREWARD, new IceWeaponCoin());
+        creators.put(SHIELDREWARD,new ShieldCoin());
+        creators.put(FIRESHIELD,new FireSpinnerCoin());
+        creators.put(SOLOSUPPORT,new MillenniumFalconHelpCoin());
+        creators.put(HEALPOTION,new HealthCoin());
     }
 
 
@@ -59,85 +57,14 @@ public class RewardFactory
         }
     }
 
-    public void getHealPotion(Transform originPoint){
-        var player = PlayerShip.getInstance();
-        GameObject premio = GameObject.getRoot().addChild();
-        var sd = new SpriteData("rewardhealth");
-
-        var vis = new VisitorHealPotion();
-        Entity rew = new GenericReward(premio,vis,sd);
-        vis.setReward(rew);
 
 
-        premio.transform().setPosition(originPoint.position3());
-        rew.setData(EntityData.WithEqualsValues(100));
-        EveryOne.getInstance().add(rew);
-    }
-
-
-    public void getFire(Transform originPoint){
-        var player = PlayerShip.getInstance();
-        GameObject premio = GameObject.getRoot().addChild();
-        var sd = new SpriteData("rewardfire");
-
-        var vis = new VisitorShieldFireReward();
-        Entity rew = new GenericReward(premio,vis,sd);
-        vis.setEntity(rew);
-
-
-        premio.transform().setPosition(originPoint.position3());
-        rew.setData(EntityData.WithEqualsValues(100));
-        EveryOne.getInstance().add(rew);
-    }
-
-    private void getShieldReward(Transform originPoint)
-    {
-        var player = PlayerShip.getInstance();
-        GameObject premio = GameObject.getRoot().addChild();
-        var sd = new SpriteData("rewardshield");
-
-        var vis = new ShieldVisitor();
-        Entity rew = new GenericReward(premio,vis,sd);
-        vis.setReward(rew);
-
-
-        premio.transform().setPosition(originPoint.position3());
-        rew.setData(EntityData.WithEqualsValues(100));
-        EveryOne.getInstance().add(rew);
-    }
+    
 
 
 
-    private void getWeaponReward(Transform originPoint)
-    {
-        var player = PlayerShip.getInstance();
-        GameObject premio = GameObject.getRoot().addChild();
-        var sd = new SpriteData("5reward");
-        WeaponReward rew = new WeaponReward(premio,sd);
-        BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
-        director.setBuilder(new BulletPlayerBuilder(player.referenced().transform()));
-        Weapon wea = new AngularWeapon<>(player.referenced().transform(),director,5);
-        rew.setWeapon(wea);
-        premio.transform().setPosition(originPoint.position3());
-        rew.setData(EntityData.WithEqualsValues(100));
-        EveryOne.getInstance().add(rew);
-    }
 
 
-    private void getWeaponIceReward(Transform originPoint)
-    {
-        var player = PlayerShip.getInstance();
-        GameObject premio = GameObject.getRoot().addChild();
-        var sd = new SpriteData("icereward");
-        WeaponReward rew = new WeaponReward(premio,sd);
-        BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
-        director.setBuilder(new ColdFireMaker());
-        Weapon wea = new IceWeapon<>(player.referenced().transform(),director,5);
-        rew.setWeapon(wea);
-        premio.transform().setPosition(originPoint.position3());
-        rew.setData(EntityData.WithEqualsValues(100));
-        EveryOne.getInstance().add(rew);
-    }
 
 
 }
