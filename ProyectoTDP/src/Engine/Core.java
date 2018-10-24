@@ -5,6 +5,7 @@ import Exceptions.TimeLineException;
 import GameData.*;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * NO TOCAR!
@@ -16,7 +17,7 @@ final class Core
 
     // --------Singleton Stuff---------
     private static Core instance;
-    private boolean paused = false;
+    private AtomicBoolean paused = new AtomicBoolean(false);
 
     static Core getInstance()
     {
@@ -78,7 +79,7 @@ final class Core
         invokerOnUpdate.Invoke(null);
     }
 
-    public static long lastRetard = 0;//just for testing
+    public static long debt = 0;//just for testing
 
     private void mainLoopAlternativo() {
         long stampPerFrame = Clock.currentTimeNanos();
@@ -87,13 +88,13 @@ final class Core
         float act;
 
         while (!exit) {
-            if (paused) continue;
+            if (paused.get()) continue;
 
             try {
 
                 endOfFrame();
-                lastRetard = Clock.currentTimeNanos();
-                var tosleep = nanosperframe - (lastRetard-stampPerFrame);
+                debt = Clock.currentTimeNanos();
+                var tosleep = nanosperframe - (debt -stampPerFrame);
                 sleep(tosleep);
 
                 stampPerFrame = Clock.currentTimeNanos();
@@ -114,13 +115,29 @@ final class Core
 
         while(!exit)
         {
-            if(paused) continue;
+            if (paused.get()) {
+                continue;
+            }
+            try {
+                stampPerFrame = Clock.currentTimeNanos();
+                endOfFrame();
+                //see lastControlMethod
+                while (Clock.currentTimeNanos() - stampPerFrame < nanosperframe - debt) {
+                    sleep(10);
+                }
+                debt = (Clock.currentTimeNanos() - stampPerFrame) - nanosperframe;
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.exit(-1);
+            }
+        }
+    }
 
-                try{
-
-                    stampPerFrame = Clock.currentTimeNanos();
-                    endOfFrame();
-                        /*
+    private void lastControl(){
+        // lo guardo aca para no hacer lavaflow, pero
+        //cuando pongamos cosas con fisicas va a ser necesario reestablecer
+        //el motor con esto
+        /*
                         do
                         {
                             act = Clock.currentTimeNanos();
@@ -128,19 +145,8 @@ final class Core
                             prev = act;
 
                         }
-                        while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe - lastRetard);
+                        while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe - debt);
                         */
-                        while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe - lastRetard)
-                        {
-                            sleep(10);
-                        }
-
-                    lastRetard = (Clock.currentTimeNanos() - stampPerFrame) - nanosperframe;
-                }
-                catch (Exception e){e.printStackTrace();System.exit(-1);}
-
-        }
-
     }
 
     private void sleep(long time) {
@@ -188,13 +194,13 @@ final class Core
     }
 
 
-    public void setPaused(boolean p)
+    public synchronized void setPaused(boolean p)
     {
-        paused = p;
+        paused.lazySet(p);
     }
 
-    public boolean isPaused()
+    public synchronized boolean isPaused()
     {
-        return  paused;
+        return  paused.get();
     }
 }
