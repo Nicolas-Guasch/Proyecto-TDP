@@ -35,6 +35,7 @@ public final class LevelsManager extends Component {
 	@Override
 	public void update() {
 		if(!PlayerShip.getInstance().alive()){
+			currentLevel().clean();
 			MatchResult.getInstance().EmpireWins();
 			UI.getInstance().removeUIComponent(PlayerShip.getInstance().getHealthBar());
 			setActive(false);
