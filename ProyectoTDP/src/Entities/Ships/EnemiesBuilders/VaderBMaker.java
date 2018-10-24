@@ -1,11 +1,11 @@
 package Entities.Ships.EnemiesBuilders;
 
+import ADTs.Vector2;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import ADTs.Vector2;
 import Entities.Behaviours.FireFrequency;
 import Entities.Behaviours.LookTarget;
-import Entities.Builders.Concretes.BuilderBossBullets;
+import Entities.Builders.Concretes.LaserSaber;
 import Entities.Builders.Concretes.BulletMaker;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
@@ -21,13 +21,12 @@ import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import UtilsBehaviours.MirrorBounds;
 
-public class VaderTieMaker extends EnemyShipBuilder
-{
+public class VaderBMaker extends EnemyShipBuilder {
 
 
     @Override
     public void assembleSprite() {
-        SpriteData data = new SpriteData("vadership_a");
+        SpriteData data = new SpriteData("vadership_b");
         Renderizable rend = new Renderizable(data);
         rend.show();
         ship.setRenderer(rend);
@@ -36,7 +35,7 @@ public class VaderTieMaker extends EnemyShipBuilder
     @Override
     public void assembleHitBox() {
         //deberia ser 100 x 100 pero asi se dificulta mas
-        HitBox hb = HitBox.getOne(80,80,ship);
+        HitBox hb = HitBox.getOne(80, 80, ship);
         HitBoxesManager.getInstance().addHitBox(hb, HitBoxesManager.ENEMIES);
         ship.setHitBox(hb);
     }
@@ -46,38 +45,36 @@ public class VaderTieMaker extends EnemyShipBuilder
         int phaseshift = 20;
 
         // -------------- creo armas y las agrego ---------------
-        BulletDirector<EnemyBullet, EnemyBulletBuilder> vaddir = new BulletDirector<>();
-        vaddir.setBuilder(new BuilderBossBullets(ship.referenced().transform(),PlayerShip.getInstance().referenced().transform()));
-        ShotFront esf = new ShotFront(phaseshift,vaddir,ship.referenced().transform());
-        ship.addWeapon(esf);
 
 
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
         director.setBuilder(new BulletMaker(ship.referenced().transform()));
-        ShotFront esf1 = new ShotFront(phaseshift,director,ship.referenced().transform());
-        ship.addWeapon(esf1);
-        ship.addWeapon(esf1);
-        ship.addWeapon(esf1);
-        ship.addWeapon(esf1);
-        ship.addWeapon(esf1);
+        ShotFront tieArsenal = new ShotFront(phaseshift, director, ship.referenced().transform());
+        ship.addWeapon(tieArsenal);
+        ship.addWeapon(tieArsenal);
+
+        BulletDirector<EnemyBullet, EnemyBulletBuilder> saberDirector = new BulletDirector<>();
+        saberDirector.setBuilder(new LaserSaber(ship.referenced().transform(), PlayerShip.getInstance().referenced().transform()));
+        ShotFront weaponLaserSaber = new ShotFront(phaseshift, saberDirector, ship.referenced().transform());
+        ship.addWeapon(weaponLaserSaber);
 
 
         // --------------- configuro el arma para disparar cada 30 frames
-        //int freq = 20;//TODO: volver a 20
-        int freq = 10;
+        int freq = 8;
         WeaponSet bp = ship.getBagPack();
-        FireFrequency fireFrequency = new FireFrequency(freq,bp); // hace qeu dispare cada freq frames
+        FireFrequency fireFrequency = new FireFrequency(freq, bp); // hace qeu dispare cada freq frames
         ship.addBehaviour(fireFrequency);
 
         // --------------- configuro el piloto -----------------
         //GameSettings.GetInstance().getSpeed("whitetie"); //TODO: implementar esto
         EntityQuery handler = new DummyEntityQuery();
-        handler = new RelativeLateral(handler,50);
-        handler = new AbsoluteLateral(handler,100);
-        handler = new Slippery(handler,200f, 0.3f); // ver como queda sino sacar
+        handler = new RelativeLateral(handler, 61);
+        handler = new AbsoluteLateral(handler, 130);
+        handler = new Slippery(handler, 230f, 0.35f); // ver como queda sino sacar
 
-        Pilot pilot = new Pilot(handler,ship,15f);
-        handler = new IncreaseSpeedIfWatched(handler,pilot);
+        Pilot pilot = new Pilot(handler, ship, 18f);
+        float deg = 0.38f;
+        handler = new IncreaseSpeedIfWatched(handler, pilot, deg);
         pilot.setHandler(handler);
         ship.setPilot(pilot);
 
@@ -91,15 +88,14 @@ public class VaderTieMaker extends EnemyShipBuilder
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();
-        ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f),bottomLeft.prod(1.2f)));
+        ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f), bottomLeft.prod(1.2f)));
         // ----------------- que alguna nave random mire al player ------------
         ship.addBehaviour(new LookTarget(PlayerShip.getInstance().referenced().transform()));
     }
 
     @Override
-    public void assembleData()
-    {
+    public void assembleData() {
         ship.setData(GameSettings.GetInstance().FirstBossData.clone());
-        ship.data().setShield(0);
+        ship.data().setShield(0.2f);
     }
 }

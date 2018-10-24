@@ -3,6 +3,9 @@ package Levels;
 import Engine.Component;
 import Engine.EngineGetter;
 import Engine.GameObject;
+import Entities.Ships.EnemiesBuilders.VaderAMaker;
+import Entities.Ships.EnemiesBuilders.VaderBMaker;
+import Entities.Ships.EnemiesBuilders.VaderCMaker;
 import Entities.Ships.PlayerShip;
 import GameData.CurrentMatchData;
 import GameData.MatchResult;
@@ -22,13 +25,14 @@ public final class LevelsManager extends Component {
 	private int currentLevel;
 	private LevelsManager(){
 		currentLevel =0;
-		levels = new AbstractLevel[6];
+		levels = new AbstractLevel[7];
 		levels[0] = new Level(1);
 		levels[1] = new Level(2);
 		levels[2] = new Level(3);
 		levels[3] = new TransitionToBoss();
-		levels[4] = new BossLevel();
-		levels[5] = new BossLevel();
+		levels[4] = new BossLevel(new VaderAMaker());
+		levels[5] = new BossLevel(new VaderBMaker());
+		levels[6] = new BossLevel(new VaderCMaker());
 
 		GameObject.getRoot().addChild().addComponent(this);
 	}

@@ -63,7 +63,7 @@ public class TieHardBuilder extends EnemyShipBuilder
         Transform target = PlayerShip.getInstance().referenced().transform();
 
         var bullbuilder = new BulletMaker(ship.referenced().transform());
-        directorH.setBuilder(new BuilderBossBullets(
+        directorH.setBuilder(new LaserSaber(
                 ship.referenced().transform(),
                 target));
         director.setBuilder(bullbuilder);

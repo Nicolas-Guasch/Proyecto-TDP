@@ -3,21 +3,16 @@ package Levels;
 import ADTs.Vector2;
 import ADTs.Vector3;
 import Engine.EngineGetter;
-import Entities.Builders.Concretes.FirstBossBuilder;
-import Entities.Entity;
 import Entities.EntityData;
 import Entities.EveryOne;
-import Entities.Ships.EnemiesBuilders.VaderTieMaker;
+import Entities.Ships.EnemiesBuilders.VaderAMaker;
+import Entities.Ships.EnemiesBuilders.VaderBMaker;
 import Entities.Ships.EnemyShip;
+import Entities.Ships.EnemyShipBuilder;
 import Entities.Ships.EnemyShipDirector;
-import Entities.Ships.PlayerShip;
-import EntitiesVisitor.GetEnemiesAndBarricades;
-import EntitiesVisitor.VisitorEntity;
 import GameData.MatchResult;
 import UI.ShipStatus;
 import UI.UI;
-
-import java.util.LinkedList;
 
 public class BossLevel extends AbstractLevel {
 
@@ -25,9 +20,9 @@ public class BossLevel extends AbstractLevel {
     private EnemyShipDirector director;
     private boolean playing=false;
     EnemyShip vader;
-    public BossLevel(){
+    public BossLevel(EnemyShipBuilder builder){
         director = new EnemyShipDirector();
-        director.setBuilder(new VaderTieMaker());
+        director.setBuilder(builder);
     }
 
 
@@ -52,9 +47,6 @@ public class BossLevel extends AbstractLevel {
     @Override
     public boolean completed() {
         var ret = playing && !vader.alive();
-        if(ret){
-            MatchResult.getInstance().AllianceWins();
-        }
         return ret;
 
     }

@@ -52,7 +52,7 @@ public class FirstBossBuilder extends EnemyShipBuilder
         ship.addBehaviour(new HorizontalMoveShip(GameSettings.GetInstance().FirstBossSpeed,6));
 
         BulletDirector<EnemyBullet, EnemyBulletBuilder> director1 = new BulletDirector<>();
-        director1.setBuilder(new BuilderBossBullets(
+        director1.setBuilder(new LaserSaber(
                 ship.referenced().transform(),
                 target));
 

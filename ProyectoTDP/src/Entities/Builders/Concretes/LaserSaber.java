@@ -17,14 +17,14 @@ import Scripts.DangerousHunter;
  * Concrete EnemyBullet Builder for the Tester Boss
  *
  */
-public class BuilderBossBullets extends EnemyBulletBuilder
+public class LaserSaber extends EnemyBulletBuilder
 {
     private static final SpriteData SPRITEDATA = new SpriteData("redbullet",new Vector2(80,80));
 
     private final Transform tie;
     private final Transform target;
 
-    public BuilderBossBullets(Transform tie,Transform target)
+    public LaserSaber(Transform tie, Transform target)
     {
         this.tie = tie;
         this.target = target;

@@ -8,12 +8,18 @@ public class IncreaseSpeedIfWatched extends AIQueryDecorator {
 
     private final Pilot pilot;
     private final float common_speed;
+    private float degrees;
 
     public IncreaseSpeedIfWatched(EntityQuery decorated, Pilot pilot) {
         super(decorated);
         this.pilot = pilot;
         this.common_speed = pilot.speed();
+        degrees = 0.3f;
+    }
 
+    public IncreaseSpeedIfWatched(EntityQuery handler, Pilot pilot, float degrees) {
+        this(handler,pilot);
+        this.degrees = degrees;
     }
 
     @Override
@@ -29,7 +35,7 @@ public class IncreaseSpeedIfWatched extends AIQueryDecorator {
 
         float incmult = 1;
 
-        if(Math.abs(angle)<0.3f){
+        if(Math.abs(angle)<degrees){
             incmult = 2;
         }
 
