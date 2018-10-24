@@ -27,7 +27,7 @@ public class VaderTieMaker extends EnemyShipBuilder
 
     @Override
     public void assembleSprite() {
-        SpriteData data = new SpriteData("vadership");
+        SpriteData data = new SpriteData("vadership_a");
         Renderizable rend = new Renderizable(data);
         rend.show();
         ship.setRenderer(rend);

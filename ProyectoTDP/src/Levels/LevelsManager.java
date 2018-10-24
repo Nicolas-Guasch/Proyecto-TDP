@@ -22,12 +22,13 @@ public final class LevelsManager extends Component {
 	private int currentLevel;
 	private LevelsManager(){
 		currentLevel =0;
-		levels = new AbstractLevel[5];
+		levels = new AbstractLevel[6];
 		levels[0] = new Level(1);
 		levels[1] = new Level(2);
 		levels[2] = new Level(3);
 		levels[3] = new TransitionToBoss();
 		levels[4] = new BossLevel();
+		levels[5] = new BossLevel();
 
 		GameObject.getRoot().addChild().addComponent(this);
 	}

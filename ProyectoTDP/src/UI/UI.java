@@ -58,6 +58,9 @@ public class UI
         levels.add(new SpriteData("levintro3"));
         levels.add(new SpriteData("finalboss"));
         levels.add(new SpriteData("point"));
+        levels.add(new SpriteData("point"));
+        levels.add(new SpriteData("point"));
+        levels.add(new SpriteData("point"));
 
 
 
