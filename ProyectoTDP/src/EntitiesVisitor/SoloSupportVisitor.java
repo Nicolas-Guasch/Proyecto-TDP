@@ -62,13 +62,20 @@ public class SoloSupportVisitor extends VisitorEntity
     private void getBehaviour() {
 
         Vector2[] waypoints = {
-                new Vector2(180,100),
+
                 new Vector2(-540,300),
+                Vector2.Random().withLength(600),
                 new Vector2(150,-400),
+                Vector2.Random().withLength(500),
                 new Vector2(-240,300),
+                Vector2.Random().withLength(500),
                 new Vector2(10,00),
+                Vector2.Random().withLength(400),
                 new Vector2(-640,300),
+                Vector2.Random().withLength(500),
                 new Vector2(-240,-300),
+                Vector2.Random().withLength(500),
+
                 new Vector2(-800,0),
         };
 
@@ -87,16 +94,10 @@ public class SoloSupportVisitor extends VisitorEntity
             ship.getPilot().setActive(false);
             ship.getArsenal().setActive(false);
             ship.data().setHealth(-1);
-            System.out.println("SoloSupportVisitor::getBehaviour");
+
         });
 
 
-        // ----------- TODO: quitar---------------
-       /* Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
-        Vector2 topRight = bottomRight.mirrorX();
-        Vector2 bottomLeft = bottomRight.mirrorY();
-        ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f),bottomLeft.prod(1.2f)));
-*/
 
     }
 

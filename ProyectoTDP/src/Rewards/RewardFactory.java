@@ -14,6 +14,8 @@ import Entities.EveryOne;
 import Entities.Weapons.AngularWeapon;
 import Entities.Weapons.IceWeapon;
 import Entities.Weapons.Weapon;
+import EntitiesVisitor.VisitorHealPotion;
+import EntitiesVisitor.VisitorShieldFireReward;
 import RenderingSystem.SpriteData;
 
 import java.util.HashMap;
@@ -60,7 +62,7 @@ public class RewardFactory
     public void getHealPotion(Transform originPoint){
         var player = PlayerShip.getInstance();
         GameObject premio = GameObject.getRoot().addChild();
-        var sd = new SpriteData("only coin");
+        var sd = new SpriteData("rewardhealth");
 
         var vis = new VisitorHealPotion();
         Entity rew = new GenericReward(premio,vis,sd);

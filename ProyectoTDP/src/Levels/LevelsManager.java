@@ -42,8 +42,8 @@ public final class LevelsManager extends Component {
 		}
 
 		if(currentLevel().completed()){
+			currentLevel().clean();
 			if(hasNextLevel()){
-				currentLevel().clean();
 				currentLevel++;
 				runTheLevel();
 			}

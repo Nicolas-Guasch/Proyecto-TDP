@@ -1,7 +1,8 @@
-package Rewards;
+package EntitiesVisitor;
 
 import Entities.Ships.PlayerShip;
 import EntitiesVisitor.VisitorEntity;
+import Rewards.Entity;
 
 public class VisitorHealPotion extends VisitorEntity {
 

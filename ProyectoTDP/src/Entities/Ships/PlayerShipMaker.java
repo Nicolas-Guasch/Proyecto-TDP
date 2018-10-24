@@ -19,6 +19,10 @@ import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import UtilsBehaviours.MirrorBounds;
 
+
+
+// REQUIERE QUE LUEGO LE ACTIBES EL ARSENAL
+
 public class PlayerShipMaker extends PlayerShipBuilder {
 
 /*
@@ -84,7 +88,7 @@ collider: 130x130
         ship.addWeapon(new GenericalWeapon<>(ship.referenced().transform(),director,2));
         ship.addWeapon(new LateralizedWeapon<>(ship.referenced().transform(),director,3));
 
-
+        ship.getArsenal().setActive(false);
 
 
     }

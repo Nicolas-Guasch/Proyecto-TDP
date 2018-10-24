@@ -45,11 +45,11 @@ public class SoloAI extends AIQueryDecorator {
     }
 
     private Vector2 getToMove(Vector2 pos){
-        System.out.println("SoloAI::getToMove -- "+pos+" .. "+ index_waypoints + " ..." + waypoints.length);
+
         if(waypoints[index_waypoints].distanceTo(pos)<30 && waypoints.length>index_waypoints+1){
             index_waypoints++;
         }
-        System.out.println("SoloAI::getToMove -- return"+waypoints[index_waypoints].minus(pos));
+
         return waypoints[index_waypoints].minus(pos);
     }
 

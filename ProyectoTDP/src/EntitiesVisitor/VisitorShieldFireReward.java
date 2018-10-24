@@ -1,4 +1,4 @@
-package Rewards;
+package EntitiesVisitor;
 
 import Engine.EngineGetter;
 import Entities.Builders.Directors.BulletDirector;
@@ -15,7 +15,7 @@ public class VisitorShieldFireReward extends VisitorEntity
     private FireShieldMaker builder;
     private boolean enable = true;
 
-    VisitorShieldFireReward(){
+    public VisitorShieldFireReward(){
         builder = new FireShieldMaker();
     }
 

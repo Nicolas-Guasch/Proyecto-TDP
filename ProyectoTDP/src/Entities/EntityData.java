@@ -17,12 +17,15 @@ public final class EntityData
     private float damage;
     private float shield;
 
+    private float initialHealth;
+
     public EntityData(float health, float damage, float shield)
     {
         assert shield >=0 && shield <=1;
         this.health = health;
         this.damage = damage;
         this.shield = shield;
+        this.initialHealth = health;
 
         BroadcasterPackage<Float> pack = ObserverSystem.getInstance().GetBroadcaster();
         HealthData = pack.Broadcaster;
@@ -68,7 +71,11 @@ public final class EntityData
 
     public void setHealth(float health) {
         this.health = health;
-        HealthDataInvoker.Invoke(health);
+        if(this.health >initialHealth)
+        {
+            this.health = initialHealth;
+        }
+        HealthDataInvoker.Invoke(this.health);
     }
 
 
@@ -76,5 +83,13 @@ public final class EntityData
     public void takeDamage(float damage) {
         health -= damage*(1-shield);
         HealthDataInvoker.Invoke(health);
+    }
+
+    public float getInitialHealth() {
+        return initialHealth;
+    }
+
+    public void setInitialHealth(float initialHealth) {
+        this.initialHealth = initialHealth;
     }
 }

@@ -62,6 +62,7 @@ public class BossLevel extends AbstractLevel {
     @Override
     public void clean() {
         vader.setData(EntityData.WithEqualsValues(-1));
+        System.out.println("BossLevel::clean");
         UI.getInstance().removeUIComponent(ShipStatus);
     }
 }
