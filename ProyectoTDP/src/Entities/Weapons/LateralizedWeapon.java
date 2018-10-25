@@ -3,7 +3,7 @@ package Entities.Weapons;
 
 import Engine.Components.Transform;
 import ADTs.Vector2;
-import Entities.Behaviours.Vibe;
+import AIs.Vibe;
 import Entities.Builders.IBullet;
 import Entities.Builders.Directors.IBulletDirector;
 import Entities.EveryOne;

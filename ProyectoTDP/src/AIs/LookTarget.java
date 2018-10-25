@@ -1,4 +1,4 @@
-package Entities.Behaviours;
+package AIs;
 
 import Engine.Component;
 import Engine.Components.Transform;

@@ -3,14 +3,14 @@ package Entities.Ships.EnemiesBuilders;
 import ADTs.Vector2;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Entities.Behaviours.FireFrequency;
+import AIs.FireFrequency;
 import Entities.Builders.Concretes.BulletMaker;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
 import Entities.EnemyBullet;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.Weapons.ShotFront;
-import Entities.Weapons.WeaponSet;
+import Entities.Weapons.Arsenal;
 import GameData.GameSettings;
 import IAs.*;
 import RenderingSystem.RenderingTools;
@@ -48,7 +48,7 @@ public class DizzyMaker extends EnemyShipBuilder
 
         // --------------- configuro el arma para disparar cada 40 frames
         int freq = 80;
-        WeaponSet bp = ship.getBagPack();
+        Arsenal bp = ship.getBagPack();
         FireFrequency fireFrequency = new FireFrequency(freq,bp); // hace qeu dispare cada freq frames
         ship.addBehaviour(fireFrequency);
 

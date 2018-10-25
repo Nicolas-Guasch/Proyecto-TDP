@@ -1,9 +1,9 @@
 package Entities.Weapons;
 
 import Engine.Components.Transform;
-import Entities.Behaviours.MouseFollower;
-import Entities.Behaviours.SimpleBullet;
-import Entities.Behaviours.ZigZag;
+import AIs.MouseFollower;
+import AIs.SimpleBullet;
+import AIs.ZigZag;
 import Entities.Builders.Directors.IBulletDirector;
 import Entities.Builders.IBullet;
 

@@ -2,13 +2,11 @@ package Entities.Ships;
 
 import ADTs.Vector2;
 import Engine.GameObject;
-import Entities.EveryOne;
 import Entities.Weapons.PlayerBagpack;
-import Entities.Weapons.WeaponSet;
+import Entities.Weapons.Arsenal;
 import EntitiesVisitor.PlayerVisitor;
 import EntitiesVisitor.VisitorEntity;
 import GameData.GameSettings;
-import GameData.MatchResult;
 import Audio.SoundManager;
 import InputManager.DiscreteClick;
 import InputManager.DiscreteKeyInput;
@@ -17,7 +15,6 @@ import Mementos.IMementoPlayer;
 import Mementos.MementoPlayer;
 import SpecialPowers.ISpecialPower;
 import SpecialPowers.PowersDeck;
-import SpecialPowers.TheForcePower;
 import UI.ShipStatus;
 import UI.UIComponent;
 import UtilsBehaviours.PlayerWatcher;
@@ -53,12 +50,13 @@ public class PlayerShip extends Ship {
 		super.onDeath();
 		//MatchResult.getInstance().EmpireWins();
 	}
-	public WeaponSet getBagPack() {
+	public Arsenal getBagPack() {
 		return weapons;
 	}
 	private PlayerShip(GameObject referenced) {
 		super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
-		//super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteKeyInput(" ")));
+		//super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteKeyInput("oplOPLkK") ));
+
 		SoundManager.Instance().setTransformListener(this.referenced().transform());
 		visitor = new PlayerVisitor();
 		data = GameSettings.GetInstance().PlayerData;

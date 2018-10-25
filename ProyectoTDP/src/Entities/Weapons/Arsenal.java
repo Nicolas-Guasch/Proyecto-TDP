@@ -2,9 +2,9 @@ package Entities.Weapons;
 
 import Engine.Components.IActivable;
 
-public abstract class WeaponSet implements IActivable {
+public abstract class Arsenal implements IActivable {
 
-    public abstract WeaponSet clone();
+    public abstract Arsenal clone();
 
     private boolean active = true;
 

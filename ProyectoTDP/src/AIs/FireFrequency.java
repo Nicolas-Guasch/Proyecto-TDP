@@ -1,8 +1,9 @@
-package Entities.Behaviours;
+package AIs;
 
 import Engine.Component;
-import Entities.Weapons.WeaponSet;
+import Entities.Weapons.Arsenal;
 import Tools.Random;
+
 
 /**
  * implements the behavior of a ship, their "fire frequency", which,
@@ -10,17 +11,16 @@ import Tools.Random;
  * signal to the set of weapons to fire the selected weapon
  * and change to the next available weapon
  */
-
 public class FireFrequency extends Component
 {
     private int freq;
     private int i;
-    private WeaponSet weapons;
-    public FireFrequency(int freq, WeaponSet weapons)
+    private Arsenal weapons;
+    public FireFrequency(int freq, Arsenal arsenal)
     {
-        this.freq=freq+ Random.value(0,freq/4);
+        this.freq = freq + Math.abs(Random.value(0,freq/15)) - 10;
         i=freq;
-        this.weapons = weapons;
+        this.weapons = arsenal;
     }
 
     @Override

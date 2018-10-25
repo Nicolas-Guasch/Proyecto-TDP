@@ -1,10 +1,7 @@
 package DataParsers;
 
 import ADTs.Vector2;
-import Entities.Ships.EnemiesBuilders.DizzyMaker;
-import Entities.Ships.EnemiesBuilders.FastTieMaker;
-import Entities.Ships.EnemiesBuilders.FullKamikazeeMaker;
-import Entities.Ships.EnemiesBuilders.WhiteTieMaker;
+import Entities.Ships.EnemiesBuilders.*;
 import Entities.Ships.EnemyShipBuilder;
 import Rewards.RewardFactory;
 import Rewards.RewardKey;
@@ -59,105 +56,92 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
     private void initenembuilds()
     {
         enemies.get(L1).add(new WhiteTieMaker());
-        enemies.get(L1).add(new DizzyMaker());
-        enemies.get(L1).add(new FastTieMaker());
-        enemies.get(L1).add(new FullKamikazeeMaker());
+        enemies.get(L1).add(new WachinMaker());
 
+        enemies.get(L2).add(new DizzyMaker());
+        enemies.get(L2).add(new FastTieMaker());
+        enemies.get(L2).add(new WachinMaker());
         enemies.get(L2).add(new WhiteTieMaker());
         enemies.get(L2).add(new FastTieMaker());
 
+        enemies.get(L3).add(new WachinMaker());
+        enemies.get(L3).add(new DizzyMaker());
+        enemies.get(L3).add(new FastTieMaker());
+        enemies.get(L3).add(new FullKamikazeeMaker());
         enemies.get(L3).add(new FastTieMaker());
     }
 
     private void initrew()
     {
 
-        rew.get(L1).add(RewardFactory.FIRESHIELD);
+
+
+        rew.get(L1).add(RewardFactory.FORCE);
         rew.get(L1).add(RewardFactory.SHIELD);
-        rew.get(L1).add(RewardFactory.FIVEWEAPON);
         rew.get(L1).add(RewardFactory.ICE);
-        rew.get(L1).add(RewardFactory.HANSUPPORT);
         rew.get(L1).add(RewardFactory.HEALTH);
 
-        rew.get(L1).add(RewardFactory.FORCE);
-        rew.get(L1).add(RewardFactory.FORCE);
-        rew.get(L1).add(RewardFactory.FORCE);
-        rew.get(L1).add(RewardFactory.FORCE);
-        rew.get(L1).add(RewardFactory.FORCE);
-        rew.get(L1).add(RewardFactory.FORCE);
-
-
-        rew.get(L2).add(RewardFactory.SHIELD);
-        rew.get(L2).add(RewardFactory.SHIELD);
+        rew.get(L2).add(RewardFactory.FIRESHIELD);
+        rew.get(L2).add(RewardFactory.HANSUPPORT);
+        rew.get(L2).add(RewardFactory.HEALTH);
         rew.get(L2).add(RewardFactory.ICE);
+        rew.get(L2).add(RewardFactory.SHIELD);
+        rew.get(L2).add(RewardFactory.FORCE);
 
-        rew.get(L3).add(RewardFactory.SHIELD);
-        rew.get(L3).add(RewardFactory.ICE);
+        rew.get(L3).add(RewardFactory.FIVEWEAPON);
+        rew.get(L3).add(RewardFactory.HANSUPPORT);
+        rew.get(L3).add(RewardFactory.HEALTH);
+        rew.get(L3).add(RewardFactory.HEALTH);
+
+
     }
 
     private void initObsts() {
-        obstpos.get(L1).add(new Vector2(-400,0));
+        obstpos.get(L1).add(new Vector2(-500,-100));
         obstpos.get(L1).add(new Vector2(10,0));
-        obstpos.get(L1).add(new Vector2(400,0));
+        obstpos.get(L1).add(new Vector2(500,-100));
+
+        obstpos.get(L2).add(new Vector2(0,-50));
+
+        obstpos.get(L3).add(new Vector2(300,-100));
+        obstpos.get(L3).add(new Vector2(-300,-100));
     }
 
     private void initenempos()
     {
-        enemsPos.get(L1).add(new Vector2(-400/1.5f,280));
-        enemsPos.get(L1).add(new Vector2(-300/1.5f,170));
-        enemsPos.get(L1).add(new Vector2(-200/1.5f,280));
-        enemsPos.get(L1).add(new Vector2(-100/1.5f,170));
-        enemsPos.get(L1).add(new Vector2(000/1.5f,280));
-        enemsPos.get(L1).add(new Vector2(100/1.5f,170));
-        enemsPos.get(L1).add(new Vector2(200/1.5f,280));
-        enemsPos.get(L1).add(new Vector2(300/1.5f,170));
-        enemsPos.get(L1).add(new Vector2(400/1.5f,250));
+        enemsPos.get(L1).add(new Vector2(-750,180));
+        enemsPos.get(L1).add(new Vector2(-450,300));
+        enemsPos.get(L1).add(new Vector2(-150,180));
 
-        enemsPos.get(L2).add(new Vector2(-400,550));
-        enemsPos.get(L2).add(new Vector2(-300,550));
-        enemsPos.get(L2).add(new Vector2(-200,550));
-        enemsPos.get(L2).add(new Vector2(-100,550));
-        enemsPos.get(L2).add(new Vector2(000,550));
-        enemsPos.get(L2).add(new Vector2(100,550));
-        enemsPos.get(L2).add(new Vector2(200,550));
-        enemsPos.get(L2).add(new Vector2(300,550));
-        enemsPos.get(L2).add(new Vector2(400,550));
+        enemsPos.get(L1).add(new Vector2(750,300));
+        enemsPos.get(L1).add(new Vector2(450,180));
+        enemsPos.get(L1).add(new Vector2(150,300));
 
-        enemsPos.get(L2).add(new Vector2(-400,550));
-        enemsPos.get(L2).add(new Vector2(-300,550));
-        enemsPos.get(L2).add(new Vector2(-200,550));
-        enemsPos.get(L2).add(new Vector2(-100,550));
-        enemsPos.get(L2).add(new Vector2(000,550));
-        enemsPos.get(L2).add(new Vector2(100,550));
-        enemsPos.get(L2).add(new Vector2(200,550));
-        enemsPos.get(L2).add(new Vector2(300,550));
-        enemsPos.get(L2).add(new Vector2(400,550));
 
-        enemsPos.get(L3).add(new Vector2(-400,550));
-        enemsPos.get(L3).add(new Vector2(-300,550));
-        enemsPos.get(L3).add(new Vector2(-200,550));
-        enemsPos.get(L3).add(new Vector2(-100,550));
-        enemsPos.get(L3).add(new Vector2(000,550));
-        enemsPos.get(L3).add(new Vector2(100,550));
-        enemsPos.get(L3).add(new Vector2(200,550));
-        enemsPos.get(L3).add(new Vector2(300,550));
-        enemsPos.get(L3).add(new Vector2(400,550));
 
-        enemsPos.get(L3).add(new Vector2(-400,500));
-        enemsPos.get(L3).add(new Vector2(-300,500));
-        enemsPos.get(L3).add(new Vector2(-200,500));
-        enemsPos.get(L3).add(new Vector2(-100,500));
-        enemsPos.get(L3).add(new Vector2(000,500));
-        enemsPos.get(L3).add(new Vector2(100,500));
-        enemsPos.get(L3).add(new Vector2(200,500));
-        enemsPos.get(L3).add(new Vector2(300,500));
-        enemsPos.get(L3).add(new Vector2(400,500));
+        enemsPos.get(L2).add(new Vector2(-750,180));
+        enemsPos.get(L2).add(new Vector2(-450,300));
+        enemsPos.get(L2).add(new Vector2(-150,180));
+
+        enemsPos.get(L2).add(new Vector2(750,300));
+        enemsPos.get(L2).add(new Vector2(450,180));
+        enemsPos.get(L2).add(new Vector2(150,300));
+
+
+        enemsPos.get(L3).add(new Vector2(-750,180));
+        enemsPos.get(L3).add(new Vector2(-450,300));
+        enemsPos.get(L3).add(new Vector2(-150,180));
+
+        enemsPos.get(L3).add(new Vector2(150,400));
+        enemsPos.get(L3).add(new Vector2(450,180));
+        enemsPos.get(L3).add(new Vector2(150,300));
+
 
     }
 
     @Override
     public void setKey(String key) {
-        currentKey = L1;
+        currentKey = key;
     }
 
     @Override

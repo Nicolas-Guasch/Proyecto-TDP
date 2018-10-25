@@ -13,7 +13,7 @@ import Entities.Ships.*;
 import Entities.*;
 import EntitiesVisitor.*;
 import Rewards.*;
-
+import Scripts.Background;
 
 
 import java.util.*;
@@ -124,11 +124,11 @@ public final class Level extends AbstractLevel
     @Override
     public void startLevel()
     {
-
+        var bb = Background.getInstance();
+        bb.setSpeedBackground(25f*number+10);
         PlayerShip.getInstance().referenced().transform().setPosition(new Vector3(0,-300,-90));
         levelRunning = true;
     }
-
 
     @Override
     public boolean completed() {

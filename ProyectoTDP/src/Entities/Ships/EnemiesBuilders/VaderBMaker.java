@@ -3,8 +3,8 @@ package Entities.Ships.EnemiesBuilders;
 import ADTs.Vector2;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Entities.Behaviours.FireFrequency;
-import Entities.Behaviours.LookTarget;
+import AIs.FireFrequency;
+import AIs.LookTarget;
 import Entities.Builders.Concretes.LaserSaber;
 import Entities.Builders.Concretes.BulletMaker;
 import Entities.Builders.Directors.BulletDirector;
@@ -13,7 +13,7 @@ import Entities.EnemyBullet;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.Ships.PlayerShip;
 import Entities.Weapons.ShotFront;
-import Entities.Weapons.WeaponSet;
+import Entities.Weapons.Arsenal;
 import GameData.GameSettings;
 import IAs.*;
 import RenderingSystem.RenderingTools;
@@ -61,7 +61,7 @@ public class VaderBMaker extends EnemyShipBuilder {
 
         // --------------- configuro el arma para disparar cada 30 frames
         int freq = 8;
-        WeaponSet bp = ship.getBagPack();
+        Arsenal bp = ship.getBagPack();
         FireFrequency fireFrequency = new FireFrequency(freq, bp); // hace qeu dispare cada freq frames
         ship.addBehaviour(fireFrequency);
 

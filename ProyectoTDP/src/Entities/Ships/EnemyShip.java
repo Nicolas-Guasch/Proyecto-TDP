@@ -2,7 +2,7 @@ package Entities.Ships;
 
 import Engine.GameObject;
 import Entities.Weapons.EnemyArsenal;
-import Entities.Weapons.WeaponSet;
+import Entities.Weapons.Arsenal;
 import EntitiesVisitor.EnemyVisitor;
 import EntitiesVisitor.VisitorEntity;
 import GameData.CurrentMatchData;
@@ -23,7 +23,7 @@ public class EnemyShip extends Ship {
 		visitor.visit(this);
 	}
 
-	public WeaponSet getBagPack() {
+	public Arsenal getBagPack() {
 		return weapons;
 	}
 

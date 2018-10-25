@@ -1,4 +1,4 @@
-package Entities.Behaviours;
+package AIs;
 
 import Engine.Component;
 import ADTs.Vector2;

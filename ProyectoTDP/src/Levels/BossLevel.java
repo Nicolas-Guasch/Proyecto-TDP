@@ -11,6 +11,7 @@ import Entities.Ships.EnemyShip;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.Ships.EnemyShipDirector;
 import GameData.MatchResult;
+import Tools.Random;
 import UI.ShipStatus;
 import UI.UI;
 
@@ -40,6 +41,7 @@ public class BossLevel extends AbstractLevel {
     @Override
     public void startLevel() {
         ShipStatus = new ShipStatus(new Vector2(100,200), vader.observerHealth(),"bossbar",vader.data().getHealth());
+        vader.referenced().transform().setPosition(Vector2.Random(Random.value(200,450)));
         UI.getInstance().addUIComponent(ShipStatus);
         EngineGetter.Instance().get().waitForFrames(()->playing = true,3);
     }

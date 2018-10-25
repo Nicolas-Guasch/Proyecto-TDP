@@ -1,6 +1,7 @@
 package RenderingSystem;
 
 import Assets.AssetStore;
+import Scripts.Background;
 import UI.*;
 import Engine.Component;
 import GameData.GameSettings;
@@ -16,6 +17,7 @@ public class Window extends Component
 
     private static Window instance;
     private UI ui;
+    private Renderizable backgroundRend;
 
 
     public static Window GetInstance()
@@ -47,13 +49,13 @@ public class Window extends Component
         // ------- Frame initialize ---------
         wind = new JFrame();
 
-        wind.setSize(new Dimension(settings.sizeWindow.width+600,settings.sizeWindow.height+30));
+        wind.setSize(new Dimension(settings.sizeWindow.width+30,settings.sizeWindow.height+30));
         wind.setVisible(false);
         wind.setResizable(false);
         wind.setBackground(Color.BLACK);
         wind.setContentPane(new JLabel(AssetStore.getIcon("fondo")));
         wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        wind.setLayout(null);
+        //wind.setLayout(null);
         wind.setUndecorated(true);
         //wind.pack();
         //wind.setLocationRelativeTo(null);
@@ -85,6 +87,13 @@ public class Window extends Component
         Cursor c = toolkit.createCustomCursor(image , new Point(wind.getX(),
                 wind.getY()), "img");
         wind.setCursor (c);
+
+    }
+
+    @Override
+    public void start() {
+
+
 
     }
 
@@ -142,12 +151,25 @@ public class Window extends Component
 
     public void ReSort()
     {
-        int i = 0;
-        for(Map.Entry<Float, JComponent> entry : Zfactor)
-        {
-            container.setComponentZOrder(entry.getValue(),i);
-            i++;
+        if(backgroundRend!=null){
+            int i = 0;
+            for(Map.Entry<Float, JComponent> entry : Zfactor)
+            {
+                container.setComponentZOrder(entry.getValue(),i);
+                i++;
+            }
+            //container.setComponentZOrder(backgroundRend.label,i);
         }
+        else {
+            int i = 0;
+            for(Map.Entry<Float, JComponent> entry : Zfactor)
+            {
+                container.setComponentZOrder(entry.getValue(),i);
+                i++;
+            }
+        }
+
+
     }
 
 
@@ -158,5 +180,11 @@ public class Window extends Component
 
     public void HidePause() {
         ui.pause(false);
+    }
+
+    public void setAsBackground(Renderizable rend) {
+        this.backgroundRend = rend;
+        //222190
+        SetZ(rend.Sprite(),222191,true);
     }
 }

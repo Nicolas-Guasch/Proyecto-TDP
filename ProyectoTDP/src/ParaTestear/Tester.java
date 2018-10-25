@@ -15,6 +15,7 @@ import Levels.GameManager;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import RenderingSystem.Window;
+import Scripts.Background;
 import UI.Grill;
 
 public class Tester
@@ -33,6 +34,11 @@ public class Tester
         eng.suscribeToUpdate(window);
         SoundManager.Instance().ImperialMarchPlay();
         window.Show();
+
+
+
+        var bb = Background.getInstance();
+        bb.setSpeedBackground(0.1f);
 
 
 

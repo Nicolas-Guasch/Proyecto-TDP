@@ -28,6 +28,9 @@ public class Random
             max = aux;
         }
         int r = (max-min);
+        if(Math.abs(r)<0.01f){
+            r = 1;
+        }
         return (int)((Math.abs((System.currentTimeMillis()*max>>7<<min)*System.nanoTime()))%r)+min;
     }
 

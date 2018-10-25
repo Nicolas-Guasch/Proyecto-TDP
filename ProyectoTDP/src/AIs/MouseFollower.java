@@ -1,10 +1,8 @@
-package Entities.Behaviours;
+package AIs;
 
 import Engine.Component;
 import InputManager.AbstractDirectionalInput;
 import InputManager.DirectionalMouse;
-
-import java.awt.event.MouseEvent;
 
 /**
  * Player Ship behaviour

@@ -4,7 +4,7 @@ import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import Engine.Components.Transform;
 import ADTs.Vector2;
-import Entities.Behaviours.SimpleBullet;
+import AIs.SimpleBullet;
 import Entities.Builders.EnemyBulletBuilder;
 import GameData.GameSettings;
 import Audio.SoundManager;

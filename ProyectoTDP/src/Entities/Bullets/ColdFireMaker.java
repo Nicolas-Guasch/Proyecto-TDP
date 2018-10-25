@@ -5,7 +5,7 @@ import Collisions.HitBoxesManager;
 import Engine.Components.Transform;
 import Engine.EngineGetter;
 import Engine.GameObject;
-import Entities.Behaviours.SimpleBullet;
+import AIs.SimpleBullet;
 import Entities.Builders.PlayerBulletBuilder;
 import Entities.Ships.PlayerShip;
 import Entities.EveryOne;

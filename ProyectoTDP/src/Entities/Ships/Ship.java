@@ -3,15 +3,15 @@ package Entities.Ships;
 import Engine.GameObject;
 import Entities.Entity;
 import Entities.Weapons.Weapon;
-import Entities.Weapons.WeaponSet;
+import Entities.Weapons.Arsenal;
 import IAs.Pilot;
 
 public abstract class Ship extends Entity implements IShip
 {
-    protected WeaponSet weapons;
+    protected Arsenal weapons;
     private Pilot pilot;
 
-    protected Ship(GameObject referenced, WeaponSet weapons) {
+    protected Ship(GameObject referenced, Arsenal weapons) {
         super(referenced);
         this.weapons = weapons;
     }
@@ -39,7 +39,7 @@ public abstract class Ship extends Entity implements IShip
         return pilot;
     }
 
-    public WeaponSet getArsenal() {
+    public Arsenal getArsenal() {
         return weapons;
     }
 }

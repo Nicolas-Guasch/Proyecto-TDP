@@ -24,6 +24,6 @@ public final class ParsersManager {
 	}
 
 	public ILevelDataParser getLevelDataParser() {
-		return levelDataParser;
+		return new PlaceHolderLevelDataParser();
 	}
 }

@@ -4,7 +4,6 @@ import ADTs.Rect;
 import ADTs.Vector2;
 import DataParsers.ParsersManager;
 import Entities.EntityData;
-import Entities.Weapons.WeaponSet;
 import RenderingSystem.RenderingTools;
 
 

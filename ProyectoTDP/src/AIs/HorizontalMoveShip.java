@@ -1,8 +1,8 @@
-package Entities.Behaviours;
+package AIs;
+
 
 import Engine.Component;
 import ADTs.Vector2;
-import Tools.Random;
 
 /**
  *  Implements the horizontal movement of a ship
@@ -17,8 +17,8 @@ public class HorizontalMoveShip extends Component
 
     public HorizontalMoveShip(float speed, int max)
     {
-        this.max = max+ Random.value(1,3);
-        this.dir = Vector2.LEFT(speed * Random.value()*4);
+        this.max = max+ Tools.Random.value(1,3);
+        this.dir = Vector2.LEFT(speed * Tools.Random.value()*4);
 
     }
 
@@ -26,7 +26,7 @@ public class HorizontalMoveShip extends Component
     {
         if(counter <=max)
         {
-            transform().moveTowards(dir);
+            transform().moveTowards(dir.rotateUnary(Tools.Random.value()/15));
         }
         else
         {

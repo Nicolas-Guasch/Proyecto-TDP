@@ -4,7 +4,7 @@ import InputManager.AbstractDiscreteInput;
 
 import java.util.ArrayList;
 
-public class PlayerBagpack extends WeaponSet
+public class PlayerBagpack extends Arsenal
 {
     protected ArrayList<Weapon> weapons;
     private AbstractDiscreteInput Switch;
@@ -29,7 +29,7 @@ public class PlayerBagpack extends WeaponSet
         }
     }
     @Override
-    public WeaponSet clone() {
+    public Arsenal clone() {
         var n = new PlayerBagpack(Switch,Shoot);
         weapons.forEach(n::add);
         return n;

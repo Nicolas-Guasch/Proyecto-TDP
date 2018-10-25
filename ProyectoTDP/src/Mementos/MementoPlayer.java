@@ -1,19 +1,19 @@
 package Mementos;
 
 import Entities.EntityData;
-import Entities.Weapons.WeaponSet;
+import Entities.Weapons.Arsenal;
 import GameData.GameSettings;
 import IAs.Pilot;
 
 public class MementoPlayer implements IMementoPlayer{
 
 
-    private WeaponSet weapons;
+    private Arsenal weapons;
     private Pilot pilot;
     private EntityData data;
 
 
-    public MementoPlayer(WeaponSet weapons, Pilot pilot) {
+    public MementoPlayer(Arsenal weapons, Pilot pilot) {
         setWeaponSet(weapons);
         setPilot(pilot);
         setData(null);
@@ -25,7 +25,7 @@ public class MementoPlayer implements IMementoPlayer{
     }
 
     @Override
-    public void setWeaponSet(WeaponSet weapons) {
+    public void setWeaponSet(Arsenal weapons) {
         this.weapons = weapons.clone();
         this.weapons.setActive(false);
     }
@@ -36,7 +36,7 @@ public class MementoPlayer implements IMementoPlayer{
         this.pilot.setActive(false);
     }
 
-    public WeaponSet getWeapons() {
+    public Arsenal getWeapons() {
         return weapons;
     }
 

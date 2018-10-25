@@ -2,7 +2,7 @@ package Entities.Weapons;
 
 import java.util.ArrayList;
 
-public class EnemyArsenal extends WeaponSet
+public class EnemyArsenal extends Arsenal
 {
 
     protected ArrayList<Weapon> weapons;
@@ -30,7 +30,7 @@ public class EnemyArsenal extends WeaponSet
     }
 
     @Override
-    public WeaponSet clone() {
+    public Arsenal clone() {
         var n = new EnemyArsenal();
         weapons.forEach(n::add);
         return n;

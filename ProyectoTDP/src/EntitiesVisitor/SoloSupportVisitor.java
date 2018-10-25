@@ -1,29 +1,21 @@
 package EntitiesVisitor;
 
 import ADTs.Vector2;
-import Audio.AudioManager;
 import Audio.SoundManager;
 import Engine.DoWhen;
 import Engine.GameObject;
 import Entities.*;
-import Entities.Behaviours.FireFrequency;
-import Entities.Builders.Concretes.BulletMaker;
+import AIs.FireFrequency;
 import Entities.Builders.Concretes.BulletPlayerBuilder;
 import Entities.Builders.Directors.BulletDirector;
-import Entities.Builders.EnemyBulletBuilder;
 import Entities.Builders.PlayerBulletBuilder;
 import Entities.Ships.PlayerShip;
 import Entities.Ships.Ship;
 import Entities.Weapons.EnemyArsenal;
 import Entities.Weapons.ShotFront;
-import Entities.Weapons.WeaponSet;
-import GameData.GameSettings;
 import IAs.*;
-import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-
-import UtilsBehaviours.MirrorBounds;
 
 public class SoloSupportVisitor extends VisitorEntity
 {
@@ -87,14 +79,13 @@ public class SoloSupportVisitor extends VisitorEntity
         handler = soloai;
         //handler = new Slippery(handler);
         ship.setPilot(new Pilot(handler,ship,15));
-        ship.addBehaviour(new FireFrequency(5,ship.getArsenal()));
+        ship.addBehaviour(new FireFrequency(15,ship.getArsenal()));
         ship.referenced().transform().setPosition(new Vector2(00,200));
         EveryOne.getInstance().add(ship);
         new DoWhen(()->ship.referenced().transform().position().distanceTo(new Vector2(-800,00))<17,()->{
             ship.getPilot().setActive(false);
             ship.getArsenal().setActive(false);
             ship.data().setHealth(-1);
-
         });
 
 
