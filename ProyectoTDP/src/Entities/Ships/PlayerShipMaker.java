@@ -19,6 +19,7 @@ import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import UtilsBehaviours.MirrorBounds;
 
+import java.util.function.Predicate;
 
 
 // REQUIERE QUE LUEGO LE ACTIBES EL ARSENAL

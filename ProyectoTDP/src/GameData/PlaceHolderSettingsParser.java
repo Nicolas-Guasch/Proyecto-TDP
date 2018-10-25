@@ -14,7 +14,7 @@ public class PlaceHolderSettingsParser implements ISettingsParser
     private final Dimension sizeWindow = new Dimension(1330,689);
 
     private final EntityData
-            PlayerData = new EntityData(900, 8,0.1f),
+            PlayerData = new EntityData(1500, 8,0.2f),
             PlayerBulletData = new EntityData(1,5,0),
             TieData = new EntityData(100,25,0),
             TieBulletData = new EntityData(10,15,0),

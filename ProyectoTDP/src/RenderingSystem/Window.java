@@ -1,15 +1,20 @@
 package RenderingSystem;
 
+import Anotations.MiContrato;
 import Assets.AssetStore;
 import Scripts.Background;
 import UI.*;
 import Engine.Component;
 import GameData.GameSettings;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
+import java.lang.annotation.Native;
 import java.util.Map;
 
 public class Window extends Component
@@ -27,6 +32,11 @@ public class Window extends Component
         }
         return instance;
     }
+
+    /**
+     *
+     */
+
     private JFrame wind;
 
 
@@ -42,7 +52,7 @@ public class Window extends Component
 
     private Window()
     {
-       initializer();
+        initializer();
     }
 
     private void initializer() {
@@ -151,31 +161,18 @@ public class Window extends Component
 
     public void ReSort()
     {
-        if(backgroundRend!=null){
-            int i = 0;
-            for(Map.Entry<Float, JComponent> entry : Zfactor)
-            {
-                container.setComponentZOrder(entry.getValue(),i);
-                i++;
-            }
-            //container.setComponentZOrder(backgroundRend.label,i);
-        }
-        else {
-            int i = 0;
-            for(Map.Entry<Float, JComponent> entry : Zfactor)
-            {
-                container.setComponentZOrder(entry.getValue(),i);
-                i++;
-            }
-        }
 
-
+        int i = 0;
+        for(Map.Entry<Float, JComponent> entry : Zfactor)
+        {
+            container.setComponentZOrder(entry.getValue(),i);
+            i++;
+        }
     }
 
 
     public void ShowPause() {
         ui.pause(true);
-
     }
 
     public void HidePause() {
@@ -185,6 +182,6 @@ public class Window extends Component
     public void setAsBackground(Renderizable rend) {
         this.backgroundRend = rend;
         //222190
-        SetZ(rend.Sprite(),222191,true);
+        SetZ(rend.Sprite(),222191+10,true);
     }
 }

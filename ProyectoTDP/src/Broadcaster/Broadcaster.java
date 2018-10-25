@@ -21,6 +21,7 @@ public final class Broadcaster<ParameterType> implements IBroadcaster<ParameterT
         list = new LinkedList<>();
         toAdd = new LinkedBlockingQueue<>();
         toRemove = new LinkedBlockingQueue<>();
+
     }
 
     void Invoke(ParameterType parameter)

@@ -54,8 +54,8 @@ public class PlayerShip extends Ship {
 		return weapons;
 	}
 	private PlayerShip(GameObject referenced) {
-		super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
-		//super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteKeyInput("oplOPLkK") ));
+		//super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
+		super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteKeyInput("oplOPLkK") ));
 
 		SoundManager.Instance().setTransformListener(this.referenced().transform());
 		visitor = new PlayerVisitor();
