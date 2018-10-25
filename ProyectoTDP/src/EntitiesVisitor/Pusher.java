@@ -27,11 +27,16 @@ public class Pusher extends VisitorEntity
         var dist = center.distanceTo(ent.referenced().transform().position());
         if(dist<ratio){
             var effect = 1-((ratio-dist)/ratio);
+            effect /= 2;
+            effect += 0.5f;
             System.out.println("Pusher::effect "+dist+ " --- " + effect);
             // si tiende a 0 mas fuerte el efecto
             // si tiende a 1 dura menos
-            int count = (int)(ratio-dist)+5;
-            Vector2 velocity = ent.referenced().transform().position().minus(center).withLength(count);
+            int count = ((int)(ratio-dist)+5)*2;
+            if(count > 20){
+                count = 20;
+            }
+            Vector2 velocity = ent.referenced().transform().position().minus(center).withLength((ratio-dist)*8).withMaxLength(20);
             ThePusher.getInstance().add(ent.referenced().transform(),count,velocity,effect);
         }
         //TODO: quitar vida si esta en el reduced

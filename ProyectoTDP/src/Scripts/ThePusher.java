@@ -100,7 +100,10 @@ public class ThePusher extends Component
         for (PushData task : tasks) {
             if (workable(task)) {
                 Vector2 speed = task.getVelocity();
-                speed = speed.prod(task.getDismish());
+                var dsms = task.getDismish();
+                speed = speed.prod(dsms);
+                dsms = (float )Math.pow(dsms,0.1f);
+                task.setDismish(dsms);
                 task.getTarget().moveTowards(speed);
                 System.out.println(speed + " ||-- ThePusher::update");
                 task.getTarget().rotate(0.1f);
