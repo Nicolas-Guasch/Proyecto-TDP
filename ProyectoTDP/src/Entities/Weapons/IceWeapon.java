@@ -30,8 +30,10 @@ public class IceWeapon<BulletDirectorType extends IBulletDirector> extends Weapo
         generator.assemble();
         IBullet b = generator.get();
         b.entity().addBehaviour(new ZigZag());
-        b.entity().addBehaviour(new MouseFollower());
-        b.entity().addBehaviour(new SimpleBullet(0.01f));
+        float angle = 0.2f;
+        float extraSpeed = 4f;
+        b.entity().addBehaviour(new MouseFollower(angle));
+        b.entity().addBehaviour(new SimpleBullet(8f));
         b.entity().referenced().sendMessage(c->c.setActive(true));
         //TODO: sonido
     }

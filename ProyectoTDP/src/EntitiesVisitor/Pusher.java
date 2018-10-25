@@ -26,6 +26,9 @@ public class Pusher extends VisitorEntity
         if(ent.referenced() == null || ent.referenced().transform() == null)return;
         var dist = center.distanceTo(ent.referenced().transform().position());
         if(dist<ratio){
+            var h = ent.data().getHealth();
+            h*=0.5f;
+            ent.data().setHealth(h);
             var effect = 1-((ratio-dist)/ratio);
             effect /= 2;
             effect += 0.5f;

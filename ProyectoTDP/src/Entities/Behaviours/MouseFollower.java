@@ -4,13 +4,26 @@ import Engine.Component;
 import InputManager.AbstractDirectionalInput;
 import InputManager.DirectionalMouse;
 
+import java.awt.event.MouseEvent;
+
 /**
  * Player Ship behaviour
  * Ships top always look to the mouse
  */
 public class MouseFollower extends Component
 {
+
+    private float angle;
     private AbstractDirectionalInput Dir;
+
+    public MouseFollower(){
+        this(0);
+    }
+
+    public MouseFollower(float angle) {
+        this.angle = angle;
+
+    }
 
     @Override
     public void start()
@@ -21,7 +34,7 @@ public class MouseFollower extends Component
     @Override
     public void update()
     {
-        transform().setTop(Dir.Direction());
+        transform().setTop(Dir.Direction().rotateUnary(angle));
     }
 
     @Override
