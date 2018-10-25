@@ -22,7 +22,7 @@ public class Pilot extends Component
         var top = handler.whereToSee(ship);
         if(transform()==null)return;
         transform().setTop(top);
-        transform().MoveTowards(handler.whereToMove(ship).prod(Speed));
+        transform().moveTowards(handler.whereToMove(ship).prod(Speed));
     }
 
     public EntityQuery getHandler() {

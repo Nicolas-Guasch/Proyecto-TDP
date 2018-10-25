@@ -26,7 +26,7 @@ public class HorizontalMoveShip extends Component
     {
         if(counter <=max)
         {
-            transform().MoveTowards(dir);
+            transform().moveTowards(dir);
         }
         else
         {

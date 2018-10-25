@@ -35,7 +35,7 @@ public class PlayerLateralController extends Component
         {
             move = move.sum(Vector2.RIGHT(speed));
         }
-        transform().MoveTowards(move);
+        transform().moveTowards(move);
     }
 
     @Override

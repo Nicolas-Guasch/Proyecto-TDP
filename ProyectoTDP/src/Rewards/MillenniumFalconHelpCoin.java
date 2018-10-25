@@ -2,6 +2,7 @@ package Rewards;
 
 import Engine.Components.Transform;
 import Engine.GameObject;
+import Entities.Entity;
 import Entities.EntityData;
 import Entities.EveryOne;
 import Entities.Ships.PlayerShip;

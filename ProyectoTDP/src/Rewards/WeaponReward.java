@@ -4,6 +4,7 @@ import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import Engine.GameObject;
 import ADTs.Vector2;
+import Entities.Entity;
 import Entities.Weapons.Weapon;
 import EntitiesVisitor.VisitorEntity;
 import EntitiesVisitor.WeaponRewardVisitor;

@@ -1,7 +1,6 @@
 package Entities.Behaviours;
 
 import Engine.Component;
-import Engine.GameObject;
 
 
 /**
@@ -19,6 +18,6 @@ public class SimpleBullet extends Component
 
     @Override
     public void update() {
-        transform().MoveTowards(transform().top(speed));
+        transform().moveTowards(transform().top(speed));
     }
 }

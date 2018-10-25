@@ -36,7 +36,7 @@ public class TweenerMove extends Component
             if(toMove.gameObject()==null){
                 wasInterrupted();
             }
-            toMove.MoveTowards(direction());
+            toMove.moveTowards(direction());
         }
         currentStep++;
     }

@@ -18,6 +18,7 @@ import IAs.*;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
+import Scripts.Directionable;
 import UtilsBehaviours.MirrorBounds;
 
 public class WhiteTieMaker extends EnemyShipBuilder
@@ -54,6 +55,7 @@ public class WhiteTieMaker extends EnemyShipBuilder
         WeaponSet bp = ship.getBagPack();
         FireFrequency fireFrequency = new FireFrequency(freq,bp); // hace qeu dispare cada freq frames
         ship.addBehaviour(fireFrequency);
+        ship.addBehaviour(new Directionable(Vector2.DOWN(0.1f)));
 
         // --------------- configuro el piloto -----------------
         //GameSettings.GetInstance().getSpeed("whitetie"); //TODO: implementar esto
@@ -74,7 +76,7 @@ public class WhiteTieMaker extends EnemyShipBuilder
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();
-        ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f),bottomLeft.prod(1.2f)));
+        ship.addBehaviour(new MirrorBounds(topRight.prod(0.9f),bottomLeft.prod(0.8f)));
         // ----------------- que alguna nave random mire al player ------------
         ship.addBehaviour(new LookTarget(PlayerShip.getInstance().referenced().transform()));
     }

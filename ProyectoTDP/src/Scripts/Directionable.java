@@ -15,7 +15,7 @@ public class Directionable extends Component
 
     @Override
     public void update() {
-        transform().MoveTowards(direction);
+        transform().moveTowards(direction);
     }
 }
 

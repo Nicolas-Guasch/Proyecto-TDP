@@ -17,7 +17,7 @@ public class HunterBullet extends Component
     @Override
     public void update() {
         Vector2 dir = toFollow.position().minus(transform().position()).withLength(speed);
-        transform().MoveTowards(dir);
+        transform().moveTowards(dir);
         transform().setTop(dir);
     }
 }

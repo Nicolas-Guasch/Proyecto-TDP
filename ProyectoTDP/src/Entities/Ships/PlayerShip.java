@@ -2,6 +2,7 @@ package Entities.Ships;
 
 import ADTs.Vector2;
 import Engine.GameObject;
+import Entities.EveryOne;
 import Entities.Weapons.PlayerBagpack;
 import Entities.Weapons.WeaponSet;
 import EntitiesVisitor.PlayerVisitor;
@@ -14,6 +15,9 @@ import InputManager.DiscreteKeyInput;
 
 import Mementos.IMementoPlayer;
 import Mementos.MementoPlayer;
+import SpecialPowers.ISpecialPower;
+import SpecialPowers.PowersDeck;
+import SpecialPowers.TheForcePower;
 import UI.ShipStatus;
 import UI.UIComponent;
 import UtilsBehaviours.PlayerWatcher;
@@ -22,6 +26,8 @@ public class PlayerShip extends Ship {
 
 
 	private static PlayerShip instance;
+	private PowersDeck powerDeck;
+
 	public static PlayerShip getInstance()
 	{
 		return instance;
@@ -55,6 +61,7 @@ public class PlayerShip extends Ship {
 		SoundManager.Instance().setTransformListener(this.referenced().transform());
 		visitor = new PlayerVisitor();
 		data = GameSettings.GetInstance().PlayerData;
+		powerDeck = new PowersDeck(new DiscreteKeyInput("Ee "));
 	}
 
 	@Override
@@ -80,8 +87,11 @@ public class PlayerShip extends Ship {
 		setData(memento.getData());
 	}
 
-
 	public UIComponent getHealthBar() {
 		return healthBar;
+	}
+
+	public void addSpecial(ISpecialPower power) {
+		this.powerDeck.add(power);
 	}
 }

@@ -26,8 +26,8 @@ public class RewardLateralMovement extends Component
         t+=random_inc;
         Vector2 direction = new Vector2(t*dir*200,0); // derivo (sin(t),-2t)
         if(transform()!=null){
-            transform().MoveTowards(direction.withMaxLength(20));
+            transform().moveTowards(direction.withMaxLength(20));
         }
-        transform().MoveTowards(Vector2.DOWN(5));
+        transform().moveTowards(Vector2.DOWN(5));
     }
 }

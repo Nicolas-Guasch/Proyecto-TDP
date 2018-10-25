@@ -17,7 +17,7 @@ public class StarBeh extends Component
         i++;
         if(i>=max){
             i=0;
-            transform().MoveTowards(Vector2.Random(Random.value(0,300)));
+            transform().moveTowards(Vector2.Random(Random.value(0,300)));
         }
 
     }

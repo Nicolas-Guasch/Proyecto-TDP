@@ -22,7 +22,7 @@ import IAs.*;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Rewards.Entity;
+
 import UtilsBehaviours.MirrorBounds;
 
 public class SoloSupportVisitor extends VisitorEntity
@@ -34,7 +34,7 @@ public class SoloSupportVisitor extends VisitorEntity
 
     public void visit(PlayerShip player){
         if(made)return;
-        entity.Destroy();
+        entity.data().setHealth(-1);
         createHanSolo();
         made = true;
     }

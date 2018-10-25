@@ -36,7 +36,7 @@ public final class Transform extends Component
         this.position = position;
     }
 
-    public void MoveTowards(Vector2 direction){
+    public void moveTowards(Vector2 direction){
         position = position.sum(direction);
     }
 

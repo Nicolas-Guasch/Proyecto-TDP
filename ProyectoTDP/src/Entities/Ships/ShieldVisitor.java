@@ -2,10 +2,11 @@ package Entities.Ships;
 
 import ADTs.Vector2;
 import Engine.EngineGetter;
+import Entities.Entity;
 import EntitiesVisitor.VisitorEntity;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Rewards.Entity;
+
 
 
 public class ShieldVisitor extends VisitorEntity
@@ -43,8 +44,10 @@ public class ShieldVisitor extends VisitorEntity
 
         Runnable restore = this::restore;
 
-        reward.Destroy();
+        reward.data().setHealth(-1);
         reward.referenced().getHitbox().setActive(false);
+
+
 
 
         visitable.referenced().transform().setPosition(point);

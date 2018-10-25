@@ -37,7 +37,7 @@ public class EnemyVisitor extends VisitorEntity {
     {
         if(ship==null || !ship.alive() || ship.referenced() == null) return;
         Vector2 direction = ship.referenced().transform().position().minus(bouncePoint);
-        ship.referenced().transform().MoveTowards(direction.versor());
+        ship.referenced().transform().moveTowards(direction.versor());
     }
 
 

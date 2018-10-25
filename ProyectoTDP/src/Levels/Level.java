@@ -13,7 +13,7 @@ import Entities.Ships.*;
 import Entities.*;
 import EntitiesVisitor.*;
 import Rewards.*;
-import Rewards.Entity;
+
 
 
 import java.util.*;

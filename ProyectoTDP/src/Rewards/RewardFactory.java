@@ -1,20 +1,6 @@
 package Rewards;
 
 import Engine.Components.Transform;
-import Engine.GameObject;
-import Entities.Builders.Concretes.BulletPlayerBuilder;
-import Entities.Builders.Directors.BulletDirector;
-import Entities.Builders.PlayerBulletBuilder;
-import Entities.Bullets.ColdFireMaker;
-import Entities.EntityData;
-import Entities.PlayerBullet;
-import Entities.Ships.PlayerShip;
-import Entities.Ships.ShieldVisitor;
-import Entities.EveryOne;
-import Entities.Weapons.AngularWeapon;
-import Entities.Weapons.IceWeapon;
-import Entities.Weapons.Weapon;
-import RenderingSystem.SpriteData;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,12 +9,13 @@ import java.util.function.Consumer;
 public class RewardFactory
 {
     public static final RewardKey
-        SHIELDREWARD = RewardKey.get(),
-        WEAPON5REWARD = RewardKey.get(),
-        WEAPONICEREWARD = RewardKey.get(),
-        SOLOSUPPORT = RewardKey.get(),
+            SHIELD = RewardKey.get(),
+        FIVEWEAPON = RewardKey.get(),
+        ICE = RewardKey.get(),
+        HANSUPPORT = RewardKey.get(),
         FIRESHIELD = RewardKey.get(),
-        HEALPOTION = RewardKey.get();
+        FORCE = RewardKey.get(),
+        HEALTH = RewardKey.get();
 
 
     private static RewardFactory instance;
@@ -41,12 +28,13 @@ public class RewardFactory
 
     private RewardFactory(){
         creators = new HashMap<>();
-        creators.put(WEAPON5REWARD,new WeaponFiveCoin());
-        creators.put(WEAPONICEREWARD, new IceWeaponCoin());
-        creators.put(SHIELDREWARD,new ShieldCoin());
+        creators.put(FIVEWEAPON,new WeaponFiveCoin());
+        creators.put(ICE, new IceWeaponCoin());
+        creators.put(SHIELD,new ShieldCoin());
         creators.put(FIRESHIELD,new FireSpinnerCoin());
-        creators.put(SOLOSUPPORT,new MillenniumFalconHelpCoin());
-        creators.put(HEALPOTION,new HealthCoin());
+        creators.put(HANSUPPORT,new MillenniumFalconHelpCoin());
+        creators.put(HEALTH,new HealthCoin());
+        creators.put(FORCE,new ForceCoin());
     }
 
 

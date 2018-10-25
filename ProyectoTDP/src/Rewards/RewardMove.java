@@ -40,6 +40,6 @@ public class RewardMove extends Component
         counter += Math.abs(new Random().nextInt(20))/10f;
         speed = speed.withLength(counter);
 
-        transform().MoveTowards(speed);
+        transform().moveTowards(speed);
     }
 }

@@ -3,6 +3,7 @@ package Rewards;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import Engine.GameObject;
+import Entities.Entity;
 import EntitiesVisitor.VisitorEntity;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;

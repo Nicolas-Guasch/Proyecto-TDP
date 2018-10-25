@@ -73,19 +73,26 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
     {
 
         rew.get(L1).add(RewardFactory.FIRESHIELD);
-        rew.get(L1).add(RewardFactory.SHIELDREWARD);
-        rew.get(L1).add(RewardFactory.WEAPON5REWARD);
-        rew.get(L1).add(RewardFactory.WEAPONICEREWARD);
-        rew.get(L1).add(RewardFactory.SOLOSUPPORT);
-        rew.get(L1).add(RewardFactory.HEALPOTION);
+        rew.get(L1).add(RewardFactory.SHIELD);
+        rew.get(L1).add(RewardFactory.FIVEWEAPON);
+        rew.get(L1).add(RewardFactory.ICE);
+        rew.get(L1).add(RewardFactory.HANSUPPORT);
+        rew.get(L1).add(RewardFactory.HEALTH);
+
+        rew.get(L1).add(RewardFactory.FORCE);
+        rew.get(L1).add(RewardFactory.FORCE);
+        rew.get(L1).add(RewardFactory.FORCE);
+        rew.get(L1).add(RewardFactory.FORCE);
+        rew.get(L1).add(RewardFactory.FORCE);
+        rew.get(L1).add(RewardFactory.FORCE);
 
 
-        rew.get(L2).add(RewardFactory.SHIELDREWARD);
-        rew.get(L2).add(RewardFactory.SHIELDREWARD);
-        rew.get(L2).add(RewardFactory.WEAPONICEREWARD);
+        rew.get(L2).add(RewardFactory.SHIELD);
+        rew.get(L2).add(RewardFactory.SHIELD);
+        rew.get(L2).add(RewardFactory.ICE);
 
-        rew.get(L3).add(RewardFactory.SHIELDREWARD);
-        rew.get(L3).add(RewardFactory.WEAPONICEREWARD);
+        rew.get(L3).add(RewardFactory.SHIELD);
+        rew.get(L3).add(RewardFactory.ICE);
     }
 
     private void initObsts() {

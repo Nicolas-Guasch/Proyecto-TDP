@@ -35,6 +35,6 @@ public class DangerousHunter extends Component
             currentSpeed *= increment;
         }
         transform().setTop(toFollow.position().minus(transform().position()));
-        transform().MoveTowards(transform().top(currentSpeed));
+        transform().moveTowards(transform().top(currentSpeed));
     }
 }

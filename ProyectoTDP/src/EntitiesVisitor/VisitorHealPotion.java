@@ -1,8 +1,9 @@
 package EntitiesVisitor;
 
+import Entities.Entity;
 import Entities.Ships.PlayerShip;
 import EntitiesVisitor.VisitorEntity;
-import Rewards.Entity;
+
 
 public class VisitorHealPotion extends VisitorEntity {
 
@@ -24,7 +25,8 @@ public class VisitorHealPotion extends VisitorEntity {
         System.out.println("Salud anterior="+ health);
         System.out.println("Salud final="+ playerShip.data().getHealth());
 
-        reward.Destroy();
+        reward.data().setHealth(-1);
+        //TODO: puede que deba agregarlo a everyone
         reward.referenced().getHitbox().setActive(false);
 
     }

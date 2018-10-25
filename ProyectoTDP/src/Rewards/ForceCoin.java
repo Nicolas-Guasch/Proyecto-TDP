@@ -6,21 +6,21 @@ import Entities.Entity;
 import Entities.EntityData;
 import Entities.EveryOne;
 import Entities.Ships.PlayerShip;
-import EntitiesVisitor.VisitorShieldFireReward;
+import EntitiesVisitor.ForceVisitor;
+import EntitiesVisitor.VisitorEntity;
 import RenderingSystem.SpriteData;
 
-public class FireSpinnerCoin implements java.util.function.Consumer<Engine.Components.Transform> {
-
+public class ForceCoin implements java.util.function.Consumer<Engine.Components.Transform> {
     @Override
     public void accept(Transform transform) {
         var player = PlayerShip.getInstance();
         GameObject premio = GameObject.getRoot().addChild();
-        var sd = new SpriteData("rewardfire");
+        var sd = new SpriteData("rewardforce");
 
-        var vis = new VisitorShieldFireReward();
-
+        var vis = new ForceVisitor();
         Entity rew = new GenericReward(premio,vis,sd);
         vis.setEntity(rew);
+
 
         premio.transform().setPosition(transform.position3());
         premio.addComponent(new RewardMove());

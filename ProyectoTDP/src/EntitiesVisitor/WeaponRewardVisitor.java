@@ -1,6 +1,7 @@
 package EntitiesVisitor;
 
-import Rewards.Entity;
+
+import Entities.Entity;
 import Entities.Ships.PlayerShip;
 import Entities.Weapons.Weapon;
 
@@ -24,7 +25,7 @@ public class WeaponRewardVisitor extends VisitorEntity
         {
             ent.addWeapon(weapon);
             weapon = null;
-            related.Destroy();
+            related.data().setHealth(-1);
         }
 
     }
