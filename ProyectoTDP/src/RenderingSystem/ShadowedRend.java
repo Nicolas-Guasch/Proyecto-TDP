@@ -31,7 +31,12 @@ public class ShadowedRend extends Renderizable
     @Override
     public void update() {
         super.update();
+        if(!Sun.getInstance().daytime()){
+            shadow.hide();
+            return;
+        }
         if (Sun.getInstance().daytime() && transform() != null) {
+            shadow.show();
             shadow.transform().setPosition(transform().position().sum(Sun.getInstance().getLight()));
             shadow.transform().setZcomponent(transform().getZcomponent() - 3);
             shadow.transform().setTop(transform().top());

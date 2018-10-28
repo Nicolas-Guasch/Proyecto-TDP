@@ -44,6 +44,10 @@ public abstract class Component implements IActivable
     public void start(){}
     public void update(){}
 
+    protected long frameCounter(){
+        return EngineGetter.Instance().get().frameCounter();
+    }
+
     /**
      *
      * @param deltaTime time between lastCall and these

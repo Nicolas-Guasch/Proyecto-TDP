@@ -12,4 +12,7 @@ public class AudioManager{
     public static final URL VaderBreath = AudioManager.class.getResource("vaderbreath.wav");
     public static final URL SOLOQUOTE = AudioManager.class.getResource("soloquote.wav");
     public static final URL SOLORADIO = AudioManager.class.getResource("badfeeling.wav");
+    public static final URL EXPLO2 = AudioManager.class.getResource("explo2.wav");
+    public static final URL EXPLO1 = AudioManager.class.getResource("explo1.wav");
+
 }

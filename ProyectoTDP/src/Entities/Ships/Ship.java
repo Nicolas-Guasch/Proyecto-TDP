@@ -1,5 +1,7 @@
 package Entities.Ships;
 
+import ADTs.Vector2;
+import CuteThings.Explos;
 import Engine.GameObject;
 import Entities.Entity;
 import Entities.Weapons.Weapon;
@@ -18,6 +20,8 @@ public abstract class Ship extends Entity implements IShip
 
     public void onDeath(){
         super.onDeath();
+        Vector2 v = referenced().transform().position();
+        Explos.getInstance().getExplosion(v);
         weapons.setActive(false);
         if (pilot != null) {
             pilot.setActive(false);

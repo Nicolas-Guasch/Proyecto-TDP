@@ -1,11 +1,10 @@
 package Audio;
-
+import java.util.*;
 
 
 import Engine.Components.Transform;
 import ADTs.Vector2;
 import SoundSystem.*;
-import Tools.Random;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -25,6 +24,8 @@ public final class SoundManager
     private Music menu;
     private Sound vaderBreath;
     private Transform listenPoint;
+
+    private Sound explo1,explo2;
 
     private Collection<Sound> Sounds;
     private Collection<Music> Musics;
@@ -53,6 +54,9 @@ public final class SoundManager
         menu.setVolume(0.5f);
         musicBoss = TinySound.loadMusic(AudioManager.MusicBoss);
 
+        explo1 = TinySound.loadSound(AudioManager.EXPLO1);
+        explo2 = TinySound.loadSound(AudioManager.EXPLO2);
+
         menu.pause();
         currentTrack = musicGame;
 
@@ -60,6 +64,9 @@ public final class SoundManager
         Sounds.add(pew);
         Sounds.add(pew2);
         Sounds.add(tie);
+        Sounds.add(explo1);
+        Sounds.add(explo2);
+
         Sounds.add(vaderBreath);
         Musics.add(musicGame);
         Musics.add(musicBoss);
@@ -80,6 +87,12 @@ public final class SoundManager
     {
         pew.play(0.05f);
     }
+
+    public void explo(Vector2 position){
+        Sound s = new Random().nextBoolean() ? explo1:explo2;
+        PlayAt(position,s);
+    }
+
     public void ImperialMarchPlay()
     {
         musicGame.play(true);
@@ -104,8 +117,7 @@ public final class SoundManager
     //plays Pew at this position
     public void Pew(Vector2 position)
     {
-
-        PlayAt(position, Random.value()>.5f?pew:pew2);
+        PlayAt(position, Tools.Random.value()>.5f?pew:pew2);
     }
 
     public void Quote(){

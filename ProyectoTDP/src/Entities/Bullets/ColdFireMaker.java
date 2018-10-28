@@ -13,6 +13,7 @@ import GameData.GameSettings;
 import Audio.SoundManager;
 import GenericVisitor.FreezeVisitor;
 
+import RenderingSystem.Animation;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 
@@ -27,7 +28,12 @@ public class ColdFireMaker extends PlayerBulletBuilder {
         Renderizable rend = new Renderizable(data);
         bullet.referenced().setRenderer(rend);
         rend.show();
-        SoundManager.Instance().SoloShoot();
+
+        Animation anim = new Animation("coldfire", rend);
+        anim.setSpeed(5); // 60 es uno por frame, 0 es 1 por segundo
+        bullet.addBehaviour(anim);
+
+        SoundManager.Instance().SoloShoot();//why?
     }
 
     @Override

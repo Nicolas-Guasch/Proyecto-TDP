@@ -14,6 +14,16 @@ public class AssetStore
 
     private static Map<String,Icon> map;
 
+    public static boolean isThereIcon(String name){
+        try{
+            var h = getIcon(name).getIconHeight();
+        }
+        catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
     public static Icon getIcon(String name) {
         checknullmap();
         if(!map.containsKey(name.toLowerCase()))
@@ -29,7 +39,7 @@ public class AssetStore
     }
 
     private static URL getURL(String file){
-        String [] subfolders = {"","Video/","UI/","Stuff/","Ships/","Bullets/"};
+        String [] subfolders = {"","Video/","UI/","Stuff/","Ships/","Bullets/","Animators/"};
         URL res=null;
         for(String f:subfolders){
             res = AssetStore.class.getResource("./"+f+file);

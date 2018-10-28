@@ -6,7 +6,7 @@ import GameData.GameSettings;
 
 import java.awt.*;
 
-public class Renderizable extends Component
+public class Renderizable extends Component implements IRenderizable
 {
     protected  SpriteRenderer label;
     protected  boolean visible = false;

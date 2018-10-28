@@ -14,10 +14,7 @@ import IAs.*;
 import InputManager.DirectionalMouse;
 import InputManager.DirectionalWASD;
 import ADTs.Vector3;
-import RenderingSystem.RenderingTools;
-import RenderingSystem.Renderizable;
-import RenderingSystem.ShadowedRend;
-import RenderingSystem.SpriteData;
+import RenderingSystem.*;
 import UtilsBehaviours.MirrorBounds;
 
 import java.util.function.Predicate;
@@ -44,6 +41,7 @@ collider: 130x130
         Renderizable rend = new ShadowedRend(data);
         rend.show();
         ship.setRenderer(rend);
+
 
     }
 

@@ -50,6 +50,14 @@ public class Background extends Component
         this.speedBackground = speedBackground;
     }
 
+    public void setBG(String name){
+        var sd = new SpriteData(name);
+        gameObject().getRenderer().Sprite().setIcon(sd.icon());
+        backgroundHeight = sd.icon().getIconHeight();
+        transform().setPosition(Vector2.UP(phaseShift()));
+    }
+
+
     public void start(){
         var sd = new SpriteData("fondo_tatooine");
         backgroundHeight = sd.icon().getIconHeight();
@@ -58,11 +66,10 @@ public class Background extends Component
         rend.show();
         transform().setPosition(Vector2.UP(phaseShift()));
         Window.GetInstance().setAsBackground(rend);
-
     }
 
     private float phaseShift() {
-        return (backgroundHeight - GameSettings.GetInstance().sizeWindow.height)/2.5f;
+        return (backgroundHeight - GameSettings.GetInstance().sizeWindow.height)/2f;
     }
 
     @Override

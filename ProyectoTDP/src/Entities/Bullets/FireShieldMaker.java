@@ -9,6 +9,7 @@ import Entities.Builders.PlayerBulletBuilder;
 import Entities.EntityData;
 import Entities.Ships.PlayerShip;
 import EntitiesVisitor.FireShieldEffect;
+import RenderingSystem.Animation;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Scripts.AlwaysTurnAround;
@@ -23,6 +24,12 @@ public class FireShieldMaker extends PlayerBulletBuilder
         Renderizable rend = new Renderizable(new SpriteData("fireshield"));
         rend.show();
         bullet.setRenderer(rend);
+
+        Animation anim = new Animation("fireshield", rend);
+        anim.setSpeed(5); // 60 es uno por frame, 0 es 1 por segundo
+        bullet.addBehaviour(anim);
+
+
     }
 
     @Override

@@ -25,4 +25,6 @@ public interface IEngine
     boolean isPaused();
 
     CorePauser Pauser();
+
+    long frameCounter();
 }

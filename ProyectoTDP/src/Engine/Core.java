@@ -70,7 +70,8 @@ final class Core
     }
     private void endOfFrame()
     {
-        currentFrame ++;
+        currentFrame ++; // esto es muy peligroso
+
         //Tasks ---------
         if(TasksForFrame.containsKey(currentFrame-1)){
             TasksForFrame.get(currentFrame-1).forEach(Runnable::run);
@@ -203,5 +204,9 @@ final class Core
     public synchronized boolean isPaused()
     {
         return  paused.get();
+    }
+
+    public long frameCounter() {
+        return currentFrame;
     }
 }

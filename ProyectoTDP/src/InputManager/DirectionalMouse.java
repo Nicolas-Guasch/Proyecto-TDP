@@ -37,4 +37,5 @@ public class DirectionalMouse extends AbstractDirectionalInput
         return Vector2.ORIGIN();
     }
 
+
 }

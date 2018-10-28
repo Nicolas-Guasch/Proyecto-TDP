@@ -1,5 +1,7 @@
 package Entities.Ships;
 
+import ADTs.Vector2;
+import CuteThings.Explos;
 import Engine.GameObject;
 import Entities.Weapons.EnemyArsenal;
 import Entities.Weapons.Arsenal;
@@ -31,6 +33,8 @@ public class EnemyShip extends Ship {
 	public void onDeath()
 	{
 		super.onDeath();
+		//luce harcode
+
 		CurrentMatchData.getMatchData().incScore(1);
 	}
 

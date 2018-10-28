@@ -12,6 +12,7 @@ import Entities.Obstacles.NaveViejaImperioMaker;
 import Entities.Ships.*;
 import Entities.*;
 import EntitiesVisitor.*;
+import RenderingSystem.Sun;
 import Rewards.*;
 import RenderingSystem.Background;
 
@@ -40,6 +41,9 @@ public final class Level extends AbstractLevel
         directorBboth.setBuilder(new NaveDuraObstacle());
         directorBenem.setBuilder(new NaveViejaImperioMaker());
         this.number = number;
+
+
+
     }
 
 
@@ -54,6 +58,21 @@ public final class Level extends AbstractLevel
         EveryOne.getInstance().add(PlayerShip.getInstance());
         assembleEnemies();
         assembleBarricades();
+
+
+
+        if(number == 3){
+            Background.getInstance().setBG("fondo");
+            Sun.getInstance().setDaytime(false);
+        }
+        if(number ==2){
+            Background.getInstance().setBG("water");
+            Sun.getInstance().setDaytime(true);
+        }
+        if(number==1){
+            Background.getInstance().setBG("fondo_tatooine");
+            Sun.getInstance().setDaytime(true);
+        }
     }
 
     private Entities.Entity getBarricadeRandom(){

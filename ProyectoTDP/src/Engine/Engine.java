@@ -90,6 +90,11 @@ class Engine implements IEngine
     }
 
     @Override
+    public long frameCounter() {
+        return core.frameCounter();
+    }
+
+    @Override
     public void unsuscribeFromPhysicsUpdate(Component component)
     {
 
