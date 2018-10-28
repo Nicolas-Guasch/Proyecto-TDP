@@ -10,6 +10,7 @@ import GameData.GameSettings;
 import IAs.*;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
+import RenderingSystem.ShadowedRend;
 import RenderingSystem.SpriteData;
 import UtilsBehaviours.MirrorBounds;
 
@@ -29,7 +30,7 @@ public class FullKamikazeeMaker extends EnemyShipBuilder {
     * */
     @Override
     public void assembleSprite() {
-        Renderizable rend = new Renderizable(new SpriteData("commontie1"));
+        Renderizable rend = new ShadowedRend(new SpriteData("commontie1"));
         rend.show();
         ship.setRenderer(rend);
     }

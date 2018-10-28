@@ -25,10 +25,14 @@ public class DirectionalMouse extends AbstractDirectionalInput
     {
         if(reference!=null)
         {
-            int mouseX = MouseInfo.getPointerInfo().getLocation().x;
-            int mouseY = MouseInfo.getPointerInfo().getLocation().y;
-            Vector2 mousePos = RenderingTools.CanvasToWorld(new Dimension(mouseX,mouseY));
-            return mousePos.minus(reference.position()).versor();
+            try{
+                int mouseX = MouseInfo.getPointerInfo().getLocation().x;
+                int mouseY = MouseInfo.getPointerInfo().getLocation().y;
+                Vector2 mousePos = RenderingTools.CanvasToWorld(new Dimension(mouseX,mouseY));
+                return mousePos.minus(reference.position()).versor();
+            }catch(Exception e){ // puede haber un error con el mouse
+                return Vector2.ORIGIN();
+            }
         }
         return Vector2.ORIGIN();
     }

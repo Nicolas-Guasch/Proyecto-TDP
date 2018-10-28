@@ -5,6 +5,7 @@ import Engine.EngineGetter;
 import Entities.Entity;
 import EntitiesVisitor.VisitorEntity;
 import RenderingSystem.Renderizable;
+import RenderingSystem.ShadowedRend;
 import RenderingSystem.SpriteData;
 
 
@@ -20,7 +21,7 @@ public class ShieldVisitor extends VisitorEntity
     private Renderizable rend_ship;
 
     public ShieldVisitor(){
-        rend_shield = new Renderizable(new SpriteData("shield"),-1);
+        rend_shield = new ShadowedRend(new SpriteData("shield"));
 
     }
 

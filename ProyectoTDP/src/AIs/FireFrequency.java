@@ -18,7 +18,7 @@ public class FireFrequency extends Component
     private Arsenal weapons;
     public FireFrequency(int freq, Arsenal arsenal)
     {
-        this.freq = freq + Math.abs(Random.value(0,freq/15)) - 10;
+        this.freq = freq + Math.abs(Random.value(0,freq/15)) - 3;
         i=freq;
         this.weapons = arsenal;
     }

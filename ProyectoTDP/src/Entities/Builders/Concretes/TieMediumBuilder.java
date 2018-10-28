@@ -18,6 +18,7 @@ import GameData.GameSettings;
 
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
+import RenderingSystem.ShadowedRend;
 import RenderingSystem.SpriteData;
 import Tools.Random;
 import UtilsBehaviours.MirrorBounds;
@@ -40,7 +41,7 @@ public class TieMediumBuilder extends EnemyShipBuilder
     {
         Renderizable rend;
 
-        rend = Random.bool() ? new Renderizable(SPRITEDATA):new Renderizable(SPRITEDATA2);
+        rend = Random.bool() ? new ShadowedRend(SPRITEDATA):new ShadowedRend(SPRITEDATA2);
 
         ship.setRenderer(rend);
         rend.show();

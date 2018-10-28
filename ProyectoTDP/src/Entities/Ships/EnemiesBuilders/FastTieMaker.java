@@ -17,6 +17,7 @@ import GameData.GameSettings;
 import IAs.*;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
+import RenderingSystem.ShadowedRend;
 import RenderingSystem.SpriteData;
 import UtilsBehaviours.MirrorBounds;
 
@@ -27,7 +28,7 @@ public class FastTieMaker extends EnemyShipBuilder
     @Override
     public void assembleSprite() {
         SpriteData data = new SpriteData("commontie2");
-        Renderizable rend = new Renderizable(data);
+        Renderizable rend = new ShadowedRend(data);
         rend.show();
         ship.setRenderer(rend);
     }

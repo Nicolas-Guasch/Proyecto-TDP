@@ -5,7 +5,7 @@ import Entities.Bullet;
 import EntitiesVisitor.VisitorEntity;
 import EntitiesVisitor.FireShieldEffect;
 import RenderingSystem.Renderizable;
-@Deprecated
+
 public class FireShield extends Bullet
 {
     protected FireShield(GameObject referenced) {

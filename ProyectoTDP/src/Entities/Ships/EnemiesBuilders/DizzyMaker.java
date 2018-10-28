@@ -15,6 +15,7 @@ import GameData.GameSettings;
 import IAs.*;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
+import RenderingSystem.ShadowedRend;
 import RenderingSystem.SpriteData;
 import java.util.*;
 import UtilsBehaviours.MirrorBounds;
@@ -24,7 +25,7 @@ public class DizzyMaker extends EnemyShipBuilder
     @Override
     public void assembleSprite() {
         String filename = "commontie3";
-        Renderizable rend = new Renderizable(new SpriteData(filename));
+        Renderizable rend = new ShadowedRend(new SpriteData(filename));
         rend.show();
         ship.setRenderer(rend);
     }

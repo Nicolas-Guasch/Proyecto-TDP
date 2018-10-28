@@ -14,6 +14,8 @@ public class While extends Component
 
     private boolean cond;
     private boolean runs;
+    private Runnable onComplete;
+
     public While(Callable<Boolean> condition, Runnable codeBlock) {
         GameObject.getRoot().addChild().addComponent(this);
         this.condition = condition;
@@ -37,6 +39,9 @@ public class While extends Component
         if(runs && !check) // si salio del ciclo while
         {
             gameObject().Destroy();
+            if(onComplete!=null){
+                onComplete.run();
+            }
         }
     }
 
@@ -57,4 +62,7 @@ public class While extends Component
         update();
     }
 
+    public void OnComplete(Runnable onComplete) {
+        this.onComplete = onComplete;
+    }
 }

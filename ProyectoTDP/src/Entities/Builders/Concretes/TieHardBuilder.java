@@ -19,6 +19,7 @@ import GameData.GameSettings;
 
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
+import RenderingSystem.ShadowedRend;
 import RenderingSystem.SpriteData;
 import UtilsBehaviours.MirrorBounds;
 
@@ -37,7 +38,7 @@ public class TieHardBuilder extends EnemyShipBuilder
     @Override
     public void assembleSprite()
     {
-        Renderizable rend = new Renderizable(SPRITEDATA);
+        Renderizable rend = new ShadowedRend(SPRITEDATA);
         ship.setRenderer(rend);
         rend.show();
     }

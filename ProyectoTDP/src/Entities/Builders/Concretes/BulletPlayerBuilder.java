@@ -9,6 +9,7 @@ import Entities.Builders.PlayerBulletBuilder;
 import GameData.GameSettings;
 import Audio.SoundManager;
 import RenderingSystem.Renderizable;
+import RenderingSystem.ShadowedRend;
 import RenderingSystem.SpriteData;
 
 
@@ -29,7 +30,7 @@ public class BulletPlayerBuilder extends PlayerBulletBuilder
     @Override
     public void assembleSprite()
     {
-        Renderizable rend = new Renderizable(SPRITEDATA);
+        Renderizable rend = new ShadowedRend(SPRITEDATA);
         bullet.referenced().setRenderer(rend);
         rend.show();
         SoundManager.Instance().SoloShoot();

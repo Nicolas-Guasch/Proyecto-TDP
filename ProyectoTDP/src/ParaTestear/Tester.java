@@ -1,6 +1,5 @@
 package ParaTestear;
 
-import ADTs.Vector2;
 import Engine.*;
 import Entities.EveryOne;
 import Entities.Ships.PlayerShip;
@@ -12,11 +11,8 @@ import InputManager.AbstractDiscreteInput;
 import InputManager.DiscreteKeyInput;
 import Levels.GameManager;
 
-import RenderingSystem.Renderizable;
-import RenderingSystem.SpriteData;
 import RenderingSystem.Window;
-import Scripts.Background;
-import UI.Grill;
+import RenderingSystem.Background;
 
 public class Tester
 {

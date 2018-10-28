@@ -2,11 +2,13 @@ package Levels;
 
 import Audio.SoundManager;
 import Engine.EngineGetter;
+import Engine.While;
 import Entities.Ships.PlayerShip;
 import IAs.PlayerMove;
 import IAs.Slippery;
 import InputManager.DirectionalMouse;
 import InputManager.DirectionalWASD;
+import RenderingSystem.Background;
 import SoundSystem.Sound;
 
 public class TransitionToBoss extends AbstractLevel {
@@ -27,6 +29,12 @@ public class TransitionToBoss extends AbstractLevel {
         EngineGetter.Instance().get().waitForFrames(this::ChangeControls,90);
         EngineGetter.Instance().get().waitForFrames(this::MusicStuff,180);
         EngineGetter.Instance().get().waitForFrames(this::EnableContinue,270);
+        new While(()-> {return Background.getInstance().getSpeedBackground()>0.01f;},()->{
+            float v = Background.getInstance().getSpeedBackground();
+            v*=0.99f;
+            Background.getInstance().setSpeedBackground(v);
+        }).Excecute();
+
     }
 
     private void StopMusic() {

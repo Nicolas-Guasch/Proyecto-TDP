@@ -11,18 +11,20 @@ public class SpriteData
     private  Icon icon;
     private int width;
     private int height;
-
+    private String name;
     public SpriteData(String name, Vector2 size)
     {
         width = (int)size.x();
         height =(int) size.y();
         icon = AssetStore.getIcon(name);
+        this.name = name;
     }
     public SpriteData(String name)
     {
         icon = AssetStore.getIcon(name);
         width = icon.getIconWidth();
         height = icon.getIconHeight();
+        this.name = name;
     }
 
     public Icon icon() {
@@ -47,5 +49,9 @@ public class SpriteData
 
     public void setIcon(Icon icon) {
         this.icon = icon;
+    }
+
+    public String getName() {
+        return name;
     }
 }

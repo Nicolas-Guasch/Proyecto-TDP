@@ -16,6 +16,7 @@ import GameData.GameSettings;
 
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
+import RenderingSystem.ShadowedRend;
 import RenderingSystem.SpriteData;
 import Tools.Random;
 import UtilsBehaviours.MirrorBounds;
@@ -36,7 +37,7 @@ public class LinedTIEBuilder extends EnemyShipBuilder
     @Override
     public void assembleSprite()
     {
-        Renderizable rend = new Renderizable(prefSpriteData);
+        Renderizable rend = new ShadowedRend(prefSpriteData);
         ship.setRenderer(rend);
         rend.show();
     }

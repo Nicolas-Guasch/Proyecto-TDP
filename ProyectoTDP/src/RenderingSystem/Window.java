@@ -1,20 +1,14 @@
 package RenderingSystem;
 
-import Anotations.MiContrato;
 import Assets.AssetStore;
-import Scripts.Background;
 import UI.*;
 import Engine.Component;
 import GameData.GameSettings;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
-import java.lang.annotation.Native;
 import java.util.Map;
 
 public class Window extends Component
@@ -63,7 +57,7 @@ public class Window extends Component
         wind.setVisible(false);
         wind.setResizable(false);
         wind.setBackground(Color.BLACK);
-        wind.setContentPane(new JLabel(AssetStore.getIcon("fondo")));
+        wind.setContentPane(new JLabel(AssetStore.getIcon("black")));
         wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //wind.setLayout(null);
         wind.setUndecorated(true);
@@ -88,7 +82,7 @@ public class Window extends Component
         panelUI.setSize(settings.sizeWindow);
         container.add(panelUI);
 
-        SetZ(panelUI,222190,false);
+        SetZ(panelUI, Float.NEGATIVE_INFINITY,false);
 
         //------------ set cursor image----------
 

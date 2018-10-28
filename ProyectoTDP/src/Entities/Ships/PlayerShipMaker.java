@@ -16,6 +16,7 @@ import InputManager.DirectionalWASD;
 import ADTs.Vector3;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Renderizable;
+import RenderingSystem.ShadowedRend;
 import RenderingSystem.SpriteData;
 import UtilsBehaviours.MirrorBounds;
 
@@ -40,7 +41,7 @@ collider: 130x130
 
     public void assembleSprite() {
         SpriteData data = new SpriteData("shipplayer");
-        Renderizable rend = new Renderizable(data);
+        Renderizable rend = new ShadowedRend(data);
         rend.show();
         ship.setRenderer(rend);
 
