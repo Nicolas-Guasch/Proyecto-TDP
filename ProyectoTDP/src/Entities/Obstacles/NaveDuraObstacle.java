@@ -19,7 +19,7 @@ public class NaveDuraObstacle extends BarricadeBothBuilder {
 
 
         Animation  anim = new Animation("forcefield",rend);
-        anim.setSpeed(25);
+        anim.setSpeed(40);
         obst.addBehaviour(anim);
         rend.show();
 

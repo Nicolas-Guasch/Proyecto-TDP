@@ -6,8 +6,17 @@ import Engine.GameObject;
 import Engine.While;
 import GameData.GameSettings;
 
+import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class Background extends Component
 {
+
+
+
+
 
     private static Background instance;
     public static Background getInstance(){
@@ -50,8 +59,18 @@ public class Background extends Component
         this.speedBackground = speedBackground;
     }
 
-    public void setBG(String name){
-        var sd = new SpriteData(name);
+    private Map<Backgrounds, Color> colors = new HashMap<>();
+    private Background(){
+        colors.put(Backgrounds.bg_sand,new Color(218, 186, 123));
+        colors.put(Backgrounds.bg_space,new Color(0,0,0));
+        colors.put(Backgrounds.bg_water,new Color(87, 215, 218));
+
+    }
+    public void setBG(Backgrounds name){
+        var sd = new SpriteData(name.name());
+
+        Window.GetInstance().setColor(colors.get(name));
+
         gameObject().getRenderer().Sprite().setIcon(sd.icon());
         backgroundHeight = sd.icon().getIconHeight();
         transform().setPosition(Vector2.UP(phaseShift()));
@@ -59,7 +78,7 @@ public class Background extends Component
 
 
     public void start(){
-        var sd = new SpriteData("bg_space");
+        var sd = new SpriteData(Backgrounds.bg_space.name());
         backgroundHeight = sd.icon().getIconHeight();
         var rend = new Renderizable(sd);
         gameObject().setRenderer(rend);

@@ -19,7 +19,7 @@ public class NaveViejaImperioMaker extends BarricadeEnemBuilder {
         obst.setRenderer(rend);
         rend.show();
         Animation anim = new Animation("bforcefield", rend);
-        anim.setSpeed(40);
+        anim.setSpeed(50);
         obst.addBehaviour(anim);
         Runnable ondie = new ThenVolatile(obst.referenced().transform(), "bfexplo");
         obst.setOnDeath(ondie);

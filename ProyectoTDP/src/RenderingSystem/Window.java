@@ -155,7 +155,6 @@ public class Window extends Component
 
     public void ReSort()
     {
-
         int i = 0;
         for(Map.Entry<Float, JComponent> entry : Zfactor)
         {
@@ -177,5 +176,12 @@ public class Window extends Component
         this.backgroundRend = rend;
         //222190
         SetZ(rend.Sprite(),222191+10,true);
+    }
+
+    public void setColor(Color color) {
+        wind.setBackground(color);
+        container.setBackground(color);
+        System.out.println("Window::setColor "+color);
+        wind.repaint();
     }
 }

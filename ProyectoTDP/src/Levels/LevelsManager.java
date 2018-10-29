@@ -8,11 +8,16 @@ import Entities.Ships.EnemiesBuilders.VaderBMaker;
 import Entities.Ships.EnemiesBuilders.VaderCMaker;
 import Entities.Ships.PlayerShip;
 import GameData.MatchResult;
+import RenderingSystem.Backgrounds;
 import UI.UI;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static RenderingSystem.Backgrounds.bg_sand;
+import static RenderingSystem.Backgrounds.bg_space;
+import static RenderingSystem.Backgrounds.bg_water;
 
 public final class LevelsManager extends Component {
 
@@ -35,13 +40,13 @@ public final class LevelsManager extends Component {
 		float backgroundSpeed = 35;
 		AbstractLevel[] _levels = {
 				new PlayerAssembler(),
-				new TransitionToLevel("bg_space", 1, backgroundSpeed,false),
+				new TransitionToLevel(bg_space, 1, backgroundSpeed,false),
 				new Level(1),
-				new TransitionToLevel("bg_water", 2, backgroundSpeed,true),
+				new TransitionToLevel(bg_water, 2, backgroundSpeed,true),
 				new Level(2),
-				new TransitionToLevel("bg_sand", 3, backgroundSpeed,true),
+				new TransitionToLevel(bg_sand, 3, backgroundSpeed,true),
 				new Level(3),
-				new TransitionToLevel("bg_space", 4, backgroundSpeed,false),
+				new TransitionToLevel(bg_space, 4, backgroundSpeed,false),
 				new TransitionToBoss(),
 				new BossLevel(new VaderAMaker()),
 				new BossLevel(new VaderBMaker()),
