@@ -15,6 +15,7 @@ import Entities.Weapons.EnemyArsenal;
 import Entities.Weapons.ShotFront;
 import IAs.*;
 import RenderingSystem.Renderizable;
+import RenderingSystem.ShadowedRend;
 import RenderingSystem.SpriteData;
 
 public class SoloSupportVisitor extends VisitorEntity
@@ -93,9 +94,12 @@ public class SoloSupportVisitor extends VisitorEntity
     }
 
     private void getRenderer() {
-        Renderizable rend = new Renderizable(new SpriteData("soloship"));
+        Renderizable rend = new ShadowedRend(new SpriteData("soloship"));
         rend.show();
         ship.setRenderer(rend);
+
+
+
     }
 
     private void getWeapons(){

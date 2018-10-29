@@ -31,19 +31,7 @@ public final class LevelsManager extends Component {
 		levels = new ArrayList<>();
 
 
-		/*
-		* if(number == 3){
-            Background.getInstance().setBG("fondo");
-            Sun.getInstance().setDaytime(false);
-        }
-        if(number ==2){
-            Background.getInstance().setBG("water");
-            Sun.getInstance().setDaytime(true);
-        }
-        if(number==1){
-            Background.getInstance().setBG("fondo_tatooine");
-            Sun.getInstance().setDaytime(true);
-        */
+
 		float backgroundSpeed = 35;
 		AbstractLevel[] _levels = {
 				new PlayerAssembler(),
