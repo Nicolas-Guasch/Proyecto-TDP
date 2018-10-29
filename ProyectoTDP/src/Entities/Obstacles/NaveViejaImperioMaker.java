@@ -4,6 +4,7 @@ import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import Entities.Builders.BarricadeEnemBuilder;
 import Entities.EntityData;
+import RenderingSystem.Animation;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 
@@ -12,15 +13,18 @@ public class NaveViejaImperioMaker extends BarricadeEnemBuilder {
     @Override
     public void assembleSprite()
     {
-        Renderizable rend = new Renderizable(new SpriteData("obstaclemono"));
+        Renderizable rend = new Renderizable(new SpriteData("bforcefield_0"));
         obst.setRenderer(rend);
         rend.show();
+        Animation anim = new Animation("bforcefield", rend);
+        anim.setSpeed(40);
+        obst.addBehaviour(anim);
     }
 
     @Override
     public void assembleCollider()
     {
-        HitBox hb = HitBox.getOne(150,50,obst);
+        HitBox hb = HitBox.getOne(350,50,obst);
         HitBoxesManager.getInstance().addHitBox(hb,HitBoxesManager.BARRICADE_B);
         obst.setHitBox(hb);
     }
@@ -32,6 +36,7 @@ public class NaveViejaImperioMaker extends BarricadeEnemBuilder {
 
     @Override
     public void assembleData() {
-        obst.setData(EntityData.WithEqualsValues(800));
+        obst.setData(EntityData.WithEqualsValues(200));
+        obst.data().setShield(0);
     }
 }

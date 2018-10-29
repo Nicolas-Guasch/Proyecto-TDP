@@ -41,9 +41,6 @@ public final class Level extends AbstractLevel
         directorBboth.setBuilder(new NaveDuraObstacle());
         directorBenem.setBuilder(new NaveViejaImperioMaker());
         this.number = number;
-
-
-
     }
 
 
@@ -55,24 +52,11 @@ public final class Level extends AbstractLevel
 
     @Override
     public void assembleLevel() {
-        EveryOne.getInstance().add(PlayerShip.getInstance());
+
         assembleEnemies();
         assembleBarricades();
 
 
-
-        if(number == 3){
-            Background.getInstance().setBG("fondo");
-            Sun.getInstance().setDaytime(false);
-        }
-        if(number ==2){
-            Background.getInstance().setBG("water");
-            Sun.getInstance().setDaytime(true);
-        }
-        if(number==1){
-            Background.getInstance().setBG("fondo_tatooine");
-            Sun.getInstance().setDaytime(true);
-        }
     }
 
     private Entities.Entity getBarricadeRandom(){
@@ -117,7 +101,6 @@ public final class Level extends AbstractLevel
         List<Vector2> positions = parser.enemiesPositions();
         Collections.shuffle(positions);
         int z = 10;
-        var weaponDisabler = new WeaponSwitch(false);
 
         for(Vector2 v : positions)
         {
@@ -131,23 +114,17 @@ public final class Level extends AbstractLevel
                 ship.setOnDeath(onDeath);
             }
         }
-        if(number==1){
-            EveryOne.getInstance().takeLazyVisitor(weaponDisabler);
-            VisitorEntity weaponEnabler = new WeaponSwitch(true);
-            EngineGetter.Instance().get().waitForFrames(()->EveryOne.getInstance().takeLazyVisitor(weaponEnabler),30);
-            EngineGetter.Instance().get().waitForFrames(()->levelRunning=true,30);
-        }
+
 
     }
 
     @Override
     public void startLevel()
     {
-        var bb = Background.getInstance();
-        bb.setSpeedTweened(25f*number+10);
 
 
-        PlayerShip.getInstance().referenced().transform().setPosition(new Vector3(0,-300,-90));
+
+
         levelRunning = true;
     }
 
@@ -163,9 +140,8 @@ public final class Level extends AbstractLevel
 
     @Override
     public void clean() {
-
-        LinkedList<Entities.Entity> cosas = new LinkedList<>();
-        VisitorEntity collector = new GetEnemiesAndBarricades(cosas);
+        LinkedList<EnemyShip> cosas = new LinkedList<>();
+        VisitorEntity collector = new GetEnemies(cosas);
         EveryOne.getInstance().takeVisitor(collector);
         cosas.forEach(e->e.data().setHealth(-1));
     }

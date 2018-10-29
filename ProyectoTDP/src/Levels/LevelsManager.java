@@ -7,9 +7,12 @@ import Entities.Ships.EnemiesBuilders.VaderAMaker;
 import Entities.Ships.EnemiesBuilders.VaderBMaker;
 import Entities.Ships.EnemiesBuilders.VaderCMaker;
 import Entities.Ships.PlayerShip;
-import GameData.CurrentMatchData;
 import GameData.MatchResult;
 import UI.UI;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public final class LevelsManager extends Component {
 
@@ -21,19 +24,41 @@ public final class LevelsManager extends Component {
 	}
 
 
-	private AbstractLevel[] levels;
+	private List<AbstractLevel> levels;
 	private int currentLevel;
 	private LevelsManager(){
 		currentLevel =0;
-		levels = new AbstractLevel[7];
-		levels[0] = new Level(1);
-		levels[1] = new Level(2);
-		levels[2] = new Level(3);
-		levels[3] = new TransitionToBoss();
-		levels[4] = new BossLevel(new VaderAMaker());
-		levels[5] = new BossLevel(new VaderBMaker());
-		levels[6] = new BossLevel(new VaderCMaker());
+		levels = new ArrayList<>();
 
+
+		/*
+		* if(number == 3){
+            Background.getInstance().setBG("fondo");
+            Sun.getInstance().setDaytime(false);
+        }
+        if(number ==2){
+            Background.getInstance().setBG("water");
+            Sun.getInstance().setDaytime(true);
+        }
+        if(number==1){
+            Background.getInstance().setBG("fondo_tatooine");
+            Sun.getInstance().setDaytime(true);
+        */
+		float backgroundSpeed = 35;
+		AbstractLevel[] _levels = {
+				new PlayerAssembler(),
+				new TransitionToLevel("fondo", 1, backgroundSpeed),
+				new Level(1),
+				new TransitionToLevel("tatooine", 2, backgroundSpeed),
+				new Level(2),
+				new TransitionToLevel("tatooine", 3, backgroundSpeed),
+				new Level(3),
+				new TransitionToBoss(),
+				new BossLevel(new VaderAMaker()),
+				new BossLevel(new VaderBMaker()),
+				new BossLevel(new VaderCMaker()),
+		};
+		levels.addAll(Arrays.asList(_levels));
 		GameObject.getRoot().addChild().addComponent(this);
 	}
 
@@ -62,15 +87,15 @@ public final class LevelsManager extends Component {
 	}
 
 	private boolean hasNextLevel(){
-		return currentLevel<levels.length-1;
+		return currentLevel<levels.size()-1;
 	}
 	public AbstractLevel currentLevel() {
-		return levels[currentLevel];
+		return levels.get(currentLevel);
 	}
 
 	private void runTheLevel()
 	{
-		UI.getInstance().startLevel(currentLevel+1);
+
 		currentLevel().assembleLevel();
 		currentLevel().startLevel();
 		setActive(false);

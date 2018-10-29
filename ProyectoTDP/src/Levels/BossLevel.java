@@ -34,8 +34,6 @@ public class BossLevel extends AbstractLevel {
         director.assemble();
         vader = director.get();
         EveryOne.getInstance().add(vader);
-        vader.referenced().transform().setPosition(new Vector3(0,100,1));
-
     }
 
     @Override
@@ -43,7 +41,7 @@ public class BossLevel extends AbstractLevel {
         ShipStatus = new ShipStatus(new Vector2(100,200), vader.observerHealth(),"bossbar",vader.data().getHealth());
         vader.referenced().transform().setPosition(Vector2.Random(Random.value(200,450)));
         UI.getInstance().addUIComponent(ShipStatus);
-        EngineGetter.Instance().get().waitForFrames(()->playing = true,3);
+        EngineGetter.Instance().get().waitForFrames(()->playing = true,100);
     }
 
     @Override

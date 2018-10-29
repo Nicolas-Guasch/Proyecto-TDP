@@ -30,7 +30,7 @@ public class AssetStore
         {
             URL img = getURL(name+".png");
             if(img==null)img=getURL(name+".gif");
-            if(img==null)System.out.println(name+" not found");
+            assert img!=null : name+" not found";
             map.put(name.toLowerCase(),new ImageIcon(img));
             // luego cambiar por
             //levantar el .meta y ver el icon posta

@@ -97,14 +97,15 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
     }
 
     private void initObsts() {
-        obstpos.get(L1).add(new Vector2(-500,-100));
-        obstpos.get(L1).add(new Vector2(10,0));
-        obstpos.get(L1).add(new Vector2(500,-100));
+        obstpos.get(L1).add(new Vector2(-300,-100));
+        obstpos.get(L1).add(new Vector2(300,-100));
 
-        obstpos.get(L2).add(new Vector2(0,-50));
+        obstpos.get(L2).add(new Vector2(-300,-100));
+        obstpos.get(L2).add(new Vector2(300,-100));
 
-        obstpos.get(L3).add(new Vector2(300,-100));
         obstpos.get(L3).add(new Vector2(-300,-100));
+        obstpos.get(L3).add(new Vector2(300,-100));
+
     }
 
     private void initenempos()

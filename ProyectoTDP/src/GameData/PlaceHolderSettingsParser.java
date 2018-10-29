@@ -11,7 +11,7 @@ public class PlaceHolderSettingsParser implements ISettingsParser
 
     // ---------- configurations -----------
     private final short FPS = 60;
-    private final Dimension sizeWindow = new Dimension(1330,689);
+    private final Dimension sizeWindow = new Dimension(1250,800);
 
     private final EntityData
             PlayerData = new EntityData(1500, 8,0.2f),

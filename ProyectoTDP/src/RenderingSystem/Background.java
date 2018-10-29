@@ -59,7 +59,7 @@ public class Background extends Component
 
 
     public void start(){
-        var sd = new SpriteData("fondo_tatooine");
+        var sd = new SpriteData("fondo");
         backgroundHeight = sd.icon().getIconHeight();
         var rend = new Renderizable(sd);
         gameObject().setRenderer(rend);

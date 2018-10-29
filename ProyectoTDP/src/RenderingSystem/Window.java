@@ -53,14 +53,14 @@ public class Window extends Component
         // ------- Frame initialize ---------
         wind = new JFrame();
 
-        wind.setSize(new Dimension(settings.sizeWindow.width+30,settings.sizeWindow.height+30));
+        wind.setSize(new Dimension(settings.sizeWindow.width,settings.sizeWindow.height));
         wind.setVisible(false);
         wind.setResizable(false);
         wind.setBackground(Color.BLACK);
         wind.setContentPane(new JLabel(AssetStore.getIcon("black")));
         wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //wind.setLayout(null);
-        wind.setUndecorated(true);
+        //wind.setUndecorated(true);
         //wind.pack();
         //wind.setLocationRelativeTo(null);
         //wind.setVisible(true);
