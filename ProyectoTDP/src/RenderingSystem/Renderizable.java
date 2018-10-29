@@ -129,4 +129,15 @@ public class Renderizable extends Component implements IRenderizable
     public boolean isVisible() {
         return visible;
     }
+
+
+
+
+
+
+
+
+
+
+
 }

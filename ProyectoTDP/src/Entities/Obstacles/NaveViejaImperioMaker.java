@@ -1,7 +1,9 @@
 package Entities.Obstacles;
 
+import ADTs.Vector2;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
+import CuteThings.Explos;
 import Entities.Builders.BarricadeEnemBuilder;
 import Entities.EntityData;
 import RenderingSystem.Animation;
@@ -19,7 +21,11 @@ public class NaveViejaImperioMaker extends BarricadeEnemBuilder {
         Animation anim = new Animation("bforcefield", rend);
         anim.setSpeed(40);
         obst.addBehaviour(anim);
+        Runnable ondie = new ThenVolatile(obst.referenced().transform(), "bfexplo");
+        obst.setOnDeath(ondie);
     }
+
+
 
     @Override
     public void assembleCollider()

@@ -2,6 +2,7 @@ package Entities.Obstacles;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
+import CuteThings.Explos;
 import Entities.Builders.BarricadeBothBuilder;
 import Entities.EntityData;
 import RenderingSystem.Animation;
@@ -22,8 +23,9 @@ public class NaveDuraObstacle extends BarricadeBothBuilder {
         obst.addBehaviour(anim);
         rend.show();
 
-
-
+        Runnable
+        ondie = new ThenVolatile(obst.referenced().transform(), "fexplo");
+        obst.setOnDeath(ondie);
     }
 
     @Override

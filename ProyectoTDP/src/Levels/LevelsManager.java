@@ -47,12 +47,13 @@ public final class LevelsManager extends Component {
 		float backgroundSpeed = 35;
 		AbstractLevel[] _levels = {
 				new PlayerAssembler(),
-				new TransitionToLevel("fondo", 1, backgroundSpeed),
+				new TransitionToLevel("bg_space", 1, backgroundSpeed),
 				new Level(1),
-				new TransitionToLevel("tatooine", 2, backgroundSpeed),
+				new TransitionToLevel("bg_water", 2, backgroundSpeed),
 				new Level(2),
-				new TransitionToLevel("tatooine", 3, backgroundSpeed),
+				new TransitionToLevel("bg_sand", 3, backgroundSpeed),
 				new Level(3),
+				new TransitionToLevel("bg_space", 3, backgroundSpeed),
 				new TransitionToBoss(),
 				new BossLevel(new VaderAMaker()),
 				new BossLevel(new VaderBMaker()),

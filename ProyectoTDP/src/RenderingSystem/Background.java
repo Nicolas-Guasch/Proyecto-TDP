@@ -59,7 +59,7 @@ public class Background extends Component
 
 
     public void start(){
-        var sd = new SpriteData("fondo");
+        var sd = new SpriteData("bg_space");
         backgroundHeight = sd.icon().getIconHeight();
         var rend = new Renderizable(sd);
         gameObject().setRenderer(rend);
