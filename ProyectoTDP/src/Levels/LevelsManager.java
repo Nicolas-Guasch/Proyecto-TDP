@@ -41,7 +41,7 @@ public final class LevelsManager extends Component {
 				new Level(2),
 				new TransitionToLevel("bg_sand", 3, backgroundSpeed,true),
 				new Level(3),
-				new TransitionToLevel("bg_space", 3, backgroundSpeed,false),
+				new TransitionToLevel("bg_space", 4, backgroundSpeed,false),
 				new TransitionToBoss(),
 				new BossLevel(new VaderAMaker()),
 				new BossLevel(new VaderBMaker()),
