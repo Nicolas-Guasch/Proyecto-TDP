@@ -1,4 +1,4 @@
-package ParaTestear;
+package Game;
 
 import Engine.*;
 import Entities.EveryOne;
@@ -14,9 +14,9 @@ import Levels.GameManager;
 import RenderingSystem.Window;
 import RenderingSystem.Background;
 
-public class Tester
+public class TheGame
 {
-    public static void main(String[] a) {
+    public static void startGame() {
 
 
         Window window = Window.GetInstance();

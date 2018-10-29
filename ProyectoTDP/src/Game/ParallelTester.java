@@ -1,6 +1,5 @@
-package ParaTestear;
+package Game;
 
-import Assets.AssetStore;
 import Assets.AssetStore;
 
 import javax.swing.*;
