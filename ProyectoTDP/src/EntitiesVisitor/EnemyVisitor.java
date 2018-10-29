@@ -2,6 +2,7 @@ package EntitiesVisitor;
 
 import ADTs.Vector2;
 import Engine.EngineGetter;
+import Entities.BarricadeBoth;
 import Entities.PlayerBullet;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
@@ -25,6 +26,17 @@ public class EnemyVisitor extends VisitorEntity {
     }
 
     @Override
+    public void visit(BarricadeBoth barricade) {
+
+        barricade.data().setDamage(10);
+
+        Vector2 bouncePoint = barricade.referenced().transform().position();
+        EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),2);
+        EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),3);
+
+    }
+
+    @Override
     public void visit(PlayerBullet bullet)
     {
         Vector2 bouncePoint = bullet.referenced().transform().position();
@@ -39,6 +51,7 @@ public class EnemyVisitor extends VisitorEntity {
         Vector2 direction = ship.referenced().transform().position().minus(bouncePoint);
         ship.referenced().transform().moveTowards(direction.versor());
     }
+
 
 
 }
