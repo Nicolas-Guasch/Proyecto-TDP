@@ -32,7 +32,10 @@ public class Explos
         anim.setSpeed(speed);
         g.addComponent(anim);
         g.transform().setPosition(position);
+        swapper = !swapper;
+        g.transform().setTop(swapper ? Vector2.DOWN() : Vector2.UP());
     }
+    private static boolean swapper = true;
 
     public void getExplosion(Vector2 position){
         String exp = Tools.random(options);

@@ -72,11 +72,15 @@ public final class Level extends AbstractLevel
         }
     }
 
+    private static boolean swapbarricade = true;
+
     private void assembleBarricades() {
         for(Vector2 v : parser.obstaclesPositions())
         {
             Entities.Entity e = getBarricadeRandom();
             e.referenced().transform().setPosition(v.v3(2));
+            swapbarricade = !swapbarricade;
+            e.referenced().transform().setTop(swapbarricade ? Vector2.DOWN() : Vector2.UP());
 
             e.referenced().getRenderer().show();
             EveryOne.getInstance().add(e);
