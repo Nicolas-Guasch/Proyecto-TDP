@@ -13,7 +13,7 @@ public class PlayerAssembler extends AbstractLevel {
     @Override
     public void assembleLevel() {
         EveryOne.getInstance().add(PlayerShip.getInstance());
-        PlayerShip.getInstance().referenced().transform().setPosition(new Vector3(0,-100,-90));
+        PlayerShip.getInstance().referenced().transform().setPosition(new Vector3(0,-200,-90));
     }
 
     @Override
