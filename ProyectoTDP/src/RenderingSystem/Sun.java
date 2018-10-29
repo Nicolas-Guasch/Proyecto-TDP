@@ -7,7 +7,7 @@ import Engine.GameObject;
 public final class Sun extends Component {
 
 	private static Sun instance;
-	private boolean daytime = true;
+	private boolean daytime;
 
 	public void setDaytime(boolean daytime) {
 		this.daytime = daytime;
@@ -33,7 +33,7 @@ public final class Sun extends Component {
 	}
 
 	private Sun(){
-
+		daytime = false;
 	}
 
 	public boolean daytime() {
