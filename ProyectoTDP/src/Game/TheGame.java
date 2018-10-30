@@ -34,7 +34,7 @@ public class TheGame
 
 
         var bb = Background.getInstance();
-        bb.setSpeedBackground(0.1f);
+        bb.setSpeedBackground(4f);
 
 
 

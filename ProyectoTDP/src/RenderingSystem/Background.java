@@ -96,7 +96,7 @@ public class Background extends Component
         if(transform().position().y()<-phaseShift()){
             transform().setPosition(Vector2.UP(phaseShift()));
         }
-        transform().moveTowards(Vector2.DOWN(speedBackground/8));
+        transform().moveTowards(Vector2.DOWN(speedBackground/20));
     }
 
     public float getSpeedBackground() {

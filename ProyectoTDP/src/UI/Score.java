@@ -1,13 +1,12 @@
 package UI;
 
 import GameData.CurrentMatchData;
-import RenderingSystem.ASpriteRenderer;
 import RenderingSystem.SpriteRenderer;
 
-import javax.swing.*;
+
 import java.awt.*;
 
-class Score extends ASpriteRenderer
+class Score extends SpriteRenderer
 {
     private String text = " ";
     private Integer score = 0;

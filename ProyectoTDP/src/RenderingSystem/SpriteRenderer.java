@@ -1,61 +1,32 @@
 package RenderingSystem;
 
-import ADTs.Vector2;
 import Engine.Components.Transform;
-import GameData.GameSettings;
+import ADTs.Vector2;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.JLabel;
-public class SpriteRenderer extends JPanel
+import java.awt.image.ColorModel;
+
+public class SpriteRenderer extends JLabel
 {
-    private Image image;
-    private ImageIcon icon;
+
     private Transform transform;
-    private static boolean drunkMode = GameSettings.DrunkMode;
-    private static int drunkIntensity = GameSettings.DrunkIntensity;
-
-    public void setTransform(Transform transform) {
-        this.transform = transform;
-    }
-
-    public void setIcon(ImageIcon icon){
-        image = icon.getImage();
-        this.icon = icon;
-    }
-
 
 
     @Override
     public void paintComponent( Graphics g ) {
-
-        if(transform.getLifetime()<3){
+        if(transform==null || transform.getLifetime()<5){
             return;
         }
-
-        Graphics2D gx = (Graphics2D) g.create();
+        Graphics2D gx = (Graphics2D) g;
         if(transform != null)
         {
             gx.rotate(transform.top().getAngle(Vector2.UP(2)) , (getWidth()/2f) , (getHeight()/2f));
         }
-
-        if (!drunkMode) {
-            gx.drawImage(image,0,0,icon.getImageObserver());
-        } else {
-            gx.drawImage(image,
-                    new java.util.Random().nextInt(drunkIntensity)-drunkIntensity/2,
-                    new java.util.Random().nextInt(drunkIntensity)-drunkIntensity/2,
-                    icon.getImageObserver());
-            gx.drawImage(image,
-                    new java.util.Random().nextInt(drunkIntensity)-drunkIntensity/2,
-                    new java.util.Random().nextInt(drunkIntensity)-drunkIntensity/2,
-                    icon.getImageObserver());
-        }
-
-
+        super.paintComponent(gx);
     }
 
-
-
-
+    public void setTransform(Transform transform) {
+        this.transform = transform;
+    }
 }
