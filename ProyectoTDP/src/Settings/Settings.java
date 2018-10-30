@@ -11,9 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class Settings {
 
@@ -109,12 +108,12 @@ public final class Settings {
 
 	}
 
-	private boolean close = false;
-	//onda para que no se ejecute el juego varias veces <3
+	private final AtomicBoolean close = new AtomicBoolean(false);
+	//we are playing with faia
 
-	private void actionButton(ActionEvent e){
-		if(close)return;
-		close = true;
+	private synchronized void actionButton(ActionEvent e){
+		if(close.get())return;
+		close.set(true);
 		int i = box.getSelectedIndex();
 		Vector2 screenSize = vsizes[i];
 		GameSettings.GetInstance().sizeWindow = screenSize.ToDimension();
