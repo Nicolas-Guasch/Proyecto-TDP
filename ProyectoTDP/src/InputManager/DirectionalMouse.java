@@ -3,6 +3,7 @@ package InputManager;
 import Engine.Components.Transform;
 import ADTs.Vector2;
 import RenderingSystem.RenderingTools;
+import RenderingSystem.Window;
 
 import java.awt.*;
 
@@ -28,6 +29,11 @@ public class DirectionalMouse extends AbstractDirectionalInput
             try{
                 int mouseX = MouseInfo.getPointerInfo().getLocation().x;
                 int mouseY = MouseInfo.getPointerInfo().getLocation().y;
+                Vector2 phaseshift = Window.GetInstance().GetPhaseShift();
+
+                mouseX -= phaseshift.x();
+                mouseY -= phaseshift.y();
+
                 Vector2 mousePos = RenderingTools.CanvasToWorld(new Dimension(mouseX,mouseY));
                 return mousePos.minus(reference.position()).versor();
             }catch(Exception e){ // puede haber un error con el mouse

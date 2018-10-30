@@ -28,7 +28,7 @@ public class GameSettings
 
     // ---------- general settings -----------
     public final short FPS; // must be 60
-    public final Dimension sizeWindow;
+    public Dimension sizeWindow;
 
     // --------- floats ----------
     public final float

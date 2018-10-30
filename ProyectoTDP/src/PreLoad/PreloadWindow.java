@@ -40,7 +40,7 @@ public class PreloadWindow
 
         JLabel bar = new JLabel(AssetStore.getIcon("loadbar"));
 
-        bar.setBounds(150,550,300,40);
+        bar.setBounds(150,550,0,40);
 
         wind.add(bar);
 
@@ -85,7 +85,7 @@ public class PreloadWindow
         System.out.println("listo2");
 
         try {
-            Thread.sleep(10);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -93,7 +93,6 @@ public class PreloadWindow
 
         wind.dispose();
         TheGame.startGame();
-
     }
 
 

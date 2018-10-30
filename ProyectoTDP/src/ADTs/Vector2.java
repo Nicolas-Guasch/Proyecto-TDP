@@ -1,5 +1,6 @@
 package ADTs;
 
+import java.awt.*;
 import java.util.Random;
 
 /**
@@ -218,6 +219,10 @@ public class Vector2
         else{
             return withLength(max);
         }
+    }
+
+    public Dimension ToDimension() {
+        return new Dimension((int)x,(int)y);
     }
 
     /*inner class*/

@@ -1,5 +1,6 @@
 package RenderingSystem;
 
+import ADTs.Vector2;
 import Assets.AssetStore;
 import UI.*;
 import Engine.Component;
@@ -62,7 +63,7 @@ public class Window extends Component
         //wind.setLayout(null);
         wind.setUndecorated(true);
         //wind.pack();
-        //wind.setLocationRelativeTo(null);
+        wind.setLocationRelativeTo(null);
         //wind.setVisible(true);
         container = wind.getContentPane();
         container.setBackground(new Color(0,0,0,0));
@@ -86,12 +87,16 @@ public class Window extends Component
 
         //------------ set cursor image----------
 
+
+        //TODO: el set relative location: null
+        //no se corresponde con esto
+        /*
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image image = AssetStore.getImage("mouseAim");
         Cursor c = toolkit.createCustomCursor(image , new Point(wind.getX(),
                 wind.getY()), "img");
         wind.setCursor (c);
-
+        */
     }
 
     @Override
@@ -183,5 +188,11 @@ public class Window extends Component
         container.setBackground(color);
         System.out.println("Window::setColor "+color);
         wind.repaint();
+    }
+
+    public Vector2 GetPhaseShift() {
+        var x = wind.getBounds().x;
+        var y = wind.getBounds().y;
+        return new Vector2(x,y);
     }
 }
