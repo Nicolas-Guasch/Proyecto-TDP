@@ -110,6 +110,8 @@ public final class Settings {
 	}
 
 	private boolean close = false;
+	//onda para que no se ejecute el juego varias veces <3
+
 	private void actionButton(ActionEvent e){
 		if(close)return;
 		close = true;
