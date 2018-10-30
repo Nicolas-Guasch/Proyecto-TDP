@@ -37,13 +37,19 @@ public class ContinueKeyInput extends AbstractContinueInput
                     happens = false;
                 }
             }
-            @Override public void keyTyped(KeyEvent e) {}
+            public void keyTyped(KeyEvent e) {
+
+            }
         };
         Window.GetInstance().AddInput(Listener);
     }
     public boolean happens()
     {
-        return happens;
+        if(!Window.GetInstance().InFocus()){
+            happens=false;
+        }
+
+        return happens ;
     }
     public void Destroy()
     {

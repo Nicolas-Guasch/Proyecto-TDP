@@ -195,4 +195,8 @@ public class Window extends Component
         var y = wind.getBounds().y;
         return new Vector2(x,y);
     }
+
+    public boolean InFocus() {
+        return wind.hasFocus();
+    }
 }
