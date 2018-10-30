@@ -1,22 +1,24 @@
 package RenderingSystem;
 
-import ADTs.Vector2;
 import Engine.Components.Transform;
+import ADTs.Vector2;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.ColorModel;
 
-public class SpriteRenderer extends JPanel
+public class ASpriteRenderer extends JLabel
 {
-    private Image image;
+
     private Transform transform;
-    public void setTransform(Transform transform) {
-        this.transform = transform;
+
+    public ASpriteRenderer()
+    {
+
     }
 
-    public void setIcon(ImageIcon icon){
-        image = icon.getImage();
-    }
+
+
 
     @Override
     public void paintComponent( Graphics g ) {
@@ -26,9 +28,10 @@ public class SpriteRenderer extends JPanel
             gx.rotate(transform.top().getAngle(Vector2.UP(2)) , (getWidth()/2f) , (getHeight()/2f));
         }
         super.paintComponent(gx);
-        gx.drawImage(image,0,0,null);
+
     }
 
-
-
+    public void setTransform(Transform transform) {
+        this.transform = transform;
+    }
 }

@@ -39,7 +39,7 @@ public class UI
     private JLabel pausePrompt;
     private JLabel losePrompt;
 
-    private JLabel score;
+    private JComponent score;
 
     private ArrayList<SpriteData> levels;
     private SpriteData gameOver;

@@ -8,7 +8,7 @@ import javax.swing.*;
 
 public class SpriteData
 {
-    private  Icon icon;
+    private  ImageIcon icon;
     private int width;
     private int height;
     private String name;
@@ -16,18 +16,18 @@ public class SpriteData
     {
         width = (int)size.x();
         height =(int) size.y();
-        icon = AssetStore.getIcon(name);
+        icon = (ImageIcon) AssetStore.getIcon(name);
         this.name = name;
     }
     public SpriteData(String name)
     {
-        icon = AssetStore.getIcon(name);
+        icon = (ImageIcon) AssetStore.getIcon(name);
         width = icon.getIconWidth();
         height = icon.getIconHeight();
         this.name = name;
     }
 
-    public Icon icon() {
+    public ImageIcon icon() {
         return icon;
     }
 
@@ -47,7 +47,7 @@ public class SpriteData
         this.width = width;
     }
 
-    public void setIcon(Icon icon) {
+    public void setIcon(ImageIcon icon) {
         this.icon = icon;
     }
 

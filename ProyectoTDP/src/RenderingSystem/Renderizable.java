@@ -4,6 +4,7 @@ import Engine.Component;
 import ADTs.Vector2;
 import GameData.GameSettings;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Renderizable extends Component implements IRenderizable
@@ -18,7 +19,7 @@ public class Renderizable extends Component implements IRenderizable
     public Renderizable(SpriteData data)
     {
         label = new SpriteRenderer();
-        label.setIcon(data.icon());
+        label.setIcon((ImageIcon) data.icon());
         spriteData = data;
         label.setBounds(0,0,data.getWidth(),data.getHeight());//TODO: cambiar esto
         label.setVisible(false);
@@ -27,7 +28,7 @@ public class Renderizable extends Component implements IRenderizable
 
     public Renderizable(SpriteData data, float zphaseshift) {
         label = new SpriteRenderer();
-        label.setIcon(data.icon());
+        label.setIcon((ImageIcon)data.icon());
         spriteData = data;
         label.setBounds(0,0,data.getWidth(),data.getHeight());//TODO: cambiar esto
         label.setVisible(false);
