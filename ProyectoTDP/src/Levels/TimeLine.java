@@ -8,7 +8,6 @@ import Entities.Ships.EnemiesBuilders.VaderBMaker;
 import Entities.Ships.EnemiesBuilders.VaderCMaker;
 import Entities.Ships.PlayerShip;
 import GameData.MatchResult;
-import RenderingSystem.Backgrounds;
 import UI.UI;
 
 import java.util.ArrayList;
@@ -19,19 +18,19 @@ import static RenderingSystem.Backgrounds.bg_sand;
 import static RenderingSystem.Backgrounds.bg_space;
 import static RenderingSystem.Backgrounds.bg_water;
 
-public final class LevelsManager extends Component {
+public final class TimeLine extends Component {
 
-	private static LevelsManager instance;
+	private static TimeLine instance;
 
-	public static LevelsManager getInstance(){
-		instance = (instance==null) ? new LevelsManager():instance;
+	public static TimeLine getInstance(){
+		instance = (instance==null) ? new TimeLine():instance;
 		return instance;
 	}
 
 
 	private List<AbstractLevel> levels;
 	private int currentLevel;
-	private LevelsManager(){
+	private TimeLine(){
 		currentLevel =0;
 		levels = new ArrayList<>();
 

@@ -5,6 +5,7 @@ import Entities.Bullets.FireShield;
 
 import Entities.Ships.EnemyShip;
 import Entities.Ships.PlayerShip;
+import Entities.Ships.ShipBoss;
 import Rewards.GenericReward;
 import Rewards.WeaponReward;
 
@@ -20,7 +21,8 @@ public abstract  class VisitorEntity
     public void visit(FireShield fireshield){}
     public void visit(WeaponReward rew){}
     public void visit(GenericReward rew){}
+    public void visit(ShipBoss shipBoss){}
 
-    //public void visit(Entity rew){}
+
 
 }

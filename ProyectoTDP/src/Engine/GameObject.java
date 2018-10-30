@@ -30,8 +30,8 @@ public class GameObject
 
 
     // ---------- Vars ------------
-    private Collection<GameObject> children;
-    private Collection<Component> components;
+    private Collection<GameObject> children= new LinkedList<>();;
+    private Collection<Component> components= new LinkedList<>();;
     private GameObject parent;
     private Transform transform;
 
@@ -39,8 +39,8 @@ public class GameObject
 
     private GameObject(GameObject parent)
     {
-        children = new LinkedList<>();
-        components = new LinkedList<>();
+
+
         transform = new Transform();//each GameObject has a transform
 
         components.add(transform);
@@ -129,7 +129,10 @@ public class GameObject
                 c.update();
             }
         });
-        new LinkedList<>(children).forEach((c)->c.Update());
+        for (GameObject c : new LinkedList<>(children)) {
+
+            c.Update();
+        }
         //TODO: hacer cola para add y remove
     }
 

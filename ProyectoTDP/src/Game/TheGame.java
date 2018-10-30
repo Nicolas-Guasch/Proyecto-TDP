@@ -53,13 +53,6 @@ public class TheGame
         eng.Start();
     }
 
-    private static void ganar() {
-        MatchResult.getInstance().AllianceWins();
-        System.out.println("ganaste");
-    }
 
-    private static void perder() {
-        System.out.println("perdiste");
-    }
 
 }

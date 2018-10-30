@@ -1,6 +1,6 @@
 package Broadcaster;
 
-public class BroadcasterPackage<ParameterType>
+public class ObserverPack<ParameterType>
 {
     public IBroadcaster<ParameterType> Broadcaster;
     public Invoker<ParameterType> Invoker;

@@ -23,7 +23,7 @@ public class EnemyShipDirector
         builder.assembleData();
     }
 
-    public EnemyShip get(){
+    public BaseEnemyShip get(){
         return builder.get();
     }
 }

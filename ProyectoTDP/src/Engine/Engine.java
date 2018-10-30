@@ -20,6 +20,7 @@ class Engine implements IEngine
     @Override
     public void suscribeToUpdate(GameObject object)
     {
+        if(object==null)return;
         onUpdate.Suscribe((o)->object.Update());
     }
 

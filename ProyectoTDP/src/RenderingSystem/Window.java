@@ -61,7 +61,7 @@ public class Window extends Component
         wind.setContentPane(new JLabel(AssetStore.getIcon("black")));
         wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //wind.setLayout(null);
-        wind.setUndecorated(true);
+        //wind.setUndecorated(true);
         //wind.pack();
         wind.setLocationRelativeTo(null);
         //wind.setVisible(true);
@@ -70,7 +70,7 @@ public class Window extends Component
         container.setBounds(0,0,0,0);
         container.setSize(settings.sizeWindow);
 
-
+        wind.setIconImage(AssetStore.getImage("main_icon"));
 
         //------- z Sorting -----------
         Zfactor = new LayerTable<>();

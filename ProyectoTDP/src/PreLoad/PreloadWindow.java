@@ -35,7 +35,7 @@ public class PreloadWindow
         wind.setContentPane(new JLabel(AssetStore.getIcon("preload")));
         wind.setVisible(true);
         wind.repaint();
-
+        wind.setIconImage(AssetStore.getImage("main_icon"));
         //300,40 barrita
 
         JLabel bar = new JLabel(AssetStore.getIcon("loadbar"));

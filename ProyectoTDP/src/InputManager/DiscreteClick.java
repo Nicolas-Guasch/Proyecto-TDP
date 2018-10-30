@@ -24,7 +24,7 @@ public class DiscreteClick extends AbstractDiscreteInput
     }
     public void initialize(int mouseClick)
     {
-        BroadcasterPackage<Boolean> pack = ObserverSystem.getInstance().GetBroadcaster();
+        ObserverPack<Boolean> pack = ObserverSystem.getInstance().GetBroadcaster();
         onAction = pack.Broadcaster;
         invokerOnAction = pack.Invoker;
         related = new ContinueClick(mouseClick);

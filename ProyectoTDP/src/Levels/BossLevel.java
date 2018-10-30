@@ -5,6 +5,7 @@ import ADTs.Vector3;
 import Engine.EngineGetter;
 import Entities.EntityData;
 import Entities.EveryOne;
+import Entities.Ships.BaseEnemyShip;
 import Entities.Ships.EnemiesBuilders.VaderAMaker;
 import Entities.Ships.EnemiesBuilders.VaderBMaker;
 import Entities.Ships.EnemyShip;
@@ -20,7 +21,7 @@ public class BossLevel extends AbstractLevel {
     private ShipStatus ShipStatus;
     private EnemyShipDirector director;
     private boolean playing=false;
-    EnemyShip vader;
+    BaseEnemyShip vader;
     public BossLevel(EnemyShipBuilder builder){
         director = new EnemyShipDirector();
         director.setBuilder(builder);

@@ -2,6 +2,7 @@ package CuteThings;
 
 import ADTs.Vector2;
 import Audio.SoundManager;
+import Engine.Components.Transform;
 import Engine.GameObject;
 import RenderingSystem.Animation;
 import RenderingSystem.Renderizable;
@@ -22,7 +23,7 @@ public class Explos
         parent = GameObject.getRoot().addChild();
     }
 
-    public void getVolatile(Vector2 position, String exp,float speed){
+    public Transform getVolatile(Vector2 position, String exp, float speed){
         var g = parent.addChild();
         var rend = new Renderizable(new SpriteData(exp+"_0"));
         g.setRenderer(rend);
@@ -34,13 +35,15 @@ public class Explos
         g.transform().setPosition(position);
         swapper = !swapper;
         g.transform().setTop(swapper ? Vector2.DOWN() : Vector2.UP());
+        return g.transform();
     }
     private static boolean swapper = true;
 
-    public void getExplosion(Vector2 position){
+    public Transform getExplosion(Vector2 position){
         String exp = Tools.random(options);
-        getVolatile(position,exp,45);
+        var t = getVolatile(position,exp,45);
         SoundManager.Instance().explo(position);
+        return t;
     }
 
 
