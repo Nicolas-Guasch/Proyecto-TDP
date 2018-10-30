@@ -26,7 +26,7 @@ public class CurrentMatchData
 
     private CurrentMatchData()
     {
-        BroadcasterPackage<Integer> pack = ObserverSystem.getInstance().GetBroadcaster();
+        ObserverPack<Integer> pack = ObserverSystem.getInstance().GetBroadcaster();
         invokerScoreChanges = pack.Invoker;
         OnScoreChanges = pack.Broadcaster;
 

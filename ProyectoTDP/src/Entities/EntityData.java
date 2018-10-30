@@ -1,10 +1,9 @@
 package Entities;
 
-import Broadcaster.BroadcasterPackage;
+import Broadcaster.ObserverPack;
 import Broadcaster.IBroadcaster;
 import Broadcaster.Invoker;
 import Broadcaster.ObserverSystem;
-import Collisions.HitBox;
 
 public final class EntityData
 {
@@ -27,7 +26,7 @@ public final class EntityData
         this.shield = shield;
         this.initialHealth = health;
 
-        BroadcasterPackage<Float> pack = ObserverSystem.getInstance().GetBroadcaster();
+        ObserverPack<Float> pack = ObserverSystem.getInstance().GetBroadcaster();
         HealthData = pack.Broadcaster;
         HealthDataInvoker = pack.Invoker;
     }

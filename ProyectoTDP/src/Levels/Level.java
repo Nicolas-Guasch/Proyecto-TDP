@@ -15,6 +15,8 @@ import EntitiesVisitor.*;
 import RenderingSystem.Sun;
 import Rewards.*;
 import RenderingSystem.Background;
+import Scripts.HyperSpace;
+import Scripts.Jumper;
 
 
 import java.util.*;
@@ -105,13 +107,18 @@ public final class Level extends AbstractLevel
         List<Vector2> positions = parser.enemiesPositions();
         Collections.shuffle(positions);
         int z = 10;
-
+        Vector3 far = new Vector3(0,1600,z);
+        int i = 20;
         for(Vector2 v : positions)
         {
+            i+=50;
             director.setBuilder(getRandom(builders));
             Vector3 pos =  v.v3(z);
             var ship = getShip();
-            ship.referenced().transform().setPosition(pos);
+            ship.referenced().transform().setPosition(far);
+            Jumper jumper = HyperSpace.Jump(ship.referenced().transform(),pos.xy(),30,i);
+            ship.getArsenal().setActive(false);
+            jumper.getOnComplete().Suscribe(new ShipAction(ship,(s)->s.getArsenal().setActive(true)));
             EveryOne.getInstance().add(ship);
             if(itRewards.hasNext()){
                 var onDeath =ThrowAReward(itRewards.next(),ship.referenced().transform());

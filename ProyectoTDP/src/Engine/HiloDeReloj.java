@@ -13,7 +13,7 @@ final class HiloDeReloj extends  Thread
             super.run();
             do
             {
-                //current = System.currentTimeMillis();
+
                 current = current+1;
                 Thread.sleep(1);
             } while (runClock);

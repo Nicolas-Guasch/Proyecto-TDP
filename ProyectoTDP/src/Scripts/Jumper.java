@@ -1,0 +1,59 @@
+package Scripts;
+
+import ADTs.Vector2;
+import Audio.SoundManager;
+import Broadcaster.IBroadcaster;
+import Broadcaster.Invoker;
+import Broadcaster.ObserverPack;
+import Broadcaster.ObserverSystem;
+import Engine.Component;
+import Engine.Components.Transform;
+
+import java.util.Iterator;
+
+public class Jumper extends Component {
+
+    private final Transform transform;
+    private int delay;
+    private Iterator<Vector2> points;
+    private IBroadcaster<Vector2> onComplete;
+    private Invoker<Vector2> invokerComplete;
+
+    private Vector2 firstPos;
+
+    public Jumper(Iterable<Vector2> path, Transform tr, int delayFrames) {
+        points = path.iterator();
+        this.transform = tr;
+        this.delay = delayFrames;
+        this.firstPos = tr.position();
+        ObserverPack<Vector2> v = ObserverSystem.getInstance().GetBroadcaster();
+        onComplete = v.Broadcaster;
+        invokerComplete = v.Invoker;
+    }
+
+    @Override
+    public void start() {
+
+    }
+
+    @Override
+    public void update() {
+        delay--;
+        if(delay>0){
+            transform.setPosition(firstPos);
+            return;
+        }
+        if(!points.hasNext()){
+            SoundManager.Instance().TieDowns(transform.position());
+            setActive(false);
+            gameObject().Destroy();
+            invokerComplete.Invoke(transform.position());
+            return;
+        }
+        transform.setPosition(points.next());
+    }
+
+    public IBroadcaster<Vector2> getOnComplete() {
+        return onComplete;
+    }
+}

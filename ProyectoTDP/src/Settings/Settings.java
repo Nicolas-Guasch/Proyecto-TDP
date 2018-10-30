@@ -8,7 +8,11 @@ import PreLoad.PreloadWindow;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public final class Settings {
@@ -42,6 +46,31 @@ public final class Settings {
 		JLabel size = new JLabel("Screen Size");
 		JButton ok = new JButton("OK");
 		ok.addActionListener(this::actionButton);
+		Collection<Integer> keys = new HashSet<>();
+		keys.add(KeyEvent.VK_ESCAPE);
+		keys.add(KeyEvent.VK_ENTER);
+		keys.add(KeyEvent.VK_SPACE);
+		wind.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(keys.contains(e.getKeyCode())){
+					actionButton(null);
+				}
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(keys.contains(e.getKeyCode())){
+					actionButton(null);
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+			}
+		});
+		ok.addActionListener(this::actionButton);
 
 
 		vsizes = new Vector2[]{
@@ -60,7 +89,6 @@ public final class Settings {
 
 		for (int i = 0; i < vsizes.length; i++) {
 			ssizes[i] = ""+(int)vsizes[i].x()+" x "+(int)vsizes[i].y()+"";
-
 		}
 
 
@@ -81,8 +109,10 @@ public final class Settings {
 
 	}
 
+	private boolean close = false;
 	private void actionButton(ActionEvent e){
-
+		if(close)return;
+		close = true;
 		int i = box.getSelectedIndex();
 		Vector2 screenSize = vsizes[i];
 		GameSettings.GetInstance().sizeWindow = screenSize.ToDimension();
