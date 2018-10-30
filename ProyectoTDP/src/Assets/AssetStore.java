@@ -39,11 +39,13 @@ public class AssetStore
     }
 
     private static URL getURL(String file){
-        String [] subfolders = {"","Video/","UI/","Stuff/","Ships/","Bullets/","Animators/"};
+        String [] subfolders = {"","Video/","UI/", "Stuff/", "Ships/", "Bullets/", "Animators/"};
         URL res=null;
-        for(String f:subfolders){
-            res = AssetStore.class.getResource("./"+f+file);
-            if(res!=null)return res;
+        for(String f:subfolders) {
+            res = AssetStore.class.getResource("/Assets/" + f + file);
+            if (res != null) {
+                return res;
+            }
         }
         return null;
     }
