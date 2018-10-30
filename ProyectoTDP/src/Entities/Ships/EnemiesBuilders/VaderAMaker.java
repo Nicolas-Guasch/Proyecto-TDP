@@ -5,13 +5,16 @@ import Collisions.HitBoxesManager;
 import ADTs.Vector2;
 import AIs.FireFrequency;
 import AIs.LookTarget;
+import Engine.GameObject;
 import Entities.Builders.Concretes.LaserSaber;
 import Entities.Builders.Concretes.BulletMaker;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
 import Entities.EnemyBullet;
+import Entities.Ships.EnemyShip;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.Ships.PlayerShip;
+import Entities.Ships.ShipBoss;
 import Entities.Weapons.ShotFront;
 import Entities.Weapons.Arsenal;
 import GameData.GameSettings;
@@ -24,6 +27,12 @@ import UtilsBehaviours.MirrorBounds;
 public class VaderAMaker extends EnemyShipBuilder
 {
 
+
+    public void create()
+    {
+        var go = GameObject.getRoot().addChild();
+        ship = new ShipBoss(go);
+    }
 
     @Override
     public void assembleSprite() {

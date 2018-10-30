@@ -10,7 +10,7 @@ import EntitiesVisitor.VisitorEntity;
 import GameData.CurrentMatchData;
 import GameData.GameSettings;
 
-public class EnemyShip extends Ship {
+public class EnemyShip extends BaseEnemyShip {
 
 
 
@@ -25,9 +25,7 @@ public class EnemyShip extends Ship {
 		visitor.visit(this);
 	}
 
-	public Arsenal getBagPack() {
-		return weapons;
-	}
+
 
 	@Override
 	public void onDeath()

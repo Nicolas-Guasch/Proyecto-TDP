@@ -5,14 +5,14 @@ import Entities.Ships.EnemyShip;
 
 public abstract class EnemyShipBuilder
 {
-    protected EnemyShip ship;
+    protected BaseEnemyShip ship;
 
     public void create()
     {
         var go = GameObject.getRoot().addChild();
         ship = new EnemyShip(go);
     }
-    public EnemyShip get()
+    public BaseEnemyShip get()
     {
         return ship;
     }

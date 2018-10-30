@@ -16,6 +16,7 @@ public class ThenVolatile implements Runnable {
 
     @Override
     public void run() {
-        Explos.getInstance().getVolatile(transform.position(), volatileName,25);
+        var t = Explos.getInstance().getVolatile(transform.position(), volatileName,25);
+        t.setTop(transform.top());
     }
 }

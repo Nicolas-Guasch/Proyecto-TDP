@@ -44,7 +44,7 @@ public final class Level extends AbstractLevel
     }
 
 
-    private EnemyShip getShip(){
+    private BaseEnemyShip getShip(){
         director.create();
         director.assemble();
         return director.get();

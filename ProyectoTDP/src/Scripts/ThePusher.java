@@ -92,7 +92,7 @@ public class ThePusher extends Component
 
     @Override
     public void update() {
-        System.out.println(tasks.size() + " -- ThePusher::update");
+
 
         while (!toRemove.isEmpty()){
             tasks.remove(toRemove.remove());
