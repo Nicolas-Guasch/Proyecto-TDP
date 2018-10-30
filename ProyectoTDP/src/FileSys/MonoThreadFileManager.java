@@ -27,7 +27,7 @@ class MonoThreadFileManager implements IFileManager {
                 "Assets\\",
                 };
     private Collection<String> currentsWaysToFindAFile(){
-
+        return null;
     }
 
 
@@ -38,8 +38,7 @@ class MonoThreadFileManager implements IFileManager {
         }
         StringBuffer current = new StringBuffer();
 
-
-
+        return null;
     }
 
     @Override
