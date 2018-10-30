@@ -12,6 +12,8 @@ import java.awt.*;
 public class GameSettings
 {
 
+    public static final int DrunkIntensity = 1;
+    public static boolean DrunkMode = false;
     private static GameSettings instance;
     public final EntityData PlayerInitialData;
 

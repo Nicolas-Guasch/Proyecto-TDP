@@ -102,4 +102,8 @@ public class Background extends Component
     public float getSpeedBackground() {
         return speedBackground;
     }
+
+    public SpriteRenderer gerBG() {
+        return gameObject().getRenderer().Sprite();
+    }
 }

@@ -15,7 +15,13 @@ public final class Transform extends Component
     private Vector2 position;
     private Vector2 top = Vector2.UP(); // Top of the sprite always look this way
     private float Zcomponent = 0;
+    private int lifetime = 0;
 
+
+    @Override
+    public void update() {
+        lifetime++;
+    }
 
     public Transform()
     {
@@ -99,6 +105,10 @@ public final class Transform extends Component
 
     public Vector3 position3() {
         return new Vector3(position.x(),position.y(),Zcomponent);
+    }
+
+    public int getLifetime() {
+        return lifetime;
     }
 }
 
