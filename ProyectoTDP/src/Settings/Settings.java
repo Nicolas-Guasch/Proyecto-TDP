@@ -34,7 +34,7 @@ public final class Settings {
 		wind = new JFrame("One Rebel Army -> Settings");
 		wind.setSize(400,300);
 		wind.setLocationRelativeTo(null);
-		wind.setIconImage(AssetStore.getImage("soloship"));
+		wind.setIconImage(AssetStore.getImage("main_icon"));
 		wind.setVisible(true);
 		wind.setResizable(false);
 		wind.setBackground(new Color(166, 255, 215));

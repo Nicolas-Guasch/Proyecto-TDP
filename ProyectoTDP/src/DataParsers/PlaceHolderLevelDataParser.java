@@ -123,10 +123,14 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
 
         enemsPos.get(L2).add(new Vector2(-750,180));
         enemsPos.get(L2).add(new Vector2(-450,300));
+        enemsPos.get(L2).add(new Vector2(-450,300));
+        enemsPos.get(L2).add(new Vector2(-450,300));
         enemsPos.get(L2).add(new Vector2(-150,180));
         enemsPos.get(L2).add(new Vector2(-250,180));
 
         enemsPos.get(L2).add(new Vector2(750,300));
+        enemsPos.get(L2).add(new Vector2(450,180));
+        enemsPos.get(L2).add(new Vector2(450,180));
         enemsPos.get(L2).add(new Vector2(450,180));
         enemsPos.get(L2).add(new Vector2(150,300));
         enemsPos.get(L2).add(new Vector2(250,300));
@@ -136,10 +140,18 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
         enemsPos.get(L3).add(new Vector2(-450,300));
         enemsPos.get(L3).add(new Vector2(-150,180));
         enemsPos.get(L3).add(new Vector2(-150,280));
+        enemsPos.get(L3).add(new Vector2(-150,280));
+        enemsPos.get(L3).add(new Vector2(-150,280));
+        enemsPos.get(L3).add(new Vector2(-150,280));
+        enemsPos.get(L3).add(new Vector2(-150,280));
         enemsPos.get(L3).add(new Vector2(-250,180));
 
         enemsPos.get(L3).add(new Vector2(150,400));
+        enemsPos.get(L3).add(new Vector2(150,400));
+        enemsPos.get(L3).add(new Vector2(150,400));
         enemsPos.get(L3).add(new Vector2(450,180));
+        enemsPos.get(L3).add(new Vector2(150,300));
+        enemsPos.get(L3).add(new Vector2(150,300));
         enemsPos.get(L3).add(new Vector2(150,300));
         enemsPos.get(L3).add(new Vector2(150,200));
         enemsPos.get(L3).add(new Vector2(250,300));

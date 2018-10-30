@@ -44,7 +44,7 @@ public class Jumper extends Component {
             return;
         }
         if(!points.hasNext()){
-            SoundManager.Instance().TieDowns(transform.position());
+            SoundManager.Instance().TieDowns(transform.position().withLength(50));
             setActive(false);
             gameObject().Destroy();
             invokerComplete.Invoke(transform.position());

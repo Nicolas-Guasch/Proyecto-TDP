@@ -107,11 +107,11 @@ public final class Level extends AbstractLevel
         List<Vector2> positions = parser.enemiesPositions();
         Collections.shuffle(positions);
         int z = 10;
-        Vector3 far = new Vector3(0,1600,z);
-        int i = 20;
+        Vector3 far = new Vector3(0,2000,z);
+        int i = 0;
         for(Vector2 v : positions)
         {
-            i+=50;
+            i+=15;
             director.setBuilder(getRandom(builders));
             Vector3 pos =  v.v3(z);
             var ship = getShip();

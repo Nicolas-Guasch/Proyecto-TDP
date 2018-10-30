@@ -70,7 +70,7 @@ public class Window extends Component
         container.setBounds(0,0,0,0);
         container.setSize(settings.sizeWindow);
 
-
+        wind.setIconImage(AssetStore.getImage("main_icon"));
 
         //------- z Sorting -----------
         Zfactor = new LayerTable<>();
