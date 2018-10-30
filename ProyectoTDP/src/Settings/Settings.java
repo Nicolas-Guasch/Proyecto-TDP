@@ -105,7 +105,6 @@ public final class Settings {
 		container.add(box);
 		wind.repaint();
 		container.repaint();
-
 	}
 
 	private final AtomicBoolean close = new AtomicBoolean(false);
