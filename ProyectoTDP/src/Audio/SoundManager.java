@@ -14,7 +14,8 @@ public final class SoundManager
 
     private static final float MaxDist = 1000; //MaximaDistanciaAudicion
 
-    private Sound radio, quote;
+    private Sound radio;
+    private Music quote;
 
     private Sound pew;
     private Sound pew2;
@@ -49,9 +50,10 @@ public final class SoundManager
         menu = TinySound.loadMusic(AudioManager.MusicGame); //si, los swapee
         musicGame  = TinySound.loadMusic(AudioManager.Menu);
         radio = TinySound.loadSound(AudioManager.SOLORADIO);
-        quote = TinySound.loadSound(AudioManager.SOLOQUOTE);
+        quote = TinySound.loadMusic(AudioManager.SOLOQUOTE);
         musicGame.setVolume(0.6f);
-        menu.setVolume(0.5f);
+        menu.setVolume(0.2f);
+        menu.setLoop(true);
         musicBoss = TinySound.loadMusic(AudioManager.MusicBoss);
 
         explo1 = TinySound.loadSound(AudioManager.EXPLO1);
@@ -66,10 +68,12 @@ public final class SoundManager
         Sounds.add(tie);
         Sounds.add(explo1);
         Sounds.add(explo2);
+        Sounds.add(radio);
 
         Sounds.add(vaderBreath);
         Musics.add(musicGame);
         Musics.add(musicBoss);
+        Musics.add(quote);
 
 
     }
@@ -121,7 +125,7 @@ public final class SoundManager
     }
 
     public void Quote(){
-        quote.play(0.6f);
+        quote.play(false,0.6f);
     }
     public void Radio(){
         radio.play(0.7f);
@@ -179,6 +183,7 @@ public final class SoundManager
         else
         {
             currentTrack.resume();
+            if(!quote.done())quote.resume();
             menu.pause();
         }
     }
