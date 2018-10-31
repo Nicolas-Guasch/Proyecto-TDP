@@ -1,6 +1,7 @@
 package UI;
 
 import ADTs.Vector2;
+import ADTs.Vector3;
 import Engine.GameObject;
 import Entities.Ships.Player.PlayerShip;
 import Entities.Weapons.Arsenal;
@@ -40,6 +41,7 @@ public class ArsenalUI implements UIComponent {
     }
 
     private void refresh(){
+        if(selector.transform()==null)return;
         grill.repaint();
         addingCheck();
         checkSelected();
@@ -63,7 +65,9 @@ public class ArsenalUI implements UIComponent {
     private void checkSelected() {
         Weapon weapon = arsenal.getCurrent();
         var rend = map.get(weapon);
-        selector.transform().setPosition(rend.transform().position3());
+        Vector2 planepos = rend.transform().position();
+        Vector3 v = planepos.v3(10);
+        selector.transform().setPosition(v);
     }
 
     private void addingCheck() {
@@ -87,5 +91,9 @@ public class ArsenalUI implements UIComponent {
     @Override
     public void foreach(Consumer<JComponent> operation) {
         grill.foreach(operation);
+    }
+
+    public void dispose() {
+        selector.destroy();
     }
 }

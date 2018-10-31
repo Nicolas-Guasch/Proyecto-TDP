@@ -6,6 +6,8 @@ import Game.TheGame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class PreloadWindow
 {
@@ -43,6 +45,26 @@ public class PreloadWindow
         bar.setBounds(150,550,0,40);
 
         wind.add(bar);
+
+        wind.addKeyListener(new KeyListener() {
+            int escapes = 0;
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_ESCAPE){
+                    escapes++;
+                }
+                if(escapes>=4){
+                    System.exit(0);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
 
 
         float sub_load = (300f/everynames.length);

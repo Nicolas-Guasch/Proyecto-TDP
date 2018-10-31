@@ -46,21 +46,21 @@ public final class Settings {
 		JButton ok = new JButton("OK");
 		ok.addActionListener(this::actionButton);
 		Collection<Integer> keys = new HashSet<>();
-		keys.add(KeyEvent.VK_ESCAPE);
+
 		keys.add(KeyEvent.VK_ENTER);
 		keys.add(KeyEvent.VK_SPACE);
 		wind.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				if(keys.contains(e.getKeyCode())){
-					actionButton(null);
+				if(e.getKeyCode()==KeyEvent.VK_ESCAPE){
+					System.exit(0);
 				}
 			}
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(keys.contains(e.getKeyCode())){
-					actionButton(null);
+				if(e.getKeyCode()==KeyEvent.VK_ESCAPE){
+					System.exit(0);
 				}
 			}
 
@@ -68,6 +68,20 @@ public final class Settings {
 			public void keyReleased(KeyEvent e) {
 
 			}
+		});
+		wind.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(keys.contains(e.getKeyCode())){
+					actionButton(null);
+				}
+			}
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(keys.contains(e.getKeyCode())){
+					actionButton(null);
+				}
+			}public void keyReleased(KeyEvent e) {}
 		});
 		ok.addActionListener(this::actionButton);
 

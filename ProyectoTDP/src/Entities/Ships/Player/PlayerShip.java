@@ -42,16 +42,19 @@ public class PlayerShip extends Ship {
 		var max = GameSettings.GetInstance().PlayerData.clone().getHealth();
 		instance.healthBar = new ShipStatus(new Vector2(100,100), instance.observerHealth(),"bigbar",max);
 		UI.UI.getInstance().addUIComponent(instance.healthBar);
-		UI.UI.getInstance().addUIComponent(new ArsenalUI(instance.weapons));
+		arsenalUI = new ArsenalUI(instance.weapons);
+		UI.UI.getInstance().addUIComponent(arsenalUI);
 	}
+	private static ArsenalUI arsenalUI;
 
 	private UIComponent healthBar;
 
 	@Override
 	public void onDeath()
 	{
+		UI.UI.getInstance().removeUIComponent(arsenalUI);
+		arsenalUI.dispose();
 		super.onDeath();
-		//MatchResult.getInstance().EmpireWins();
 	}
 	public Arsenal getBagPack() {
 		return weapons;
