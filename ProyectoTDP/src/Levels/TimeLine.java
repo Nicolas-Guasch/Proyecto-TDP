@@ -6,7 +6,7 @@ import Engine.GameObject;
 import Entities.Ships.EnemiesBuilders.VaderAMaker;
 import Entities.Ships.EnemiesBuilders.VaderBMaker;
 import Entities.Ships.EnemiesBuilders.VaderCMaker;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import GameData.MatchResult;
 import UI.UI;
 
@@ -33,9 +33,6 @@ public final class TimeLine extends Component {
 	private TimeLine(){
 		currentLevel =0;
 		levels = new ArrayList<>();
-
-
-
 		float backgroundSpeed = 35;
 		AbstractLevel[] _levels = {
 				new PlayerAssembler(),

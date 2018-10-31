@@ -5,9 +5,8 @@ import Engine.GameObject;
 import Entities.Entity;
 import Entities.EntityData;
 import Entities.EveryOne;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import EntitiesVisitor.ForceVisitor;
-import EntitiesVisitor.VisitorEntity;
 import RenderingSystem.SpriteData;
 
 public class ForceCoin implements java.util.function.Consumer<Engine.Components.Transform> {

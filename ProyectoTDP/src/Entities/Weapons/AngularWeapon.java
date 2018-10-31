@@ -15,13 +15,14 @@ public class AngularWeapon<BulletDirectorType extends IBulletDirector> extends W
 
     private static final int framesDuration = 160;
     private float phaseShift = 25; // 10 muy lejos?
-
+    private String name;
     private final Transform reference;
     private int cantShoots;
 
     public AngularWeapon(Transform reference, BulletDirectorType generator, int cantShoots) {
         super(generator);
         this.reference = reference;
+        this.name = name;
         this.cantShoots = cantShoots;
     }
 
@@ -61,6 +62,7 @@ public class AngularWeapon<BulletDirectorType extends IBulletDirector> extends W
     {
         //TODO: implementar, debe desactivar el shoot
     }
+
 
 
     public void setPhaseShift(float phaseShift) {

@@ -9,7 +9,7 @@ import AIs.FireFrequency;
 import Entities.Builders.Concretes.BulletPlayerBuilder;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.PlayerBulletBuilder;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import Entities.Ships.Ship;
 import Entities.Weapons.EnemyArsenal;
 import Entities.Weapons.ShotFront;

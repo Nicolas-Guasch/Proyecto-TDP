@@ -3,7 +3,7 @@ package Entities.Builders.Concretes;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import ADTs.Vector2;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import Entities.Weapons.ShotFront;
 import AIs.FireFrequency;
 import AIs.HorizontalMoveShip;

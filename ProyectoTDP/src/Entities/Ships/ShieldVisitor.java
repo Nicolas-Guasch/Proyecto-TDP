@@ -3,6 +3,7 @@ package Entities.Ships;
 import ADTs.Vector2;
 import Engine.EngineGetter;
 import Entities.Entity;
+import Entities.Ships.Player.PlayerShip;
 import EntitiesVisitor.VisitorEntity;
 import RenderingSystem.Renderizable;
 import RenderingSystem.ShadowedRend;

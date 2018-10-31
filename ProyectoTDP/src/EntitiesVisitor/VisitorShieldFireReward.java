@@ -1,13 +1,11 @@
 package EntitiesVisitor;
 
 import Engine.EngineGetter;
-import Entities.Builders.Directors.BulletDirector;
 import Entities.Bullets.FireShieldMaker;
 import Entities.Entity;
 import Entities.EveryOne;
 import Entities.PlayerBullet;
-import Entities.Ships.PlayerShip;
-import EntitiesVisitor.VisitorEntity;
+import Entities.Ships.Player.PlayerShip;
 
 public class VisitorShieldFireReward extends VisitorEntity
 {

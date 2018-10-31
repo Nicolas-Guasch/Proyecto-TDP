@@ -1,8 +1,8 @@
 package Levels;
 
 import Audio.SoundManager;
-import Entities.Ships.PlayerShipDirector;
-import Entities.Ships.PlayerShipMaker;
+import Entities.Ships.Player.PlayerShipDirector;
+import Entities.Ships.Player.PlayerShipMaker;
 
 public final class GameManager {
 

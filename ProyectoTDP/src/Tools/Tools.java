@@ -1,5 +1,7 @@
 package Tools;
 
+import Entities.Weapons.Weapon;
+
 public class Tools
 {
 
@@ -8,4 +10,13 @@ public class Tools
         return array[i];
     }
 
+    public static<Type> boolean contains( Iterable<Type> iterable,Type element) {
+        if(element==null) return false;
+        for (Type type : iterable) {
+            if((type!=null) && (type==element || type.equals(element))){
+                return true;
+            }
+        }
+        return false;
+    }
 }

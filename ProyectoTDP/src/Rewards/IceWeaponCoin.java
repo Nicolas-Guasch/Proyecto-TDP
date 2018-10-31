@@ -8,7 +8,7 @@ import Entities.Bullets.ColdFireMaker;
 import Entities.EntityData;
 import Entities.EveryOne;
 import Entities.PlayerBullet;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import Entities.Weapons.IceWeapon;
 import Entities.Weapons.Weapon;
 import RenderingSystem.SpriteData;

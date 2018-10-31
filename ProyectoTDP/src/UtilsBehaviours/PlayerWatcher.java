@@ -1,7 +1,7 @@
 package UtilsBehaviours;
 
 import Engine.Component;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 
 public class PlayerWatcher extends Component {
     private final PlayerShip playerShip;

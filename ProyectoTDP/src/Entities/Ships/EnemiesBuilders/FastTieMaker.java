@@ -10,7 +10,7 @@ import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
 import Entities.EnemyBullet;
 import Entities.Ships.EnemyShipBuilder;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import Entities.Weapons.ShotFront;
 import Entities.Weapons.Arsenal;
 import GameData.GameSettings;

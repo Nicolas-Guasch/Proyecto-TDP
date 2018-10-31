@@ -16,6 +16,7 @@ public class ShootFront extends Weapon
     private boolean left;
     private Transform reference;
 
+
     public ShootFront(float phaseShift, BulletDirector<EnemyBullet, EnemyBulletBuilder> getter, Transform reference)
     {
         super(getter);
@@ -53,5 +54,7 @@ public class ShootFront extends Weapon
     public void Destroy() {
 
     }
+
+
 }
 

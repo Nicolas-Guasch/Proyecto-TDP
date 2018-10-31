@@ -1,8 +1,7 @@
 package EntitiesVisitor;
 
 import Entities.Entity;
-import Entities.Ships.PlayerShip;
-import EntitiesVisitor.VisitorEntity;
+import Entities.Ships.Player.PlayerShip;
 
 
 public class VisitorHealPotion extends VisitorEntity {

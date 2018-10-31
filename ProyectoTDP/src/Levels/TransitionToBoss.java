@@ -3,13 +3,12 @@ package Levels;
 import Audio.SoundManager;
 import Engine.EngineGetter;
 import Engine.While;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import IAs.PlayerMove;
 import IAs.Slippery;
 import InputManager.DirectionalMouse;
 import InputManager.DirectionalWASD;
 import RenderingSystem.Background;
-import SoundSystem.Sound;
 
 public class TransitionToBoss extends AbstractLevel {
 

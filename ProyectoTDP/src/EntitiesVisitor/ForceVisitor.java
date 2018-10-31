@@ -1,8 +1,7 @@
 package EntitiesVisitor;
 
 import Entities.Entity;
-import Entities.Ships.PlayerShip;
-import SpecialPowers.PowerWithVisitor;
+import Entities.Ships.Player.PlayerShip;
 import SpecialPowers.TheForcePower;
 
 public class ForceVisitor extends VisitorEntity

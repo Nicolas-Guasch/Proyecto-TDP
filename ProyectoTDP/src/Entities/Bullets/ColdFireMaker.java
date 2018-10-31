@@ -7,7 +7,7 @@ import Engine.EngineGetter;
 import Engine.GameObject;
 import AIs.SimpleBullet;
 import Entities.Builders.PlayerBulletBuilder;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import Entities.EveryOne;
 import GameData.GameSettings;
 import Audio.SoundManager;
@@ -70,7 +70,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
         rend.show();
         var t = bullet.referenced().transform();
         g.transform().setPosition(t.position3());
-        EngineGetter.Instance().get().waitForFrames(g::Destroy,10);
+        EngineGetter.Instance().get().waitForFrames(g::destroy,10);
         EveryOne.getInstance().takeLazyVisitor(new FreezeVisitor(5, t, 200));
     }
 }

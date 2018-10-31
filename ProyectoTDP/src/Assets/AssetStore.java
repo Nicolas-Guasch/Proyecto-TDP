@@ -11,8 +11,9 @@ public class AssetStore
 {
     //public static URL BlueBullet = AssetStore.class.getResource("fondo.meta");
 
-
     private static Map<String,Icon> map;
+
+    private static String [] subfolders = {"","Video/","UI/", "Stuff/", "Ships/", "Bullets/", "Animators/","Miniatures/"};
 
     public static boolean isThereIcon(String name){
         try{
@@ -39,7 +40,6 @@ public class AssetStore
     }
 
     private static URL getURL(String file){
-        String [] subfolders = {"","Video/","UI/", "Stuff/", "Ships/", "Bullets/", "Animators/"};
         URL res=null;
         for(String f:subfolders) {
             res = AssetStore.class.getResource("/Assets/" + f + file);

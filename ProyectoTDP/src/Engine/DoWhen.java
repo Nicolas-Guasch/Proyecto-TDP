@@ -31,7 +31,7 @@ public class DoWhen extends Component {
         {
             codeBlock.run();
             cond = false;
-            gameObject().Destroy();
+            gameObject().destroy();
         }
     }
 

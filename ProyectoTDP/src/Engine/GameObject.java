@@ -136,11 +136,11 @@ public class GameObject
         //TODO: hacer cola para add y remove
     }
 
-    public void Destroy()
+    public void destroy()
     {
         components.forEach(c->c.setActive(false));
         parent.children.remove(this);
-        new LinkedList<>(children).forEach(c->c.Destroy());
+        new LinkedList<>(children).forEach(c->c.destroy());
         children.clear();
         components.forEach(c->c.DestroyComponent());
         if(hitbox !=null)

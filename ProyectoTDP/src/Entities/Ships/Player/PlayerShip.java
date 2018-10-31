@@ -1,8 +1,9 @@
-package Entities.Ships;
+package Entities.Ships.Player;
 
 import ADTs.Vector2;
 import Engine.GameObject;
-import Entities.Weapons.PlayerBagpack;
+import Entities.Ships.Ship;
+import Entities.Weapons.PlayerArsenal;
 import Entities.Weapons.Arsenal;
 import EntitiesVisitor.PlayerVisitor;
 import EntitiesVisitor.VisitorEntity;
@@ -15,6 +16,7 @@ import Mementos.IMementoPlayer;
 import Mementos.MementoPlayer;
 import SpecialPowers.ISpecialPower;
 import SpecialPowers.PowersDeck;
+import UI.ArsenalUI;
 import UI.ShipStatus;
 import UI.UIComponent;
 import UtilsBehaviours.PlayerWatcher;
@@ -40,6 +42,7 @@ public class PlayerShip extends Ship {
 		var max = GameSettings.GetInstance().PlayerData.clone().getHealth();
 		instance.healthBar = new ShipStatus(new Vector2(100,100), instance.observerHealth(),"bigbar",max);
 		UI.UI.getInstance().addUIComponent(instance.healthBar);
+		UI.UI.getInstance().addUIComponent(new ArsenalUI(instance.weapons));
 	}
 
 	private UIComponent healthBar;
@@ -54,8 +57,8 @@ public class PlayerShip extends Ship {
 		return weapons;
 	}
 	private PlayerShip(GameObject referenced) {
-		super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
-		//super(referenced,new PlayerBagpack(new DiscreteKeyInput("qQ"), new DiscreteKeyInput("oplOPLkK") ));
+		super(referenced,new PlayerArsenal(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
+		//super(referenced,new PlayerArsenal(new DiscreteKeyInput("qQ"), new DiscreteKeyInput("oplOPLkK") ));
 
 		SoundManager.Instance().setTransformListener(this.referenced().transform());
 		visitor = new PlayerVisitor();

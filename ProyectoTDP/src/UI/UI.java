@@ -4,7 +4,6 @@ import Assets.AssetStore;
 import Engine.DoWhen;
 import Engine.GameObject;
 import ADTs.Vector2;
-import Entities.Ships.PlayerShip;
 import Scripts.AlwaysLateral;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
@@ -82,6 +81,9 @@ public class UI
         score = new Score();
         score.setBounds(650,10,300,50);
         uiPanel.add(score);
+
+
+
     }
 
 
@@ -105,7 +107,7 @@ public class UI
         goprompt.transform().setPosition(Vector2.DOWN(600f*por));
         rend.show();
         Callable<Boolean> completed = ()-> goprompt.transform().position().y()>500f*por;
-        new DoWhen(completed, goprompt::Destroy);
+        new DoWhen(completed, goprompt::destroy);
         return completed;
     }
 

@@ -1,7 +1,6 @@
-package Entities.Ships;
+package Entities.Ships.Player;
 
 import Engine.GameObject;
-import Entities.Ships.PlayerShip;
 
 public abstract class PlayerShipBuilder
 {

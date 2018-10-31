@@ -1,7 +1,4 @@
-package Entities.Ships;
-
-import Entities.Ships.PlayerShipBuilder;
-import Entities.Ships.PlayerShip;
+package Entities.Ships.Player;
 
 public class PlayerShipDirector
 {

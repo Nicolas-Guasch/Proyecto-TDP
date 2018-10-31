@@ -10,13 +10,14 @@ public class GenericalWeapon<BulletDirectorType extends IBulletDirector> extends
 
     private static final int framesDuration = 160;
     private float phaseShift = 25; // 10 muy lejos?
-
+    private String name;
     private final Transform reference;
     private int cantShoots;
 
-    public GenericalWeapon(Transform reference, BulletDirectorType generator, int cantShoots) {
+    public GenericalWeapon(Transform reference, BulletDirectorType generator,  int cantShoots) {
         super(generator);
         this.reference = reference;
+
         this.cantShoots = cantShoots;
     }
 

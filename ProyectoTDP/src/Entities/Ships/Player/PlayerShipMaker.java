@@ -1,4 +1,4 @@
-package Entities.Ships;
+package Entities.Ships.Player;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
@@ -16,8 +16,6 @@ import InputManager.DirectionalWASD;
 import ADTs.Vector3;
 import RenderingSystem.*;
 import UtilsBehaviours.MirrorBounds;
-
-import java.util.function.Predicate;
 
 
 // REQUIERE QUE LUEGO LE ACTIBES EL ARSENAL
@@ -67,6 +65,8 @@ collider: 130x130
         Pilot pilot = new Pilot(handler,ship,15f);
         ship.setPilot(pilot);
 
+        ship.addBehaviour(new PlayerShipPerspective(ship.referenced().getRenderer()));
+
         // ------- Mirror effect ----------
 
             //obtengo el ancho y alto de la pantalla y le doy un rectangulo para que se mueva
@@ -84,9 +84,15 @@ collider: 130x130
     {
         BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
 
+
+
         director.setBuilder(new BulletPlayerBuilder(ship.referenced().transform()));
-        ship.addWeapon(new GenericalWeapon<>(ship.referenced().transform(),director,2));
-        ship.addWeapon(new LateralizedWeapon<>(ship.referenced().transform(),director,3));
+        var w2 = new GenericalWeapon<>(ship.referenced().transform(),director,  2);
+        w2.setName("bilaser");
+        var w3 =new LateralizedWeapon<>(ship.referenced().transform(),director,  3);
+        w3.setName("trilaser");
+        ship.addWeapon(w2);
+        ship.addWeapon(w3);
 
         ship.getArsenal().setActive(false);
 

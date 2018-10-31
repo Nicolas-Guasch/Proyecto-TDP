@@ -2,9 +2,8 @@ package Game;
 
 import Engine.*;
 import Entities.EveryOne;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import EntitiesVisitor.Pusher;
-import GameData.MatchResult;
 import Audio.SoundManager;
 
 import InputManager.AbstractDiscreteInput;

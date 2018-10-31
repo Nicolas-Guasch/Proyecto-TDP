@@ -1,7 +1,7 @@
 package SpecialPowers;
 
 import Entities.EveryOne;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import EntitiesVisitor.Pusher;
 
 public class TheForcePower implements ISpecialPower

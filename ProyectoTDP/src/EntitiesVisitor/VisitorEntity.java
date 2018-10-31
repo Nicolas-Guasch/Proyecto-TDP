@@ -4,7 +4,7 @@ import Entities.*;
 import Entities.Bullets.FireShield;
 
 import Entities.Ships.EnemyShip;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import Entities.Ships.ShipBoss;
 import Rewards.GenericReward;
 import Rewards.WeaponReward;

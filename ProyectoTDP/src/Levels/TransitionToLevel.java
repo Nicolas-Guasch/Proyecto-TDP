@@ -2,7 +2,7 @@ package Levels;
 
 import ADTs.Vector2;
 import Engine.EngineGetter;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import RenderingSystem.Background;
 import RenderingSystem.Backgrounds;
 import RenderingSystem.Sun;

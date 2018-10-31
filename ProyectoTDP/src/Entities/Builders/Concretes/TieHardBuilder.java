@@ -12,7 +12,7 @@ import Entities.Builders.EnemyBulletBuilder;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.EnemyBullet;
 import Entities.EntityData;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import Entities.Weapons.GenericalWeapon;
 import Entities.Weapons.LateralizedWeapon;
 import GameData.GameSettings;
@@ -70,9 +70,9 @@ public class TieHardBuilder extends EnemyShipBuilder
         director.setBuilder(bullbuilder);
 
         var bp = ship.getBagPack();
-        var weap = new GenericalWeapon<>(ship.referenced().transform(),director,4);
-        var weap1 = new GenericalWeapon<>(ship.referenced().transform(),director,4);
-        var weap2 = new LateralizedWeapon<>(ship.referenced().transform(),directorH,2);
+        var weap = new GenericalWeapon<>(ship.referenced().transform(),director, 4);
+        var weap1 = new GenericalWeapon<>(ship.referenced().transform(),director, 4);
+        var weap2 = new LateralizedWeapon<>(ship.referenced().transform(),directorH, 2);
         weap.setPhaseShift(8);
         ship.addWeapon(weap);
         ship.addWeapon(weap1);

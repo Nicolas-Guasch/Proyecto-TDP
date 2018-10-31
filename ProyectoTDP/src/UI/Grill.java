@@ -18,7 +18,8 @@ public class Grill implements UIComponent
     private final int maxCols;
     private ArrayList<Renderizable> components;
     private final Vector2 phaseShift;
-    private Queue<Renderizable> auxQueue;
+    private Queue<Renderizable> auxQueue,addQueue;
+
     public Grill(Vector2 position, Vector2 cellSize, int maxCols)
     {
         this.maxCols = maxCols;
@@ -27,6 +28,7 @@ public class Grill implements UIComponent
         phaseShift = position.sum(this.cellSize.prod(0.5f)); // el desface inicial mas ponerlo al centro de la celda
         components = new ArrayList<>();
         auxQueue = new LinkedBlockingQueue<>();
+        addQueue = new LinkedBlockingQueue<>();
     }
 
     private RowCol getRowCol(int index){
@@ -43,14 +45,23 @@ public class Grill implements UIComponent
         return new Vector2(x,y);
     }
 
+
+
     public void add(Renderizable rend){
         rend.show();
-        components.add(rend);
+        addQueue.add(rend);
         repaint();
     }
 
     public void repaint(){
         int i=0;
+
+        for(Renderizable renderizable : new LinkedBlockingQueue<>(addQueue)){
+            if(renderizable.transform()!=null && renderizable.gameObject()!=null) {
+                components.add(renderizable);
+                addQueue.remove(renderizable);
+            }
+        }
 
         for(Renderizable rend : components){
             if(!rend.isVisible() || !rend.isActive()){
@@ -61,12 +72,13 @@ public class Grill implements UIComponent
             components.remove(renderizable);
         }
         for (Renderizable renderizable : auxQueue) {
-            if(renderizable.gameObject()!=null) {
+            if(renderizable.transform()!=null && renderizable.gameObject()!=null) {
                 components.add(renderizable);
             }
         }
         for (Renderizable rend : components) {
-            Tweeners.getInstance().DoMove(rend.transform(),getPoint(i),300,null);
+            rend.transform().setPosition(getPoint(i));
+            //TODO: animar movimiento usando Hyperspace
             i++;
         }
         auxQueue.clear();
@@ -82,4 +94,5 @@ public class Grill implements UIComponent
     public void foreach(Consumer<JComponent> operation) {
         getComponents().forEach(operation);
     }
+
 }

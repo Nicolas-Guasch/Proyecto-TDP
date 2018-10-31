@@ -18,6 +18,7 @@ public class IceWeapon<BulletDirectorType extends IBulletDirector> extends Weapo
         super(generator);
         this.reference = reference;
         this.magazzine = 3;
+        setName("ice");
     }
 
     @Override
@@ -31,7 +32,7 @@ public class IceWeapon<BulletDirectorType extends IBulletDirector> extends Weapo
         IBullet b = generator.get();
         b.entity().addBehaviour(new ZigZag());
         float angle = 0.2f;
-        float extraSpeed = 4f;
+        //float extraSpeed = 4f;
         b.entity().addBehaviour(new MouseFollower(angle));
         b.entity().addBehaviour(new SimpleBullet(8f));
         b.entity().referenced().sendMessage(c->c.setActive(true));
@@ -43,6 +44,8 @@ public class IceWeapon<BulletDirectorType extends IBulletDirector> extends Weapo
         System.out.println("-");
         return magazzine<=0;
     }
+
+
 
     @Override
     public void Destroy() {

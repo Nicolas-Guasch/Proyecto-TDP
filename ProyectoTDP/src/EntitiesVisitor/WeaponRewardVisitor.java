@@ -2,7 +2,7 @@ package EntitiesVisitor;
 
 
 import Entities.Entity;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import Entities.Weapons.Weapon;
 
 public class WeaponRewardVisitor extends VisitorEntity

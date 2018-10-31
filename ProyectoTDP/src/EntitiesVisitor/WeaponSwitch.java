@@ -1,7 +1,7 @@
 package EntitiesVisitor;
 
 import Entities.Ships.EnemyShip;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 
 public class WeaponSwitch extends VisitorEntity
 {

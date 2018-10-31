@@ -47,7 +47,7 @@ public class EveryOne extends Component
     {
         while(!toDestroy.isEmpty())
         {
-            toDestroy.remove().referenced().Destroy();
+            toDestroy.remove().referenced().destroy();
         }
         while(!toAdd.isEmpty())
         {

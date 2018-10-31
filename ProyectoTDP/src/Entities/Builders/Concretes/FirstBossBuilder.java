@@ -10,7 +10,7 @@ import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.EnemyBulletBuilder;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.EnemyBullet;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import Entities.Weapons.GenericalWeapon;
 import Entities.Weapons.LateralizedWeapon;
 import GameData.GameSettings;
@@ -67,13 +67,13 @@ public class FirstBossBuilder extends EnemyShipBuilder
 
 
         var bp = ship.getBagPack();
-        LateralizedWeapon<BulletDirector<EnemyBullet, EnemyBulletBuilder>> g = new LateralizedWeapon<>(ship.referenced().transform(),director1,4);
+        LateralizedWeapon<BulletDirector<EnemyBullet, EnemyBulletBuilder>> g = new LateralizedWeapon<>(ship.referenced().transform(),director1, 4);
         g.setPhaseShift(35);
         bp.add(g);
-        bp.add(new GenericalWeapon<>(ship.referenced().transform(),director2,2));
-        bp.add(new GenericalWeapon<>(ship.referenced().transform(),director2,4));
-        bp.add(new GenericalWeapon<>(ship.referenced().transform(),director2,6));
-        bp.add(new GenericalWeapon<>(ship.referenced().transform(),director2,8));
+        bp.add(new GenericalWeapon<>(ship.referenced().transform(),director2, 2));
+        bp.add(new GenericalWeapon<>(ship.referenced().transform(),director2, 4));
+        bp.add(new GenericalWeapon<>(ship.referenced().transform(),director2, 6));
+        bp.add(new GenericalWeapon<>(ship.referenced().transform(),director2, 8));
 
         FireFrequency frqsh = new FireFrequency(5,bp);
         ship.addBehaviour(frqsh);

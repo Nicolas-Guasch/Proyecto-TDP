@@ -5,7 +5,7 @@ import Engine.EngineGetter;
 import Entities.BarricadeBoth;
 import Entities.PlayerBullet;
 import Entities.Ships.EnemyShip;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 
 public class EnemyVisitor extends VisitorEntity {
     private final EnemyShip ship;

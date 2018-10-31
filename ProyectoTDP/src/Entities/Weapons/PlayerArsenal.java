@@ -1,23 +1,32 @@
 package Entities.Weapons;
 
+import Broadcaster.IBroadcaster;
+import Broadcaster.Invoker;
+import Broadcaster.ObserverPack;
+import Broadcaster.ObserverSystem;
 import InputManager.AbstractDiscreteInput;
 
 import java.util.ArrayList;
 
-public class PlayerBagpack extends Arsenal
+public class PlayerArsenal extends Arsenal
 {
+    private final IBroadcaster<Boolean> broadcaster;
+    private final Invoker<Boolean> invoker;
     protected ArrayList<Weapon> weapons;
     private AbstractDiscreteInput Switch;
     private AbstractDiscreteInput Shoot;
 
     private int index = 0;
-    public PlayerBagpack(AbstractDiscreteInput switchKey, AbstractDiscreteInput shootKey)
+    public PlayerArsenal(AbstractDiscreteInput switchKey, AbstractDiscreteInput shootKey)
     {
         weapons = new ArrayList<>();
         Switch = switchKey;
         Shoot = shootKey;
         shootKey.OnAction().Suscribe(this::_shoot);
         switchKey.OnAction().Suscribe(this::_switch);
+        ObserverPack<Boolean> pack = ObserverSystem.getInstance().GetBroadcaster();
+        broadcaster = pack.Broadcaster;
+        invoker = pack.Invoker;
     }
 
 
@@ -26,11 +35,12 @@ public class PlayerBagpack extends Arsenal
         if(isPressed && isActive())
         {
             shoot();
+            invoker.Invoke(true);
         }
     }
     @Override
     public Arsenal clone() {
-        var n = new PlayerBagpack(Switch,Shoot);
+        var n = new PlayerArsenal(Switch,Shoot);
         weapons.forEach(n::add);
         return n;
     }
@@ -40,11 +50,13 @@ public class PlayerBagpack extends Arsenal
         if(isPressed && isActive())
         {
             switchCurrent();
+            invoker.Invoke(true);
         }
     }
 
     public void switchCurrent()
     {
+
         index++;
         index = (index < weapons.size()) ? index : 0;
         if(!weapons.isEmpty())
@@ -55,12 +67,14 @@ public class PlayerBagpack extends Arsenal
                 weapons.remove(w);
                 switchCurrent();
             }
+            invoker.Invoke(true);
         }
     }
 
     @Override
     public void add(Weapon weapon) {
         weapons.add(weapon);
+        invoker.Invoke(true);
     }
 
     public void shoot()
@@ -83,6 +97,7 @@ public class PlayerBagpack extends Arsenal
     @Override
     public void remove(Weapon weapon) {
         weapons.remove(weapon);
+        invoker.Invoke(true);
     }
 
     public Weapon getCurrent()
@@ -96,6 +111,16 @@ public class PlayerBagpack extends Arsenal
     public void destroy() {
         setActive(false);
         weapons.clear();
+        invoker.Invoke(true);
+    }
+
+    @Override
+    public IBroadcaster<Boolean> observer() {
+        return broadcaster;
+    }
+    @Override
+    public Iterable<Weapon> weapons() {
+        return weapons;
     }
 
 }

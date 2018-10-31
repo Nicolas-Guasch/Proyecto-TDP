@@ -1,6 +1,9 @@
 package Entities.Weapons;
 
+import Broadcaster.IBroadcaster;
 import Engine.Components.IActivable;
+
+import java.util.Iterator;
 
 public abstract class Arsenal implements IActivable {
 
@@ -52,5 +55,22 @@ public abstract class Arsenal implements IActivable {
      */
     public abstract Weapon getCurrent();
 
+    /**
+     * destroys the arsenal
+     */
     public abstract void destroy();
+
+    /**
+     * get a broadcaster to subscribe when there is important
+     * changes in the arsenal
+     * @return broadcaster
+     */
+    public abstract IBroadcaster<Boolean> observer();
+
+    /**
+     * returns an iterable of all usable weapons
+     * @return weapons
+     */
+    public abstract Iterable<Weapon> weapons();
+
 }

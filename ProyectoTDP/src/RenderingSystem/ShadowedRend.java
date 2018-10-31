@@ -23,7 +23,7 @@ public class ShadowedRend extends Renderizable
     public void OnDestroy() {
         super.OnDestroy();
         if(shadow!=null && shadow.gameObject()!=null)
-        shadow.gameObject().Destroy();
+        shadow.gameObject().destroy();
     }
 
 

@@ -38,7 +38,7 @@ public class While extends Component
         }
         if(runs && !check) // si salio del ciclo while
         {
-            gameObject().Destroy();
+            gameObject().destroy();
             if(onComplete!=null){
                 onComplete.run();
             }

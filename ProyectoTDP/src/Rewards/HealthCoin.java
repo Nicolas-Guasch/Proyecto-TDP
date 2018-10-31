@@ -5,7 +5,7 @@ import Engine.GameObject;
 import Entities.Entity;
 import Entities.EntityData;
 import Entities.EveryOne;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import EntitiesVisitor.VisitorHealPotion;
 import RenderingSystem.SpriteData;
 

@@ -2,7 +2,7 @@ package EntitiesVisitor;
 
 import Entities.BarricadeBoth;
 import Entities.EnemyBullet;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 
 public class EnemyBulletVisitor extends VisitorEntity {
     private final EnemyBullet bullet;

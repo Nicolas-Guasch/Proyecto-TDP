@@ -3,7 +3,7 @@ package Levels;
 import ADTs.Vector3;
 import Engine.EngineGetter;
 import Entities.EveryOne;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import EntitiesVisitor.VisitorEntity;
 import EntitiesVisitor.WeaponSwitch;
 

@@ -1,5 +1,6 @@
 package Entities.Ships;
 
+import Entities.Ships.Player.PlayerShip;
 import EntitiesVisitor.VisitorEntity;
 
 public class BossVisitor extends VisitorEntity {

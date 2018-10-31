@@ -25,7 +25,7 @@ public class LateralizedWeapon<DirectorType extends IBulletDirector> extends Wea
     }
 
     public LateralizedWeapon(Transform reference, DirectorType generator) {
-        this(reference,generator,1);
+        this(reference,generator, 1);
     }
 
     public void setPhaseShift(float phaseShift)

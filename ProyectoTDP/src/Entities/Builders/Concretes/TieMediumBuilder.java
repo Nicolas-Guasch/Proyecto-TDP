@@ -11,7 +11,7 @@ import Entities.Builders.EnemyBulletBuilder;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.EnemyBullet;
 import Entities.EntityData;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import Entities.Weapons.GenericalWeapon;
 import GameData.GameSettings;
 
@@ -68,7 +68,7 @@ public class TieMediumBuilder extends EnemyShipBuilder
         director.setBuilder(bullbuilder);
 
         var bp = ship.getBagPack();
-        var weap = new GenericalWeapon<>(ship.referenced().transform(),director,3);
+        var weap = new GenericalWeapon<>(ship.referenced().transform(),director,  3);
         weap.setPhaseShift(8);
         ship.addWeapon(weap);
 

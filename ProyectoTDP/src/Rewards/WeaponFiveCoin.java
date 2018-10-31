@@ -8,7 +8,7 @@ import Entities.Builders.PlayerBulletBuilder;
 import Entities.EntityData;
 import Entities.EveryOne;
 import Entities.PlayerBullet;
-import Entities.Ships.PlayerShip;
+import Entities.Ships.Player.PlayerShip;
 import Entities.Weapons.AngularWeapon;
 import Entities.Weapons.Weapon;
 import RenderingSystem.SpriteData;
@@ -22,7 +22,8 @@ public class WeaponFiveCoin implements java.util.function.Consumer<Engine.Compon
         WeaponReward rew = new WeaponReward(premio,sd);
         BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
         director.setBuilder(new BulletPlayerBuilder(player.referenced().transform()));
-        Weapon wea = new AngularWeapon<>(player.referenced().transform(),director,5);
+        Weapon wea = new AngularWeapon<>(player.referenced().transform(),director, 5);
+        wea.setName("penta");
         rew.setWeapon(wea);
         premio.transform().setPosition(transform.position3());
         premio.addComponent(new RewardMove());
