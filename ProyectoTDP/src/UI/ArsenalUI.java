@@ -6,6 +6,7 @@ import Engine.GameObject;
 import Entities.Ships.Player.PlayerShip;
 import Entities.Weapons.Arsenal;
 import Entities.Weapons.Weapon;
+import GameData.GameSettings;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 import Tools.Tools;
@@ -19,13 +20,16 @@ public class ArsenalUI implements UIComponent {
 
     private final Arsenal arsenal;
     private HashMap<Weapon, Renderizable> map = new HashMap<>();
-    private Grill grill = new Grill(new Vector2(-400,-400),new Vector2(40,40),5);
+    private Grill grill ;
 
 
     private GameObject selector;
 
     public ArsenalUI(Arsenal arsenal){
         this.arsenal = arsenal;
+        var xy = GameSettings.GetInstance().sizeWindow;
+        grill = new Grill(new Vector2(-xy.width/(3f),-xy.height/(3f)),new Vector2(40,40),5);
+
         arsenal.observer().Suscribe(this::listenArsenal);
         selector = GameObject.getRoot().addChild();
         Renderizable rend = new Renderizable(new SpriteData("selector"));

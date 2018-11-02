@@ -4,6 +4,7 @@ import Assets.AssetStore;
 import Engine.DoWhen;
 import Engine.GameObject;
 import ADTs.Vector2;
+import GameData.GameSettings;
 import Scripts.AlwaysLateral;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
@@ -78,8 +79,9 @@ public class UI
 
         // ------------- score ---------
 
+        var x1 = GameSettings.GetInstance().sizeWindow.width/2;
         score = new Score();
-        score.setBounds(650,10,300,50);
+        score.setBounds(x1,90,300,50);
         uiPanel.add(score);
 
 
