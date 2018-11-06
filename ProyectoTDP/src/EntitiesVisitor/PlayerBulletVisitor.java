@@ -30,7 +30,7 @@ public class PlayerBulletVisitor extends VisitorEntity
     }
     public void visit(BarricadeBoth ent) {
         ent.data().takeDamage(bullet.data().getDamage());
-        bullet.data().setHealth(0);
+        //bullet.data().setHealth(0);
     }
     public void visit(BarricadeEnem ent) {
         ent.data().takeDamage(bullet.data().getDamage());

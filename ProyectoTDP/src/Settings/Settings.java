@@ -5,6 +5,7 @@ import Assets.AssetStore;
 import GameData.GameSettings;
 import PreLoad.PreloadWindow;
 
+import javax.sound.sampled.AudioInputStream;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -155,6 +156,7 @@ public final class Settings {
 
 	private synchronized void actionButton(ActionEvent e){
 		if(close.get())return;
+
 		close.set(true);
 		fullScreen = full.isSelected();
 		int i = box.getSelectedIndex();

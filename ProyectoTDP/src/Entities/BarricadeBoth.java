@@ -8,7 +8,7 @@ public class BarricadeBoth extends Entity {
 
 	public BarricadeBoth(GameObject referenced) {
 		super(referenced);
-		visitor = new BarricadeBothVisitor();
+		visitor = new BarricadeBothVisitor(referenced.transform());
 	}
 
 	@Override
