@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Vector;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class Settings {
@@ -86,17 +87,8 @@ public final class Settings {
 		ok.addActionListener(this::actionButton);
 
 
-		vsizes = new Vector2[]{
-				new Vector2(1280,1024),
-				new Vector2(1280,960),
-				new Vector2(1280,800),
-				new Vector2(1280,768),
-				new Vector2(1280,720),
-				new Vector2(1280,600),
-				new Vector2(1152,864),
-				new Vector2(1024,768),
-				new Vector2(800,600)
-		};
+
+		vsizes = getVsizes();
 
 		ssizes = new String[vsizes.length];
 
@@ -120,6 +112,35 @@ public final class Settings {
 		wind.repaint();
 		container.repaint();
 	}
+
+	private Vector2[] getVsizes(){
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Vector2 siz = new Vector2(screenSize.width , screenSize.height);
+		Vector2[] options = new Vector2[]{
+				new Vector2(1280,1024),
+				new Vector2(1280,960),
+				new Vector2(1280,800),
+				new Vector2(1280,768),
+				new Vector2(1280,720),
+				new Vector2(1280,600),
+				new Vector2(1152,864),
+				new Vector2(1024,768),
+				new Vector2(800,600)
+		};
+
+		Vector<Vector2> ve = new Vector<>();
+
+		for (Vector2 opt : options) {
+			if(opt.x()<=siz.x() && opt.y() <= siz.y() - 30){
+				ve.add(opt);
+			}
+		}
+
+		Vector2[] ret = new Vector2[ve.size()];
+		ve.toArray(ret);
+		return ret;
+	}
+
 
 	private final AtomicBoolean close = new AtomicBoolean(false);
 	//we are playing with faia

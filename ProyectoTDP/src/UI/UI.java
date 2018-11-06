@@ -10,6 +10,7 @@ import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
@@ -79,13 +80,8 @@ public class UI
 
         // ------------- score ---------
 
-        var x1 = GameSettings.GetInstance().sizeWindow.width/2;
         score = new Score();
-        score.setBounds(x1,90,300,50);
         uiPanel.add(score);
-
-
-
     }
 
 

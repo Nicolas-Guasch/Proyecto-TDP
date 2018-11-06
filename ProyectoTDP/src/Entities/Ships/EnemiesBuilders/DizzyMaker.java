@@ -70,7 +70,7 @@ public class DizzyMaker extends EnemyShipBuilder
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();
-        ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f),bottomLeft.prod(1.2f)));
+        ship.addBehaviour(new MirrorBounds(topRight.prod(0.9f),bottomLeft.prod(0.9f)));
     }
 
     @Override

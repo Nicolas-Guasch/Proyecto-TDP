@@ -7,10 +7,11 @@ import java.awt.*;
 
 public class RenderingTools
 {
+
     private static float h = GameSettings.GetInstance().sizeWindow.height;
     private static float w = GameSettings.GetInstance().sizeWindow.width;
 
-
+    //el mundito mide 1000 x 600
     //width es x , height es y
     public static Vector2 CanvasToWorld(Dimension d)
     {
@@ -21,4 +22,5 @@ public class RenderingTools
     {
         return new Dimension((int)(vec.x()+w/2) ,(int)((h/2)-vec.y()));
     }
+
 }

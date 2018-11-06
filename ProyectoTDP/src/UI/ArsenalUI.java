@@ -27,8 +27,15 @@ public class ArsenalUI implements UIComponent {
 
     public ArsenalUI(Arsenal arsenal){
         this.arsenal = arsenal;
-        var xy = GameSettings.GetInstance().sizeWindow;
-        grill = new Grill(new Vector2(-xy.width/(3f),-xy.height/(3f)),new Vector2(40,40),5);
+        var sizeWindow = GameSettings.GetInstance().sizeWindow;
+
+        grill = new Grill(
+                new Vector2(
+                        -sizeWindow.width/(2.3f),
+                        -sizeWindow.height/(3f)),
+
+                new Vector2(40,40),
+                5);
 
         arsenal.observer().Suscribe(this::listenArsenal);
         selector = GameObject.getRoot().addChild();
