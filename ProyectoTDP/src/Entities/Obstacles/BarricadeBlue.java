@@ -45,6 +45,6 @@ public class BarricadeBlue extends BarricadeBothBuilder {
     @Override
     public void assembleData() {
         obst.setData(EntityData.WithEqualsValues(800));
-        obst.data().setShield(1);//TODO: volver a poner en 0
+        obst.data().setShield(0.1f);
     }
 }

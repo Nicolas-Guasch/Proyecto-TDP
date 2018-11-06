@@ -7,17 +7,17 @@ import Entities.Ships.Player.PlayerShip;
 import EntitiesVisitor.VisitorEntity;
 import EntitiesVisitor.WeaponSwitch;
 
-public class PlayerAssembler extends AbstractLevel {
+public class PlayerAssembler extends TimePoint {
     private boolean ready=false;
 
     @Override
-    public void assembleLevel() {
+    public void assembleMoment() {
         EveryOne.getInstance().add(PlayerShip.getInstance());
         PlayerShip.getInstance().referenced().transform().setPosition(new Vector3(0,-200,-90));
     }
 
     @Override
-    public void startLevel() {
+    public void startMoment() {
 
         var weaponDisabler = new WeaponSwitch(false);
         EveryOne.getInstance().takeLazyVisitor(weaponDisabler);

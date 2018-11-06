@@ -12,11 +12,10 @@ import UtilsBehaviours.MirrorBounds;
 
 public class DeathStar {
 
-    public DeathStar() {
+    private static GameObject instance;
 
-    }
-
-    public GameObject get() {
+    public static GameObject get() {
+        if (instance!=null)return instance;
 
         GameObject deathStar = GameObject.getRoot().addChild();
         deathStar.transform().setPosition(new Vector2(-500, 400));
@@ -30,6 +29,7 @@ public class DeathStar {
         deathStar.transform().setZcomponent(493);Renderizable death = new Renderizable(new SpriteData("DeathStar", new Vector2(500, 500)));
         death.show();
         deathStar.addComponent(death);
+        instance = deathStar;
         return deathStar;
     }
 }

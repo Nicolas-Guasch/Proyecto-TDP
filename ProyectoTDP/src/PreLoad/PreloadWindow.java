@@ -26,7 +26,7 @@ public class PreloadWindow
             "wooky;bigbar;bossbar;shipplayer;commontie1;commontie2;hybridtie;shield;" +
                     "whitetie;soloship;vadership_a;vadership_b;vadership_c;" +
                     "bforcefield;forcefield;fexplo;bfexplo;exploA;exploB;" +
-                    "bg_space;bg_water;bg_sanf;black;").split(";");
+                    "bg_space;bg_water;bg_sand;black;").split(";");
 
 
     private PreloadWindow(){

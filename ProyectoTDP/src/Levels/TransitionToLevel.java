@@ -8,7 +8,7 @@ import RenderingSystem.Backgrounds;
 import RenderingSystem.Sun;
 import UI.UI;
 
-public class TransitionToLevel extends AbstractLevel {
+public class TransitionToLevel extends TimePoint {
 
     private final boolean sun;
     private Backgrounds nameBackground;
@@ -27,13 +27,13 @@ public class TransitionToLevel extends AbstractLevel {
 
 
     @Override
-    public void assembleLevel() {
+    public void assembleMoment() {
         var bb = Background.getInstance();
         bb.setSpeedTweened(backgroundSpeed);
     }
 
     @Override
-    public void startLevel() {
+    public void startMoment() {
         UI.getInstance().startLevel(levelIndex);
         EngineGetter.Instance().get().waitForFrames(()->ready = true,180);
         Background.getInstance().setBG(nameBackground);

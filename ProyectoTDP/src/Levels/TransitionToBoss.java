@@ -3,7 +3,6 @@ package Levels;
 import Audio.SoundManager;
 import Engine.EngineGetter;
 import Engine.While;
-import Entities.Builders.Directors.BarricadeBothDirector;
 import Entities.Ships.Player.PlayerShip;
 import IAs.PlayerMove;
 import IAs.Slippery;
@@ -11,14 +10,14 @@ import InputManager.DirectionalMouse;
 import InputManager.DirectionalWASD;
 import RenderingSystem.Background;
 
-public class TransitionToBoss extends AbstractLevel {
+public class TransitionToBoss extends TimePoint {
 
     private boolean complete = false;
 
 
 
     @Override
-    public void assembleLevel() {
+    public void assembleMoment() {
         makeBarricades();
     }
 
@@ -28,7 +27,7 @@ public class TransitionToBoss extends AbstractLevel {
 
 
     @Override
-    public void startLevel() {
+    public void startMoment() {
         EngineGetter.Instance().get().waitForFrames(this::StopMusic,10);
         EngineGetter.Instance().get().waitForFrames(this::ChangeControls,90);
         EngineGetter.Instance().get().waitForFrames(this::MusicStuff,180);

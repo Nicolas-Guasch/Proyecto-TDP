@@ -20,6 +20,7 @@ public class BossVisitor extends VisitorEntity {
         playerShip.data().takeDamage(ship.data().getDamage());
     }
 
+
     public void visit(BarricadeBoth barricade){
         var barr_tr = barricade.referenced().transform();
         var repuls = getRepulsion(

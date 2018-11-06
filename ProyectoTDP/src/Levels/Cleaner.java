@@ -2,21 +2,19 @@ package Levels;
 
 import Entities.Entity;
 import Entities.EveryOne;
-import Entities.Ships.EnemyShip;
-import EntitiesVisitor.GetEnemies;
 import EntitiesVisitor.GetEnemiesAndBarricades;
 import EntitiesVisitor.VisitorEntity;
 
 import java.util.LinkedList;
 
-public class Cleaner extends AbstractLevel {
+public class Cleaner extends TimePoint {
     @Override
-    public void assembleLevel() {
+    public void assembleMoment() {
 
     }
 
     @Override
-    public void startLevel() {
+    public void startMoment() {
 
     }
 

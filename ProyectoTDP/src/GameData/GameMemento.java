@@ -1,14 +1,14 @@
 package GameData;
 
-import Levels.AbstractLevel;
+import Levels.TimePoint;
 import Mementos.IMementoPlayer;
 
 public class GameMemento
 {
-    private AbstractLevel level;
+    private TimePoint level;
     private IMementoPlayer playerStatus;
 
-    public GameMemento(AbstractLevel level, IMementoPlayer playerStatus) {
+    public GameMemento(TimePoint level, IMementoPlayer playerStatus) {
         this.level = level;
         this.playerStatus = playerStatus;
     }
@@ -17,7 +17,7 @@ public class GameMemento
         return playerStatus;
     }
 
-    public AbstractLevel getLevel() {
+    public TimePoint getLevel() {
         return level;
     }
 }

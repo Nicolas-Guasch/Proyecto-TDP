@@ -1,16 +1,13 @@
 package Levels;
 
 import ADTs.Vector2;
-import Engine.Components.Transform;
 import Entities.Builders.Directors.BarricadeBothDirector;
 import Entities.Entity;
 import Entities.EveryOne;
 import Entities.Obstacles.BarricadeBlue;
 import GameData.GameSettings;
 
-import java.util.Vector;
-
-public class SomeBarricades extends AbstractLevel {
+public class SomeBarricades extends TimePoint {
 
     private BarricadeBothDirector director;
 
@@ -28,7 +25,7 @@ public class SomeBarricades extends AbstractLevel {
     }
 
     @Override
-    public void assembleLevel() {
+    public void assembleMoment() {
         var circleBarricades = 10;
         float angle = 1f/circleBarricades;
         var dim = GameSettings.GetInstance().sizeWindow;
@@ -45,7 +42,7 @@ public class SomeBarricades extends AbstractLevel {
     }
 
     @Override
-    public void startLevel() {
+    public void startMoment() {
 
     }
 

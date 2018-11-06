@@ -56,20 +56,20 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
     private void initenembuilds()
     {
 
-        //enemies.get(L1).add(new WhiteTieMaker());
-        //enemies.get(L1).add(new WachinMaker());
+        enemies.get(L1).add(new WhiteTieMaker());
+        enemies.get(L1).add(new WachinMaker());
         enemies.get(L1).add(new DizzyMaker());
 
         enemies.get(L2).add(new DizzyMaker());
-        //enemies.get(L2).add(new FastTieMaker());
-        //enemies.get(L2).add(new WachinMaker());
-        //enemies.get(L2).add(new WhiteTieMaker());
-        //enemies.get(L2).add(new FastTieMaker());
+        enemies.get(L2).add(new FastTieMaker());
+        enemies.get(L2).add(new WachinMaker());
+        enemies.get(L2).add(new WhiteTieMaker());
+        enemies.get(L2).add(new FastTieMaker());
 
-        //enemies.get(L3).add(new WachinMaker());
+        enemies.get(L3).add(new WachinMaker());
         enemies.get(L3).add(new DizzyMaker());
-        //enemies.get(L3).add(new FastTieMaker());
-        //enemies.get(L3).add(new FullKamikazeeMaker());
+        enemies.get(L3).add(new FastTieMaker());
+        enemies.get(L3).add(new FullKamikazeeMaker());
         enemies.get(L3).add(new FastTieMaker());
     }
 
@@ -94,6 +94,7 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
         rew.get(L2).add(RewardFactory.SHIELD);
         rew.get(L2).add(RewardFactory.FORCE);
 
+        rew.get(L3).add(RewardFactory.ICE);
         rew.get(L3).add(RewardFactory.FIVEWEAPON);
         rew.get(L3).add(RewardFactory.HANSUPPORT);
         rew.get(L3).add(RewardFactory.HEALTH);

@@ -28,14 +28,15 @@ public final class TimeLine extends Component {
 	}
 
 
-	private List<AbstractLevel> levels;
+	private List<TimePoint> levels;
 	private int currentLevel;
 	private TimeLine(){
 		currentLevel =0;
 		levels = new ArrayList<>();
 		float backgroundSpeed = 35;
-		AbstractLevel[] _levels = {
+		TimePoint[] _levels = {
 				new PlayerAssembler(),
+				new PutDeathStar(),
 				new TransitionToLevel(bg_space, 1, backgroundSpeed,false),
 				new Level(1),
 				new TransitionToLevel(bg_water, 2, backgroundSpeed,true),
@@ -45,6 +46,7 @@ public final class TimeLine extends Component {
 				new TransitionToLevel(bg_space, 4, backgroundSpeed,false),
 				new TransitionToBoss(),
 				new SomeBarricades(),
+				new RemoveDeathStar(),
 				new BossLevel(new VaderAMaker()),
 				new BossLevel(new VaderBMaker()),
 				new BossLevel(new VaderCMaker()),
@@ -81,15 +83,15 @@ public final class TimeLine extends Component {
 	private boolean hasNextLevel(){
 		return currentLevel<levels.size()-1;
 	}
-	public AbstractLevel currentLevel() {
+	public TimePoint currentLevel() {
 		return levels.get(currentLevel);
 	}
 
 	private void runTheLevel()
 	{
 
-		currentLevel().assembleLevel();
-		currentLevel().startLevel();
+		currentLevel().assembleMoment();
+		currentLevel().startMoment();
 		setActive(false);
 		EngineGetter.Instance().get().waitForFrames(()->{setActive(true);},5);
 	}

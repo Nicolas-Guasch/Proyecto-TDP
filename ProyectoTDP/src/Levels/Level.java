@@ -18,7 +18,7 @@ import Scripts.Jumper;
 
 import java.util.*;
 
-public final class Level extends AbstractLevel
+public final class Level extends TimePoint
 {
 
     private Collection<Entity> rewards;
@@ -50,7 +50,7 @@ public final class Level extends AbstractLevel
     }
 
     @Override
-    public void assembleLevel() {
+    public void assembleMoment() {
 
         assembleEnemies();
         assembleBarricades();
@@ -127,7 +127,7 @@ public final class Level extends AbstractLevel
     }
 
     @Override
-    public void startLevel()
+    public void startMoment()
     {
 
 

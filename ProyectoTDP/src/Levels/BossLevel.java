@@ -1,22 +1,17 @@
 package Levels;
 
 import ADTs.Vector2;
-import ADTs.Vector3;
 import Engine.EngineGetter;
 import Entities.EntityData;
 import Entities.EveryOne;
 import Entities.Ships.BaseEnemyShip;
-import Entities.Ships.EnemiesBuilders.VaderAMaker;
-import Entities.Ships.EnemiesBuilders.VaderBMaker;
-import Entities.Ships.EnemyShip;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.Ships.EnemyShipDirector;
-import GameData.MatchResult;
 import Tools.Random;
 import UI.ShipStatus;
 import UI.UI;
 
-public class BossLevel extends AbstractLevel {
+public class BossLevel extends TimePoint {
 
     private ShipStatus ShipStatus;
     private EnemyShipDirector director;
@@ -29,7 +24,7 @@ public class BossLevel extends AbstractLevel {
 
 
     @Override
-    public void assembleLevel() {
+    public void assembleMoment() {
 
         director.create();
         director.assemble();
@@ -38,7 +33,7 @@ public class BossLevel extends AbstractLevel {
     }
 
     @Override
-    public void startLevel() {
+    public void startMoment() {
         ShipStatus = new ShipStatus(new Vector2(100,200), vader.observerHealth(),"bossbar",vader.data().getHealth());
         vader.referenced().transform().setPosition(Vector2.Random(Random.value(200,450)));
         UI.getInstance().addUIComponent(ShipStatus);
