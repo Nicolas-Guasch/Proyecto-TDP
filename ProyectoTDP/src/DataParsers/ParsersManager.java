@@ -1,7 +1,7 @@
 package DataParsers;
 
 import GameData.ISettingsParser;
-import GameData.PlaceHolderSettingsParser;
+import GameData.FileSettingsParser;
 
 public final class ParsersManager {
 
@@ -15,7 +15,7 @@ public final class ParsersManager {
 	private ILevelDataParser levelDataParser;
 
 	private ParsersManager(){
-		settingsParser = new PlaceHolderSettingsParser();
+		settingsParser = new FileSettingsParser();
 		levelDataParser = new PlaceHolderLevelDataParser();
 	}
 

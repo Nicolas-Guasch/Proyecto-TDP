@@ -1,0 +1,11 @@
+FPS: 60
+Window: 1280x739
+PlayerData: (15000,12,0.2)
+PlayerBulletData: (1,8,0)
+TieData: (100,25,0)
+TieBulletData: (10,15,0)
+FirstBossData: (1000,10000,0.5)
+TieBulletSpeed: 10
+TieSpeed: 2
+FirstBossSpeed: 12
+PlayerBulletSpeed: 14
