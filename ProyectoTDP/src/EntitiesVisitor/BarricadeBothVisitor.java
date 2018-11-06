@@ -16,15 +16,16 @@ public class BarricadeBothVisitor extends VisitorEntity
         this.transform = transform;
     }
 
-    private Vector2 getRepulsion(Vector2 repulsor, Vector2 repulsado, Vector2 repulsor_top)
+    private Vector2 getRepulsion(Vector2 repulsor, Vector2 repulsado, Vector2 repulsor_top, Vector2 repulsado_top)
     {
-        var angle = repulsado.minus(repulsor).getUnaryAngle(repulsor_top);
-        var dir = repulsor_top.rotateUnary(angle);
+        var angle = repulsado_top.getUnaryAngle(repulsor_top);
+        var dir = repulsado_top.rotateUnary(-angle);
+        //var dir = repulsor_top.rotateUnary(-angle);
         return dir;
     }
 
     private void bounce(Transform quiet, Transform movile){
-        var nextTop = getRepulsion(quiet.position(),movile.position(),quiet.top());
+        var nextTop = getRepulsion(quiet.position(),movile.position(),quiet.top(),movile.top());
         movile.moveTowards(nextTop.withLength(5));
         movile.setTop(nextTop);
     }
