@@ -3,6 +3,7 @@ package Levels;
 import Audio.SoundManager;
 import Engine.EngineGetter;
 import Engine.While;
+import Entities.Builders.Directors.BarricadeBothDirector;
 import Entities.Ships.Player.PlayerShip;
 import IAs.PlayerMove;
 import IAs.Slippery;
@@ -15,11 +16,15 @@ public class TransitionToBoss extends AbstractLevel {
     private boolean complete = false;
 
 
+
     @Override
     public void assembleLevel() {
-
+        makeBarricades();
     }
 
+    private void makeBarricades() {
+
+    }
 
 
     @Override

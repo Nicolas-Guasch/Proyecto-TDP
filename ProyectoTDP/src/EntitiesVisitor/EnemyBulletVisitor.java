@@ -14,6 +14,7 @@ public class EnemyBulletVisitor extends VisitorEntity {
     @Override
     public void visit(BarricadeBoth barricade) {
         bullet.data().setHealth(-1);
+        barricade.data().takeDamage(bullet.data().getDamage());
     }
 
     @Override

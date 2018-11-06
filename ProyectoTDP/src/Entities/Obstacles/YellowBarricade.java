@@ -11,7 +11,7 @@ import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 
 //el obstaculo al que solo le pega el player
-public class NaveViejaImperioMaker extends BarricadeEnemBuilder {
+public class YellowBarricade extends BarricadeEnemBuilder {
     @Override
     public void assembleSprite()
     {

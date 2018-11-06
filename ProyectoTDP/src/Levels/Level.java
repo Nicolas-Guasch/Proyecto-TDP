@@ -4,17 +4,14 @@ package Levels;
 import ADTs.*;
 import DataParsers.*;
 import Engine.Components.*;
-import Engine.*;
 import Entities.Builders.Directors.BarricadeBothDirector;
 import Entities.Builders.Directors.BarricadeEnemDirector;
-import Entities.Obstacles.NaveDuraObstacle;
-import Entities.Obstacles.NaveViejaImperioMaker;
+import Entities.Obstacles.BarricadeBlue;
+import Entities.Obstacles.YellowBarricade;
 import Entities.Ships.*;
 import Entities.*;
 import EntitiesVisitor.*;
-import RenderingSystem.Sun;
 import Rewards.*;
-import RenderingSystem.Background;
 import Scripts.HyperSpace;
 import Scripts.Jumper;
 
@@ -40,8 +37,8 @@ public final class Level extends AbstractLevel
         director = new EnemyShipDirector();
         directorBboth = new BarricadeBothDirector();
         directorBenem = new BarricadeEnemDirector();
-        directorBboth.setBuilder(new NaveDuraObstacle());
-        directorBenem.setBuilder(new NaveViejaImperioMaker());
+        directorBboth.setBuilder(new BarricadeBlue());
+        directorBenem.setBuilder(new YellowBarricade());
         this.number = number;
     }
 

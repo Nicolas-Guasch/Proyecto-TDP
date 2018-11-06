@@ -3,8 +3,13 @@ package GameData;
 import Audio.SoundManager;
 import Engine.EngineGetter;
 import Engine.While;
+import Entities.Entity;
 import Entities.EveryOne;
+import EntitiesVisitor.GetEnemiesAndBarricades;
+import EntitiesVisitor.VisitorEntity;
 import UI.UI;
+
+import java.util.LinkedList;
 
 public class LostOrWin implements ILostOrWin{
 

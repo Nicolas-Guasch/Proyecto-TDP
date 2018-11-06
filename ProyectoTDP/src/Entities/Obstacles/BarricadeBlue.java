@@ -9,7 +9,7 @@ import RenderingSystem.Animation;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 
-public class NaveDuraObstacle extends BarricadeBothBuilder {
+public class BarricadeBlue extends BarricadeBothBuilder {
 
     @Override
     public void assembleSprite()
@@ -31,7 +31,7 @@ public class NaveDuraObstacle extends BarricadeBothBuilder {
     @Override
     public void assembleCollider()
     {
-        HitBox hb = HitBox.getOne(350,80,obst);
+        HitBox hb = HitBox.getOne(350,100,obst);
         HitBoxesManager.getInstance().addHitBox(hb,HitBoxesManager.BARRICADE_A);
         obst.setHitBox(hb);
     }

@@ -55,19 +55,21 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
 
     private void initenembuilds()
     {
-        enemies.get(L1).add(new WhiteTieMaker());
-        enemies.get(L1).add(new WachinMaker());
+
+        //enemies.get(L1).add(new WhiteTieMaker());
+        //enemies.get(L1).add(new WachinMaker());
+        enemies.get(L1).add(new DizzyMaker());
 
         enemies.get(L2).add(new DizzyMaker());
-        enemies.get(L2).add(new FastTieMaker());
-        enemies.get(L2).add(new WachinMaker());
-        enemies.get(L2).add(new WhiteTieMaker());
-        enemies.get(L2).add(new FastTieMaker());
+        //enemies.get(L2).add(new FastTieMaker());
+        //enemies.get(L2).add(new WachinMaker());
+        //enemies.get(L2).add(new WhiteTieMaker());
+        //enemies.get(L2).add(new FastTieMaker());
 
-        enemies.get(L3).add(new WachinMaker());
+        //enemies.get(L3).add(new WachinMaker());
         enemies.get(L3).add(new DizzyMaker());
-        enemies.get(L3).add(new FastTieMaker());
-        enemies.get(L3).add(new FullKamikazeeMaker());
+        //enemies.get(L3).add(new FastTieMaker());
+        //enemies.get(L3).add(new FullKamikazeeMaker());
         enemies.get(L3).add(new FastTieMaker());
     }
 
