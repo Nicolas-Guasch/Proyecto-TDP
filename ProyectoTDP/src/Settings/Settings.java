@@ -17,12 +17,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class Settings {
 
-	private static Settings instance;
+    public static boolean fullScreen = false;
+    private static Settings instance;
 	public static Settings getInstance(){
 		instance = (instance==null) ? new Settings():instance;
 		return instance;
 	}
 
+	private JCheckBox full;
 	private JFrame wind;
 	private Container container;
 	private JComboBox<String> box;
@@ -42,6 +44,8 @@ public final class Settings {
 
 		container = wind.getContentPane();
 		container.setLayout(null);
+
+
 
 		JLabel size = new JLabel("Screen Size");
 		JButton ok = new JButton("OK");
@@ -100,14 +104,18 @@ public final class Settings {
 
 		box = new JComboBox<>(ssizes);
 
+		full = new JCheckBox("Full Screen");
+
 
 		size.setBounds(120,10,200,50);
 		box.setBounds(120,110,100,30);
+		full.setBounds(240,110,100,30);
 		ok.setBounds(220,210,80,30);
 
 
 		container.add(size);
 		container.add(ok);
+		container.add(full);
 		container.add(box);
 		wind.repaint();
 		container.repaint();
@@ -148,6 +156,7 @@ public final class Settings {
 	private synchronized void actionButton(ActionEvent e){
 		if(close.get())return;
 		close.set(true);
+		fullScreen = full.isSelected();
 		int i = box.getSelectedIndex();
 		Vector2 screenSize = vsizes[i];
 		GameSettings.GetInstance().sizeWindow = screenSize.ToDimension();

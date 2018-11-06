@@ -2,6 +2,7 @@ package RenderingSystem;
 
 import ADTs.Vector2;
 import Assets.AssetStore;
+import Settings.Settings;
 import UI.*;
 import Engine.Component;
 import GameData.GameSettings;
@@ -62,7 +63,8 @@ public class Window extends Component
         wind.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //wind.setLayout(null);
         wind.setUndecorated(true);
-        //wind.pack();
+        if(Settings.fullScreen)
+            wind.pack();
         wind.setLocationRelativeTo(null);
         //wind.setVisible(true);
         container = wind.getContentPane();
