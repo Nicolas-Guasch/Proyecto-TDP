@@ -9,9 +9,9 @@ public class CollisionData
     private Entity their;
     private Vector2 contactPoint;
 
-    public Entity Mine (){return mine;}
-    public Entity Their (){return their;}
-    public Vector2 ContactPoint(){return contactPoint;}
+    public Entity mine(){return mine;}
+    public Entity their(){return their;}
+    public Vector2 contactPoint(){return contactPoint;}
 
     public CollisionData(Entity mine, Entity their , Vector2 contactPoint)
     {

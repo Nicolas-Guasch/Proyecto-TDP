@@ -10,7 +10,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class HitBoxesManager extends Component
 {
 
-
     private static HitBoxesManager instance;
 
     public static HitBoxesManager getInstance(){
@@ -22,10 +21,17 @@ public class HitBoxesManager extends Component
     }
 
 
-
-    public static final int PLAYER = 0, ENEMIES = 1, PLAYERBULLET = 2,
-                    ENEMYBULLET = 3, BARRICADE_A=4, BARRICADE_B=5, REWARDS = 6,
-                    SHIELD = 7, CANT = 8;
+    //LAYERS INDEXES
+    public static final int
+            PLAYER = 0,
+            ENEMIES = 1,
+            PLAYERBULLET = 2,
+            ENEMYBULLET = 3,
+            BARRICADE_BOTH =4,
+            BARRICADE_ENEM =5,
+            REWARDS = 6,
+            SHIELD = 7,
+            CANT = 8;
 
     private HitBoxesLayer[] layers;
     private Map<Integer, Queue<HitBox>> toadd;
@@ -33,7 +39,7 @@ public class HitBoxesManager extends Component
     //TODO: hacer un mapeo de int a hitboxlayer
     //con las cosas que hay que agregar, en lugar de hacer un add directo
 
-    private Collection<Tuple<Integer,Integer>> conection;
+    private Collection<Tuple<Integer,Integer>> connection;
 
     private String inputData = "0 1,0 3,0 4,0 5,0 6,1 2," +
                                 "2 4,2 5,3 4,1 7,3 7,1 4,1 5";
@@ -45,13 +51,13 @@ public class HitBoxesManager extends Component
         {
           layers[i] = new HitBoxesLayer();
         }
-        conection = new Vector<>();
+        connection = new Vector<>();
         for(String pares: inputData.split(","))
         {
             String[] ar = pares.split(" ");
             int c1 = Integer.parseInt(ar[0]);
             int c2 = Integer.parseInt(ar[1]);
-            conection.add(Tuple.get(c1,c2));
+            connection.add(Tuple.get(c1,c2));
         }
         toremove = new TreeMap<>();
         toadd = new TreeMap<>();
@@ -61,15 +67,13 @@ public class HitBoxesManager extends Component
         }
     }
 
-    private long i=0;
+
     @Override
     public void update() {
-        if(i<10L)
-        {
-            i++;return;
+        if (frameCounter() >= 20) {
+            checkQueues();
+            makeACheck();
         }
-        checkQueues(); 
-        makeACheck();
     }
 
     private void checkQueues() {
@@ -86,10 +90,10 @@ public class HitBoxesManager extends Component
         }
     }
 
-    public void makeACheck()
+    private void makeACheck()
     {
         HitBoxesLayer l1,l2;
-        for(Tuple<Integer, Integer> c : conection)
+        for(Tuple<Integer, Integer> c : connection)
         {
             l1 = layers[c.get1()];
             l2 = layers[c.get2()];

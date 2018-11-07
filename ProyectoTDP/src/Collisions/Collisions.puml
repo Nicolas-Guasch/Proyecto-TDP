@@ -37,7 +37,50 @@ class HitBoxesLayer{
     + checkLayer(other:[HitBox])
     + contains(hitBox : HitBox) : boolean
     - condition(mine,their : HitBox) : boolean
+}
 
+Component <|-- HitBoxManager
+
+HitBoxManager *-- "8" HitBoxesLayer
+
+class HitBoxManager{
+    - {static} HitBoxManager instance;
+    + {static} HitBoxManager getInstance;
+
+    + {static} PLAYER : int = 0
+    + {static} ENEMIES : int = 1
+    + {static} PLAYERBULLET : int = 2
+    + {static} ENEMYBULLET : int = 3
+    + {static} BARRICADE_BOTH: int  =4
+    + {static} BARRICADE_ENEM: int  =5
+    + {static} REWARDS : int = 6
+    + {static} SHIELD : int = 7
+    + {static} CANT : int = 8
+
+    + update() ++
+    + addHitBox(hitBox: HitBox, layer : int)
+    + removeHitBox(hitBox: HitBox)
+
+    - toAdd : map<int, [HitBox]>
+    - toRemove : map<int, [HitBox]>
+    - connection : [Tuple<int,int>]
+    - inputData : String
+    - long i=0
+    - HitBoxesManager()
+    - checkQueues()
+    - makeACheck()
+
+}
+
+CollisionData "mine" o--- "1" Entity
+CollisionData "their" o--- "1" Entity
+
+class CollisionData{
+    - contactPoint : Vector2
+    + mine() : Entity
+    + their() : Entity
+    + contactPoint(): Vector2
+    + CollisionData(mine,their : Entity , contactPoint : Vector2)
 }
 
 @enduml

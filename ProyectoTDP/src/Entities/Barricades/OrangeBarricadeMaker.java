@@ -29,7 +29,7 @@ public class OrangeBarricadeMaker extends BarricadeEnemBuilder {
     public void assembleCollider()
     {
         HitBox hb = HitBox.getOne(350,50,obst);
-        HitBoxesManager.getInstance().addHitBox(hb,HitBoxesManager.BARRICADE_B);
+        HitBoxesManager.getInstance().addHitBox(hb,HitBoxesManager.BARRICADE_ENEM);
         obst.setHitBox(hb);
     }
 

@@ -31,7 +31,7 @@ public class BlueBarricadeMaker extends BarricadeBothBuilder {
     public void assembleCollider()
     {
         HitBox hb = HitBox.getOne(350,100,obst);
-        HitBoxesManager.getInstance().addHitBox(hb,HitBoxesManager.BARRICADE_A);
+        HitBoxesManager.getInstance().addHitBox(hb,HitBoxesManager.BARRICADE_BOTH);
         obst.setHitBox(hb);
     }
 

@@ -68,7 +68,7 @@ public abstract class Entity {
 		return data().getHealth() > 0;
 	}
 	public final void reportCollision(CollisionData data){
-		data.Their().accept(visitor);
+		data.their().accept(visitor);
 	}
 	//implement with: visitor.visit(this);
 	public abstract void accept(VisitorEntity visitor);
