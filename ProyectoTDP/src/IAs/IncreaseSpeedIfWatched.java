@@ -27,9 +27,9 @@ public class IncreaseSpeedIfWatched extends AIQueryDecorator {
 
         Vector2 dir_to_me = ent.referenced().
                             transform().position().
-                            minus(PlayerShip.getInstance().
+                sub(PlayerShip.getInstance().
                             referenced().transform().
-                            position()).versor();
+                            position()).norma();
 
         var angle = dir_to_me.getUnaryAngle(PlayerShip.getInstance().referenced().transform().top());
 

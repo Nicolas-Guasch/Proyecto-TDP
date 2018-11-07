@@ -23,7 +23,7 @@ public abstract class ParametricMove extends AIQueryDecorator{
 
     @Override
     public final Vector2 whereToSee(Entity ent) {
-        return lastDirection.versor();
+        return lastDirection.norma();
     }
 
 }

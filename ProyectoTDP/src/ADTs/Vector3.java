@@ -12,7 +12,7 @@ public class Vector3{
         this.z = z;
     }
 
-    public static Vector3 Get(int x, int y, int z) {
+    public static Vector3 get(int x, int y, int z) {
         return new Vector3(x,y,z);
 
     }
@@ -25,7 +25,5 @@ public class Vector3{
         return z;
     }
 
-    public Vector2 v2() {
-        return new Vector2(x,y);
-    }
+
 }

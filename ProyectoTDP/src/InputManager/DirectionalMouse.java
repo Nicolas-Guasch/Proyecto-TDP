@@ -35,7 +35,7 @@ public class DirectionalMouse extends AbstractDirectionalInput
                 mouseY -= phaseshift.y();
 
                 Vector2 mousePos = RenderingTools.CanvasToWorld(new Dimension(mouseX,mouseY));
-                return mousePos.minus(reference.position()).versor();
+                return mousePos.sub(reference.position()).norma();
             }catch(Exception e){ // puede haber un error con el mouse
                 return Vector2.ORIGIN();
             }

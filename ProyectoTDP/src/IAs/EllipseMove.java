@@ -16,7 +16,7 @@ public class EllipseMove extends ParametricMove {
 
     @Override
     public Vector2 whereToMove(Entity ent, int t) {
-        return new Vector2(Math.cos(t/35f)*b,Math.sin(t/35f)*a).versor();
+        return new Vector2(Math.cos(t/35f)*b,Math.sin(t/35f)*a).norma();
     }
 
 

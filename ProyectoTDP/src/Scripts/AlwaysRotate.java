@@ -13,6 +13,6 @@ public class AlwaysRotate extends Component {
     @Override
     public void update()
     {
-        transform().setTop(transform().top().rotate(rot/100f));
+        transform().setTop(transform().top().rot(rot/100f));
     }
 }

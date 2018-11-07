@@ -18,6 +18,6 @@ public class LookTarget extends Component
     @Override
     public void update()
     {
-        transform().setTop(target.position().minus(transform().position()));
+        transform().setTop(target.position().sub(transform().position()));
     }
 }

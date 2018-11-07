@@ -46,18 +46,7 @@ public class BSpriteRenderer extends JPanel
         }
         gx.drawImage(image,0,0,null);//icon.getImageObserver());
 
-/*
-        if (!drunkMode) {
-        } else {
-            gx.drawImage(image,
-                    new java.util.Random().nextInt(drunkIntensity)-drunkIntensity/2,
-                    new java.util.Random().nextInt(drunkIntensity)-drunkIntensity/2,
-                    icon.getImageObserver());
-            gx.drawImage(image,
-                    new java.util.Random().nextInt(drunkIntensity)-drunkIntensity/2,
-                    new java.util.Random().nextInt(drunkIntensity)-drunkIntensity/2,
-                    icon.getImageObserver());
-        }*/
+
 
 
     }

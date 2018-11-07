@@ -24,7 +24,7 @@ public class TweenerMove extends Component
 
     //asumo currentStep != steps y
     private Vector2 direction(){
-        return destiny.minus(toMove.position()).prod(1f/(steps-currentStep));
+        return destiny.sub(toMove.position()).prod(1f/(steps-currentStep));
     }
 
     @Override

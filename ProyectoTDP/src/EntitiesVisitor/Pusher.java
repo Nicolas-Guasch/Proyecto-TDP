@@ -40,7 +40,7 @@ public class Pusher extends VisitorEntity
             if(count > 20){
                 count = 20;
             }
-            Vector2 velocity = ent.referenced().transform().position().minus(center).withLength((ratio-dist)*8).withMaxLength(20);
+            Vector2 velocity = ent.referenced().transform().position().sub(center).withLength((ratio-dist)*8).withMaxLength(20);
             ThePusher.getInstance().add(ent.referenced().transform(),count,velocity,effect);
         }
         //TODO: quitar vida si esta en el reduced

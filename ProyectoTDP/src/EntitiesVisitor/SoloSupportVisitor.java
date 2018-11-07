@@ -57,17 +57,17 @@ public class SoloSupportVisitor extends VisitorEntity
         Vector2[] waypoints = {
 
                 new Vector2(-540,300),
-                Vector2.Random().withLength(600),
+                Vector2.random().withLength(600),
                 new Vector2(150,-400),
-                Vector2.Random().withLength(500),
+                Vector2.random().withLength(500),
                 new Vector2(-240,300),
-                Vector2.Random().withLength(500),
+                Vector2.random().withLength(500),
                 new Vector2(10,00),
-                Vector2.Random().withLength(400),
+                Vector2.random().withLength(400),
                 new Vector2(-640,300),
-                Vector2.Random().withLength(500),
+                Vector2.random().withLength(500),
                 new Vector2(-240,-300),
-                Vector2.Random().withLength(500),
+                Vector2.random().withLength(500),
 
                 new Vector2(-800,0),
         };

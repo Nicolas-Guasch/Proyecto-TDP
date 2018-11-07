@@ -21,6 +21,6 @@ public class Kamikazee extends AIQueryDecorator
     @Override
     public Vector2 whereToSee(Entity ent)
     {
-        return PlayerShip.getInstance().referenced().transform().position().minus(ent.referenced().transform().position()).withLength(3);
+        return PlayerShip.getInstance().referenced().transform().position().sub(ent.referenced().transform().position()).withLength(3);
     }
 }

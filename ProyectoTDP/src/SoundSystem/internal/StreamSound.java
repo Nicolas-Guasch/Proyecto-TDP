@@ -156,7 +156,7 @@ public class StreamSound implements Sound {
 		}
 
 		/**
-		 * Get the ID of the StreamSound that produced this
+		 * get the ID of the StreamSound that produced this
 		 * StreamSoundReference.
 		 * @return the ID of this StreamSoundReference's parent StreamSound
 		 */
@@ -184,7 +184,7 @@ public class StreamSound implements Sound {
 		}
 
 		/**
-		 * Get the number of bytes remaining for each channel.
+		 * get the number of bytes remaining for each channel.
 		 * @return number of bytes remaining for each channel
 		 */
 		@Override

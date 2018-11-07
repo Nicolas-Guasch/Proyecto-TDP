@@ -50,16 +50,16 @@ public class SoloAI extends AIQueryDecorator {
             index_waypoints++;
         }
 
-        return waypoints[index_waypoints].minus(pos);
+        return waypoints[index_waypoints].sub(pos);
     }
 
     @Override
     public Vector2 whereToMove(Entity ent) {
-        return getToMove(ent.referenced().transform().position()).versor();
+        return getToMove(ent.referenced().transform().position()).norma();
     }
 
     @Override
     public Vector2 whereToSee(Entity ent) {
-        return getTarget(ent).minus(ent.referenced().transform().position());
+        return getTarget(ent).sub(ent.referenced().transform().position());
     }
 }

@@ -48,8 +48,8 @@ public class EnemyVisitor extends VisitorEntity {
     private void bounce(Vector2 bouncePoint)
     {
         if(ship==null || !ship.alive() || ship.referenced() == null) return;
-        Vector2 direction = ship.referenced().transform().position().minus(bouncePoint);
-        ship.referenced().transform().moveTowards(direction.versor());
+        Vector2 direction = ship.referenced().transform().position().sub(bouncePoint);
+        ship.referenced().transform().moveTowards(direction.norma());
     }
 
 

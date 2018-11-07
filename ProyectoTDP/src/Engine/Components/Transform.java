@@ -52,7 +52,7 @@ public final class Transform extends Component
     }
 
     public void setTop(Vector2 top) {
-        this.top = top.versor();
+        this.top = top.norma();
     }
 
     public void SetFromPrototype(Transform prototype)
@@ -76,7 +76,7 @@ public final class Transform extends Component
 
     public void rotate(float angle)
     {
-        top = top.rotate(angle);
+        top = top.rot(angle);
     }
     public void rotateUnary(float angle)
     {

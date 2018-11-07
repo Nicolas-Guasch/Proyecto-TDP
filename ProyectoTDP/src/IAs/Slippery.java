@@ -31,7 +31,7 @@ public class Slippery extends AIQueryDecorator
             last = v;
             return v;
         }
-        if(v.versor().distanceTo(last.versor())<0.1f)
+        if(v.norma().distanceTo(last.norma())<0.1f)
         {
             v = v.prod(midleDispersion);
             v = v.sum(last.prod(midleDispersion));

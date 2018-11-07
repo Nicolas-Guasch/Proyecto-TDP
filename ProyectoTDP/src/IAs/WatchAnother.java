@@ -23,6 +23,6 @@ public class WatchAnother extends AIQueryDecorator
 
     @Override
     public Vector2 whereToSee(Entity ent) {
-        return another.position().minus(ent.referenced().transform().position()).prod(scapeFrom);
+        return another.position().sub(ent.referenced().transform().position()).prod(scapeFrom);
     }
 }

@@ -37,6 +37,6 @@ public class DirectionalWASD extends AbstractDirectionalInput
         x -= A.happens() &&!Xblocked ? 1:0;
         y += W.happens() &&!Yblocked ? 1:0;
         y -= S.happens() &&!Yblocked ? 1:0;
-        return new Vector2(x,y).versor();
+        return new Vector2(x,y).norma();
     }
 }

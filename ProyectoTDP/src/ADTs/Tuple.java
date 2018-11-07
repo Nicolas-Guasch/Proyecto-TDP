@@ -10,7 +10,8 @@ public class Tuple<T1, T2>
         this.element2 = element2;
     }
 
-    public static<TypeA,TypeB> Tuple<TypeA,TypeB> get(TypeA c1, TypeB c2)
+    public static<TypeA,TypeB> Tuple<TypeA,TypeB>
+    get(TypeA c1, TypeB c2)
     {
         return new Tuple<>(c1,c2);
     }

@@ -35,7 +35,7 @@ public class BossLevel extends TimePoint {
     @Override
     public void startMoment() {
         ShipStatus = new ShipStatus(new Vector2(100,200), vader.observerHealth(),"bossbar",vader.data().getHealth());
-        vader.referenced().transform().setPosition(Vector2.Random(Random.value(200,450)));
+        vader.referenced().transform().setPosition(Vector2.random(Random.value(200,450)));
         UI.getInstance().addUIComponent(ShipStatus);
         EngineGetter.Instance().get().waitForFrames(()->playing = true,100);
     }

@@ -79,7 +79,7 @@ public class ByteList {
 	}
 	
 	/**
-	 * Get a byte at a specified index in this ByteList.
+	 * get a byte at a specified index in this ByteList.
 	 * @param i the index of the byte to get
 	 * @return the byte at index i
 	 */

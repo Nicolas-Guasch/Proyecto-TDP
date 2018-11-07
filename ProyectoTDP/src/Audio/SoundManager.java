@@ -152,7 +152,7 @@ public final class SoundManager
         // ------------- Pan -------------
 
         float pan = 1;
-        Vector2 go_to = vec.minus(point);
+        Vector2 go_to = vec.sub(point);
         pan = go_to.getUnaryAngle(top)*2;
 
         sound.play(vol,pan);

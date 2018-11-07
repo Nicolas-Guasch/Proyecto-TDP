@@ -160,7 +160,7 @@ public final class Settings {
 		fullScreen = full.isSelected();
 		int i = box.getSelectedIndex();
 		Vector2 screenSize = vsizes[i];
-		GameSettings.GetInstance().sizeWindow = screenSize.ToDimension();
+		GameSettings.GetInstance().sizeWindow = screenSize.toDimension();
 		wind.setVisible(false);
 		wind.dispose();
 		new Thread(LoadWindow::getInstance).start();

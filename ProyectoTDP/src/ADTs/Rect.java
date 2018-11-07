@@ -6,10 +6,10 @@ public final class Rect implements IClonable<Rect>
 {
     private Vector2 max, min;
 
-    public Rect(Vector2 topRight, Vector2 bottomLeft)
+    public Rect(Vector2 max, Vector2 min)
     {
-        this.max = topRight;
-        this.min = bottomLeft;
+        this.max = max;
+        this.min = min;
     }
     //something to push
 

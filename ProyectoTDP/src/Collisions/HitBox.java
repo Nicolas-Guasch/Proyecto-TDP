@@ -92,7 +92,7 @@ public final class HitBox extends Component {
         var left = leftSide();
         var vertex = bottomLeft();
         for (Vector2 pto : other.vertices()) {
-            Vector2 vertToPto = pto.minus(vertex);
+            Vector2 vertToPto = pto.sub(vertex);
             var prodBot = bottom.scalarProd(vertToPto);
             var prodLeft = left.scalarProd(vertToPto);
             if (0 <= prodBot && prodBot <= bottom.lengthSq() && 0 <= prodLeft && prodLeft <= left.lengthSq())// si colisiona:
@@ -105,7 +105,7 @@ public final class HitBox extends Component {
 
 
     private Vector2 bottomLeft() {
-        return transform.position().minus(bottomSide().div(2)).minus(leftSide().div(2));
+        return transform.position().sub(bottomSide().div(2)).sub(leftSide().div(2));
     }
 
     private Vector2 topRight() {

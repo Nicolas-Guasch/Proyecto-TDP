@@ -18,7 +18,7 @@ public class AlwaysTurnAround extends Component
 
     @Override
     public void update() {
-        currentGap = currentGap.rotate(angularSpeed);
+        currentGap = currentGap.rot(angularSpeed);
         transform().setPosition(center.position().sum(currentGap));
         transform().setTop(currentGap);
     }

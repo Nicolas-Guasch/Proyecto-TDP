@@ -1,14 +1,10 @@
 package Scripts;
 
 import ADTs.Vector2;
-import Audio.SoundManager;
-import Broadcaster.*;
-import Engine.Component;
 import Engine.Components.Transform;
 import Engine.GameObject;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class HyperSpace
@@ -31,7 +27,7 @@ public class HyperSpace
     }
 
     private static List<Vector2> GetPath(Vector2 src, Vector2 dest, int frames){
-        Vector2 minPath = dest.minus(src).prod(1f/frames);
+        Vector2 minPath = dest.sub(src).prod(1f/frames);
         List<Vector2> v = new ArrayList<>(frames+1);
         Vector2 lastPos = src;
         for(int i=0 ; i<frames-1 ; i++){

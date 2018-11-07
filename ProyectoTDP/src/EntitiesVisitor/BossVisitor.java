@@ -5,7 +5,6 @@ import Engine.EngineGetter;
 import Entities.BarricadeBoth;
 import Entities.Ships.Player.PlayerShip;
 import Entities.Ships.ShipBoss;
-import EntitiesVisitor.VisitorEntity;
 
 public class BossVisitor extends VisitorEntity {
 
@@ -41,7 +40,7 @@ public class BossVisitor extends VisitorEntity {
     }
 
     private Vector2 getRepulsion(Vector2 repulsor, Vector2 repulsado, Vector2 repulsor_top){
-        return repulsor_top.prod(repulsado.minus(repulsor).scalarProd(repulsor_top)).prod(-1);
+        return repulsor_top.prod(repulsado.sub(repulsor).scalarProd(repulsor_top)).prod(-1);
     }
 
 }

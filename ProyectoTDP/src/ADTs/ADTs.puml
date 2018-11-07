@@ -1,0 +1,97 @@
+@startuml
+
+class Vector2{
+    +{static}ORIGIN() : Vector2
+    +{static}UP() : Vector2
+    +{static}DOWN() : Vector2
+    +{static}LEFT() : Vector2
+    +{static}RIGHT() : Vector2
+    +{static}UP(length : float) : Vector2
+    +{static}DOWN(length : float) : Vector2
+    +{static}LEFT(length : float) : Vector2
+    +{static}RIGHT(length : float) : Vector2
+    - {static} Epsilon:float = 0.01f
+    - x : float
+    - y : float
+    +{static} random() : Vector2
+    +{static} random(large: float) : Vector2
+
+
+    +x():float
+    +y():float
+    +Vector2(x1,y1 : double)
+    +Vector2(x1,y1 : float)
+    +sum(other : Vector2):Vector2
+    +sub(other : Vector2):Vector2
+    +scalarProd(other : Vector2):float
+    +length():float
+    +lengthSq():float
+    +div(real:float):Vector2
+    +prod(real:float):Vector2
+    +norma():Vector2
+    +rot(angle:float):Vector2
+    +getAngle(other:Vector2):float
+    +rotateUnary(angle:float):Vector2
+    +getUnaryAngle(other:Vector2):float
+    +near(other:Vector2):boolean
+    +equals(other:Vector2):boolean ++
+    +swapped():Vector2
+    +mirrorY():Vector2
+    +mirrorX():Vector2
+    +withLength(length:float):Vector2
+    +getRight():Vector2
+    +getRight(length:float):Vector2
+    +distanceTo(other:Vector2):float
+    +half():Vector2
+    +isOver(other:Vector2):boolean
+    +isUnder(other:Vector2):boolean
+    +isLeft(other:Vector2):boolean
+    +isRight(other:Vector2):boolean
+    +v3(z:float):Vector3
+    +v3():Vector3
+    +withMaxLength(max:float):Vector2
+    +toDimension():Dimension
+    +toString():String++
+}
+interface IClonable<ClonableType>{
+    +clone():ClonableType
+}
+
+IClonable <|-- Rect
+
+class Rect
+{
+    -min:Vector2
+    -max:Vector2
+    +Rect(max:Vector2,min:Vector2)
+    +max():Vector2
+    +prod(factor:float):Rect
+    +clone() : Rect +
+}
+class RowCol
+{
+    -row:int
+    -col:int
+    + RowCol(row:int,col:int)
+    +getCol():int
+    +getRow():int
+}
+class Tuple<T1,T2>{
+    -element1:T1
+    -element2:T2
+    +Tuple(element1:T1,element2:T2)
+    +{static}<TA,TB> get(TA c1, TB c2) :Tuple<TA,TB>
+    + get2():T2
+    + get1():T1
+}
+class Vector3{
+    - x:float
+    - y:float
+    - z:float
+    +Vector3(x,y,z : float)
+    +{static} get(x,y,z : float) : Vector3
+    + xy():Vector2
+    + z():float
+}
+
+@enduml

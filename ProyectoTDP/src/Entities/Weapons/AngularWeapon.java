@@ -50,7 +50,7 @@ public class AngularWeapon<BulletDirectorType extends IBulletDirector> extends W
             generator.assemble();
             var b = generator.get();
             b.transform().setPosition(point);
-            b.transform().setTop(reference.top().rotate(-first-pedazo*i));
+            b.transform().setTop(reference.top().rot(-first-pedazo*i));
             EveryOne.getInstance().add(b.entity());
             EveryOne.getInstance().killIn(b.entity(),framesDuration);
         }
