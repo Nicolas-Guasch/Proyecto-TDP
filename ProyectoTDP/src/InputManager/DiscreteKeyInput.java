@@ -1,6 +1,6 @@
 package InputManager;
 
-import Broadcaster.*;
+import Observer.*;
 import Engine.EngineGetter;
 
 public class DiscreteKeyInput extends AbstractDiscreteInput
@@ -18,7 +18,7 @@ public class DiscreteKeyInput extends AbstractDiscreteInput
 
     public DiscreteKeyInput(String chars)
     {
-        ObserverPack<Boolean> pack = ObserverSystem.getInstance().GetBroadcaster();
+        observerPack<Boolean> pack = ObserverSystem.getInstance().getBroadcaster();
         onAction = pack.Broadcaster;
         invokerOnAction = pack.Invoker;
         related = new ContinueKeyInput(chars);
@@ -31,7 +31,7 @@ public class DiscreteKeyInput extends AbstractDiscreteInput
     {
         if(lastStatus != related.happens() && isActive())
         {
-            invokerOnAction.Invoke(!lastStatus);
+            invokerOnAction.invoke(!lastStatus);
             lastStatus = !lastStatus;
         }
     }
@@ -50,7 +50,7 @@ public class DiscreteKeyInput extends AbstractDiscreteInput
     {
         setActive(false);
         related.Destroy();
-        onAction.Clean();
+        onAction.clean();
         //EngineGetter.Instance().get().unsuscribeFromUpdate(Dummy);
     }
 

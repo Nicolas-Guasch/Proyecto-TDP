@@ -3,7 +3,6 @@ package UI;
 import ADTs.Vector2;
 import ADTs.Vector3;
 import Engine.GameObject;
-import Entities.Ships.Player.PlayerShip;
 import Entities.Weapons.Arsenal;
 import Entities.Weapons.Weapon;
 import GameData.GameSettings;
@@ -37,7 +36,7 @@ public class ArsenalUI implements UIComponent {
                 new Vector2(40,40),
                 5);
 
-        arsenal.observer().Suscribe(this::listenArsenal);
+        arsenal.observer().suscribe(this::listenArsenal);
         selector = GameObject.getRoot().addChild();
         Renderizable rend = new Renderizable(new SpriteData("selector"));
         rend.show();

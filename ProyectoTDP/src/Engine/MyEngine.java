@@ -1,6 +1,6 @@
 package Engine;
 
-import Broadcaster.*;
+import Observer.*;
 
 class MyEngine implements IEngine
 {
@@ -21,7 +21,7 @@ class MyEngine implements IEngine
     public void suscribeToUpdate(GameObject object)
     {
         if(object==null)return;
-        onUpdate.Suscribe((o)->object.Update());
+        onUpdate.suscribe((o)->object.Update());
     }
 
 
@@ -29,7 +29,7 @@ class MyEngine implements IEngine
     @Override
     public void suscribeToUpdate(Component component)
     {
-        onUpdate.Suscribe((o)->component.update());
+        onUpdate.suscribe((o)->component.update());
     }
     //TODO: guardar une HashMap de los components para desuscribirlos mas fasil luego
 

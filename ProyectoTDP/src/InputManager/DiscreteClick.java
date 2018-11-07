@@ -1,6 +1,6 @@
 package InputManager;
 
-import Broadcaster.*;
+import Observer.*;
 import Engine.EngineGetter;
 
 public class DiscreteClick extends AbstractDiscreteInput
@@ -20,7 +20,7 @@ public class DiscreteClick extends AbstractDiscreteInput
     }
     public void initialize(int mouseClick)
     {
-        ObserverPack<Boolean> pack = ObserverSystem.getInstance().GetBroadcaster();
+        observerPack<Boolean> pack = ObserverSystem.getInstance().getBroadcaster();
         onAction = pack.Broadcaster;
         invokerOnAction = pack.Invoker;
         related = new ContinueClick(mouseClick);
@@ -33,7 +33,7 @@ public class DiscreteClick extends AbstractDiscreteInput
     {
         if(lastStatus != related.happens()&& isActive())
         {
-            invokerOnAction.Invoke(!lastStatus);
+            invokerOnAction.invoke(!lastStatus);
             lastStatus = !lastStatus;
         }
     }
@@ -53,7 +53,7 @@ public class DiscreteClick extends AbstractDiscreteInput
     {
         setActive(false);
         related.Destroy();
-        onAction.Clean();
+        onAction.clean();
         //EngineGetter.Instance().get().unsuscribeFromUpdate(Dummy);
     }
 

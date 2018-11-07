@@ -115,7 +115,7 @@ public final class Level extends TimePoint
             ship.referenced().transform().setPosition(far);
             Jumper jumper = HyperSpace.Jump(ship.referenced().transform(),pos.xy(),30,i);
             ship.getArsenal().setActive(false);
-            jumper.getOnComplete().Suscribe(new ShipAction(ship,(s)->s.getArsenal().setActive(true)));
+            jumper.getOnComplete().suscribe(new ShipAction(ship,(s)->s.getArsenal().setActive(true)));
             EveryOne.getInstance().add(ship);
             if(itRewards.hasNext()){
                 var onDeath =ThrowAReward(itRewards.next(),ship.referenced().transform());

@@ -15,7 +15,7 @@ public class PowersDeck implements IActivable
 
     public PowersDeck(AbstractDiscreteInput activator){
         powers = new Stack<>();
-        activator.OnAction().Suscribe(this::use);
+        activator.OnAction().suscribe(this::use);
     }
 
     public void add(ISpecialPower power){

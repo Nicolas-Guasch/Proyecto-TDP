@@ -1,4 +1,4 @@
-package Broadcaster;
+package Observer;
 
 public class Invoker<ParameterType>
 {
@@ -7,8 +7,8 @@ public class Invoker<ParameterType>
     {
         broadcaster = broad;
     }
-    public void Invoke(ParameterType p)
+    public void invoke(ParameterType p)
     {
-        broadcaster.Invoke(p);
+        broadcaster.invoke(p);
     }
 }

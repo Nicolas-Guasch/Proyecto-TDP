@@ -2,8 +2,7 @@ package UI;
 
 import ADTs.Vector2;
 import Assets.AssetStore;
-import Broadcaster.IBroadcaster;
-import GameData.GameSettings;
+import Observer.IBroadcaster;
 
 import javax.swing.*;
 import java.util.LinkedList;
@@ -42,7 +41,7 @@ public class ShipStatus implements UIComponent
         all.add(decorate);
         all.add(lifeBar);
 
-        shipHealth.Suscribe(this::HealthShip);
+        shipHealth.suscribe(this::HealthShip);
     }
 
     public void HealthShip(float life)

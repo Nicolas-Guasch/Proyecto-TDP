@@ -1,9 +1,7 @@
 package Entities.Weapons;
 
-import Broadcaster.IBroadcaster;
+import Observer.IBroadcaster;
 import Engine.Components.IActivable;
-
-import java.util.Iterator;
 
 public abstract class Arsenal implements IActivable {
 

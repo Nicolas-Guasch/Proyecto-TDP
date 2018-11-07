@@ -1,9 +1,9 @@
 package Entities;
 
-import Broadcaster.ObserverPack;
-import Broadcaster.IBroadcaster;
-import Broadcaster.Invoker;
-import Broadcaster.ObserverSystem;
+import Observer.observerPack;
+import Observer.IBroadcaster;
+import Observer.Invoker;
+import Observer.ObserverSystem;
 
 public final class EntityData
 {
@@ -26,7 +26,7 @@ public final class EntityData
         this.shield = shield;
         this.initialHealth = health;
 
-        ObserverPack<Float> pack = ObserverSystem.getInstance().GetBroadcaster();
+        observerPack<Float> pack = ObserverSystem.getInstance().getBroadcaster();
         HealthData = pack.Broadcaster;
         HealthDataInvoker = pack.Invoker;
     }
@@ -74,14 +74,14 @@ public final class EntityData
         {
             this.health = initialHealth;
         }
-        HealthDataInvoker.Invoke(this.health);
+        HealthDataInvoker.invoke(this.health);
     }
 
 
 
     public void takeDamage(float damage) {
         health -= damage*(1-shield);
-        HealthDataInvoker.Invoke(health);
+        HealthDataInvoker.invoke(health);
     }
 
     public float getInitialHealth() {

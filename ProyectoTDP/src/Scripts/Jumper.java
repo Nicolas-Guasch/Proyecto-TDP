@@ -2,10 +2,10 @@ package Scripts;
 
 import ADTs.Vector2;
 import Audio.SoundManager;
-import Broadcaster.IBroadcaster;
-import Broadcaster.Invoker;
-import Broadcaster.ObserverPack;
-import Broadcaster.ObserverSystem;
+import Observer.IBroadcaster;
+import Observer.Invoker;
+import Observer.observerPack;
+import Observer.ObserverSystem;
 import Engine.Component;
 import Engine.Components.Transform;
 
@@ -26,7 +26,7 @@ public class Jumper extends Component {
         this.transform = tr;
         this.delay = delayFrames;
         this.firstPos = tr.position();
-        ObserverPack<Vector2> v = ObserverSystem.getInstance().GetBroadcaster();
+        observerPack<Vector2> v = ObserverSystem.getInstance().getBroadcaster();
         onComplete = v.Broadcaster;
         invokerComplete = v.Invoker;
     }
@@ -47,7 +47,7 @@ public class Jumper extends Component {
             SoundManager.Instance().TieDowns(transform.position().withLength(50));
             setActive(false);
             gameObject().destroy();
-            invokerComplete.Invoke(transform.position());
+            invokerComplete.invoke(transform.position());
             return;
         }
         transform.setPosition(points.next());

@@ -1,9 +1,9 @@
 package Entities.Weapons;
 
-import Broadcaster.IBroadcaster;
-import Broadcaster.Invoker;
-import Broadcaster.ObserverPack;
-import Broadcaster.ObserverSystem;
+import Observer.IBroadcaster;
+import Observer.Invoker;
+import Observer.observerPack;
+import Observer.ObserverSystem;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public class EnemyArsenal extends Arsenal
     public EnemyArsenal()
     {
         weapons = new ArrayList<>();
-        ObserverPack<Boolean> pack = ObserverSystem.getInstance().GetBroadcaster();
+        observerPack<Boolean> pack = ObserverSystem.getInstance().getBroadcaster();
         broadcaster = pack.Broadcaster;
         invoker = pack.Invoker;
     }
@@ -30,7 +30,7 @@ public class EnemyArsenal extends Arsenal
         {
             index++;
             index = (index < weapons.size()) ? index : 0;
-            invoker.Invoke(true);
+            invoker.invoke(true);
         }
     }
 
@@ -38,7 +38,7 @@ public class EnemyArsenal extends Arsenal
     public void add(Weapon weapon)
     {
         weapons.add(weapon);
-        invoker.Invoke(true);
+        invoker.invoke(true);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class EnemyArsenal extends Arsenal
     public void remove(Weapon weapon)
     {
         weapons.remove(weapon);
-        invoker.Invoke(true);
+        invoker.invoke(true);
     }
 
     public Weapon getCurrent()
@@ -80,7 +80,7 @@ public class EnemyArsenal extends Arsenal
     public void destroy() {
         weapons.clear();
         setActive(false);
-        invoker.Invoke(true);
+        invoker.invoke(true);
     }
 
     @Override

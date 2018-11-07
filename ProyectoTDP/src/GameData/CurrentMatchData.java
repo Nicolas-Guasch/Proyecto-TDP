@@ -1,6 +1,6 @@
 package GameData;
 
-import Broadcaster.*;
+import Observer.*;
 
 public class CurrentMatchData
 {
@@ -23,7 +23,7 @@ public class CurrentMatchData
 
     private CurrentMatchData()
     {
-        ObserverPack<Integer> pack = ObserverSystem.getInstance().GetBroadcaster();
+        observerPack<Integer> pack = ObserverSystem.getInstance().getBroadcaster();
         invokerScoreChanges = pack.Invoker;
         OnScoreChanges = pack.Broadcaster;
 
@@ -40,7 +40,7 @@ public class CurrentMatchData
     public void incScore(int cant)
     {
         score += cant;
-        invokerScoreChanges.Invoke(score);
+        invokerScoreChanges.invoke(score);
     }
 
 
@@ -48,7 +48,7 @@ public class CurrentMatchData
     public void resetScore()
     {
         score = 0;
-        invokerScoreChanges.Invoke(score);
+        invokerScoreChanges.invoke(score);
     }
 
 

@@ -1,6 +1,6 @@
 package InputManager;
 
-import Broadcaster.*;
+import Observer.*;
 import Engine.Components.IActivable;
 
 public abstract class AbstractDiscreteInput implements IActivable

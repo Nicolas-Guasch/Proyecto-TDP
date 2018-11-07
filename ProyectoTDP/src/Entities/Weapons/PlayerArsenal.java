@@ -1,9 +1,9 @@
 package Entities.Weapons;
 
-import Broadcaster.IBroadcaster;
-import Broadcaster.Invoker;
-import Broadcaster.ObserverPack;
-import Broadcaster.ObserverSystem;
+import Observer.IBroadcaster;
+import Observer.Invoker;
+import Observer.observerPack;
+import Observer.ObserverSystem;
 import InputManager.AbstractDiscreteInput;
 
 import java.util.ArrayList;
@@ -22,9 +22,9 @@ public class PlayerArsenal extends Arsenal
         weapons = new ArrayList<>();
         Switch = switchKey;
         Shoot = shootKey;
-        shootKey.OnAction().Suscribe(this::_shoot);
-        switchKey.OnAction().Suscribe(this::_switch);
-        ObserverPack<Boolean> pack = ObserverSystem.getInstance().GetBroadcaster();
+        shootKey.OnAction().suscribe(this::_shoot);
+        switchKey.OnAction().suscribe(this::_switch);
+        observerPack<Boolean> pack = ObserverSystem.getInstance().getBroadcaster();
         broadcaster = pack.Broadcaster;
         invoker = pack.Invoker;
     }
@@ -35,7 +35,7 @@ public class PlayerArsenal extends Arsenal
         if(isPressed && isActive())
         {
             shoot();
-            invoker.Invoke(true);
+            invoker.invoke(true);
         }
     }
     @Override
@@ -50,7 +50,7 @@ public class PlayerArsenal extends Arsenal
         if(isPressed && isActive())
         {
             switchCurrent();
-            invoker.Invoke(true);
+            invoker.invoke(true);
         }
     }
 
@@ -67,14 +67,14 @@ public class PlayerArsenal extends Arsenal
                 weapons.remove(w);
                 switchCurrent();
             }
-            invoker.Invoke(true);
+            invoker.invoke(true);
         }
     }
 
     @Override
     public void add(Weapon weapon) {
         weapons.add(weapon);
-        invoker.Invoke(true);
+        invoker.invoke(true);
     }
 
     public void shoot()
@@ -97,7 +97,7 @@ public class PlayerArsenal extends Arsenal
     @Override
     public void remove(Weapon weapon) {
         weapons.remove(weapon);
-        invoker.Invoke(true);
+        invoker.invoke(true);
     }
 
     public Weapon getCurrent()
@@ -111,7 +111,7 @@ public class PlayerArsenal extends Arsenal
     public void destroy() {
         setActive(false);
         weapons.clear();
-        invoker.Invoke(true);
+        invoker.invoke(true);
     }
 
     @Override

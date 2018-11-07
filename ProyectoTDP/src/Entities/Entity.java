@@ -1,6 +1,6 @@
 package Entities;
 
-import Broadcaster.IBroadcaster;
+import Observer.IBroadcaster;
 import Collisions.HitBox;
 import Engine.Component;
 import Collisions.CollisionData;

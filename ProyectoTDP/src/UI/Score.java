@@ -2,7 +2,6 @@ package UI;
 
 import GameData.CurrentMatchData;
 import GameData.GameSettings;
-import RenderingSystem.SpriteRenderer;
 
 
 import javax.swing.*;
@@ -18,7 +17,7 @@ class Score extends JLabel
     {
         setForeground(new Color(200,200,200));
         setFont(Font.decode("Star Jedi Hollow-40"));
-        CurrentMatchData.getMatchData().OnScoreChanges.Suscribe(this::readChange);
+        CurrentMatchData.getMatchData().OnScoreChanges.suscribe(this::readChange);
         var x1 = GameSettings.GetInstance().sizeWindow.width/2;
         var y1 = GameSettings.GetInstance().sizeWindow.height/2;
         setBounds(x1,50,300,100);

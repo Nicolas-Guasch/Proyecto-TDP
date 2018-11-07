@@ -1,4 +1,4 @@
-package Broadcaster;
+package Observer;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -21,10 +21,9 @@ public final class Broadcaster<ParameterType> implements IBroadcaster<ParameterT
         list = new LinkedList<>();
         toAdd = new LinkedBlockingQueue<>();
         toRemove = new LinkedBlockingQueue<>();
-
     }
 
-    void Invoke(ParameterType parameter)
+    void invoke(ParameterType parameter)
     {
         while(!toAdd.isEmpty())
         {
@@ -40,15 +39,15 @@ public final class Broadcaster<ParameterType> implements IBroadcaster<ParameterT
         }
     }
 
-    public void Suscribe(Consumer<ParameterType> listener)
+    public void suscribe(Consumer<ParameterType> listener)
     {
         toAdd.add(listener);
     }
-    public void Unsuscribe(Consumer<ParameterType> listener)
+    public void unsuscribe(Consumer<ParameterType> listener)
     {
         toRemove.add(listener);
     }
-    public void Clean()
+    public void clean()
     {
         list.clear();
         toAdd.clear();

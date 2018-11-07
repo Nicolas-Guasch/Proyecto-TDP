@@ -1,6 +1,6 @@
 package Engine;
 
-import Broadcaster.*;
+import Observer.*;
 import Exceptions.TimeLineException;
 import GameData.*;
 import java.util.*;
@@ -55,11 +55,11 @@ final class Core
     private void clean() // Initializer
     {
 
-        ObserverPack<Float> packP = ObserverSystem.getInstance().GetBroadcaster();
+        observerPack<Float> packP = ObserverSystem.getInstance().getBroadcaster();
         invokerOnPhysicsUpdate = packP.Invoker;
         onPhysicsUpdate = packP.Broadcaster;
 
-        ObserverPack packU = ObserverSystem.getInstance().GetBroadcaster();
+        observerPack packU = ObserverSystem.getInstance().getBroadcaster();
         invokerOnUpdate = packU.Invoker;
         onUpdate = packU.Broadcaster;
 
@@ -77,7 +77,7 @@ final class Core
             TasksForFrame.get(currentFrame-1).forEach(Runnable::run);
             TasksForFrame.remove(currentFrame-1);
         }
-        invokerOnUpdate.Invoke(null);
+        invokerOnUpdate.invoke(null);
     }
 
     private long debt = 0;
