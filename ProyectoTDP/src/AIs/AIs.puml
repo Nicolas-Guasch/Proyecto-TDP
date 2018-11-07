@@ -1,0 +1,44 @@
+@startuml
+skinparam classAttributeIconSize 0
+class LookTarget{
+
+    +LookTarget(playerTransform:Transform)
+    +update()++
+}
+abstract class Component
+Component <|-- LookTarget
+LookTarget -- "1" Transform: target >
+
+class FireFrequency{
+    - shootFrequency:final int
+    - i:int
+
+    +FireFrequency(shootFrequency:int, arsenal:Arsenal)
+    + update()++
+    + onDestroy()++
+}
+Component <|-- FireFrequency
+FireFrequency -- "1" Arsenal: weapons >
+class MouseFollower{
+    - angle:float
+
+    +MouseFollower(angle:float)
+
+    +start()++
+    + update()++
+    + onDestroy()++
+}
+Component <|-- MouseFollower
+MouseFollower --"1" AbstractDirectionalInput: Dir >
+class SimpleBullet{
+    - speed:final float
+
+    + SimpleBullet(speed: float)
+
+    + update()++
+}
+Component <|-- SimpleBullet
+
+
+
+@enduml

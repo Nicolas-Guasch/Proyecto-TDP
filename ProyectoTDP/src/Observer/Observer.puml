@@ -1,4 +1,5 @@
 @startuml
+skinparam classAttributeIconSize 0
 
 interface IBroadcaster<ParameterType>{
     +unsuscribe(listener : Consumer<ParameterType>)
