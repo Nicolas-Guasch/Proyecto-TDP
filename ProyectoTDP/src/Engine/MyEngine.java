@@ -41,40 +41,11 @@ class MyEngine implements IEngine
     }
 
     @Override
-    public void waitForSeconds(Runnable action, float seconds)
-    {
-        core.waitForSeconds(action,seconds);
-    }
-
-    @Override
-    public void Start()
+    public void start()
     {
         core.Start();
     }
 
-    @Override
-    public void Pause()
-    {
-        core.setPaused(true);
-    }
-
-    @Override
-    public void Continue() {
-        core.setPaused(false);
-    }
-
-
-    @Override
-    public void Stop()
-    {
-
-    }
-
-    @Override
-    public boolean isPaused()
-    {
-        return core.isPaused();
-    }
 
     @Override
     public CorePauser Pauser() {

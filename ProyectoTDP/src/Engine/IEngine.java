@@ -14,13 +14,8 @@ public interface IEngine
 
 
     void waitForFrames(Runnable action, int frames);
-    void waitForSeconds(Runnable action, float seconds);
 
-    void Start();
-    void Pause();
-    void Continue();
-    void Stop();
-    boolean isPaused();
+    void start();
 
     CorePauser Pauser();
 
