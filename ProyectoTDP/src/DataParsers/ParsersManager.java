@@ -12,18 +12,18 @@ public final class ParsersManager {
 	}
 
 	private ISettingsParser settingsParser;
-	private ILevelDataParser levelDataParser;
+	private ILevelData levelDataParser;
 
 	private ParsersManager(){
 		settingsParser = new FileSettingsParser();
-		levelDataParser = new PlaceHolderLevelDataParser();
+		levelDataParser = new LevelData();
 	}
 
 	public ISettingsParser getSettingsParser() {
 		return settingsParser;
 	}
 
-	public ILevelDataParser getLevelDataParser() {
-		return new PlaceHolderLevelDataParser();
+	public ILevelData getLevelDataParser() {
+		return new LevelData();
 	}
 }

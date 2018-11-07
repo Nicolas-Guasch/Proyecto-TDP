@@ -8,7 +8,7 @@ import Rewards.RewardKey;
 
 import java.util.*;
 
-public class PlaceHolderLevelDataParser implements ILevelDataParser
+public class LevelData implements ILevelData
 {
 
     private Map<String,List<Vector2>> enemsPos, obstpos;
@@ -21,7 +21,7 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
 
     private String currentKey = L1;
 
-    PlaceHolderLevelDataParser()
+    LevelData()
     {
         enemies = new TreeMap<>();
         obstpos = new TreeMap<>();
@@ -91,9 +91,9 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
         rew.get(L2).add(RewardsManager.HEALTH);
         rew.get(L2).add(RewardsManager.HEALTH);
         rew.get(L2).add(RewardsManager.ICE);
-        rew.get(L2).add(RewardsManager.SHIELD);
         rew.get(L2).add(RewardsManager.FORCE);
 
+        rew.get(L3).add(RewardsManager.SHIELD);
         rew.get(L3).add(RewardsManager.ICE);
         rew.get(L3).add(RewardsManager.FIVEWEAPON);
         rew.get(L3).add(RewardsManager.HANSUPPORT);

@@ -26,7 +26,7 @@ public class SomeBarricades extends TimePoint {
 
     @Override
     public void assembleMoment() {
-        var circleBarricades = 10;
+        var circleBarricades = 20;
         float angle = 1f/circleBarricades;
         var dim = GameSettings.GetInstance().sizeWindow;
         var rad= Math.min(dim.width,dim.height) * 0.3f;
@@ -38,6 +38,7 @@ public class SomeBarricades extends TimePoint {
             bar.setTop(pos.prod(-1));
             pos = pos.rotateUnary(angle);
             EveryOne.getInstance().add(entBar);
+            entBar.data().setShield(0.8f);
         }
     }
 
