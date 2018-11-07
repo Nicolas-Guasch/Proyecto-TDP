@@ -1,0 +1,43 @@
+@startuml
+
+Component <|--- HitBox
+HitBox "transform" *-- "1" Transform
+HitBox "entity" *-- "1" Entity
+class HitBox{
+    - dimensions : Vector2
+    +{static} NoCheckDistance : int = 500
+    +{static} getOne(w,h : float , entity:Entity): HitBox
+    +{static} getOne(dimensions : Vector2 , entity:Entity): HitBox
+
+    -HitBox(dimensions : Vector2 , entity:Entity)
+    +getEntity():Entity
+
+    ~checkCollision(other:HitBox):CollisionData
+
+    - vertices() : [Vector2]
+    - diagonalLength() : float
+    - distToCenter(v : Vector2) : float
+    - isFar(other: Transform) : boolean
+    - vertexInside(other : HitBox): Vector2
+    - bottomLeft(): Vector2
+    - topRight(): Vector2
+    - bottomSide(): Vector2
+    - leftSide(): Vector2
+
+}
+
+HitBoxesLayer "hitBoxes" o- "0..*" HitBox
+
+
+class HitBoxesLayer{
+    ~ HitBoxesLayer()
+    + addHitBox(hitBox : HitBox)
+    + removeHitBox(hitBox : HitBox)
+    + iterator() : [HitBox]
+    + checkLayer(other:[HitBox])
+    + contains(hitBox : HitBox) : boolean
+    - condition(mine,their : HitBox) : boolean
+
+}
+
+@enduml

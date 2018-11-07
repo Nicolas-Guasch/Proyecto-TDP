@@ -1,6 +1,6 @@
 package Entities.Barricades;
 
-import CuteThings.AnimatorsVolatiles;
+import Tools.AnimatorsVolatiles;
 import Engine.Components.Transform;
 
 public class ThenVolatile implements Runnable {

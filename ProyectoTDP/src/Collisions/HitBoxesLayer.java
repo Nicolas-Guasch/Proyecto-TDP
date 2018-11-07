@@ -40,12 +40,12 @@ public class HitBoxesLayer implements Iterable<HitBox>
             }
         }
     }
+    public boolean contains(HitBox hitBox) {
+        return hitBoxes.contains(hitBox);
+    }
 
     private boolean condition(HitBox mine, HitBox their) {
         return mine!=null && their!=null &&their.getEntity()!=null && mine.getEntity()!=null&& mine.isActive() && their.isActive();
     }
 
-    public boolean contains(HitBox hitBox) {
-        return hitBoxes.contains(hitBox);
-    }
 }

@@ -13,11 +13,10 @@ import java.util.Vector;
  * Post Refactor
  */
 public final class HitBox extends Component {
+    private static final int NoCheckDistance = 500;
     private Entity entity;
     private Vector2 dimensions;
     private Transform transform;
-
-
 
 
     public static HitBox getOne(float w, float h, Entity entity) {
@@ -43,10 +42,18 @@ public final class HitBox extends Component {
         return entity;
     }
 
-    private GameObject obj() {
-        return entity.referenced();
-    }
+    //private GameObject obj() {
+      //  return entity.referenced();
+   // }
+    CollisionData checkCollision(HitBox other) {
+        if(isFar(other.transform) || other.distToCenter(transform.position()) > dimensions.length() + other.diagonalLength())
+            return null;
 
+        Vector2 CollisionPoint = vertexInside(other);
+        if(CollisionPoint == null)CollisionPoint = other.vertexInside(this);
+        if(CollisionPoint != null)return new CollisionData(entity, other.entity, CollisionPoint);
+        return null;
+    }
 
     private Iterable<Vector2> vertices() {
         Collection<Vector2> res = new Vector<>();
@@ -70,22 +77,13 @@ public final class HitBox extends Component {
         return transform.position().distanceTo(v);
     }
 
-    private static final int NoCheckDistance = 500;
     private boolean isFar(Transform other){
         var b1 = Math.abs(other.position().x()-transform.position().x()) > NoCheckDistance;
         var b2 = Math.abs(other.position().y()-transform.position().y()) > NoCheckDistance;
         return b1 || b2 ;
         // si la pifea mucho probar cambiar por un && o agrandar la distancia
     }
-    public CollisionData checkCollision(HitBox other) {
-        if(isFar(other.transform) || other.distToCenter(transform.position()) > dimensions.length() + other.diagonalLength())
-            return null;
 
-        Vector2 CollisionPoint = vertexInside(other);
-        if(CollisionPoint == null)CollisionPoint = other.vertexInside(this);
-        if(CollisionPoint != null)return new CollisionData(entity, other.entity, CollisionPoint);
-        return null;
-    }
 
     private Vector2 vertexInside(HitBox other){
         var bottom = bottomSide();

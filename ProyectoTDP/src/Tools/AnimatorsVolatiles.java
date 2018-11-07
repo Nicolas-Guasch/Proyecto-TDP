@@ -1,4 +1,4 @@
-package CuteThings;
+package Tools;
 
 import ADTs.Vector2;
 import Audio.SoundManager;
@@ -7,7 +7,6 @@ import Engine.GameObject;
 import RenderingSystem.Animation;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
-import Tools.Tools;
 
 public class AnimatorsVolatiles
 {

@@ -12,8 +12,7 @@ import Audio.SoundManager;
 import InputManager.DiscreteClick;
 import InputManager.DiscreteKeyInput;
 
-import Mementos.IMementoPlayer;
-import Mementos.MementoPlayer;
+
 import SpecialPowers.ISpecialPower;
 import SpecialPowers.PowersDeck;
 import UI.ArsenalUI;

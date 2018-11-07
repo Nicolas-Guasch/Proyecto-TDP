@@ -1,7 +1,7 @@
 package Entities.Ships;
 
 import ADTs.Vector2;
-import CuteThings.AnimatorsVolatiles;
+import Tools.AnimatorsVolatiles;
 import Engine.GameObject;
 import Entities.Entity;
 import Entities.Weapons.Weapon;
