@@ -19,9 +19,5 @@ public class CollisionData
         this.their = their;
         this.contactPoint = contactPoint;
     }
-    public CollisionData invert()
-    {
-        return new CollisionData(their, mine, contactPoint);
-    }
 
 }

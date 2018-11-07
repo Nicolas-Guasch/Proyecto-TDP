@@ -14,9 +14,6 @@ public class MouseFollower extends Component
     private float angle;
     private AbstractDirectionalInput Dir;
 
-    public MouseFollower(){
-        this(0);
-    }
 
     public MouseFollower(float angle) {
         this.angle = angle;

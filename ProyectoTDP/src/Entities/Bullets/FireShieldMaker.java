@@ -19,15 +19,13 @@ public class FireShieldMaker extends PlayerBulletBuilder
 
     @Override
     public void assembleSprite() {
-        Renderizable rend = new Renderizable(new SpriteData("fireshield"));
+        String name = "fireshield";
+        Renderizable rend = new Renderizable(new SpriteData(name));
         rend.show();
         bullet.setRenderer(rend);
-
-        Animation anim = new Animation("fireshield", rend);
-        anim.setSpeed(5); // 60 es uno por frame, 0 es 1 por segundo
+        Animation anim = new Animation(name, rend);
+        anim.setSpeed(5);
         bullet.addBehaviour(anim);
-
-
     }
 
     @Override

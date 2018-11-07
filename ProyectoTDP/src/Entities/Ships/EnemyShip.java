@@ -1,10 +1,7 @@
 package Entities.Ships;
 
-import ADTs.Vector2;
-import CuteThings.Explos;
 import Engine.GameObject;
 import Entities.Weapons.EnemyArsenal;
-import Entities.Weapons.Arsenal;
 import EntitiesVisitor.EnemyVisitor;
 import EntitiesVisitor.VisitorEntity;
 import GameData.CurrentMatchData;

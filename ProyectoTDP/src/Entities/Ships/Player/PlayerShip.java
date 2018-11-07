@@ -24,7 +24,10 @@ import UtilsBehaviours.PlayerWatcher;
 public class PlayerShip extends Ship {
 
 
+	private UIComponent healthBar;
 	private static PlayerShip instance;
+
+	private static ArsenalUI arsenalUI;
 	private PowersDeck powerDeck;
 
 	public static PlayerShip getInstance()
@@ -45,9 +48,7 @@ public class PlayerShip extends Ship {
 		arsenalUI = new ArsenalUI(instance.weapons);
 		UI.UI.getInstance().addUIComponent(arsenalUI);
 	}
-	private static ArsenalUI arsenalUI;
 
-	private UIComponent healthBar;
 
 	@Override
 	public void onDeath()
@@ -56,9 +57,11 @@ public class PlayerShip extends Ship {
 		arsenalUI.dispose();
 		super.onDeath();
 	}
+
 	public Arsenal getBagPack() {
 		return weapons;
 	}
+
 	private PlayerShip(GameObject referenced) {
 		super(referenced,new PlayerArsenal(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
 		//super(referenced,new PlayerArsenal(new DiscreteKeyInput("qQ"), new DiscreteKeyInput("oplOPLkK") ));
@@ -77,19 +80,6 @@ public class PlayerShip extends Ship {
 	public void setLife(float cantLife)
 	{
 		data.setHealth(cantLife);
-	}
-
-	public IMementoPlayer makeMemento(){
-		return new MementoPlayer(weapons,getPilot());
-	}
-	public void loadMemento(IMementoPlayer memento){
-		getPilot().DestroyComponent();
-		setPilot(memento.getPilot());
-		weapons.destroy();
-		weapons = memento.getWeapons();
-		weapons.setActive(true);
-		getPilot().setActive(true);
-		setData(memento.getData());
 	}
 
 	public UIComponent getHealthBar() {

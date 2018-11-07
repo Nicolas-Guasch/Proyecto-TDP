@@ -14,10 +14,6 @@ public class DiscreteClick extends AbstractDiscreteInput
     private DummyComponent Dummy;
     private boolean lastStatus;
 
-    public DiscreteClick()
-    {
-        this(0);
-    }
     public DiscreteClick(int mouseClick)
     {
         initialize(mouseClick);
@@ -35,7 +31,7 @@ public class DiscreteClick extends AbstractDiscreteInput
 
     private void Update()
     {
-        if(lastStatus != related.happens())
+        if(lastStatus != related.happens()&& isActive())
         {
             invokerOnAction.Invoke(!lastStatus);
             lastStatus = !lastStatus;
@@ -55,9 +51,10 @@ public class DiscreteClick extends AbstractDiscreteInput
 
     public void Destroy()
     {
+        setActive(false);
         related.Destroy();
         onAction.Clean();
-        EngineGetter.Instance().get().unsuscribeFromUpdate(Dummy);
+        //EngineGetter.Instance().get().unsuscribeFromUpdate(Dummy);
     }
 
     public IBroadcaster<Boolean> OnAction()

@@ -3,9 +3,8 @@ package Settings;
 import ADTs.Vector2;
 import Assets.AssetStore;
 import GameData.GameSettings;
-import PreLoad.PreloadWindow;
+import PreLoad.LoadWindow;
 
-import javax.sound.sampled.AudioInputStream;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -164,7 +163,7 @@ public final class Settings {
 		GameSettings.GetInstance().sizeWindow = screenSize.ToDimension();
 		wind.setVisible(false);
 		wind.dispose();
-		new Thread(PreloadWindow::getInstance).start();
+		new Thread(LoadWindow::getInstance).start();
 	}
 
 }

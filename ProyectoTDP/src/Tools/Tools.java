@@ -1,6 +1,5 @@
 package Tools;
 
-import Entities.Weapons.Weapon;
 
 public class Tools
 {

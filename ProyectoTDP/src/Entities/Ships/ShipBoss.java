@@ -3,7 +3,7 @@ package Entities.Ships;
 import Engine.GameObject;
 import Entities.Weapons.Arsenal;
 import Entities.Weapons.EnemyArsenal;
-import EntitiesVisitor.EnemyVisitor;
+import EntitiesVisitor.BossVisitor;
 import EntitiesVisitor.VisitorEntity;
 import GameData.CurrentMatchData;
 import GameData.GameSettings;

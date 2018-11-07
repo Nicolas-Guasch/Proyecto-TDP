@@ -1,7 +1,7 @@
 package Entities.Ships;
 
 import ADTs.Vector2;
-import CuteThings.Explos;
+import CuteThings.AnimatorsVolatiles;
 import Engine.GameObject;
 import Entities.Entity;
 import Entities.Weapons.Weapon;
@@ -21,7 +21,7 @@ public abstract class Ship extends Entity implements IShip
     public void onDeath(){
         super.onDeath();
         Vector2 v = referenced().transform().position();
-        Explos.getInstance().getExplosion(v);
+        AnimatorsVolatiles.getInstance().getExplosion(v);
         weapons.setActive(false);
         if (pilot != null) {
             pilot.setActive(false);
@@ -31,9 +31,7 @@ public abstract class Ship extends Entity implements IShip
     public void addWeapon(Weapon p){
         weapons.add(p);
     }
-    public void removeWeapon(Weapon p){
-        weapons.remove(p);
-    }
+
     public void setPilot(Pilot pilot){
         this.pilot = pilot;
         referenced().removeComponent(pilot);

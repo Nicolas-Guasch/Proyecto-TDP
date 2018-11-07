@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 
 
 /**
- * Models de Pause of the Core DONT TOUCH
+ * Models de Pause of the Core DON'T TOUCH
  */
 public final class CorePauser implements KeyListener
 {

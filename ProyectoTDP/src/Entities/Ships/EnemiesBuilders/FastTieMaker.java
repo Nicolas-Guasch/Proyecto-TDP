@@ -64,7 +64,7 @@ public class FastTieMaker extends EnemyShipBuilder
         abso.setRandomLevel(5);
         handler = abso;
         handler = new Slippery(handler,100f, 0.6f); // ver como queda sino sacar
-        handler = new Hybrid50Hunter(handler,PlayerShip.getInstance().referenced().transform());
+        handler = new Hybrid50Hunter(handler);
         Pilot pilot = new Pilot(handler,ship,12f);
         ship.setPilot(pilot);
     }

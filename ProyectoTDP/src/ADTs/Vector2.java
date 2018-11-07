@@ -123,20 +123,7 @@ public class Vector2
     {
         return (float) (Math.atan2( x*other.y - y*other.x, x*other.x + y*other.y )/(Math.PI*2));
     }
-    public Vector2 load(String data)
-    {
-        Vector2 ret = ORIGIN();
-        try{
-            String[] a = data.split(",");
-            float X = Float.parseFloat(a[0]);
-            float Y = Float.parseFloat(a[1]);
-            ret = new Vector2(X,Y);
-        }
-        catch (Exception e){
-            System.out.println("Bad Format, value will be origin vector");
-        }
-        return ret;
-    }
+
 
     public boolean near(Vector2 other)
     {

@@ -7,8 +7,8 @@ import Entities.Builders.Concretes.BulletPlayerBuilder;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.PlayerBulletBuilder;
 import Entities.PlayerBullet;
-import Entities.Weapons.GenericalWeapon;
-import Entities.Weapons.LateralizedWeapon;
+import Entities.Weapons.GenericWeapon;
+import Entities.Weapons.LateralWeapon;
 import GameData.GameSettings;
 import IAs.*;
 import InputManager.DirectionalMouse;
@@ -87,9 +87,9 @@ collider: 130x130
 
 
         director.setBuilder(new BulletPlayerBuilder(ship.referenced().transform()));
-        var w2 = new GenericalWeapon<>(ship.referenced().transform(),director,  2);
+        var w2 = new GenericWeapon<>(ship.referenced().transform(),director,  2);
         w2.setName("bilaser");
-        var w3 =new LateralizedWeapon<>(ship.referenced().transform(),director,  3);
+        var w3 =new LateralWeapon<>(ship.referenced().transform(),director,  3);
         w3.setName("trilaser");
         ship.addWeapon(w2);
         ship.addWeapon(w3);

@@ -11,7 +11,7 @@ import Entities.Ships.Player.PlayerShip;
 import Entities.EveryOne;
 import GameData.GameSettings;
 import Audio.SoundManager;
-import GenericVisitor.FreezeVisitor;
+import EntitiesVisitor.FreezeVisitor;
 
 import RenderingSystem.Animation;
 import RenderingSystem.Renderizable;
@@ -24,12 +24,13 @@ public class ColdFireMaker extends PlayerBulletBuilder {
 
     @Override
     public void assembleSprite() {
-        SpriteData data = new SpriteData("coldfire");
+        String name = "coldfire";
+        SpriteData data = new SpriteData(name);
         Renderizable rend = new Renderizable(data);
         bullet.referenced().setRenderer(rend);
         rend.show();
 
-        Animation anim = new Animation("coldfire", rend);
+        Animation anim = new Animation(name, rend);
         anim.setSpeed(5); // 60 es uno por frame, 0 es 1 por segundo
         bullet.addBehaviour(anim);
 

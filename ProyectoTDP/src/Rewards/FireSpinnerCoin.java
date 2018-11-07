@@ -13,7 +13,6 @@ public class FireSpinnerCoin implements java.util.function.Consumer<Engine.Compo
 
     @Override
     public void accept(Transform transform) {
-        var player = PlayerShip.getInstance();
         GameObject premio = GameObject.getRoot().addChild();
         var sd = new SpriteData("rewardfire");
 

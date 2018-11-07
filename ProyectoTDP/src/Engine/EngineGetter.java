@@ -16,7 +16,7 @@ public class EngineGetter
     }
     private EngineGetter()
     {
-        ref = new Engine();
+        ref = new MyEngine();
     }
 
     private IEngine ref;

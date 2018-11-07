@@ -18,19 +18,18 @@ public class MillenniumFalconHelpCoin implements Consumer<Transform> {
     @Override
     public void accept(Transform originPoint) {
 
-        var player = PlayerShip.getInstance();
-        GameObject premio = GameObject.getRoot().addChild();
-        var sd = new SpriteData("soloreward");
+        GameObject gameObject = GameObject.getRoot().addChild();
+        var spriteData = new SpriteData("soloreward");
 
-        var vis = new SoloSupportVisitor();
-        Entity rew = new GenericReward(premio,vis,sd);
+        var visitor = new SoloSupportVisitor();
+        Entity reward = new GenericReward(gameObject,visitor,spriteData);
 
-        vis.setEntity(rew);
+        visitor.setEntity(reward);
 
 
-        premio.transform().setPosition(originPoint.position3());
-        premio.addComponent(new RewardMove());
-        rew.setData(EntityData.WithEqualsValues(100));
-        EveryOne.getInstance().add(rew);
+        gameObject.transform().setPosition(originPoint.position3());
+        gameObject.addComponent(new RewardMove());
+        reward.setData(EntityData.WithEqualsValues(100));
+        EveryOne.getInstance().add(reward);
     }
 }

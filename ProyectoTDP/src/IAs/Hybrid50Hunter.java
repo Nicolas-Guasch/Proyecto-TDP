@@ -6,9 +6,7 @@ import Entities.Entity;
 
 public class Hybrid50Hunter extends AIQueryDecorator {
 
-    private Transform toFollow;
-
-    public Hybrid50Hunter(EntityQuery handler, Transform transform) {
+    public Hybrid50Hunter(EntityQuery handler) {
         super(handler);
     }
 

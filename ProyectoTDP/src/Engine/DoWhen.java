@@ -44,26 +44,7 @@ public class DoWhen extends Component {
         return false;
     }
 
-    public boolean complete()
-    {
-        return !cond;
-    }
-
-    public Runnable getCodeBlock() {
-        return codeBlock;
-    }
-
-    public void setCodeBlock(Runnable codeBlock) {
-        this.codeBlock = codeBlock;
-    }
-
-    public Callable<Boolean> getCondition() {
-        return condition;
-    }
-
-    public void setCondition(Callable<Boolean> condition) {
-        this.condition = condition;
-    }
+    
 
 
 }

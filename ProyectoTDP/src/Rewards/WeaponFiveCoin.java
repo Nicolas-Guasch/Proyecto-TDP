@@ -17,17 +17,17 @@ public class WeaponFiveCoin implements java.util.function.Consumer<Engine.Compon
     @Override
     public void accept(Transform transform) {
         var player = PlayerShip.getInstance();
-        GameObject premio = GameObject.getRoot().addChild();
-        var sd = new SpriteData("5reward");
-        WeaponReward rew = new WeaponReward(premio,sd);
+        GameObject gameObject = GameObject.getRoot().addChild();
+        var spriteData = new SpriteData("5reward");
+        WeaponReward reward = new WeaponReward(gameObject,spriteData);
         BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
         director.setBuilder(new BulletPlayerBuilder(player.referenced().transform()));
-        Weapon wea = new AngularWeapon<>(player.referenced().transform(),director, 5);
-        wea.setName("penta");
-        rew.setWeapon(wea);
-        premio.transform().setPosition(transform.position3());
-        premio.addComponent(new RewardMove());
-        rew.setData(EntityData.WithEqualsValues(100));
-        EveryOne.getInstance().add(rew);
+        Weapon weapon = new AngularWeapon<>(player.referenced().transform(),director, 5);
+        weapon.setName("penta");
+        reward.setWeapon(weapon);
+        gameObject.transform().setPosition(transform.position3());
+        gameObject.addComponent(new RewardMove());
+        reward.setData(EntityData.WithEqualsValues(100));
+        EveryOne.getInstance().add(reward);
     }
 }

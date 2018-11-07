@@ -12,7 +12,6 @@ import RenderingSystem.SpriteData;
 public class HealthCoin implements java.util.function.Consumer<Engine.Components.Transform> {
     @Override
     public void accept(Transform transform) {
-        var player = PlayerShip.getInstance();
         GameObject premio = GameObject.getRoot().addChild();
         var sd = new SpriteData("rewardhealth");
 

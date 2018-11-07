@@ -3,7 +3,7 @@ package DataParsers;
 import ADTs.Vector2;
 import Entities.Ships.EnemiesBuilders.*;
 import Entities.Ships.EnemyShipBuilder;
-import Rewards.RewardFactory;
+import Rewards.RewardsManager;
 import Rewards.RewardKey;
 
 import java.util.*;
@@ -78,27 +78,27 @@ public class PlaceHolderLevelDataParser implements ILevelDataParser
 
 
 
-        rew.get(L1).add(RewardFactory.FORCE);
-        rew.get(L1).add(RewardFactory.SHIELD);
-        rew.get(L1).add(RewardFactory.ICE);
-        rew.get(L1).add(RewardFactory.HEALTH);
-        rew.get(L1).add(RewardFactory.HEALTH);
-        rew.get(L1).add(RewardFactory.HEALTH);
+        rew.get(L1).add(RewardsManager.FORCE);
+        rew.get(L1).add(RewardsManager.SHIELD);
+        rew.get(L1).add(RewardsManager.ICE);
+        rew.get(L1).add(RewardsManager.HEALTH);
+        rew.get(L1).add(RewardsManager.HEALTH);
+        rew.get(L1).add(RewardsManager.HEALTH);
 
-        rew.get(L2).add(RewardFactory.FIRESHIELD);
-        rew.get(L2).add(RewardFactory.HANSUPPORT);
-        rew.get(L2).add(RewardFactory.HEALTH);
-        rew.get(L2).add(RewardFactory.HEALTH);
-        rew.get(L2).add(RewardFactory.HEALTH);
-        rew.get(L2).add(RewardFactory.ICE);
-        rew.get(L2).add(RewardFactory.SHIELD);
-        rew.get(L2).add(RewardFactory.FORCE);
+        rew.get(L2).add(RewardsManager.FIRESHIELD);
+        rew.get(L2).add(RewardsManager.HANSUPPORT);
+        rew.get(L2).add(RewardsManager.HEALTH);
+        rew.get(L2).add(RewardsManager.HEALTH);
+        rew.get(L2).add(RewardsManager.HEALTH);
+        rew.get(L2).add(RewardsManager.ICE);
+        rew.get(L2).add(RewardsManager.SHIELD);
+        rew.get(L2).add(RewardsManager.FORCE);
 
-        rew.get(L3).add(RewardFactory.ICE);
-        rew.get(L3).add(RewardFactory.FIVEWEAPON);
-        rew.get(L3).add(RewardFactory.HANSUPPORT);
-        rew.get(L3).add(RewardFactory.HEALTH);
-        rew.get(L3).add(RewardFactory.HEALTH);
+        rew.get(L3).add(RewardsManager.ICE);
+        rew.get(L3).add(RewardsManager.FIVEWEAPON);
+        rew.get(L3).add(RewardsManager.HANSUPPORT);
+        rew.get(L3).add(RewardsManager.HEALTH);
+        rew.get(L3).add(RewardsManager.HEALTH);
 
 
     }

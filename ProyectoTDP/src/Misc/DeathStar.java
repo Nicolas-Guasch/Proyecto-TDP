@@ -19,7 +19,6 @@ public class DeathStar {
 
         GameObject deathStar = GameObject.getRoot().addChild();
         deathStar.transform().setPosition(new Vector2(-500, 400));
-
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();

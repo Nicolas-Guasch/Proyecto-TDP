@@ -45,7 +45,7 @@ final class Core
      you won't play for this cant of frames <3
     */
     private long currentFrame;
-    //sorted map cause get the min is true order 1
+    //sorted map cause get the minim is true order 1
     private SortedMap<Long,Queue<Runnable>> TasksForFrame;
     private boolean exit = false;//yeah, I know
 
@@ -80,39 +80,11 @@ final class Core
         invokerOnUpdate.Invoke(null);
     }
 
-    public static long debt = 0;//just for testing
-
-    private void mainLoopAlternativo() {
-        long stampPerFrame = Clock.currentTimeNanos();
-        long nanosperframe = (long) (1e9 / FPS);
-        float prev = 0f;
-        float act;
-
-        while (!exit) {
-            if (paused.get()) continue;
-
-            try {
-
-                endOfFrame();
-                debt = Clock.currentTimeNanos();
-                var tosleep = nanosperframe - (debt -stampPerFrame);
-                sleep(tosleep);
-
-                stampPerFrame = Clock.currentTimeNanos();
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
+    private long debt = 0;
 
     private void mainLoop(){
         long stampPerFrame;
-        long nanosperframe = (long)(1e9/FPS);
-        float prev = 0f;
-        float act;
+        long nanosPerFrame = (long)(1e9/FPS);
 
         while(!exit)
         {
@@ -122,32 +94,15 @@ final class Core
             try {
                 stampPerFrame = Clock.currentTimeNanos();
                 endOfFrame();
-                //see lastControlMethod
-                while (Clock.currentTimeNanos() - stampPerFrame < nanosperframe - debt) {
-                    sleep(10);
+                while (Clock.currentTimeNanos() - stampPerFrame < nanosPerFrame - debt) {
+                    sleep(5);
                 }
-                debt = (Clock.currentTimeNanos() - stampPerFrame) - nanosperframe;
+                debt = (Clock.currentTimeNanos() - stampPerFrame) - nanosPerFrame;
             } catch (Exception e) {
                 e.printStackTrace();
                 System.exit(-1);
             }
         }
-    }
-
-    private void lastControl(){
-        // lo guardo aca para no hacer lavaflow, pero
-        //cuando pongamos cosas con fisicas va a ser necesario reestablecer
-        //el motor con esto
-        /*
-                        do
-                        {
-                            act = Clock.currentTimeNanos();
-                            invokerOnPhysicsUpdate.Invoke((act-prev)/1_000_000_000f);
-                            prev = act;
-
-                        }
-                        while(Clock.currentTimeNanos() - stampPerFrame < nanosperframe - debt);
-                        */
     }
 
     private void sleep(long time) {
@@ -159,7 +114,8 @@ final class Core
         }
     }
 
-    // --------- public stuff -----------
+    // --------- interface stuff -----------
+
     void Start()
     {
         mainLoop();
@@ -168,7 +124,7 @@ final class Core
 
 
 
-    public void waitForSeconds(Runnable action, float seconds)
+    void waitForSeconds(Runnable action, float seconds)
     {
         waitForFrames(action,(int)seconds/FPS); // TODO: desmanijear
     }
@@ -194,19 +150,15 @@ final class Core
     {
         return onUpdate;
     }
-
-
-    public synchronized void setPaused(boolean p)
+    synchronized void setPaused(boolean p)
     {
         paused.lazySet(p);
     }
-
-    public synchronized boolean isPaused()
+    synchronized boolean isPaused()
     {
         return  paused.get();
     }
-
-    public long frameCounter() {
+    long frameCounter() {
         return currentFrame;
     }
 }

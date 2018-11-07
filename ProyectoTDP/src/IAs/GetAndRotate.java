@@ -11,7 +11,7 @@ public class GetAndRotate implements IDirGiver
     private float sp = 1;
     private Vector2 last;
     private float rot, frot;
-    public GetAndRotate(float rot, Vector2 first, boolean rotex){
+    GetAndRotate(float rot, Vector2 first, boolean rotex){
         last = first;
         this.rot = rot;
         frot = rot;

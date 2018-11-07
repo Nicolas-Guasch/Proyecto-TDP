@@ -1,17 +1,12 @@
 package Engine;
 
-
-import java.util.*;
-
-public class Clock // NO! I don't want a singleton
+class Clock
 {
 
 
-    public static long currentTimeNanos()
+    static long currentTimeNanos()
     {
         return System.nanoTime();
     }
-
-
 
 }

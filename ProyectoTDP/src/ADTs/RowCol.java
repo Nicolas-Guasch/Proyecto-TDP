@@ -17,11 +17,4 @@ public class RowCol
         return row;
     }
 
-    /**
-     *
-     * @return new Vector(col,row);
-     */
-    public Vector2 toVector(){
-        return new Vector2(col,row);
-    }
 }

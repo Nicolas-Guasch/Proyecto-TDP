@@ -11,10 +11,6 @@ public class ContinueClick extends AbstractContinueInput
     private boolean happens;
     private MouseListener Listener;
 
-    public ContinueClick()
-    {
-        initialize(1);
-    }
     public ContinueClick(int mouseButton)
     {
         initialize(mouseButton);

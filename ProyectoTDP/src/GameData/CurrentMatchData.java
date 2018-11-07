@@ -10,9 +10,6 @@ public class CurrentMatchData
 
     private static CurrentMatchData instance;
     private int score =0;
-    //private int lifes = 5;
-    private GameMemento checkPoint; //TODO: implementar luego
-
 
 
     public static CurrentMatchData getMatchData()

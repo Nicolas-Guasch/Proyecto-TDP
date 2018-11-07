@@ -3,7 +3,7 @@ package Entities.Weapons;
 import Engine.Components.Transform;
 import AIs.MouseFollower;
 import AIs.SimpleBullet;
-import AIs.ZigZag;
+
 import Entities.Builders.Directors.IBulletDirector;
 import Entities.Builders.IBullet;
 
@@ -30,7 +30,7 @@ public class IceWeapon<BulletDirectorType extends IBulletDirector> extends Weapo
         generator.create();
         generator.assemble();
         IBullet b = generator.get();
-        b.entity().addBehaviour(new ZigZag());
+
         float angle = 0.2f;
         //float extraSpeed = 4f;
         b.entity().addBehaviour(new MouseFollower(angle));

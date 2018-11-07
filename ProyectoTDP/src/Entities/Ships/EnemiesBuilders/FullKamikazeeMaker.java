@@ -55,7 +55,8 @@ public class FullKamikazeeMaker extends EnemyShipBuilder {
         EntityQuery handler2 = new Kamikazee(new DummyEntityQuery());
         Predicate<Entity> toTest = new FalseNTimes(rand*rand/10000);
         var definitivehandler = new SwitchWhen(toTest,handler,handler2);
-        Pilot pilot = new Pilot(definitivehandler,ship,(Math.abs(new Random().nextInt(3))+1)*3f);//GameSettings.GetInstance().TieSpeed);
+        Pilot pilot = new Pilot(definitivehandler,ship,(Math.abs(new Random().nextInt(3))+1)*3f);
+        //GameSettings.GetInstance().TieSpeed);
         ship.setPilot(pilot);
         //usar en el que cambia Predicate<Entity> toTest = new MoreThanPercentHealth(GameSettings.GetInstance().TieData.getHealth(),50);
 

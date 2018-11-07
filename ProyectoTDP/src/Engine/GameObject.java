@@ -21,7 +21,8 @@ public class GameObject
             var eng = EngineGetter.Instance().get();
             root = new GameObject(null);
             eng.suscribeToUpdate(root);
-            eng.suscribeToPhysicsUpdate(root);
+            //eng.suscribeToPhysicsUpdate(root);
+            // not in this project
 
         }
         return root;

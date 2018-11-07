@@ -7,26 +7,27 @@ import Tools.Random;
 
 /**
  * implements the behavior of a ship, their "fire frequency", which,
- * given a set of weapons, each 'freq' frames gives the
+ * given a set of weapons, each 'frequency' frames gives the
  * signal to the set of weapons to fire the selected weapon
  * and change to the next available weapon
  */
 public class FireFrequency extends Component
 {
-    private int freq;
-    private int i;
+    private final int shootFrequency;
     private Arsenal weapons;
-    public FireFrequency(int freq, Arsenal arsenal)
+    private int i;
+    public FireFrequency(int shootFrequency, Arsenal arsenal)
     {
-        this.freq = freq + Math.abs(Random.value(0,freq/15)) - 3;
-        i=freq;
+        this.shootFrequency = shootFrequency + Math.abs(Random.value(0, shootFrequency /15)) - 3;
         this.weapons = arsenal;
+
+        i= shootFrequency;
     }
 
     @Override
     public void update()
     {
-        if(i>=freq)
+        if(i>= shootFrequency)
         {
             if(!weapons.isEmpty()) {
                 weapons.shoot();

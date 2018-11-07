@@ -16,12 +16,6 @@ public class WatchAnother extends AIQueryDecorator
 
     }
 
-    public WatchAnother(Transform another, boolean scapeFrom, EntityQuery decorated)
-    {
-        this(another,decorated);
-        this.scapeFrom = scapeFrom?-1:1;
-    }
-
     @Override
     public Vector2 whereToMove(Entity ent) {
         return Vector2.ORIGIN();

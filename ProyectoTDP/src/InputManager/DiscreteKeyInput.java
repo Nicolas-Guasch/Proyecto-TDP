@@ -22,14 +22,14 @@ public class DiscreteKeyInput extends AbstractDiscreteInput
         onAction = pack.Broadcaster;
         invokerOnAction = pack.Invoker;
         related = new ContinueKeyInput(chars);
-        Dummy = new DummyComponent(this::Update);
+        Dummy = new DummyComponent(this::update);
         EngineGetter.Instance().get().suscribeToUpdate(Dummy);
     }
 
 
-    private void Update()
+    private void update()
     {
-        if(lastStatus != related.happens())
+        if(lastStatus != related.happens() && isActive())
         {
             invokerOnAction.Invoke(!lastStatus);
             lastStatus = !lastStatus;
@@ -48,9 +48,10 @@ public class DiscreteKeyInput extends AbstractDiscreteInput
 
     public void Destroy()
     {
+        setActive(false);
         related.Destroy();
         onAction.Clean();
-        EngineGetter.Instance().get().unsuscribeFromUpdate(Dummy);
+        //EngineGetter.Instance().get().unsuscribeFromUpdate(Dummy);
     }
 
     public IBroadcaster<Boolean> OnAction()

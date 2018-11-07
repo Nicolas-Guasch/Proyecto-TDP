@@ -1,14 +1,9 @@
 package Game;
 
 import Engine.*;
-import Entities.EveryOne;
-import Entities.Ships.Player.PlayerShip;
-import EntitiesVisitor.Pusher;
 import Audio.SoundManager;
 
-import InputManager.AbstractDiscreteInput;
-import InputManager.DiscreteKeyInput;
-import Levels.GameManager;
+import GameTimeLine.GameManager;
 
 import RenderingSystem.Window;
 import RenderingSystem.Background;
@@ -23,31 +18,13 @@ public class TheGame
         window.AddInput(eng.Pauser());//para poner pausa
 
         GameManager.getInstance().StartGame();
-
-
-
         eng.suscribeToUpdate(window);
+
         SoundManager.Instance().ImperialMarchPlay();
         window.Show();
 
-
-
         var bb = Background.getInstance();
-        bb.setSpeedBackground(4f);
-
-
-
-        AbstractDiscreteInput presY = new DiscreteKeyInput("yY");
-
-        presY.OnAction().Suscribe((b)->{
-            EveryOne.getInstance().takeLazyVisitor(new Pusher(500,
-                PlayerShip.getInstance().referenced().
-                        transform().position()));
-
-        });
-
-
-
+        bb.setSpeedBackground(13f);
 
         eng.Start();
     }

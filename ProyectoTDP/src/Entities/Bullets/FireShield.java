@@ -10,7 +10,6 @@ public class FireShield extends Bullet
 {
     protected FireShield(GameObject referenced) {
         super(referenced);
-
     }
 
     @Override

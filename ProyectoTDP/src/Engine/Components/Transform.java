@@ -55,9 +55,6 @@ public final class Transform extends Component
         this.top = top.versor();
     }
 
-    public void resetTop(){
-        this.top = Vector2.UP();
-    }
     public void SetFromPrototype(Transform prototype)
     {
         this.position = prototype.position;

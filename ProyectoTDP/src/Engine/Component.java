@@ -48,11 +48,14 @@ public abstract class Component implements IActivable
         return EngineGetter.Instance().get().frameCounter();
     }
 
-    /**
+    /** not used in this project, but the core
+     *  is generic or 2D games, and could need this
      *
      * @param deltaTime time between lastCall and these
      */
-    public void PhysicsUpdate(float deltaTime){}
+    void PhysicsUpdate(float deltaTime){}
+
+
     public void OnEnable(){}
     public void OnDisable(){}
     public void OnDestroy(){}
