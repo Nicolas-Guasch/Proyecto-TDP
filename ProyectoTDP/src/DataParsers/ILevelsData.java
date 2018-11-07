@@ -7,7 +7,7 @@ import Rewards.RewardKey;
 import java.util.Collection;
 import java.util.List;
 
-public interface ILevelData
+public interface ILevelsData
 {
     /**
      * @param key key to find file data

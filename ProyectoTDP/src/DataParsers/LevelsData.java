@@ -8,7 +8,7 @@ import Rewards.RewardKey;
 
 import java.util.*;
 
-public class LevelData implements ILevelData
+public class LevelsData implements ILevelsData
 {
 
     private Map<String,List<Vector2>> enemsPos, obstpos;
@@ -21,7 +21,7 @@ public class LevelData implements ILevelData
 
     private String currentKey = L1;
 
-    LevelData()
+    LevelsData()
     {
         enemies = new TreeMap<>();
         obstpos = new TreeMap<>();

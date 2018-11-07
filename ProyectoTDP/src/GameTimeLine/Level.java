@@ -22,7 +22,7 @@ public final class Level extends TimePoint
 {
 
     private Collection<Entity> rewards;
-    private ILevelData parser;
+    private ILevelsData parser;
     private EnemyShipDirector director;
     private BarricadeBothDirector directorBboth;
     private BarricadeEnemDirector directorBenem;
