@@ -22,4 +22,154 @@ class BarricadeBothVisitor{
     +visit( enemyBullet: EnemyBullet)++
 }
 
+BossVisitor "-shipBoss" o-- "1"ShipBoss
+class BossVisitor{
+    +visit( barricadeBoth: BarricadeBoth)++
+    +visit( playerShip: PlayerShip)++
+    -getRepulsion(repulsor,repulsado,repulsor_top,repulsado_top : Vector2)
+    +BossVisitor(shipBoss : ShipBoss)
+}
+class EnemiesCounter{
+    -count:int
+    EnemiesCounter()
+    +visit( enemyShip: EnemyShip)++
+    +getCount():int
+}
+EnemyBullet "1" --o "bullet" EnemyBulletVisitor
+class EnemyBulletVisitor{
+    +visit( barricadeBoth: BarricadeBoth)++
+    +visit( playerShip: PlayerShip)++
+    EnemyBulletVisitor(enemyBullet : EnemyBullet)
+}
+EnemyShip "1" --o "ship" EnemyVisitor
+class EnemyVisitor{
+    EnemyVisitor(ship:EnemyShip)
+    +visit( playerShip: PlayerShip)++
+    +visit( playerBullet: PlayerBullet)++
+    +visit( barricadeBoth: BarricadeBoth)++
+    -bounce(bouncePoint:Vector2)
+}
+EntityData "1" --o "mydata" FireShieldEffect
+class FireShieldEffect{
+    +visit( enemyShip: EnemyShip)++
+    +visit( enemyBullet : EnemyBullet)++
+}
+Entity "1" --o "ent" ForceVisitor
+class ForceVisitor{
+    +setEntity(entity : Entity)
+    +visit(playerShip : PlayerShip)++
+}
+Entity "1" --o "entity" PlayerBulletVisitor
+class PlayerBulletVisitor{
+    +PlayerBulletVisitor(bullet : Entity)
+    +visit(shipBoss : ShipBoss)++
+    +visit(enemyShip : EnemyShip)++
+    +visit(ent : BarricadeBoth)++
+    +visit(ent : BarricadeEnem)++
+}
+
+Entity "0..*" --o "col" GetEnemiesAndBarricades
+class GetEnemiesAndBarricades{
+    +GetEnemiesAndBarricades(col [Entity])
+    +visit(enemyShip : EnemyShip)++
+    +visit(ent : BarricadeBoth)++
+    +visit(ent : BarricadeEnem)++
+}
+
+EnemyShip "0..*" --o "collector" GetEnemies
+class GetEnemies{
+    +GetEnemies(collector [EnemyShip])
+    +visit(enemyShip : EnemyShip)++
+}
+
+Transform "1" --o "centerPoint" FreezeVisitor
+class FreezeVisitor{
+    -time,ratio : float
+    +FreezeVisitor(time:float, centerPoint:Transform , ratio:float)
+    +visit(enemyShip : EnemyShip)++
+    +visit(ship : ShipBoss)++
+    -precondition(ship:Entity):boolean
+    -reactive(ship:ShipBoss)
+    -reactive(ship:EnemyShip)
+}
+
+class PlayerVisitor{
+    +visit(enemyShip : EnemyShip)++
+    +visit(enemyBullet : EnemyBullet)++
+}
+
+
+
+class Pusher{
+    -ratio : float
+    -centerPoint : Vector2
+    +Pusher(ratio:float, centerPoint:Vector2)
+    +visit(enemyShip : EnemyShip)++
+    +visit(barricade : BarricadeEnem)++
+    +visit(barricade : BarricadeBoth)++
+    +visit(bullet : EnemyBullet)++
+    - effect(Entity ent)
+}
+
+Entity "1" --o "entity" SoloSupportVisitor
+Ship "1" --o "ship" SoloSupportVisitor
+class SoloSupportVisitor{
+    +visit(player:PlayerShip)++
+    +setEntity(entity:Entity)
+    -createHanSolo()
+    -getData()
+    -getBehaviour()
+    -getRenderer()
+    -getWeapons()
+}
+
+class WeaponSwitch{
+    -active:boolean
+    +WeaponSwitch(active:boolean)
+    +visit(playerShip:PlayerShip)++
+    +visit(enemyShip:EnemyShip)++
+}
+
+Weapon "1" --o "weapon" WeaponRewardVisitor
+Entity "1" --o "related" WeaponRewardVisitor
+
+class WeaponRewardVisitor{
+    +WeaponRewardVisitor(weapon:Weapon,entity:Entity)
+    +visit(playerShip:PlayerShip)++
+}
+
+
+Entity "1" --o "mine" VisitorShieldFireReward
+FireShieldMaker "1" --o "mine" VisitorShieldFireReward
+class VisitorShieldFireReward{
+    +VisitorShieldFireReward()
+    +setEntity(ent:Entity)
+    +visit(playerShip : PlayerShip)++
+}
+
+Entity "1" --o "reward" VisitorHealPotion
+class VisitorHealPotion{
+    -potion:float = 100
+    +VisitorHealPotion()
+    +setReward(rew:Entity)
+    +visit(playerShip : PlayerShip)++
+}
+
+Weapon "1" --o "weapon" WeaponRewardVisitor
+Entity "1" --o "related" WeaponRewardVisitor
+class WeaponRewardVisitor{
+    WeaponRewardVisitor()
+    +visit(playerShip : PlayerShip)++
+}
+
+
+
+
+
+
+
+
+
+
+
 @enduml

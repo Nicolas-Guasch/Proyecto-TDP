@@ -12,7 +12,7 @@ public class EnemiesCounter extends VisitorEntity
 
     @Override
     public void visit(EnemyShip enemyShip) {
-        if(enemyShip.alive()){
+        if(enemyShip.alive()) {
             count++;
         }
     }

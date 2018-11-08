@@ -21,8 +21,6 @@ public class VisitorHealPotion extends VisitorEntity {
     public void visit(PlayerShip playerShip){
         var health = playerShip.data().getHealth();
         playerShip.data().setHealth(health+potion);
-        System.out.println("Salud anterior="+ health);
-        System.out.println("Salud final="+ playerShip.data().getHealth());
 
         reward.data().setHealth(-1);
         //TODO: puede que deba agregarlo a everyone

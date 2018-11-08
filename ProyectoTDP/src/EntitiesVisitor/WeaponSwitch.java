@@ -3,6 +3,8 @@ package EntitiesVisitor;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.Player.PlayerShip;
 
+import java.util.List;
+
 public class WeaponSwitch extends VisitorEntity
 {
     private boolean active;

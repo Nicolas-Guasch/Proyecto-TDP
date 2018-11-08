@@ -11,11 +11,9 @@ import Scripts.ThePusher;
 public class Pusher extends VisitorEntity
 {
     private float ratio;
-    private float reduced_ratio;
     private Vector2 center;
     public Pusher(float ratio, Vector2 center) {
         this.ratio = ratio;
-        reduced_ratio = ratio/4;
         this.center = center;
     }
 

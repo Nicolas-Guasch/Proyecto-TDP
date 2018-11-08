@@ -5,19 +5,18 @@ import Engine.EngineGetter;
 import Entities.Entity;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.ShipBoss;
-import EntitiesVisitor.VisitorEntity;
 
 public class FreezeVisitor extends VisitorEntity
 {
 
     private final float time;
-    private final Transform center;
+    private final Transform centerPoint;
     private final float ratio;
 
     public FreezeVisitor(float time, Transform center, float ratio)
     {
         this.time = time;
-        this.center = center;
+        this.centerPoint = center;
         this.ratio = ratio;
     }
 
@@ -43,7 +42,7 @@ public class FreezeVisitor extends VisitorEntity
 
     private boolean precondition(Entity ship)
     {
-        return ship.referenced().transform().position().distanceTo(center.position()) < ratio;
+        return ship.referenced().transform().position().distanceTo(centerPoint.position()) < ratio;
     }
 
     private void reactive(EnemyShip ship)
