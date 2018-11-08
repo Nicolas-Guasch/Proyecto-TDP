@@ -91,4 +91,5 @@ class MatchResult {
 }
 ILostOrWin <|-- MatchResult
 MatchResult -- MatchResult:Instance
+MatchResult -- "1" ILostOrWin: Deriva
 @enduml

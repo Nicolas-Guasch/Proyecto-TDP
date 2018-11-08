@@ -12,7 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 
 /**
- * is just the fucking Grim Reaper
+ Administra la destruccion de las entidades que murieron
  */
 public class EveryOne extends Component
 {
