@@ -18,7 +18,7 @@ import RenderingSystem.*;
 import UtilsBehaviours.MirrorBounds;
 
 
-// REQUIERE QUE LUEGO LE ACTIBES EL ARSENAL
+// REQUIERE QUE LUEGO LE ACTIVES EL ARSENAL
 
 public class PlayerShipMaker extends PlayerShipBuilder {
 
