@@ -1,0 +1,203 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface IEngine{
+    +{abstract}suscribeToUpdate(object:GameObject)
+    +{abstract}suscribeToUpdate(component:Component )
+    +{abstract}waitForFrames(action:Runnable , frames:int )
+    +{abstract}start();
+    +{abstract}Pauser():CorePauser
+    +{abstract}frameCounter():long
+}
+
+IEngine <|-- MyEngine
+MyEngine -- "1" Core
+MyEngine -- "2" IBroadcaster
+class MyEngine{
+    #MyEngine();
+    +suscribeToUpdate(object:GameObject)+
+    +suscribeToUpdate(component:Component )+
+    +waitForFrames(action:Runnable , frames:int )+
+    +start();+
+    +Pauser():CorePauser+
+    +frameCounter():long+
+}
+
+interface IActivable{
+    isActive:boolean
+    setActive(a:boolean)
+}
+
+class Clock{
+    currentTimeNanos():long
+}
+
+IActivable <|-- Component
+Component -- "1" GameObject
+abstract class Component{
+    -active:boolean=true
+    +start()
+    +update()
+    #frameCounter():long
+    +OnEnable()
+    +OnDisable()
+    +OnDestroy()
+    +DestroyComponent()
+    +DestroyComponent()
+    +transform():Transform
+    #setGameObject(ref:GameObject)
+    +gameObject():GameObject
+    +isActive:boolean+
+    +setActive(a:boolean)+
+}
+
+GameObject -- "1" GameObject:root
+note left on link: static
+GameObject -- "*"GameObject:children,parent
+GameObject -- "*"Component
+GameObject -- "1"Transform
+GameObject -- "1"HitBox
+class GameObject
+{
+    +{static} getRoot():GameObject
+    -GameObject()
+    -GameObject(parent:GameObject)
+    +addHitBox(c:HitBox ):HitBox
+    +<S extends Component> addComponent(S c):S
+
+    +getComponents():Iterable<Component>
+    +void sendMessage( consumer:Consumer<Component>)
+
+    +<C extends Component> addChild(Iterable<C> components):GameObject
+    +addChild():GameObject
+    +removeComponent(c:Component )
+    +getParent():GameObject
+    +children():Iterable<GameObject>
+    +transform():Transform
+    +Update()
+    +destroy()
+    -onDestroy:Runnable
+    +setOnDestroy(r:Runnable )
+    +SetEnabled(enabled:boolean)
+    +getHitbox():HitBox
+    +size():int
+    +SizeComps():int
+    -renderer:Renderizable
+    +setRenderer(rend:Renderizable)
+    +getRenderer():Renderizable
+    +getChildren():Iterable<GameObject>
+}
+
+Component <|-- Transform
+Transform -- "2"  Vector2: position,top
+class Transform{
+    -ZCompontent:float
+    -lifetime:int
+
+    +Transform()
+    -Transform(position:Vector2)
+    +update()+
+    +position():Vector2
+    +position3():Vector3
+    +top():Vector2
+    +top(length:float):Vector2
+    +setPosition(position:Vector2)
+    +setTop(position:Vector2)
+    +rotate(angle:float)
+    +setFromPrototype(prototype:Transform)
+    +moveTowards(direction:Vector2)
+    +getZcomponent():float
+    +setZcomponent()
+    +getLifetime():int
+}
+
+Core -- "1" Core:instance
+note on link: static
+Core -- "4" IBroadcaster
+Core -- "2" Invoker
+Core -- "*" Runnable: Runnables for each frame
+class Core{
+    -FPS:short
+    -paused:boolean
+    -currentFrame:long
+    -exit:boolean
+    -debt:long
+
+    #{static}getInstance():Core
+    -Core()
+    -clean()
+    -endOfFrame()
+    -mainLoop()
+    -sleep(time:long)
+    +Start()
+    +waitForSeconds(action:Runnable,seconds:float)
+    +waitForFrames(action:Runnable,frames:int)
+
+    +setPaused(p:boolean)
+    +isPaused():boolean
+    +frameCounter():long
+}
+
+KeyListener <|-- Transform
+CorePauser -- "1" CorePauser:instance
+note left on link: static
+CorePauser -- "1" Core
+class CorePauser
+{
+    -paused = false:boolean
+    -CorePauser()
+    +{static} CorePauser Instance()
+
+    +keyTyped(e:KeyEvent )+
+    +keyPressed(e:KeyEvent ) +
+    +keyReleased(e:KeyEvent ) +
+}
+
+Component <|-- DoWhen
+class DoWhen {
+    -condition:Callable<boolean>
+    -codeBlock:Runnable
+    -cond:boolean
+    +DoWhen(condition:Callable<Boolean>, Runnable action)
+    +update()+
+    -checks():Boolean
+}
+
+EngineGetter -- "1" EngineGetter:instance
+note left on link: static
+EngineGetter -- "1" IEngine
+class EngineGetter
+{
+    + {static}  Instance():EngineGetter
+    - EngineGetter()
+    +get():IEngine
+}
+
+
+Component <|-- While
+class While
+{
+    -condition:Callable<boolean>
+    -codeBlock:Runnable
+    -onComplete:Runnable
+    -cond:boolean
+    -runs:boolean
+
+    +While(condition:Callable<Boolean> ,codeBlock:Runnable)
+
+    +update()+
+    -checks():Boolean
+    +Excecute()
+
+    +OnComplete(onComplete:Runnable )
+}
+
+
+
+
+
+
+
+
+
+@enduml
