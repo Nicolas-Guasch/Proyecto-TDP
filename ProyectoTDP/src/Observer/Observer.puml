@@ -30,9 +30,9 @@ class ObserverPack<ParameterType>{
 
 }
 
-ObserverPack "Broadcaster" *-- IBroadcaster
-ObserverPack "Invoker" *-- Invoker
-Invoker " - broadcaster" *-- Broadcaster
+ObserverPack *-- "Broadcaster" IBroadcaster
+ObserverPack *-- "Invoker" Invoker
+Invoker  *-- " - broadcaster" Broadcaster
 
 class ObserverSystem{
     - {static} instance: ObserverSystem
