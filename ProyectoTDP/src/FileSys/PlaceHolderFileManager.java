@@ -7,10 +7,7 @@ import java.util.TreeMap;
 public class PlaceHolderFileManager implements IFileManager {
 
 
-    private Map<String,String> map;
-
     PlaceHolderFileManager(){
-        map = new TreeMap<>();
 
     }
 

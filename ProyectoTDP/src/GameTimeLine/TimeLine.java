@@ -36,12 +36,12 @@ public final class TimeLine extends Component {
 		float backgroundSpeed = 35;
 		TimePoint[] _levels = {
 				new PlayerAssembler(),
-			//	new PutDeathStar(),
-			//	new TransitionToLevel(bg_space, 1, backgroundSpeed,false),
-			//	new Level(1),
-			//	new TransitionToLevel(bg_water, 2, backgroundSpeed,true),
-			//	new Level(2),
-			//	new TransitionToLevel(bg_sand, 3, backgroundSpeed,true),
+				new PutDeathStar(),
+				new TransitionToLevel(bg_space, 1, backgroundSpeed,false),
+				new Level(1),
+				new TransitionToLevel(bg_water, 2, backgroundSpeed,true),
+				new Level(2),
+				new TransitionToLevel(bg_sand, 3, backgroundSpeed,true),
 				new Level(3),
 				new TransitionToLevel(bg_space, 4, backgroundSpeed,false),
 				new TransitionToBoss(),

@@ -1,0 +1,8 @@
+@startuml
+
+RuntimeException <|-- TimeLineException
+class TimeLineException{
+    TimeLineException(msg:String)
+}
+
+@enduml
