@@ -24,10 +24,10 @@ public class BarricadeBothVisitor extends VisitorEntity
         return dir;
     }
 
-    private void bounce(Transform quiet, Transform movile){
-        var nextTop = getRepulsion(quiet.position(),movile.position(),quiet.top(),movile.top());
-        movile.moveTowards(nextTop.withLength(5));
-        movile.setTop(nextTop);
+    private void bounce(Transform quiet, Transform traveller){
+        var nextTop = getRepulsion(quiet.position(),traveller.position(),quiet.top(),traveller.top());
+        traveller.moveTowards(nextTop.withLength(5));
+        traveller.setTop(nextTop);
     }
 
     @Override
