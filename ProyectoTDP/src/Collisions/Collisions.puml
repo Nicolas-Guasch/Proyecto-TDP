@@ -27,7 +27,7 @@ class HitBox{
 
 }
 
-HitBoxesLayer "hitBoxes" o- "0..*" HitBox
+HitBoxesLayer "hitBoxes" o--- "0..*" HitBox
 
 
 class HitBoxesLayer{
@@ -73,8 +73,10 @@ class HitBoxManager{
 
 }
 
-CollisionData "mine" o--- "1" Entity
-CollisionData "their" o--- "1" Entity
+
+Entity "1" o-- "mine" CollisionData
+Entity "1" o-- "their" CollisionData
+
 
 class CollisionData{
     - contactPoint : Vector2

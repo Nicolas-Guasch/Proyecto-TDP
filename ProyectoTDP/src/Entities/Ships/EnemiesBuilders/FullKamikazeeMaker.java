@@ -64,7 +64,7 @@ public class FullKamikazeeMaker extends EnemyShipBuilder {
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();
-        ship.addBehaviour(new MirrorBounds(topRight.prod(1.8f),bottomLeft.prod(1.2f)));
+        ship.addBehaviour(new MirrorBounds(topRight.prod(1.05f),bottomLeft.prod(1.05f)));
     }
 
     @Override

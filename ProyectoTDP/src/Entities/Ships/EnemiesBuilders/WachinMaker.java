@@ -76,7 +76,7 @@ public class WachinMaker extends EnemyShipBuilder
         Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
         Vector2 topRight = bottomRight.mirrorX();
         Vector2 bottomLeft = bottomRight.mirrorY();
-        ship.addBehaviour(new MirrorBounds(topRight.prod(1.1f),bottomLeft.prod(1.1f)));
+        ship.addBehaviour(new MirrorBounds(topRight.prod(1.05f),bottomLeft.prod(1.05f)));
         // ----------------- que alguna nave random mire al player ------------
         ship.addBehaviour(new LookTarget(PlayerShip.getInstance().referenced().transform()));
     }

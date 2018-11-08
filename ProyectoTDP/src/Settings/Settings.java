@@ -105,6 +105,7 @@ public final class Settings {
 		box = new JComboBox<>(ssizes);
 
 		full = new JCheckBox("Full Screen");
+		full.setSelected(true);
 
 
 		size.setBounds(120,10,200,50);
@@ -123,6 +124,7 @@ public final class Settings {
 
 	private Vector2[] getVsizes(){
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
 		Vector2 siz = new Vector2(screenSize.width , screenSize.height);
 		Vector2[] options = new Vector2[]{
 				new Vector2(1280,1024),
