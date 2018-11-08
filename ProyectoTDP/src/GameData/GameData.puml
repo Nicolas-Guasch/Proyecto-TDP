@@ -1,0 +1,94 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class GameSettings{
+    + TieBulletSpeed: final float
+    + TieSpeed: final float
+    + FirstBossSpeed: final float
+    + PlayerBulletSpeed: final float
+
+    -GameSettings()
+
+    + {static} GetInstance():GameSettings
+    + bounds():Rect
+    + PlaceHolderData(): EntityData
+}
+GameSettings --"1" GameSettings: (static) -instance
+GameSettings --"1" ISettingsParser: -parser >
+GameSettings -- EntityData:PlayerInitialData >
+GameSettings -- EntityData:PlayerData >
+GameSettings -- EntityData:TieData >
+GameSettings -- EntityData:TieBulletData >
+GameSettings -- EntityData:FirstBossData >
+
+enum EntityEnum {
+PlayerData
+TieData
+TieBulletData
+PlayerBulletData
+FirstBossData
+}
+
+enum FloatEnum{
+    TieBulletSpeed
+    TieSpeed
+    FirstBossSpeed
+    PlayerBulletSpeed
+}
+
+class CurrentMatchData{
+    -score:int = 0
+    -CurrentMatchData()
+
+    + getMatchData: CurrentMatchData
+    + currentScore:int
+    + incScore()
+    + resetScore()
+
+}
+CurrentMatchData -- IBroadcaster: OnScoreChanges: IBroadcaster<Integer>
+CurrentMatchData -- Invoker: invokerScoreChanges: Invoker<Integer>
+
+ interface ISettingsParser
+{
+    {abstract}+getEntityData(EntityEnum ref):EntityData
+    {abstract}+getFloat(FloatEnum ref):float
+    {abstract}+FPS():int
+    {abstract}+sizeWindow():Dimension
+
+}
+ class FileSettingsParser
+{
+    - FPS:int
+    - floatInput: [float]
+    +getEntityData(EntityEnum ref):EntityData
+    +getFloat(FloatEnum ref):float
+    +FPS():int
+    +sizeWindow():Dimension
+}
+FileSettingsParser -- "1" Dimension : sizeWindow >
+FileSettingsParser -- "*" EntityData
+ISettingsParser <|-- FileSettingsParser
+
+
+interface ILostOrWin {
+     {abstract}+AllianceWins()
+     {abstract}+EmpireWins()
+}
+
+class LostOrWin {
+     -made:boolean
+     +AllianceWins()
+     +EmpireWins()
+     -creditsAndClose()
+}
+ILostOrWin <|-- LostOrWin
+class MatchResult {
+     +AllianceWins()
+     +EmpireWins()
+     +getInstance(): MatchResult
+     -creditsAndClose()
+}
+ILostOrWin <|-- MatchResult
+MatchResult -- MatchResult:Instance
+@enduml
