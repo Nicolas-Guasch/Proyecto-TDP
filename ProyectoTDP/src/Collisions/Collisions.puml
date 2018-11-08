@@ -81,7 +81,7 @@ class CollisionData{
     + their() : Entity
     + contactPoint(): Vector2
     + CollisionData(mine,their : Entity , contactPoint : Vector2)
-    que pusheees te digoooo!!!!!!
+
 }
 
 @enduml
