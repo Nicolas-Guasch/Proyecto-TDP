@@ -1,18 +1,6 @@
 @startuml
 
-class VisitorEntity{
-    +visit( playerShip: PlayerShip)
-    +visit( enemyShip: EnemyShip)
-    +visit( otherShip: OtherShip)
-    +visit( barricadeEnem: BarricadeEnem)
-    +visit( barricadeBoth: BarricadeBoth)
-    +visit( playerBullet: PlayerBullet)
-    +visit( enemyBullet: EnemyBullet)
-    +visit( fireShield: FireShield)
-    +visit( weaponReward: WeaponReward)
-    +visit( genericReward: GenericReward)
-    +visit( shipBoss: ShipBoss)
-}
+
 VisitorEntity <|----- BarricadeBothVisitor
 VisitorEntity <|---- BarricadeEnemVisitor
 VisitorEntity <|--- BossVisitor
@@ -34,13 +22,6 @@ VisitorEntity <|--- WeaponRewardVisitor
 VisitorEntity <|----- WeaponSwitch
 
 
-class BarricadeBothVisitor{
-    -transform : Transform
-    +BarricadeBothVisitor(transform:Transform)
-    -getRepulsion(repulsor,repulsado,repulsor_top,repulsado_top : Vector2)
-    - bounce(quiet,traveller : Transform)
-    +visit( playerBullet: PlayerBullet)++
-    +visit( enemyBullet: EnemyBullet)++
-}
+
 
 @enduml
