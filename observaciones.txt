@@ -1,0 +1,12 @@
+Compilado usando Java 10.
+Desarrollado en IntelliJ Idea.
+diagramas UML hechos con plantUML.
+Controles:
+*Mouse:apuntar
+*Click izquierdo: disparar
+*Q: cambiar arma
+*A: moverse izquierda
+*D: moverse derecha
+Controles adicionales en Boss Final:
+*W: moverse arriba
+*S: moverse abajo

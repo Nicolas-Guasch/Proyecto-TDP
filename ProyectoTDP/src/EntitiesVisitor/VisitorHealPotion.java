@@ -7,7 +7,7 @@ import Entities.Ships.Player.PlayerShip;
 public class VisitorHealPotion extends VisitorEntity {
 
     private Entity reward;
-    private float potion=100;
+    private float potion=500;
 
     public VisitorHealPotion(){
 

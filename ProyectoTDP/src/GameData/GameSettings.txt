@@ -1,6 +1,6 @@
 FPS: 70
 Window: 1280x739
-PlayerData: (500,12,0.3)
+PlayerData: (2500,12,0.3)
 PlayerBulletData: (1,8,0)
 TieData: (150,100,0)
 TieBulletData: (10,25,0)
