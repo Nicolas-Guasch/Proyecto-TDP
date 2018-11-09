@@ -25,7 +25,7 @@ public class DeathStar {
         deathStar.addComponent(new MirrorBounds(topRight.prod(1.4f), bottomLeft.prod(1.4f)));
         deathStar.addComponent(new Directionable(Vector2.random(0.5f)));
         deathStar.addComponent(new AlwaysRotate(0.2f));
-        deathStar.transform().setZcomponent(493);Renderizable death = new Renderizable(new SpriteData("DeathStar", new Vector2(500, 500)));
+        deathStar.transform().setZcomponent(493);Renderizable death = new Renderizable(new SpriteData("deathstar", new Vector2(500, 500)));
         death.show();
         deathStar.addComponent(death);
         instance = deathStar;
