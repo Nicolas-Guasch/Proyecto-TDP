@@ -27,7 +27,7 @@ public final class Settings {
 	private JCheckBox full;
 	private JFrame wind;
 	private Container container;
-	private JComboBox<String> box;
+	private JComboBox<String> box, difficulty;
 	private String[] ssizes;
 	private Vector2[] vsizes;
 
@@ -48,6 +48,7 @@ public final class Settings {
 
 
 		JLabel size = new JLabel("Screen Size");
+		JLabel dif = new JLabel("Difficulty");
 		JButton ok = new JButton("OK");
 		ok.addActionListener(this::actionButton);
 		Collection<Integer> keys = new HashSet<>();
@@ -104,17 +105,23 @@ public final class Settings {
 
 		box = new JComboBox<>(ssizes);
 
+		difficulty = new JComboBox<>("Easy,Medium,Hard".split(","));
+
 		full = new JCheckBox("Full Screen");
 		full.setSelected(true);
 
 
+		box.setBounds(120,60,100,30);
 		size.setBounds(120,10,200,50);
-		box.setBounds(120,110,100,30);
-		full.setBounds(240,110,100,30);
-		ok.setBounds(220,210,80,30);
+		difficulty.setBounds(18,60,100,30);
+		dif.setBounds(20,10,200,50);
 
+		full.setBounds(120,110,100,30);
+		ok.setBounds(120,210,100,30);
 
+		container.add(difficulty);
 		container.add(size);
+		container.add(dif);
 		container.add(ok);
 		container.add(full);
 		container.add(box);
@@ -163,6 +170,7 @@ public final class Settings {
 		int i = box.getSelectedIndex();
 		Vector2 screenSize = vsizes[i];
 		GameSettings.GetInstance().sizeWindow = screenSize.toDimension();
+		GameSettings.difficulty = difficulty.getSelectedIndex()+1;
 		wind.setVisible(false);
 		wind.dispose();
 		new Thread(LoadWindow::getInstance).start();

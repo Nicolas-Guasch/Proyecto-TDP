@@ -37,7 +37,6 @@ public class TransitionToLevel extends TimePoint {
         UI.getInstance().startLevel(levelIndex);
         EngineGetter.Instance().get().waitForFrames(()->ready = true,180);
         Background.getInstance().setBG(nameBackground);
-        PlayerShip.getInstance().referenced().transform().setPosition(new Vector2(0,-200));
         PlayerShip.getInstance().getArsenal().setActive(true);
         Sun.getInstance().setDaytime(sun);
     }

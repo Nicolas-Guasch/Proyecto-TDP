@@ -21,7 +21,7 @@ import RenderingSystem.ShadowedRend;
 import RenderingSystem.SpriteData;
 import UtilsBehaviours.MirrorBounds;
 
-public class WachinMaker extends EnemyShipBuilder
+public class TieCrazyMaker extends EnemyShipBuilder
 {
 
 

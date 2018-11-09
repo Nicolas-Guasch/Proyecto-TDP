@@ -11,6 +11,7 @@ import Entities.Barricades.OrangeBarricadeMaker;
 import Entities.Ships.*;
 import Entities.*;
 import EntitiesVisitor.*;
+import GameData.GameSettings;
 import Rewards.*;
 import Scripts.HyperSpace;
 import Scripts.Jumper;
@@ -102,26 +103,39 @@ public final class Level extends TimePoint
         List<EnemyShipBuilder> builders = parser.enemies();
         Iterator<RewardKey> itRewards = parser.rewards().iterator();
         List<Vector2> positions = parser.enemiesPositions();
+        for (int j = 0; j < GameSettings.difficulty-1; j++) {
+            positions.addAll(new LinkedList<>(positions));
+        }
         Collections.shuffle(positions);
         int z = 10;
-        Vector3 far = new Vector3(0,2000,z);
+        var vsiz = GameSettings.GetInstance().sizeWindow;
+        Vector3 far = new Vector3(vsiz.width/1.9f,vsiz.height/1.9f,z);
         int i = 0;
-        for(Vector2 v : positions)
-        {
-            i+=15;
-            director.setBuilder(getRandom(builders));
-            Vector3 pos =  v.v3(z);
-            var ship = getShip();
-            ship.referenced().transform().setPosition(far);
-            Jumper jumper = HyperSpace.Jump(ship.referenced().transform(),pos.xy(),30,i);
-            ship.getArsenal().setActive(false);
-            jumper.getOnComplete().suscribe(new ShipAction(ship,(s)->s.getArsenal().setActive(true)));
-            EveryOne.getInstance().add(ship);
-            if(itRewards.hasNext()){
-                var onDeath =ThrowAReward(itRewards.next(),ship.referenced().transform());
-                ship.setOnDeath(onDeath);
-            }
+
+
+            for(Vector2 v : positions)
+            {
+                BaseEnemyShip ship;
+                director.setBuilder(getRandom(builders));
+                ship = getShip();
+                i+=15;
+
+                {
+                    Vector3 pos =  v.v3(z);
+                    ship.referenced().transform().setPosition(far);
+                    Jumper jumper = HyperSpace.Jump(ship.referenced().transform(),pos.xy(),30,i);
+                    ship.getArsenal().setActive(false);
+                    jumper.getOnComplete().suscribe(new ShipAction(ship,(s)->s.getArsenal().setActive(true)));
+                    EveryOne.getInstance().add(ship);
+
+                }
+                if(itRewards.hasNext()){
+                    var onDeath =ThrowAReward(itRewards.next(),ship.referenced().transform());
+                    ship.setOnDeath(onDeath);
+                }
+
         }
+
 
 
     }

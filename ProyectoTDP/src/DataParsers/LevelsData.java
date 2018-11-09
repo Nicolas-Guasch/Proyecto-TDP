@@ -57,18 +57,18 @@ public class LevelsData implements ILevelsData
     {
 
         enemies.get(L1).add(new WhiteTieMaker());
-        enemies.get(L1).add(new WachinMaker());
-        enemies.get(L1).add(new DizzyMaker());
+        enemies.get(L1).add(new TieCrazyMaker());
+        //enemies.get(L1).add(new DizzyMaker());
 
         enemies.get(L2).add(new DizzyMaker());
         enemies.get(L2).add(new FastTieMaker());
-        enemies.get(L2).add(new WachinMaker());
+        enemies.get(L2).add(new TieCrazyMaker());
         enemies.get(L2).add(new WhiteTieMaker());
         enemies.get(L2).add(new FastTieMaker());
 
-        enemies.get(L3).add(new WachinMaker());
-        enemies.get(L3).add(new DizzyMaker());
-        enemies.get(L3).add(new FastTieMaker());
+        enemies.get(L3).add(new TieCrazyMaker());
+        //nemies.get(L3).add(new DizzyMaker());
+        //enemies.get(L3).add(new FastTieMaker());
         enemies.get(L3).add(new FullKamikazeeMaker());
         enemies.get(L3).add(new FastTieMaker());
     }
@@ -84,7 +84,11 @@ public class LevelsData implements ILevelsData
         rew.get(L1).add(RewardsManager.HEALTH);
         rew.get(L1).add(RewardsManager.HEALTH);
         rew.get(L1).add(RewardsManager.HEALTH);
+        rew.get(L1).add(RewardsManager.FIRESHIELD);
+        rew.get(L1).add(RewardsManager.FIRESHIELD);
 
+        rew.get(L2).add(RewardsManager.FIRESHIELD);
+        rew.get(L2).add(RewardsManager.FIRESHIELD);
         rew.get(L2).add(RewardsManager.FIRESHIELD);
         rew.get(L2).add(RewardsManager.HANSUPPORT);
         rew.get(L2).add(RewardsManager.HEALTH);
@@ -93,8 +97,10 @@ public class LevelsData implements ILevelsData
         rew.get(L2).add(RewardsManager.ICE);
         rew.get(L2).add(RewardsManager.FORCE);
 
-        rew.get(L3).add(RewardsManager.SHIELD);
+
         rew.get(L3).add(RewardsManager.ICE);
+        rew.get(L3).add(RewardsManager.FIRESHIELD);
+        rew.get(L3).add(RewardsManager.FIRESHIELD);
         rew.get(L3).add(RewardsManager.FIVEWEAPON);
         rew.get(L3).add(RewardsManager.HANSUPPORT);
         rew.get(L3).add(RewardsManager.HEALTH);

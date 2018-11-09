@@ -84,7 +84,7 @@ public class VaderAMaker extends EnemyShipBuilder
         handler = new AbsoluteLateral(handler,100);
         handler = new Slippery(handler,200f, 0.3f); // ver como queda sino sacar
 
-        Pilot pilot = new Pilot(handler,ship,15f);
+        Pilot pilot = new Pilot(handler,ship,8+GameSettings.difficulty);
         handler = new IncreaseSpeedIfWatched(handler,pilot);
         pilot.setHandler(handler);
         ship.setPilot(pilot);

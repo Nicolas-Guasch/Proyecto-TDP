@@ -37,7 +37,6 @@ public class ShieldVisitor extends VisitorEntity
         this.visitable = visitable;
         if(visitable.data()==null)return;
         prevShield = visitable.data().getShield();
-        System.out.println(prevShield+" <<----prev shield");
         visitable.data().setShield(1); // invulnerable
 
         rend_ship = visitable.referenced().getRenderer();
@@ -54,7 +53,7 @@ public class ShieldVisitor extends VisitorEntity
 
         visitable.referenced().transform().setPosition(point);
 
-        EngineGetter.Instance().get().waitForFrames(restore,1200);
+        EngineGetter.Instance().get().waitForFrames(restore,400);
     }
 
     private void restore()

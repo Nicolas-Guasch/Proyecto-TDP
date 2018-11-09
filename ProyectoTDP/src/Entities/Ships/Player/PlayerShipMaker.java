@@ -100,7 +100,9 @@ collider: 130x130
     }
 
 
-    public void assembleData() {
+    public void assembleData()
+    {
         ship.setData(GameSettings.GetInstance().PlayerData); //si, referencia
+        ship.data().setShield(ship.data().getShield()/GameSettings.difficulty);
     }
 }

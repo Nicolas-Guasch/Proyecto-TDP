@@ -7,6 +7,7 @@ import Entities.EveryOne;
 import Entities.Ships.BaseEnemyShip;
 import Entities.Ships.EnemyShipBuilder;
 import Entities.Ships.EnemyShipDirector;
+import Entities.Ships.Player.PlayerShip;
 import Tools.Random;
 import UI.ShipStatus;
 import UI.UI;
@@ -35,7 +36,7 @@ public class BossLevel extends TimePoint {
     @Override
     public void startMoment() {
         ShipStatus = new ShipStatus(new Vector2(100,200), vader.observerHealth(),"bossbar",vader.data().getHealth());
-        vader.referenced().transform().setPosition(Vector2.random(Random.value(200,450)));
+        vader.referenced().transform().setPosition(Vector2.random(Random.value(300,450)).sum(PlayerShip.getInstance().referenced().transform().position()));
         UI.getInstance().addUIComponent(ShipStatus);
         EngineGetter.Instance().get().waitForFrames(()->playing = true,100);
     }

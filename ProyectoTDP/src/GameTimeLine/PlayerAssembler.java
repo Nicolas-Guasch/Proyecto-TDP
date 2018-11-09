@@ -6,6 +6,7 @@ import Entities.EveryOne;
 import Entities.Ships.Player.PlayerShip;
 import EntitiesVisitor.VisitorEntity;
 import EntitiesVisitor.WeaponSwitch;
+import GameData.GameSettings;
 
 public class PlayerAssembler extends TimePoint {
     private boolean ready=false;
@@ -13,7 +14,10 @@ public class PlayerAssembler extends TimePoint {
     @Override
     public void assembleMoment() {
         EveryOne.getInstance().add(PlayerShip.getInstance());
-        PlayerShip.getInstance().referenced().transform().setPosition(new Vector3(0,-200,-90));
+        var y = GameSettings.GetInstance().sizeWindow.height*(3.5f/8);
+        var vec = new Vector3(0,-y,-90);
+
+        PlayerShip.getInstance().referenced().transform().setPosition(vec);
     }
 
     @Override

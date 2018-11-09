@@ -52,7 +52,7 @@ public class VaderCMaker extends EnemyShipBuilder {
 
     @Override
     public void assembleWeapons() {
-        int phaseshift = 30;
+        int phaseshift = 50; // si , 50
 
         // -------------- creo armas y las agrego ---------------
 
@@ -72,7 +72,7 @@ public class VaderCMaker extends EnemyShipBuilder {
 
 
         // --------------- configuro el arma para disparar cada 30 frames
-        int freq = 6;
+        int freq = 6-GameSettings.difficulty;
         Arsenal bp = ship.getBagPack();
         FireFrequency fireFrequency = new FireFrequency(freq, bp); // hace qeu dispare cada freq frames
         ship.addBehaviour(fireFrequency);
@@ -84,7 +84,7 @@ public class VaderCMaker extends EnemyShipBuilder {
         handler = new AbsoluteLateral(handler, 90);
         handler = new Slippery(handler, 190f, 0.31f); // ver como queda sino sacar
 
-        Pilot pilot = new Pilot(handler, ship, 20f);
+        Pilot pilot = new Pilot(handler, ship, 14*GameSettings.difficulty);
         float deg = 0.4f;
         handler = new IncreaseSpeedIfWatched(handler, pilot, deg);
         pilot.setHandler(handler);
@@ -108,6 +108,6 @@ public class VaderCMaker extends EnemyShipBuilder {
     @Override
     public void assembleData() {
         ship.setData(GameSettings.GetInstance().FirstBossData.clone());
-        ship.data().setShield(0.4f);
+        ship.data().setShield(0.15f*GameSettings.difficulty);
     }
 }

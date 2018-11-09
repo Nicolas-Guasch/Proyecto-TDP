@@ -82,7 +82,7 @@ public class VaderBMaker extends EnemyShipBuilder {
         handler = new AbsoluteLateral(handler, 130);
         handler = new Slippery(handler, 230f, 0.35f); // ver como queda sino sacar
 
-        Pilot pilot = new Pilot(handler, ship, 18f);
+        Pilot pilot = new Pilot(handler, ship, 12+(GameSettings.difficulty));
         float deg = 0.38f;
         handler = new IncreaseSpeedIfWatched(handler, pilot, deg);
         pilot.setHandler(handler);

@@ -14,6 +14,7 @@ public class GameSettings
 
     public static final int DrunkIntensity = 1;
     public static boolean DrunkMode = false;
+    public static int difficulty=1;
 
     private static GameSettings instance;
     public final EntityData PlayerInitialData;
