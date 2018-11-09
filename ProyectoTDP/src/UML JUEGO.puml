@@ -234,6 +234,47 @@ package Collisions{
     }
 }
 
+package observer{
+    interface IBroadcaster<ParameterType>{
+        +unsuscribe(listener : Consumer<ParameterType>)
+        +suscribe(listener : Consumer<ParameterType>)
+        +clean()
+    }
+
+    IBroadcaster <|-- Broadcaster
+
+    class Broadcaster<ParameterType>{
+        -list : List<Consumer<ParameterType>>
+        -toAdd : Queue<Consumer<ParameterType>>
+        -toRemove : Queue<Consumer<ParameterType>>
+
+        Broadcaster()
+        ~ invoke(parameter ParameterType)
+        +unsuscribe(listener : Consumer<ParameterType>) +
+        +suscribe(listener : Consumer<ParameterType>) +
+        +clean() +
+    }
+
+    class Invoker<ParameterType>{
+        ~ Invoker(broad : Broadcaster<ParameterType>)
+        + invoke(p: ParameterType)
+    }
+
+    class ObserverPack<ParameterType>{
+
+    }
+
+    ObserverPack *-- "Broadcaster" IBroadcaster
+    ObserverPack *-- "Invoker" Invoker
+    Invoker  *-- " - broadcaster" Broadcaster
+
+    class ObserverSystem{
+        - {static} instance: ObserverSystem
+        + {static} getInstance: ObserverSystem
+        + <ParameterType> observerPack<ParameterType> getBroadcaster()
+    }
+}
+
 package Entities{
 
     Entity o-- "1" GameObject: -referenced >

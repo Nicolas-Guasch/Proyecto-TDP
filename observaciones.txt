@@ -1,12 +1,17 @@
 Compilado usando Java 10.
 Desarrollado en IntelliJ Idea.
 diagramas UML hechos con plantUML.
+Importante: el repositiorio guarda los archivos pesados (png,wav) usando GIT LFS. Para garantizar que estos archivos se bajen se recomienda clonar el repositorio en vez de usar "descargar zip".
 Controles:
 *Mouse:apuntar
 *Click izquierdo: disparar
 *Q: cambiar arma
 *A: moverse izquierda
 *D: moverse derecha
+*Espacio: usar el power-up de la fuerza
 Controles adicionales en Boss Final:
 *W: moverse arriba
 *S: moverse abajo
+
+JAR en Google Drive:
+https://drive.google.com/file/d/15HTdKGosEexQTYKnbaUBMngk-1KH8-xa/view?usp=sharing
