@@ -1,0 +1,106 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package InputManager{
+    abstract class AbstractContinueInput
+    {
+        + {abstract} happens():boolean
+        + {abstract} Destroy()
+    }
+    abstract class AbstractDirectionalInput
+    {
+        + {abstract}  Destroy()
+        + {abstract}  Direction():Vector2
+    }
+
+    IActivable <|-- AbstractDiscreteInput
+    abstract class AbstractDiscreteInput
+    {
+        + {abstract} Destroy()
+        + {abstract}  OnAction():IBroadcaster<Boolean>
+    }
+
+    ContinueClick -- "1" MouseListener
+    class ContinueClick extends AbstractContinueInput
+    {
+        - happens:boolean
+        - Listener:MouseListener
+        + ContinueClick(mouseButton:int )
+        - initialize(mouseButton:int )
+        + boolean happens()+
+        +  Destroy()+
+    }
+
+    ContinueKeyInput -- "1" KeyListener
+    class ContinueKeyInput extends AbstractContinueInput
+    {
+        - happens:boolean
+        - mychars:[char]
+        + ContinueKeyInput(chars:String )
+        + boolean happens()+
+        +  Destroy()+
+    }
+
+    DirectionalMouse -- "1" Transform
+    class DirectionalMouse extends AbstractDirectionalInput
+    {
+        + DirectionalMouse (reference:Transform)
+        +  Destroy()+
+        + Direction():Vector2+
+    }
+
+    DirectionalWASD-- "4" AbstractContinueInput
+    class DirectionalWASD extends AbstractDirectionalInput
+    {
+        -Xblocked:boolean
+        -Yblocked:boolean
+        + DirectionalWASD ()
+        + lockX()
+        + lockY()
+        + unLockX()
+        + unLockY()
+        +  Destroy()+
+        + Direction():Vector2+
+    }
+
+    DiscreteClick --  IBroadcaster
+    DiscreteClick --  Invoker
+    DiscreteClick -- AbstractContinueInput
+    DiscreteClick -- DummyComponent
+    class DiscreteClick extends AbstractDiscreteInput
+    {
+        -lastStatus:boolean
+        +DiscreteClick(mouseClick:int )
+        +  initialize(mouseClick:int )
+        -  Update()
+        + isActive():boolean+
+        +  setActive(active:boolean )+
+        +  Destroy()+
+        +  OnAction():IBroadcaster<Boolean>+
+    }
+
+    DiscreteKeyInput --  IBroadcaster
+    DiscreteKeyInput --  Invoker
+    DiscreteKeyInput -- AbstractContinueInput
+    DiscreteKeyInput -- DummyComponent
+    class DiscreteKeyInput extends AbstractDiscreteInput
+    {
+        -lastStatus:boolean
+        +DiscreteKeyInput(chars:String)
+        -  Update()
+        + isActive():boolean+
+        +  setActive(active:boolean )+
+        +  Destroy()+
+        +  OnAction():IBroadcaster<Boolean>+
+    }
+
+    class DummyComponent extends Component
+    {
+        - Runnable onUpdate;
+        DummyComponent(onUpdate:Runnable )
+        + update()++
+        + OnDestroy() ++
+    }
+}
+
+@enduml
