@@ -38,13 +38,6 @@ public class CompEntry<K extends Comparable<K>,V> implements Comparable<CompEntr
         return key;
     }
 
-    public K setKey(K key)
-    {
-        K old = this.key;
-        this.key = key;
-        return old;
-    }
-
     @Override
     public int compareTo(CompEntry<K, V> o)
     {

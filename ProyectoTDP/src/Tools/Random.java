@@ -34,8 +34,4 @@ public class Random
         return (int)((Math.abs((System.currentTimeMillis()*max>>7<<min)*System.nanoTime()))%r)+min;
     }
 
-    public static boolean bool()
-    {
-        return value(0,2)==1;
-    }
 }
