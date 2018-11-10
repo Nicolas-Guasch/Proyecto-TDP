@@ -1,8 +1,10 @@
 @startuml
 
-class DeathStar{
-    +{static} get():GameObject
-    -{static} instance : GameObject
+package Misc{
+    class DeathStar{
+        +{static} get():GameObject
+        -{static} instance : GameObject
+    }
 }
 
 @enduml
