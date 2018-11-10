@@ -1,0 +1,66 @@
+@startuml
+
+Component <|-- Jumper
+Transform "1" --o "-transform" Jumper
+IBroadcaster "1" --o "onComplete" Jumper
+Invoker "1" --o "invokeComplete" Jumper
+
+class Jumper{
+    -delay:int
+    -points: [Vector2]
+    -firstPos : Vector2
+
+    +Jumper(path : [Vector2] , transform : Transform)
+    +update()++
+    +getOnComplete():IBroadcaster<Vector2>
+
+}
+
+GameObject ----o "obj" HyperSpace
+HyperSpace -|>Component
+class HyperSpace{
+    +{static} Jump():Jumper
+    -{static} checkObj()
+    -{static} getPath(src,dest : vector2, frames:int):[vector2]
+}
+Directionable -|>Component
+class Directionable{
+    -direction : Vector2
+    +Directionable(d:Vector2)
+    +update()++
+}
+DangerousHunter <|--- Component
+DangerousHunter "tofollow" o-- Transform
+class DangerousHunter{
+    -increment,maxspeed,currentspeed : float
+    +update()++
+    DangerousHunter(tofollow:Transform)
+}
+AlwaysTurnAround "centerPoint" o--- Transform
+AlwaysTurnAround ----|> Component
+class AlwaysTurnAround{
+    -currentGap : Vector2
+    -angularSpeed : float
+    +update()++
+    AlwaysTurnAround()
+}
+
+class AlwaysRotate{
+    -rot:float
+    AlwaysRotate(v:float)
+    +update()++
+}
+PushData "target" o-- Transform
+class PushData{
+    counter:int
+    veloci:Vector2
+    dismish:float
+    getVelocity():Vector2
+    getCounter():int
+    getDismish():float
+    setVelocity(velocity:Vector2)
+}
+
+
+
+@enduml

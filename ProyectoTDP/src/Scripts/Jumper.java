@@ -31,10 +31,6 @@ public class Jumper extends Component {
         invokerComplete = v.Invoker;
     }
 
-    @Override
-    public void start() {
-
-    }
 
     @Override
     public void update() {
