@@ -52,14 +52,18 @@ class AlwaysRotate{
 }
 PushData "target" o-- Transform
 class PushData{
-    counter:int
-    veloci:Vector2
-    dismish:float
-    getVelocity():Vector2
-    getCounter():int
-    getDismish():float
-    setVelocity(velocity:Vector2)
+    -counter:int
+    -veloci:Vector2
+    -dismish:float
+    +getVelocity():Vector2
+    +getCounter():int
+    +getDismish():float
+    +setVelocity(velocity:Vector2)
+    +setDismish(dismish:float)
+    +getTarget():Transform
 }
+
+
 
 
 

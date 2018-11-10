@@ -36,10 +36,6 @@ public class PushData{
         this.dismish = dismish;
     }
 
-    public void setCounter(int counter) {
-        this.counter = counter;
-    }
-
     public Transform getTarget() {
         return target;
     }
