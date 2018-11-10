@@ -1,0 +1,84 @@
+@startuml
+package IAs{
+    interface EntityQuery{
+        whereToMove(ent:Entity):Vector2
+        whereToSee(ent:Entity):Vector2
+    }
+
+    EntityQuery "1" --o "decorated" AIQueryDecorator
+    abstract class AIQueryDecorator{
+        +AIQueryDecorator(decorated : EntityQuery)
+    }
+    ParametricMove --|> AIQueryDecorator
+    abstract class ParametricMove{
+        -t:int
+        -lastDir:Vector2
+        ParametricMove(deco:EntityQuery)
+        whereToMove(ent:Entity):Vector2+
+        whereToSee(ent:Entity):Vector2+
+        whereToMove(ent:Entity,t:int):Vector2
+    }
+    RelativeLateral --|>AIQueryDecorator
+    class RelativeLateral{
+        -steps,speed,i :int
+        +RelativeLateral(deco : EntityQuery)
+        +whereToMove(ent:Entity)+
+        +whereToSee(ent:Entity)+
+    }
+
+    SoloAI --|>AIQueryDecorator
+    SoloAI "-enemies" o-- "0..*" EnemyShip
+
+    class SoloAI{
+
+        -max,i,index_w : int
+        -waypoints : [Vector2]
+        +SoloAI(deco : EntityQuery, points:[Vector2])
+        +whereToMove(ent:Entity)+
+        +whereToSee(ent:Entity)+
+    }
+
+    Spinner --|>AIQueryDecorator
+    class Spinner{
+            -steps,speed,i :int
+            +Spinner(deco : EntityQuery)
+            +whereToMove(ent:Entity)+
+            +whereToSee(ent:Entity)+
+    }
+
+    SwitchWhen --|> EntityQuery
+    SwitchWhen o-- "0..*" Entity
+
+    SwitchWhen "current, other" o-- "2" EntityQuery
+            class SwitchWhen{
+                SwitchWhen(predicate:Predicate, first,last : EntityQuery )
+                -predicate : Predicate
+                +whereToMove(ent:Entity)+
+                +whereToSee(ent:Entity)+
+             }
+
+    Slippery --|>AIQueryDecorator
+        class Slippery{
+                -dispersion,level,tolerance :float
+                last:Vector2
+
+                +Slippery(deco : EntityQuery, level,disp: float)
+                +Slippery(deco : EntityQuery)
+                +whereToMove(ent:Entity)+
+                +whereToSee(ent:Entity)+
+        }
+    WatchAnother --|>AIQueryDecorator
+    WatchAnother "another" o-- "1" Transform
+            class WatchAnother{
+                    -dispersion,level,tolerance :float
+                    last:Vector2
+                    scape:int
+
+                    +WatchAnother(another:Transform , deco : EntityQuery)
+                    +whereToMove(ent:Entity)+
+                    +whereToSee(ent:Entity)+
+            }
+
+}
+
+@enduml
