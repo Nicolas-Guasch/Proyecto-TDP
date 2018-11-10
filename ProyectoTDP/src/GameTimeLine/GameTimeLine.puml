@@ -33,10 +33,71 @@ class SomeBarricades{
     + complete():bool+
 }
 RemoveDeathStar ---|> TimePoint
+
 class RemoveDeathStar{
     + assembleMoment()+
     + startMoment()+
     + complete():bool+
+}
+
+PutDeathStar ---|> TimePoint
+
+class PutDeathStar{
+    + assembleMoment()+
+    + startMoment()+
+    + complete():bool+
+}
+
+TransitionToBoss ---|> TimePoint
+
+class TransitionToBoss{
+    + assembleMoment()+
+    + startMoment()+
+    + complete():bool+
+}
+
+
+
+PlayerAssembler ---|> TimePoint
+
+class PlayerAssembler{
+    + assembleMoment()+
+    + startMoment()+
+    + complete():bool+
+}
+
+
+
+Level ---|> TimePoint
+
+class Level{
+private Collection<Entity> rewards;
+    - ILevelsData parser;
+    - EnemyShipDirector director;
+    - BarricadeBothDirector directorBboth;
+    - BarricadeEnemDirector directorBenem;
+    - int number;
+    - boolean levelRunning = false;
+
+    + assembleMoment()+
+    + startMoment()+
+    + complete():bool+
+}
+
+
+TransitionToLevel ---|> TimePoint
+
+class TransitionToLevel{
+    + assembleMoment()+
+    + startMoment()+
+    + complete():bool+
+}
+
+class GameManager{
+    -{static} instance:GameManager
+    +{static} getInstance:GameManager
+    +GameManager()
+    +StartGame()
 }
 
 
