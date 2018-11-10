@@ -1,91 +1,92 @@
 @startuml
 
-interface Consumer<T>{
-    +void accept(t : T)
+package Rewards{
+    interface Consumer<T>{
+        +void accept(t : T)
+    }
+    Consumer <|---- FireSpinnerCoin
+    class FireSpinnerCoin{
+        +void accept(transform :Transform)+
+    }
+
+    Consumer <|--- GenericReward
+    Renderizable "1" -o "renderer" GenericReward
+    Entity <|-- GenericReward
+    class GenericReward{
+
+        +GenericReward(referenced : GameObject,visitor:  VisitorEntity,sprite: SpriteData )
+        +accept(visitor : visitorEntity)+
+
+    }
+    Consumer <|-- HealthCoin
+    class HealthCoin{
+
+        +accept(transform Transform)+
+
+    }
+
+    Consumer <|-- IceWeaponCoin
+    class IceWeaponCoin{
+
+        +accept(transform Transform)+
+
+    }
+
+    class RewardKey{
+        -{static} x:int =0
+        - ID : int
+        - RewardKey()
+        + {static} get() : RewardKey
+        + hashCode() : int ++
+        + equals(obj : Object) : boolean ++
+        + toString() : String ++
+    }
+
+    Component <|--- RewardMove
+    class RewardMove{
+        -min,max : int
+        -counter : float =1
+        -speed : Vector2 = (-1,0)
+        +RewardMove()
+        + update()++
+    }
+
+
+    RewardKey "7" ---o "+KEYS" RewardsManager
+
+
+    class RewardsManager{
+        -{static} instance : RewardsManager
+        +{static} getInstance : RewardsManager
+        - creators Map<RewardKey,Consumer<Transform>>
+        - RewardsManager()
+        + getReward(key:RewardKey, point : Transform)
+
+    }
+
+    Consumer <|-- ShieldCoin
+    class ShieldCoin{
+        +accept(transform:Transform)++
+    }
+
+    Consumer <|-- WeaponFiveCoin
+
+    class WeaponFiveCoin{
+        +accept(transform:Transform)++
+    }
+
+    Entity <|-- WeaponReward
+    Weapon "1" --o "-weapon" WeaponReward
+    Renderizable "1" --o "-renderer" WeaponReward
+
+    class WeaponReward{
+        +WeaponReward(referenced:GameObject,sprite:SpriteData)
+        +setWeapon(w:Weapon)
+        +accept(visitor : VisitorEntity)+
+    }
+
+
 }
-Consumer <|---- FireSpinnerCoin
-class FireSpinnerCoin{
-    +void accept(transform :Transform)+
-}
-
-Consumer <|--- GenericReward
-Renderizable "1" -o "renderer" GenericReward
-Entity <|-- GenericReward
-class GenericReward{
-
-    +GenericReward(referenced : GameObject,visitor:  VisitorEntity,sprite: SpriteData )
-    +accept(visitor : visitorEntity)+
-
-}
-Consumer <|-- HealthCoin
-class HealthCoin{
-
-    +accept(transform Transform)+
-
-}
-
-Consumer <|-- IceWeaponCoin
-class IceWeaponCoin{
-
-    +accept(transform Transform)+
-
-}
-
-class RewardKey{
-    -{static} x:int =0
-    - ID : int
-    - RewardKey()
-    + {static} get() : RewardKey
-    + hashCode() : int ++
-    + equals(obj : Object) : boolean ++
-    + toString() : String ++
-}
-
-Component <|--- RewardMove
-class RewardMove{
-    -min,max : int
-    -counter : float =1
-    -speed : Vector2 = (-1,0)
-    +RewardMove()
-    + update()++
-}
-
-
-RewardKey "7" ---o "+KEYS" RewardsManager
-
-
-class RewardsManager{
-    -{static} instance : RewardsManager
-    +{static} getInstance : RewardsManager
-    - creators Map<RewardKey,Consumer<Transform>>
-    - RewardsManager()
-    + getReward(key:RewardKey, point : Transform)
-
-}
-
-Consumer <|-- ShieldCoin
-class ShieldCoin{
-    +accept(transform:Transform)++
-}
-
-Consumer <|-- WeaponFiveCoin
-
-class WeaponFiveCoin{
-    +accept(transform:Transform)++
-}
-
-Entity <|-- WeaponReward
-Weapon "1" --o "-weapon" WeaponReward
-Renderizable "1" --o "-renderer" WeaponReward
-
-class WeaponReward{
-    +WeaponReward(referenced:GameObject,sprite:SpriteData)
-    +setWeapon(w:Weapon)
-    +accept(visitor : VisitorEntity)+
-}
-
-
-
 
 
 @enduml
