@@ -1,0 +1,653 @@
+@startuml
+skinparam classAttributeIconSize 0
+' Split into 4 pages
+'page 2x1
+'skinparam pageMargin 10
+'skinparam pageExternalColor gray
+'skinparam pageBorderColor black
+
+
+
+package GameTimeLine{
+    abstract class TimePoint{
+        + {abstract} assembleMoment()
+        + {abstract} startMoment()
+        + {abstract} complete():bool
+    }
+    TimeLine --|> Component
+    TimeLine "levels" o--- "0..*" TimePoint
+
+    class TimeLine
+    {
+        -{static}instance : TimeLine
+        +{static}getInstance() : TimeLine
+        -currentlevel:int
+        +TimeLine()
+        +update()++
+        -hasNextLevel():bool
+        +currentLevel():TimePoint
+        - runLevel()
+        + playLevel()
+    }
+
+    SomeBarricades --|> TimePoint
+
+    BarricadeBothDirector "1" --o "director" SomeBarricades
+
+    class SomeBarricades{
+        +SomeBarricades()
+        nextBarricade():Entity
+        + assembleMoment()+
+        + startMoment()+
+        + complete():bool+
+    }
+    RemoveDeathStar ---|> TimePoint
+
+    class RemoveDeathStar{
+        + assembleMoment()+
+        + startMoment()+
+        + complete():bool+
+    }
+
+    PutDeathStar ---|> TimePoint
+
+    class PutDeathStar{
+        + assembleMoment()+
+        + startMoment()+
+        + complete():bool+
+    }
+
+    TransitionToBoss ---|> TimePoint
+
+    class TransitionToBoss{
+        + assembleMoment()+
+        + startMoment()+
+        + complete():bool+
+    }
+
+
+
+    PlayerAssembler ---|> TimePoint
+
+    class PlayerAssembler{
+        + assembleMoment()+
+        + startMoment()+
+        + complete():bool+
+    }
+
+
+
+    Level ---|> TimePoint
+
+    class Level{
+    private Collection<Entity> rewards;
+        - ILevelsData parser;
+        - EnemyShipDirector director;
+        - BarricadeBothDirector directorBboth;
+        - BarricadeEnemDirector directorBenem;
+        - int number;
+        - boolean levelRunning = false;
+
+        + assembleMoment()+
+        + startMoment()+
+        + complete():bool+
+    }
+
+
+    TransitionToLevel ---|> TimePoint
+
+    class TransitionToLevel{
+        + assembleMoment()+
+        + startMoment()+
+        + complete():bool+
+    }
+
+    class GameManager{
+        -{static} instance:GameManager
+        +{static} getInstance:GameManager
+        +GameManager()
+        +StartGame()
+    }
+}
+
+package AIs{
+    interface EntityQuery
+    {
+        +{abstract}whereToMove(ent:Entity ):Vector2
+        +{abstract}whereToSee(ent:Entity ):Vector2
+    }
+
+    abstract class ParametricMove extends AIQueryDecorator{
+        - t:int
+        - lastDirection:Vector2
+
+        +ParametricMove(decorated:EntityQuery)
+
+        + whereToMove(ent:Entity ):Vector2+
+
+        + {abstract} whereToMove(Entity ent, int t):Vector2
+
+        + whereToSee(ent:Entity ):Vector2+
+
+    }
+
+    interface IDirGiver
+    {
+        +get():Vector2
+    }
+
+    AIQueryDecorator -- "1" EntityQuery
+    abstract class AIQueryDecorator implements EntityQuery
+    {
+        + AIQueryDecorator(decorated:EntityQuery )
+    }
+
+    class AbsoluteLateral  extends AIQueryDecorator
+    {
+        -  steps:int
+        -  i:int
+        -  speed:int
+        - es_primer_pasada:boolean
+        + int ran;
+        + AbsoluteLateral(d:EntityQuery,steps:int)
+        +whereToMove(ent:Entity ):Vector2+
+        +whereToSee(ent:Entity ):Vector2+
+        -ran():int
+        +setRandomLevel(x:int)
+    }
+
+
+
+    class DummyEntityQuery implements EntityQuery{
+        +whereToMove(ent:Entity ):Vector2+
+        +whereToSee(ent:Entity ):Vector2+
+    }
+
+    class EllipseMove extends ParametricMove {
+        -a:float
+        -b:float
+        +EllipseMove(decorated:EntityQuery , a:float , b:float )
+        +whereToMove(ent:Entity ):Vector2+
+    }
+    class FalseNTimes implements Predicate{
+        -n:int
+
+        + FalseNTimes(n:int )
+
+
+        +test(entity:Entity ):boolean +
+    }
+
+    class Hybrid50Hunter extends AIQueryDecorator {
+        +Hybrid50Hunter (handler:EntityQuery )
+        +whereToMove(ent:Entity ):Vector2+
+        +whereToSee(ent:Entity ):Vector2+
+    }
+
+    class GetAndRotate implements IDirGiver
+    {
+        -turn:boolean
+        -counter=0:int
+        -max :int
+        -sp :float
+        -last:Vector2
+        -rot, frot:float
+        GetAndRotate(rot:float , first:Vector2 ,  rotex:boolean)
+        +get():Vector2
+    }
+
+
+    class IncreaseSpeedIfWatched extends AIQueryDecorator {
+        -pilot:Pilot
+        -common_speed:float
+        -degrees:float
+        +IncreaseSpeedIfWatched (decorated:EntityQuery ,p:Pilot)
+        +IncreaseSpeedIfWatched (decorated:EntityQuery ,p:Pilot,d:float)
+        +whereToMove(ent:Entity ):Vector2+
+        +whereToSee(ent:Entity ):Vector2+
+    }
+
+    class Kamikazee extends AIQueryDecorator{
+        +Kamikazee(decorated:EntityQuery )
+        +whereToMove(ent:Entity ):Vector2+
+        +whereToSee(ent:Entity ):Vector2+
+    }
+
+    class LateralAndDown extends AIQueryDecorator{
+        - maxDown = 90, maxLateral = 90:int
+        - down, lateral:int
+        +LateralAndDown (decorated:EntityQuery )
+        +whereToMove(ent:Entity ):Vector2+
+        +whereToSee(ent:Entity ):Vector2+
+    }
+
+    class Pilot extends Component{
+        -final ship:Ship
+        -EntityQuery :handler
+        -float :Speed
+
+        +Pilot(handler:EntityQuery , ship:Ship , speed:float )
+
+        +void update()+
+        +getHandler():EntityQuery
+        +setHandler(handler:EntityQuery )
+        +speed():float
+        +setSpeed(v:float)
+        +clone():Pilot
+    }
+
+    PlayerMove -- "2" AbstractDirectionalInput
+    class PlayerMove extends AIQueryDecorator{
+        +PlayerMove(eq:EntityQuery,move:AbstractDirectionalInput,top:AbstractDirectionalInput  )
+        +whereToMove(ent:Entity ):Vector2+
+        +whereToSee(ent:Entity ):Vector2+
+    }
+
+    class RelativeLateral  extends AIQueryDecorator
+    {
+        -  steps:int
+        -  i:int
+        -  speed:int
+        - es_primer_pasada:boolean
+        + int ran;
+        + RelativeLateral(d:EntityQuery,steps:int)
+        +whereToMove(ent:Entity ):Vector2+
+        +whereToSee(ent:Entity ):Vector2+
+    }
+
+    class Slippery extends AIQueryDecorator{
+        -level:float
+        -tolerance:float
+        -middleDispersion:float
+        -last:Vector2
+        + Slippery(d:EntityQuery)
+        +whereToMove(ent:Entity ):Vector2+
+        +whereToSee(ent:Entity ):Vector2+
+    }
+
+    SoloAI -- "*" EnemyShips
+    class SoloAI extends AIQueryDecorator {
+        -waypoints: [Vector2]
+        -max:int
+        -i:int
+        -index_waypoints:int
+        + SoloAI(d:EntityQuery,waypoints:Vector2)
+        +whereToMove(ent:Entity ):Vector2+
+        +whereToSee(ent:Entity ):Vector2+
+
+        + searchSomeEnemies(cant:int )
+
+        - getTarget(ent:Entity ):Vector2
+
+        - getToMove(pos:Vector2 ):Vector2
+    }
+
+
+    class Spinner extends AIQueryDecorator {
+        -lastDirection : Vector2
+        + Spinner(d:EntityQuery,waypoints:Vector2)
+        +whereToMove(ent:Entity ):Vector2+
+        +whereToSee(ent:Entity ):Vector2+
+    }
+
+    SwitchWhen -- "2" EntityQuery
+    class SwitchWhen implements EntityQuery  {
+        + SwitchWhen(pred:Predicate<Entity>,handlerFirst:EntityQuery,handlerLast:EntityQuery)
+        -check(e:Entity)
+        +whereToMove(ent:Entity ):Vector2+
+        +whereToSee(ent:Entity ):Vector2+
+    }
+
+    WatchAnother -- "1" Transform
+    class WatchAnother extends AIQueryDecorator{
+        -scapeFrom:int
+        + WatchAnother (another:Transform,decorated:EntityQuery)
+        +whereToMove(ent:Entity ):Vector2+
+        +whereToSee(ent:Entity ):Vector2+
+    }
+}
+
+
+package InputManager{
+    abstract class AbstractContinueInput
+    {
+        + {abstract} happens():boolean
+        + {abstract} Destroy()
+    }
+    abstract class AbstractDirectionalInput
+    {
+        + {abstract}  Destroy()
+        + {abstract}  Direction():Vector2
+    }
+
+    IActivable <|-- AbstractDiscreteInput
+    abstract class AbstractDiscreteInput
+    {
+        + {abstract} Destroy()
+        + {abstract}  OnAction():IBroadcaster<Boolean>
+    }
+
+    ContinueClick -- "1" MouseListener
+    class ContinueClick extends AbstractContinueInput
+    {
+        - happens:boolean
+        - Listener:MouseListener
+        + ContinueClick(mouseButton:int )
+        - initialize(mouseButton:int )
+        + boolean happens()+
+        +  Destroy()+
+    }
+
+    ContinueKeyInput -- "1" KeyListener
+    class ContinueKeyInput extends AbstractContinueInput
+    {
+        - happens:boolean
+        - mychars:[char]
+        + ContinueKeyInput(chars:String )
+        + boolean happens()+
+        +  Destroy()+
+    }
+
+    DirectionalMouse -- "1" Transform
+    class DirectionalMouse extends AbstractDirectionalInput
+    {
+        + DirectionalMouse (reference:Transform)
+        +  Destroy()+
+        + Direction():Vector2+
+    }
+
+    DirectionalWASD-- "4" AbstractContinueInput
+    class DirectionalWASD extends AbstractDirectionalInput
+    {
+        -Xblocked:boolean
+        -Yblocked:boolean
+        + DirectionalWASD ()
+        + lockX()
+        + lockY()
+        + unLockX()
+        + unLockY()
+        +  Destroy()+
+        + Direction():Vector2+
+    }
+
+    DiscreteClick --  IBroadcaster
+    DiscreteClick --  Invoker
+    DiscreteClick -- AbstractContinueInput
+    DiscreteClick -- DummyComponent
+    class DiscreteClick extends AbstractDiscreteInput
+    {
+        -lastStatus:boolean
+        +DiscreteClick(mouseClick:int )
+        +  initialize(mouseClick:int )
+        -  Update()
+        + isActive():boolean+
+        +  setActive(active:boolean )+
+        +  Destroy()+
+        +  OnAction():IBroadcaster<Boolean>+
+    }
+
+    DiscreteKeyInput --  IBroadcaster
+    DiscreteKeyInput --  Invoker
+    DiscreteKeyInput -- AbstractContinueInput
+    DiscreteKeyInput -- DummyComponent
+    class DiscreteKeyInput extends AbstractDiscreteInput
+    {
+        -lastStatus:boolean
+        +DiscreteKeyInput(chars:String)
+        -  Update()
+        + isActive():boolean+
+        +  setActive(active:boolean )+
+        +  Destroy()+
+        +  OnAction():IBroadcaster<Boolean>+
+    }
+
+    class DummyComponent extends Component
+    {
+        - Runnable onUpdate;
+        DummyComponent(onUpdate:Runnable )
+        + update()++
+        + OnDestroy() ++
+    }
+}
+
+package Misc{
+    class DeathStar{
+        +{static} get():GameObject
+        -{static} instance : GameObject
+    }
+}
+
+package Rewards{
+    interface Consumer<T>{
+        +void accept(t : T)
+    }
+    Consumer <|---- FireSpinnerCoin
+    class FireSpinnerCoin{
+        +void accept(transform :Transform)+
+    }
+
+    Consumer <|--- GenericReward
+    Renderizable "1" -o "renderer" GenericReward
+    Entity <|-- GenericReward
+    class GenericReward{
+
+        +GenericReward(referenced : GameObject,visitor:  VisitorEntity,sprite: SpriteData )
+        +accept(visitor : visitorEntity)+
+
+    }
+    Consumer <|-- HealthCoin
+    class HealthCoin{
+
+        +accept(transform Transform)+
+
+    }
+
+    Consumer <|-- IceWeaponCoin
+    class IceWeaponCoin{
+
+        +accept(transform Transform)+
+
+    }
+
+    class RewardKey{
+        -{static} x:int =0
+        - ID : int
+        - RewardKey()
+        + {static} get() : RewardKey
+        + hashCode() : int ++
+        + equals(obj : Object) : boolean ++
+        + toString() : String ++
+    }
+
+    Component <|--- RewardMove
+    class RewardMove{
+        -min,max : int
+        -counter : float =1
+        -speed : Vector2 = (-1,0)
+        +RewardMove()
+        + update()++
+    }
+
+
+    RewardKey "7" ---o "+KEYS" RewardsManager
+
+
+    class RewardsManager{
+        -{static} instance : RewardsManager
+        +{static} getInstance : RewardsManager
+        - creators Map<RewardKey,Consumer<Transform>>
+        - RewardsManager()
+        + getReward(key:RewardKey, point : Transform)
+
+    }
+
+    Consumer <|-- ShieldCoin
+    class ShieldCoin{
+        +accept(transform:Transform)++
+    }
+
+    Consumer <|-- WeaponFiveCoin
+
+    class WeaponFiveCoin{
+        +accept(transform:Transform)++
+    }
+
+    Entity <|-- WeaponReward
+    Weapon "1" --o "-weapon" WeaponReward
+    Renderizable "1" --o "-renderer" WeaponReward
+
+    class WeaponReward{
+        +WeaponReward(referenced:GameObject,sprite:SpriteData)
+        +setWeapon(w:Weapon)
+        +accept(visitor : VisitorEntity)+
+    }
+
+
+}
+
+package Scripts{
+
+    Component <|-- Jumper
+    Transform "1" --o "-transform" Jumper
+    IBroadcaster "1" --o "onComplete" Jumper
+    Invoker "1" --o "invokeComplete" Jumper
+
+    class Jumper{
+        -delay:int
+        -points: [Vector2]
+        -firstPos : Vector2
+
+        +Jumper(path : [Vector2] , transform : Transform)
+        +update()++
+        +getOnComplete():IBroadcaster<Vector2>
+
+    }
+
+    GameObject ----o "obj" HyperSpace
+    HyperSpace -|>Component
+    class HyperSpace{
+        +{static} Jump():Jumper
+        -{static} checkObj()
+        -{static} getPath(src,dest : vector2, frames:int):[vector2]
+    }
+    Directionable -|>Component
+    class Directionable{
+        -direction : Vector2
+        +Directionable(d:Vector2)
+        +update()++
+    }
+    DangerousHunter <|--- Component
+    DangerousHunter "tofollow" o-- Transform
+    class DangerousHunter{
+        -increment,maxspeed,currentspeed : float
+        +update()++
+        DangerousHunter(tofollow:Transform)
+    }
+    AlwaysTurnAround "centerPoint" o--- Transform
+    AlwaysTurnAround ----|> Component
+    class AlwaysTurnAround{
+        -currentGap : Vector2
+        -angularSpeed : float
+        +update()++
+        AlwaysTurnAround()
+    }
+
+    class AlwaysRotate{
+        -rot:float
+        AlwaysRotate(v:float)
+        +update()++
+    }
+    PushData "target" o-- Transform
+    class PushData{
+        -counter:int
+        -veloci:Vector2
+        -dismish:float
+        +getVelocity():Vector2
+        +getCounter():int
+        +getDismish():float
+        +setVelocity(velocity:Vector2)
+        +setDismish(dismish:float)
+        +getTarget():Transform
+    }
+
+    class RewardLateralMovement{
+        - t:float
+        - rand_inc,dir :int
+        + RewardLateralMovement(seed:int)
+        +update()++
+    }
+
+    ThePusher "tasks,toRemove" o-- "0..*" PushData
+    ThePusher "1"--*"instance" ThePusher
+
+    class ThePusher{
+        ThePusher()
+        add(target:Transform , c:int, vel:Vector2, x:float)
+        +update()++
+    }
+
+
+
+}
+
+
+package SpecialPowers{
+    interface ISpecialPower
+    {
+        +aply()
+    }
+    PowerDeck --|> IAcvtivable
+    PowerDeck "powers" o-- "0.." ISpecialPower
+    class PowerDeck{
+        -active:boolean
+        +PowerDeck(key:AbstractDiscreteInput)
+        +add(pow:ISpecialPower)
+        -use(b:boolean)
+        +isActive():boolean +
+        +setActive(act:boolean) +
+    }
+    TheForcePower ----|> ISpecialPower
+    class TheForcePower{
+        aply()+
+    }
+}
+
+package Tools{
+    CompEntry --|> Comparable
+    class CompEntry<K,V>
+    {
+        -key:K
+        -value:V
+        CompEntry(k:K , v:V)
+        value():V
+        key():K
+        compareTo(o:CompEntry):int
+    }
+    AnimatorsVolatiles "parent" o-- GameObject
+    class AnimatorsVolatiles
+    {
+        -{static}inst:AnimatorsVolatiles
+        +{static}getInst:AnimatorsVolatiles
+        -options : [String]
+        AnimatorsVolatiles()
+        getVolatile(pos:Vector2, name:String):Tranform
+        getExplo(pos:Vector2):Tranform
+    }
+
+    class Random{
+        +{static}value() : float
+        +{static}value(min:int,max:int) : float
+
+    }
+
+    class Tools {
+        +{static} random(array:[X]):X
+        +{static} contains(array:[X], elem:X):boolean
+    }
+}
+
+
+
+
+
+@enduml
