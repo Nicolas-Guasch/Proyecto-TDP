@@ -1,0 +1,21 @@
+@startuml
+interface ISpecialPower
+{
+    +aply()
+}
+PowerDeck --|> IAcvtivable
+PowerDeck "powers" o-- "0.." ISpecialPower
+class PowerDeck{
+    -active:boolean
+    +PowerDeck(key:AbstractDiscreteInput)
+    +add(pow:ISpecialPower)
+    -use(b:boolean)
+    +isActive():boolean +
+    +setActive(act:boolean) +
+}
+TheForcePower ----|> ISpecialPower
+class TheForcePower{
+    aply()+
+}
+
+@enduml
