@@ -1,6 +1,7 @@
 Compilado usando Java 10.
 Desarrollado en IntelliJ Idea.
 diagramas UML hechos con plantUML.
+Lamentablemente este software no esta preparado para diagramar 200 clases y la imagen resultante se rompe al renderizarse. Por ese motivo adicionalmente se provee "UML parte 1" y "UML parte 2"
 Importante: el repositiorio guarda los archivos pesados (png,wav) usando GIT LFS. Para garantizar que estos archivos se bajen se recomienda clonar el repositorio en vez de usar "descargar zip".
 Controles:
 *Mouse:apuntar
