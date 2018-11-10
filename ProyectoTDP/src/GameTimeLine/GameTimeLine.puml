@@ -1,0 +1,44 @@
+@startuml
+
+abstract class TimePoint{
+    + {abstract} assembleMoment()
+    + {abstract} startMoment()
+    + {abstract} complete():bool
+}
+TimeLine --|> Component
+TimeLine "levels" o--- "0..*" TimePoint
+
+class TimeLine
+{
+    -{static}instance : TimeLine
+    +{static}getInstance() : TimeLine
+    -currentlevel:int
+    +TimeLine()
+    +update()++
+    -hasNextLevel():bool
+    +currentLevel():TimePoint
+    - runLevel()
+    + playLevel()
+}
+
+SomeBarricades --|> TimePoint
+
+BarricadeBothDirector "1" --o "director" SomeBarricades
+
+class SomeBarricades{
+    +SomeBarricades()
+    nextBarricade():Entity
+    + assembleMoment()+
+    + startMoment()+
+    + complete():bool+
+}
+RemoveDeathStar ---|> TimePoint
+class RemoveDeathStar{
+    + assembleMoment()+
+    + startMoment()+
+    + complete():bool+
+}
+
+
+
+@enduml
