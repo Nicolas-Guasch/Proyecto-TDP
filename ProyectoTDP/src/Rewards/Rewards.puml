@@ -55,8 +55,36 @@ RewardKey "7" ---o "+KEYS" RewardsManager
 
 
 class RewardsManager{
+    -{static} instance : RewardsManager
+    +{static} getInstance : RewardsManager
+    - creators Map<RewardKey,Consumer<Transform>>
+    - RewardsManager()
+    + getReward(key:RewardKey, point : Transform)
 
 }
+
+Consumer <|-- ShieldCoin
+class ShieldCoin{
+    +accept(transform:Transform)++
+}
+
+Consumer <|-- WeaponFiveCoin
+
+class WeaponFiveCoin{
+    +accept(transform:Transform)++
+}
+
+Entity <|-- WeaponReward
+Weapon "1" --o "-weapon" WeaponReward
+Renderizable "1" --o "-renderer" WeaponReward
+
+class WeaponReward{
+    +WeaponReward(referenced:GameObject,sprite:SpriteData)
+    +setWeapon(w:Weapon)
+    +accept(visitor : VisitorEntity)+
+}
+
+
 
 
 
