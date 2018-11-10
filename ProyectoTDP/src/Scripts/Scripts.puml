@@ -63,6 +63,24 @@ class PushData{
     +getTarget():Transform
 }
 
+class RewardLateralMovement{
+    - t:float
+    - rand_inc,dir :int
+    + RewardLateralMovement(seed:int)
+    +update()++
+}
+
+ThePusher "tasks,toRemove" o-- "0..*" PushData
+ThePusher "1"--*"instance" ThePusher
+
+class ThePusher{
+    ThePusher()
+    add(target:Transform , c:int, vel:Vector2, x:float)
+    +update()++
+}
+
+
+
 
 
 
