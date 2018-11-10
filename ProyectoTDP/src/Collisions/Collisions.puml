@@ -1,90 +1,90 @@
 @startuml
 skinparam classAttributeIconSize 0
+packge Collisions{
+    Component <|--- HitBox
+    HitBox "transform" *-- "1" Transform
+    HitBox "entity" *-- "1" Entity
+    class HitBox{
+        - dimensions : Vector2
+        +{static} NoCheckDistance : int = 500
+        +{static} getOne(w,h : float , entity:Entity): HitBox
+        +{static} getOne(dimensions : Vector2 , entity:Entity): HitBox
 
-Component <|--- HitBox
-HitBox "transform" *-- "1" Transform
-HitBox "entity" *-- "1" Entity
-class HitBox{
-    - dimensions : Vector2
-    +{static} NoCheckDistance : int = 500
-    +{static} getOne(w,h : float , entity:Entity): HitBox
-    +{static} getOne(dimensions : Vector2 , entity:Entity): HitBox
+        -HitBox(dimensions : Vector2 , entity:Entity)
+        +getEntity():Entity
 
-    -HitBox(dimensions : Vector2 , entity:Entity)
-    +getEntity():Entity
+        ~checkCollision(other:HitBox):CollisionData
 
-    ~checkCollision(other:HitBox):CollisionData
+        - vertices() : [Vector2]
+        - diagonalLength() : float
+        - distToCenter(v : Vector2) : float
+        - isFar(other: Transform) : boolean
+        - vertexInside(other : HitBox): Vector2
+        - bottomLeft(): Vector2
+        - topRight(): Vector2
+        - bottomSide(): Vector2
+        - leftSide(): Vector2
 
-    - vertices() : [Vector2]
-    - diagonalLength() : float
-    - distToCenter(v : Vector2) : float
-    - isFar(other: Transform) : boolean
-    - vertexInside(other : HitBox): Vector2
-    - bottomLeft(): Vector2
-    - topRight(): Vector2
-    - bottomSide(): Vector2
-    - leftSide(): Vector2
+    }
 
+    HitBoxesLayer "hitBoxes" o--- "0..*" HitBox
+
+
+    class HitBoxesLayer{
+        ~ HitBoxesLayer()
+        + addHitBox(hitBox : HitBox)
+        + removeHitBox(hitBox : HitBox)
+        + iterator() : [HitBox]
+        + checkLayer(other:[HitBox])
+        + contains(hitBox : HitBox) : boolean
+        - condition(mine,their : HitBox) : boolean
+    }
+
+    Component <|-- HitBoxManager
+
+    HitBoxManager *-- "8" HitBoxesLayer
+
+    class HitBoxManager{
+        - {static} HitBoxManager instance;
+        + {static} HitBoxManager getInstance;
+
+        + {static} PLAYER : int = 0
+        + {static} ENEMIES : int = 1
+        + {static} PLAYERBULLET : int = 2
+        + {static} ENEMYBULLET : int = 3
+        + {static} BARRICADE_BOTH: int  =4
+        + {static} BARRICADE_ENEM: int  =5
+        + {static} REWARDS : int = 6
+        + {static} SHIELD : int = 7
+        + {static} CANT : int = 8
+
+        + update() ++
+        + addHitBox(hitBox: HitBox, layer : int)
+        + removeHitBox(hitBox: HitBox)
+
+        - toAdd : map<int, [HitBox]>
+        - toRemove : map<int, [HitBox]>
+        - connection : [Tuple<int,int>]
+        - inputData : String
+        - long i=0
+        - HitBoxesManager()
+        - checkQueues()
+        - makeACheck()
+
+    }
+
+
+    Entity "1" o-- "mine" CollisionData
+    Entity "1" o-- "their" CollisionData
+
+
+    class CollisionData{
+        - contactPoint : Vector2
+        + mine() : Entity
+        + their() : Entity
+        + contactPoint(): Vector2
+        + CollisionData(mine,their : Entity , contactPoint : Vector2)
+
+    }
 }
-
-HitBoxesLayer "hitBoxes" o--- "0..*" HitBox
-
-
-class HitBoxesLayer{
-    ~ HitBoxesLayer()
-    + addHitBox(hitBox : HitBox)
-    + removeHitBox(hitBox : HitBox)
-    + iterator() : [HitBox]
-    + checkLayer(other:[HitBox])
-    + contains(hitBox : HitBox) : boolean
-    - condition(mine,their : HitBox) : boolean
-}
-
-Component <|-- HitBoxManager
-
-HitBoxManager *-- "8" HitBoxesLayer
-
-class HitBoxManager{
-    - {static} HitBoxManager instance;
-    + {static} HitBoxManager getInstance;
-
-    + {static} PLAYER : int = 0
-    + {static} ENEMIES : int = 1
-    + {static} PLAYERBULLET : int = 2
-    + {static} ENEMYBULLET : int = 3
-    + {static} BARRICADE_BOTH: int  =4
-    + {static} BARRICADE_ENEM: int  =5
-    + {static} REWARDS : int = 6
-    + {static} SHIELD : int = 7
-    + {static} CANT : int = 8
-
-    + update() ++
-    + addHitBox(hitBox: HitBox, layer : int)
-    + removeHitBox(hitBox: HitBox)
-
-    - toAdd : map<int, [HitBox]>
-    - toRemove : map<int, [HitBox]>
-    - connection : [Tuple<int,int>]
-    - inputData : String
-    - long i=0
-    - HitBoxesManager()
-    - checkQueues()
-    - makeACheck()
-
-}
-
-
-Entity "1" o-- "mine" CollisionData
-Entity "1" o-- "their" CollisionData
-
-
-class CollisionData{
-    - contactPoint : Vector2
-    + mine() : Entity
-    + their() : Entity
-    + contactPoint(): Vector2
-    + CollisionData(mine,their : Entity , contactPoint : Vector2)
-
-}
-
 @enduml

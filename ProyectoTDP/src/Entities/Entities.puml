@@ -1,665 +1,666 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-Entity o-- "1" GameObject: -referenced >
-Entity -- "1" Runnable: -doOnDeath >
-Entity o-- "1" EntityData: #data >
-Entity -- "1" VisitorEntity: #visitor >
+package Entities{
+	Entity o-- "1" GameObject: -referenced >
+	Entity -- "1" Runnable: -doOnDeath >
+	Entity o-- "1" EntityData: #data >
+	Entity -- "1" VisitorEntity: #visitor >
 
-abstract class Entity {
-
-
-	#Entity(referenced:GameObject)
+	abstract class Entity {
 
 
-	+observerHealth():IBroadcaster<Float>
-
-	+setOnDeath(doOnDeath:Runnable)
-
-	+onDeath()
+		#Entity(referenced:GameObject)
 
 
-	+setData(data:EntityData)
+		+observerHealth():IBroadcaster<Float>
 
-	+data():EntityData
+		+setOnDeath(doOnDeath:Runnable)
 
-	+setRenderer(rend:Renderizable)
+		+onDeath()
 
-	+setHitBox(hitBox:HitBox)
 
-	+addBehaviour(comp:Component)
+		+setData(data:EntityData)
 
-	+referenced():GameObject
-    +alive():boolean
+		+data():EntityData
 
-	+reportCollision( data:CollisionData)
-	 {abstract} +void accept(visitor:VisitorEntity)
+		+setRenderer(rend:Renderizable)
 
-	 +setVisitor( visitor:VisitorEntity)
+		+setHitBox(hitBox:HitBox)
+
+		+addBehaviour(comp:Component)
+
+		+referenced():GameObject
+	    +alive():boolean
+
+		+reportCollision( data:CollisionData)
+		 {abstract} +void accept(visitor:VisitorEntity)
+
+		 +setVisitor( visitor:VisitorEntity)
+	}
+
+	EntityData -- "1" IBroadcaster: -HealthData >
+	note on link: IBroadCaster<Float>
+	EntityData -- "1" Invoker: -HealthDataInvoker >
+	note on link: Invoker<Float>
+	class EntityData
+	{
+
+	    -health:float
+	    -damage:float
+	    -shield:float
+	    -initialHealth:final float
+
+	    +EntityData(float health, float damage, float shield)
+
+	    +getHealthObservable():IBroadcaster<Float>
+
+	    +{static} WithEqualsValues( v:float):EntityData
+
+	    +clone():EntityData
+
+	    +getShield():float
+
+	     +getDamage():float
+
+	     +getHealth():float
+
+	     +getInitialHealth():float
+
+	     +setShield( shield:float)
+
+	     +setHealth( health:float)
+
+	     +setInitialHealth( initialHealth:float)
+
+	     +setDamage( damage:float)
+
+	     +takeDamage( damage:float)
+	}
+
+	Component <|-- EveryOne
+	EveryOne -- "1" EveryOne: -instance
+	note on link: static
+	EveryOne -left- "*" VisitorEntity: -visitors >
+	EveryOne -left- "*" Entity: -entities >
+	EveryOne -left- "*" Entity: -toAdd >
+	EveryOne -left- "*" Entity: -toDestroy >
+	class EveryOne
+	{
+	    - far: float = 2000
+
+	    + {static} getInstance()EveryOne
+
+	    -EveryOne()
+
+	    +update()++
+
+	    +add( ent:Entity)
+
+	    +remove(ent:Entity)
+
+	    +killIn(ent:Entity, frames:int)
+
+
+	    +killThemAll()
+
+	    +takeLazyVisitor(visitor:VisitorEntity)
+
+	    +takeVisitor(visitor:VisitorEntity )
+
+	    -acceptVisitors()
+
+	    -checkDestroyable(e:Entity)
+
+	    +getEntities():Iterable<Entity>
+
+	}
+
+	OtherShip --|> Ship
+	class OtherShip {
+
+	    +OtherShip(referenced:GameObject , weapons:Arsenal )
+
+	    +accept(visitor:VisitorEntity )
+	}
+
+	PlayerBullet --|> Bullet
+	class PlayerBullet{
+		+PlayerBullet(referenced:GameObject )
+		+accept(visitor:VisitorEntity )
+	}
+
+	ShipAction --|> Consumer
+	note on link: Consumer<Vector2>
+	Ship "1" -- ShipAction
+	ShipAction -- "1" Consumer
+	note on link: Consumer<Ship>
+	class ShipAction{
+	    +ShipAction(ship:Ship , shipConsumer:Consumer<Ship> )
+	    +accept(vector2:Vector2)
+	}
+
+	BarricadeBoth --|> Entity
+	class BarricadeBoth{
+	    + BarricadeBoth(referenced:GameObject)
+	    + accept(visitor:VisitorEntity)
+	}
+
+	BarricadeEnem --|> Entity
+	class BarricadeEnem{
+	    + BarricadeEnem(referenced:GameObject)
+	    + accept(visitor:VisitorEntity)
+	}
+
+	Bullet --|> Entity
+	Bullet --|> IBullet
+	abstract class Bullet{
+	    #Bullet(referenced:GameObject)
+	    +transform():Transform
+	    +entity() :Entity
+	}
+
+	EnemyBullet --|> Bullet
+	class EnemyBullet{
+	    +EnemyBullet(referenced:GameObject)
+	    +accept(visitor:VisitorEntity)
+	}
+
+	BarricadeBothBuilder -- "1" BarricadeBoth
+	abstract class BarricadeBothBuilder
+	{
+	    + create()
+	    + get():BarricadeBoth
+	    +{abstract} assembleSprite()
+	    +{abstract} assembleCollider()
+	    +{abstract} assembleBehaviours()
+	    +{abstract} assembleData()
+	}
+
+	BarricadeEnemBuilder -- "1" BarricadeBoth
+	abstract class BarricadeEnemBuilder
+	{
+	    + create()
+	    + get():BarricadeEnem
+	    +{abstract} assembleSprite()
+	    +{abstract} assembleCollider()
+	    +{abstract} assembleBehaviours()
+	    +{abstract} assembleData()
+	}
+
+	EnemyBulletBuilder -up|> IBulletBuilder
+	EnemyBulletBuilder -- "1" EnemyBullet
+	abstract class EnemyBulletBuilder
+	{
+	    + create()+
+	    + get():EnemyBullet+
+	}
+
+	PlayerBulletBuilder -up|> IBulletBuilder
+	PlayerBulletBuilder -- "1" PlayerBullet
+	abstract class PlayerBulletBuilder
+	{
+	    + create()+
+	    + get():PlayerBullet+
+	}
+
+	interface IBulletBuilder<BulletType extends IBullet>{
+	    + create()
+	    + get():BulletType
+	    +{abstract} assembleSprite()
+	    +{abstract} assembleHitBox()
+	    +{abstract} assembleBehaviours()
+	    +{abstract} assembleData()
+	}
+
+	interface IBullet
+	{
+	    transform():Transform
+	    entity():Entity
+	}
+
+	BulletMaker --|> EnemyBulletBuilder
+	SpriteData "1" -- BulletMaker
+	Transform "1" -- BulletMaker
+	class BulletMaker{
+	    +BulletMaker(tie:Transform)
+	    +assembleSprite()++
+	    +assembleHitBox()++
+	    +assembleBehaviours()++
+	    +assembleData()++
+	}
+
+	BulletPlayerBuilder --|> PlayerBulletBuilder
+	SpriteData "1" -- BulletPlayerBuilder
+	Transform "1" -- BulletPlayerBuilder
+	class BulletPlayerBuilder{
+	    +BulletPlayerBuilder(solo:Transform)
+	    +assembleSprite()++
+	    +assembleHitBox()++
+	    +assembleBehaviours()++
+	    +assembleData()++
+	}
+
+	LaserSaber --|> EnemyBulletBuilder
+	SpriteData "1" -- LaserSaber
+	Transform "2" -- LaserSaber
+	class LaserSaber{
+	    +LaserSaber(tie:Transform,target:Transform)
+	    +assembleSprite()++
+	    +assembleHitBox()++
+	    +assembleBehaviours()++
+	    +assembleData()++
+	}
+
+	interface IBulletDirector<BulletType extends Ibullet, BuilderType extends IBulletBuilder<BulletType>>{
+	    +setBuilder(BuilderType builder)
+	    +create()
+	    +assemble()
+	    +get():BulletType
+	}
+
+	BulletDirector --|> IBulletDirector
+	IBulletBuilder "1" o-- BulletDirector
+	class BulletDirector<BulletType extends Ibullet, BuilderType extends IBulletBuilder<BulletType>>{
+	    +setBuilder(BuilderType builder)+
+	    +create()+
+	    +assemble()+
+	    +get():BulletType+
+	}
+
+	BarricadeEnemBuilder "1" --o BarricadeEnemDirector
+	class BarricadeEnemDirector{
+	    +setBuilder(BuilderType builder)
+	    +create()
+	    +assemble()
+	    +get():BarricadeEnem
+	}
+
+	BarricadeBothBuilder "1" --o BarricadeBothDirector
+	class BarricadeBothDirector{
+	    +setBuilder(BuilderType builder)
+	    +create()
+	    +assemble()
+	    +get():BarricadeBoth
+	}
+
+	ColdFireMaker --|> PlayerBulletBuilder
+	class ColdFireMaker{
+	    + assembleSprite()+
+	    + assembleHitBox()+
+	    + assembleBehaviours()+
+	    + assembleData()+
+	    - onColdFire()+
+	}
+
+	FireShieldMaker --|> PlayerBulletBuilder
+	class FireShieldMaker{
+	    + assembleSprite()+
+	    + assembleHitBox()+
+	    + assembleBehaviours()+
+	    + assembleData()+
+	}
+
+	FireShield --|> Bullet
+	class FireShield{
+	    #FireShield(referenced:GameObject)
+	    +accept(visitor:VisitorEntity)+
+	}
+
+	interface IShip
+	{
+	    +addWeapon(Weapon p)
+	    +getPilot():Pilot
+	    +setPilot(pilot:Pilot);
+	}
+
+	Ship --|> IShip
+	Ship --|> Entity
+	Ship -- "1" Pilot
+	Ship -- "1" Arsenal
+	abstract class Ship
+	{
+	    #Ship(referenced:GameObject,weapons:Arsenal)
+	    +onDeath()++
+	    +addWeapon(Weapon p)+
+	    +getPilot():Pilot+
+	    +setPilot(pilot:Pilot);+
+	    +getArsenal():Arsenal
+	}
+
+	BaseEnemyShip --|> Ship
+	abstract class BaseEnemyShip{
+	    #BaseEnemyShip(referenced:GameObject,weapons:Arsenal)
+	    +getBagPack():Arsenal
+	}
+
+	EnemyShip --|> BaseEnemyShip
+	abstract class EnemyShip{
+	    +EnemyShip(referenced:GameObject)
+	    +accept(visitor:VisitorEntity)+
+	    +onDeath()++
+	}
+
+	EnemyShipBuilder -- "1" BaseEnemyShip
+	abstract class EnemyShipBuilder
+	{
+	    create()
+	    get():BaseEnemyShip
+	    +{abstract} assembleSprite()
+	    +{abstract} assembleHitBox()
+	    +{abstract} assembleWeapons()
+	    +{abstract} assembleBehaviours()
+	    +{abstract} assembleData()
+
+	}
+
+	EnemyShipBuilder "1" --  EnemyShipDirector
+	class EnemyShipDirector{
+	    +setBuilder(builder:EnemyShipBuilder)
+	    +create()
+	    +assemble()
+	    +get():BaseEnemyShip
+	}
+
+	ShipBoss --|> BaseEnemyShip
+	class ShipBoss{
+	    +ShipBoss(referenced:GameObject)
+	    +accept(visitor:VisitorEntity)+
+	    +getBagPack():Arsenal++
+	    +onDeath()++
+	}
+
+	VisitorEntity <|-- ShieldVisitor
+	Entity "1"--  ShieldVisitor: reward <
+	PlayerShip "1"--  ShieldVisitor: visitable <
+	ShieldVisitor "2"--  Renderizable
+	class ShieldVisitor{
+	     prevShield:float
+
+	    +ShieldVisitor()
+
+	    +setReward(reward:Entity)
+
+	    @Override
+	    +visit(visitable:PlayerShip)++
+
+	    +restore()
+
+	}
+
+	DizzyMaker --|> EnemyShipBuilder
+	class DizzyMaker
+	{
+	    +assembleSprite()
+	    + assembleHitBox()
+	    + assembleWeapons()
+	    + assembleBehaviours()
+	    + assembleData()
+
+	}
+
+	FastTieMaker --|> EnemyShipBuilder
+	class FastTieMaker
+	{
+	    +assembleSprite()
+	    + assembleHitBox()
+	    + assembleWeapons()
+	    + assembleBehaviours()
+	    + assembleData()
+
+	}
+
+	FullKamikazeeMaker --|> EnemyShipBuilder
+	class FullKamikazeeMaker
+	{
+	    +assembleSprite()
+	    + assembleHitBox()
+	    + assembleWeapons()
+	    + assembleBehaviours()
+	    + assembleData()
+
+	}
+
+	VaderAMaker --|> EnemyShipBuilder
+	class VaderAMaker
+	{
+	    +assembleSprite()
+	    + assembleHitBox()
+	    + assembleWeapons()
+	    + assembleBehaviours()
+	    + assembleData()
+
+	}
+
+	VaderBMaker --|> EnemyShipBuilder
+	class VaderBMaker
+	{
+	    +assembleSprite()
+	    + assembleHitBox()
+	    + assembleWeapons()
+	    + assembleBehaviours()
+	    + assembleData()
+
+	}
+
+	VaderCMaker --|> EnemyShipBuilder
+	class VaderCMaker
+	{
+	    +assembleSprite()
+	    + assembleHitBox()
+	    + assembleWeapons()
+	    + assembleBehaviours()
+	    + assembleData()
+
+	}
+
+	WachinMaker --|> EnemyShipBuilder
+	class WachinMaker
+	{
+	    +assembleSprite()
+	    + assembleHitBox()
+	    + assembleWeapons()
+	    + assembleBehaviours()
+	    + assembleData()
+
+	}
+
+	WhiteTieMaker --|> EnemyShipBuilder
+	class WhiteTieMaker
+	{
+	    +assembleSprite()
+	    + assembleHitBox()
+	    + assembleWeapons()
+	    + assembleBehaviours()
+	    + assembleData()
+
+	}
+
+	PlayerShipMaker --|> PlayerShipBuilder
+	class PlayerShipMaker
+	{
+	    +assembleSprite()
+	    + assembleHitBox()
+	    + assembleWeapons()
+	    + assembleBehaviours()
+	    + assembleData()
+
+	}
+
+
+	PlayerShipBuilder -- "1" PlayerShip
+	abstract class PlayerShipBuilder
+	{
+	    create()
+	    get():PlayerShip
+	    +{abstract} assembleSprite()
+	    +{abstract} assembleHitBox()
+	    +{abstract} assembleWeapons()
+	    +{abstract} assembleBehaviours()
+	    +{abstract} assembleData()
+
+	}
+
+	PlayerShipBuilder -- "1" PlayerShipDirector
+	class PlayerShipDirector{
+	    +setBuilder(builder:PlayerShipBuilder)
+	    +create()
+	    +assemble()
+	    +get():PlayerShip
+	}
+
+	PlayerShip --|> Ship
+	PlayerShip -- PlayerShip:instance
+	note on link: static
+	PlayerShip -- "1" PowersDeck
+	class PlayerShip{
+		+{static}getInstance():PlayerShip
+		+{static}isUninitialized():boolean
+		+{static}initialize(GameObject go)
+		+ onDeath()++
+		+ accept()+
+		+ setLife(cantLife:float)
+		+ addSpecial(power:ISpecialPower)
+		+getBagPack():Arsenal
+	}
+
+	Component <|-- PlayerShipPerspective
+	PlayerShipPerspective -- "1" Renderizable
+	PlayerShipPerspective -- "2" AbstractContinueInput
+	class PlayerShipPerspective{
+	    +PlayerShipPerspective(renderizable:Renderizable)
+	    +update()+
+	}
+
+	IBulletDirector "1" -- Weapon:generator
+	abstract class Weapon<BulletDirectorType extends IBulletDirector>
+	{
+	    - name:String
+	    + Weapon(BulletDirectorType generator)
+	    + {abstract} void Shoot();
+	    + {abstract} void Destroy();
+	    + isEmpty():boolean
+	    + setName(String name)
+	    + spriteName():String
+	}
+
+	IActivable --|> Arsenal
+	abstract class Arsenal{
+	    -active:boolean=true
+	    +{abstract}clone():Arsenal
+
+	    +isActive():boolean+
+	    +setActive(active:boolean)+
+	    +{abstract}shoot()
+	    +{abstract}switchCurrent()
+	    +{abstract}add(w:Weapon)
+	    +{abstract}remove(w:Weapon)
+	    +{abstract}isEmpty():boolean
+	    +{abstract}getCurrent():Weapon
+	    +{abstract}destroy()
+	    +{abstract}observer():IBroadCaster<Boolean>
+	    +{abstract}weapons():Iterable<Weapon>
+	}
+
+	 Arsenal <|-- EnemyArsenal
+	 Weapon "*" -- EnemyArsenal
+	 EnemyArsenal -- "1" IBroadcaster
+	 EnemyArsenal -- "1" Invoker
+	class EnemyArsenal{
+	    -index:int=0
+	    +clone():Arsenal+
+	    +isActive():boolean+
+	    +setActive(active:boolean)+
+	    +shoot()+
+	    +switchCurrent()+
+	    +add(w:Weapon)+
+	    +remove(w:Weapon)+
+	    +isEmpty():boolean+
+	    +getCurrent():Weapon+
+	    +destroy()+
+	    +observer():IBroadcaster<Boolean>+
+	    +weapons():Iterable<Weapon>+
+	}
+
+	 Arsenal <|-- PlayerArsenal
+	 Weapon "*" -- PlayerArsenal
+	 PlayerArsenal -- "1" IBroadcaster
+	 PlayerArsenal -- "1" Invoker
+	class PlayerArsenal{
+	    +clone():Arsenal+
+	    +isActive():boolean+
+	    +setActive(active:boolean)+
+	    +shoot()+
+	    +switchCurrent()+
+	    +add(w:Weapon)+
+	    +remove(w:Weapon)+
+	    +isEmpty():boolean+
+	    +getCurrent():Weapon+
+	    +destroy()+
+	    +observer():IBroadcaster<Boolean>+
+	    +weapons():Iterable<Weapon>+
+	}
+
+	Weapon <|-- ShotFront
+	Weapon <|-- AngularWeapon
+	Weapon <|-- GenericWeapon
+	Weapon <|-- IceWeapon
+	Weapon <|-- LateralWeapon
+
+	ShotFront -- "1" BulletDirector
+	ShotFront -- "1" Transform
+	class ShotFront<BulletDirectorType extends IBulletDirector>{
+	    -phaseShift:float
+	    +ShotFront(phaseShift:float,getter:BulletDirector,reference:Transform)
+	    +Shoot()+
+	    +Destroy()+
+	}
+
+	GenericWeapon -- "1" Transform
+	class GenericWeapon<BulletDirectorType extends IBulletDirector>{
+	    -{static} framesDuration:int
+	    -phaseShift:float
+	    -cantShoots:int
+	    +GenericWeapon(cantShoots:int,getter:BulletDirector,reference:Transform)
+	    +Shoot()+
+	    +Destroy()+
+	    +setPhaseShift(phaseShift:float)
+	}
+
+	LateralWeapon -- "1" Transform
+	class LateralWeapon<BulletDirectorType extends IBulletDirector>{
+	    -{static} framesDuration:int
+	    -phaseShift:float
+	    -cantShoots:int
+	    +LateralWeapon(cantShoots:int,getter:BulletDirector,reference:Transform)
+	    +LateralWeapon(getter:BulletDirector,reference:Transform)
+	    +Shoot()+
+	    +Destroy()+
+	    +setPhaseShift(phaseShift:float)
+	}
+
+	AngularWeapon -- "1" Transform
+	class AngularWeapon<BulletDirectorType extends IBulletDirector>{
+	    -{static} framesDuration:int
+	    -tot_ang:float
+	    -phaseShift:float
+	    -cantShoots:int
+	    +AngularWeapon(cantShoots:int,getter:BulletDirector,reference:Transform)
+	    +AngularWeapon(getter:BulletDirector,reference:Transform)
+	    +Shoot()+
+	    +Destroy()+
+	    +setPhaseShift(phaseShift:float)
+	}
+
+	class IceWeapon<BulletDirectorType extends IBulletDirector>{
+	    -magazzing:int
+	    +IceWeapon(getter:BulletDirector,reference:Transform)
+	    +Shoot()+
+	    +Destroy()+
+	}
+
+
 }
-
-EntityData -- "1" IBroadcaster: -HealthData >
-note on link: IBroadCaster<Float>
-EntityData -- "1" Invoker: -HealthDataInvoker >
-note on link: Invoker<Float>
-class EntityData
-{
-
-    -health:float
-    -damage:float
-    -shield:float
-    -initialHealth:final float
-
-    +EntityData(float health, float damage, float shield)
-
-    +getHealthObservable():IBroadcaster<Float>
-
-    +{static} WithEqualsValues( v:float):EntityData
-
-    +clone():EntityData
-
-    +getShield():float
-
-     +getDamage():float
-
-     +getHealth():float
-
-     +getInitialHealth():float
-
-     +setShield( shield:float)
-
-     +setHealth( health:float)
-
-     +setInitialHealth( initialHealth:float)
-
-     +setDamage( damage:float)
-
-     +takeDamage( damage:float)
-}
-
-Component <|-- EveryOne
-EveryOne -- "1" EveryOne: -instance
-note on link: static
-EveryOne -left- "*" VisitorEntity: -visitors >
-EveryOne -left- "*" Entity: -entities >
-EveryOne -left- "*" Entity: -toAdd >
-EveryOne -left- "*" Entity: -toDestroy >
-class EveryOne
-{
-    - far: float = 2000
-
-    + {static} getInstance()EveryOne
-
-    -EveryOne()
-
-    +update()++
-
-    +add( ent:Entity)
-
-    +remove(ent:Entity)
-
-    +killIn(ent:Entity, frames:int)
-
-
-    +killThemAll()
-
-    +takeLazyVisitor(visitor:VisitorEntity)
-
-    +takeVisitor(visitor:VisitorEntity )
-
-    -acceptVisitors()
-
-    -checkDestroyable(e:Entity)
-
-    +getEntities():Iterable<Entity>
-
-}
-
-OtherShip --|> Ship
-class OtherShip {
-
-    +OtherShip(referenced:GameObject , weapons:Arsenal )
-
-    +accept(visitor:VisitorEntity )
-}
-
-PlayerBullet --|> Bullet
-class PlayerBullet{
-	+PlayerBullet(referenced:GameObject )
-	+accept(visitor:VisitorEntity )
-}
-
-ShipAction --|> Consumer
-note on link: Consumer<Vector2>
-Ship "1" -- ShipAction
-ShipAction -- "1" Consumer
-note on link: Consumer<Ship>
-class ShipAction{
-    +ShipAction(ship:Ship , shipConsumer:Consumer<Ship> )
-    +accept(vector2:Vector2)
-}
-
-BarricadeBoth --|> Entity
-class BarricadeBoth{
-    + BarricadeBoth(referenced:GameObject)
-    + accept(visitor:VisitorEntity)
-}
-
-BarricadeEnem --|> Entity
-class BarricadeEnem{
-    + BarricadeEnem(referenced:GameObject)
-    + accept(visitor:VisitorEntity)
-}
-
-Bullet --|> Entity
-Bullet --|> IBullet
-abstract class Bullet{
-    #Bullet(referenced:GameObject)
-    +transform():Transform
-    +entity() :Entity
-}
-
-EnemyBullet --|> Bullet
-class EnemyBullet{
-    +EnemyBullet(referenced:GameObject)
-    +accept(visitor:VisitorEntity)
-}
-
-BarricadeBothBuilder -- "1" BarricadeBoth
-abstract class BarricadeBothBuilder
-{
-    + create()
-    + get():BarricadeBoth
-    +{abstract} assembleSprite()
-    +{abstract} assembleCollider()
-    +{abstract} assembleBehaviours()
-    +{abstract} assembleData()
-}
-
-BarricadeEnemBuilder -- "1" BarricadeBoth
-abstract class BarricadeEnemBuilder
-{
-    + create()
-    + get():BarricadeEnem
-    +{abstract} assembleSprite()
-    +{abstract} assembleCollider()
-    +{abstract} assembleBehaviours()
-    +{abstract} assembleData()
-}
-
-EnemyBulletBuilder -up|> IBulletBuilder
-EnemyBulletBuilder -- "1" EnemyBullet
-abstract class EnemyBulletBuilder
-{
-    + create()+
-    + get():EnemyBullet+
-}
-
-PlayerBulletBuilder -up|> IBulletBuilder
-PlayerBulletBuilder -- "1" PlayerBullet
-abstract class PlayerBulletBuilder
-{
-    + create()+
-    + get():PlayerBullet+
-}
-
-interface IBulletBuilder<BulletType extends IBullet>{
-    + create()
-    + get():BulletType
-    +{abstract} assembleSprite()
-    +{abstract} assembleHitBox()
-    +{abstract} assembleBehaviours()
-    +{abstract} assembleData()
-}
-
-interface IBullet
-{
-    transform():Transform
-    entity():Entity
-}
-
-BulletMaker --|> EnemyBulletBuilder
-SpriteData "1" -- BulletMaker
-Transform "1" -- BulletMaker
-class BulletMaker{
-    +BulletMaker(tie:Transform)
-    +assembleSprite()++
-    +assembleHitBox()++
-    +assembleBehaviours()++
-    +assembleData()++
-}
-
-BulletPlayerBuilder --|> PlayerBulletBuilder
-SpriteData "1" -- BulletPlayerBuilder
-Transform "1" -- BulletPlayerBuilder
-class BulletPlayerBuilder{
-    +BulletPlayerBuilder(solo:Transform)
-    +assembleSprite()++
-    +assembleHitBox()++
-    +assembleBehaviours()++
-    +assembleData()++
-}
-
-LaserSaber --|> EnemyBulletBuilder
-SpriteData "1" -- LaserSaber
-Transform "2" -- LaserSaber
-class LaserSaber{
-    +LaserSaber(tie:Transform,target:Transform)
-    +assembleSprite()++
-    +assembleHitBox()++
-    +assembleBehaviours()++
-    +assembleData()++
-}
-
-interface IBulletDirector<BulletType extends Ibullet, BuilderType extends IBulletBuilder<BulletType>>{
-    +setBuilder(BuilderType builder)
-    +create()
-    +assemble()
-    +get():BulletType
-}
-
-BulletDirector --|> IBulletDirector
-IBulletBuilder "1" o-- BulletDirector
-class BulletDirector<BulletType extends Ibullet, BuilderType extends IBulletBuilder<BulletType>>{
-    +setBuilder(BuilderType builder)+
-    +create()+
-    +assemble()+
-    +get():BulletType+
-}
-
-BarricadeEnemBuilder "1" --o BarricadeEnemDirector
-class BarricadeEnemDirector{
-    +setBuilder(BuilderType builder)
-    +create()
-    +assemble()
-    +get():BarricadeEnem
-}
-
-BarricadeBothBuilder "1" --o BarricadeBothDirector
-class BarricadeBothDirector{
-    +setBuilder(BuilderType builder)
-    +create()
-    +assemble()
-    +get():BarricadeBoth
-}
-
-ColdFireMaker --|> PlayerBulletBuilder
-class ColdFireMaker{
-    + assembleSprite()+
-    + assembleHitBox()+
-    + assembleBehaviours()+
-    + assembleData()+
-    - onColdFire()+
-}
-
-FireShieldMaker --|> PlayerBulletBuilder
-class FireShieldMaker{
-    + assembleSprite()+
-    + assembleHitBox()+
-    + assembleBehaviours()+
-    + assembleData()+
-}
-
-FireShield --|> Bullet
-class FireShield{
-    #FireShield(referenced:GameObject)
-    +accept(visitor:VisitorEntity)+
-}
-
-interface IShip
-{
-    +addWeapon(Weapon p)
-    +getPilot():Pilot
-    +setPilot(pilot:Pilot);
-}
-
-Ship --|> IShip
-Ship --|> Entity
-Ship -- "1" Pilot
-Ship -- "1" Arsenal
-abstract class Ship
-{
-    #Ship(referenced:GameObject,weapons:Arsenal)
-    +onDeath()++
-    +addWeapon(Weapon p)+
-    +getPilot():Pilot+
-    +setPilot(pilot:Pilot);+
-    +getArsenal():Arsenal
-}
-
-BaseEnemyShip --|> Ship
-abstract class BaseEnemyShip{
-    #BaseEnemyShip(referenced:GameObject,weapons:Arsenal)
-    +getBagPack():Arsenal
-}
-
-EnemyShip --|> BaseEnemyShip
-abstract class EnemyShip{
-    +EnemyShip(referenced:GameObject)
-    +accept(visitor:VisitorEntity)+
-    +onDeath()++
-}
-
-EnemyShipBuilder -- "1" BaseEnemyShip
-abstract class EnemyShipBuilder
-{
-    create()
-    get():BaseEnemyShip
-    +{abstract} assembleSprite()
-    +{abstract} assembleHitBox()
-    +{abstract} assembleWeapons()
-    +{abstract} assembleBehaviours()
-    +{abstract} assembleData()
-
-}
-
-EnemyShipBuilder "1" --  EnemyShipDirector
-class EnemyShipDirector{
-    +setBuilder(builder:EnemyShipBuilder)
-    +create()
-    +assemble()
-    +get():BaseEnemyShip
-}
-
-ShipBoss --|> BaseEnemyShip
-class ShipBoss{
-    +ShipBoss(referenced:GameObject)
-    +accept(visitor:VisitorEntity)+
-    +getBagPack():Arsenal++
-    +onDeath()++
-}
-
-VisitorEntity <|-- ShieldVisitor
-Entity "1"--  ShieldVisitor: reward <
-PlayerShip "1"--  ShieldVisitor: visitable <
-ShieldVisitor "2"--  Renderizable
-class ShieldVisitor{
-     prevShield:float
-
-    +ShieldVisitor()
-
-    +setReward(reward:Entity)
-
-    @Override
-    +visit(visitable:PlayerShip)++
-
-    +restore()
-
-}
-
-DizzyMaker --|> EnemyShipBuilder
-class DizzyMaker
-{
-    +assembleSprite()
-    + assembleHitBox()
-    + assembleWeapons()
-    + assembleBehaviours()
-    + assembleData()
-
-}
-
-FastTieMaker --|> EnemyShipBuilder
-class FastTieMaker
-{
-    +assembleSprite()
-    + assembleHitBox()
-    + assembleWeapons()
-    + assembleBehaviours()
-    + assembleData()
-
-}
-
-FullKamikazeeMaker --|> EnemyShipBuilder
-class FullKamikazeeMaker
-{
-    +assembleSprite()
-    + assembleHitBox()
-    + assembleWeapons()
-    + assembleBehaviours()
-    + assembleData()
-
-}
-
-VaderAMaker --|> EnemyShipBuilder
-class VaderAMaker
-{
-    +assembleSprite()
-    + assembleHitBox()
-    + assembleWeapons()
-    + assembleBehaviours()
-    + assembleData()
-
-}
-
-VaderBMaker --|> EnemyShipBuilder
-class VaderBMaker
-{
-    +assembleSprite()
-    + assembleHitBox()
-    + assembleWeapons()
-    + assembleBehaviours()
-    + assembleData()
-
-}
-
-VaderCMaker --|> EnemyShipBuilder
-class VaderCMaker
-{
-    +assembleSprite()
-    + assembleHitBox()
-    + assembleWeapons()
-    + assembleBehaviours()
-    + assembleData()
-
-}
-
-WachinMaker --|> EnemyShipBuilder
-class WachinMaker
-{
-    +assembleSprite()
-    + assembleHitBox()
-    + assembleWeapons()
-    + assembleBehaviours()
-    + assembleData()
-
-}
-
-WhiteTieMaker --|> EnemyShipBuilder
-class WhiteTieMaker
-{
-    +assembleSprite()
-    + assembleHitBox()
-    + assembleWeapons()
-    + assembleBehaviours()
-    + assembleData()
-
-}
-
-PlayerShipMaker --|> PlayerShipBuilder
-class PlayerShipMaker
-{
-    +assembleSprite()
-    + assembleHitBox()
-    + assembleWeapons()
-    + assembleBehaviours()
-    + assembleData()
-
-}
-
-
-PlayerShipBuilder -- "1" PlayerShip
-abstract class PlayerShipBuilder
-{
-    create()
-    get():PlayerShip
-    +{abstract} assembleSprite()
-    +{abstract} assembleHitBox()
-    +{abstract} assembleWeapons()
-    +{abstract} assembleBehaviours()
-    +{abstract} assembleData()
-
-}
-
-PlayerShipBuilder -- "1" PlayerShipDirector
-class PlayerShipDirector{
-    +setBuilder(builder:PlayerShipBuilder)
-    +create()
-    +assemble()
-    +get():PlayerShip
-}
-
-PlayerShip --|> Ship
-PlayerShip -- PlayerShip:instance
-note on link: static
-PlayerShip -- "1" PowersDeck
-class PlayerShip{
-	+{static}getInstance():PlayerShip
-	+{static}isUninitialized():boolean
-	+{static}initialize(GameObject go)
-	+ onDeath()++
-	+ accept()+
-	+ setLife(cantLife:float)
-	+ addSpecial(power:ISpecialPower)
-	+getBagPack():Arsenal
-}
-
-Component <|-- PlayerShipPerspective
-PlayerShipPerspective -- "1" Renderizable
-PlayerShipPerspective -- "2" AbstractContinueInput
-class PlayerShipPerspective{
-    +PlayerShipPerspective(renderizable:Renderizable)
-    +update()+
-}
-
-IBulletDirector "1" -- Weapon:generator
-abstract class Weapon<BulletDirectorType extends IBulletDirector>
-{
-    - name:String
-    + Weapon(BulletDirectorType generator)
-    + {abstract} void Shoot();
-    + {abstract} void Destroy();
-    + isEmpty():boolean
-    + setName(String name)
-    + spriteName():String
-}
-
-IActivable --|> Arsenal
-abstract class Arsenal{
-    -active:boolean=true
-    +{abstract}clone():Arsenal
-
-    +isActive():boolean+
-    +setActive(active:boolean)+
-    +{abstract}shoot()
-    +{abstract}switchCurrent()
-    +{abstract}add(w:Weapon)
-    +{abstract}remove(w:Weapon)
-    +{abstract}isEmpty():boolean
-    +{abstract}getCurrent():Weapon
-    +{abstract}destroy()
-    +{abstract}observer():IBroadCaster<Boolean>
-    +{abstract}weapons():Iterable<Weapon>
-}
-
- Arsenal <|-- EnemyArsenal
- Weapon "*" -- EnemyArsenal
- EnemyArsenal -- "1" IBroadcaster
- EnemyArsenal -- "1" Invoker
-class EnemyArsenal{
-    -index:int=0
-    +clone():Arsenal+
-    +isActive():boolean+
-    +setActive(active:boolean)+
-    +shoot()+
-    +switchCurrent()+
-    +add(w:Weapon)+
-    +remove(w:Weapon)+
-    +isEmpty():boolean+
-    +getCurrent():Weapon+
-    +destroy()+
-    +observer():IBroadcaster<Boolean>+
-    +weapons():Iterable<Weapon>+
-}
-
- Arsenal <|-- PlayerArsenal
- Weapon "*" -- PlayerArsenal
- PlayerArsenal -- "1" IBroadcaster
- PlayerArsenal -- "1" Invoker
-class PlayerArsenal{
-    +clone():Arsenal+
-    +isActive():boolean+
-    +setActive(active:boolean)+
-    +shoot()+
-    +switchCurrent()+
-    +add(w:Weapon)+
-    +remove(w:Weapon)+
-    +isEmpty():boolean+
-    +getCurrent():Weapon+
-    +destroy()+
-    +observer():IBroadcaster<Boolean>+
-    +weapons():Iterable<Weapon>+
-}
-
-Weapon <|-- ShotFront
-Weapon <|-- AngularWeapon
-Weapon <|-- GenericWeapon
-Weapon <|-- IceWeapon
-Weapon <|-- LateralWeapon
-
-ShotFront -- "1" BulletDirector
-ShotFront -- "1" Transform
-class ShotFront<BulletDirectorType extends IBulletDirector>{
-    -phaseShift:float
-    +ShotFront(phaseShift:float,getter:BulletDirector,reference:Transform)
-    +Shoot()+
-    +Destroy()+
-}
-
-GenericWeapon -- "1" Transform
-class GenericWeapon<BulletDirectorType extends IBulletDirector>{
-    -{static} framesDuration:int
-    -phaseShift:float
-    -cantShoots:int
-    +GenericWeapon(cantShoots:int,getter:BulletDirector,reference:Transform)
-    +Shoot()+
-    +Destroy()+
-    +setPhaseShift(phaseShift:float)
-}
-
-LateralWeapon -- "1" Transform
-class LateralWeapon<BulletDirectorType extends IBulletDirector>{
-    -{static} framesDuration:int
-    -phaseShift:float
-    -cantShoots:int
-    +LateralWeapon(cantShoots:int,getter:BulletDirector,reference:Transform)
-    +LateralWeapon(getter:BulletDirector,reference:Transform)
-    +Shoot()+
-    +Destroy()+
-    +setPhaseShift(phaseShift:float)
-}
-
-AngularWeapon -- "1" Transform
-class AngularWeapon<BulletDirectorType extends IBulletDirector>{
-    -{static} framesDuration:int
-    -tot_ang:float
-    -phaseShift:float
-    -cantShoots:int
-    +AngularWeapon(cantShoots:int,getter:BulletDirector,reference:Transform)
-    +AngularWeapon(getter:BulletDirector,reference:Transform)
-    +Shoot()+
-    +Destroy()+
-    +setPhaseShift(phaseShift:float)
-}
-
-class IceWeapon<BulletDirectorType extends IBulletDirector>{
-    -magazzing:int
-    +IceWeapon(getter:BulletDirector,reference:Transform)
-    +Shoot()+
-    +Destroy()+
-}
-
-
-
 
 
 
