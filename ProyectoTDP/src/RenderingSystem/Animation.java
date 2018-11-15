@@ -68,7 +68,7 @@ public class Animation extends Component implements IAnimation {
             index = 0;
             }
         }
-        var sd = sprites.get(index);
+        SpriteData sd = sprites.get(index);
         renderer.setIcon(sd.icon());
 
         index++;

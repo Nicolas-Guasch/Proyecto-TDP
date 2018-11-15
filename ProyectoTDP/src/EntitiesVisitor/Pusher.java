@@ -22,15 +22,12 @@ public class Pusher extends VisitorEntity
     //@Override
     private void effect(Entity ent) {
         if(ent.referenced() == null || ent.referenced().transform() == null)return;
-        var dist = center.distanceTo(ent.referenced().transform().position());
+        float dist = center.distanceTo(ent.referenced().transform().position());
         if(dist<ratio)
         {
-            var h = ent.data().getHealth();
-            h*=0.5f;
+            float h = ent.data().getHealth() * 0.5f;
             ent.data().setHealth(h);
-            var effect = 1-((ratio-dist)/ratio);
-            effect /= 2;
-            effect += 0.5f;
+            float effect = 1 - ((ratio - dist) / ratio) / 2 + 0.5f;
             System.out.println("Pusher::effect "+dist+ " --- " + effect);
             // si tiende a 0 mas fuerte el efecto
             // si tiende a 1 dura menos

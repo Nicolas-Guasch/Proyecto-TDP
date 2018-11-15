@@ -17,7 +17,9 @@ import Scripts.HyperSpace;
 import Scripts.Jumper;
 
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 public final class Level extends TimePoint
 {
@@ -108,7 +110,7 @@ public final class Level extends TimePoint
         }
         Collections.shuffle(positions);
         int z = 10;
-        var vsiz = GameSettings.GetInstance().sizeWindow;
+        Dimension vsiz = GameSettings.GetInstance().sizeWindow;
         Vector3 far = new Vector3(vsiz.width/1.9f,vsiz.height/1.9f,z);
         int i = 0;
         for(Vector2 v : positions)
@@ -128,7 +130,7 @@ public final class Level extends TimePoint
 
             }
             if(itRewards.hasNext()){
-                var onDeath =ThrowAReward(itRewards.next(),ship.referenced().transform());
+                Runnable onDeath =ThrowAReward(itRewards.next(),ship.referenced().transform());
                 ship.setOnDeath(onDeath);
             }
 

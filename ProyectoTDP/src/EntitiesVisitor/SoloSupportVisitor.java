@@ -75,7 +75,7 @@ public class SoloSupportVisitor extends VisitorEntity
         SoundManager.Instance().Radio();
 
         EntityQuery handler = new DummyEntityQuery();
-        var soloai = new SoloAI(handler,waypoints);
+        SoloAI soloai = new SoloAI(handler,waypoints);
         soloai.searchSomeEnemies(6);
         handler = soloai;
         //handler = new Slippery(handler);

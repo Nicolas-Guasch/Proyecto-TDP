@@ -9,7 +9,7 @@ public abstract class BarricadeBothBuilder
 
     public void create()
     {
-        var go = GameObject.getRoot().addChild();
+        GameObject go = GameObject.getRoot().addChild();
         obst = new BarricadeBoth(go);
     }
     public BarricadeBoth get()

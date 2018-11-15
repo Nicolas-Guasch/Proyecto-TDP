@@ -9,7 +9,7 @@ public abstract class BarricadeEnemBuilder
 
     public void create()
     {
-        var go = GameObject.getRoot().addChild();
+        GameObject go = GameObject.getRoot().addChild();
         obst = new BarricadeEnem(go);
     }
     public BarricadeEnem get()

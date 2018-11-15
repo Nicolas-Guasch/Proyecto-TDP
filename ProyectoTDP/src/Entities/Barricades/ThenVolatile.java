@@ -16,7 +16,7 @@ public class ThenVolatile implements Runnable {
 
     @Override
     public void run() {
-        var t = AnimatorsVolatiles.getInstance().getVolatile(transform.position(), volatileName,25);
+        Transform t = AnimatorsVolatiles.getInstance().getVolatile(transform.position(), volatileName,25);
         t.setTop(transform.top());
     }
 }

@@ -60,7 +60,7 @@ public class FastTieMaker extends EnemyShipBuilder
         //GameSettings.GetInstance().getSpeed("whitetie"); //TODO: implementar esto
         EntityQuery handler = new DummyEntityQuery();
         //handler = new RelativeLateral(handler,50);
-        var abso = new AbsoluteLateral(handler,40);
+        AbsoluteLateral abso = new AbsoluteLateral(handler,40);
         abso.setRandomLevel(5);
         handler = abso;
         handler = new Slippery(handler,100f, 0.6f); // ver como queda sino sacar

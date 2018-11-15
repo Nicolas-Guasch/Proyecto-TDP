@@ -28,7 +28,7 @@ public class TransitionToLevel extends TimePoint {
 
     @Override
     public void assembleMoment() {
-        var bb = Background.getInstance();
+        Background bb = Background.getInstance();
         bb.setSpeedTweened(backgroundSpeed);
     }
 

@@ -31,7 +31,7 @@ public class IncreaseSpeedIfWatched extends AIQueryDecorator {
                             referenced().transform().
                             position()).norma();
 
-        var angle = dir_to_me.getUnaryAngle(PlayerShip.getInstance().referenced().transform().top());
+        float angle = dir_to_me.getUnaryAngle(PlayerShip.getInstance().referenced().transform().top());
 
         float incmult = 1;
 

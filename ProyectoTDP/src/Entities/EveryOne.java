@@ -85,7 +85,7 @@ public class EveryOne extends Component
      */
     public void killThemAll()
     {
-        for(var ent : entities)
+        for(Entity ent : entities)
         {
             killIn(ent,1);
         }
@@ -109,7 +109,7 @@ public class EveryOne extends Component
 
     private void acceptVisitors(){
         while(!visitors.isEmpty()){
-            var vis = visitors.remove();
+            VisitorEntity vis = visitors.remove();
             entities.forEach(e->e.accept(vis));
         }
     }

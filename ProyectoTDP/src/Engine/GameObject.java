@@ -18,7 +18,7 @@ public class GameObject
     {
         if (root == null)
         {
-            var eng = EngineGetter.Instance().get();
+            IEngine eng = EngineGetter.Instance().get();
             root = new GameObject(null);
             eng.suscribeToUpdate(root);
             //eng.suscribeToPhysicsUpdate(root);

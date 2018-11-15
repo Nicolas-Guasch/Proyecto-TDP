@@ -23,7 +23,7 @@ public class TheGame
         SoundManager.Instance().ImperialMarchPlay();
         window.Show();
 
-        var bb = Background.getInstance();
+        Background bb = Background.getInstance();
         bb.setSpeedBackground(13f);
 
         eng.start();

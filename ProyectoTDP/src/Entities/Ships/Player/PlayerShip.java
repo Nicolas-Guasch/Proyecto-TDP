@@ -41,7 +41,7 @@ public class PlayerShip extends Ship {
 		assert isUninitialized();
 		instance = new PlayerShip(go);
 		go.addComponent(new PlayerWatcher(instance));
-		var max = GameSettings.GetInstance().PlayerData.clone().getHealth();
+		float max = GameSettings.GetInstance().PlayerData.clone().getHealth();
 		instance.healthBar = new ShipStatus(new Vector2(100,100), instance.observerHealth(),"bigbar",max);
 		UI.UI.getInstance().addUIComponent(instance.healthBar);
 		arsenalUI = new ArsenalUI(instance.weapons);

@@ -8,7 +8,7 @@ public abstract class PlayerShipBuilder
 
     public void create()
     {
-        var go = GameObject.getRoot().addChild();
+        GameObject go = GameObject.getRoot().addChild();
         PlayerShip.initialize(go);
         ship = PlayerShip.getInstance();
     }

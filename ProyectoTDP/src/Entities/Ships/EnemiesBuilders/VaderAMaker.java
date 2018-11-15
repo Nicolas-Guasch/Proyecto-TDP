@@ -29,7 +29,7 @@ public class VaderAMaker extends EnemyShipBuilder
 
     public void create()
     {
-        var go = GameObject.getRoot().addChild();
+        GameObject go = GameObject.getRoot().addChild();
         ship = new ShipBoss(go);
     }
 

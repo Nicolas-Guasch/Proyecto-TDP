@@ -78,21 +78,21 @@ public final class HitBox extends Component {
     }
 
     private boolean isFar(Transform other){
-        var b1 = Math.abs(other.position().x()-transform.position().x()) > NoCheckDistance;
-        var b2 = Math.abs(other.position().y()-transform.position().y()) > NoCheckDistance;
+        boolean b1 = Math.abs(other.position().x()-transform.position().x()) > NoCheckDistance;
+        boolean b2 = Math.abs(other.position().y()-transform.position().y()) > NoCheckDistance;
         return b1 || b2 ;
         // si la pifea mucho probar cambiar por un && o agrandar la distancia
     }
 
 
     private Vector2 vertexInside(HitBox other){
-        var bottom = bottomSide();
-        var left = leftSide();
-        var vertex = bottomLeft();
+        Vector2 bottom = bottomSide();
+        Vector2 left = leftSide();
+        Vector2 vertex = bottomLeft();
         for (Vector2 pto : other.vertices()) {
             Vector2 vertToPto = pto.sub(vertex);
-            var prodBot = bottom.scalarProd(vertToPto);
-            var prodLeft = left.scalarProd(vertToPto);
+            float prodBot = bottom.scalarProd(vertToPto);
+            float prodLeft = left.scalarProd(vertToPto);
             if (0 <= prodBot && prodBot <= bottom.lengthSq() && 0 <= prodLeft && prodLeft <= left.lengthSq())// si colisiona:
             {
                 return pto;

@@ -50,11 +50,11 @@ public class FullKamikazeeMaker extends EnemyShipBuilder {
 
     @Override
     public void assembleBehaviours() {
-        var rand = Math.abs(new Random(hashCode()).nextInt(400))+400;
+        int rand = Math.abs(new Random(hashCode()).nextInt(400))+400;
         EntityQuery handler = new EllipseMove(new DummyEntityQuery(),50,(rand/600f)*450);
         EntityQuery handler2 = new Kamikazee(new DummyEntityQuery());
         Predicate<Entity> toTest = new FalseNTimes(rand*rand/10000);
-        var definitivehandler = new SwitchWhen(toTest,handler,handler2);
+        SwitchWhen definitivehandler = new SwitchWhen(toTest,handler,handler2);
         Pilot pilot = new Pilot(definitivehandler,ship,(Math.abs(new Random().nextInt(3))+1)*3f);
         //GameSettings.GetInstance().TieSpeed);
         ship.setPilot(pilot);

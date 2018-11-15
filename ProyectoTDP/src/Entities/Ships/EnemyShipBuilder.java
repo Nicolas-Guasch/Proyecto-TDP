@@ -9,7 +9,7 @@ public abstract class EnemyShipBuilder
 
     public void create()
     {
-        var go = GameObject.getRoot().addChild();
+        GameObject go = GameObject.getRoot().addChild();
         ship = new EnemyShip(go);
     }
     public BaseEnemyShip get()

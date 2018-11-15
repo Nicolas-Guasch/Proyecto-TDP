@@ -9,7 +9,7 @@ public abstract class PlayerBulletBuilder implements IBulletBuilder<PlayerBullet
 
     public void create()
     {
-        var go = GameObject.getRoot().addChild();
+        GameObject go = GameObject.getRoot().addChild();
         bullet = new PlayerBullet(go);
     }
     public PlayerBullet get()

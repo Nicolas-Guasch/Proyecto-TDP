@@ -44,7 +44,7 @@ public class LateralAndDown extends AIQueryDecorator
 
     @Override
     public Vector2 whereToSee(Entity ent) {
-        var v = dirGiver.get().rotateUnary(0.5f);
+        Vector2 v = dirGiver.get().rotateUnary(0.5f);
         if(v.y()>0){
             v = v.prod(-1);
         }

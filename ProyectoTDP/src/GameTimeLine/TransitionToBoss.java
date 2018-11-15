@@ -4,6 +4,7 @@ import Audio.SoundManager;
 import Engine.EngineGetter;
 import Engine.While;
 import Entities.Ships.Player.PlayerShip;
+import IAs.EntityQuery;
 import IAs.PlayerMove;
 import IAs.Slippery;
 import InputManager.DirectionalMouse;
@@ -46,8 +47,8 @@ public class TransitionToBoss extends TimePoint {
     }
 
     private void ChangeControls(){
-        var player = PlayerShip.getInstance();
-        var handler = player.getPilot().getHandler();
+        PlayerShip player = PlayerShip.getInstance();
+        EntityQuery handler = player.getPilot().getHandler();
         DirectionalMouse direction = new DirectionalMouse(player.referenced().transform());
         DirectionalWASD move = new DirectionalWASD();
         handler = new PlayerMove(handler,move,direction);

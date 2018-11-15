@@ -47,7 +47,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
     @Override
     public void assembleBehaviours() {
         Transform tr = bullet.referenced().transform();
-        var playerT = PlayerShip.getInstance().referenced().transform();
+        Transform playerT = PlayerShip.getInstance().referenced().transform();
         tr.setPosition(playerT.position3());
         tr.setTop(playerT.top());
         bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().PlayerBulletSpeed *0.5f));
@@ -69,7 +69,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
         Renderizable rend = new Renderizable(new SpriteData("coldfireexplo"));
         g.setRenderer(rend);
         rend.show();
-        var t = bullet.referenced().transform();
+        Transform t = bullet.referenced().transform();
         g.transform().setPosition(t.position3());
         EngineGetter.Instance().get().waitForFrames(g::destroy,10);
         EveryOne.getInstance().takeLazyVisitor(new FreezeVisitor(5, t, 200));

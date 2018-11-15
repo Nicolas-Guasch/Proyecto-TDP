@@ -35,7 +35,7 @@ public class AbsoluteLateral  extends AIQueryDecorator
             i=0;
         }
         i++;
-        var vec = Vector2.RIGHT(speed).sum(decorated.whereToMove(ent));
+        Vector2 vec = Vector2.RIGHT(speed).sum(decorated.whereToMove(ent));
         return vec;
 
     }

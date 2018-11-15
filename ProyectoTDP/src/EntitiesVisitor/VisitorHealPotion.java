@@ -19,7 +19,7 @@ public class VisitorHealPotion extends VisitorEntity {
 
     @Override
     public void visit(PlayerShip playerShip){
-        var health = playerShip.data().getHealth();
+        float health = playerShip.data().getHealth();
         playerShip.data().setHealth(health+potion);
 
         reward.data().setHealth(-1);

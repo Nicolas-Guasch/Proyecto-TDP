@@ -9,7 +9,7 @@ public abstract class EnemyBulletBuilder implements IBulletBuilder<EnemyBullet>
 
     public void create()
     {
-        var go = GameObject.getRoot().addChild();
+        GameObject go = GameObject.getRoot().addChild();
         bullet = new EnemyBullet(go);
     }
     public EnemyBullet get()

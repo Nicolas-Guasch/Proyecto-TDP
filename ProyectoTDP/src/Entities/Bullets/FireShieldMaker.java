@@ -43,7 +43,7 @@ public class FireShieldMaker extends PlayerBulletBuilder
         int ratio = 100;
         Vector2 firstLateral = Vector2.UP();
 
-        var beh = new AlwaysTurnAround(PlayerShip.getInstance().referenced().transform(),
+        AlwaysTurnAround beh = new AlwaysTurnAround(PlayerShip.getInstance().referenced().transform(),
                                         ratio, angularSpeed,firstLateral);
         bullet.addBehaviour(beh);
         bullet.setVisitor(new FireShieldEffect(bullet.data().clone()));

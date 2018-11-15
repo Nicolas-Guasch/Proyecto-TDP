@@ -42,7 +42,7 @@ public class LaserSaber extends EnemyBulletBuilder
     @Override
     public void assembleHitBox()
     {
-        var hitBox = HitBox.getOne(new Vector2(20,50),bullet);
+        HitBox hitBox = HitBox.getOne(new Vector2(20,50),bullet);
         HitBoxesManager.getInstance().addHitBox(hitBox,HitBoxesManager.ENEMYBULLET);
         bullet.setHitBox(hitBox);
     }

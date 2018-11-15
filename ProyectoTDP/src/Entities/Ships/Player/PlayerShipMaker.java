@@ -87,9 +87,9 @@ collider: 130x130
 
 
         director.setBuilder(new BulletPlayerBuilder(ship.referenced().transform()));
-        var w2 = new GenericWeapon<>(ship.referenced().transform(),director,  2);
+        GenericWeapon<BulletDirector<PlayerBullet, PlayerBulletBuilder>> w2 = new GenericWeapon<BulletDirector<PlayerBullet, PlayerBulletBuilder>>(ship.referenced().transform(),director,  2);
         w2.setName("bilaser");
-        var w3 =new LateralWeapon<>(ship.referenced().transform(),director,  3);
+        LateralWeapon<BulletDirector<PlayerBullet, PlayerBulletBuilder>> w3 =new LateralWeapon<BulletDirector<PlayerBullet, PlayerBulletBuilder>>(ship.referenced().transform(),director,  3);
         w3.setName("trilaser");
         ship.addWeapon(w2);
         ship.addWeapon(w3);

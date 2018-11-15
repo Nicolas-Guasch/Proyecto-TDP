@@ -14,8 +14,8 @@ public class PlayerAssembler extends TimePoint {
     @Override
     public void assembleMoment() {
         EveryOne.getInstance().add(PlayerShip.getInstance());
-        var y = GameSettings.GetInstance().sizeWindow.height*(3.5f/8);
-        var vec = new Vector3(0,-y,-90);
+        float y = GameSettings.GetInstance().sizeWindow.height*(3.5f/8);
+        Vector3 vec = new Vector3(0,-y,-90);
 
         PlayerShip.getInstance().referenced().transform().setPosition(vec);
     }
@@ -23,7 +23,7 @@ public class PlayerAssembler extends TimePoint {
     @Override
     public void startMoment() {
 
-        var weaponDisabler = new WeaponSwitch(false);
+        WeaponSwitch weaponDisabler = new WeaponSwitch(false);
         EveryOne.getInstance().takeLazyVisitor(weaponDisabler);
         VisitorEntity weaponEnabler = new WeaponSwitch(true);
         EngineGetter.Instance().get().waitForFrames(()->EveryOne.getInstance().takeLazyVisitor(weaponEnabler),30);
