@@ -13,9 +13,9 @@ public class ShieldCoin implements java.util.function.Consumer<Engine.Components
     @Override
     public void accept(Transform transform) {
         GameObject gameObject = GameObject.getRoot().addChild();
-        var spriteData = new SpriteData("rewardshield");
+        SpriteData spriteData = new SpriteData("rewardshield");
 
-        var visitor = new ShieldVisitor();
+        ShieldVisitor visitor = new ShieldVisitor();
         Entity reward = new GenericReward(gameObject,visitor,spriteData);
         visitor.setReward(reward);
 

@@ -14,9 +14,9 @@ public class FireSpinnerCoin implements java.util.function.Consumer<Engine.Compo
     @Override
     public void accept(Transform transform) {
         GameObject premio = GameObject.getRoot().addChild();
-        var sd = new SpriteData("rewardfire");
+        SpriteData sd = new SpriteData("rewardfire");
 
-        var vis = new VisitorShieldFireReward();
+        VisitorShieldFireReward vis = new VisitorShieldFireReward();
 
         Entity rew = new GenericReward(premio,vis,sd);
         vis.setEntity(rew);

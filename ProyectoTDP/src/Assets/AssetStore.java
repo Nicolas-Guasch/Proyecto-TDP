@@ -17,7 +17,7 @@ public class AssetStore
 
     public static boolean isThereIcon(String name){
         try{
-            var h = getIcon(name).getIconHeight();
+            int h = getIcon(name).getIconHeight();
         }
         catch (Exception e){
             return false;
@@ -51,7 +51,7 @@ public class AssetStore
     }
 
     private static void checknullmap() {
-        map = map==null ?new HashMap<>() : map;
+        map = map==null ?new HashMap<String, Icon>() : map;
     }
 
     public static Image getImage(String filename) {

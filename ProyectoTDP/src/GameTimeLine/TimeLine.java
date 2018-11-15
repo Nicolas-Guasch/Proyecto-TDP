@@ -32,7 +32,7 @@ public final class TimeLine extends Component {
 	private int currentLevel;
 	private TimeLine(){
 		currentLevel =0;
-		levels = new ArrayList<>();
+		levels = new ArrayList<TimePoint>();
 		float backgroundSpeed = 35;
 		TimePoint[] _levels = {
 				new PlayerAssembler(),

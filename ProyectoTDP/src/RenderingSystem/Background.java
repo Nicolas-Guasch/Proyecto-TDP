@@ -59,7 +59,7 @@ public class Background extends Component
         this.speedBackground = speedBackground;
     }
 
-    private Map<Backgrounds, Color> colors = new HashMap<>();
+    private Map<Backgrounds, Color> colors = new HashMap<Backgrounds, Color>();
     private Background(){
         colors.put(Backgrounds.bg_sand,new Color(218, 186, 123));
         colors.put(Backgrounds.bg_space,new Color(0,0,0));
@@ -67,7 +67,7 @@ public class Background extends Component
 
     }
     public void setBG(Backgrounds name){
-        var sd = new SpriteData(name.name());
+        SpriteData sd = new SpriteData(name.name());
 
         Window.GetInstance().setColor(colors.get(name));
 
@@ -78,9 +78,9 @@ public class Background extends Component
 
 
     public void start(){
-        var sd = new SpriteData(Backgrounds.bg_space.name());
+        SpriteData sd = new SpriteData(Backgrounds.bg_space.name());
         backgroundHeight = sd.icon().getIconHeight();
-        var rend = new Renderizable(sd);
+        Renderizable rend = new Renderizable(sd);
         gameObject().setRenderer(rend);
         rend.show();
         transform().setPosition(Vector2.UP(phaseShift()));

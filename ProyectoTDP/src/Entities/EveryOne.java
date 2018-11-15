@@ -35,11 +35,11 @@ public class EveryOne extends Component
 
     private EveryOne()
     {
-        entities = new LinkedList<>();
+        entities = new LinkedList<Entity>();
 
-        toDestroy = new LinkedBlockingQueue<>();
-        toAdd = new LinkedBlockingQueue<>();
-        visitors = new LinkedBlockingQueue<>();
+        toDestroy = new LinkedBlockingQueue<Entity>();
+        toAdd = new LinkedBlockingQueue<Entity>();
+        visitors = new LinkedBlockingQueue<VisitorEntity>();
     }
 
     @Override
@@ -125,7 +125,7 @@ public class EveryOne extends Component
     public Iterable<Entity> getEntities()
     {
         //return entities_BU;
-        return new LinkedList<>(entities); // no es tan eficiente pero me sirve
+        return new LinkedList<Entity>(entities); // no es tan eficiente pero me sirve
     }
 
 

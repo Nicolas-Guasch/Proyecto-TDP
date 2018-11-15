@@ -37,7 +37,7 @@ public class ShipStatus implements UIComponent
         decorate = new JLabel(AssetStore.getIcon(iconName));
         decorate.setBounds(x-88,y-170,345,350);
 
-        all = new LinkedList<>();
+        all = new LinkedList<JComponent>();
         all.add(decorate);
         all.add(lifeBar);
 

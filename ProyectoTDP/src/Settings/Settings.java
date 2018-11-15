@@ -51,7 +51,7 @@ public final class Settings {
 		JLabel dif = new JLabel("Difficulty");
 		JButton ok = new JButton("OK");
 		ok.addActionListener(this::actionButton);
-		Collection<Integer> keys = new HashSet<>();
+		Collection<Integer> keys = new HashSet<Integer>();
 
 		keys.add(KeyEvent.VK_ENTER);
 		keys.add(KeyEvent.VK_SPACE);
@@ -103,9 +103,9 @@ public final class Settings {
 
 
 
-		box = new JComboBox<>(ssizes);
+		box = new JComboBox<String>(ssizes);
 
-		difficulty = new JComboBox<>("Easy,Medium,Hard".split(","));
+		difficulty = new JComboBox<String>("Easy,Medium,Hard".split(","));
 
 		full = new JCheckBox("Full Screen");
 		full.setSelected(true);
@@ -145,7 +145,7 @@ public final class Settings {
 				new Vector2(800,600)
 		};
 
-		Vector<Vector2> ve = new Vector<>();
+		Vector<Vector2> ve = new Vector<Vector2>();
 
 		for (Vector2 opt : options) {
 			if(opt.x()<=siz.x() && opt.y() <= siz.y() - 30){

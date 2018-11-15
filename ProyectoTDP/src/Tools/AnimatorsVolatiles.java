@@ -25,8 +25,8 @@ public class AnimatorsVolatiles
     }
 
     public Transform getVolatile(Vector2 position, String exp, float speed){
-        var g = parent.addChild();
-        var rend = new Renderizable(new SpriteData(exp+"_0"));
+        GameObject g = parent.addChild();
+        Renderizable rend = new Renderizable(new SpriteData(exp+"_0"));
         g.setRenderer(rend);
         rend.show();
 
@@ -42,7 +42,7 @@ public class AnimatorsVolatiles
 
     public Transform getExplosion(Vector2 position){
         String exp = Tools.random(explosionOptions);
-        var t = getVolatile(position,exp,45);
+        Transform t = getVolatile(position,exp,45);
         SoundManager.Instance().explo(position);
         return t;
     }

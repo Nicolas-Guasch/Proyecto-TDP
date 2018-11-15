@@ -46,7 +46,7 @@ public class WhiteTieMaker extends EnemyShipBuilder
         int phaseshift = 18;
 
         // -------------- creo el arma y la agrego ---------------
-        BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
+        BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<EnemyBullet, EnemyBulletBuilder>();
         director.setBuilder(new BulletMaker(ship.referenced().transform()));
         ShotFront esf = new ShotFront(phaseshift,director,ship.referenced().transform());
         ship.addWeapon(esf);

@@ -1,4 +1,4 @@
-Compilado usando Java 10.
+Compilado usando Java 8.
 Desarrollado en IntelliJ Idea.
 diagramas UML hechos con plantUML.
 Lamentablemente este software no esta preparado para diagramar 200 clases y la imagen resultante se rompe al renderizarse. Por ese motivo adicionalmente se provee "UML parte 1" y "UML parte 2"

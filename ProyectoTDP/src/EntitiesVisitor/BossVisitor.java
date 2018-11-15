@@ -1,6 +1,7 @@
 package EntitiesVisitor;
 
 import ADTs.Vector2;
+import Engine.Components.Transform;
 import Engine.EngineGetter;
 import Entities.BarricadeBoth;
 import Entities.Ships.Player.PlayerShip;
@@ -21,8 +22,8 @@ public class BossVisitor extends VisitorEntity {
 
 
     public void visit(BarricadeBoth barricade){
-        var barr_tr = barricade.referenced().transform();
-        var repuls = getRepulsion(
+        Transform barr_tr = barricade.referenced().transform();
+        Vector2 repuls = getRepulsion(
                 barr_tr.position(),
                 ship.referenced().transform().position(),
                 barr_tr.top()).withLength(10);

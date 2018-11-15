@@ -54,13 +54,13 @@ public class VaderAMaker extends EnemyShipBuilder
         int phaseshift = 20;
 
         // -------------- creo armas y las agrego ---------------
-        BulletDirector<EnemyBullet, EnemyBulletBuilder> vaddir = new BulletDirector<>();
+        BulletDirector<EnemyBullet, EnemyBulletBuilder> vaddir = new BulletDirector<EnemyBullet, EnemyBulletBuilder>();
         vaddir.setBuilder(new LaserSaber(ship.referenced().transform(),PlayerShip.getInstance().referenced().transform()));
         ShotFront esf = new ShotFront(phaseshift,vaddir,ship.referenced().transform());
         ship.addWeapon(esf);
 
 
-        BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
+        BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<EnemyBullet, EnemyBulletBuilder>();
         director.setBuilder(new BulletMaker(ship.referenced().transform()));
         ShotFront esf1 = new ShotFront(phaseshift,director,ship.referenced().transform());
         ship.addWeapon(esf1);

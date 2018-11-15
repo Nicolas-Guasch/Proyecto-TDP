@@ -31,8 +31,8 @@ public class GameObject
 
 
     // ---------- Vars ------------
-    private Collection<GameObject> children= new LinkedList<>();;
-    private Collection<Component> components= new LinkedList<>();;
+    private Collection<GameObject> children= new LinkedList<GameObject>();;
+    private Collection<Component> components= new LinkedList<Component>();;
     private GameObject parent;
     private Transform transform;
 
@@ -130,7 +130,7 @@ public class GameObject
                 c.update();
             }
         });
-        for (GameObject c : new LinkedList<>(children)) {
+        for (GameObject c : new LinkedList<GameObject>(children)) {
 
             c.Update();
         }
@@ -141,7 +141,7 @@ public class GameObject
     {
         components.forEach(c->c.setActive(false));
         parent.children.remove(this);
-        new LinkedList<>(children).forEach(c->c.destroy());
+        new LinkedList<GameObject>(children).forEach(c->c.destroy());
         children.clear();
         components.forEach(c->c.DestroyComponent());
         if(hitbox !=null)

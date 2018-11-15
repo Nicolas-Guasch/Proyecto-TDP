@@ -57,12 +57,12 @@ public class VaderCMaker extends EnemyShipBuilder {
         // -------------- creo armas y las agrego ---------------
 
 
-        BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<>();
+        BulletDirector<EnemyBullet, EnemyBulletBuilder> director = new BulletDirector<EnemyBullet, EnemyBulletBuilder>();
         director.setBuilder(new BulletMaker(ship.referenced().transform()));
         ShotFront tieArsenal = new ShotFront(phaseshift, director, ship.referenced().transform());
         ship.addWeapon(tieArsenal);
 
-        BulletDirector<EnemyBullet, EnemyBulletBuilder> saberDirector = new BulletDirector<>();
+        BulletDirector<EnemyBullet, EnemyBulletBuilder> saberDirector = new BulletDirector<EnemyBullet, EnemyBulletBuilder>();
         saberDirector.setBuilder(new LaserSaber(ship.referenced().transform(), PlayerShip.getInstance().referenced().transform()));
         ShotFront weaponLaserSaber = new ShotFront(phaseshift, saberDirector, ship.referenced().transform());
         ship.addWeapon(weaponLaserSaber);

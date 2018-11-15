@@ -3,6 +3,7 @@ package Entities.Weapons;
 import Engine.Components.Transform;
 import ADTs.Vector2;
 import Entities.Builders.Directors.IBulletDirector;
+import Entities.Builders.IBullet;
 import Entities.EveryOne;
 
 public class GenericWeapon<BulletDirectorType extends IBulletDirector> extends Weapon
@@ -37,7 +38,7 @@ public class GenericWeapon<BulletDirectorType extends IBulletDirector> extends W
             point = point.sum(desph.prod(phaseShift));
             generator.create();
             generator.assemble();
-            var b = generator.get();
+            IBullet b = generator.get();
             b.transform().setPosition(point);
             EveryOne.getInstance().add(b.entity());
             EveryOne.getInstance().killIn(b.entity(),framesDuration);

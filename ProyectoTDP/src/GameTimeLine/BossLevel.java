@@ -43,7 +43,7 @@ public class BossLevel extends TimePoint {
 
     @Override
     public boolean completed() {
-        var ret = playing && !vader.alive();
+        boolean ret = playing && !vader.alive();
         return ret;
 
     }

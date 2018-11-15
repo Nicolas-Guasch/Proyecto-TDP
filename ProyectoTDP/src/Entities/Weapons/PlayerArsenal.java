@@ -19,7 +19,7 @@ public class PlayerArsenal extends Arsenal
     private int index = 0;
     public PlayerArsenal(AbstractDiscreteInput switchKey, AbstractDiscreteInput shootKey)
     {
-        weapons = new ArrayList<>();
+        weapons = new ArrayList<Weapon>();
         Switch = switchKey;
         Shoot = shootKey;
         shootKey.OnAction().suscribe(this::_shoot);
@@ -40,7 +40,7 @@ public class PlayerArsenal extends Arsenal
     }
     @Override
     public Arsenal clone() {
-        var n = new PlayerArsenal(Switch,Shoot);
+        PlayerArsenal n = new PlayerArsenal(Switch,Shoot);
         weapons.forEach(n::add);
         return n;
     }

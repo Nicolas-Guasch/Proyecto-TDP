@@ -106,7 +106,7 @@ public final class Level extends TimePoint
         Iterator<RewardKey> itRewards = parser.rewards().iterator();
         List<Vector2> positions = parser.enemiesPositions();
         for (int j = 0; j < GameSettings.difficulty-1; j++) {
-            positions.addAll(new LinkedList<>(positions));
+            positions.addAll(new LinkedList<Vector2>(positions));
         }
         Collections.shuffle(positions);
         int z = 10;
@@ -162,7 +162,7 @@ public final class Level extends TimePoint
 
     @Override
     public void clean() {
-        LinkedList<EnemyShip> cosas = new LinkedList<>();
+        LinkedList<EnemyShip> cosas = new LinkedList<EnemyShip>();
         VisitorEntity collector = new GetEnemies(cosas);
         EveryOne.getInstance().takeVisitor(collector);
         cosas.forEach(e->e.data().setHealth(-1));

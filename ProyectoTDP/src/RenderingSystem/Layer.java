@@ -8,7 +8,7 @@ public final class Layer<SortFactor extends Comparable<SortFactor>,ComponentType
     private Collection<ComponentType> components;
 
     public Layer(SortFactor sortFactor) {
-        components = new HashSet<>();//quiza lista
+        components = new HashSet<ComponentType>();//quiza lista
         SortFactor = sortFactor;
     }
 

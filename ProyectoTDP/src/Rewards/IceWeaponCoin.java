@@ -16,13 +16,13 @@ import RenderingSystem.SpriteData;
 public class IceWeaponCoin implements java.util.function.Consumer<Engine.Components.Transform> {
     @Override
     public void accept(Transform originPoint) {
-        var player = PlayerShip.getInstance();
+        PlayerShip player = PlayerShip.getInstance();
         GameObject premio = GameObject.getRoot().addChild();
-        var sd = new SpriteData("icereward");
+        SpriteData sd = new SpriteData("icereward");
         WeaponReward rew = new WeaponReward(premio,sd);
-        BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
+        BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<PlayerBullet, PlayerBulletBuilder>();
         director.setBuilder(new ColdFireMaker());
-        Weapon wea = new IceWeapon<>(player.referenced().transform(),director,5);
+        Weapon wea = new IceWeapon<BulletDirector<PlayerBullet, PlayerBulletBuilder>>(player.referenced().transform(),director,5);
         rew.setWeapon(wea);
         premio.transform().setPosition(originPoint.position3());
         premio.addComponent(new RewardMove());

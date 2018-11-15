@@ -10,7 +10,7 @@ public class HitBoxesLayer implements Iterable<HitBox>
 
     HitBoxesLayer()
     {
-        hitBoxes = new LinkedList<>();
+        hitBoxes = new LinkedList<HitBox>();
     }
 
     public void addHitBox(HitBox hitBox)
@@ -30,10 +30,10 @@ public class HitBoxesLayer implements Iterable<HitBox>
 
     public void checkLayer(Iterable<HitBox> other)
     {
-        for (var mine : this) for (var their : other)
+        for (HitBox mine : this) for (HitBox their : other)
         if(condition(mine,their))
         {
-            var data = mine.checkCollision(their);
+            CollisionData data = mine.checkCollision(their);
             if(data!=null)
             {
                 mine.getEntity().reportCollision(data);

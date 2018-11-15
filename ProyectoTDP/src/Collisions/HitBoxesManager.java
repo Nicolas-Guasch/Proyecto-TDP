@@ -51,7 +51,7 @@ public class HitBoxesManager extends Component
         {
           layers[i] = new HitBoxesLayer();
         }
-        connection = new Vector<>();
+        connection = new Vector<Tuple<Integer, Integer>>();
         for(String pares: inputData.split(","))
         {
             String[] ar = pares.split(" ");
@@ -59,11 +59,11 @@ public class HitBoxesManager extends Component
             int c2 = Integer.parseInt(ar[1]);
             connection.add(Tuple.get(c1,c2));
         }
-        toremove = new TreeMap<>();
-        toadd = new TreeMap<>();
+        toremove = new TreeMap<Integer, Queue<HitBox>>();
+        toadd = new TreeMap<Integer, Queue<HitBox>>();
         for (int i=0 ; i<CANT ; i++){
-            toadd.put(i,new LinkedBlockingQueue<>());
-            toremove.put(i,new LinkedBlockingQueue<>());
+            toadd.put(i,new LinkedBlockingQueue<HitBox>());
+            toremove.put(i,new LinkedBlockingQueue<HitBox>());
         }
     }
 

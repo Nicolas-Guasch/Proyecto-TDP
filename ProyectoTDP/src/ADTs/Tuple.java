@@ -13,7 +13,7 @@ public class Tuple<T1, T2>
     public static<TypeA,TypeB> Tuple<TypeA,TypeB>
     get(TypeA c1, TypeB c2)
     {
-        return new Tuple<>(c1,c2);
+        return new Tuple<TypeA, TypeB>(c1,c2);
     }
 
     public T2 get2() {

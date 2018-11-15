@@ -10,7 +10,7 @@ public class RewardMove extends Component
     private float counter= 1;
     private Vector2 speed = Vector2.LEFT();
     public RewardMove(){
-        var r = new Random();
+        Random r = new Random();
         minX = Math.abs(r.nextInt(200))+200;
         minX *= -1;
         maxX = Math.abs(r.nextInt(200))+200;

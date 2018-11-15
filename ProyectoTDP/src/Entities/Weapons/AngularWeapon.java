@@ -6,6 +6,7 @@ import ADTs.Vector2;
 
 import Entities.Builders.Directors.IBulletDirector;
 
+import Entities.Builders.IBullet;
 import Entities.EveryOne;
 
 public class AngularWeapon<BulletDirectorType extends IBulletDirector> extends Weapon
@@ -48,7 +49,7 @@ public class AngularWeapon<BulletDirectorType extends IBulletDirector> extends W
             point = point.sum(desph.prod(phaseShift));
             generator.create();
             generator.assemble();
-            var b = generator.get();
+            IBullet b = generator.get();
             b.transform().setPosition(point);
             b.transform().setTop(reference.top().rot(-first-pedazo*i));
             EveryOne.getInstance().add(b.entity());

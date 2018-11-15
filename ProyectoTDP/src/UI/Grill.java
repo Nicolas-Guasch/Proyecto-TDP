@@ -26,22 +26,22 @@ public class Grill implements UIComponent
         this.cellSize = cellSize;
         this.position = position;
         phaseShift = position.sum(this.cellSize.prod(0.5f)); // el desface inicial mas ponerlo al centro de la celda
-        components = new ArrayList<>();
-        auxQueue = new LinkedBlockingQueue<>();
-        addQueue = new LinkedBlockingQueue<>();
+        components = new ArrayList<Renderizable>();
+        auxQueue = new LinkedBlockingQueue<Renderizable>();
+        addQueue = new LinkedBlockingQueue<Renderizable>();
     }
 
     private RowCol getRowCol(int index){
-        var row = index / maxCols;
-        var col = index % maxCols;
+        int row = index / maxCols;
+        int col = index % maxCols;
         return new RowCol(row,col);
     }
 
     private Vector2 getPoint(int index){
-        var rowCol = getRowCol(index);
+        RowCol rowCol = getRowCol(index);
 
-        var x = phaseShift.x() + rowCol.getCol()*cellSize.x();
-        var y = phaseShift.y() - rowCol.getRow()*cellSize.y();
+        float x = phaseShift.x() + rowCol.getCol()*cellSize.x();
+        float y = phaseShift.y() - rowCol.getRow()*cellSize.y();
         return new Vector2(x,y);
     }
 
@@ -56,7 +56,7 @@ public class Grill implements UIComponent
     public void repaint(){
         int i=0;
 
-        for(Renderizable renderizable : new LinkedBlockingQueue<>(addQueue)){
+        for(Renderizable renderizable : new LinkedBlockingQueue<Renderizable>(addQueue)){
             if(renderizable.transform()!=null && renderizable.gameObject()!=null) {
                 components.add(renderizable);
                 addQueue.remove(renderizable);
