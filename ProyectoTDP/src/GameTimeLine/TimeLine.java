@@ -39,6 +39,7 @@ public final class TimeLine extends Component {
 				new PutDeathStar(),
 				new TransitionToLevel(bg_space, 1, backgroundSpeed,false),
 				new Level(1),
+				new Level(1),
 
 
 				new TransitionToLevel(bg_water, 2, backgroundSpeed,true),

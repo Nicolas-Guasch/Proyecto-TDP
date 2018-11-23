@@ -7,8 +7,8 @@ import java.util.concurrent.Callable;
  * ensures that an action is executed at the moment when a condition is fulfilled
  */
 public class DoWhen extends Component {
-    private Callable<Boolean> condition;
-    private Runnable codeBlock;
+    private Condition condition;
+    private Action codeBlock;
 
     private boolean cond;
 
@@ -17,7 +17,7 @@ public class DoWhen extends Component {
      * @param condition the condition to be fulfilled
      * @param action the action to run
      */
-    public DoWhen(Callable<Boolean> condition, Runnable action) {
+    public DoWhen(Condition condition, Action action) {
         GameObject.getRoot().addChild().addComponent(this);
         this.condition = condition;
         this.codeBlock = action;
@@ -29,19 +29,15 @@ public class DoWhen extends Component {
 
         if (cond && checks())
         {
-            codeBlock.run();
+            codeBlock.invoke();
             cond = false;
+
             gameObject().destroy();
         }
     }
 
     private Boolean checks() {
-        try {
-            return condition.call();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
+        return condition.ask();
     }
 
     

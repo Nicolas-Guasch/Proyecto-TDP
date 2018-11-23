@@ -8,7 +8,8 @@ import RenderingSystem.Renderizable;
 import java.util.*;
 import java.util.function.Consumer;
 
-public class GameObject
+//FIXME uml la herencia
+public class GameObject implements IUpdatable
 {
 
 
@@ -122,7 +123,7 @@ public class GameObject
         return transform;
     }
 
-    public void Update()
+    public void update()
     {
         components.forEach((c)->{
             if(c.isActive())
@@ -132,7 +133,7 @@ public class GameObject
         });
         for (GameObject c : new LinkedList<>(children)) {
 
-            c.Update();
+            c.update();
         }
         //TODO: hacer cola para add y remove
     }

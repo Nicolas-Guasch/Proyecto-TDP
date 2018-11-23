@@ -8,15 +8,15 @@ import java.util.concurrent.Callable;
  */
 public class While extends Component
 {
-    private Callable<Boolean> condition;
-    private Runnable codeBlock;
+    private Condition condition; //fixme uml (condition)
+    private Action codeBlock;//fixme uml action
 
 
     private boolean cond;
     private boolean runs;
-    private Runnable onComplete;
+    private Action onComplete;
 
-    public While(Callable<Boolean> condition, Runnable codeBlock) {
+    public While(Condition condition, Action codeBlock) { //fixme uml (condition)
         GameObject.getRoot().addChild().addComponent(this);
         this.condition = condition;
         this.codeBlock = codeBlock;
@@ -29,7 +29,7 @@ public class While extends Component
         boolean check = checks();
         if(check && cond)
         {
-            codeBlock.run();
+            codeBlock.invoke();
             runs = true;
         }
         else
@@ -40,19 +40,15 @@ public class While extends Component
         {
             gameObject().destroy();
             if(onComplete!=null){
-                onComplete.run();
+                onComplete.invoke();
             }
         }
     }
 
     private Boolean checks()
     {
-        try {
-            return condition.call();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false; // if call throws an exception condition must be false for me
+        return condition.ask();
+
     }
 
 
@@ -62,7 +58,7 @@ public class While extends Component
         update();
     }
 
-    public void OnComplete(Runnable onComplete) {
+    public void OnComplete(Action onComplete) {
         this.onComplete = onComplete;
     }
 }

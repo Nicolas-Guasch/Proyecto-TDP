@@ -2,6 +2,8 @@ package Engine;
 
 import Observer.*;
 
+import java.util.function.Consumer;
+
 class MyEngine implements IEngine
 {
 
@@ -21,7 +23,8 @@ class MyEngine implements IEngine
     public void suscribeToUpdate(GameObject object)
     {
         if(object==null)return;
-        onUpdate.suscribe((o)->object.Update());
+        //TODO: preguntar si puedo usar clases anonimas
+        onUpdate.suscribe(new OperationUpdate(object));
     }
 
 
@@ -29,7 +32,7 @@ class MyEngine implements IEngine
     @Override
     public void suscribeToUpdate(Component component)
     {
-        onUpdate.suscribe((o)->component.update());
+        onUpdate.suscribe(new OperationUpdate(component));
     }
     //TODO: guardar une HashMap de los components para desuscribirlos mas fasil luego
 

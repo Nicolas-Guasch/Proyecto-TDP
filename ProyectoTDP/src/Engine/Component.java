@@ -32,7 +32,10 @@ import Engine.Components.Transform;
  *  necesaria para poder manipular el Transform y el GameObject
  *
  */
-public abstract class Component implements IActivable
+
+
+//fixme uml la herencia a iupdatable
+public abstract class Component implements IActivable, IUpdatable
 {
 
     private GameObject _Node_gameObject = null;
