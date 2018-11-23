@@ -24,6 +24,8 @@ public class While extends Component
         runs = false;
     }
 
+
+    //nota: charlar con un ayudante la visibilidad del metodo
     @Override
     public void update() {
         boolean check = checks();

@@ -14,7 +14,9 @@ public class LayerTable<KeyType extends Comparable<KeyType>,ValueType> implement
 
     public LayerTable()
     {
+        //aca lo dejo en tree
         map = new TreeMap<KeyType, Layer<KeyType, ValueType>>();
+
         reverse = new HashMap<ValueType, Layer<KeyType, ValueType>>();
         count=0;
     }

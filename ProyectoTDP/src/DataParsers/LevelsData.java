@@ -24,10 +24,10 @@ public class LevelsData implements ILevelsData
 
     LevelsData()
     {
-        enemies = new TreeMap<String, List<EnemyShipBuilder>>();
-        obstpos = new TreeMap<String, List<IVector2>>();
-        enemsPos = new TreeMap<String, List<IVector2>>();
-        rew = new TreeMap<String, List<RewardKey>>();
+        enemies = new HashMap<String, List<EnemyShipBuilder>>();
+        obstpos = new HashMap<String, List<IVector2>>();
+        enemsPos = new HashMap<String, List<IVector2>>();
+        rew = new HashMap<String, List<RewardKey>>();
 
         rew.put(L1,new LinkedList<RewardKey>());
         rew.put(L2,new LinkedList<RewardKey>());

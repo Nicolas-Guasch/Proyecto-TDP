@@ -176,7 +176,10 @@ public final class Settings {
 		wind.dispose();
 
 		//no está TAN feo esto.... es discutible :/
-		new Thread(LoadWindow::getInstance).start();
+
+		Thread gameLauncher = new Thread(new Instancer());
+		gameLauncher.start();
 	}
+
 
 }

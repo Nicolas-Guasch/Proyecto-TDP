@@ -59,8 +59,8 @@ public class HitBoxesManager extends Component
             int c2 = Integer.parseInt(ar[1]);
             connection.add(Tuple.get(c1,c2));
         }
-        toremove = new TreeMap<Integer, Queue<HitBox>>();
-        toadd = new TreeMap<Integer, Queue<HitBox>>();
+        toremove = new HashMap<Integer, Queue<HitBox>>();
+        toadd = new HashMap<Integer, Queue<HitBox>>();
         for (int i=0 ; i<CANT ; i++){
             toadd.put(i,new LinkedBlockingQueue<HitBox>());
             toremove.put(i,new LinkedBlockingQueue<HitBox>());

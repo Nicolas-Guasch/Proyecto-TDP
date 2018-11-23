@@ -19,8 +19,9 @@ public class DoWhen extends Component {
      * @param action the action to run
      */
     public DoWhen(Condition condition, Action action) {
+
         GameObject.getRoot().addChild().addComponent(this);
-        this.condition = condition;
+        this.condition = condition; // no chequeo nulo aca
         this.codeBlock = action;
         cond = true;
     }
@@ -30,9 +31,10 @@ public class DoWhen extends Component {
     @Override
     public void update() {
 
-        if (cond && condition.ask())
+        if (cond && condition != null && condition.ask())
         {
-            codeBlock.invoke();
+            if(codeBlock!=null)
+                codeBlock.invoke();
             cond = false;
             gameObject().destroy();
         }
