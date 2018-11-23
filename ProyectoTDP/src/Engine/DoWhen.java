@@ -23,7 +23,7 @@ public class DoWhen extends Component {
         this.codeBlock = action;
         cond = true;
     }
-
+//un comentario
     @Override
     public void update() {
 
@@ -31,7 +31,6 @@ public class DoWhen extends Component {
         {
             codeBlock.invoke();
             cond = false;
-
             gameObject().destroy();
         }
     }
