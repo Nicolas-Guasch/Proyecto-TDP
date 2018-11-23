@@ -4,7 +4,7 @@ import ADTs.Vector2;
 import Audio.SoundManager;
 import Observer.IBroadcaster;
 import Observer.Invoker;
-import Observer.observerPack;
+import Observer.ObserverPack;
 import Observer.ObserverSystem;
 import Engine.Component;
 import Engine.Components.Transform;
@@ -26,7 +26,7 @@ public class Jumper extends Component {
         this.transform = tr;
         this.delay = delayFrames;
         this.firstPos = tr.position();
-        observerPack<Vector2> v = ObserverSystem.getInstance().getBroadcaster();
+        ObserverPack<Vector2> v = ObserverSystem.getInstance().getBroadcaster();
         onComplete = v.Broadcaster;
         invokerComplete = v.Invoker;
     }

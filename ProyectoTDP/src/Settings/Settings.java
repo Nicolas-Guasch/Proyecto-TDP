@@ -33,7 +33,7 @@ public final class Settings {
 
 
 	private Settings(){
-		wind = new JFrame("One Rebel Army -> Settings");
+		wind = new JFrame("One Rebel Army -- Settings");
 		wind.setSize(400,300);
 		wind.setLocationRelativeTo(null);
 		wind.setIconImage(AssetStore.getImage("main_icon"));
@@ -173,6 +173,8 @@ public final class Settings {
 		GameSettings.difficulty = difficulty.getSelectedIndex()+1;
 		wind.setVisible(false);
 		wind.dispose();
+
+		//no está TAN feo esto.... es discutible :/
 		new Thread(LoadWindow::getInstance).start();
 	}
 

@@ -18,7 +18,7 @@ public class DiscreteKeyInput extends AbstractDiscreteInput
 
     public DiscreteKeyInput(String chars)
     {
-        observerPack<Boolean> pack = ObserverSystem.getInstance().getBroadcaster();
+        ObserverPack<Boolean> pack = ObserverSystem.getInstance().getBroadcaster();
         onAction = pack.Broadcaster;
         invokerOnAction = pack.Invoker;
         related = new ContinueKeyInput(chars);

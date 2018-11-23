@@ -1,9 +1,8 @@
 package RenderingSystem;
 
 import ADTs.Vector2;
+import Engine.*;
 import Engine.Component;
-import Engine.GameObject;
-import Engine.While;
 import GameData.GameSettings;
 
 import java.awt.*;
@@ -37,22 +36,35 @@ public class Background extends Component
         tweening = true;
         While wh;
         if(speed > speedBackground){
-            wh = new While(()-> speed > speedBackground,()->{
-                float v = getSpeedBackground();
-                v*=1.01f;
-                setSpeedBackground(v);
+            wh = new While(new Condition() {
+                @Override
+                public boolean ask() {
+                    return speed > speedBackground;
+                }
+            }, new Action() {
+                @Override
+                public void invoke() {
+                    float v = Background.this.getSpeedBackground();
+                    v *= 1.01f;
+                    Background.this.setSpeedBackground(v);
+                }
             });
         }
         else{
-            wh = new While(()-> speed < speedBackground,()->{
-                float v = getSpeedBackground();
-                v*=0.99f;
-                setSpeedBackground(v);
-            });
+            wh = new While(new Condition() {
+                @Override
+                public boolean ask() {
+                    return speed < speedBackground;
+                }
+            }, this::decSpeed);
         }
         wh.Excecute();
-        wh.OnComplete(()-> tweening = false);
-
+        wh.OnComplete(new Action() {
+            @Override
+            public void invoke() {
+                tweening = false;
+            }
+        });
     }
 
     public void setSpeedBackground(float speedBackground){
@@ -103,7 +115,14 @@ public class Background extends Component
         return speedBackground;
     }
 
+    //fixme << quitar metodo de aca y de UML (no se usa)
     public SpriteRenderer gerBG() {
         return gameObject().getRenderer().Sprite();
+    }
+
+    private void decSpeed() {//fixme
+        float v = getSpeedBackground();
+        v *= 0.99f;
+        setSpeedBackground(v);
     }
 }

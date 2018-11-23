@@ -1,5 +1,6 @@
 package Entities;
 
+import Engine.Action;
 import Engine.Component;
 import Engine.EngineGetter;
 import Engine.GameObject;
@@ -54,7 +55,7 @@ public class EveryOne extends Component
             entities.add(toAdd.remove());
         }
         entities.forEach(this::checkDestroyable);
-        toDestroy.forEach((e)->entities.remove(e));
+        toDestroy.forEach(this::eraser);
 
         acceptVisitors();
     }
@@ -67,15 +68,17 @@ public class EveryOne extends Component
     public void remove(Entity ent)
     {
         toDestroy.add(ent);
-
         //TODO: puede ser peligroso, usar una cola auxiliar
     }
     public void killIn(Entity ent, int frames)
     {
-        EngineGetter.Instance().get().waitForFrames(()-> {
-            if(ent.data()==null)return;
-            ent.data().setHealth(-1);
 
+        EngineGetter.Instance().get().waitForFrames(new Action() {
+            @Override
+            public void invoke() {
+                if (ent.data() == null) return;
+                ent.data().setHealth(-1);
+            }
         },frames);
     }
 
@@ -104,13 +107,17 @@ public class EveryOne extends Component
      * @param visitor visitor to send
      */
     public void takeVisitor(VisitorEntity visitor) {
-        entities.forEach(e->e.accept(visitor));
+        for (Entity e : entities) {
+            e.accept(visitor);
+        }
     }
 
     private void acceptVisitors(){
         while(!visitors.isEmpty()){
             VisitorEntity vis = visitors.remove();
-            entities.forEach(e->e.accept(vis));
+            for (Entity e : entities) {
+                e.accept(vis);
+            }
         }
     }
 
@@ -129,4 +136,7 @@ public class EveryOne extends Component
     }
 
 
+    private void eraser(Entity e) {//fixme uml
+        entities.remove(e);
+    }
 }

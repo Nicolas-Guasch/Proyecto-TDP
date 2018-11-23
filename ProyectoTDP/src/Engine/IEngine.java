@@ -13,7 +13,7 @@ public interface IEngine
 
 
 
-    void waitForFrames(Runnable action, int frames);
+    void waitForFrames(Action action, int frames);
 
     void start();
 

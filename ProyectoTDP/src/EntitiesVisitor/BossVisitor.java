@@ -1,6 +1,7 @@
 package EntitiesVisitor;
 
 import ADTs.Vector2;
+import Engine.Action;
 import Engine.Components.Transform;
 import Engine.EngineGetter;
 import Entities.BarricadeBoth;
@@ -29,7 +30,7 @@ public class BossVisitor extends VisitorEntity {
                 barr_tr.top()).withLength(10);
 
         ship.referenced().transform().moveTowards(repuls);
-        Runnable rep = ()->{
+        Action rep = ()->{
             ship.referenced().transform().moveTowards(repuls);
         };
         EngineGetter.Instance().get().waitForFrames(rep,1);

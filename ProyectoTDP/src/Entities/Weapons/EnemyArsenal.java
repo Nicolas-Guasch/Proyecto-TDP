@@ -2,7 +2,7 @@ package Entities.Weapons;
 
 import Observer.IBroadcaster;
 import Observer.Invoker;
-import Observer.observerPack;
+import Observer.ObserverPack;
 import Observer.ObserverSystem;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class EnemyArsenal extends Arsenal
     public EnemyArsenal()
     {
         weapons = new ArrayList<Weapon>();
-        observerPack<Boolean> pack = ObserverSystem.getInstance().getBroadcaster();
+        ObserverPack<Boolean> pack = ObserverSystem.getInstance().getBroadcaster();
         broadcaster = pack.Broadcaster;
         invoker = pack.Invoker;
     }

@@ -3,6 +3,7 @@ package GameTimeLine;
 
 import ADTs.*;
 import DataParsers.*;
+import Engine.Action;
 import Engine.Components.*;
 import Entities.Builders.Directors.BarricadeBothDirector;
 import Entities.Builders.Directors.BarricadeEnemDirector;
@@ -96,7 +97,7 @@ public final class Level extends TimePoint
         return c.get(new Random().nextInt(c.size()));
     }
 
-    private Runnable ThrowAReward(RewardKey key, Transform tr){
+    private Action ThrowAReward(RewardKey key, Transform tr){
         return ()-> RewardsManager.getInstance().getReward(key,tr);
     }
 
@@ -130,7 +131,7 @@ public final class Level extends TimePoint
 
             }
             if(itRewards.hasNext()){
-                Runnable onDeath =ThrowAReward(itRewards.next(),ship.referenced().transform());
+                Action onDeath =ThrowAReward(itRewards.next(),ship.referenced().transform());
                 ship.setOnDeath(onDeath);
             }
 

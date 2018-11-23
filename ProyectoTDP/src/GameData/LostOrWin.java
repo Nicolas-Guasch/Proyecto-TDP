@@ -1,15 +1,11 @@
 package GameData;
 
 import Audio.SoundManager;
+import Engine.DummyCondition;
 import Engine.EngineGetter;
 import Engine.While;
-import Entities.Entity;
 import Entities.EveryOne;
-import EntitiesVisitor.GetEnemiesAndBarricades;
-import EntitiesVisitor.VisitorEntity;
 import UI.UI;
-
-import java.util.LinkedList;
 
 public class LostOrWin implements ILostOrWin{
 
@@ -18,6 +14,10 @@ public class LostOrWin implements ILostOrWin{
     public LostOrWin()
     {
         made = false;
+    }
+
+    private static void getOut() {
+        System.exit(0);
     }
 
     public void AllianceWins()
@@ -33,7 +33,7 @@ public class LostOrWin implements ILostOrWin{
 
     private void creditsAndClose()
     {
-        EngineGetter.Instance().get().waitForFrames(() -> System.exit(0), 60*25);
+        EngineGetter.Instance().get().waitForFrames(LostOrWin::getOut, 60*25);
         UI.getInstance().startLevelByString("credits",3);
     }
 
@@ -43,9 +43,8 @@ public class LostOrWin implements ILostOrWin{
             SoundManager.Instance().gameOver();
             UI.getInstance().gameOver();
             EveryOne.getInstance().killThemAll();
-            new While(() -> true, () -> EveryOne.getInstance().killThemAll()).Excecute();
+            new While(new DummyCondition(true), EveryOne.getInstance()::killThemAll).Excecute();
             EngineGetter.Instance().get().waitForFrames(this::creditsAndClose, 450);
-
         }
         made = true;
     }

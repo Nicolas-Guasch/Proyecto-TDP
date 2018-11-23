@@ -13,9 +13,9 @@ public class ObserverSystem
     /**
      * Gets a package with an Broadcaster to Suscribe and an Invoker linked
      */
-    public <ParameterType> observerPack<ParameterType> getBroadcaster()
+    public <ParameterType> ObserverPack<ParameterType> getBroadcaster()
     {
-        observerPack<ParameterType> pack = new observerPack<ParameterType>();
+        ObserverPack<ParameterType> pack = new ObserverPack<ParameterType>();
         Broadcaster<ParameterType> b = new Broadcaster<ParameterType>();
         pack.Broadcaster = b;
         pack.Invoker = new Invoker<ParameterType>(b);

@@ -23,7 +23,7 @@ public class CurrentMatchData
 
     private CurrentMatchData()
     {
-        observerPack<Integer> pack = ObserverSystem.getInstance().getBroadcaster();
+        ObserverPack<Integer> pack = ObserverSystem.getInstance().getBroadcaster();
         invokerScoreChanges = pack.Invoker;
         OnScoreChanges = pack.Broadcaster;
 

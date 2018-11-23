@@ -7,8 +7,9 @@ import java.util.concurrent.Callable;
  * ensures that an action is executed at the moment when a condition is fulfilled
  */
 public class DoWhen extends Component {
-    private Condition condition;
-    private Action codeBlock;
+    private Condition condition;//fixme
+    private Action codeBlock;//fixme
+
 
     private boolean cond;
 
@@ -23,11 +24,13 @@ public class DoWhen extends Component {
         this.codeBlock = action;
         cond = true;
     }
+
 //un comentario
+
     @Override
     public void update() {
 
-        if (cond && checks())
+        if (cond && condition.ask())
         {
             codeBlock.invoke();
             cond = false;
@@ -35,11 +38,7 @@ public class DoWhen extends Component {
         }
     }
 
-    private Boolean checks() {
-        return condition.ask();
-    }
-
-    
+    //fixme uml, quite un metodo
 
 
 }

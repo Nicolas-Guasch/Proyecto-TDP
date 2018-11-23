@@ -2,7 +2,7 @@ package Entities.Weapons;
 
 import Observer.IBroadcaster;
 import Observer.Invoker;
-import Observer.observerPack;
+import Observer.ObserverPack;
 import Observer.ObserverSystem;
 import InputManager.AbstractDiscreteInput;
 
@@ -24,7 +24,7 @@ public class PlayerArsenal extends Arsenal
         Shoot = shootKey;
         shootKey.OnAction().suscribe(this::_shoot);
         switchKey.OnAction().suscribe(this::_switch);
-        observerPack<Boolean> pack = ObserverSystem.getInstance().getBroadcaster();
+        ObserverPack<Boolean> pack = ObserverSystem.getInstance().getBroadcaster();
         broadcaster = pack.Broadcaster;
         invoker = pack.Invoker;
     }

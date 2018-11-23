@@ -1,6 +1,7 @@
 package UI;
 
 import ADTs.Vector2;
+import Engine.Action;
 import Engine.Components.Transform;
 import Engine.GameObject;
 
@@ -19,10 +20,14 @@ public class Tweeners
     }
 
 
-    public void DoMove(Transform toMove, Vector2 destiny, int steps, Runnable onComplete){
-        Runnable completion = ()->{
-            if(onComplete!=null) {
-                onComplete.run();//ver si necesito cosas extras
+    //fixme (param)
+    public void DoMove(Transform toMove, Vector2 destiny, int steps, Action onComplete){
+        Action completion = new Action() {
+            @Override
+            public void invoke() {
+                if (onComplete != null) {
+                    onComplete.invoke();//ver si necesito cosas extras
+                }
             }
         };
         toMove.setPosition(destiny);

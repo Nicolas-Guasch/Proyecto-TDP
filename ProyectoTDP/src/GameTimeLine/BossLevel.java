@@ -38,7 +38,7 @@ public class BossLevel extends TimePoint {
         ShipStatus = new ShipStatus(new Vector2(100,200), vader.observerHealth(),"bossbar",vader.data().getHealth());
         vader.referenced().transform().setPosition(Vector2.random(Random.value(300,450)).sum(PlayerShip.getInstance().referenced().transform().position()));
         UI.getInstance().addUIComponent(ShipStatus);
-        EngineGetter.Instance().get().waitForFrames(()->playing = true,100);
+        EngineGetter.Instance().get().waitForFrames(this::makePlaying,100);
     }
 
     @Override
@@ -53,5 +53,10 @@ public class BossLevel extends TimePoint {
         vader.setData(EntityData.WithEqualsValues(-1));
         System.out.println("BossLevel::clean");
         UI.getInstance().removeUIComponent(ShipStatus);
+    }
+
+    private void makePlaying() {//fixme
+
+        playing = true;
     }
 }

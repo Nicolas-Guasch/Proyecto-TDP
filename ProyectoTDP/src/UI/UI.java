@@ -1,6 +1,7 @@
 package UI;
 
 import Assets.AssetStore;
+import Engine.Condition;
 import Engine.DoWhen;
 import Engine.GameObject;
 import ADTs.Vector2;
@@ -94,7 +95,7 @@ public class UI
         s.foreach(uiPanel::add);
     }
 
-    private Callable<Boolean> moviblePrompt(SpriteData prompt,int por)
+    private Condition moviblePrompt(SpriteData prompt,int por)
     {
         GameObject goprompt = GameObject.getRoot().addChild();
         AlwaysLateral al = new AlwaysLateral(Vector2.UP(3));
@@ -104,19 +105,25 @@ public class UI
         goprompt.setRenderer(rend);
         goprompt.transform().setPosition(Vector2.DOWN(600f*por));
         rend.show();
-        Callable<Boolean> completed = ()-> goprompt.transform().position().y()>500f*por;
+        Condition completed = new Condition() {
+            @Override
+            public boolean ask() {
+                return goprompt.transform().position().y() > 500f * por;
+            }
+        };
         new DoWhen(completed, goprompt::destroy);
         return completed;
     }
 
 
     //TODO: poner todos los niveles
-    public Callable<Boolean> startLevel(int index)
+    //fixme
+    public Condition startLevel(int index)
     {
         return moviblePrompt(levels.get(index),1);
     }
-
-    public Callable<Boolean> startLevelByString(String name, int x)
+    //fixme
+    public Condition startLevelByString(String name, int x)
     {
         return moviblePrompt(new SpriteData(name),x);
     }
@@ -131,8 +138,8 @@ public class UI
     {
         pausePrompt.setVisible(visible);
     }
-
-    public Callable<Boolean> gameOver()
+    //fixme
+    public Condition gameOver()
     {
         return moviblePrompt(gameOver,1);
     }
@@ -140,8 +147,8 @@ public class UI
 
 
 
-
-    public Callable<Boolean> win()
+    //fixme
+    public Condition win()
     {
         return moviblePrompt(win,1);
     }

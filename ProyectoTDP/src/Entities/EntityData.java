@@ -1,6 +1,6 @@
 package Entities;
 
-import Observer.observerPack;
+import Observer.ObserverPack;
 import Observer.IBroadcaster;
 import Observer.Invoker;
 import Observer.ObserverSystem;
@@ -26,7 +26,7 @@ public final class EntityData
         this.shield = shield;
         this.initialHealth = health;
 
-        observerPack<Float> pack = ObserverSystem.getInstance().getBroadcaster();
+        ObserverPack<Float> pack = ObserverSystem.getInstance().getBroadcaster();
         HealthData = pack.Broadcaster;
         HealthDataInvoker = pack.Invoker;
     }

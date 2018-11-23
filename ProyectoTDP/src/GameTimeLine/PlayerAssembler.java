@@ -1,6 +1,7 @@
 package GameTimeLine;
 
 import ADTs.Vector3;
+import Engine.Action;
 import Engine.EngineGetter;
 import Entities.EveryOne;
 import Entities.Ships.Player.PlayerShip;
@@ -26,12 +27,21 @@ public class PlayerAssembler extends TimePoint {
         WeaponSwitch weaponDisabler = new WeaponSwitch(false);
         EveryOne.getInstance().takeLazyVisitor(weaponDisabler);
         VisitorEntity weaponEnabler = new WeaponSwitch(true);
-        EngineGetter.Instance().get().waitForFrames(()->EveryOne.getInstance().takeLazyVisitor(weaponEnabler),30);
-        EngineGetter.Instance().get().waitForFrames(()-> ready =true,120);
+        EngineGetter.Instance().get().waitForFrames(new Action() {
+            @Override
+            public void invoke() {
+                EveryOne.getInstance().takeLazyVisitor(weaponEnabler);
+            }
+        },30);
+        EngineGetter.Instance().get().waitForFrames(this::setReady,120);
     }
 
     @Override
     public boolean completed() {
         return ready;
+    }
+
+    private void setReady() {//fixme
+        ready = true;
     }
 }

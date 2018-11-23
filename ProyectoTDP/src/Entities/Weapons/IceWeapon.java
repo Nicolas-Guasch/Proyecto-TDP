@@ -1,5 +1,6 @@
 package Entities.Weapons;
 
+import Engine.Component;
 import Engine.Components.Transform;
 import AIs.MouseFollower;
 import AIs.SimpleBullet;
@@ -21,6 +22,10 @@ public class IceWeapon<BulletDirectorType extends IBulletDirector> extends Weapo
         setName("ice");
     }
 
+    private static void activeTrue(Component c) {
+        c.setActive(true);
+    }
+
     @Override
     public void Shoot()
     {
@@ -35,7 +40,7 @@ public class IceWeapon<BulletDirectorType extends IBulletDirector> extends Weapo
         //float extraSpeed = 4f;
         b.entity().addBehaviour(new MouseFollower(angle));
         b.entity().addBehaviour(new SimpleBullet(8f));
-        b.entity().referenced().sendMessage(c->c.setActive(true));
+        b.entity().referenced().sendMessage(IceWeapon::activeTrue);
         //TODO: sonido
     }
 

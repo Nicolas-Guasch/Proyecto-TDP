@@ -1,6 +1,7 @@
 package Entities.Ships;
 
 import ADTs.Vector2;
+import Engine.Action;
 import Engine.EngineGetter;
 import Entities.Entity;
 import Entities.Ships.Player.PlayerShip;
@@ -43,7 +44,7 @@ public class ShieldVisitor extends VisitorEntity
         rend_shield.show();
         rend_ship.gameObject().setRenderer(rend_shield);
 
-        Runnable restore = this::restore;
+        Action restore = this::restore;
 
         reward.data().setHealth(-1);
         reward.referenced().getHitbox().setActive(false);

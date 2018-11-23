@@ -97,7 +97,9 @@ public class LayerTable<KeyType extends Comparable<KeyType>,ValueType> implement
         Collection<Entry<KeyType,ValueType>> ret = new LinkedList<Entry<KeyType, ValueType>>();
         for(Layer<KeyType, ValueType> lay : map.values())
         {
-            lay.forEach((c)->ret.add(new CompEntry<KeyType, ValueType>(lay.getSortFactor(),c)));
+            for (ValueType c : lay) {
+                ret.add(new CompEntry<>(lay.getSortFactor(), c));
+            }
         }
         return ret.iterator();
     }

@@ -83,11 +83,7 @@ public class SoloSupportVisitor extends VisitorEntity
         ship.addBehaviour(new FireFrequency(15,ship.getArsenal()));
         ship.referenced().transform().setPosition(new Vector2(00,200));
         EveryOne.getInstance().add(ship);
-        new DoWhen(()->ship.referenced().transform().position().distanceTo(new Vector2(-800,00))<17,()->{
-            ship.getPilot().setActive(false);
-            ship.getArsenal().setActive(false);
-            ship.data().setHealth(-1);
-        });
+        new DoWhen(this::onPosition, this::reactive);
 
 
 
@@ -111,8 +107,15 @@ public class SoloSupportVisitor extends VisitorEntity
         ship.addWeapon(esf);
 
     }
-    
-    
 
 
+    private boolean onPosition() {//fixme uml metodo
+        return ship.referenced().transform().position().distanceTo(new Vector2(-800, 00)) < 17;
+    }
+
+    private void reactive() {//Uml metodo fixme
+        ship.getPilot().setActive(false);
+        ship.getArsenal().setActive(false);
+        ship.data().setHealth(-1);
+    }
 }

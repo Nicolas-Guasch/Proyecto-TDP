@@ -1,5 +1,4 @@
 package UsefulInterfaces;
 
-public interface IClonable<ClonableType extends IClonable<ClonableType>> {
-    ClonableType clone();
-}
+//fixme
+// eliminar archivo y eliminar de UML

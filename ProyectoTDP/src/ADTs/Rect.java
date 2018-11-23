@@ -1,8 +1,7 @@
 package ADTs;
 
-import UsefulInterfaces.IClonable;
 
-public final class Rect implements IClonable<Rect>
+public final class Rect //fixme no tiene mas ESA herencia (iclonable)
 {
     private Vector2 max, min;
 

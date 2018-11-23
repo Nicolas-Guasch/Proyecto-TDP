@@ -1,9 +1,10 @@
 package Entities.Barricades;
 
+import Engine.Action;
 import Tools.AnimatorsVolatiles;
 import Engine.Components.Transform;
 
-public class ThenVolatile implements Runnable {
+public class ThenVolatile implements Action { //fixme (herencia y run cambia por invoke)
 
 
     private final Transform transform;
@@ -15,7 +16,7 @@ public class ThenVolatile implements Runnable {
     }
 
     @Override
-    public void run() {
+    public void invoke() {
         Transform t = AnimatorsVolatiles.getInstance().getVolatile(transform.position(), volatileName,25);
         t.setTop(transform.top());
     }

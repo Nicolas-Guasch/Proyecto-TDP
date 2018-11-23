@@ -1,5 +1,6 @@
 package Entities;
 
+import Engine.Action;
 import Observer.IBroadcaster;
 import Collisions.HitBox;
 import Engine.Component;
@@ -12,7 +13,7 @@ import RenderingSystem.Renderizable;
 public abstract class Entity {
 
 	private GameObject referenced;
-	private Runnable doOnDeath;
+	private Action doOnDeath;//fixme
 
 	protected EntityData data; // tiene setter y getter, pero la hago protected por comodidad
 	protected VisitorEntity visitor;
@@ -27,14 +28,14 @@ public abstract class Entity {
 		return data.getHealthObservable();
 	}
 
-	public void setOnDeath(Runnable doOnDeath){
+	public void setOnDeath(Action doOnDeath){//fixme
 		this.doOnDeath = doOnDeath;
 	}
 
 	public void onDeath(){
 		if(doOnDeath !=null)
 		{
-			doOnDeath.run();
+			doOnDeath.invoke();
 		}
 	}
 

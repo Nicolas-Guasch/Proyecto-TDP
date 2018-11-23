@@ -101,11 +101,15 @@ public final class TimeLine extends Component {
 		currentLevel().assembleMoment();
 		currentLevel().startMoment();
 		setActive(false);
-		EngineGetter.Instance().get().waitForFrames(()->{setActive(true);},5);
+		EngineGetter.Instance().get().waitForFrames(this::activeTrue,5);
 	}
 
 	public void playLevel() {
 		UI.getInstance().startLevel(0);// intro
 		EngineGetter.Instance().get().waitForFrames(this::runTheLevel,500);
+	}
+
+	private void activeTrue() { //fixme
+		setActive(true);
 	}
 }

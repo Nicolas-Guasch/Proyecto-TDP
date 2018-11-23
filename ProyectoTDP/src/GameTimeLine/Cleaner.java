@@ -28,6 +28,8 @@ public class Cleaner extends TimePoint {
         LinkedList<Entity> cosas = new LinkedList<Entity>();
         VisitorEntity collector = new GetEnemiesAndBarricades(cosas);
         EveryOne.getInstance().takeVisitor(collector);
-        cosas.forEach(e->e.data().setHealth(-1));
+        for (Entity e : cosas) {
+            e.data().setHealth(-1);
+        }
     }
 }

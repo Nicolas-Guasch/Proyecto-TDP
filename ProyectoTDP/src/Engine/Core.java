@@ -46,7 +46,7 @@ final class Core
     */
     private long currentFrame;
     //sorted map cause get the minim is true order 1
-    private SortedMap<Long,Queue<Runnable>> TasksForFrame;
+    private SortedMap<Long,Queue<Action>> TasksForFrame;
     private boolean exit = false;//yeah, I know
 
 
@@ -55,15 +55,15 @@ final class Core
     private void clean() // Initializer
     {
 
-        observerPack<Float> packP = ObserverSystem.getInstance().getBroadcaster();
+        ObserverPack<Float> packP = ObserverSystem.getInstance().getBroadcaster();
         invokerOnPhysicsUpdate = packP.Invoker;
         onPhysicsUpdate = packP.Broadcaster;
 
-        observerPack packU = ObserverSystem.getInstance().getBroadcaster();
+        ObserverPack packU = ObserverSystem.getInstance().getBroadcaster();
         invokerOnUpdate = packU.Invoker;
         onUpdate = packU.Broadcaster;
 
-        TasksForFrame = new TreeMap<Long, Queue<Runnable>>();// diamond expression, cuz we love the new java ♥
+        TasksForFrame = new TreeMap<Long, Queue<Action>>();// diamond expression, cuz we love the new java ♥
         currentFrame = 0;
         exit = false;
 
@@ -74,7 +74,7 @@ final class Core
 
         //Tasks ---------
         if(TasksForFrame.containsKey(currentFrame-1)){
-            TasksForFrame.get(currentFrame-1).forEach(Runnable::run);
+            TasksForFrame.get(currentFrame-1).forEach(Action::invoke);
             TasksForFrame.remove(currentFrame-1);
         }
         invokerOnUpdate.invoke(null);
@@ -124,18 +124,18 @@ final class Core
 
 
 
-    void waitForSeconds(Runnable action, float seconds)
+    void waitForSeconds(Action action, float seconds)
     {
         waitForFrames(action,(int)seconds/FPS); // TODO: desmanijear
     }
-    void waitForFrames(Runnable function, int frames)
+    void waitForFrames(Action function, int frames)
     {
         if(frames<0)
             throw new TimeLineException("You cant make something before now");
         long targetFrame = frames+currentFrame;
         if(!TasksForFrame.containsKey(targetFrame))
         {
-            LinkedBlockingQueue<Runnable> q = new LinkedBlockingQueue<Runnable>();
+            LinkedBlockingQueue<Action> q = new LinkedBlockingQueue<Action>();
             q.add(function);
             TasksForFrame.put(targetFrame, q);
         }

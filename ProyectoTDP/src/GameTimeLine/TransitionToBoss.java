@@ -15,6 +15,15 @@ public class TransitionToBoss extends TimePoint {
 
     private boolean complete = false;
 
+    private static boolean perfectSpeed() {//fixme uml metodo
+        return Background.getInstance().getSpeedBackground() > 0.01f;
+    }
+
+    private static void changeSpeed() {//fixme uml metodo
+        float v = Background.getInstance().getSpeedBackground();
+        v *= 0.99f;
+        Background.getInstance().setSpeedBackground(v);
+    }
 
 
     @Override
@@ -33,11 +42,7 @@ public class TransitionToBoss extends TimePoint {
         EngineGetter.Instance().get().waitForFrames(this::ChangeControls,90);
         EngineGetter.Instance().get().waitForFrames(this::MusicStuff,180);
         EngineGetter.Instance().get().waitForFrames(this::EnableContinue,270);
-        new While(()-> {return Background.getInstance().getSpeedBackground()>0.01f;},()->{
-            float v = Background.getInstance().getSpeedBackground();
-            v*=0.99f;
-            Background.getInstance().setSpeedBackground(v);
-        }).Excecute();
+        new While(TransitionToBoss::perfectSpeed, TransitionToBoss::changeSpeed).Excecute();
 
     }
 

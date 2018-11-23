@@ -2,6 +2,7 @@ package Entities.Barricades;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
+import Engine.Action;
 import Entities.Builders.BarricadeEnemBuilder;
 import Entities.EntityData;
 import RenderingSystem.Animation;
@@ -19,7 +20,7 @@ public class OrangeBarricadeMaker extends BarricadeEnemBuilder {
         Animation anim = new Animation("bforcefield", rend);
         anim.setSpeed(50);
         obst.addBehaviour(anim);
-        Runnable ondie = new ThenVolatile(obst.referenced().transform(), "bfexplo");
+        Action ondie = new ThenVolatile(obst.referenced().transform(), "bfexplo");
         obst.setOnDeath(ondie);
     }
 

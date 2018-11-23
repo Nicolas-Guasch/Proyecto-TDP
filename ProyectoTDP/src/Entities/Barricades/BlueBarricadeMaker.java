@@ -22,7 +22,7 @@ public class BlueBarricadeMaker extends BarricadeBothBuilder {
         obst.addBehaviour(anim);
         rend.show();
 
-        Runnable
+        ThenVolatile
         ondie = new ThenVolatile(obst.referenced().transform(), "fexplo");
         obst.setOnDeath(ondie);
     }
