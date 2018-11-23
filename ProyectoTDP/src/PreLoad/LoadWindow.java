@@ -19,13 +19,13 @@ public class LoadWindow
     }
 
     private JFrame wind;
-    private String[] everynames =
-            ("only coin;point;rewardfire;rewardforce;" +
-            "rewardhealth;rewardshield;mouseAim;life;levintro3;levintro2;levintro1;" +
-            "wooky;bigbar;bossbar;shipplayer;commontie1;commontie2;hybridtie;shield;" +
-                    "whitetie;soloship;vadership_a;vadership_b;vadership_c;" +
-                    "bforcefield;forcefield;fexplo;bfexplo;exploA;exploB;" +
-                    "bg_space;bg_water;bg_sand;black;").split(";");
+
+
+    // NO, no es un instanceof, son los nombres de los archivos a cargar
+    private String[] everynames = {"only coin","point","rewardfire","rewardforce","rewardhealth","rewardshield","mouseAim","life","levintro3","levintro2",
+            "levintro1","wooky","bigbar","bossbar","shipplayer","commontie1","commontie2","hybridtie","shield","whitetie","soloship","vadership_a"
+            ,"vadership_b","vadership_c","bforcefield","forcefield","fexplo","bfexplo","exploA","exploB","bg_space","bg_water","bg_sand","black","",};
+
 
 
     private LoadWindow(){
