@@ -15,7 +15,7 @@ public class HyperSpace
     public static Jumper Jump(Transform toMove, Vector2 destiny, int frames, int delayFrames){
         checkObj();
         assert frames>0;
-        var path = GetPath(toMove.position(),destiny,frames);
+        List<Vector2> path = GetPath(toMove.position(),destiny,frames);
         return obj.addChild().addComponent(new Jumper(path,toMove,delayFrames));
     }
 
@@ -28,7 +28,7 @@ public class HyperSpace
 
     private static List<Vector2> GetPath(Vector2 src, Vector2 dest, int frames){
         Vector2 minPath = dest.sub(src).prod(1f/frames);
-        List<Vector2> v = new ArrayList<>(frames+1);
+        List<Vector2> v = new ArrayList<Vector2>(frames+1);
         Vector2 lastPos = src;
         for(int i=0 ; i<frames-1 ; i++){
             lastPos = lastPos.sum(minPath);

@@ -82,7 +82,7 @@ collider: 130x130
 
     public void assembleWeapons()
     {
-        BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
+        BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<PlayerBullet, PlayerBulletBuilder>();
 
 
 

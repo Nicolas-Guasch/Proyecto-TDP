@@ -9,7 +9,7 @@ public class ShadowedRend extends Renderizable
     private Renderizable shadow;
     public ShadowedRend(SpriteData data) {
         super(data);
-        var sd = new SpriteData(data.getName()+"_shadow");
+        SpriteData sd = new SpriteData(data.getName()+"_shadow");
         shadow = new Renderizable(sd);
         GameObject.getRoot().addChild().addComponent(shadow);
     }

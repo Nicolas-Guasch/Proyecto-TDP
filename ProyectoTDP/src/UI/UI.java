@@ -52,7 +52,7 @@ public class UI
         uiPanel = new JLabel(new ImageIcon("fondo"));
 
         // --------------levels--------------
-        levels = new ArrayList<>();
+        levels = new ArrayList<SpriteData>();
         levels.add(new SpriteData("intro"));
         levels.add(new SpriteData("levintro1"));
         levels.add(new SpriteData("levintro2"));

@@ -18,7 +18,7 @@ public class ObserverSystem
         observerPack<ParameterType> pack = new observerPack<ParameterType>();
         Broadcaster<ParameterType> b = new Broadcaster<ParameterType>();
         pack.Broadcaster = b;
-        pack.Invoker = new Invoker<>(b);
+        pack.Invoker = new Invoker<ParameterType>(b);
         return pack;
     }
 

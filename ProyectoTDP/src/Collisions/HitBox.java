@@ -56,7 +56,7 @@ public final class HitBox extends Component {
     }
 
     private Iterable<Vector2> vertices() {
-        Collection<Vector2> res = new Vector<>();
+        Collection<Vector2> res = new Vector<Vector2>();
         Vector2 dy = transform.top(dimensions.y()).half();
         Vector2 dx = transform.top(dimensions.x()).right().half();
         int dir[] = {-1, 1};

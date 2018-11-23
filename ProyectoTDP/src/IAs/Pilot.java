@@ -1,5 +1,6 @@
 package IAs;
 
+import ADTs.Vector2;
 import Engine.Component;
 import Entities.Ships.Ship;
 
@@ -19,7 +20,7 @@ public class Pilot extends Component
     @Override
     public void update()
     {
-        var top = handler.whereToSee(ship);
+        Vector2 top = handler.whereToSee(ship);
         if(transform()==null)return;
         transform().setTop(top);
         transform().moveTowards(handler.whereToMove(ship).prod(Speed));

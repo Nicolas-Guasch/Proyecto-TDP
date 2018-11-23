@@ -13,9 +13,9 @@ public class ForceCoin implements java.util.function.Consumer<Engine.Components.
     @Override
     public void accept(Transform transform) {
         GameObject premio = GameObject.getRoot().addChild();
-        var sd = new SpriteData("rewardforce");
+        SpriteData sd = new SpriteData("rewardforce");
 
-        var vis = new ForceVisitor();
+        ForceVisitor vis = new ForceVisitor();
         Entity rew = new GenericReward(premio,vis,sd);
         vis.setEntity(rew);
 

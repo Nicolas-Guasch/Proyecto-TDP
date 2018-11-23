@@ -13,9 +13,9 @@ public class HealthCoin implements java.util.function.Consumer<Engine.Components
     @Override
     public void accept(Transform transform) {
         GameObject premio = GameObject.getRoot().addChild();
-        var sd = new SpriteData("rewardhealth");
+        SpriteData sd = new SpriteData("rewardhealth");
 
-        var vis = new VisitorHealPotion();
+        VisitorHealPotion vis = new VisitorHealPotion();
         Entity rew = new GenericReward(premio,vis,sd);
         vis.setReward(rew);
 

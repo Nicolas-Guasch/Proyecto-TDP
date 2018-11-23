@@ -63,7 +63,7 @@ final class Core
         invokerOnUpdate = packU.Invoker;
         onUpdate = packU.Broadcaster;
 
-        TasksForFrame = new TreeMap<>();// diamond expression, cuz we love the new java ♥
+        TasksForFrame = new TreeMap<Long, Queue<Runnable>>();// diamond expression, cuz we love the new java ♥
         currentFrame = 0;
         exit = false;
 
@@ -135,7 +135,7 @@ final class Core
         long targetFrame = frames+currentFrame;
         if(!TasksForFrame.containsKey(targetFrame))
         {
-            LinkedBlockingQueue<Runnable> q = new LinkedBlockingQueue<>();
+            LinkedBlockingQueue<Runnable> q = new LinkedBlockingQueue<Runnable>();
             q.add(function);
             TasksForFrame.put(targetFrame, q);
         }

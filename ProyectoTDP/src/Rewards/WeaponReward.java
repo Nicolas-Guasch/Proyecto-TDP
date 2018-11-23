@@ -24,7 +24,7 @@ public class WeaponReward extends Entity
         renderer = new Renderizable(sprite);
         referenced.setRenderer(renderer);
 
-        var hitBox = HitBox.getOne(100,100,this);
+        HitBox hitBox = HitBox.getOne(100,100,this);
         HitBoxesManager.getInstance().addHitBox(hitBox,HitBoxesManager.REWARDS);
         referenced.addHitBox(hitBox);
         referenced.addComponent(new AlwaysLateral(new Vector2(0,-5)));

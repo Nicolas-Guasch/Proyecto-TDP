@@ -19,9 +19,9 @@ public class MillenniumFalconHelpCoin implements Consumer<Transform> {
     public void accept(Transform originPoint) {
 
         GameObject gameObject = GameObject.getRoot().addChild();
-        var spriteData = new SpriteData("soloreward");
+        SpriteData spriteData = new SpriteData("soloreward");
 
-        var visitor = new SoloSupportVisitor();
+        SoloSupportVisitor visitor = new SoloSupportVisitor();
         Entity reward = new GenericReward(gameObject,visitor,spriteData);
 
         visitor.setEntity(reward);

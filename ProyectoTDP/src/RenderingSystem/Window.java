@@ -75,12 +75,12 @@ public class Window extends Component
         wind.setIconImage(AssetStore.getImage("main_icon"));
 
         //------- z Sorting -----------
-        Zfactor = new LayerTable<>();
+        Zfactor = new LayerTable<Float, JComponent>();
 
         // ------- Pause stuff ------
 
         ui = UI.getInstance();
-        var panelUI = ui.getUIPanel();
+        JComponent panelUI = ui.getUIPanel();
         panelUI.setBounds(0,0,0,0);
         panelUI.setSize(settings.sizeWindow);
         container.add(panelUI);
@@ -193,8 +193,8 @@ public class Window extends Component
     }
 
     public Vector2 GetPhaseShift() {
-        var x = wind.getBounds().x;
-        var y = wind.getBounds().y;
+        int x = wind.getBounds().x;
+        int y = wind.getBounds().y;
         return new Vector2(x,y);
     }
 

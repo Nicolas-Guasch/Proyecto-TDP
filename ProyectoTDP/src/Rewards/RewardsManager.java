@@ -27,7 +27,7 @@ public class RewardsManager
     private Map<RewardKey, Consumer<Transform>> creators;
 
     private RewardsManager(){
-        creators = new HashMap<>();
+        creators = new HashMap<RewardKey, Consumer<Transform>>();
         creators.put(FIVEWEAPON,new WeaponFiveCoin());
         creators.put(ICE, new IceWeaponCoin());
         creators.put(SHIELD,new ShieldCoin());
@@ -39,7 +39,7 @@ public class RewardsManager
 
 
     public void getReward(RewardKey key, Transform originPoint){
-        var op = creators.getOrDefault(key,null);
+        Consumer<Transform> op = creators.getOrDefault(key,null);
         if(op!=null){
           op.accept(originPoint);
         }

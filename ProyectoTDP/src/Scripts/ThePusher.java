@@ -30,8 +30,8 @@ public class ThePusher extends Component
     private Queue<PushData> toRemove;
 
     private ThePusher(){
-        tasks = new HashSet<>();
-        toRemove = new LinkedBlockingQueue<>();
+        tasks = new HashSet<PushData>();
+        toRemove = new LinkedBlockingQueue<PushData>();
     }
 
     /**
@@ -55,7 +55,7 @@ public class ThePusher extends Component
         for (PushData task : tasks) {
             if (workable(task)) {
                 Vector2 speed = task.getVelocity();
-                var dsms = task.getDismish();
+                float dsms = task.getDismish();
                 speed = speed.prod(dsms);
                 dsms = (float )Math.pow(dsms,0.1f);
                 task.setDismish(dsms);

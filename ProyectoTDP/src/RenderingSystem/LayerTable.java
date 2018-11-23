@@ -14,8 +14,8 @@ public class LayerTable<KeyType extends Comparable<KeyType>,ValueType> implement
 
     public LayerTable()
     {
-        map = new TreeMap<>();
-        reverse = new HashMap<>();
+        map = new TreeMap<KeyType, Layer<KeyType, ValueType>>();
+        reverse = new HashMap<ValueType, Layer<KeyType, ValueType>>();
         count=0;
     }
 
@@ -83,7 +83,7 @@ public class LayerTable<KeyType extends Comparable<KeyType>,ValueType> implement
 
         if(layer== null)
         {
-            layer = new Layer<>(key);
+            layer = new Layer<KeyType, ValueType>(key);
             map.put(key,layer);
         }
         layer.addComponent(value);
@@ -94,10 +94,10 @@ public class LayerTable<KeyType extends Comparable<KeyType>,ValueType> implement
     @Override
     public Iterator<Entry<KeyType, ValueType>> iterator()
     {
-        Collection<Entry<KeyType,ValueType>> ret = new LinkedList<>();
+        Collection<Entry<KeyType,ValueType>> ret = new LinkedList<Entry<KeyType, ValueType>>();
         for(Layer<KeyType, ValueType> lay : map.values())
         {
-            lay.forEach((c)->ret.add(new CompEntry<>(lay.getSortFactor(),c)));
+            lay.forEach((c)->ret.add(new CompEntry<KeyType, ValueType>(lay.getSortFactor(),c)));
         }
         return ret.iterator();
     }

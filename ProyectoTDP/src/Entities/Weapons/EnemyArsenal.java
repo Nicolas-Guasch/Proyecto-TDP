@@ -17,7 +17,7 @@ public class EnemyArsenal extends Arsenal
 
     public EnemyArsenal()
     {
-        weapons = new ArrayList<>();
+        weapons = new ArrayList<Weapon>();
         observerPack<Boolean> pack = ObserverSystem.getInstance().getBroadcaster();
         broadcaster = pack.Broadcaster;
         invoker = pack.Invoker;
@@ -43,7 +43,7 @@ public class EnemyArsenal extends Arsenal
 
     @Override
     public Arsenal clone() {
-        var n = new EnemyArsenal();
+        EnemyArsenal n = new EnemyArsenal();
         weapons.forEach(n::add);
         return n;
     }

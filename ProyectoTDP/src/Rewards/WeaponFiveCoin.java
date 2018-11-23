@@ -16,13 +16,13 @@ import RenderingSystem.SpriteData;
 public class WeaponFiveCoin implements java.util.function.Consumer<Engine.Components.Transform> {
     @Override
     public void accept(Transform transform) {
-        var player = PlayerShip.getInstance();
+        PlayerShip player = PlayerShip.getInstance();
         GameObject gameObject = GameObject.getRoot().addChild();
-        var spriteData = new SpriteData("5reward");
+        SpriteData spriteData = new SpriteData("5reward");
         WeaponReward reward = new WeaponReward(gameObject,spriteData);
-        BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
+        BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<PlayerBullet, PlayerBulletBuilder>();
         director.setBuilder(new BulletPlayerBuilder(player.referenced().transform()));
-        Weapon weapon = new AngularWeapon<>(player.referenced().transform(),director, 5);
+        Weapon weapon = new AngularWeapon<BulletDirector<PlayerBullet, PlayerBulletBuilder>>(player.referenced().transform(),director, 5);
         weapon.setName("penta");
         reward.setWeapon(weapon);
         gameObject.transform().setPosition(transform.position3());

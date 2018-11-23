@@ -23,28 +23,28 @@ public class LevelsData implements ILevelsData
 
     LevelsData()
     {
-        enemies = new TreeMap<>();
-        obstpos = new TreeMap<>();
-        enemsPos = new TreeMap<>();
-        rew = new TreeMap<>();
+        enemies = new TreeMap<String, List<EnemyShipBuilder>>();
+        obstpos = new TreeMap<String, List<Vector2>>();
+        enemsPos = new TreeMap<String, List<Vector2>>();
+        rew = new TreeMap<String, List<RewardKey>>();
 
-        rew.put(L1,new LinkedList<>());
-        rew.put(L2,new LinkedList<>());
-        rew.put(L3,new LinkedList<>());
+        rew.put(L1,new LinkedList<RewardKey>());
+        rew.put(L2,new LinkedList<RewardKey>());
+        rew.put(L3,new LinkedList<RewardKey>());
 
-        enemies.put(L1,new LinkedList<>());
-        enemies.put(L2,new LinkedList<>());
-        enemies.put(L3,new LinkedList<>());
+        enemies.put(L1,new LinkedList<EnemyShipBuilder>());
+        enemies.put(L2,new LinkedList<EnemyShipBuilder>());
+        enemies.put(L3,new LinkedList<EnemyShipBuilder>());
 
 
 
-        obstpos.put(L1,new LinkedList<>());
-        obstpos.put(L2,new LinkedList<>());
-        obstpos.put(L3,new LinkedList<>());
+        obstpos.put(L1,new LinkedList<Vector2>());
+        obstpos.put(L2,new LinkedList<Vector2>());
+        obstpos.put(L3,new LinkedList<Vector2>());
 
-        enemsPos.put(L1,new LinkedList<>());
-        enemsPos.put(L2,new LinkedList<>());
-        enemsPos.put(L3,new LinkedList<>());
+        enemsPos.put(L1,new LinkedList<Vector2>());
+        enemsPos.put(L2,new LinkedList<Vector2>());
+        enemsPos.put(L3,new LinkedList<Vector2>());
 
         initenempos();
         initObsts();

@@ -25,7 +25,7 @@ public class Cleaner extends TimePoint {
 
     @Override
     public void clean() {
-        LinkedList<Entity> cosas = new LinkedList<>();
+        LinkedList<Entity> cosas = new LinkedList<Entity>();
         VisitorEntity collector = new GetEnemiesAndBarricades(cosas);
         EveryOne.getInstance().takeVisitor(collector);
         cosas.forEach(e->e.data().setHealth(-1));

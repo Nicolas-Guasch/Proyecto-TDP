@@ -19,7 +19,7 @@ public class SoloAI extends AIQueryDecorator {
 
     public SoloAI(EntityQuery decorated, Vector2[] waypoints) {
         super(decorated);
-        enemies = new ArrayList<>();
+        enemies = new ArrayList<EnemyShip>();
         this.waypoints = waypoints;
     }
 

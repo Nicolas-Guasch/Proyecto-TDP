@@ -97,8 +97,8 @@ public class Renderizable extends Component implements IRenderizable
     protected void ChangePosition()
     {
         Dimension d = RenderingTools.WorldToCanvas(transform().position());
-        var x = d.width;
-        var y = d.height;
+        int x = d.width;
+        int y = d.height;
 
         label.setBounds(x-label.getWidth()/2,y-label.getHeight()/2,label.getSize().width,label.getSize().height);
     }

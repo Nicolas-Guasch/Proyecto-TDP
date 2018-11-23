@@ -16,7 +16,7 @@ public abstract class ParametricMove extends AIQueryDecorator{
     @Override
     public final Vector2 whereToMove(Entity ent)
     {
-        var lastDirection = whereToMove(ent,t++);
+        Vector2 lastDirection = whereToMove(ent,t++);
         return lastDirection;
     }
     public abstract Vector2 whereToMove(Entity ent, int t);

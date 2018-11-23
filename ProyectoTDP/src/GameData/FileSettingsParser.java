@@ -21,8 +21,8 @@ public class FileSettingsParser implements ISettingsParser{
         Pattern pEntity = Pattern.compile("(\\w+): \\((\\d+\\.?\\d*f?),(\\d+\\.?\\d*f?),(\\d+\\.?\\d*f?)\\)");
         Pattern pDimension= Pattern.compile("\\w+: (\\d+)x(\\d+)");
 
-        Map<String,FloatEnum> floatVal = new TreeMap<>();
-        Map<String,EntityEnum>entityVal = new TreeMap<>();
+        Map<String,FloatEnum> floatVal = new TreeMap<String, FloatEnum>();
+        Map<String,EntityEnum>entityVal = new TreeMap<String, EntityEnum>();
         for(FloatEnum v :FloatEnum.values()) floatVal.put(v.name(),v);
         for(EntityEnum v :EntityEnum.values())entityVal.put(v.name(),v);
 
@@ -39,8 +39,8 @@ public class FileSettingsParser implements ISettingsParser{
             if(!window.matches())failure();
             sizeWindow = new Dimension(Integer.parseInt(window.group(1)), Integer.parseInt(window.group(2)));
 
-            floatInput = new TreeMap<>();
-            entitiyDataInput = new TreeMap<>();
+            floatInput = new TreeMap<FloatEnum, Float>();
+            entitiyDataInput = new TreeMap<EntityEnum, EntityData>();
             while(inputBuffer.ready()){
                 line = inputBuffer.readLine();
                 Matcher mFloat = pFloats.matcher(line);

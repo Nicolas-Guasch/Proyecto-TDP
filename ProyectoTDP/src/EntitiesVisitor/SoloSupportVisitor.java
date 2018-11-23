@@ -104,7 +104,7 @@ public class SoloSupportVisitor extends VisitorEntity
 
     private void getWeapons(){
 
-        BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<>();
+        BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<PlayerBullet, PlayerBulletBuilder>();
         director.setBuilder(new BulletPlayerBuilder(ship.referenced().transform()));
 
         ShotFront esf = new ShotFront(20,director,ship.referenced().transform());

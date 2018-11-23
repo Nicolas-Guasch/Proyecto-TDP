@@ -16,7 +16,7 @@ public class ContinueKeyInput extends AbstractContinueInput
 
     public ContinueKeyInput(String chars)
     {
-        mychars = new HashSet<>();
+        mychars = new HashSet<Character>();
         for (char c:chars.toCharArray())
         {
             mychars.add(c);

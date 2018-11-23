@@ -17,7 +17,7 @@ public class Animation extends Component implements IAnimation {
     private boolean oneShoot = false;
 
     private Renderizable renderizable;
-    private List<SpriteData> sprites = new ArrayList<>();
+    private List<SpriteData> sprites = new ArrayList<SpriteData>();
     private SpriteRenderer renderer;
 
     private int index = 0;

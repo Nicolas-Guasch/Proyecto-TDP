@@ -38,8 +38,8 @@ public final class SoundManager
     private SoundManager()
     {
 
-        Sounds = new LinkedList<>();
-        Musics = new LinkedList<>();
+        Sounds = new LinkedList<Sound>();
+        Musics = new LinkedList<Music>();
 
         TinySound.init();
         pew  = TinySound.loadSound(AudioManager.Pew);

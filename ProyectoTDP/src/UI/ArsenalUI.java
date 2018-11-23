@@ -11,6 +11,7 @@ import RenderingSystem.SpriteData;
 import Tools.Tools;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.function.Consumer;
@@ -18,7 +19,7 @@ import java.util.function.Consumer;
 public class ArsenalUI implements UIComponent {
 
     private final Arsenal arsenal;
-    private HashMap<Weapon, Renderizable> map = new HashMap<>();
+    private HashMap<Weapon, Renderizable> map = new HashMap<Weapon, Renderizable>();
     private Grill grill ;
 
 
@@ -26,7 +27,7 @@ public class ArsenalUI implements UIComponent {
 
     public ArsenalUI(Arsenal arsenal){
         this.arsenal = arsenal;
-        var sizeWindow = GameSettings.GetInstance().sizeWindow;
+        Dimension sizeWindow = GameSettings.GetInstance().sizeWindow;
 
         grill = new Grill(
                 new Vector2(
@@ -60,7 +61,7 @@ public class ArsenalUI implements UIComponent {
     }
 
     private void checkRemoval() {
-        for (Weapon weapon : new HashSet<>(map.keySet())) {
+        for (Weapon weapon : new HashSet<Weapon>(map.keySet())) {
             if(!Tools.contains(arsenal.weapons(),weapon)){
                 Renderizable rend = map.get(weapon);
                 rend.hide();
@@ -74,7 +75,7 @@ public class ArsenalUI implements UIComponent {
 
     private void checkSelected() {
         Weapon weapon = arsenal.getCurrent();
-        var rend = map.get(weapon);
+        Renderizable rend = map.get(weapon);
         Vector2 planepos = rend.transform().position();
         Vector3 v = planepos.v3(10);
         selector.transform().setPosition(v);
