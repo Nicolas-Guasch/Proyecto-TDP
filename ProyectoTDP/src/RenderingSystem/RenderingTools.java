@@ -1,5 +1,6 @@
 package RenderingSystem;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.EngineGetter;
 import GameData.GameSettings;
@@ -16,16 +17,16 @@ public class RenderingTools
 
     //el mundito mide 1000 x 600
     //width es x , height es y
-    public static Vector2 CanvasToWorld(Dimension d)
+    public static IVector2 CanvasToWorld(Dimension d)
     {
         if(screenShakeLevel!=0) {
-            return new Vector2((d.width-w/2) + (Random.value()-Random.value()) * screenShakeLevel,((h/2)-d.height) + (Random.value()-Random.value()) * screenShakeLevel);
+            return Vector2.get((d.width-w/2) + (Random.value()-Random.value()) * screenShakeLevel,((h/2)-d.height) + (Random.value()-Random.value()) * screenShakeLevel);
         }
-        return new Vector2(d.width-w/2,(h/2)-d.height);
+        return Vector2.get(d.width-w/2,(h/2)-d.height);
 
     }
 
-    public static Dimension WorldToCanvas(Vector2 vec)
+    public static Dimension WorldToCanvas(IVector2 vec)
     {
         if(screenShakeLevel!=0){
             return Randomize(new Dimension((int)(vec.x()+w/2),(int)((h/2)-vec.y())));

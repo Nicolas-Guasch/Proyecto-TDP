@@ -1,5 +1,6 @@
 package GameTimeLine;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Components.Transform;
 import Entities.BarricadeBoth;
@@ -34,7 +35,7 @@ public class SomeBarricades extends TimePoint {
         float angle = 1f/circleBarricades;
         Dimension dim = GameSettings.GetInstance().sizeWindow;
         float rad= Math.min(dim.width,dim.height) * 0.3f;
-        Vector2 pos = Vector2.UP(rad);
+        IVector2 pos = Vector2.UP(rad);
         for(int i=0 ; i<circleBarricades ; i++){
             Entity entBar = nextBarricade();
             Transform bar = entBar.referenced().transform();

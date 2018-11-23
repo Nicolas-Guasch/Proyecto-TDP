@@ -1,5 +1,6 @@
 package IAs;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Entities.Entity;
 import Entities.Ships.Player.PlayerShip;
@@ -23,9 +24,9 @@ public class IncreaseSpeedIfWatched extends AIQueryDecorator {
     }
 
     @Override
-    public Vector2 whereToMove(Entity ent) {
+    public IVector2 whereToMove(Entity ent) {
 
-        Vector2 dir_to_me = ent.referenced().
+        IVector2 dir_to_me = ent.referenced().
                             transform().position().
                 sub(PlayerShip.getInstance().
                             referenced().transform().
@@ -48,7 +49,7 @@ public class IncreaseSpeedIfWatched extends AIQueryDecorator {
     }
 
     @Override
-    public Vector2 whereToSee(Entity ent) {
+    public IVector2 whereToSee(Entity ent) {
         return decorated.whereToSee(ent);
     }
 }

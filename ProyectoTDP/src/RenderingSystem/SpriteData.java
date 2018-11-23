@@ -1,5 +1,6 @@
 package RenderingSystem;
 
+import ADTs.IVector2;
 import Assets.AssetStore;
 
 import ADTs.Vector2;
@@ -12,7 +13,7 @@ public class SpriteData
     private int width;
     private int height;
     private String name;
-    public SpriteData(String name, Vector2 size)
+    public SpriteData(String name, IVector2 size)
     {
         width = (int)size.x();
         height =(int) size.y();

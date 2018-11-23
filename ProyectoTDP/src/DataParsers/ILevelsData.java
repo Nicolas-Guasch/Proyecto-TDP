@@ -1,5 +1,6 @@
 package DataParsers;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Entities.Ships.EnemyShipBuilder;
 import Rewards.RewardKey;
@@ -15,8 +16,8 @@ public interface ILevelsData
 
     void setKey(String key);
 
-    List<Vector2> enemiesPositions();
-    List<Vector2> obstaclesPositions();
+    List<IVector2> enemiesPositions();
+    List<IVector2> obstaclesPositions();
     List<EnemyShipBuilder> enemies();
     List<RewardKey> rewards();
 

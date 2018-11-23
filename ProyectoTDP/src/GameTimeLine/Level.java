@@ -78,7 +78,7 @@ public final class Level extends TimePoint
     private static boolean swapbarricade = true;
 
     private void assembleBarricades() {
-        for(Vector2 v : parser.obstaclesPositions())
+        for(IVector2 v : parser.obstaclesPositions())
         {
             Entities.Entity e = getBarricadeRandom();
             e.referenced().transform().setPosition(v.v3(2));
@@ -105,16 +105,16 @@ public final class Level extends TimePoint
     {
         List<EnemyShipBuilder> builders = parser.enemies();
         Iterator<RewardKey> itRewards = parser.rewards().iterator();
-        List<Vector2> positions = parser.enemiesPositions();
+        List<IVector2> positions = parser.enemiesPositions();
         for (int j = 0; j < GameSettings.difficulty-1; j++) {
-            positions.addAll(new LinkedList<Vector2>(positions));
+            positions.addAll(new LinkedList<IVector2>(positions));
         }
         Collections.shuffle(positions);
         int z = 10;
         Dimension vsiz = GameSettings.GetInstance().sizeWindow;
         Vector3 far = new Vector3(vsiz.width/1.9f,vsiz.height/1.9f,z);
         int i = 0;
-        for(Vector2 v : positions)
+        for(IVector2 v : positions)
         {
             BaseEnemyShip ship;
             director.setBuilder(getRandom(builders));

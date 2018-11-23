@@ -1,12 +1,13 @@
 package RenderingSystem;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 
 public interface IRenderizable
 {
     void show();
     void hide();
-    Vector2 getSize();
+    IVector2 getSize();
     SpriteRenderer Sprite();
     boolean isVisible();
 }

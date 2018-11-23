@@ -1,5 +1,6 @@
 package Entities.Ships.EnemiesBuilders;
 
+import ADTs.IVector2;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import ADTs.Vector2;
@@ -96,9 +97,9 @@ public class VaderAMaker extends EnemyShipBuilder
         // ---------------- hago que mire hacia abajo ----------
         ship.referenced().transform().setTop(Vector2.DOWN());
         // ---------------- hago que "pege la vuelta" -------------
-        Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
-        Vector2 topRight = bottomRight.mirrorX();
-        Vector2 bottomLeft = bottomRight.mirrorY();
+        IVector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
+        IVector2 topRight = bottomRight.mirrorX();
+        IVector2 bottomLeft = bottomRight.mirrorY();
         ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f),bottomLeft.prod(1.2f)));
         // ----------------- que alguna nave random mire al player ------------
         ship.addBehaviour(new LookTarget(PlayerShip.getInstance().referenced().transform()));

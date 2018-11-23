@@ -1,5 +1,6 @@
 package Entities.Ships;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Action;
 import Engine.EngineGetter;
@@ -33,7 +34,8 @@ public class ShieldVisitor extends VisitorEntity
 
     @Override
     public void visit(PlayerShip visitable){
-        Vector2 point = visitable.referenced().transform().position();
+
+        IVector2 point = visitable.referenced().transform().position();
 
         this.visitable = visitable;
         if(visitable.data()==null)return;

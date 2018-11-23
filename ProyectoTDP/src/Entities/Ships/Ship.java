@@ -1,5 +1,6 @@
 package Entities.Ships;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Tools.AnimatorsVolatiles;
 import Engine.GameObject;
@@ -20,7 +21,7 @@ public abstract class Ship extends Entity implements IShip
 
     public void onDeath(){
         super.onDeath();
-        Vector2 v = referenced().transform().position();
+        IVector2 v = referenced().transform().position();
         AnimatorsVolatiles.getInstance().getExplosion(v);
         weapons.setActive(false);
         if (pilot != null) {

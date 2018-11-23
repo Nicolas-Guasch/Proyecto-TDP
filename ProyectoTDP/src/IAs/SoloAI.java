@@ -1,5 +1,6 @@
 package IAs;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Entities.Entity;
 import Entities.EveryOne;
@@ -11,13 +12,13 @@ import java.util.*;
 
 public class SoloAI extends AIQueryDecorator {
 
-    private final Vector2[] waypoints;
+    private final IVector2[] waypoints;
     private List<EnemyShip> enemies;
     private int max = 5;
     private int i=0;
     private int index_waypoints=0;
 
-    public SoloAI(EntityQuery decorated, Vector2[] waypoints) {
+    public SoloAI(EntityQuery decorated, IVector2[] waypoints) {
         super(decorated);
         enemies = new ArrayList<EnemyShip>();
         this.waypoints = waypoints;
@@ -34,7 +35,7 @@ public class SoloAI extends AIQueryDecorator {
         }
     }
 
-    private Vector2 getTarget(Entity ent){
+    private IVector2 getTarget(Entity ent){
         searchSomeEnemies(2); //se que es ineficiente :P
         EnemyShip ship;
         if(enemies.size()<=0){
@@ -44,7 +45,7 @@ public class SoloAI extends AIQueryDecorator {
         return ship.referenced().transform().position();
     }
 
-    private Vector2 getToMove(Vector2 pos){
+    private IVector2 getToMove(IVector2 pos){
 
         if(waypoints[index_waypoints].distanceTo(pos)<30 && waypoints.length>index_waypoints+1){
             index_waypoints++;
@@ -54,12 +55,12 @@ public class SoloAI extends AIQueryDecorator {
     }
 
     @Override
-    public Vector2 whereToMove(Entity ent) {
+    public IVector2 whereToMove(Entity ent) {
         return getToMove(ent.referenced().transform().position()).norma();
     }
 
     @Override
-    public Vector2 whereToSee(Entity ent) {
+    public IVector2 whereToSee(Entity ent) {
         return getTarget(ent).sub(ent.referenced().transform().position());
     }
 }

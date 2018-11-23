@@ -1,5 +1,6 @@
 package Collisions;
 
+import ADTs.IVector2;
 import Engine.Component;
 import Engine.Components.Transform;
 import Engine.GameObject;
@@ -15,7 +16,7 @@ import java.util.Vector;
 public final class HitBox extends Component {
     private static final int NoCheckDistance = 500;
     private Entity entity;
-    private Vector2 dimensions;
+    private IVector2 dimensions;
     private Transform transform;
 
 
@@ -23,12 +24,12 @@ public final class HitBox extends Component {
         return getOne(new Vector2(w,h),entity);
     }
 
-    public static HitBox getOne(Vector2 dimensions, Entity entity)
+    public static HitBox getOne(IVector2 dimensions, Entity entity)
     {
         return new HitBox(dimensions,entity);
     }
 
-    private HitBox(Vector2 dimensions, Entity entity) {
+    private HitBox(IVector2 dimensions, Entity entity) {
         if(entity==null)
         {
             throw new RuntimeException("Entity null");
@@ -49,20 +50,20 @@ public final class HitBox extends Component {
         if(isFar(other.transform) || other.distToCenter(transform.position()) > dimensions.length() + other.diagonalLength())
             return null;
 
-        Vector2 CollisionPoint = vertexInside(other);
+        IVector2 CollisionPoint = vertexInside(other);
         if(CollisionPoint == null)CollisionPoint = other.vertexInside(this);
         if(CollisionPoint != null)return new CollisionData(entity, other.entity, CollisionPoint);
         return null;
     }
 
-    private Iterable<Vector2> vertices() {
-        Collection<Vector2> res = new Vector<Vector2>();
-        Vector2 dy = transform.top(dimensions.y()).half();
-        Vector2 dx = transform.top(dimensions.x()).right().half();
+    private Iterable<IVector2> vertices() {
+        Collection<IVector2> res = new Vector<IVector2>();
+        IVector2 dy = transform.top(dimensions.y()).half();
+        IVector2 dx = transform.top(dimensions.x()).right().half();
         int dir[] = {-1, 1};
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                Vector2 diag = dx.prod(dir[i]).sum(dy.prod(dir[j]));
+                IVector2 diag = dx.prod(dir[i]).sum(dy.prod(dir[j]));
                 res.add(transform.position().sum(diag));
             }
         }
@@ -73,7 +74,7 @@ public final class HitBox extends Component {
         return dimensions.length();
     }
 
-    private float distToCenter(Vector2 v) {
+    private float distToCenter(IVector2 v) {
         return transform.position().distanceTo(v);
     }
 
@@ -85,12 +86,12 @@ public final class HitBox extends Component {
     }
 
 
-    private Vector2 vertexInside(HitBox other){
-        Vector2 bottom = bottomSide();
-        Vector2 left = leftSide();
-        Vector2 vertex = bottomLeft();
-        for (Vector2 pto : other.vertices()) {
-            Vector2 vertToPto = pto.sub(vertex);
+    private IVector2 vertexInside(HitBox other){
+        IVector2 bottom = bottomSide();
+        IVector2 left = leftSide();
+        IVector2 vertex = bottomLeft();
+        for (IVector2 pto : other.vertices()) {
+            IVector2 vertToPto = pto.sub(vertex);
             float prodBot = bottom.scalarProd(vertToPto);
             float prodLeft = left.scalarProd(vertToPto);
             if (0 <= prodBot && prodBot <= bottom.lengthSq() && 0 <= prodLeft && prodLeft <= left.lengthSq())// si colisiona:
@@ -102,19 +103,19 @@ public final class HitBox extends Component {
     }
 
 
-    private Vector2 bottomLeft() {
+    private IVector2 bottomLeft() {
         return transform.position().sub(bottomSide().div(2)).sub(leftSide().div(2));
     }
 
-    private Vector2 topRight() {
+    private IVector2 topRight() {
         return transform.position().sum(bottomSide().div(2)).sum(leftSide().div(2));
     }
 
-    private Vector2 bottomSide() {
+    private IVector2 bottomSide() {
         return transform.top(dimensions.x()).right();
     }
 
-    private Vector2 leftSide() {
+    private IVector2 leftSide() {
         return transform.top(dimensions.y());
     }
 

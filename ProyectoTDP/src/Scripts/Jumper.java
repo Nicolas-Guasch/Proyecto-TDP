@@ -1,5 +1,6 @@
 package Scripts;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Audio.SoundManager;
 import Observer.IBroadcaster;
@@ -15,18 +16,18 @@ public class Jumper extends Component {
 
     private final Transform transform;
     private int delay;
-    private Iterator<Vector2> points;
-    private IBroadcaster<Vector2> onComplete;
-    private Invoker<Vector2> invokerComplete;
+    private Iterator<IVector2> points;
+    private IBroadcaster<IVector2> onComplete;
+    private Invoker<IVector2> invokerComplete;
 
-    private Vector2 firstPos;
+    private IVector2 firstPos;
 
-    public Jumper(Iterable<Vector2> path, Transform tr, int delayFrames) {
+    public Jumper(Iterable<IVector2> path, Transform tr, int delayFrames) {
         points = path.iterator();
         this.transform = tr;
         this.delay = delayFrames;
         this.firstPos = tr.position();
-        ObserverPack<Vector2> v = ObserverSystem.getInstance().getBroadcaster();
+        ObserverPack<IVector2> v = ObserverSystem.getInstance().getBroadcaster();
         onComplete = v.Broadcaster;
         invokerComplete = v.Invoker;
     }
@@ -49,7 +50,7 @@ public class Jumper extends Component {
         transform.setPosition(points.next());
     }
 
-    public IBroadcaster<Vector2> getOnComplete() {
+    public IBroadcaster<IVector2> getOnComplete() {
         return onComplete;
     }
 }

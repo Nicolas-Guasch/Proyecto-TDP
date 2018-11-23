@@ -1,11 +1,12 @@
 package ADTs;
 
 
-public final class Rect //fixme no tiene mas ESA herencia (iclonable)
+public final class Rect implements IRect
+//fixme no tiene mas ESA herencia (iclonable)
 {
-    private Vector2 max, min;
+    private IVector2 max, min;
 
-    public Rect(Vector2 max, Vector2 min)
+    public Rect(IVector2 max, IVector2 min)
     {
         this.max = max;
         this.min = min;
@@ -14,7 +15,7 @@ public final class Rect //fixme no tiene mas ESA herencia (iclonable)
 
 
 
-    public Vector2 max() {
+    public IVector2 max() {
         return max;
     }
 
@@ -24,7 +25,7 @@ public final class Rect //fixme no tiene mas ESA herencia (iclonable)
     }
 
 
-    @Override
+
     public Rect clone() {
         return new Rect(min,max);
     }

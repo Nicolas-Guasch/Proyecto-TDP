@@ -1,5 +1,6 @@
 package UI;
 
+import ADTs.IVector2;
 import ADTs.RowCol;
 import ADTs.Vector2;
 import RenderingSystem.Renderizable;
@@ -13,14 +14,14 @@ import java.util.stream.Collectors;
 public class Grill implements UIComponent
 {
 
-    private final Vector2 position;
-    private final Vector2 cellSize;
+    private final IVector2 position;
+    private final IVector2 cellSize;
     private final int maxCols;
     private ArrayList<Renderizable> components;
-    private final Vector2 phaseShift;
+    private final IVector2 phaseShift;
     private Queue<Renderizable> auxQueue,addQueue;
 
-    public Grill(Vector2 position, Vector2 cellSize, int maxCols)
+    public Grill(IVector2 position, IVector2 cellSize, int maxCols)
     {
         this.maxCols = maxCols;
         this.cellSize = cellSize;
@@ -37,7 +38,7 @@ public class Grill implements UIComponent
         return new RowCol(row,col);
     }
 
-    private Vector2 getPoint(int index){
+    private IVector2 getPoint(int index){
         RowCol rowCol = getRowCol(index);
 
         float x = phaseShift.x() + rowCol.getCol()*cellSize.x();

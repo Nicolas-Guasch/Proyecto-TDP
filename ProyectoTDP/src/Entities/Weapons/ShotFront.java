@@ -1,5 +1,6 @@
 package Entities.Weapons;
 
+import ADTs.IVector2;
 import Engine.Components.Transform;
 import ADTs.Vector2;
 import Entities.Builders.Directors.BulletDirector;
@@ -29,8 +30,8 @@ public class ShotFront extends Weapon
     @Override
     public void Shoot() {
 
-            Vector2 point = reference.position().sum(reference.top().prod(10));
-            Vector2 desph = reference.top().swapped();
+            IVector2 point = reference.position().sum(reference.top().prod(10));
+            IVector2 desph = reference.top().swapped();
             point = point.sum(desph.prod(phaseShift));
             phaseShift *= -1;
             getter.create();

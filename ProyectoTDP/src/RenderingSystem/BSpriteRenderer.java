@@ -1,5 +1,6 @@
 package RenderingSystem;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Components.Transform;
 import GameData.GameSettings;
@@ -25,7 +26,7 @@ public class BSpriteRenderer extends JPanel
     }
 
 
-    Vector2 last = new Vector2(1000,1000);
+    IVector2 last = Vector2.get(1000,1000);
 
     @Override
     public void paintComponent( Graphics g ) {

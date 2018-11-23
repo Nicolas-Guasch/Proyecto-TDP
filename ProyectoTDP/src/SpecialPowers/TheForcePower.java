@@ -1,5 +1,6 @@
 package SpecialPowers;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Entities.EveryOne;
 import Entities.Ships.Player.PlayerShip;
@@ -9,7 +10,7 @@ public class TheForcePower implements ISpecialPower
 {
     @Override
     public void aply() {
-        Vector2 pos = PlayerShip.getInstance().referenced().transform().position();
+        IVector2 pos = PlayerShip.getInstance().referenced().transform().position();
         EveryOne.getInstance().takeLazyVisitor(new Pusher(650,pos));
     }
 }

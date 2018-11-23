@@ -1,8 +1,9 @@
 package IAs;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 
 public interface IDirGiver
 {
-    Vector2 get();
+    IVector2 get();
 }

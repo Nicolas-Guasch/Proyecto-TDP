@@ -1,5 +1,6 @@
 package RenderingSystem;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Component;
 import Engine.GameObject;
@@ -21,9 +22,9 @@ public final class Sun extends Component {
 		return instance;
 	}
 
-	private Vector2 light = new Vector2(-1,-1).withLength(111);
+	private IVector2 light = Vector2.get(-1,-1).withLength(111);
 
-	public Vector2 getLight() {
+	public IVector2 getLight() {
 		return light;
 	}
 

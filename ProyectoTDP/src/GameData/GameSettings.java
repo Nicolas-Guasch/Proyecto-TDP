@@ -1,5 +1,6 @@
 package GameData;
 
+import ADTs.IVector2;
 import ADTs.Rect;
 import ADTs.Vector2;
 import DataParsers.ParsersManager;
@@ -71,9 +72,9 @@ public class GameSettings
 
     public Rect bounds()
     {
-        Vector2 bottomRight = RenderingTools.CanvasToWorld(sizeWindow);
-        Vector2 topRight = bottomRight.mirrorX();
-        Vector2 bottomLeft = bottomRight.mirrorY();
+        IVector2 bottomRight = RenderingTools.CanvasToWorld(sizeWindow);
+        IVector2 topRight = bottomRight.mirrorX();
+        IVector2 bottomLeft = bottomRight.mirrorY();
         return new Rect(topRight,bottomLeft);
     }
 

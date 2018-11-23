@@ -1,5 +1,6 @@
 package Scripts;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Component;
 import Engine.Components.Transform;
@@ -41,7 +42,7 @@ public class ThePusher extends Component
      *      count >= 0
      *      1 > dismish > 0     *
      */
-    public void add(Transform target,int count, Vector2 velocity, float dismish){
+    public void add(Transform target, int count, IVector2 velocity, float dismish){
         tasks.add(new PushData(count,velocity,dismish,target));
     }
 
@@ -54,7 +55,7 @@ public class ThePusher extends Component
         }
         for (PushData task : tasks) {
             if (workable(task)) {
-                Vector2 speed = task.getVelocity();
+                IVector2 speed = task.getVelocity();
                 float dsms = task.getDismish();
                 speed = speed.prod(dsms);
                 dsms = (float )Math.pow(dsms,0.1f);

@@ -1,5 +1,6 @@
 package Engine.Components;
 
+import ADTs.IVector2;
 import Engine.Component;
 import Engine.EngineGetter;
 import ADTs.Vector2;
@@ -12,8 +13,8 @@ import ADTs.Vector3;
  */
 public final class Transform extends Component
 {
-    private Vector2 position;
-    private Vector2 top = Vector2.UP(); // Top of the sprite always look this way
+    private IVector2 position;
+    private IVector2 top = Vector2.UP(); // Top of the sprite always look this way
     private float Zcomponent = 0;
     private int lifetime = 0;
 
@@ -28,30 +29,30 @@ public final class Transform extends Component
         this(Vector2.ORIGIN());
     }
 
-    private Transform(Vector2 position)
+    private Transform(IVector2 position)
         {
 
             this.position = position;
         }
 
-    public Vector2 position() {
+    public IVector2 position() {
         return position;
     }
 
-    public void setPosition(Vector2 position) {
+    public void setPosition(IVector2 position) {
         this.position = position;
     }
 
-    public void moveTowards(Vector2 direction){
+    public void moveTowards(IVector2 direction){
         position = position.sum(direction);
     }
 
 
-    public Vector2 top() {
+    public IVector2 top() {
         return top;
     }
 
-    public void setTop(Vector2 top) {
+    public void setTop(IVector2 top) {
         this.top = top.norma();
     }
 
@@ -69,7 +70,7 @@ public final class Transform extends Component
         Zcomponent = zcomponent;
     }
 
-    public Vector2 top(float large)
+    public IVector2 top(float large)
     {
         return top().prod(large);
     }
@@ -91,7 +92,7 @@ public final class Transform extends Component
     }
 
 
-    public void DoMove(Vector2 vector2, int inframes) {
+    public void DoMove(IVector2 vector2, int inframes) {
         //TODO: hacer tipo tween
         EngineGetter.Instance().get().waitForFrames(()->
         {

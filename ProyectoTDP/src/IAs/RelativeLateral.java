@@ -1,5 +1,6 @@
 package IAs;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Entities.Entity;
 
@@ -22,7 +23,7 @@ public class RelativeLateral extends AIQueryDecorator
     }
 
     @Override
-    public Vector2 whereToMove(Entity ent) {
+    public IVector2 whereToMove(Entity ent) {
         if(i>=steps)
         {
             speed *= -1;
@@ -32,7 +33,7 @@ public class RelativeLateral extends AIQueryDecorator
     }
 
     @Override
-    public Vector2 whereToSee(Entity ent) {
+    public IVector2 whereToSee(Entity ent) {
         return ent.referenced().transform().top();
     }
 }

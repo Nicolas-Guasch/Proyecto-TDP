@@ -1,5 +1,6 @@
 package Scripts;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Component;
 
@@ -24,7 +25,7 @@ public class RewardLateralMovement extends Component
             t = random_inc;
         }
         t+=random_inc;
-        Vector2 direction = new Vector2(t*dir*200,0); // derivo (sin(t),-2t)
+        IVector2 direction = new Vector2(t*dir*200,0); // derivo (sin(t),-2t)
         if(transform()!=null){
             transform().moveTowards(direction.withMaxLength(20));
         }

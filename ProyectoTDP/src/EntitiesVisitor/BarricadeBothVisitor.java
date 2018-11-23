@@ -1,5 +1,6 @@
 package EntitiesVisitor;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Components.Transform;
 import Entities.Bullet;
@@ -16,16 +17,16 @@ public class BarricadeBothVisitor extends VisitorEntity
         this.transform = transform;
     }
 
-    private Vector2 getRepulsion(Vector2 repulsor, Vector2 repulsado, Vector2 repulsor_top, Vector2 repulsado_top)
+    private IVector2 getRepulsion(IVector2 repulsor, IVector2 repulsado, IVector2 repulsor_top, IVector2 repulsado_top)
     {
         float angle = repulsado_top.getUnaryAngle(repulsor_top);
-        Vector2 dir = repulsado_top.rotateUnary(-angle);
+        IVector2 dir = repulsado_top.rotateUnary(-angle);
         //Vector2 dir = repulsor_top.rotateUnary(-angle);
         return dir;
     }
 
     private void bounce(Transform quiet, Transform traveller){
-        Vector2 nextTop = getRepulsion(quiet.position(),traveller.position(),quiet.top(),traveller.top());
+        IVector2 nextTop = getRepulsion(quiet.position(),traveller.position(),quiet.top(),traveller.top());
         traveller.moveTowards(nextTop.withLength(5));
         traveller.setTop(nextTop);
     }

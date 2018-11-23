@@ -1,5 +1,6 @@
 package EntitiesVisitor;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.EngineGetter;
 import Entities.BarricadeBoth;
@@ -19,7 +20,7 @@ public class EnemyVisitor extends VisitorEntity {
     @Override
     public void visit(PlayerShip playerShip)
     {
-        Vector2 bouncePoint = playerShip.referenced().transform().position();
+        IVector2 bouncePoint = playerShip.referenced().transform().position();
         EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),2);
         EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),3);
         EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),4);
@@ -30,7 +31,7 @@ public class EnemyVisitor extends VisitorEntity {
 
         barricade.data().setDamage(10);
 
-        Vector2 bouncePoint = barricade.referenced().transform().position();
+        IVector2 bouncePoint = barricade.referenced().transform().position();
         EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),2);
         EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),3);
 
@@ -39,16 +40,16 @@ public class EnemyVisitor extends VisitorEntity {
     @Override
     public void visit(PlayerBullet bullet)
     {
-        Vector2 bouncePoint = bullet.referenced().transform().position();
+        IVector2 bouncePoint = bullet.referenced().transform().position();
         EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),2);
         EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),3);
         EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),4);
     }
 
-    private void bounce(Vector2 bouncePoint)
+    private void bounce(IVector2 bouncePoint)
     {
         if(ship==null || !ship.alive() || ship.referenced() == null) return;
-        Vector2 direction = ship.referenced().transform().position().sub(bouncePoint);
+        IVector2 direction = ship.referenced().transform().position().sub(bouncePoint);
         ship.referenced().transform().moveTowards(direction.norma());
     }
 

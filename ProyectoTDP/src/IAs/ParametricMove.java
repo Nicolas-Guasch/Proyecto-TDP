@@ -1,12 +1,13 @@
 package IAs;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Entities.Entity;
 
 public abstract class ParametricMove extends AIQueryDecorator{
 
     private int t;
-    private Vector2 lastDirection = Vector2.DOWN();
+    private IVector2 lastDirection = Vector2.DOWN();
 
     public ParametricMove(EntityQuery decorated) {
         super(decorated);
@@ -14,15 +15,15 @@ public abstract class ParametricMove extends AIQueryDecorator{
     }
 
     @Override
-    public final Vector2 whereToMove(Entity ent)
+    public final IVector2 whereToMove(Entity ent)
     {
-        Vector2 lastDirection = whereToMove(ent,t++);
+        IVector2 lastDirection = whereToMove(ent,t++);
         return lastDirection;
     }
-    public abstract Vector2 whereToMove(Entity ent, int t);
+    public abstract IVector2 whereToMove(Entity ent, int t);
 
     @Override
-    public final Vector2 whereToSee(Entity ent) {
+    public final IVector2 whereToSee(Entity ent) {
         return lastDirection.norma();
     }
 

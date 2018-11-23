@@ -1,5 +1,6 @@
 package UI;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Assets.AssetStore;
 import Observer.IBroadcaster;
@@ -15,13 +16,13 @@ public class ShipStatus implements UIComponent
     private final JComponent lifeBar;
     private final JComponent decorate;
     private final int lifeBarHeight = 230;
-    private final Vector2 point;
+    private final IVector2 point;
     private List<JComponent> all;
 
 
 
 
-    public ShipStatus(Vector2 point, IBroadcaster<Float> shipHealth, String iconName, float lifemax)
+    public ShipStatus(IVector2 point, IBroadcaster<Float> shipHealth, String iconName, float lifemax)
     {
         this.lifeMax =lifemax;
         this.point = point;

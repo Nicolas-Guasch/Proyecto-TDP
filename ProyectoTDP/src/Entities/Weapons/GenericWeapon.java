@@ -1,5 +1,6 @@
 package Entities.Weapons;
 
+import ADTs.IVector2;
 import Engine.Components.Transform;
 import ADTs.Vector2;
 import Entities.Builders.Directors.IBulletDirector;
@@ -24,8 +25,8 @@ public class GenericWeapon<BulletDirectorType extends IBulletDirector> extends W
 
     public void Shoot()
     {
-        Vector2 point = reference.position().sum(reference.top().prod(20));
-        Vector2 desph = reference.top().right();
+        IVector2 point = reference.position().sum(reference.top().prod(20));
+        IVector2 desph = reference.top().right();
         if (cantShoots % 2 == 0){
             point = point.sum(desph.prod(-phaseShift / 2));
             point = point.sum(desph.prod(-phaseShift * cantShoots / 2));

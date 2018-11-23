@@ -1,5 +1,6 @@
 package AIs;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Component;
 
@@ -27,8 +28,8 @@ public class Vibe extends Component
             i=0;
             amp *= -1;
         }
-        Vector2 right = transform().top().right(amp);
-        Vector2 pos = transform().position();
+        IVector2 right = transform().top().right(amp);
+        IVector2 pos = transform().position();
 
         pos = pos.sum(right);
 

@@ -1,6 +1,6 @@
 package ADTs;
 
-public class RowCol
+public class RowCol implements IRowCol
 {
     private int row,col;
 

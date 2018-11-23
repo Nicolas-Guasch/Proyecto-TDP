@@ -1,22 +1,23 @@
 package Scripts;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Components.Transform;
 
 public class PushData{
     private final Transform target;
     private int counter;
-    private Vector2 velocity;
+    private IVector2 velocity;
     private float dismish;
 
-    PushData(int counter, Vector2 velocity, float dismish, Transform target) {
+    PushData(int counter, IVector2 velocity, float dismish, Transform target) {
         this.counter = counter;
         this.velocity = velocity;
         this.dismish = dismish;
         this.target = target;
     }
 
-    public Vector2 getVelocity() {
+    public IVector2 getVelocity() {
         return velocity;
     }
 
@@ -28,7 +29,7 @@ public class PushData{
         return dismish;
     }
 
-    public void setVelocity(Vector2 velocity) {
+    public void setVelocity(IVector2 velocity) {
         this.velocity = velocity;
     }
 

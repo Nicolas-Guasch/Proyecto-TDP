@@ -1,5 +1,6 @@
 package EntitiesVisitor;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Audio.SoundManager;
 import Engine.DoWhen;
@@ -54,7 +55,7 @@ public class SoloSupportVisitor extends VisitorEntity
 
     private void getBehaviour() {
 
-        Vector2[] waypoints = {
+        IVector2[] waypoints = {
 
                 new Vector2(-540,300),
                 Vector2.random().withLength(600),

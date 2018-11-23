@@ -1,5 +1,6 @@
 package Rewards;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Component;
 import java.util.*;
@@ -8,7 +9,7 @@ public class RewardMove extends Component
 
     private int minX,maxX;
     private float counter= 1;
-    private Vector2 speed = Vector2.LEFT();
+    private IVector2 speed = Vector2.LEFT();
     public RewardMove(){
         Random r = new Random();
         minX = Math.abs(r.nextInt(200))+200;

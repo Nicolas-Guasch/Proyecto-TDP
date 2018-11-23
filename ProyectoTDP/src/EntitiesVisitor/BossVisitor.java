@@ -1,5 +1,6 @@
 package EntitiesVisitor;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Action;
 import Engine.Components.Transform;
@@ -24,7 +25,7 @@ public class BossVisitor extends VisitorEntity {
 
     public void visit(BarricadeBoth barricade){
         Transform barr_tr = barricade.referenced().transform();
-        Vector2 repuls = getRepulsion(
+        IVector2 repuls = getRepulsion(
                 barr_tr.position(),
                 ship.referenced().transform().position(),
                 barr_tr.top()).withLength(10);
@@ -41,7 +42,7 @@ public class BossVisitor extends VisitorEntity {
 
     }
 
-    private Vector2 getRepulsion(Vector2 repulsor, Vector2 repulsado, Vector2 repulsor_top){
+    private IVector2 getRepulsion(IVector2 repulsor, IVector2 repulsado, IVector2 repulsor_top){
         return repulsor_top.prod(repulsado.sub(repulsor).scalarProd(repulsor_top)).prod(-1);
     }
 

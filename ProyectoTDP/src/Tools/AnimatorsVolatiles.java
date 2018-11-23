@@ -1,5 +1,6 @@
 package Tools;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Audio.SoundManager;
 import Engine.Components.Transform;
@@ -24,7 +25,7 @@ public class AnimatorsVolatiles
         parent = GameObject.getRoot().addChild();
     }
 
-    public Transform getVolatile(Vector2 position, String exp, float speed){
+    public Transform getVolatile(IVector2 position, String exp, float speed){
         GameObject g = parent.addChild();
         Renderizable rend = new Renderizable(new SpriteData(exp+"_0"));
         g.setRenderer(rend);
@@ -40,7 +41,7 @@ public class AnimatorsVolatiles
     }
 
 
-    public Transform getExplosion(Vector2 position){
+    public Transform getExplosion(IVector2 position){
         String exp = Tools.random(explosionOptions);
         Transform t = getVolatile(position,exp,45);
         SoundManager.Instance().explo(position);

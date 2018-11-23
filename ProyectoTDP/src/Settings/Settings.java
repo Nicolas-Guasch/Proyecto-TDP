@@ -1,5 +1,6 @@
 package Settings;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Assets.AssetStore;
 import GameData.GameSettings;
@@ -29,7 +30,7 @@ public final class Settings {
 	private Container container;
 	private JComboBox<String> box, difficulty;
 	private String[] ssizes;
-	private Vector2[] vsizes;
+	private IVector2[] vsizes;
 
 
 	private Settings(){
@@ -129,11 +130,11 @@ public final class Settings {
 		container.repaint();
 	}
 
-	private Vector2[] getVsizes(){
+	private IVector2[] getVsizes(){
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-		Vector2 siz = new Vector2(screenSize.width , screenSize.height);
-		Vector2[] options = new Vector2[]{
+		IVector2 siz = new Vector2(screenSize.width , screenSize.height);
+		IVector2[] options = new IVector2[]{
 				new Vector2(1280,1024),
 				new Vector2(1280,960),
 				new Vector2(1280,800),
@@ -145,15 +146,15 @@ public final class Settings {
 				new Vector2(800,600)
 		};
 
-		Vector<Vector2> ve = new Vector<Vector2>();
+		Vector<IVector2> ve = new Vector<IVector2>();
 
-		for (Vector2 opt : options) {
+		for (IVector2 opt : options) {
 			if(opt.x()<=siz.x() && opt.y() <= siz.y() - 30){
 				ve.add(opt);
 			}
 		}
 
-		Vector2[] ret = new Vector2[ve.size()];
+		IVector2[] ret = new IVector2[ve.size()];
 		ve.toArray(ret);
 		return ret;
 	}
@@ -168,7 +169,7 @@ public final class Settings {
 		close.set(true);
 		fullScreen = full.isSelected();
 		int i = box.getSelectedIndex();
-		Vector2 screenSize = vsizes[i];
+		IVector2 screenSize = vsizes[i];
 		GameSettings.GetInstance().sizeWindow = screenSize.toDimension();
 		GameSettings.difficulty = difficulty.getSelectedIndex()+1;
 		wind.setVisible(false);

@@ -1,5 +1,6 @@
 package IAs;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Entities.Entity;
 
@@ -26,7 +27,7 @@ public class AbsoluteLateral  extends AIQueryDecorator
 
 
     @Override
-    public Vector2 whereToMove(Entity ent)
+    public IVector2 whereToMove(Entity ent)
     {
         if(i>=steps + ran() || (es_primer_pasada && i>=steps/2))
         {
@@ -35,7 +36,7 @@ public class AbsoluteLateral  extends AIQueryDecorator
             i=0;
         }
         i++;
-        Vector2 vec = Vector2.RIGHT(speed).sum(decorated.whereToMove(ent));
+        IVector2 vec = Vector2.RIGHT(speed).sum(decorated.whereToMove(ent));
         return vec;
 
     }
@@ -45,7 +46,7 @@ public class AbsoluteLateral  extends AIQueryDecorator
     }
 
     @Override
-    public Vector2 whereToSee(Entity ent)
+    public IVector2 whereToSee(Entity ent)
     {
         return decorated.whereToSee(ent);
     }

@@ -1,5 +1,6 @@
 package IAs;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Entities.Entity;
 import java.util.*;
@@ -24,7 +25,7 @@ public class LateralAndDown extends AIQueryDecorator
     }
 
     @Override
-    public Vector2 whereToMove(Entity ent) {
+    public IVector2 whereToMove(Entity ent) {
         if(down>maxDown|| Math.abs(new Random().nextInt(90))<2){
             down = 0;
             dirGiver = lat;
@@ -43,8 +44,8 @@ public class LateralAndDown extends AIQueryDecorator
     }
 
     @Override
-    public Vector2 whereToSee(Entity ent) {
-        Vector2 v = dirGiver.get().rotateUnary(0.5f);
+    public IVector2 whereToSee(Entity ent) {
+        IVector2 v = dirGiver.get().rotateUnary(0.5f);
         if(v.y()>0){
             v = v.prod(-1);
         }

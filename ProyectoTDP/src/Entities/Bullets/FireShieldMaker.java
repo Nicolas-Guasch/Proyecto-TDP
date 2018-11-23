@@ -1,5 +1,6 @@
 package Entities.Bullets;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
@@ -41,7 +42,7 @@ public class FireShieldMaker extends PlayerBulletBuilder
                                     //podriamos randomizar eso..
                                     // pero quedaría mal el sprite
         int ratio = 100;
-        Vector2 firstLateral = Vector2.UP();
+        IVector2 firstLateral = Vector2.UP();
 
         AlwaysTurnAround beh = new AlwaysTurnAround(PlayerShip.getInstance().referenced().transform(),
                                         ratio, angularSpeed,firstLateral);

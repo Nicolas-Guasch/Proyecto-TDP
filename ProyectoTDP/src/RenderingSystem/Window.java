@@ -1,5 +1,6 @@
 package RenderingSystem;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Assets.AssetStore;
 import Settings.Settings;
@@ -192,7 +193,7 @@ public class Window extends Component
         wind.repaint();
     }
 
-    public Vector2 GetPhaseShift() {
+    public IVector2 GetPhaseShift() {
         int x = wind.getBounds().x;
         int y = wind.getBounds().y;
         return new Vector2(x,y);

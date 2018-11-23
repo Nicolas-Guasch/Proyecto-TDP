@@ -1,5 +1,6 @@
 package DataParsers;
-
+import ADTs.IVector2;
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Entities.Ships.EnemiesBuilders.*;
 import Entities.Ships.EnemyShipBuilder;
@@ -11,7 +12,7 @@ import java.util.*;
 public class LevelsData implements ILevelsData
 {
 
-    private Map<String,List<Vector2>> enemsPos, obstpos;
+    private Map<String,List<IVector2>> enemsPos, obstpos;
     private Map<String,List<EnemyShipBuilder>> enemies;
     private Map<String,List<RewardKey>> rew;
 
@@ -24,8 +25,8 @@ public class LevelsData implements ILevelsData
     LevelsData()
     {
         enemies = new TreeMap<String, List<EnemyShipBuilder>>();
-        obstpos = new TreeMap<String, List<Vector2>>();
-        enemsPos = new TreeMap<String, List<Vector2>>();
+        obstpos = new TreeMap<String, List<IVector2>>();
+        enemsPos = new TreeMap<String, List<IVector2>>();
         rew = new TreeMap<String, List<RewardKey>>();
 
         rew.put(L1,new LinkedList<RewardKey>());
@@ -38,13 +39,13 @@ public class LevelsData implements ILevelsData
 
 
 
-        obstpos.put(L1,new LinkedList<Vector2>());
-        obstpos.put(L2,new LinkedList<Vector2>());
-        obstpos.put(L3,new LinkedList<Vector2>());
+        obstpos.put(L1,new LinkedList<IVector2>());
+        obstpos.put(L2,new LinkedList<IVector2>());
+        obstpos.put(L3,new LinkedList<IVector2>());
 
-        enemsPos.put(L1,new LinkedList<Vector2>());
-        enemsPos.put(L2,new LinkedList<Vector2>());
-        enemsPos.put(L3,new LinkedList<Vector2>());
+        enemsPos.put(L1,new LinkedList<IVector2>());
+        enemsPos.put(L2,new LinkedList<IVector2>());
+        enemsPos.put(L3,new LinkedList<IVector2>());
 
         initenempos();
         initObsts();
@@ -163,12 +164,12 @@ public class LevelsData implements ILevelsData
     }
 
     @Override
-    public List<Vector2> enemiesPositions() {
+    public List<IVector2> enemiesPositions() {
         return enemsPos.get(currentKey);
     }
 
     @Override
-    public List<Vector2> obstaclesPositions() {
+    public List<IVector2> obstaclesPositions() {
         return obstpos.get(currentKey);
     }
 

@@ -1,5 +1,6 @@
 package IAs;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Entities.Entity;
 
@@ -10,7 +11,7 @@ public class Hybrid50Hunter extends AIQueryDecorator {
     }
 
     @Override
-    public Vector2 whereToMove(Entity ent) {
+    public IVector2 whereToMove(Entity ent) {
         if(ent.data().getHealth() < 50)
         {
             return decorated.whereToMove(ent).withLength(0.5f).sum(ent.referenced().transform().top(1.5f)).norma();
@@ -19,7 +20,7 @@ public class Hybrid50Hunter extends AIQueryDecorator {
     }
 
     @Override
-    public Vector2 whereToSee(Entity ent) {
+    public IVector2 whereToSee(Entity ent) {
         return decorated.whereToSee(ent);
     }
 }

@@ -1,5 +1,6 @@
 package InputManager;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 
 public class DirectionalWASD extends AbstractDirectionalInput
@@ -30,7 +31,7 @@ public class DirectionalWASD extends AbstractDirectionalInput
     }
 
     @Override
-    public Vector2 Direction()
+    public IVector2 Direction()
     {
         float x = 0, y = 0;
         x += D.happens() &&!Xblocked ? 1:0;

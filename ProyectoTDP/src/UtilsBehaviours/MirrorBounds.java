@@ -1,16 +1,17 @@
 package UtilsBehaviours;
 
+import ADTs.IVector2;
 import Engine.Component;
 import ADTs.Vector2;
-
+import ADTs.IVector2;
 public class MirrorBounds extends Component
 {
 
-    private Vector2 topRight, bottomLeft;
+    private IVector2 topRight, bottomLeft;
 
     private float x,y;
 
-    public MirrorBounds(Vector2 topRight, Vector2 bottomLeft)
+    public MirrorBounds(IVector2 topRight, IVector2 bottomLeft)
     {
         this.topRight = topRight;
         this.bottomLeft = bottomLeft;

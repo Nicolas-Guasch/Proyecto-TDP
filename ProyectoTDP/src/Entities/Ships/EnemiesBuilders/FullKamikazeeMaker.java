@@ -1,5 +1,6 @@
 package Entities.Ships.EnemiesBuilders;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
@@ -61,9 +62,9 @@ public class FullKamikazeeMaker extends EnemyShipBuilder {
         //usar en el que cambia Predicate<Entity> toTest = new MoreThanPercentHealth(GameSettings.GetInstance().TieData.getHealth(),50);
 
 
-        Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
-        Vector2 topRight = bottomRight.mirrorX();
-        Vector2 bottomLeft = bottomRight.mirrorY();
+        IVector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
+        IVector2 topRight = bottomRight.mirrorX();
+        IVector2 bottomLeft = bottomRight.mirrorY();
         ship.addBehaviour(new MirrorBounds(topRight.prod(1.05f),bottomLeft.prod(1.05f)));
     }
 

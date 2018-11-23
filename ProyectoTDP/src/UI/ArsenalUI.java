@@ -1,5 +1,6 @@
 package UI;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import ADTs.Vector3;
 import Engine.GameObject;
@@ -76,7 +77,7 @@ public class ArsenalUI implements UIComponent {
     private void checkSelected() {
         Weapon weapon = arsenal.getCurrent();
         Renderizable rend = map.get(weapon);
-        Vector2 planepos = rend.transform().position();
+        IVector2 planepos = rend.transform().position();
         Vector3 v = planepos.v3(10);
         selector.transform().setPosition(v);
     }

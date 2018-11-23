@@ -1,5 +1,5 @@
 package Scripts;
-
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Components.Transform;
 import Engine.GameObject;
@@ -12,10 +12,10 @@ public class HyperSpace
 
     private static GameObject obj;
 
-    public static Jumper Jump(Transform toMove, Vector2 destiny, int frames, int delayFrames){
+    public static Jumper Jump(Transform toMove, IVector2 destiny, int frames, int delayFrames){
         checkObj();
         assert frames>0;
-        List<Vector2> path = GetPath(toMove.position(),destiny,frames);
+        List<IVector2> path = GetPath(toMove.position(),destiny,frames);
         return obj.addChild().addComponent(new Jumper(path,toMove,delayFrames));
     }
 
@@ -26,10 +26,10 @@ public class HyperSpace
         }
     }
 
-    private static List<Vector2> GetPath(Vector2 src, Vector2 dest, int frames){
-        Vector2 minPath = dest.sub(src).prod(1f/frames);
-        List<Vector2> v = new ArrayList<Vector2>(frames+1);
-        Vector2 lastPos = src;
+    private static List<IVector2> GetPath(IVector2 src, IVector2 dest, int frames){
+        IVector2 minPath = dest.sub(src).prod(1f/frames);
+        List<IVector2> v = new ArrayList<IVector2>(frames+1);
+        IVector2 lastPos = src;
         for(int i=0 ; i<frames-1 ; i++){
             lastPos = lastPos.sum(minPath);
             v.add(lastPos);

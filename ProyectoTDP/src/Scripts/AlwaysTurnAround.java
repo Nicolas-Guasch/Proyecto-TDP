@@ -1,5 +1,6 @@
 package Scripts;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Component;
 import Engine.Components.Transform;
@@ -8,9 +9,9 @@ public class AlwaysTurnAround extends Component
 {
     private final float angularSpeed;
     private final Transform center;
-    private Vector2 currentGap;
+    private IVector2 currentGap;
 
-    public AlwaysTurnAround(Transform center, float ratio, float angularSpeed, Vector2 firstSide){
+    public AlwaysTurnAround(Transform center, float ratio, float angularSpeed, IVector2 firstSide){
         this.center=center;
         this.angularSpeed=angularSpeed;
         this.currentGap = firstSide.withLength(ratio);

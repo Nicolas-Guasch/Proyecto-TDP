@@ -1,5 +1,6 @@
 package UI;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Action;
 import Engine.Components.Transform;
@@ -21,7 +22,7 @@ public class Tweeners
 
 
     //fixme (param)
-    public void DoMove(Transform toMove, Vector2 destiny, int steps, Action onComplete){
+    public void DoMove(Transform toMove, IVector2 destiny, int steps, Action onComplete){
         Action completion = new Action() {
             @Override
             public void invoke() {

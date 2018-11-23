@@ -1,5 +1,6 @@
 package Entities.Ships.Player;
 
+import ADTs.IVector2;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import ADTs.Vector2;
@@ -73,9 +74,9 @@ collider: 130x130
             //con una proporcionalidad x1.2 para que se pueda ir un poquito
             //al llegar a un extremo aparece por el opuesto
 
-        Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
-        Vector2 topRight = bottomRight.mirrorX();
-        Vector2 bottomLeft = bottomRight.mirrorY();
+        IVector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
+        IVector2 topRight = bottomRight.mirrorX();
+        IVector2 bottomLeft = bottomRight.mirrorY();
         ship.addBehaviour(new MirrorBounds(topRight.prod(1.2f),bottomLeft.prod(1.2f)));
     }
 

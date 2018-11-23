@@ -2,6 +2,7 @@ package Audio;
 import java.util.*;
 
 
+import ADTs.IVector2;
 import Engine.Components.Transform;
 import ADTs.Vector2;
 import SoundSystem.*;
@@ -92,7 +93,7 @@ public final class SoundManager
         pew.play(0.05f);
     }
 
-    public void explo(Vector2 position){
+    public void explo(IVector2 position){
         Sound s = new Random().nextBoolean() ? explo1:explo2;
         PlayAt(position,s);
     }
@@ -113,13 +114,13 @@ public final class SoundManager
         Pew();
     }
 
-    public void TieDowns(Vector2 source)
+    public void TieDowns(IVector2 source)
     {
         PlayAt(source,tie);
     }
 
     //plays Pew at this position
-    public void Pew(Vector2 position)
+    public void Pew(IVector2 position)
     {
         PlayAt(position, Tools.Random.value()>.5f?pew:pew2);
     }
@@ -132,10 +133,10 @@ public final class SoundManager
     }
 
 
-    private void PlayAt(Vector2 vec, Sound sound)
+    private void PlayAt(IVector2 vec, Sound sound)
     {
-        Vector2 point = listenPoint.position();
-        Vector2 top = listenPoint.top();
+        IVector2 point = listenPoint.position();
+        IVector2 top = listenPoint.top();
         // -------- VOL --------------
         float vol = (MaxDist - (vec.distanceTo(point)));
         if(vol>10)
@@ -152,7 +153,7 @@ public final class SoundManager
         // ------------- Pan -------------
 
         float pan = 1;
-        Vector2 go_to = vec.sub(point);
+        IVector2 go_to = vec.sub(point);
         pan = go_to.getUnaryAngle(top)*2;
 
         sound.play(vol,pan);
@@ -168,7 +169,7 @@ public final class SoundManager
         this.listenPoint = transform;
     }
 
-    public void TieEngine(Vector2 position)
+    public void TieEngine(IVector2 position)
     {
         PlayAt(position,tie);
     }

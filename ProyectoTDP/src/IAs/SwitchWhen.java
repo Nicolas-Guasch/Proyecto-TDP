@@ -1,5 +1,6 @@
 package IAs;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Entities.Entity;
 
@@ -27,13 +28,13 @@ public class SwitchWhen implements EntityQuery {
     }
 
     @Override
-    public Vector2 whereToMove(Entity ent) {
+    public IVector2 whereToMove(Entity ent) {
         check(ent);
         return currentHandler.whereToMove(ent);
     }
 
     @Override
-    public Vector2 whereToSee(Entity ent) {
+    public IVector2 whereToSee(Entity ent) {
         check(ent);
         return currentHandler.whereToSee(ent);
     }

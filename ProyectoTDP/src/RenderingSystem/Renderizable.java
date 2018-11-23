@@ -1,5 +1,6 @@
 package RenderingSystem;
 
+import ADTs.IVector2;
 import Engine.Component;
 import ADTs.Vector2;
 import GameData.GameSettings;
@@ -88,7 +89,7 @@ public class Renderizable extends Component implements IRenderizable
         hide();
     }
 
-    public Vector2 getSize()
+    public IVector2 getSize()
     {
         return new Vector2(label.getWidth(),label.getHeight());
     }

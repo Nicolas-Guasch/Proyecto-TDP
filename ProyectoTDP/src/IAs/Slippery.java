@@ -1,5 +1,6 @@
 package IAs;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Entities.Entity;
 
@@ -22,11 +23,11 @@ public class Slippery extends AIQueryDecorator
     }
 
     private float tolerance = 0.0001f;
-    private Vector2 last = Vector2.LEFT(tolerance);
+    private IVector2 last = Vector2.LEFT(tolerance);
 
     @Override
-    public Vector2 whereToMove(Entity ent) {
-        Vector2 v = decorated.whereToMove(ent);
+    public IVector2 whereToMove(Entity ent) {
+        IVector2 v = decorated.whereToMove(ent);
         if(last.equals(Vector2.ORIGIN())){
             last = v;
             return v;
@@ -47,7 +48,7 @@ public class Slippery extends AIQueryDecorator
     }
 
     @Override
-    public Vector2 whereToSee(Entity ent) {
+    public IVector2 whereToSee(Entity ent) {
         return decorated.whereToSee(ent);
     }
 }

@@ -15,27 +15,27 @@ public class FireFrequency extends Component
 {
     private final int shootFrequency;
     private Arsenal weapons;
-    private int i;
+    private int contadorDeFrames;//fixme
     public FireFrequency(int shootFrequency, Arsenal arsenal)
     {
         this.shootFrequency = shootFrequency + Math.abs(Random.value(0, shootFrequency /15)) - 3;
         this.weapons = arsenal;
 
-        i= shootFrequency;
+        contadorDeFrames = shootFrequency;
     }
 
     @Override
     public void update()
     {
-        if(i>= shootFrequency)
+        if(contadorDeFrames >= shootFrequency)
         {
             if(!weapons.isEmpty()) {
                 weapons.shoot();
                 weapons.switchCurrent();
             }
-            i=0;
+            contadorDeFrames =0;
         }
-        i++;
+        contadorDeFrames++;
     }
 
     @Override

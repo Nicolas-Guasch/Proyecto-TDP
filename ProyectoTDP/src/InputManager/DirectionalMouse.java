@@ -1,5 +1,6 @@
 package InputManager;
 
+import ADTs.IVector2;
 import Engine.Components.Transform;
 import ADTs.Vector2;
 import RenderingSystem.RenderingTools;
@@ -22,19 +23,19 @@ public class DirectionalMouse extends AbstractDirectionalInput
         reference = null;
     }
 
-    public Vector2 Direction()
+    public IVector2 Direction()
     {
         if(reference!=null)
         {
             try{
                 int mouseX = MouseInfo.getPointerInfo().getLocation().x;
                 int mouseY = MouseInfo.getPointerInfo().getLocation().y;
-                Vector2 phaseshift = Window.GetInstance().GetPhaseShift();
+                IVector2 phaseshift = Window.GetInstance().GetPhaseShift();
 
                 mouseX -= phaseshift.x();
                 mouseY -= phaseshift.y();
 
-                Vector2 mousePos = RenderingTools.CanvasToWorld(new Dimension(mouseX,mouseY));
+                IVector2 mousePos = RenderingTools.CanvasToWorld(new Dimension(mouseX,mouseY));
                 return mousePos.sub(reference.position()).norma();
             }catch(Exception e){ // puede haber un error con el mouse
                 return Vector2.ORIGIN();

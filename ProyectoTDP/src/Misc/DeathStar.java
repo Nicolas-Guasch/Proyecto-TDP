@@ -1,5 +1,6 @@
 package Misc;
 
+import ADTs.IVector2;
 import Engine.GameObject;
 import ADTs.Vector2;
 import GameData.GameSettings;
@@ -19,9 +20,9 @@ public class DeathStar {
 
         GameObject deathStar = GameObject.getRoot().addChild();
         deathStar.transform().setPosition(new Vector2(-500, 400));
-        Vector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
-        Vector2 topRight = bottomRight.mirrorX();
-        Vector2 bottomLeft = bottomRight.mirrorY();
+        IVector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
+        IVector2 topRight = bottomRight.mirrorX();
+        IVector2 bottomLeft = bottomRight.mirrorY();
         deathStar.addComponent(new MirrorBounds(topRight.prod(1.4f), bottomLeft.prod(1.4f)));
         deathStar.addComponent(new Directionable(Vector2.random(0.5f)));
         deathStar.addComponent(new AlwaysRotate(0.2f));

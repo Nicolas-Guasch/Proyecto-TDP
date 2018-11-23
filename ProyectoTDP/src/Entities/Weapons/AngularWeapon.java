@@ -1,5 +1,6 @@
 package Entities.Weapons;
 
+import ADTs.IVector2;
 import Engine.Components.Transform;
 
 import ADTs.Vector2;
@@ -29,11 +30,11 @@ public class AngularWeapon<BulletDirectorType extends IBulletDirector> extends W
 
     public void Shoot()
     {
-        Vector2 point = reference.position().sum(reference.top().prod(20));
+        IVector2 point = reference.position().sum(reference.top().prod(20));
 
         float pedazo = (tot_ang/(cantShoots-1));
         float first = (pedazo*((cantShoots-1)/-2f));
-        Vector2 desph = reference.top().right();
+        IVector2 desph = reference.top().right();
 
         if (cantShoots % 2 == 0){
             point = point.sum(desph.prod(-phaseShift / 2));

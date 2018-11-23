@@ -1,6 +1,6 @@
 package ADTs;
 
-public class Vector3{
+public class Vector3 implements IVector3 {
     private final float z;
     private final float x;
     private final float y;
@@ -17,9 +17,11 @@ public class Vector3{
 
     }
 
-    public Vector2 xy() {
+    @Override
+    public IVector2 xy() {
         return new Vector2(x,y);
     }
+    @Override
     public float z()
     {
         return z;

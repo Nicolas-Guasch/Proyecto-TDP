@@ -1,5 +1,6 @@
 package UI;
 
+import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Component;
 import Engine.Components.Transform;
@@ -10,11 +11,11 @@ public class TweenerMove extends Component
 
     private final int steps;
     private final Transform toMove;
-    private final Vector2 destiny;
+    private final IVector2 destiny;
     private final Runnable onComplete;
     private int currentStep;
 
-    public TweenerMove(Transform toMove, Vector2 destiny, int steps, Runnable onComplete){
+    public TweenerMove(Transform toMove, IVector2 destiny, int steps, Runnable onComplete){
         this.destiny = destiny;
         this.toMove = toMove;
         this.steps = steps;
@@ -23,7 +24,7 @@ public class TweenerMove extends Component
     }
 
     //asumo currentStep != steps y
-    private Vector2 direction(){
+    private IVector2 direction(){
         return destiny.sub(toMove.position()).prod(1f/(steps-currentStep));
     }
 
