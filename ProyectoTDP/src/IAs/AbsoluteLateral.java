@@ -24,8 +24,6 @@ public class AbsoluteLateral  extends AIQueryDecorator
         ran = 0;
     }
 
-
-
     @Override
     public IVector2 whereToMove(Entity ent)
     {
@@ -36,9 +34,7 @@ public class AbsoluteLateral  extends AIQueryDecorator
             i=0;
         }
         i++;
-        IVector2 vec = Vector2.RIGHT(speed).sum(decorated.whereToMove(ent));
-        return vec;
-
+        return Vector2.RIGHT(speed).sum(decorated.whereToMove(ent));
     }
 
     private int ran() {

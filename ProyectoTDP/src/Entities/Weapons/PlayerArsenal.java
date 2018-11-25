@@ -1,5 +1,6 @@
 package Entities.Weapons;
 
+import Exceptions.EmptyWeaponsBagpackException;
 import Observer.IBroadcaster;
 import Observer.Invoker;
 import Observer.ObserverPack;

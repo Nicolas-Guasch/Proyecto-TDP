@@ -22,9 +22,14 @@ public class LoadWindow
 
 
     // NO, no es un instanceof, son los nombres de los archivos a cargar
-    private String[] everynames = {"only coin","point","rewardfire","rewardforce","rewardhealth","rewardshield","mouseAim","life","levintro3","levintro2",
-            "levintro1","wooky","bigbar","bossbar","shipplayer","commontie1","commontie2","hybridtie","shield","whitetie","soloship","vadership_a"
-            ,"vadership_b","vadership_c","bforcefield","forcefield","fexplo","bfexplo","exploA","exploB","bg_space","bg_water","bg_sand","black","",};
+    private String[] everynames = {
+            "only coin","point","rewardfire",
+            "rewardforce","rewardhealth","rewardshield","mouseAim","life",
+            "levintro3","levintro2","levintro1","wooky","bigbar",
+            "bossbar","shipplayer","commontie1","commontie2","hybridtie",
+            "shield","whitetie","soloship","vadership_a","vadership_b",
+            "vadership_c","bforcefield","forcefield","fexplo","bfexplo",
+            "exploA","exploB","bg_space","bg_water","bg_sand","black",};
 
 
 
@@ -68,13 +73,13 @@ public class LoadWindow
 
         float sub_load = (300f/everynames.length);
 
-        System.out.println("listo0");
+
         try {
             Thread.sleep(10);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("listo1");
+
 
         SoundManager.Instance();
 
@@ -103,14 +108,14 @@ public class LoadWindow
         }
 
 
-        System.out.println("listo2");
+
 
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("listo3");
+
 
         wind.dispose();
         TheGame.startGame();

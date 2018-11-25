@@ -29,9 +29,6 @@ public class CurrentMatchData
 
     }
 
-
-
-
     public int currentScore()
     {
         return score;
