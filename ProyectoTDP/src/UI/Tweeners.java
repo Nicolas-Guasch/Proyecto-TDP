@@ -21,7 +21,7 @@ public class Tweeners
     }
 
 
-    //fixme (param)
+    //fixme (param). No está en uml. Se usa?
     public void DoMove(Transform toMove, IVector2 destiny, int steps, Action onComplete){
         Action completion = new Action() {
             @Override
