@@ -1,6 +1,6 @@
 package Engine;
 
-//fixme uml
+//fixme uml. Done
 public interface Condition {
     boolean ask();
 }

@@ -20,6 +20,7 @@ package GameTimeLine{
         +currentLevel():TimePoint
         - runLevel()
         + playLevel()
+        -activeTrue():void
     }
 
     SomeBarricades --|> TimePoint
@@ -55,6 +56,8 @@ package GameTimeLine{
         + assembleMoment()+
         + startMoment()+
         + complete():bool+
+        - perfectSpeed():boolean
+        - changeSpeed(): void
     }
 
 
@@ -65,6 +68,7 @@ package GameTimeLine{
         + assembleMoment()+
         + startMoment()+
         + complete():bool+
+        - setReady():void
     }
 
 
@@ -92,6 +96,7 @@ package GameTimeLine{
         + assembleMoment()+
         + startMoment()+
         + complete():bool+
+        - setReadyTrue():void
     }
 
     class GameManager{
@@ -99,6 +104,22 @@ package GameTimeLine{
         +{static} getInstance:GameManager
         +GameManager()
         +StartGame()
+    }
+
+    class BossLevel extends TimePoint {
+
+        -ShipStatus ShipStatus
+        -EnemyShipDirector director
+        -boolean playing=false
+        vader:BaseEnemyShip
+
+        +BossLevel(EnemyShipBuilder builder)
+
+        +assembleMoment():void
+        +startMoment():void
+        +completed():boolean
+        +clean():void
+        -makePlaying():void
     }
 }
 

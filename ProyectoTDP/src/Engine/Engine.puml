@@ -10,6 +10,26 @@ package Engine{
         +{abstract}frameCounter():long
     }
 
+    IUpdatable <|-- Component
+    IUpdatable <|-- GameObject
+
+    interface IUpdatable {
+        +update():void
+    }
+
+    interface Condition{
+        +ask():boolean
+    }
+
+    Consumer <|-- OperationUpdate
+
+    class OperationUpdate{
+
+        -toUpdate:IUpdatable
+        +OperationUpdate(IUpdatable toUpdate)
+        +accept(Object o):void
+    }
+
     IEngine <|-- MyEngine
     MyEngine -- "1" Core
     MyEngine -- "2" IBroadcaster
@@ -17,7 +37,7 @@ package Engine{
         #MyEngine();
         +suscribeToUpdate(object:GameObject)+
         +suscribeToUpdate(component:Component )+
-        +waitForFrames(action:Runnable , frames:int )+
+        +waitForFrames(action:Action , frames:int )+
         +start();+
         +Pauser():CorePauser+
         +frameCounter():long+
@@ -155,12 +175,11 @@ package Engine{
 
     Component <|-- DoWhen
     class DoWhen {
-        -condition:Callable<boolean>
-        -codeBlock:Runnable
         -cond:boolean
+        -condition:Condition
+        -codeBlock:Action
         +DoWhen(condition:Callable<Boolean>, Runnable action)
         +update()+
-        -checks():Boolean
     }
 
     EngineGetter -- "1" EngineGetter:instance
@@ -177,13 +196,13 @@ package Engine{
     Component <|-- While
     class While
     {
-        -condition:Callable<boolean>
-        -codeBlock:Runnable
-        -onComplete:Runnable
+        -condition:Condition
+        -codeBlock:Action
+        -onComplete:Action
         -cond:boolean
         -runs:boolean
 
-        +While(condition:Callable<Boolean> ,codeBlock:Runnable)
+        +While(condition:Condition ,codeBlock:Action)
 
         +update()+
         -checks():Boolean

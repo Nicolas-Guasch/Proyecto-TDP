@@ -30,6 +30,7 @@ class Vector2{
     +prod(real:float):Vector2
     +norma():Vector2
     +rot(angle:float):Vector2
+    +get(double xx, double yy):IVector2
     +getAngle(other:Vector2):float
     +rotateUnary(angle:float):Vector2
     +getUnaryAngle(other:Vector2):float
@@ -53,11 +54,14 @@ class Vector2{
     +toDimension():Dimension
     +toString():String++
 }
-interface IClonable<ClonableType>{
-    +clone():ClonableType
+
+interface IRect{
+    +max():IVector2
+    +prod(float factor):Rect
 }
 
-IClonable <|-- Rect
+
+IRect <|-- Rect
 
 class Rect
 {
@@ -68,6 +72,14 @@ class Rect
     +prod(factor:float):Rect
     +clone() : Rect +
 }
+
+interface IRowCol {
+    +getCol():int
+    +getRow():int
+}
+
+IRowCol <|-- RowCol
+
 class RowCol
 {
     -row:int
@@ -76,6 +88,14 @@ class RowCol
     +getCol():int
     +getRow():int
 }
+
+ITuple <|-- Tuple
+
+interface ITuple<T1,T2>{
+    get2():T2
+    get1():T1
+}
+
 class Tuple<T1,T2>{
     -element1:T1
     -element2:T2

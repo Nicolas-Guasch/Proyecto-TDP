@@ -137,7 +137,7 @@ public class EveryOne extends Component
     }
 
 
-    private void eraser(Entity e) {//fixme uml
+    private void eraser(Entity e) {//fixme uml.Done
         entities.remove(e);
     }
 }

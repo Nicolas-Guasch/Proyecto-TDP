@@ -122,6 +122,8 @@ package EntitiesVisitor{
         -getBehaviour()
         -getRenderer()
         -getWeapons()
+        -onPosition():boolean
+        -reactive():void
     }
 
     class WeaponSwitch{

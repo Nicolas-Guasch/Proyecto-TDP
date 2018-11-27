@@ -1,5 +1,5 @@
 package ADTs;
-//fixme
+//fixme. Done
 public interface IRowCol {
     int getCol();
     int getRow();

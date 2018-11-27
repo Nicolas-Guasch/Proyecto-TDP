@@ -12,6 +12,7 @@ LookTarget -- "1" Transform: target >
 class FireFrequency{
     - shootFrequency:final int
     - i:int
+    - contadorDeFrames:int
 
     +FireFrequency(shootFrequency:int, arsenal:Arsenal)
     + update()++
