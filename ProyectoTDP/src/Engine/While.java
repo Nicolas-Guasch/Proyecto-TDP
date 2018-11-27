@@ -14,9 +14,9 @@ public class While extends Component
 
     private boolean cond;
     private boolean runs;
-    private Action onComplete;
+    private Action onComplete;//fixme. Done
 
-    public While(Condition condition, Action codeBlock) { //fixme uml (condition)
+    public While(Condition condition, Action codeBlock) { //fixme uml (condition).Done
         GameObject.getRoot().addChild().addComponent(this);
         this.condition = condition;
         this.codeBlock = codeBlock;

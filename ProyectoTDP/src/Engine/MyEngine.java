@@ -37,7 +37,7 @@ class MyEngine implements IEngine
     //TODO: guardar une HashMap de los components para desuscribirlos mas fasil luego
 
 
-    @Override // fixme uml (el parametro)
+    @Override // fixme uml (el parametro).Done
     public void waitForFrames(Action action, int frames)
     {
         core.waitForFrames(action,frames);

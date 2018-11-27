@@ -8,7 +8,7 @@ import RenderingSystem.Renderizable;
 import java.util.*;
 import java.util.function.Consumer;
 
-//FIXME uml la herencia
+//FIXME uml la herencia. Done
 public class GameObject implements IUpdatable
 {
 
