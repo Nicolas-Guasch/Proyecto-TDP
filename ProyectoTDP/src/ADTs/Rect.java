@@ -2,7 +2,7 @@ package ADTs;
 
 
 public final class Rect implements IRect
-//fixme no tiene mas ESA herencia (iclonable)
+//fixme no tiene mas ESA herencia (iclonable) .Done
 {
     private IVector2 max, min;
 
