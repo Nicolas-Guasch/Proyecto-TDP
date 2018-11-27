@@ -47,10 +47,9 @@ public class While extends Component
         }
     }
 
-    private Boolean checks()
+    private boolean checks()
     {
         return condition.ask();
-
     }
 
 
