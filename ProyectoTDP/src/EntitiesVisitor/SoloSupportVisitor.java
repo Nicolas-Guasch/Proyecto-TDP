@@ -110,11 +110,11 @@ public class SoloSupportVisitor extends VisitorEntity
     }
 
 
-    private boolean onPosition() {//fixme uml metodo
+    private boolean onPosition() {//fixme uml metodo. Done
         return ship.referenced().transform().position().distanceTo(new Vector2(-800, 00)) < 17;
     }
 
-    private void reactive() {//Uml metodo fixme
+    private void reactive() {//Uml metodo fixme. Done
         ship.getPilot().setActive(false);
         ship.getArsenal().setActive(false);
         ship.data().setHealth(-1);
