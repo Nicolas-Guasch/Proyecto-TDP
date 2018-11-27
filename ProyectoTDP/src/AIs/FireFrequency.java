@@ -15,7 +15,7 @@ public class FireFrequency extends Component
 {
     private final int shootFrequency;
     private Arsenal weapons;
-    private int contadorDeFrames;//fixme
+    private int contadorDeFrames;//fixme. Done
     public FireFrequency(int shootFrequency, Arsenal arsenal)
     {
         this.shootFrequency = shootFrequency + Math.abs(Random.value(0, shootFrequency /15)) - 3;
