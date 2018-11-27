@@ -55,7 +55,7 @@ public class BossLevel extends TimePoint {
         UI.getInstance().removeUIComponent(ShipStatus);
     }
 
-    private void makePlaying() {//fixme
+    private void makePlaying() {//fixme.Done
 
         playing = true;
     }

@@ -109,7 +109,7 @@ public final class TimeLine extends Component {
 		EngineGetter.Instance().get().waitForFrames(this::runTheLevel,500);
 	}
 
-	private void activeTrue() { //fixme
+	private void activeTrue() { //fixme. Done
 		setActive(true);
 	}
 }

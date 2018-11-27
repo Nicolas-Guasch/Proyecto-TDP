@@ -41,7 +41,7 @@ public class PlayerAssembler extends TimePoint {
         return ready;
     }
 
-    private void setReady() {//fixme
+    private void setReady() {//fixme. Done
         ready = true;
     }
 }
