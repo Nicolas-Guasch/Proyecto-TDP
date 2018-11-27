@@ -16,3 +16,4 @@ public class BarricadeBoth extends Entity {
 		visitor.visit(this);
 	}
 }
+//bot setup
