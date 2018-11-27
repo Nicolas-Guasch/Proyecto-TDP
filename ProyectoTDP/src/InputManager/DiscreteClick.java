@@ -1,7 +1,8 @@
 package InputManager;
 
+import Engine.TheEngine;
 import Observer.*;
-import Engine.EngineGetter;
+
 
 public class DiscreteClick extends AbstractDiscreteInput
 {
@@ -25,7 +26,7 @@ public class DiscreteClick extends AbstractDiscreteInput
         invokerOnAction = pack.Invoker;
         related = new ContinueClick(mouseClick);
         Dummy = new DummyComponent(this::Update);
-        EngineGetter.Instance().get().suscribeToUpdate(Dummy);
+        TheEngine.getInstance().suscribeToUpdate(Dummy);
     }
 
 

@@ -19,7 +19,7 @@ public class GameObject implements IUpdatable
     {
         if (root == null)
         {
-            IEngine eng = EngineGetter.Instance().get();
+            IEngine eng = TheEngine.getInstance();
             root = new GameObject(null);
             eng.suscribeToUpdate(root);
             //eng.suscribeToPhysicsUpdate(root);

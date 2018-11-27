@@ -13,7 +13,7 @@ public class TheGame
     public static void startGame() {
 
         Window window = Window.GetInstance();
-        IEngine eng = EngineGetter.Instance().get();
+        IEngine eng = TheEngine.getInstance();
         window.AddInput(eng.Pauser());//para poner pausa
 
         GameManager.getInstance().StartGame();

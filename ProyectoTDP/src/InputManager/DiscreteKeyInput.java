@@ -1,7 +1,8 @@
 package InputManager;
 
+import Engine.TheEngine;
 import Observer.*;
-import Engine.EngineGetter;
+
 
 public class DiscreteKeyInput extends AbstractDiscreteInput
 {
@@ -23,7 +24,7 @@ public class DiscreteKeyInput extends AbstractDiscreteInput
         invokerOnAction = pack.Invoker;
         related = new ContinueKeyInput(chars);
         Dummy = new DummyComponent(this::update);
-        EngineGetter.Instance().get().suscribeToUpdate(Dummy);
+        TheEngine.getInstance().suscribeToUpdate(Dummy);
     }
 
 

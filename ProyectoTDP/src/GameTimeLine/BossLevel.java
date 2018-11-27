@@ -1,7 +1,7 @@
 package GameTimeLine;
 
 import ADTs.Vector2;
-import Engine.EngineGetter;
+import Engine.TheEngine;
 import Entities.EntityData;
 import Entities.EveryOne;
 import Entities.Ships.BaseEnemyShip;
@@ -38,7 +38,7 @@ public class BossLevel extends TimePoint {
         ShipStatus = new ShipStatus(new Vector2(100,200), vader.observerHealth(),"bossbar",vader.data().getHealth());
         vader.referenced().transform().setPosition(Vector2.random(Random.value(300,450)).sum(PlayerShip.getInstance().referenced().transform().position()));
         UI.getInstance().addUIComponent(ShipStatus);
-        EngineGetter.Instance().get().waitForFrames(this::makePlaying,100);
+        TheEngine.getInstance().waitForFrames(this::makePlaying,100);
     }
 
     @Override

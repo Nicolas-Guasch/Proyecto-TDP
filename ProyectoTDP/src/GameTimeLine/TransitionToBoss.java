@@ -1,7 +1,8 @@
 package GameTimeLine;
 
 import Audio.SoundManager;
-import Engine.EngineGetter;
+
+import Engine.TheEngine;
 import Engine.While;
 import Entities.Ships.Player.PlayerShip;
 import IAs.EntityQuery;
@@ -38,10 +39,10 @@ public class TransitionToBoss extends TimePoint {
 
     @Override
     public void startMoment() {
-        EngineGetter.Instance().get().waitForFrames(this::StopMusic,10);
-        EngineGetter.Instance().get().waitForFrames(this::ChangeControls,90);
-        EngineGetter.Instance().get().waitForFrames(this::MusicStuff,180);
-        EngineGetter.Instance().get().waitForFrames(this::EnableContinue,270);
+        TheEngine.getInstance().waitForFrames(this::StopMusic,10);
+        TheEngine.getInstance().waitForFrames(this::ChangeControls,90);
+        TheEngine.getInstance().waitForFrames(this::MusicStuff,180);
+        TheEngine.getInstance().waitForFrames(this::EnableContinue,270);
         new While(TransitionToBoss::perfectSpeed, TransitionToBoss::changeSpeed).Excecute();
 
     }

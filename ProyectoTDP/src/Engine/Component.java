@@ -48,7 +48,7 @@ public abstract class Component implements IActivable, IUpdatable
     public void update(){}
 
     protected long frameCounter(){
-        return EngineGetter.Instance().get().frameCounter();
+        return TheEngine.getInstance().frameCounter();
     }
 
     /** not used in this project, but the core

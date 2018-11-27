@@ -4,7 +4,8 @@ import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Action;
 import Engine.Components.Transform;
-import Engine.EngineGetter;
+
+import Engine.TheEngine;
 import Entities.BarricadeBoth;
 import Entities.Ships.Player.PlayerShip;
 import Entities.Ships.ShipBoss;
@@ -34,9 +35,9 @@ public class BossVisitor extends VisitorEntity {
         Action rep = ()->{
             ship.referenced().transform().moveTowards(repuls);
         };
-        EngineGetter.Instance().get().waitForFrames(rep,1);
-        EngineGetter.Instance().get().waitForFrames(rep,2);
-        EngineGetter.Instance().get().waitForFrames(rep,3);
+        TheEngine.getInstance().waitForFrames(rep,1);
+        TheEngine.getInstance().waitForFrames(rep,2);
+        TheEngine.getInstance().waitForFrames(rep,3);
 
 
 

@@ -3,7 +3,8 @@ package Entities.Ships;
 import ADTs.IVector2;
 import ADTs.Vector2;
 import Engine.Action;
-import Engine.EngineGetter;
+
+import Engine.TheEngine;
 import Entities.Entity;
 import Entities.Ships.Player.PlayerShip;
 import EntitiesVisitor.VisitorEntity;
@@ -56,7 +57,7 @@ public class ShieldVisitor extends VisitorEntity
 
         visitable.referenced().transform().setPosition(point);
 
-        EngineGetter.Instance().get().waitForFrames(restore,400);
+        TheEngine.getInstance().waitForFrames(restore,400);
     }
 
     private void restore()

@@ -2,9 +2,10 @@ package Engine.Components;
 
 import ADTs.IVector2;
 import Engine.Component;
-import Engine.EngineGetter;
+
 import ADTs.Vector2;
 import ADTs.Vector3;
+import Engine.TheEngine;
 
 
 /**
@@ -94,7 +95,7 @@ public final class Transform extends Component
 
     public void DoMove(IVector2 vector2, int inframes) {
         //TODO: hacer tipo tween
-        EngineGetter.Instance().get().waitForFrames(()->
+        TheEngine.getInstance().waitForFrames(()->
         {
             setPosition(vector2);
         },inframes);

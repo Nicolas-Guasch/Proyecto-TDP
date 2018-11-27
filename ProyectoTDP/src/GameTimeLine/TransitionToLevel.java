@@ -1,6 +1,7 @@
 package GameTimeLine;
 
-import Engine.EngineGetter;
+
+import Engine.TheEngine;
 import Entities.Ships.Player.PlayerShip;
 import RenderingSystem.Background;
 import RenderingSystem.Backgrounds;
@@ -34,7 +35,7 @@ public class TransitionToLevel extends TimePoint {
     @Override
     public void startMoment() {
         UI.getInstance().startLevel(levelIndex);
-        EngineGetter.Instance().get().waitForFrames(this::setReadyTrue,180);
+        TheEngine.getInstance().waitForFrames(this::setReadyTrue,180);
         Background.getInstance().setBG(nameBackground);
         PlayerShip.getInstance().getArsenal().setActive(true);
         Sun.getInstance().setDaytime(sun);

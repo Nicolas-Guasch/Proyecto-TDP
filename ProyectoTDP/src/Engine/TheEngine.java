@@ -2,16 +2,23 @@ package Engine;
 
 import Observer.*;
 
-import java.util.function.Consumer;
-
-class MyEngine implements IEngine
+public class TheEngine implements IEngine
 {
 
     private Core core;
     private IBroadcaster<Float> onPhysicsUpdate;
     private IBroadcaster <Object> onUpdate;
 
-    MyEngine()
+    private static IEngine instance;
+    public static IEngine getInstance()
+    {
+        if(instance ==null){
+            instance = new TheEngine();
+        }
+        return instance;
+    }
+
+    TheEngine()
     {
         core = Core.getInstance();
         onUpdate = core.getUpdater();

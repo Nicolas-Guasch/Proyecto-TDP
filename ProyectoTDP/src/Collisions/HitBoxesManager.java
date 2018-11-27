@@ -2,7 +2,8 @@ package Collisions;
 
 import ADTs.Tuple;
 import Engine.Component;
-import Engine.EngineGetter;
+import Engine.TheEngine;
+
 
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -15,7 +16,7 @@ public class HitBoxesManager extends Component
     public static HitBoxesManager getInstance(){
         if (instance == null) {
             instance = new HitBoxesManager();
-            EngineGetter.Instance().get().suscribeToUpdate(instance);
+            TheEngine.getInstance().suscribeToUpdate(instance);
         }
         return instance;
     }

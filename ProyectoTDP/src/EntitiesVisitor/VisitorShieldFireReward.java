@@ -1,7 +1,8 @@
 package EntitiesVisitor;
 
 import Engine.Action;
-import Engine.EngineGetter;
+
+import Engine.TheEngine;
 import Entities.Bullets.FireShieldMaker;
 import Entities.Entity;
 import Entities.EveryOne;
@@ -34,7 +35,7 @@ public class VisitorShieldFireReward extends VisitorEntity
         EveryOne.getInstance().add(shield);
         enable = false;
         mine.data().setHealth(-1);
-        EngineGetter.Instance().get().waitForFrames(new Action() {
+        TheEngine.getInstance().waitForFrames(new Action() {
             @Override
             public void invoke() {
                 if (shield.data() != null)

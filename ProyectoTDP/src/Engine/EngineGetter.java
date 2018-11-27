@@ -3,6 +3,7 @@ package Engine;
 /**
  * Provides a way to access to the engine operations
  */
+/*
 public class EngineGetter
 {
     public static EngineGetter instance;
@@ -11,12 +12,13 @@ public class EngineGetter
         if(instance==null)
         {
             instance = new EngineGetter();
+
         }
         return instance;
     }
     private EngineGetter()
     {
-        ref = new MyEngine();
+        ref = new TheEngine();
     }
 
     private IEngine ref;
@@ -27,3 +29,4 @@ public class EngineGetter
         return ref;
     }
 }
+*/

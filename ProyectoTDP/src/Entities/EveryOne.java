@@ -2,8 +2,9 @@ package Entities;
 
 import Engine.Action;
 import Engine.Component;
-import Engine.EngineGetter;
+
 import Engine.GameObject;
+import Engine.TheEngine;
 import EntitiesVisitor.VisitorEntity;
 
 import java.util.Collection;
@@ -73,7 +74,7 @@ public class EveryOne extends Component
     public void killIn(Entity ent, int frames)
     {
 
-        EngineGetter.Instance().get().waitForFrames(new Action() {
+        TheEngine.getInstance().waitForFrames(new Action() {
             @Override
             public void invoke() {
                 if (ent.data() == null) return;

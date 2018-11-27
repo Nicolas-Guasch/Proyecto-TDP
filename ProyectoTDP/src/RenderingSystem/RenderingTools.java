@@ -2,7 +2,8 @@ package RenderingSystem;
 
 import ADTs.IVector2;
 import ADTs.Vector2;
-import Engine.EngineGetter;
+
+import Engine.TheEngine;
 import GameData.GameSettings;
 import Tools.Random;
 
@@ -46,7 +47,7 @@ public class RenderingTools
         if(onShake)return;
         screenShakeLevel = level;
         onShake = true;
-        EngineGetter.Instance().get().waitForFrames(RenderingTools::stopshake,15);
+        TheEngine.getInstance().waitForFrames(RenderingTools::stopshake,15);
     }
 
     private static void stopshake() {

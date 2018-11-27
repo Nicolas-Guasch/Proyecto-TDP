@@ -1,8 +1,9 @@
 package GameTimeLine;
 
 import Engine.Component;
-import Engine.EngineGetter;
+
 import Engine.GameObject;
+import Engine.TheEngine;
 import Entities.Ships.EnemiesBuilders.VaderAMaker;
 import Entities.Ships.EnemiesBuilders.VaderBMaker;
 import Entities.Ships.EnemiesBuilders.VaderCMaker;
@@ -101,12 +102,12 @@ public final class TimeLine extends Component {
 		currentLevel().assembleMoment();
 		currentLevel().startMoment();
 		setActive(false);
-		EngineGetter.Instance().get().waitForFrames(this::activeTrue,5);
+		TheEngine.getInstance().waitForFrames(this::activeTrue,5);
 	}
 
 	public void playLevel() {
 		UI.getInstance().startLevel(0);// intro
-		EngineGetter.Instance().get().waitForFrames(this::runTheLevel,500);
+		TheEngine.getInstance().waitForFrames(this::runTheLevel,500);
 	}
 
 	private void activeTrue() { //fixme

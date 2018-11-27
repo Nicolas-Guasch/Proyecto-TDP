@@ -2,7 +2,8 @@ package EntitiesVisitor;
 
 import ADTs.IVector2;
 import ADTs.Vector2;
-import Engine.EngineGetter;
+
+import Engine.TheEngine;
 import Entities.BarricadeBoth;
 import Entities.PlayerBullet;
 import Entities.Ships.EnemyShip;
@@ -21,9 +22,9 @@ public class EnemyVisitor extends VisitorEntity {
     public void visit(PlayerShip playerShip)
     {
         IVector2 bouncePoint = playerShip.referenced().transform().position();
-        EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),2);
-        EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),3);
-        EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),4);
+        TheEngine.getInstance().waitForFrames(() -> bounce(bouncePoint),2);
+        TheEngine.getInstance().waitForFrames(() -> bounce(bouncePoint),3);
+        TheEngine.getInstance().waitForFrames(() -> bounce(bouncePoint),4);
     }
 
     @Override
@@ -32,8 +33,8 @@ public class EnemyVisitor extends VisitorEntity {
         barricade.data().setDamage(10);
 
         IVector2 bouncePoint = barricade.referenced().transform().position();
-        EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),2);
-        EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),3);
+        TheEngine.getInstance().waitForFrames(() -> bounce(bouncePoint),2);
+        TheEngine.getInstance().waitForFrames(() -> bounce(bouncePoint),3);
 
     }
 
@@ -41,9 +42,9 @@ public class EnemyVisitor extends VisitorEntity {
     public void visit(PlayerBullet bullet)
     {
         IVector2 bouncePoint = bullet.referenced().transform().position();
-        EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),2);
-        EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),3);
-        EngineGetter.Instance().get().waitForFrames(() -> bounce(bouncePoint),4);
+        TheEngine.getInstance().waitForFrames(() -> bounce(bouncePoint),2);
+        TheEngine.getInstance().waitForFrames(() -> bounce(bouncePoint),3);
+        TheEngine.getInstance().waitForFrames(() -> bounce(bouncePoint),4);
     }
 
     private void bounce(IVector2 bouncePoint)

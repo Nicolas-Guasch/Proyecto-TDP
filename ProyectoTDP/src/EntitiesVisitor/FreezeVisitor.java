@@ -1,7 +1,8 @@
 package EntitiesVisitor;
 
 import Engine.Components.Transform;
-import Engine.EngineGetter;
+
+import Engine.TheEngine;
 import Entities.Entity;
 import Entities.Ships.EnemyShip;
 import Entities.Ships.ShipBoss;
@@ -27,7 +28,7 @@ public class FreezeVisitor extends VisitorEntity
         {
             ship.getPilot().setActive(false);
             ship.getBagPack().setActive(false);
-            EngineGetter.Instance().get().waitForFrames(() -> reactive(ship), (int)time*60);
+            TheEngine.getInstance().waitForFrames(() -> reactive(ship), (int)time*60);
         }
     }
     public void visit(ShipBoss ship)
@@ -36,7 +37,7 @@ public class FreezeVisitor extends VisitorEntity
         {
             ship.getPilot().setActive(false);
             ship.getBagPack().setActive(false);
-            EngineGetter.Instance().get().waitForFrames(() -> reactive(ship), (int)time*60/2);
+            TheEngine.getInstance().waitForFrames(() -> reactive(ship), (int)time*60/2);
         }
     }
 

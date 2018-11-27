@@ -3,9 +3,10 @@ package Entities.Bullets;
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
 import Engine.Components.Transform;
-import Engine.EngineGetter;
+
 import Engine.GameObject;
 import AIs.SimpleBullet;
+import Engine.TheEngine;
 import Entities.Builders.PlayerBulletBuilder;
 import Entities.Ships.Player.PlayerShip;
 import Entities.EveryOne;
@@ -71,7 +72,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
         rend.show();
         Transform t = bullet.referenced().transform();
         g.transform().setPosition(t.position3());
-        EngineGetter.Instance().get().waitForFrames(g::destroy,10);
+        TheEngine.getInstance().waitForFrames(g::destroy,10);
         EveryOne.getInstance().takeLazyVisitor(new FreezeVisitor(5, t, 200));
     }
 }
