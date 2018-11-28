@@ -12,9 +12,9 @@ GameObject -> While_1 : update()
 GameObject <<-- While_1
 GameObject -> While_2 : update()
     group if condition
-    While_2 -> RunnableX : run()
-    RunnableX -> ResourceY : use_and_modify()
-    RunnableX <<-- ResourceY
+    While_2 -> RunnableZ : run()
+    RunnableZ -> ResourceY : use_and_modify()
+    RunnableZ <<-- ResourceY
     While_2 <<-- RunnableX
     end
 GameObject <<-- While_2
