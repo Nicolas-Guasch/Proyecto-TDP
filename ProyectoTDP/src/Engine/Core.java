@@ -63,14 +63,14 @@ final class Core
         invokerOnUpdate = packU.Invoker;
         onUpdate = packU.Broadcaster;
 
-        TasksForFrame = new TreeMap<Long, Queue<Action>>();// diamond expression, cuz we love the new java ♥
+        TasksForFrame = new TreeMap<Long, Queue<Action>>();
         currentFrame = 0;
         exit = false;
 
     }
     private void endOfFrame()
     {
-        currentFrame ++; // esto es muy peligroso
+        currentFrame ++;
 
         //Tasks ---------
         if(TasksForFrame.containsKey(currentFrame-1)){

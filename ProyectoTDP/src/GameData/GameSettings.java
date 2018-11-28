@@ -28,11 +28,8 @@ public class GameSettings
         return instance;
     }
 
-
-    private ISettingsParser parser;
-
     // ---------- general settings -----------
-    public final short FPS; // must be 60
+    public final short FPS;
     public Dimension sizeWindow;
 
     // --------- floats ----------
@@ -52,22 +49,21 @@ public class GameSettings
 
     private GameSettings()
     {
-        parser = ParsersManager.getInstance().getSettingsParser();
 
-        PlayerData = parser.getEntityData(EntityEnum.PlayerData);
+        PlayerData = new EntityData(2500,12,0.3f);
         PlayerInitialData = PlayerData.clone();
-        TieData = parser.getEntityData(EntityEnum.TieData);
-        TieBulletData = parser.getEntityData(EntityEnum.TieBulletData);
-        PlayerBulletData = parser.getEntityData(EntityEnum.PlayerBulletData);
-        FirstBossData = parser.getEntityData(EntityEnum.FirstBossData);
+        TieData = new EntityData(150,100,0);
+        TieBulletData =new EntityData(10,25,0);
+        PlayerBulletData = new EntityData(1,8,0);
+        FirstBossData = new EntityData(700,10000,0.2f);
 
-        TieBulletSpeed = parser.getFloat(FloatEnum.TieBulletSpeed);
-        TieSpeed = parser.getFloat(FloatEnum.TieSpeed);
-        FirstBossSpeed = parser.getFloat(FloatEnum.FirstBossSpeed);
-        PlayerBulletSpeed = parser.getFloat(FloatEnum.PlayerBulletSpeed);
+        TieBulletSpeed =8;
+        TieSpeed = 1;
+        FirstBossSpeed = 10;
+        PlayerBulletSpeed = 12;
 
-        sizeWindow = parser.sizeWindow();
-        FPS = (short) parser.FPS();
+        sizeWindow = new Dimension(1280,739);
+        FPS = 70;
     }
 
     public Rect bounds()
@@ -82,22 +78,4 @@ public class GameSettings
         return EntityData.WithEqualsValues(1);
     }
 
-}
-
-
-
-enum EntityEnum {
-    PlayerData,
-    TieData,
-    TieBulletData,
-    PlayerBulletData,
-    FirstBossData,
-}
-
-enum FloatEnum{
-
-    TieBulletSpeed,
-    TieSpeed,
-    FirstBossSpeed,
-    PlayerBulletSpeed,
 }

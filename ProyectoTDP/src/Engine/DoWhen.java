@@ -1,10 +1,9 @@
 package Engine;
 
-import java.util.concurrent.Callable;
 
 
 /**
- * ensures that an action is executed at the moment when a condition is fulfilled
+ * ensures that an action is executed at the moment a condition is fulfilled
  */
 public class DoWhen extends Component {
     private Condition condition;//fixme. Done

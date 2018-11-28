@@ -15,27 +15,12 @@ package GameData{
         + PlaceHolderData(): EntityData
     }
     GameSettings --"1" GameSettings: (static) -instance
-    GameSettings --"1" ISettingsParser: -parser >
     GameSettings -- EntityData:PlayerInitialData >
     GameSettings -- EntityData:PlayerData >
     GameSettings -- EntityData:TieData >
     GameSettings -- EntityData:TieBulletData >
     GameSettings -- EntityData:FirstBossData >
 
-    enum EntityEnum {
-    PlayerData
-    TieData
-    TieBulletData
-    PlayerBulletData
-    FirstBossData
-    }
-
-    enum FloatEnum{
-        TieBulletSpeed
-        TieSpeed
-        FirstBossSpeed
-        PlayerBulletSpeed
-    }
 
     class CurrentMatchData{
         -score:int = 0
@@ -50,29 +35,7 @@ package GameData{
     CurrentMatchData -- IBroadcaster: OnScoreChanges: IBroadcaster<Integer>
     CurrentMatchData -- Invoker: invokerScoreChanges: Invoker<Integer>
 
-     interface ISettingsParser
-    {
-        {abstract}+getEntityData(EntityEnum ref):EntityData
-        {abstract}+getFloat(FloatEnum ref):float
-        {abstract}+FPS():int
-        {abstract}+sizeWindow():Dimension
-
-    }
-     class FileSettingsParser
-    {
-        - FPS:int
-        - floatInput: [float]
-        +getEntityData(EntityEnum ref):EntityData
-        +getFloat(FloatEnum ref):float
-        +FPS():int
-        +sizeWindow():Dimension
-    }
-    FileSettingsParser -- "1" Dimension : sizeWindow >
-    FileSettingsParser -- "*" EntityData
-    ISettingsParser <|-- FileSettingsParser
-
-
-    interface ILostOrWin {
+         interface ILostOrWin {
          {abstract}+AllianceWins()
          {abstract}+EmpireWins()
     }
@@ -92,6 +55,6 @@ package GameData{
     }
     ILostOrWin <|-- MatchResult
     MatchResult -- MatchResult:Instance
-    MatchResult -- "1" ILostOrWin: Deriva
+    MatchResult -- "1" ILostOrWin
 }
 @enduml

@@ -4,10 +4,14 @@ package Engine{
     interface IEngine{
         +{abstract}suscribeToUpdate(object:GameObject)
         +{abstract}suscribeToUpdate(component:Component )
-        +{abstract}waitForFrames(action:Runnable , frames:int )
+        +{abstract}waitForFrames(action:Action, frames:int )
         +{abstract}start();
         +{abstract}Pauser():CorePauser
         +{abstract}frameCounter():long
+    }
+
+    interface Action{
+        invoke()
     }
 
     IUpdatable <|-- Component
@@ -96,8 +100,8 @@ package Engine{
         +transform():Transform
         +Update()
         +destroy()
-        -onDestroy:Runnable
-        +setOnDestroy(r:Runnable )
+        -onDestroy:Action
+        +setOnDestroy(a:Action )
         +SetEnabled(enabled:boolean)
         +getHitbox():HitBox
         +size():int
@@ -135,7 +139,7 @@ package Engine{
     note on link: static
     Core -- "4" IBroadcaster
     Core -- "2" Invoker
-    Core -- "*" Runnable: Runnables for each frame
+    Core -- "*" Action: Actions for each frame
     class Core{
         -FPS:short
         -paused:boolean
@@ -150,8 +154,8 @@ package Engine{
         -mainLoop()
         -sleep(time:long)
         +Start()
-        +waitForSeconds(action:Runnable,seconds:float)
-        +waitForFrames(action:Runnable,frames:int)
+        +waitForSeconds(action:Action,seconds:float)
+        +waitForFrames(action:Action,frames:int)
 
         +setPaused(p:boolean)
         +isPaused():boolean
@@ -178,7 +182,7 @@ package Engine{
         -cond:boolean
         -condition:Condition
         -codeBlock:Action
-        +DoWhen(condition:Callable<Boolean>, Runnable action)
+        +DoWhen(condition:Callable<Boolean>, Action action)
         +update()+
     }
 
@@ -208,7 +212,7 @@ package Engine{
         -checks():Boolean
         +Excecute()
 
-        +OnComplete(onComplete:Runnable )
+        +OnComplete(onComplete:Action )
     }
 
 

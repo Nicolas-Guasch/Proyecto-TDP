@@ -151,13 +151,13 @@ public class GameObject implements IUpdatable
         }
         hitbox = null;
         if(onDestroy != null)
-            onDestroy.run();
+            onDestroy.invoke();
     }
 
-    private Runnable onDestroy;
-    public void setOnDestroy(Runnable r)
+    private Action onDestroy;
+    public void setOnDestroy(Action a)
     {
-        onDestroy = r;
+        onDestroy = a;
     }
 
     public void SetEnabled(boolean enabled)
