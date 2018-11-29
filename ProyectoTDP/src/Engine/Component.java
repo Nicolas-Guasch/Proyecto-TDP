@@ -61,13 +61,13 @@ public abstract class Component implements IActivable, IUpdatable
 
     public void OnEnable(){}
     public void OnDisable(){}
-    public void OnDestroy(){}
+    public void onDestroy(){}
     @Deprecated
     public void OnCollisionEnter(CollisionData data){}
 
     public final void DestroyComponent()
     {
-        OnDestroy();
+        onDestroy();
         _Node_gameObject = null;
     }
 

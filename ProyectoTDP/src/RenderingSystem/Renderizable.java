@@ -44,7 +44,7 @@ public class Renderizable extends Component implements IRenderizable
         transform().setPosition(Vector2.ORIGIN());
     }
 
-    public void OnDestroy()
+    public void onDestroy()
     {
         Window.GetInstance().Remove(label);
     }

@@ -16,11 +16,14 @@ public final class DummyComponent extends Component
     @Override
     public void update()
     {
-        onUpdate.invoke();
+        if(onUpdate!=null)
+            onUpdate.invoke();
     }
 
     @Override
-    public void OnDestroy() {
+    public void onDestroy()
+    {
+        setActive(false);
         onUpdate = null;
     }
 }

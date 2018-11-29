@@ -20,8 +20,8 @@ public class ShadowedRend extends Renderizable
     }
 
     @Override
-    public void OnDestroy() {
-        super.OnDestroy();
+    public void onDestroy() {
+        super.onDestroy();
         if(shadow!=null && shadow.gameObject()!=null)
         shadow.gameObject().destroy();
     }

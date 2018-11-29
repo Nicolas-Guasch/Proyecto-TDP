@@ -39,7 +39,7 @@ public class FireFrequency extends Component
     }
 
     @Override
-    public void OnDestroy() {
+    public void onDestroy() {
         weapons = null;
     }
 }
