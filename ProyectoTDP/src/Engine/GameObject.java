@@ -29,7 +29,7 @@ public class GameObject implements IUpdatable, IGameObject {
 
 
     // ---------- Vars ------------
-    private Collection<IGameObject> children= new LinkedList<IGameObject>();;
+    private Collection<GameObject> children= new LinkedList<GameObject>();;
     private Collection<Component> components= new LinkedList<Component>();;
     private GameObject parent;
     private Transform transform;
@@ -137,11 +137,10 @@ public class GameObject implements IUpdatable, IGameObject {
             }
         }
 
-        for (IGameObject c : new LinkedList<IGameObject>(children)) {
-
+        for (GameObject c : new LinkedList<GameObject>(children)) {
             c.update();
         }
-        //TODO: hacer cola para add y remove
+
     }
 
     @Override

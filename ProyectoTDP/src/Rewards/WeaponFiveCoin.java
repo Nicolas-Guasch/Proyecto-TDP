@@ -16,7 +16,7 @@ import RenderingSystem.SpriteData;
 
 public class WeaponFiveCoin implements java.util.function.Consumer<ITransform> {
     @Override
-    public void accept(ITransform ITransform) {
+    public void accept(ITransform transform) {
         PlayerShip player = PlayerShip.getInstance();
         IGameObject referenced = GameObject.getRoot().addChild();
         SpriteData spriteData = new SpriteData("5reward");
@@ -26,7 +26,7 @@ public class WeaponFiveCoin implements java.util.function.Consumer<ITransform> {
         Weapon weapon = new AngularWeapon<BulletDirector<PlayerBullet, PlayerBulletBuilder>>(player.referenced().transform(),director, 5);
         weapon.setName("penta");
         reward.setWeapon(weapon);
-        referenced.transform().setPosition(ITransform.position3());
+        referenced.transform().setPosition(transform.position3());
         referenced.addComponent(new RewardMove());
         reward.setData(EntityData.WithEqualsValues(100));
         EveryOne.getInstance().add(reward);
