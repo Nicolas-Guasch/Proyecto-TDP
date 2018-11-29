@@ -12,16 +12,16 @@ import RenderingSystem.SpriteData;
 public class ShieldCoin implements java.util.function.Consumer<ITransform> {
     @Override
     public void accept(ITransform ITransform) {
-        IGameObject IGameObject = GameObject.getRoot().addChild();
+        IGameObject referenced = GameObject.getRoot().addChild();
         SpriteData spriteData = new SpriteData("rewardshield");
 
         ShieldVisitor visitor = new ShieldVisitor();
-        Entity reward = new GenericReward(IGameObject,visitor,spriteData);
+        Entity reward = new GenericReward(referenced,visitor,spriteData);
         visitor.setReward(reward);
 
 
-        IGameObject.transform().setPosition(ITransform.position3());
-        IGameObject.addComponent(new RewardMove());
+        referenced.transform().setPosition(ITransform.position3());
+        referenced.addComponent(new RewardMove());
         reward.setData(EntityData.WithEqualsValues(100));
         EveryOne.getInstance().add(reward);
     }

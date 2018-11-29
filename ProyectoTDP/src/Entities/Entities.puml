@@ -3,7 +3,7 @@ skinparam classAttributeIconSize 0
 
 package Entities{
 	Entity o-- "1" GameObject: -referenced >
-	Entity -- "1" Runnable: -doOnDeath >
+	Entity -- "1" Action: -doOnDeath >
 	Entity o-- "1" EntityData: #data >
 	Entity -- "1" VisitorEntity: #visitor >
 
