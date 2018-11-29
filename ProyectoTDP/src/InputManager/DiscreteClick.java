@@ -25,12 +25,12 @@ public class DiscreteClick extends AbstractDiscreteInput
         onAction = pack.Broadcaster;
         invokerOnAction = pack.Invoker;
         related = new ContinueClick(mouseClick);
-        Dummy = new DummyComponent(this::Update);
+        Dummy = new DummyComponent(this::update);
         TheEngine.getInstance().suscribeToUpdate(Dummy);
     }
 
 
-    private void Update()
+    private void update()
     {
         if(lastStatus != related.happens()&& isActive())
         {

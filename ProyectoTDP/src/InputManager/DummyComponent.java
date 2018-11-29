@@ -1,13 +1,14 @@
 package InputManager;
 
+import Engine.Action;
 import Engine.Component;
 
 public final class DummyComponent extends Component
 {
 
-    private Runnable onUpdate;
+    private Action onUpdate;
 
-    DummyComponent(Runnable onUpdate)
+    DummyComponent(Action onUpdate)
     {
         this.onUpdate = onUpdate;
     }
@@ -15,7 +16,7 @@ public final class DummyComponent extends Component
     @Override
     public void update()
     {
-        onUpdate.run();
+        onUpdate.invoke();
     }
 
     @Override
