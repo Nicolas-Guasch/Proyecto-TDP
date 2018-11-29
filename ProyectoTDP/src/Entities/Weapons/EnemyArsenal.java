@@ -45,7 +45,9 @@ public class EnemyArsenal extends Arsenal
     @Override
     public Arsenal clone() {
         EnemyArsenal n = new EnemyArsenal();
-        weapons.forEach(n::add);
+        for (Weapon weapon : weapons) {
+            n.add(weapon);
+        }
         return n;
     }
 

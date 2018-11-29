@@ -33,8 +33,6 @@ public class AssetStore
             if(img==null)img=getURL(name+".gif");
             assert img!=null : name+" not found";
             map.put(name.toLowerCase(),new ImageIcon(img));
-            // luego cambiar por
-            //levantar el .meta y ver el icon posta
         }
         return map.get(name.toLowerCase());
     }

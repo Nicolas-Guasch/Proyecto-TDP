@@ -74,7 +74,9 @@ final class Core
 
         //Tasks ---------
         if(TasksForFrame.containsKey(currentFrame-1)){
-            TasksForFrame.get(currentFrame-1).forEach(Action::invoke);
+            for(Action a:TasksForFrame.get(currentFrame-1)) {
+                a.invoke();
+            }
             TasksForFrame.remove(currentFrame-1);
         }
         invokerOnUpdate.invoke(null);

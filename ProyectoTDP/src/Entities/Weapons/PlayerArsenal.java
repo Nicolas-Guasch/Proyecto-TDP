@@ -42,7 +42,9 @@ public class PlayerArsenal extends Arsenal
     @Override
     public Arsenal clone() {
         PlayerArsenal n = new PlayerArsenal(Switch,Shoot);
-        weapons.forEach(n::add);
+        for (Weapon weapon : weapons) {
+            n.add(weapon);
+        }
         return n;
     }
 

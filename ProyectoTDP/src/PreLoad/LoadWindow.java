@@ -89,7 +89,6 @@ public class LoadWindow
 
         for (int j = 0; j < everynames.length; j++) {
             String s = everynames[j];
-            int i = 0;
             bar.setBounds(150, 550, (int)(sub_load * j), 5);
             bar.repaint();
             wind.repaint();
@@ -102,6 +101,7 @@ public class LoadWindow
                 AssetStore.getIcon(s + "_shadow");
             } catch (Exception ignored) {
             }
+            int i = 0;
             while (AssetStore.isThereIcon(s + "_" + i)) {
                 try {
                     AssetStore.getIcon(s + "_" + i);

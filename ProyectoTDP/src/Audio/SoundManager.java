@@ -177,7 +177,9 @@ public final class SoundManager
         this.paused = paused;
         if(paused)
         {
-            Musics.forEach(Music::pause);
+            for (SoundSystem.Music Music : Musics) {
+                Music.pause();
+            }
             menu.resume();
         }
         else

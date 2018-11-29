@@ -55,8 +55,12 @@ public class EveryOne extends Component
         {
             entities.add(toAdd.remove());
         }
-        entities.forEach(this::checkDestroyable);
-        toDestroy.forEach(this::eraser);
+        for (Entity entity : entities) {
+            checkDestroyable(entity);
+        }
+        for (Entity entity : toDestroy) {
+            eraser(entity);
+        }
 
         acceptVisitors();
     }

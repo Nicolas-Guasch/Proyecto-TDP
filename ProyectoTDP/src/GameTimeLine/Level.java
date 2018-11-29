@@ -166,6 +166,8 @@ public final class Level extends TimePoint
         LinkedList<EnemyShip> cosas = new LinkedList<EnemyShip>();
         VisitorEntity collector = new GetEnemies(cosas);
         EveryOne.getInstance().takeVisitor(collector);
-        cosas.forEach(e->e.data().setHealth(-1));
+        for (EnemyShip e : cosas) {
+            e.data().setHealth(-1);
+        }
     }
 }

@@ -4,6 +4,7 @@ import ADTs.IVector2;
 import ADTs.RowCol;
 import ADTs.Vector2;
 import RenderingSystem.Renderizable;
+import RenderingSystem.SpriteRenderer;
 
 import javax.swing.*;
 import java.util.*;
@@ -88,7 +89,12 @@ public class Grill implements UIComponent
 
     @Override
     public Iterable<JComponent> getComponents() {
-        return components.stream().map(Renderizable::Sprite).collect(Collectors.toList());
+        List<JComponent> list = new ArrayList<>();
+        for (Renderizable component : components) {
+            SpriteRenderer sprite = component.Sprite();
+            list.add(sprite);
+        }
+        return list;
     }
 
     @Override
