@@ -41,10 +41,9 @@ public class TheEngine implements IEngine
     {
         onUpdate.suscribe(new OperationUpdate(component));
     }
-    //TODO: guardar une HashMap de los components para desuscribirlos mas fasil luego
 
 
-    @Override // fixme uml (el parametro).Done
+    @Override
     public void waitForFrames(Action action, int frames)
     {
         core.waitForFrames(action,frames);

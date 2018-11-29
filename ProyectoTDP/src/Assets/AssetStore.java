@@ -16,13 +16,7 @@ public class AssetStore
     private static String [] subfolders = {"","Video/","UI/", "Stuff/", "Ships/", "Bullets/", "Animators/","Miniatures/"};
 
     public static boolean isThereIcon(String name){
-        try{
-            int h = getIcon(name).getIconHeight();
-        }
-        catch (Exception e){
-            return false;
-        }
-        return true;
+        return map.containsKey(name.toLowerCase()) || getURL(name+".png")!=null || getURL(name+".gif")!=null;
     }
 
     public static Icon getIcon(String name) {

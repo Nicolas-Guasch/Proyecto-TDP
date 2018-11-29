@@ -46,7 +46,7 @@ public class TransitionToLevel extends TimePoint {
         return ready;
     }
 
-    private void setReadyTrue() {//fixme. Done
+    private void setReadyTrue() {
         
         ready = true;
     }

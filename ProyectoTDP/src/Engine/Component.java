@@ -34,7 +34,6 @@ import Engine.Components.ITransform;
  */
 
 
-//fixme uml la herencia a iupdatable. Done
 public abstract class Component implements IActivable, IUpdatable
 {
 

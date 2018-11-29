@@ -6,8 +6,8 @@ package Engine;
  * ensures that an action is executed at the moment a condition is fulfilled
  */
 public class DoWhen extends Component {
-    private Condition condition;//fixme. Done
-    private Action codeBlock;//fixme. Done
+    private Condition condition;
+    private Action codeBlock;
 
 
     private boolean cond;
@@ -28,7 +28,6 @@ public class DoWhen extends Component {
         cond = true;
     }
 
-//un comentario
 
     @Override
     public void update() {
@@ -42,7 +41,6 @@ public class DoWhen extends Component {
         }
     }
 
-    //fixme uml, quite un metodo. Done
 
 
 }

@@ -16,11 +16,11 @@ public class TransitionToBoss extends TimePoint {
 
     private boolean complete = false;
 
-    private static boolean perfectSpeed() {//fixme uml metodo. Done
+    private static boolean perfectSpeed() {
         return Background.getInstance().getSpeedBackground() > 0.01f;
     }
 
-    private static void changeSpeed() {//fixme uml metodo. Done
+    private static void changeSpeed() {
         float v = Background.getInstance().getSpeedBackground();
         v *= 0.99f;
         Background.getInstance().setSpeedBackground(v);

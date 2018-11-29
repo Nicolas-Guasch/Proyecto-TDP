@@ -115,12 +115,7 @@ public class Background extends Component
         return speedBackground;
     }
 
-    //fixme << quitar metodo de aca y de UML (no se usa). No está en uml
-    public SpriteRenderer gerBG() {
-        return gameObject().getRenderer().Sprite();
-    }
-
-    private void decSpeed() {//fixme. No está en uml
+    private void decSpeed() {
         float v = getSpeedBackground();
         v *= 0.99f;
         setSpeedBackground(v);

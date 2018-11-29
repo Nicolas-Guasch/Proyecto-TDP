@@ -114,13 +114,10 @@ public class UI
     }
 
 
-    //TODO: poner todos los niveles
-    //fixme. No está en uml
     public Condition startLevel(int index)
     {
         return moviblePrompt(levels.get(index),1);
     }
-    //fixme. No está en uml
     public Condition startLevelByString(String name, int x)
     {
         return moviblePrompt(new SpriteData(name),x);
@@ -136,7 +133,6 @@ public class UI
     {
         pausePrompt.setVisible(visible);
     }
-    //fixme. No está en uml
     public Condition gameOver()
     {
         return moviblePrompt(gameOver,1);
@@ -145,7 +141,6 @@ public class UI
 
 
 
-    //fixme. No está en uml
     public Condition win()
     {
         return moviblePrompt(win,1);

@@ -41,7 +41,6 @@ public class IceWeapon<BulletDirectorType extends IBulletDirector> extends Weapo
         b.entity().addBehaviour(new MouseFollower(angle));
         b.entity().addBehaviour(new SimpleBullet(8f));
         b.entity().referenced().sendMessage(IceWeapon::activeTrue);
-        //TODO: sonido
     }
 
     @Override

@@ -16,7 +16,9 @@ public class HyperSpace
         checkObj();
         assert frames>0;
         List<IVector2> path = GetPath(toMove.position(),destiny,frames);
-        return obj.addChild().addComponent(new Jumper(path,toMove,delayFrames));
+        Jumper jump = new Jumper(path,toMove,delayFrames);
+        obj.addChild().addComponent(jump);
+        return jump;
     }
 
     private static void checkObj() {

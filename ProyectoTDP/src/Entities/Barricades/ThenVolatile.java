@@ -4,7 +4,7 @@ import Engine.Action;
 import Engine.Components.ITransform;
 import Tools.AnimatorsVolatiles;
 
-public class ThenVolatile implements Action { //fixme (herencia y run cambia por invoke). La clase fue obviada en el uml
+public class ThenVolatile implements Action {
 
 
     private final ITransform ITransform;

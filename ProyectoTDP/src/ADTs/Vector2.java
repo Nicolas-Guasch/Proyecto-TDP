@@ -45,7 +45,7 @@ public final class Vector2 implements IVector2 {
         this((float)xx,(float)yy);
     }
 
-    public static IVector2 get(double xx, double yy){//fixme. Done
+    public static IVector2 get(double xx, double yy){
         return new Vector2(xx,yy);
     }
 

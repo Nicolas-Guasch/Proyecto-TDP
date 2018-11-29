@@ -94,21 +94,14 @@ public class LoadWindow
             wind.repaint();
             try {
                 Thread.sleep(5);
-                AssetStore.getIcon(s);
-            } catch (Exception ignored) {
-            }
-            try {
-                AssetStore.getIcon(s + "_shadow");
-            } catch (Exception ignored) {
-            }
-            int i = 0;
-            while (AssetStore.isThereIcon(s + "_" + i)) {
-                try {
+                if (AssetStore.isThereIcon(s)) AssetStore.getIcon(s);
+                if (AssetStore.isThereIcon(s + "_shadow")) AssetStore.getIcon(s + "_shadow");
+                int i = 0;
+                while (AssetStore.isThereIcon(s + "_" + i)) {
                     AssetStore.getIcon(s + "_" + i);
-                } catch (Exception ignored) {
+                    i++;
                 }
-                i++;
-            }
+            }catch (InterruptedException ignored){}
         }
 
 

@@ -9,7 +9,6 @@ import RenderingSystem.Renderizable;
 import java.util.*;
 import java.util.function.Consumer;
 
-//FIXME uml la herencia. Done
 public class GameObject implements IUpdatable, IGameObject {
 
 
@@ -69,11 +68,10 @@ public class GameObject implements IUpdatable, IGameObject {
 
 
     @Override
-    public<S extends Component> S addComponent(S c)
+    public void addComponent(Component c)
     {
         assert c != null;
         Core.getInstance().waitForFrames(new Action() {
-            @Override
             public void invoke() {
                 components.add(c);
             }
@@ -81,7 +79,7 @@ public class GameObject implements IUpdatable, IGameObject {
 
         c.setGameObject(this);
         c.start();
-        return c;
+        //return c;
     }
     @Override
     public Iterable<Component> getComponents()
@@ -91,22 +89,15 @@ public class GameObject implements IUpdatable, IGameObject {
     @Override
     public void sendMessage(Consumer<Component> consumer)
     {
-        components.forEach(consumer);
+        for (Component component : components) {
+            consumer.accept(component);
+        }
     }
 
 
     // -------- As a Tree -------
 
 
-    @Override
-    public final<C extends Component> IGameObject addChild(Iterable<C> components) // the only way to create a new gameobject from outside
-    {
-        IGameObject g = new GameObject(this);
-        for (C component : components) {
-            g.addComponent(component);
-        }
-        return g;
-    }
     @Override
     public final IGameObject addChild() // the only way to create a new gameobject from outside
     {

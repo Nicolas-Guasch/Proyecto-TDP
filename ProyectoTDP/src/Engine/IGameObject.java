@@ -9,17 +9,14 @@ import java.util.function.Consumer;
 public interface IGameObject {
     HitBox addHitBox(HitBox c);
 
-    <S extends Component> S addComponent(S c);
+    void addComponent(Component c);
 
     Iterable<Component> getComponents();
 
     void sendMessage(Consumer<Component> consumer);
 
-    <C extends Component> IGameObject addChild(Iterable<C> components) // the only way to create a new gameobject from outside
-    ;
 
-    IGameObject addChild() // the only way to create a new gameobject from outside
-    ;
+    IGameObject addChild(); // the only way to create a new gameobject from outside
 
     void removeComponent(Component c);
 

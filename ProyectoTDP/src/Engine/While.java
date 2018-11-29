@@ -3,20 +3,20 @@ package Engine;
 
 
 /**
- * Implements a concurrent While Cycle
+ * Implements a Component which will run an Action while Condition is true
  * It will make a loop in each frame until the condition returns false
  */
 public class While extends Component
 {
-    private Condition condition; //fixme uml (condition)
-    private Action codeBlock;//fixme uml action
+    private Condition condition;
+    private Action codeBlock;
 
 
     private boolean cond;
     private boolean runs;
-    private Action onComplete;//fixme. Done
+    private Action onComplete;
 
-    public While(Condition condition, Action codeBlock) { //fixme uml (condition).Done
+    public While(Condition condition, Action codeBlock) {
         GameObject.getRoot().addChild().addComponent(this);
         this.condition = condition;
         this.codeBlock = codeBlock;
@@ -25,7 +25,7 @@ public class While extends Component
     }
 
 
-    //nota: charlar con un ayudante la visibilidad del metodo
+    //La visibilidad del metodo tiene que ser publica, para respetar la interfaz IUpdatable. De todas formas necesita ser publico para poder ser visible para el engine, como con cualquier otro component
     @Override
     public void update() {
         boolean check = checks();

@@ -60,7 +60,6 @@ public class AngularWeapon<BulletDirectorType extends IBulletDirector> extends W
     @Override
     public void Destroy()
     {
-        //TODO: implementar, debe desactivar el shoot
     }
 
 

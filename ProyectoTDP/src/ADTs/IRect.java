@@ -1,6 +1,6 @@
 package ADTs;
 
-public interface IRect {//fixme a uml .Done
+public interface IRect {
 
 
     IVector2 max();

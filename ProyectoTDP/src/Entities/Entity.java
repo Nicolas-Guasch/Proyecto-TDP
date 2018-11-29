@@ -13,7 +13,7 @@ import RenderingSystem.Renderizable;
 public abstract class Entity {
 
 	private IGameObject referenced;
-	private Action doOnDeath;//fixme. Done
+	private Action doOnDeath;
 
 	protected EntityData data; // tiene setter y getter, pero la hago protected por comodidad
 	protected VisitorEntity visitor;
@@ -28,7 +28,7 @@ public abstract class Entity {
 		return data.getHealthObservable();
 	}
 
-	public void setOnDeath(Action doOnDeath){//fixme. Done
+	public void setOnDeath(Action doOnDeath){
 		this.doOnDeath = doOnDeath;
 	}
 

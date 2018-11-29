@@ -1,7 +1,7 @@
 package Engine;
 
 import java.util.function.Consumer;
-//FIXME UMLear. Done
+
 public class OperationUpdate implements Consumer<Object> {
 
     private final IUpdatable toUpdate;

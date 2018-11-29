@@ -24,7 +24,8 @@ public class EveryOne extends Component
     public static EveryOne getInstance()
     {
         if(instance == null){
-            instance = GameObject.getRoot().addChild().addComponent(new EveryOne());
+            instance = new EveryOne();
+            GameObject.getRoot().addChild().addComponent(instance);
         }
         return instance;
     }
@@ -141,7 +142,7 @@ public class EveryOne extends Component
     }
 
 
-    private void eraser(Entity e) {//fixme uml.Done
+    private void eraser(Entity e) {
         entities.remove(e);
     }
 }

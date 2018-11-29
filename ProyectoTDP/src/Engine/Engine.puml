@@ -78,12 +78,9 @@ package Engine{
     Interface IGameObject
         {
             +addHitBox(c:HitBox ):HitBox
-            +<S extends Component> addComponent(S c):S
-
+            +addComponent(c:Component)
             +getComponents():Iterable<Component>
             +void sendMessage( consumer:Consumer<Component>)
-
-            +<C extends Component> addChild(Iterable<C> components):IGameObject
             +addChild():IGameObject
             +removeComponent(c:Component )
             +Transform():ITransform
@@ -108,12 +105,9 @@ package Engine{
         -GameObject()
         -GameObject(parent:GameObject)
         +addHitBox(c:HitBox ):HitBox
-        +<S extends Component> addComponent(S c):S
-
+        +addComponent(c:Component)
         +getComponents():Iterable<Component>
         +void sendMessage( consumer:Consumer<Component>)
-
-        +<C extends Component> addChild(Iterable<C> components):IGameObject
         +addChild():IGameObject
         +removeComponent(c:Component )
         +transform():ITransform
