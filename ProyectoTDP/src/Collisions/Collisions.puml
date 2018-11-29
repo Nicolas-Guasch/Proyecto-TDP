@@ -1,29 +1,29 @@
 @startuml
 skinparam classAttributeIconSize 0
-packge Collisions{
+package Collisions{
     Component <|--- HitBox
-    HitBox "transform" *-- "1" Transform
+    HitBox "transform" *-- "1" ITransform
     HitBox "entity" *-- "1" Entity
     class HitBox{
-        - dimensions : Vector2
+        - dimensions : IVector2
         +{static} NoCheckDistance : int = 500
         +{static} getOne(w,h : float , entity:Entity): HitBox
-        +{static} getOne(dimensions : Vector2 , entity:Entity): HitBox
+        +{static} getOne(dimensions : IVector2 , entity:Entity): HitBox
 
-        -HitBox(dimensions : Vector2 , entity:Entity)
+        -HitBox(dimensions : IVector2 , entity:Entity)
         +getEntity():Entity
 
         ~checkCollision(other:HitBox):CollisionData
 
-        - vertices() : [Vector2]
+        - vertices() : [IVector2]
         - diagonalLength() : float
-        - distToCenter(v : Vector2) : float
-        - isFar(other: Transform) : boolean
-        - vertexInside(other : HitBox): Vector2
-        - bottomLeft(): Vector2
-        - topRight(): Vector2
-        - bottomSide(): Vector2
-        - leftSide(): Vector2
+        - distToCenter(v : IVector2) : float
+        - isFar(other: ITransform) : boolean
+        - vertexInside(other : HitBox): IVector2
+        - bottomLeft(): IVector2
+        - topRight(): IVector2
+        - bottomSide(): IVector2
+        - leftSide(): IVector2
 
     }
 
@@ -79,11 +79,11 @@ packge Collisions{
 
 
     class CollisionData{
-        - contactPoint : Vector2
+        - contactPoint : IVector2
         + mine() : Entity
         + their() : Entity
-        + contactPoint(): Vector2
-        + CollisionData(mine,their : Entity , contactPoint : Vector2)
+        + contactPoint(): IVector2
+        + CollisionData(mine,their : Entity , contactPoint : IVector2)
 
     }
 }

@@ -2,7 +2,7 @@
 skinparam classAttributeIconSize 0
 package Engine{
     interface IEngine{
-        +{abstract}suscribeToUpdate(object:GameObject)
+        +{abstract}suscribeToUpdate(object:IGameObject)
         +{abstract}suscribeToUpdate(component:Component )
         +{abstract}waitForFrames(action:Action, frames:int )
         +{abstract}start();
@@ -39,7 +39,7 @@ package Engine{
     MyEngine -- "2" IBroadcaster
     class MyEngine{
         #MyEngine();
-        +suscribeToUpdate(object:GameObject)+
+        +suscribeToUpdate(object:IGameObject)+
         +suscribeToUpdate(component:Component )+
         +waitForFrames(action:Action , frames:int )+
         +start();+
@@ -57,7 +57,7 @@ package Engine{
     }
 
     IActivable <|-- Component
-    Component -- "1" GameObject
+    Component -- "1" IGameObject
     abstract class Component{
         -active:boolean=true
         +start()
@@ -68,47 +68,43 @@ package Engine{
         +OnDestroy()
         +DestroyComponent()
         +DestroyComponent()
-        +transform():Transform
-        #setGameObject(ref:GameObject)
-        +gameObject():GameObject
+        +transform():ITransform
+        #setGameObject(ref:IGameObject)
+        +gameObject():IGameObject
         +isActive:boolean+
         +setActive(a:boolean)+
     }
 
     Interface IGameObject
         {
-            +{static} getRoot():GameObject
-            -GameObject()
-            -GameObject(parent:GameObject)
             +addHitBox(c:HitBox ):HitBox
             +<S extends Component> addComponent(S c):S
 
             +getComponents():Iterable<Component>
             +void sendMessage( consumer:Consumer<Component>)
 
-            +<C extends Component> addChild(Iterable<C> components):GameObject
-            +addChild():GameObject
+            +<C extends Component> addChild(Iterable<C> components):IGameObject
+            +addChild():IGameObject
             +removeComponent(c:Component )
-            +transform():Transform
+            +Transform():ITransform
+            +update()
             +destroy()
-            -onDestroy:Action
             +setOnDestroy(a:Action )
             +getHitbox():HitBox
             +size():int
-            -renderer:Renderizable
             +setRenderer(rend:Renderizable)
             +getRenderer():Renderizable
         }
 
-    GameObject -- "1" GameObject:root
+    GameObject -- "1" IGameObject:root
     note left on link: static
-    GameObject -- "*"GameObject:children,parent
+    GameObject -- "*"IGameObject:children,parent
     GameObject -- "*"Component
-    GameObject -- "1"Transform
+    GameObject -- "1"ITransform
     GameObject -- "1"HitBox
     class GameObject
     {
-        +{static} getRoot():GameObject
+        +{static} getRoot():IGameObject
         -GameObject()
         -GameObject(parent:GameObject)
         +addHitBox(c:HitBox ):HitBox
@@ -117,10 +113,10 @@ package Engine{
         +getComponents():Iterable<Component>
         +void sendMessage( consumer:Consumer<Component>)
 
-        +<C extends Component> addChild(Iterable<C> components):GameObject
-        +addChild():GameObject
+        +<C extends Component> addChild(Iterable<C> components):IGameObject
+        +addChild():IGameObject
         +removeComponent(c:Component )
-        +transform():Transform
+        +transform():ITransform
         +Update()
         +destroy()
         -onDestroy:Action
@@ -132,24 +128,40 @@ package Engine{
         +getRenderer():Renderizable
     }
 
+    interface ITransform{
+        +position():IVector2
+        +position3():IVector3
+        +top():IVector2
+        +top(length:float):IVector2
+        +setPosition(position:IVector2)
+        +setTop(position:IVector2)
+        +rotate(angle:float)
+        +setFromPrototype(prototype:ITransform)
+        +moveTowards(direction:IVector2)
+        +getZcomponent():float
+        +setZcomponent(z:float)
+        +getLifetime():int
+    }
+
+    ITransform <|-- Transform
     Component <|-- Transform
-    Transform -- "2"  Vector2: position,top
+    Transform -- "2"  IVector2: position,top
     class Transform{
         -ZCompontent:float
         -lifetime:int
 
         +Transform()
-        -Transform(position:Vector2)
+        -Transform(position:IVector2)
         +update()+
-        +position():Vector2
-        +position3():Vector3
-        +top():Vector2
-        +top(length:float):Vector2
-        +setPosition(position:Vector2)
-        +setTop(position:Vector2)
+        +position():IVector2
+        +position3():IVector3
+        +top():IVector2
+        +top(length:float):IVector2
+        +setPosition(position:IVector2)
+        +setTop(position:IVector2)
         +rotate(angle:float)
-        +setFromPrototype(prototype:Transform)
-        +moveTowards(direction:Vector2)
+        +setFromPrototype(prototype:ITransform)
+        +moveTowards(direction:IVector2)
         +getZcomponent():float
         +setZcomponent()
         +getLifetime():int

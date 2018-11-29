@@ -14,11 +14,32 @@ package EntitiesVisitor{
         +visit( genericReward: GenericReward)
         +visit( shipBoss: ShipBoss)
     }
+    VisitorEntity <|-up---- BarricadeBothVisitor
+    VisitorEntity <|-up--- BarricadeEnemVisitor
+    VisitorEntity <|-up-- BossVisitor
+    VisitorEntity <|-up- EnemiesCounter
+    VisitorEntity <|-up-- EnemyBulletVisitor
+    VisitorEntity <|-up--- EnemyVisitor
+    VisitorEntity <|-up-- FireShieldEffect
+    VisitorEntity <|-up-- ForceVisitor
+    VisitorEntity <|-up- FreezeVisitor
+    VisitorEntity <|-up- GetEnemies
+    VisitorEntity <|-up- GetEnemiesAndBarricades
+    VisitorEntity <|-up---- PlayerBulletVisitor
+    VisitorEntity <|-up--- Pusher
+    VisitorEntity <|-up- PlayerVisitor
+    VisitorEntity <|-up-- SoloSupportVisitor
+    VisitorEntity <|-up--- VisitorHealPotion
+    VisitorEntity <|-up- VisitorShieldFireReward
+    VisitorEntity <|-up-- WeaponRewardVisitor
+    VisitorEntity <|-up---- WeaponSwitch
+
+
     class BarricadeBothVisitor{
-        -transform : Transform
-        +BarricadeBothVisitor(transform:Transform)
-        -getRepulsion(repulsor,repulsado,repulsor_top,repulsado_top : Vector2)
-        - bounce(quiet,traveller : Transform)
+        -transform : ITransform
+        +BarricadeBothVisitor(transform:ITransform)
+        -getRepulsion(repulsor,repulsado,repulsor_top,repulsado_top : IVector2)
+        - bounce(quiet,traveller : ITransform)
         +visit( playerBullet: PlayerBullet)++
         +visit( enemyBullet: EnemyBullet)++
     }
@@ -27,7 +48,7 @@ package EntitiesVisitor{
     class BossVisitor{
         +visit( barricadeBoth: BarricadeBoth)++
         +visit( playerShip: PlayerShip)++
-        -getRepulsion(repulsor,repulsado,repulsor_top,repulsado_top : Vector2)
+        -getRepulsion(repulsor,repulsado,repulsor_top,repulsado_top : IVector2)
         +BossVisitor(shipBoss : ShipBoss)
     }
     class EnemiesCounter{
@@ -48,7 +69,7 @@ package EntitiesVisitor{
         +visit( playerShip: PlayerShip)++
         +visit( playerBullet: PlayerBullet)++
         +visit( barricadeBoth: BarricadeBoth)++
-        -bounce(bouncePoint:Vector2)
+        -bounce(bouncePoint:IVector2)
     }
     EntityData "1" --o "mydata" FireShieldEffect
     class FireShieldEffect{
@@ -83,10 +104,10 @@ package EntitiesVisitor{
         +visit(enemyShip : EnemyShip)++
     }
 
-    Transform "1" --o "centerPoint" FreezeVisitor
+    ITransform "1" --o "centerPoint" FreezeVisitor
     class FreezeVisitor{
         -time,ratio : float
-        +FreezeVisitor(time:float, centerPoint:Transform , ratio:float)
+        +FreezeVisitor(time:float, centerPoint:ITransform , ratio:float)
         +visit(enemyShip : EnemyShip)++
         +visit(ship : ShipBoss)++
         -precondition(ship:Entity):boolean
@@ -103,8 +124,8 @@ package EntitiesVisitor{
 
     class Pusher{
         -ratio : float
-        -centerPoint : Vector2
-        +Pusher(ratio:float, centerPoint:Vector2)
+        -centerPoint : IVector2
+        +Pusher(ratio:float, centerPoint:IVector2)
         +visit(enemyShip : EnemyShip)++
         +visit(barricade : BarricadeEnem)++
         +visit(barricade : BarricadeBoth)++

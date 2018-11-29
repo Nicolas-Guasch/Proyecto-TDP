@@ -6,7 +6,7 @@ package Rewards{
     }
     Consumer <|---- FireSpinnerCoin
     class FireSpinnerCoin{
-        +void accept(transform :Transform)+
+        +void accept(transform :ITransform)+
     }
 
     Consumer <|--- GenericReward
@@ -14,21 +14,21 @@ package Rewards{
     Entity <|-- GenericReward
     class GenericReward{
 
-        +GenericReward(referenced : GameObject,visitor:  VisitorEntity,sprite: SpriteData )
+        +GenericReward(referenced : IGameObject,visitor:  VisitorEntity,sprite: SpriteData )
         +accept(visitor : visitorEntity)+
 
     }
     Consumer <|-- HealthCoin
     class HealthCoin{
 
-        +accept(transform Transform)+
+        +accept(transform ITransform)+
 
     }
 
     Consumer <|-- IceWeaponCoin
     class IceWeaponCoin{
 
-        +accept(transform Transform)+
+        +accept(transform ITransform)+
 
     }
 
@@ -58,21 +58,21 @@ package Rewards{
     class RewardsManager{
         -{static} instance : RewardsManager
         +{static} getInstance : RewardsManager
-        - creators Map<RewardKey,Consumer<Transform>>
+        - creators Map<RewardKey,Consumer<ITransform>>
         - RewardsManager()
-        + getReward(key:RewardKey, point : Transform)
+        + getReward(key:RewardKey, point : ITransform)
 
     }
 
     Consumer <|-- ShieldCoin
     class ShieldCoin{
-        +accept(transform:Transform)++
+        +accept(transform:ITransform)++
     }
 
     Consumer <|-- WeaponFiveCoin
 
     class WeaponFiveCoin{
-        +accept(transform:Transform)++
+        +accept(transform:ITransform)++
     }
 
     Entity <|-- WeaponReward
@@ -80,7 +80,7 @@ package Rewards{
     Renderizable "1" --o "-renderer" WeaponReward
 
     class WeaponReward{
-        +WeaponReward(referenced:GameObject,sprite:SpriteData)
+        +WeaponReward(referenced:IGameObject,sprite:SpriteData)
         +setWeapon(w:Weapon)
         +accept(visitor : VisitorEntity)+
     }

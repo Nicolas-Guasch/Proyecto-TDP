@@ -11,15 +11,15 @@ package Tools{
         key():K
         compareTo(o:CompEntry):int
     }
-    AnimatorsVolatiles "parent" o-- GameObject
+    AnimatorsVolatiles "parent" o-- IGameObject
     class AnimatorsVolatiles
     {
         -{static}inst:AnimatorsVolatiles
         +{static}getInst:AnimatorsVolatiles
         -options : [String]
         AnimatorsVolatiles()
-        getVolatile(pos:Vector2, name:String):Tranform
-        getExplo(pos:Vector2):Tranform
+        getVolatile(pos:IVector2, name:String):ITransform
+        getExplo(pos:IVector2):ITransform
     }
 
     class Random{

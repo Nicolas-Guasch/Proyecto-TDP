@@ -2,12 +2,12 @@
 skinparam classAttributeIconSize 0
 class LookTarget{
 
-    +LookTarget(playerTransform:Transform)
+    +LookTarget(playerTransform:ITransform)
     +update()++
 }
 abstract class Component
 Component <|-- LookTarget
-LookTarget -- "1" Transform: target >
+LookTarget -- "1" ITransform: target >
 
 class FireFrequency{
     - shootFrequency:final int

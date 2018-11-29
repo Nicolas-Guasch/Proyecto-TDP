@@ -2,8 +2,8 @@
 
 package Misc{
     class DeathStar{
-        +{static} get():GameObject
-        -{static} instance : GameObject
+        +{static} get():IGameObject
+        -{static} instance : IGameObject
     }
 }
 

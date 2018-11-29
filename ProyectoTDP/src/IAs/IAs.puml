@@ -1,30 +1,30 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-package AIs{
+package IAs{
     interface EntityQuery
     {
-        +{abstract}whereToMove(ent:Entity ):Vector2
-        +{abstract}whereToSee(ent:Entity ):Vector2
+        +{abstract}whereToMove(ent:Entity ):IVector2
+        +{abstract}whereToSee(ent:Entity ):IVector2
     }
 
     abstract class ParametricMove extends AIQueryDecorator{
         - t:int
-        - lastDirection:Vector2
+        - lastDirection:IVector2
 
         +ParametricMove(decorated:EntityQuery)
 
-        + whereToMove(ent:Entity ):Vector2+
+        + whereToMove(ent:Entity ):IVector2+
 
-        + {abstract} whereToMove(Entity ent, int t):Vector2
+        + {abstract} whereToMove(Entity ent, int t):IVector2
 
-        + whereToSee(ent:Entity ):Vector2+
+        + whereToSee(ent:Entity ):IVector2+
 
     }
 
     interface IDirGiver
     {
-        +get():Vector2
+        +get():IVector2
     }
 
     AIQueryDecorator -- "1" EntityQuery
@@ -41,8 +41,8 @@ package AIs{
         - es_primer_pasada:boolean
         + int ran;
         + AbsoluteLateral(d:EntityQuery,steps:int)
-        +whereToMove(ent:Entity ):Vector2+
-        +whereToSee(ent:Entity ):Vector2+
+        +whereToMove(ent:Entity ):IVector2+
+        +whereToSee(ent:Entity ):IVector2+
         -ran():int
         +setRandomLevel(x:int)
     }
@@ -50,15 +50,15 @@ package AIs{
 
 
     class DummyEntityQuery implements EntityQuery{
-        +whereToMove(ent:Entity ):Vector2+
-        +whereToSee(ent:Entity ):Vector2+
+        +whereToMove(ent:Entity ):IVector2+
+        +whereToSee(ent:Entity ):IVector2+
     }
 
     class EllipseMove extends ParametricMove {
         -a:float
         -b:float
         +EllipseMove(decorated:EntityQuery , a:float , b:float )
-        +whereToMove(ent:Entity ):Vector2+
+        +whereToMove(ent:Entity ):IVector2+
     }
     class FalseNTimes implements Predicate{
         -n:int
@@ -71,8 +71,8 @@ package AIs{
 
     class Hybrid50Hunter extends AIQueryDecorator {
         +Hybrid50Hunter (handler:EntityQuery )
-        +whereToMove(ent:Entity ):Vector2+
-        +whereToSee(ent:Entity ):Vector2+
+        +whereToMove(ent:Entity ):IVector2+
+        +whereToSee(ent:Entity ):IVector2+
     }
 
     class GetAndRotate implements IDirGiver
@@ -81,10 +81,10 @@ package AIs{
         -counter=0:int
         -max :int
         -sp :float
-        -last:Vector2
+        -last:IVector2
         -rot, frot:float
-        GetAndRotate(rot:float , first:Vector2 ,  rotex:boolean)
-        +get():Vector2
+        GetAndRotate(rot:float , first:IVector2 ,  rotex:boolean)
+        +get():IVector2
     }
 
 
@@ -94,22 +94,22 @@ package AIs{
         -degrees:float
         +IncreaseSpeedIfWatched (decorated:EntityQuery ,p:Pilot)
         +IncreaseSpeedIfWatched (decorated:EntityQuery ,p:Pilot,d:float)
-        +whereToMove(ent:Entity ):Vector2+
-        +whereToSee(ent:Entity ):Vector2+
+        +whereToMove(ent:Entity ):IVector2+
+        +whereToSee(ent:Entity ):IVector2+
     }
 
     class Kamikazee extends AIQueryDecorator{
         +Kamikazee(decorated:EntityQuery )
-        +whereToMove(ent:Entity ):Vector2+
-        +whereToSee(ent:Entity ):Vector2+
+        +whereToMove(ent:Entity ):IVector2+
+        +whereToSee(ent:Entity ):IVector2+
     }
 
     class LateralAndDown extends AIQueryDecorator{
         - maxDown = 90, maxLateral = 90:int
         - down, lateral:int
         +LateralAndDown (decorated:EntityQuery )
-        +whereToMove(ent:Entity ):Vector2+
-        +whereToSee(ent:Entity ):Vector2+
+        +whereToMove(ent:Entity ):IVector2+
+        +whereToSee(ent:Entity ):IVector2+
     }
 
     class Pilot extends Component{
@@ -130,8 +130,8 @@ package AIs{
     PlayerMove -- "2" AbstractDirectionalInput
     class PlayerMove extends AIQueryDecorator{
         +PlayerMove(eq:EntityQuery,move:AbstractDirectionalInput,top:AbstractDirectionalInput  )
-        +whereToMove(ent:Entity ):Vector2+
-        +whereToSee(ent:Entity ):Vector2+
+        +whereToMove(ent:Entity ):IVector2+
+        +whereToSee(ent:Entity ):IVector2+
     }
 
     class RelativeLateral  extends AIQueryDecorator
@@ -142,59 +142,59 @@ package AIs{
         - es_primer_pasada:boolean
         + int ran;
         + RelativeLateral(d:EntityQuery,steps:int)
-        +whereToMove(ent:Entity ):Vector2+
-        +whereToSee(ent:Entity ):Vector2+
+        +whereToMove(ent:Entity ):IVector2+
+        +whereToSee(ent:Entity ):IVector2+
     }
 
     class Slippery extends AIQueryDecorator{
         -level:float
         -tolerance:float
         -middleDispersion:float
-        -last:Vector2
+        -last:IVector2
         + Slippery(d:EntityQuery)
-        +whereToMove(ent:Entity ):Vector2+
-        +whereToSee(ent:Entity ):Vector2+
+        +whereToMove(ent:Entity ):IVector2+
+        +whereToSee(ent:Entity ):IVector2+
     }
 
     SoloAI -- "*" EnemyShips
     class SoloAI extends AIQueryDecorator {
-        -waypoints: [Vector2]
+        -waypoints: [IVector2]
         -max:int
         -i:int
         -index_waypoints:int
-        + SoloAI(d:EntityQuery,waypoints:Vector2)
-        +whereToMove(ent:Entity ):Vector2+
-        +whereToSee(ent:Entity ):Vector2+
+        + SoloAI(d:EntityQuery,waypoints:IVector2)
+        +whereToMove(ent:Entity ):IVector2+
+        +whereToSee(ent:Entity ):IVector2+
 
         + searchSomeEnemies(cant:int )
 
-        - getTarget(ent:Entity ):Vector2
+        - getTarget(ent:Entity ):IVector2
 
-        - getToMove(pos:Vector2 ):Vector2
+        - getToMove(pos:IVector2 ):IVector2
     }
 
 
     class Spinner extends AIQueryDecorator {
-        -lastDirection : Vector2
-        + Spinner(d:EntityQuery,waypoints:Vector2)
-        +whereToMove(ent:Entity ):Vector2+
-        +whereToSee(ent:Entity ):Vector2+
+        -lastDirection : IVector2
+        + Spinner(d:EntityQuery,waypoints:IVector2)
+        +whereToMove(ent:Entity ):IVector2+
+        +whereToSee(ent:Entity ):IVector2+
     }
 
     SwitchWhen -- "2" EntityQuery
     class SwitchWhen implements EntityQuery  {
         + SwitchWhen(pred:Predicate<Entity>,handlerFirst:EntityQuery,handlerLast:EntityQuery)
         -check(e:Entity)
-        +whereToMove(ent:Entity ):Vector2+
-        +whereToSee(ent:Entity ):Vector2+
+        +whereToMove(ent:Entity ):IVector2+
+        +whereToSee(ent:Entity ):IVector2+
     }
 
-    WatchAnother -- "1" Transform
+    WatchAnother -- "1" ITransform
     class WatchAnother extends AIQueryDecorator{
         -scapeFrom:int
-        + WatchAnother (another:Transform,decorated:EntityQuery)
-        +whereToMove(ent:Entity ):Vector2+
-        +whereToSee(ent:Entity ):Vector2+
+        + WatchAnother (another:ITransform,decorated:EntityQuery)
+        +whereToMove(ent:Entity ):IVector2+
+        +whereToSee(ent:Entity ):IVector2+
     }
 }
 

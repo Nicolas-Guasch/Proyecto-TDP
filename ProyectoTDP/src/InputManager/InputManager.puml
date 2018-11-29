@@ -10,7 +10,7 @@ package InputManager{
     abstract class AbstractDirectionalInput
     {
         + {abstract}  Destroy()
-        + {abstract}  Direction():Vector2
+        + {abstract}  Direction():IVector2
     }
 
     IActivable <|-- AbstractDiscreteInput
@@ -41,12 +41,12 @@ package InputManager{
         +  Destroy()+
     }
 
-    DirectionalMouse -- "1" Transform
+    DirectionalMouse -- "1" ITransform
     class DirectionalMouse extends AbstractDirectionalInput
     {
-        + DirectionalMouse (reference:Transform)
+        + DirectionalMouse (reference:ITransform)
         +  Destroy()+
-        + Direction():Vector2+
+        + Direction():IVector2+
     }
 
     DirectionalWASD-- "4" AbstractContinueInput
@@ -60,7 +60,7 @@ package InputManager{
         + unLockX()
         + unLockY()
         +  Destroy()+
-        + Direction():Vector2+
+        + Direction():IVector2+
     }
 
     DiscreteClick --  IBroadcaster
@@ -96,8 +96,8 @@ package InputManager{
 
     class DummyComponent extends Component
     {
-        - Runnable onUpdate;
-        DummyComponent(onUpdate:Runnable )
+        - Action onUpdate;
+        DummyComponent(onUpdate:Action )
         + update()++
         + OnDestroy() ++
     }

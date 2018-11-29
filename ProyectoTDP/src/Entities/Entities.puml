@@ -131,38 +131,38 @@ package Entities{
 	}
 
 	ShipAction --|> Consumer
-	note on link: Consumer<Vector2>
+	note on link: Consumer<IVector2>
 	Ship "1" -- ShipAction
 	ShipAction -- "1" Consumer
 	note on link: Consumer<Ship>
 	class ShipAction{
 	    +ShipAction(ship:Ship , shipConsumer:Consumer<Ship> )
-	    +accept(vector2:Vector2)
+	    +accept(vector2:IVector2)
 	}
 
 	BarricadeBoth --|> Entity
 	class BarricadeBoth{
-	    + BarricadeBoth(referenced:GameObject)
+	    + BarricadeBoth(referenced:IGameObject)
 	    + accept(visitor:VisitorEntity)
 	}
 
 	BarricadeEnem --|> Entity
 	class BarricadeEnem{
-	    + BarricadeEnem(referenced:GameObject)
+	    + BarricadeEnem(referenced:IGameObject)
 	    + accept(visitor:VisitorEntity)
 	}
 
 	Bullet --|> Entity
 	Bullet --|> IBullet
 	abstract class Bullet{
-	    #Bullet(referenced:GameObject)
-	    +transform():Transform
+	    #Bullet(referenced:IGameObject)
+	    +transform():ITransform
 	    +entity() :Entity
 	}
 
 	EnemyBullet --|> Bullet
 	class EnemyBullet{
-	    +EnemyBullet(referenced:GameObject)
+	    +EnemyBullet(referenced:IGameObject)
 	    +accept(visitor:VisitorEntity)
 	}
 
@@ -215,15 +215,15 @@ package Entities{
 
 	interface IBullet
 	{
-	    transform():Transform
+	    transform():ITransform
 	    entity():Entity
 	}
 
 	BulletMaker --|> EnemyBulletBuilder
 	SpriteData "1" -- BulletMaker
-	Transform "1" -- BulletMaker
+	ITransform "1" -- BulletMaker
 	class BulletMaker{
-	    +BulletMaker(tie:Transform)
+	    +BulletMaker(tie:ITransform)
 	    +assembleSprite()++
 	    +assembleHitBox()++
 	    +assembleBehaviours()++
@@ -232,9 +232,9 @@ package Entities{
 
 	BulletPlayerBuilder --|> PlayerBulletBuilder
 	SpriteData "1" -- BulletPlayerBuilder
-	Transform "1" -- BulletPlayerBuilder
+	ITransform "1" -- BulletPlayerBuilder
 	class BulletPlayerBuilder{
-	    +BulletPlayerBuilder(solo:Transform)
+	    +BulletPlayerBuilder(solo:ITransform)
 	    +assembleSprite()++
 	    +assembleHitBox()++
 	    +assembleBehaviours()++
@@ -243,9 +243,9 @@ package Entities{
 
 	LaserSaber --|> EnemyBulletBuilder
 	SpriteData "1" -- LaserSaber
-	Transform "2" -- LaserSaber
+	ITransform "2" -- LaserSaber
 	class LaserSaber{
-	    +LaserSaber(tie:Transform,target:Transform)
+	    +LaserSaber(tie:ITransform,target:ITransform)
 	    +assembleSprite()++
 	    +assembleHitBox()++
 	    +assembleBehaviours()++
@@ -303,7 +303,7 @@ package Entities{
 
 	FireShield --|> Bullet
 	class FireShield{
-	    #FireShield(referenced:GameObject)
+	    #FireShield(referenced:IGameObject)
 	    +accept(visitor:VisitorEntity)+
 	}
 
@@ -320,7 +320,7 @@ package Entities{
 	Ship -- "1" Arsenal
 	abstract class Ship
 	{
-	    #Ship(referenced:GameObject,weapons:Arsenal)
+	    #Ship(referenced:IGameObject,weapons:Arsenal)
 	    +onDeath()++
 	    +addWeapon(Weapon p)+
 	    +getPilot():Pilot+
@@ -330,13 +330,13 @@ package Entities{
 
 	BaseEnemyShip --|> Ship
 	abstract class BaseEnemyShip{
-	    #BaseEnemyShip(referenced:GameObject,weapons:Arsenal)
+	    #BaseEnemyShip(referenced:IGameObject,weapons:Arsenal)
 	    +getBagPack():Arsenal
 	}
 
 	EnemyShip --|> BaseEnemyShip
 	abstract class EnemyShip{
-	    +EnemyShip(referenced:GameObject)
+	    +EnemyShip(referenced:IGameObject)
 	    +accept(visitor:VisitorEntity)+
 	    +onDeath()++
 	}
@@ -364,7 +364,7 @@ package Entities{
 
 	ShipBoss --|> BaseEnemyShip
 	class ShipBoss{
-	    +ShipBoss(referenced:GameObject)
+	    +ShipBoss(referenced:IGameObject)
 	    +accept(visitor:VisitorEntity)+
 	    +getBagPack():Arsenal++
 	    +onDeath()++
@@ -516,7 +516,7 @@ package Entities{
 	class PlayerShip{
 		+{static}getInstance():PlayerShip
 		+{static}isUninitialized():boolean
-		+{static}initialize(GameObject go)
+		+{static}initialize(IGameObject go)
 		+ onDeath()++
 		+ accept()+
 		+ setLife(cantLife:float)
@@ -608,45 +608,45 @@ package Entities{
 	Weapon <|-- LateralWeapon
 
 	ShotFront -- "1" BulletDirector
-	ShotFront -- "1" Transform
+	ShotFront -- "1" ITransform
 	class ShotFront<BulletDirectorType extends IBulletDirector>{
 	    -phaseShift:float
-	    +ShotFront(phaseShift:float,getter:BulletDirector,reference:Transform)
+	    +ShotFront(phaseShift:float,getter:BulletDirector,reference:ITransform)
 	    +Shoot()+
 	    +Destroy()+
 	}
 
-	GenericWeapon -- "1" Transform
+	GenericWeapon -- "1" ITransform
 	class GenericWeapon<BulletDirectorType extends IBulletDirector>{
 	    -{static} framesDuration:int
 	    -phaseShift:float
 	    -cantShoots:int
-	    +GenericWeapon(cantShoots:int,getter:BulletDirector,reference:Transform)
+	    +GenericWeapon(cantShoots:int,getter:BulletDirector,reference:ITransform)
 	    +Shoot()+
 	    +Destroy()+
 	    +setPhaseShift(phaseShift:float)
 	}
 
-	LateralWeapon -- "1" Transform
+	LateralWeapon -- "1" ITransform
 	class LateralWeapon<BulletDirectorType extends IBulletDirector>{
 	    -{static} framesDuration:int
 	    -phaseShift:float
 	    -cantShoots:int
-	    +LateralWeapon(cantShoots:int,getter:BulletDirector,reference:Transform)
-	    +LateralWeapon(getter:BulletDirector,reference:Transform)
+	    +LateralWeapon(cantShoots:int,getter:BulletDirector,reference:ITransform)
+	    +LateralWeapon(getter:BulletDirector,reference:ITransform)
 	    +Shoot()+
 	    +Destroy()+
 	    +setPhaseShift(phaseShift:float)
 	}
 
-	AngularWeapon -- "1" Transform
+	AngularWeapon -- "1" ITransform
 	class AngularWeapon<BulletDirectorType extends IBulletDirector>{
 	    -{static} framesDuration:int
 	    -tot_ang:float
 	    -phaseShift:float
 	    -cantShoots:int
-	    +AngularWeapon(cantShoots:int,getter:BulletDirector,reference:Transform)
-	    +AngularWeapon(getter:BulletDirector,reference:Transform)
+	    +AngularWeapon(cantShoots:int,getter:BulletDirector,reference:ITransform)
+	    +AngularWeapon(getter:BulletDirector,reference:ITransform)
 	    +Shoot()+
 	    +Destroy()+
 	    +setPhaseShift(phaseShift:float)
@@ -654,7 +654,7 @@ package Entities{
 
 	class IceWeapon<BulletDirectorType extends IBulletDirector>{
 	    -magazzing:int
-	    +IceWeapon(getter:BulletDirector,reference:Transform)
+	    +IceWeapon(getter:BulletDirector,reference:ITransform)
 	    +Shoot()+
 	    +Destroy()+
 	}

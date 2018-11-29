@@ -12,13 +12,13 @@ package Scripts{
         -points: [Vector2]
         -firstPos : Vector2
 
-        +Jumper(path : [Vector2] , transform : Transform)
+        +Jumper(path : [Vector2] , transform : ITransform)
         +update()++
         +getOnComplete():IBroadcaster<Vector2>
 
     }
 
-    GameObject ----o "obj" HyperSpace
+    IGameObject ----o "obj" HyperSpace
     HyperSpace -|>Component
     class HyperSpace{
         +{static} Jump():Jumper
@@ -32,13 +32,13 @@ package Scripts{
         +update()++
     }
     DangerousHunter <|--- Component
-    DangerousHunter "tofollow" o-- Transform
+    DangerousHunter "tofollow" o-- ITransform
     class DangerousHunter{
         -increment,maxspeed,currentspeed : float
         +update()++
-        DangerousHunter(tofollow:Transform)
+        DangerousHunter(tofollow:ITransform)
     }
-    AlwaysTurnAround "centerPoint" o--- Transform
+    AlwaysTurnAround "centerPoint" o--- ITransform
     AlwaysTurnAround ----|> Component
     class AlwaysTurnAround{
         -currentGap : Vector2
@@ -52,7 +52,7 @@ package Scripts{
         AlwaysRotate(v:float)
         +update()++
     }
-    PushData "target" o-- Transform
+    PushData "target" o-- ITransform
     class PushData{
         -counter:int
         -veloci:Vector2
@@ -62,7 +62,7 @@ package Scripts{
         +getDismish():float
         +setVelocity(velocity:Vector2)
         +setDismish(dismish:float)
-        +getTarget():Transform
+        +getTarget():ITransform
     }
 
     class RewardLateralMovement{
@@ -77,7 +77,7 @@ package Scripts{
 
     class ThePusher{
         ThePusher()
-        add(target:Transform , c:int, vel:Vector2, x:float)
+        add(target:ITransform , c:int, vel:Vector2, x:float)
         +update()++
     }
 
