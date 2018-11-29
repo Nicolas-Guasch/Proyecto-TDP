@@ -1,6 +1,6 @@
 package Rewards;
 
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,10 +24,10 @@ public class RewardsManager
         return instance;
     }
 
-    private Map<RewardKey, Consumer<Transform>> creators;
+    private Map<RewardKey, Consumer<ITransform>> creators;
 
     private RewardsManager(){
-        creators = new HashMap<RewardKey, Consumer<Transform>>();
+        creators = new HashMap<RewardKey, Consumer<ITransform>>();
         creators.put(FIVEWEAPON,new WeaponFiveCoin());
         creators.put(ICE, new IceWeaponCoin());
         creators.put(SHIELD,new ShieldCoin());
@@ -38,8 +38,8 @@ public class RewardsManager
     }
 
 
-    public void getReward(RewardKey key, Transform originPoint){
-        Consumer<Transform> op = creators.getOrDefault(key,null);
+    public void getReward(RewardKey key, ITransform originPoint){
+        Consumer<ITransform> op = creators.getOrDefault(key,null);
         if(op!=null){
           op.accept(originPoint);
         }

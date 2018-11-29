@@ -2,7 +2,7 @@ package UI;
 
 import ADTs.IVector2;
 import Engine.Action;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import Engine.GameObject;
 import Engine.IGameObject;
 
@@ -22,7 +22,7 @@ public class Tweeners
 
 
     //fixme (param). No está en uml. Se usa?
-    public void DoMove(Transform toMove, IVector2 destiny, int steps, Action onComplete){
+    public void DoMove(ITransform toMove, IVector2 destiny, int steps, Action onComplete){
         Action completion = new Action() {
             @Override
             public void invoke() {

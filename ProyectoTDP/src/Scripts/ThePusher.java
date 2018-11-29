@@ -1,14 +1,12 @@
 package Scripts;
 
 import ADTs.IVector2;
-import ADTs.Vector2;
 import Engine.Component;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import Engine.GameObject;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -42,7 +40,7 @@ public class ThePusher extends Component
      *      count >= 0
      *      1 > dismish > 0     *
      */
-    public void add(Transform target, int count, IVector2 velocity, float dismish){
+    public void add(ITransform target, int count, IVector2 velocity, float dismish){
         tasks.add(new PushData(count,velocity,dismish,target));
     }
 

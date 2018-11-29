@@ -3,7 +3,7 @@ package Engine;
 
 import Collisions.CollisionData;
 import Engine.Components.IActivable;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 
 
 /** Esta va en español porque es muy importante qeu quede claro como funciona
@@ -72,7 +72,7 @@ public abstract class Component implements IActivable, IUpdatable
     }
 
 
-    public Transform transform()
+    public ITransform transform()
     {
         if(gameObject()==null)return null;
         return gameObject().transform();

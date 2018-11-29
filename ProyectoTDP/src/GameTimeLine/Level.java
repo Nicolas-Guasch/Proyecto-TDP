@@ -97,7 +97,7 @@ public final class Level extends TimePoint
         return c.get(new Random().nextInt(c.size()));
     }
 
-    private Action ThrowAReward(RewardKey key, Transform tr){
+    private Action ThrowAReward(RewardKey key, ITransform tr){
         return ()-> RewardsManager.getInstance().getReward(key,tr);
     }
 

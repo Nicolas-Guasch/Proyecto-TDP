@@ -1,6 +1,6 @@
 package Rewards;
 
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import Engine.GameObject;
 import Engine.IGameObject;
 import Entities.Entity;
@@ -9,9 +9,9 @@ import Entities.EveryOne;
 import EntitiesVisitor.ForceVisitor;
 import RenderingSystem.SpriteData;
 
-public class ForceCoin implements java.util.function.Consumer<Engine.Components.Transform> {
+public class ForceCoin implements java.util.function.Consumer<ITransform> {
     @Override
-    public void accept(Transform transform) {
+    public void accept(ITransform ITransform) {
         IGameObject premio = GameObject.getRoot().addChild();
         SpriteData sd = new SpriteData("rewardforce");
 
@@ -20,7 +20,7 @@ public class ForceCoin implements java.util.function.Consumer<Engine.Components.
         vis.setEntity(rew);
 
 
-        premio.transform().setPosition(transform.position3());
+        premio.transform().setPosition(ITransform.position3());
         premio.addComponent(new RewardMove());
         rew.setData(EntityData.WithEqualsValues(100));
         EveryOne.getInstance().add(rew);

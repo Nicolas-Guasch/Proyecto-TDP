@@ -1,20 +1,17 @@
 package EntitiesVisitor;
 
 import ADTs.IVector2;
-import ADTs.Vector2;
-import Engine.Components.Transform;
-import Entities.Bullet;
+import Engine.Components.ITransform;
 import Entities.EnemyBullet;
 import Entities.PlayerBullet;
-import Entities.Ships.ShipBoss;
 
 public class BarricadeBothVisitor extends VisitorEntity
 {
 
-    private final Transform transform;
+    private final ITransform ITransform;
 
-    public BarricadeBothVisitor(Transform transform){
-        this.transform = transform;
+    public BarricadeBothVisitor(ITransform ITransform){
+        this.ITransform = ITransform;
     }
 
     private IVector2 getRepulsion(IVector2 repulsor, IVector2 repulsado, IVector2 repulsor_top, IVector2 repulsado_top)
@@ -25,7 +22,7 @@ public class BarricadeBothVisitor extends VisitorEntity
         return dir;
     }
 
-    private void bounce(Transform quiet, Transform traveller){
+    private void bounce(ITransform quiet, ITransform traveller){
         IVector2 nextTop = getRepulsion(quiet.position(),traveller.position(),quiet.top(),traveller.top());
         traveller.moveTowards(nextTop.withLength(5));
         traveller.setTop(nextTop);
@@ -33,11 +30,11 @@ public class BarricadeBothVisitor extends VisitorEntity
 
     @Override
     public void visit(PlayerBullet bullet) {
-        bounce(transform,bullet.transform());
+        bounce(ITransform,bullet.transform());
     }
 
     @Override
     public void visit(EnemyBullet bullet) {
-        bounce(transform,bullet.transform());
+        bounce(ITransform,bullet.transform());
     }
 }

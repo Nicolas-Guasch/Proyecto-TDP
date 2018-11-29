@@ -2,8 +2,7 @@ package Entities.Weapons;
 
 
 import ADTs.IVector2;
-import Engine.Components.Transform;
-import ADTs.Vector2;
+import Engine.Components.ITransform;
 import AIs.Vibe;
 import Entities.Builders.IBullet;
 import Entities.Builders.Directors.IBulletDirector;
@@ -16,16 +15,16 @@ public class LateralWeapon<DirectorType extends IBulletDirector> extends Weapon
     private static final int framesDuration = 150;
     private float phaseShift= 25 ; // 10 muy lejos?
 
-    private final Transform reference;
+    private final ITransform reference;
     private int cantShoots;
 
-    public LateralWeapon(Transform reference, DirectorType generator, int cantShoots) {
+    public LateralWeapon(ITransform reference, DirectorType generator, int cantShoots) {
         super(generator);
         this.reference = reference;
         this.cantShoots = cantShoots;
     }
 
-    public LateralWeapon(Transform reference, DirectorType generator) {
+    public LateralWeapon(ITransform reference, DirectorType generator) {
         this(reference,generator, 1);
     }
 

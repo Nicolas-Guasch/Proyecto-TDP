@@ -1,11 +1,11 @@
 package Entities.Builders;
 
 
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import Entities.Entity;
 
 public interface IBullet
 {
-    Transform transform();
+    ITransform transform();
     Entity entity();
 }

@@ -1,7 +1,7 @@
 package Entities.Weapons;
 
 import Engine.Component;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import AIs.MouseFollower;
 import AIs.SimpleBullet;
 
@@ -11,11 +11,11 @@ import Entities.Builders.IBullet;
 public class IceWeapon<BulletDirectorType extends IBulletDirector> extends Weapon
 {
 
-    private final Transform reference;
+    private final ITransform reference;
     private int magazzine;
 
 
-    public IceWeapon(Transform reference, BulletDirectorType generator, int magazzine) {
+    public IceWeapon(ITransform reference, BulletDirectorType generator, int magazzine) {
         super(generator);
         this.reference = reference;
         this.magazzine = 3;

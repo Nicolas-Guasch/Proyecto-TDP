@@ -2,7 +2,7 @@ package GameTimeLine;
 
 import ADTs.IVector2;
 import ADTs.Vector2;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import Entities.BarricadeBoth;
 import Entities.Builders.Directors.BarricadeBothDirector;
 import Entities.Entity;
@@ -38,7 +38,7 @@ public class SomeBarricades extends TimePoint {
         IVector2 pos = Vector2.UP(rad);
         for(int i=0 ; i<circleBarricades ; i++){
             Entity entBar = nextBarricade();
-            Transform bar = entBar.referenced().transform();
+            ITransform bar = entBar.referenced().transform();
             bar.setPosition(pos);
             bar.setTop(pos.prod(-1));
             pos = pos.rotateUnary(angle);

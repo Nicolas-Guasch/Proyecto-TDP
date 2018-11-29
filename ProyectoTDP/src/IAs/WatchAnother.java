@@ -1,16 +1,16 @@
 package IAs;
 
 import ADTs.IVector2;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import ADTs.Vector2;
 import Entities.Entity;
 
 public class WatchAnother extends AIQueryDecorator
 {
 
-    private final Transform another;
+    private final ITransform another;
     private int scapeFrom = 1;
-    public WatchAnother(Transform another, EntityQuery decorated)
+    public WatchAnother(ITransform another, EntityQuery decorated)
     {
         super(decorated);
         this.another = another;

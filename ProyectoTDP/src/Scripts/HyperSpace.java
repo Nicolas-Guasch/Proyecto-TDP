@@ -1,6 +1,6 @@
 package Scripts;
 import ADTs.IVector2;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import Engine.GameObject;
 import Engine.IGameObject;
 
@@ -12,7 +12,7 @@ public class HyperSpace
 
     private static IGameObject obj;
 
-    public static Jumper Jump(Transform toMove, IVector2 destiny, int frames, int delayFrames){
+    public static Jumper Jump(ITransform toMove, IVector2 destiny, int frames, int delayFrames){
         checkObj();
         assert frames>0;
         List<IVector2> path = GetPath(toMove.position(),destiny,frames);

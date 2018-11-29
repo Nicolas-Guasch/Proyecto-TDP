@@ -2,7 +2,7 @@ package Entities.Builders.Concretes;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import ADTs.Vector2;
 import AIs.SimpleBullet;
 import Entities.Builders.EnemyBulletBuilder;
@@ -17,9 +17,9 @@ public class BulletMaker extends EnemyBulletBuilder
 
     private static final SpriteData SPRITEDATA = new SpriteData("greenbullet",new Vector2(80,80));
 
-    private final Transform tie;
+    private final ITransform tie;
 
-    public BulletMaker(Transform tie)
+    public BulletMaker(ITransform tie)
     {
         this.tie = tie;
     }
@@ -43,7 +43,7 @@ public class BulletMaker extends EnemyBulletBuilder
 
     @Override
     public void assembleBehaviours() {
-        Transform tr = bullet.referenced().transform();
+        ITransform tr = bullet.referenced().transform();
         tr.setPosition(tie.position());
         tr.setTop(tie.top());
         bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().TieBulletSpeed));

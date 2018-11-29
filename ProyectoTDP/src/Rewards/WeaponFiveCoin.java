@@ -1,6 +1,6 @@
 package Rewards;
 
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import Engine.GameObject;
 import Engine.IGameObject;
 import Entities.Builders.Concretes.BulletPlayerBuilder;
@@ -14,9 +14,9 @@ import Entities.Weapons.AngularWeapon;
 import Entities.Weapons.Weapon;
 import RenderingSystem.SpriteData;
 
-public class WeaponFiveCoin implements java.util.function.Consumer<Engine.Components.Transform> {
+public class WeaponFiveCoin implements java.util.function.Consumer<ITransform> {
     @Override
-    public void accept(Transform transform) {
+    public void accept(ITransform ITransform) {
         PlayerShip player = PlayerShip.getInstance();
         IGameObject IGameObject = GameObject.getRoot().addChild();
         SpriteData spriteData = new SpriteData("5reward");
@@ -26,7 +26,7 @@ public class WeaponFiveCoin implements java.util.function.Consumer<Engine.Compon
         Weapon weapon = new AngularWeapon<BulletDirector<PlayerBullet, PlayerBulletBuilder>>(player.referenced().transform(),director, 5);
         weapon.setName("penta");
         reward.setWeapon(weapon);
-        IGameObject.transform().setPosition(transform.position3());
+        IGameObject.transform().setPosition(ITransform.position3());
         IGameObject.addComponent(new RewardMove());
         reward.setData(EntityData.WithEqualsValues(100));
         EveryOne.getInstance().add(reward);

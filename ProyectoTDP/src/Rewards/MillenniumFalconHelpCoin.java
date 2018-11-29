@@ -1,6 +1,6 @@
 package Rewards;
 
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import Engine.GameObject;
 import Engine.IGameObject;
 import Entities.Entity;
@@ -11,12 +11,12 @@ import RenderingSystem.SpriteData;
 
 import java.util.function.Consumer;
 
-public class MillenniumFalconHelpCoin implements Consumer<Transform> {
+public class MillenniumFalconHelpCoin implements Consumer<ITransform> {
 
 
 
     @Override
-    public void accept(Transform originPoint) {
+    public void accept(ITransform originPoint) {
 
         IGameObject IGameObject = GameObject.getRoot().addChild();
         SpriteData spriteData = new SpriteData("soloreward");

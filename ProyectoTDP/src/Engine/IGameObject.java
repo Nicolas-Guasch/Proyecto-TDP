@@ -1,7 +1,7 @@
 package Engine;
 
 import Collisions.HitBox;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import RenderingSystem.Renderizable;
 
 import java.util.function.Consumer;
@@ -23,7 +23,7 @@ public interface IGameObject {
 
     void removeComponent(Component c);
 
-    Transform transform();
+    ITransform transform();
 
     void update();
 

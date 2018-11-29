@@ -2,7 +2,7 @@ package Entities.Builders.Concretes;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import ADTs.Vector2;
 import Entities.Builders.EnemyBulletBuilder;
 import GameData.GameSettings;
@@ -21,10 +21,10 @@ public class LaserSaber extends EnemyBulletBuilder
 {
     private static final SpriteData SPRITEDATA = new SpriteData("redbullet",new Vector2(80,80));
 
-    private final Transform tie;
-    private final Transform target;
+    private final ITransform tie;
+    private final ITransform target;
 
-    public LaserSaber(Transform tie, Transform target)
+    public LaserSaber(ITransform tie, ITransform target)
     {
         this.tie = tie;
         this.target = target;
@@ -49,7 +49,7 @@ public class LaserSaber extends EnemyBulletBuilder
 
     @Override
     public void assembleBehaviours() {
-        Transform tr = bullet.referenced().transform();
+        ITransform tr = bullet.referenced().transform();
         tr.setPosition(tie.position());
         tr.setTop(tie.top());
         bullet.addBehaviour(new DangerousHunter(

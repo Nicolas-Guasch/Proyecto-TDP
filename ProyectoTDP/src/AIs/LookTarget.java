@@ -1,7 +1,7 @@
 package AIs;
 
 import Engine.Component;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 
 /**
  * Util Behaviour for many entities
@@ -9,10 +9,10 @@ import Engine.Components.Transform;
  */
 public class LookTarget extends Component
 {
-    private Transform target;
+    private ITransform target;
 
-    public LookTarget(Transform playerTransform) {
-        this.target = playerTransform;
+    public LookTarget(ITransform playerITransform) {
+        this.target = playerITransform;
     }
 
     @Override

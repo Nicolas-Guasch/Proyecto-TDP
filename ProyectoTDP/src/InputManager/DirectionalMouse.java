@@ -1,7 +1,7 @@
 package InputManager;
 
 import ADTs.IVector2;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import ADTs.Vector2;
 import RenderingSystem.RenderingTools;
 import RenderingSystem.Window;
@@ -10,9 +10,9 @@ import java.awt.*;
 
 public class DirectionalMouse extends AbstractDirectionalInput
 {
-    private Transform reference;
+    private ITransform reference;
 
-    public DirectionalMouse(Transform reference)
+    public DirectionalMouse(ITransform reference)
     {
         this.reference = reference;
     }

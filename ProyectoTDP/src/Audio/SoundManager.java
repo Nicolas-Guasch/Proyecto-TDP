@@ -3,8 +3,7 @@ import java.util.*;
 
 
 import ADTs.IVector2;
-import Engine.Components.Transform;
-import ADTs.Vector2;
+import Engine.Components.ITransform;
 import SoundSystem.*;
 
 import java.util.Collection;
@@ -25,7 +24,7 @@ public final class SoundManager
     private Music musicBoss;
     private Music menu;
     private Sound vaderBreath;
-    private Transform listenPoint;
+    private ITransform listenPoint;
 
     private Sound explo1,explo2;
 
@@ -164,9 +163,9 @@ public final class SoundManager
         vaderBreath.play();
     }
 
-    public void setTransformListener(Transform transform)
+    public void setTransformListener(ITransform ITransform)
     {
-        this.listenPoint = transform;
+        this.listenPoint = ITransform;
     }
 
     public void TieEngine(IVector2 position)

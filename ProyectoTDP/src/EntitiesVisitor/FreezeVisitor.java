@@ -1,6 +1,6 @@
 package EntitiesVisitor;
 
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 
 import Engine.TheEngine;
 import Entities.Entity;
@@ -11,10 +11,10 @@ public class FreezeVisitor extends VisitorEntity
 {
 
     private final float time;
-    private final Transform centerPoint;
+    private final ITransform centerPoint;
     private final float ratio;
 
-    public FreezeVisitor(float time, Transform center, float ratio)
+    public FreezeVisitor(float time, ITransform center, float ratio)
     {
         this.time = time;
         this.centerPoint = center;

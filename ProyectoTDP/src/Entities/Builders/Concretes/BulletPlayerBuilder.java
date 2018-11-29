@@ -2,7 +2,7 @@ package Entities.Builders.Concretes;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import ADTs.Vector2;
 import AIs.SimpleBullet;
 import Entities.Builders.PlayerBulletBuilder;
@@ -20,9 +20,9 @@ public class BulletPlayerBuilder extends PlayerBulletBuilder
 {
     private static final SpriteData SPRITEDATA = new SpriteData("bluebullet",new Vector2(80,80));
 
-    private final Transform solo;
+    private final ITransform solo;
 
-    public BulletPlayerBuilder(Transform solo)
+    public BulletPlayerBuilder(ITransform solo)
     {
         this.solo = solo;
     }
@@ -46,7 +46,7 @@ public class BulletPlayerBuilder extends PlayerBulletBuilder
 
     @Override
     public void assembleBehaviours() {
-        Transform tr = bullet.referenced().transform();
+        ITransform tr = bullet.referenced().transform();
         tr.setPosition(solo.position());
         tr.setTop(solo.top());
         bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().PlayerBulletSpeed ));

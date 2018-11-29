@@ -1,32 +1,31 @@
 package RenderingSystem;
 
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import ADTs.Vector2;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.ColorModel;
 
 public class SpriteRenderer extends JLabel
 {
 
-    private Transform transform;
+    private ITransform ITransform;
 
 
     @Override
     public void paintComponent( Graphics g ) {
-        if(transform==null || transform.getLifetime()<5){
+        if(ITransform ==null || ITransform.getLifetime()<5){
             return;
         }
         Graphics2D gx = (Graphics2D) g;
-        if(transform != null)
+        if(ITransform != null)
         {
-            gx.rotate(transform.top().getAngle(Vector2.UP(2)) , (getWidth()/2f) , (getHeight()/2f));
+            gx.rotate(ITransform.top().getAngle(Vector2.UP(2)) , (getWidth()/2f) , (getHeight()/2f));
         }
         super.paintComponent(gx);
     }
 
-    public void setTransform(Transform transform) {
-        this.transform = transform;
+    public void setTransform(ITransform ITransform) {
+        this.ITransform = ITransform;
     }
 }

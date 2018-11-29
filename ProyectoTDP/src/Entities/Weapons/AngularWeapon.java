@@ -1,9 +1,7 @@
 package Entities.Weapons;
 
 import ADTs.IVector2;
-import Engine.Components.Transform;
-
-import ADTs.Vector2;
+import Engine.Components.ITransform;
 
 import Entities.Builders.Directors.IBulletDirector;
 
@@ -18,10 +16,10 @@ public class AngularWeapon<BulletDirectorType extends IBulletDirector> extends W
     private static final int framesDuration = 160;
     private float phaseShift = 25; // 10 muy lejos?
     private String name;
-    private final Transform reference;
+    private final ITransform reference;
     private int cantShoots;
 
-    public AngularWeapon(Transform reference, BulletDirectorType generator, int cantShoots) {
+    public AngularWeapon(ITransform reference, BulletDirectorType generator, int cantShoots) {
         super(generator);
         this.reference = reference;
         this.name = name;

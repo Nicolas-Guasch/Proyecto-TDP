@@ -1,6 +1,6 @@
 package Entities;
 
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import Engine.IGameObject;
 import Entities.Builders.IBullet;
 import GameData.GameSettings;
@@ -15,7 +15,7 @@ public abstract class Bullet extends Entity implements IBullet
         data = GameSettings.GetInstance().PlaceHolderData();
     }
     @Override
-    public Transform transform() {
+    public ITransform transform() {
         return referenced().transform();
     }
 

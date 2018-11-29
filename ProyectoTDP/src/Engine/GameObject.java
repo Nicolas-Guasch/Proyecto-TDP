@@ -2,6 +2,7 @@ package Engine;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
+import Engine.Components.ITransform;
 import Engine.Components.Transform;
 import RenderingSystem.Renderizable;
 
@@ -47,7 +48,7 @@ public class GameObject implements IUpdatable, IGameObject {
         if(parent!=null)
         {
             this.parent.children.add(this);
-            transform.SetFromPrototype(parent.transform);
+            transform.setFromPrototype(parent.transform);
         }
     }
 
@@ -122,7 +123,7 @@ public class GameObject implements IUpdatable, IGameObject {
     }
 
     @Override
-    public Transform transform()
+    public ITransform transform()
     {
         return transform;
     }

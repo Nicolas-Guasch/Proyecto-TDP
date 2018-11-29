@@ -1,13 +1,13 @@
 package Scripts;
 
 import Engine.Component;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 
 public class DangerousHunter extends Component
 {
     private final float increment;
     private final float maxSpeed;
-    private Transform toFollow;
+    private ITransform toFollow;
     private float currentSpeed;
 
     /**
@@ -20,7 +20,7 @@ public class DangerousHunter extends Component
      *      if it is 1 it will remain constant
      * @param maxSpeed max velocity
      */
-    public DangerousHunter(Transform toFollow, float initialSpeed, float increment, float maxSpeed) {
+    public DangerousHunter(ITransform toFollow, float initialSpeed, float increment, float maxSpeed) {
         this.toFollow = toFollow;
         this.currentSpeed =initialSpeed;
         this.increment = increment;

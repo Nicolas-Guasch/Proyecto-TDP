@@ -2,7 +2,7 @@ package Entities.Bullets;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 
 import Engine.GameObject;
 import AIs.SimpleBullet;
@@ -48,8 +48,8 @@ public class ColdFireMaker extends PlayerBulletBuilder {
 
     @Override
     public void assembleBehaviours() {
-        Transform tr = bullet.referenced().transform();
-        Transform playerT = PlayerShip.getInstance().referenced().transform();
+        ITransform tr = bullet.referenced().transform();
+        ITransform playerT = PlayerShip.getInstance().referenced().transform();
         tr.setPosition(playerT.position3());
         tr.setTop(playerT.top());
         bullet.addBehaviour(new SimpleBullet(GameSettings.GetInstance().PlayerBulletSpeed *0.5f));
@@ -71,7 +71,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
         Renderizable rend = new Renderizable(new SpriteData("coldfireexplo"));
         g.setRenderer(rend);
         rend.show();
-        Transform t = bullet.referenced().transform();
+        ITransform t = bullet.referenced().transform();
         g.transform().setPosition(t.position3());
         TheEngine.getInstance().waitForFrames(g::destroy,10);
         EveryOne.getInstance().takeLazyVisitor(new FreezeVisitor(5, t, 200));

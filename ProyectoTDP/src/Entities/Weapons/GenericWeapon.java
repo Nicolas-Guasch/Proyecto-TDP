@@ -1,8 +1,7 @@
 package Entities.Weapons;
 
 import ADTs.IVector2;
-import Engine.Components.Transform;
-import ADTs.Vector2;
+import Engine.Components.ITransform;
 import Entities.Builders.Directors.IBulletDirector;
 import Entities.Builders.IBullet;
 import Entities.EveryOne;
@@ -13,10 +12,10 @@ public class GenericWeapon<BulletDirectorType extends IBulletDirector> extends W
     private static final int framesDuration = 160;
     private float phaseShift = 25; // 10 muy lejos?
     private String name;
-    private final Transform reference;
+    private final ITransform reference;
     private int cantShoots;
 
-    public GenericWeapon(Transform reference, BulletDirectorType generator, int cantShoots) {
+    public GenericWeapon(ITransform reference, BulletDirectorType generator, int cantShoots) {
         super(generator);
         this.reference = reference;
 

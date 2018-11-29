@@ -1,6 +1,6 @@
 package Rewards;
 
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import Engine.GameObject;
 import Engine.IGameObject;
 import Entities.Builders.Directors.BulletDirector;
@@ -14,9 +14,9 @@ import Entities.Weapons.IceWeapon;
 import Entities.Weapons.Weapon;
 import RenderingSystem.SpriteData;
 
-public class IceWeaponCoin implements java.util.function.Consumer<Engine.Components.Transform> {
+public class IceWeaponCoin implements java.util.function.Consumer<ITransform> {
     @Override
-    public void accept(Transform originPoint) {
+    public void accept(ITransform originPoint) {
         PlayerShip player = PlayerShip.getInstance();
         IGameObject premio = GameObject.getRoot().addChild();
         SpriteData sd = new SpriteData("icereward");

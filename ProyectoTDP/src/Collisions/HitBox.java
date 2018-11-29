@@ -2,8 +2,7 @@ package Collisions;
 
 import ADTs.IVector2;
 import Engine.Component;
-import Engine.Components.Transform;
-import Engine.GameObject;
+import Engine.Components.ITransform;
 import ADTs.Vector2;
 import Entities.Entity;
 
@@ -17,7 +16,7 @@ public final class HitBox extends Component {
     private static final int NoCheckDistance = 500;
     private Entity entity;
     private IVector2 dimensions;
-    private Transform transform;
+    private ITransform ITransform;
 
 
     public static HitBox getOne(float w, float h, Entity entity) {
@@ -36,7 +35,7 @@ public final class HitBox extends Component {
         }
         this.entity = entity;
         this.dimensions = dimensions;
-        transform = entity.referenced().transform();
+        ITransform = entity.referenced().transform();
     }
 
     public Entity getEntity() {
@@ -47,7 +46,7 @@ public final class HitBox extends Component {
       //  return entity.referenced();
    // }
     CollisionData checkCollision(HitBox other) {
-        if(isFar(other.transform) || other.distToCenter(transform.position()) > dimensions.length() + other.diagonalLength())
+        if(isFar(other.ITransform) || other.distToCenter(ITransform.position()) > dimensions.length() + other.diagonalLength())
             return null;
 
         IVector2 CollisionPoint = vertexInside(other);
@@ -58,13 +57,13 @@ public final class HitBox extends Component {
 
     private Iterable<IVector2> vertices() {
         Collection<IVector2> res = new Vector<IVector2>();
-        IVector2 dy = transform.top(dimensions.y()).half();
-        IVector2 dx = transform.top(dimensions.x()).right().half();
+        IVector2 dy = ITransform.top(dimensions.y()).half();
+        IVector2 dx = ITransform.top(dimensions.x()).right().half();
         int dir[] = {-1, 1};
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
                 IVector2 diag = dx.prod(dir[i]).sum(dy.prod(dir[j]));
-                res.add(transform.position().sum(diag));
+                res.add(ITransform.position().sum(diag));
             }
         }
         return res;
@@ -75,12 +74,12 @@ public final class HitBox extends Component {
     }
 
     private float distToCenter(IVector2 v) {
-        return transform.position().distanceTo(v);
+        return ITransform.position().distanceTo(v);
     }
 
-    private boolean isFar(Transform other){
-        boolean b1 = Math.abs(other.position().x()-transform.position().x()) > NoCheckDistance;
-        boolean b2 = Math.abs(other.position().y()-transform.position().y()) > NoCheckDistance;
+    private boolean isFar(ITransform other){
+        boolean b1 = Math.abs(other.position().x()- ITransform.position().x()) > NoCheckDistance;
+        boolean b2 = Math.abs(other.position().y()- ITransform.position().y()) > NoCheckDistance;
         return b1 || b2 ;
         // si la pifea mucho probar cambiar por un && o agrandar la distancia
     }
@@ -104,19 +103,19 @@ public final class HitBox extends Component {
 
 
     private IVector2 bottomLeft() {
-        return transform.position().sub(bottomSide().div(2)).sub(leftSide().div(2));
+        return ITransform.position().sub(bottomSide().div(2)).sub(leftSide().div(2));
     }
 
     private IVector2 topRight() {
-        return transform.position().sum(bottomSide().div(2)).sum(leftSide().div(2));
+        return ITransform.position().sum(bottomSide().div(2)).sum(leftSide().div(2));
     }
 
     private IVector2 bottomSide() {
-        return transform.top(dimensions.x()).right();
+        return ITransform.top(dimensions.x()).right();
     }
 
     private IVector2 leftSide() {
-        return transform.top(dimensions.y());
+        return ITransform.top(dimensions.y());
     }
 
 

@@ -1,6 +1,6 @@
 package Rewards;
 
-import Engine.Components.Transform;
+import Engine.Components.ITransform;
 import Engine.GameObject;
 import Engine.IGameObject;
 import Entities.Entity;
@@ -9,9 +9,9 @@ import Entities.EveryOne;
 import Entities.Ships.ShieldVisitor;
 import RenderingSystem.SpriteData;
 
-public class ShieldCoin implements java.util.function.Consumer<Engine.Components.Transform> {
+public class ShieldCoin implements java.util.function.Consumer<ITransform> {
     @Override
-    public void accept(Transform transform) {
+    public void accept(ITransform ITransform) {
         IGameObject IGameObject = GameObject.getRoot().addChild();
         SpriteData spriteData = new SpriteData("rewardshield");
 
@@ -20,7 +20,7 @@ public class ShieldCoin implements java.util.function.Consumer<Engine.Components
         visitor.setReward(reward);
 
 
-        IGameObject.transform().setPosition(transform.position3());
+        IGameObject.transform().setPosition(ITransform.position3());
         IGameObject.addComponent(new RewardMove());
         reward.setData(EntityData.WithEqualsValues(100));
         EveryOne.getInstance().add(reward);
