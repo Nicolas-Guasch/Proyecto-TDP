@@ -9,30 +9,26 @@ import java.util.*;
 import java.util.function.Consumer;
 
 //FIXME uml la herencia. Done
-public class GameObject implements IUpdatable
-{
+public class GameObject implements IUpdatable, IGameObject {
 
 
     // ------ RootControlStuff --------
     private static GameObject root;
-    public static GameObject getRoot()
+    public static IGameObject getRoot()
     {
         if (root == null)
         {
             IEngine eng = TheEngine.getInstance();
             root = new GameObject(null);
             eng.suscribeToUpdate(root);
-            //eng.suscribeToPhysicsUpdate(root);
-            // not in this project
 
         }
         return root;
     }
-    private GameObject(){}
 
 
     // ---------- Vars ------------
-    private Collection<GameObject> children= new LinkedList<GameObject>();;
+    private Collection<IGameObject> children= new LinkedList<IGameObject>();;
     private Collection<Component> components= new LinkedList<Component>();;
     private GameObject parent;
     private Transform transform;
@@ -58,6 +54,7 @@ public class GameObject implements IUpdatable
     //------------- Components Handling --------------
 
     private HitBox hitbox;
+    @Override
     public HitBox addHitBox(HitBox c)
     {
         if(hitbox == null) {
@@ -70,19 +67,27 @@ public class GameObject implements IUpdatable
     }
 
 
+    @Override
     public<S extends Component> S addComponent(S c)
     {
         assert c != null;
-        Core.getInstance().waitForFrames(()->components.add(c),1);
+        Core.getInstance().waitForFrames(new Action() {
+            @Override
+            public void invoke() {
+                components.add(c);
+            }
+        },1);
 
         c.setGameObject(this);
         c.start();
         return c;
     }
+    @Override
     public Iterable<Component> getComponents()
     {
         return components;
     }
+    @Override
     public void sendMessage(Consumer<Component> consumer)
     {
         components.forEach(consumer);
@@ -92,16 +97,21 @@ public class GameObject implements IUpdatable
     // -------- As a Tree -------
 
 
-    public final<C extends Component> GameObject addChild(Iterable<C> components) // the only way to create a new gameobject from outside
+    @Override
+    public final<C extends Component> IGameObject addChild(Iterable<C> components) // the only way to create a new gameobject from outside
     {
-        GameObject g = new GameObject(this);
-        components.forEach(g::addComponent);
+        IGameObject g = new GameObject(this);
+        for (C component : components) {
+            g.addComponent(component);
+        }
         return g;
     }
-    public final GameObject addChild() // the only way to create a new gameobject from outside
+    @Override
+    public final IGameObject addChild() // the only way to create a new gameobject from outside
     {
         return new GameObject(this);
     }
+    @Override
     public void removeComponent(Component c)
     {
         if(components.contains(c))
@@ -110,41 +120,43 @@ public class GameObject implements IUpdatable
             c.DestroyComponent();
         }
     }
-    public GameObject getParent()
-    {
-        return parent;
-    }
-    public Iterable<GameObject> children()
-    {
-        return children;
-    }
+
+    @Override
     public Transform transform()
     {
         return transform;
     }
 
+    @Override
     public void update()
     {
-        components.forEach((c)->{
-            if(c.isActive())
-            {
-                c.update();
+        for (Component component : components) {
+            if (component.isActive()) {
+                component.update();
             }
-        });
-        for (GameObject c : new LinkedList<GameObject>(children)) {
+        }
+
+        for (IGameObject c : new LinkedList<IGameObject>(children)) {
 
             c.update();
         }
         //TODO: hacer cola para add y remove
     }
 
+    @Override
     public void destroy()
     {
-        components.forEach(c->c.setActive(false));
+        for (Component c : components) {
+            c.setActive(false);
+        }
         parent.children.remove(this);
-        new LinkedList<GameObject>(children).forEach(c->c.destroy());
+        for (IGameObject IGameObject : new LinkedList<>(children)) {
+            IGameObject.destroy();
+        }
         children.clear();
-        components.forEach(c->c.DestroyComponent());
+        for (Component component : components) {
+            component.DestroyComponent();
+        }
         if(hitbox !=null)
         {
             HitBoxesManager.getInstance().removeHitBox(hitbox);
@@ -155,23 +167,18 @@ public class GameObject implements IUpdatable
     }
 
     private Action onDestroy;
-    public void setOnDestroy(Action a)
-    {
-        onDestroy = a;
-    }
-
-    public void SetEnabled(boolean enabled)
-    {
-        components.forEach(c ->c.setActive(enabled));
-        children.forEach(c->c.SetEnabled(enabled));
-    }
 
 
+
+
+
+    @Override
     public HitBox getHitbox()
     {
         return hitbox;
     }
 
+    @Override
     public int size()
     {
         if(children.size()==0)
@@ -180,23 +187,8 @@ public class GameObject implements IUpdatable
         }
         else{
             int c = 0;
-            for (GameObject x : children) {
+            for (IGameObject x : children) {
                 c += x.size();
-            }
-            return c;
-        }
-    }
-
-    public int SizeComps()
-    {
-        if(children.size()==0)
-        {
-            return components.size();
-        }
-        else{
-            int c = 0;
-            for (GameObject x : children) {
-                c += x.SizeComps();
             }
             return c;
         }
@@ -204,6 +196,7 @@ public class GameObject implements IUpdatable
 
 
     private Renderizable renderer;
+    @Override
     public void setRenderer(Renderizable rend)
     {
         if(renderer!=rend){
@@ -218,15 +211,15 @@ public class GameObject implements IUpdatable
 
 
 
+    @Override
     public Renderizable getRenderer() {
         return renderer;
     }
 
 
-    public Iterable<GameObject> getChildren() {
-        return children;
+    @Override
+    public void setOnDestroy(Action onDestroy) {
+        this.onDestroy = onDestroy;
     }
-
-
 }
 

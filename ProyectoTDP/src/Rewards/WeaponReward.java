@@ -2,8 +2,8 @@ package Rewards;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Engine.GameObject;
 import ADTs.Vector2;
+import Engine.IGameObject;
 import Entities.Entity;
 import Entities.Weapons.Weapon;
 import EntitiesVisitor.VisitorEntity;
@@ -18,7 +18,7 @@ public class WeaponReward extends Entity
     private Weapon weapon;
     private Renderizable renderer;
 
-    WeaponReward(GameObject referenced, SpriteData sprite)
+    WeaponReward(IGameObject referenced, SpriteData sprite)
     {
         super(referenced);
         renderer = new Renderizable(sprite);

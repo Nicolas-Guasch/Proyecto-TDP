@@ -1,6 +1,7 @@
 package Entities.Builders;
 
 import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.BarricadeBoth;
 
 public abstract class BarricadeBothBuilder
@@ -9,7 +10,7 @@ public abstract class BarricadeBothBuilder
 
     public void create()
     {
-        GameObject go = GameObject.getRoot().addChild();
+        IGameObject go = GameObject.getRoot().addChild();
         obst = new BarricadeBoth(go);
     }
     public BarricadeBoth get()

@@ -1,10 +1,10 @@
 package UI;
 
 import ADTs.IVector2;
-import ADTs.Vector2;
 import Engine.Action;
 import Engine.Components.Transform;
 import Engine.GameObject;
+import Engine.IGameObject;
 
 public class Tweeners
 {
@@ -15,7 +15,7 @@ public class Tweeners
         }
         return instance;
     }
-    private GameObject mine;
+    private IGameObject mine;
     private Tweeners(){
         mine = GameObject.getRoot().addChild();
     }

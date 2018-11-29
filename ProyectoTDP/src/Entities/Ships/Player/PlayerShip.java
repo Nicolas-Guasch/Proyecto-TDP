@@ -1,7 +1,7 @@
 package Entities.Ships.Player;
 
 import ADTs.Vector2;
-import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.Ships.Ship;
 import Entities.Weapons.PlayerArsenal;
 import Entities.Weapons.Arsenal;
@@ -37,7 +37,7 @@ public class PlayerShip extends Ship {
 		return instance == null;
 	}
 
-	public static void initialize(GameObject go) {
+	public static void initialize(IGameObject go) {
 		assert isUninitialized();
 		instance = new PlayerShip(go);
 		go.addComponent(new PlayerWatcher(instance));
@@ -61,7 +61,7 @@ public class PlayerShip extends Ship {
 		return weapons;
 	}
 
-	private PlayerShip(GameObject referenced) {
+	private PlayerShip(IGameObject referenced) {
 		super(referenced,new PlayerArsenal(new DiscreteKeyInput("qQ"), new DiscreteClick(1)));
 		//super(referenced,new PlayerArsenal(new DiscreteKeyInput("qQ"), new DiscreteKeyInput("oplOPLkK") ));
 

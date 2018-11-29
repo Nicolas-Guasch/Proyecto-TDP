@@ -2,10 +2,10 @@ package Rewards;
 
 import Engine.Components.Transform;
 import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.Entity;
 import Entities.EntityData;
 import Entities.EveryOne;
-import Entities.Ships.Player.PlayerShip;
 import EntitiesVisitor.VisitorShieldFireReward;
 import RenderingSystem.SpriteData;
 
@@ -13,7 +13,7 @@ public class FireSpinnerCoin implements java.util.function.Consumer<Engine.Compo
 
     @Override
     public void accept(Transform transform) {
-        GameObject premio = GameObject.getRoot().addChild();
+        IGameObject premio = GameObject.getRoot().addChild();
         SpriteData sd = new SpriteData("rewardfire");
 
         VisitorShieldFireReward vis = new VisitorShieldFireReward();

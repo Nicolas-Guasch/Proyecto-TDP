@@ -1,6 +1,6 @@
 package Entities.Ships;
 
-import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.Weapons.EnemyArsenal;
 import EntitiesVisitor.EnemyVisitor;
 import EntitiesVisitor.VisitorEntity;
@@ -11,7 +11,7 @@ public class EnemyShip extends BaseEnemyShip {
 
 
 
-	public EnemyShip(GameObject referenced)
+	public EnemyShip(IGameObject referenced)
 	{
 		super(referenced,new EnemyArsenal());
 		visitor = new EnemyVisitor(this);

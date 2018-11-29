@@ -1,12 +1,12 @@
 package Entities;
 
-import Engine.GameObject;
+import Engine.IGameObject;
 import EntitiesVisitor.PlayerBulletVisitor;
 import EntitiesVisitor.VisitorEntity;
 import GameData.GameSettings;
 
 public class PlayerBullet extends Bullet {
-	public PlayerBullet(GameObject referenced) {
+	public PlayerBullet(IGameObject referenced) {
 		super(referenced);
 		visitor = new PlayerBulletVisitor(this);
 		data = GameSettings.GetInstance().PlayerBulletData;

@@ -6,6 +6,7 @@ import Engine.Components.Transform;
 
 import Engine.GameObject;
 import AIs.SimpleBullet;
+import Engine.IGameObject;
 import Engine.TheEngine;
 import Entities.Builders.PlayerBulletBuilder;
 import Entities.Ships.Player.PlayerShip;
@@ -66,7 +67,7 @@ public class ColdFireMaker extends PlayerBulletBuilder {
 
     private void onColdFire()
     {
-        GameObject g = GameObject.getRoot().addChild();
+        IGameObject g = GameObject.getRoot().addChild();
         Renderizable rend = new Renderizable(new SpriteData("coldfireexplo"));
         g.setRenderer(rend);
         rend.show();

@@ -5,6 +5,7 @@ import ADTs.Vector2;
 import Audio.SoundManager;
 import Engine.DoWhen;
 import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.*;
 import AIs.FireFrequency;
 import Entities.Builders.Concretes.BulletPlayerBuilder;
@@ -41,7 +42,7 @@ public class SoloSupportVisitor extends VisitorEntity
     }
 
     private void createHanSolo() {
-        GameObject obj = GameObject.getRoot().addChild();
+        IGameObject obj = GameObject.getRoot().addChild();
         ship = new OtherShip(obj,new EnemyArsenal());
         getWeapons();
         getRenderer();

@@ -4,6 +4,7 @@ import ADTs.IVector2;
 import ADTs.Vector2;
 import ADTs.Vector3;
 import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.Weapons.Arsenal;
 import Entities.Weapons.Weapon;
 import GameData.GameSettings;
@@ -24,7 +25,7 @@ public class ArsenalUI implements UIComponent {
     private Grill grill ;
 
 
-    private GameObject selector;
+    private IGameObject selector;
 
     public ArsenalUI(Arsenal arsenal){
         this.arsenal = arsenal;

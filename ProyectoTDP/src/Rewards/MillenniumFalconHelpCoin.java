@@ -2,10 +2,10 @@ package Rewards;
 
 import Engine.Components.Transform;
 import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.Entity;
 import Entities.EntityData;
 import Entities.EveryOne;
-import Entities.Ships.Player.PlayerShip;
 import EntitiesVisitor.SoloSupportVisitor;
 import RenderingSystem.SpriteData;
 
@@ -18,17 +18,17 @@ public class MillenniumFalconHelpCoin implements Consumer<Transform> {
     @Override
     public void accept(Transform originPoint) {
 
-        GameObject gameObject = GameObject.getRoot().addChild();
+        IGameObject IGameObject = GameObject.getRoot().addChild();
         SpriteData spriteData = new SpriteData("soloreward");
 
         SoloSupportVisitor visitor = new SoloSupportVisitor();
-        Entity reward = new GenericReward(gameObject,visitor,spriteData);
+        Entity reward = new GenericReward(IGameObject,visitor,spriteData);
 
         visitor.setEntity(reward);
 
 
-        gameObject.transform().setPosition(originPoint.position3());
-        gameObject.addComponent(new RewardMove());
+        IGameObject.transform().setPosition(originPoint.position3());
+        IGameObject.addComponent(new RewardMove());
         reward.setData(EntityData.WithEqualsValues(100));
         EveryOne.getInstance().add(reward);
     }

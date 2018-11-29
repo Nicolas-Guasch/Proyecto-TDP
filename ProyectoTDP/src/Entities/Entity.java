@@ -1,24 +1,24 @@
 package Entities;
 
 import Engine.Action;
+import Engine.IGameObject;
 import Observer.IBroadcaster;
 import Collisions.HitBox;
 import Engine.Component;
 import Collisions.CollisionData;
-import Engine.GameObject;
 import EntitiesVisitor.VisitorEntity;
 import GameData.GameSettings;
 import RenderingSystem.Renderizable;
 
 public abstract class Entity {
 
-	private GameObject referenced;
+	private IGameObject referenced;
 	private Action doOnDeath;//fixme. Done
 
 	protected EntityData data; // tiene setter y getter, pero la hago protected por comodidad
 	protected VisitorEntity visitor;
 
-	protected Entity(GameObject referenced){
+	protected Entity(IGameObject referenced){
 		this.referenced = referenced;
 		data = GameSettings.GetInstance().PlaceHolderData();
 	}
@@ -61,7 +61,7 @@ public abstract class Entity {
 	public void addBehaviour(Component comp) {
 		referenced.addComponent(comp);
 	}
-	public GameObject referenced() {
+	public IGameObject referenced() {
 		return referenced;
 	}
 	public boolean alive() {

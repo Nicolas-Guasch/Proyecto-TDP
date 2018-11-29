@@ -3,6 +3,7 @@ package Misc;
 import ADTs.IVector2;
 import Engine.GameObject;
 import ADTs.Vector2;
+import Engine.IGameObject;
 import GameData.GameSettings;
 import Scripts.AlwaysRotate;
 import RenderingSystem.RenderingTools;
@@ -13,12 +14,12 @@ import UtilsBehaviours.MirrorBounds;
 
 public class DeathStar {
 
-    private static GameObject instance;
+    private static IGameObject instance;
 
-    public static GameObject get() {
+    public static IGameObject get() {
         if (instance!=null)return instance;
 
-        GameObject deathStar = GameObject.getRoot().addChild();
+        IGameObject deathStar = GameObject.getRoot().addChild();
         deathStar.transform().setPosition(new Vector2(-500, 400));
         IVector2 bottomRight = RenderingTools.CanvasToWorld(GameSettings.GetInstance().sizeWindow);
         IVector2 topRight = bottomRight.mirrorX();

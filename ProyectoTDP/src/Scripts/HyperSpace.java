@@ -1,8 +1,8 @@
 package Scripts;
 import ADTs.IVector2;
-import ADTs.Vector2;
 import Engine.Components.Transform;
 import Engine.GameObject;
+import Engine.IGameObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 public class HyperSpace
 {
 
-    private static GameObject obj;
+    private static IGameObject obj;
 
     public static Jumper Jump(Transform toMove, IVector2 destiny, int frames, int delayFrames){
         checkObj();

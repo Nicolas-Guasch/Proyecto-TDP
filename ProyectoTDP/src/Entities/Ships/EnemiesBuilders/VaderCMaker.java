@@ -7,6 +7,7 @@ import Collisions.HitBoxesManager;
 import AIs.FireFrequency;
 import AIs.LookTarget;
 import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.Builders.Concretes.BulletMaker;
 import Entities.Builders.Concretes.LaserSaber;
 import Entities.Builders.Directors.BulletDirector;
@@ -31,7 +32,7 @@ public class VaderCMaker extends EnemyShipBuilder {
 
     public void create()
     {
-        GameObject go = GameObject.getRoot().addChild();
+        IGameObject go = GameObject.getRoot().addChild();
         ship = new ShipBoss(go);
     }
 

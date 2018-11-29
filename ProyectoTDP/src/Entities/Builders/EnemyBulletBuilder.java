@@ -1,6 +1,7 @@
 package Entities.Builders;
 
 import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.EnemyBullet;
 
 public abstract class EnemyBulletBuilder implements IBulletBuilder<EnemyBullet>
@@ -9,7 +10,7 @@ public abstract class EnemyBulletBuilder implements IBulletBuilder<EnemyBullet>
 
     public void create()
     {
-        GameObject go = GameObject.getRoot().addChild();
+        IGameObject go = GameObject.getRoot().addChild();
         bullet = new EnemyBullet(go);
     }
     public EnemyBullet get()

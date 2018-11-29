@@ -1,6 +1,7 @@
 package Entities.Ships.Player;
 
 import Engine.GameObject;
+import Engine.IGameObject;
 
 public abstract class PlayerShipBuilder
 {
@@ -8,7 +9,7 @@ public abstract class PlayerShipBuilder
 
     public void create()
     {
-        GameObject go = GameObject.getRoot().addChild();
+        IGameObject go = GameObject.getRoot().addChild();
         PlayerShip.initialize(go);
         ship = PlayerShip.getInstance();
     }

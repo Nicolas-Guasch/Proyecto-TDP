@@ -1,7 +1,7 @@
 package Entities;
 
 import Engine.Components.Transform;
-import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.Builders.IBullet;
 import GameData.GameSettings;
 
@@ -10,7 +10,7 @@ import GameData.GameSettings;
  */
 public abstract class Bullet extends Entity implements IBullet
 {
-    protected Bullet(GameObject referenced) {
+    protected Bullet(IGameObject referenced) {
         super(referenced);
         data = GameSettings.GetInstance().PlaceHolderData();
     }

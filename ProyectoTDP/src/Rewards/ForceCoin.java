@@ -2,17 +2,17 @@ package Rewards;
 
 import Engine.Components.Transform;
 import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.Entity;
 import Entities.EntityData;
 import Entities.EveryOne;
-import Entities.Ships.Player.PlayerShip;
 import EntitiesVisitor.ForceVisitor;
 import RenderingSystem.SpriteData;
 
 public class ForceCoin implements java.util.function.Consumer<Engine.Components.Transform> {
     @Override
     public void accept(Transform transform) {
-        GameObject premio = GameObject.getRoot().addChild();
+        IGameObject premio = GameObject.getRoot().addChild();
         SpriteData sd = new SpriteData("rewardforce");
 
         ForceVisitor vis = new ForceVisitor();

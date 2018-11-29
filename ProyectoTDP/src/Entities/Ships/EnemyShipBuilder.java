@@ -1,7 +1,7 @@
 package Entities.Ships;
 
 import Engine.GameObject;
-import Entities.Ships.EnemyShip;
+import Engine.IGameObject;
 
 public abstract class EnemyShipBuilder
 {
@@ -9,7 +9,7 @@ public abstract class EnemyShipBuilder
 
     public void create()
     {
-        GameObject go = GameObject.getRoot().addChild();
+        IGameObject go = GameObject.getRoot().addChild();
         ship = new EnemyShip(go);
     }
     public BaseEnemyShip get()

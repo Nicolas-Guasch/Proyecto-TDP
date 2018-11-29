@@ -5,6 +5,7 @@ import ADTs.Vector2;
 import Audio.SoundManager;
 import Engine.Components.Transform;
 import Engine.GameObject;
+import Engine.IGameObject;
 import RenderingSystem.Animation;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
@@ -18,7 +19,7 @@ public class AnimatorsVolatiles
     }
 
     private String explosionOptions[] = {"exploA","exploB"};
-    private GameObject parent;
+    private IGameObject parent;
     private boolean swapper = true;
 
     private AnimatorsVolatiles(){
@@ -26,7 +27,7 @@ public class AnimatorsVolatiles
     }
 
     public Transform getVolatile(IVector2 position, String exp, float speed){
-        GameObject g = parent.addChild();
+        IGameObject g = parent.addChild();
         Renderizable rend = new Renderizable(new SpriteData(exp+"_0"));
         g.setRenderer(rend);
         rend.show();

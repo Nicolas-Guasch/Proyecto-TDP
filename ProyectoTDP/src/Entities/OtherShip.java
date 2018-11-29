@@ -1,6 +1,6 @@
 package Entities;
 
-import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.Ships.Ship;
 import Entities.Weapons.Arsenal;
 import EntitiesVisitor.VisitorEntity;
@@ -8,7 +8,7 @@ import EntitiesVisitor.VisitorEntity;
 public class OtherShip extends Ship
 {
 
-    public OtherShip(GameObject referenced, Arsenal weapons) {
+    public OtherShip(IGameObject referenced, Arsenal weapons) {
         super(referenced, weapons);
         data = EntityData.WithEqualsValues(1);
     }

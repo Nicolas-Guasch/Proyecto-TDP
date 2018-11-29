@@ -2,6 +2,7 @@ package Rewards;
 
 import Engine.Components.Transform;
 import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.Builders.Directors.BulletDirector;
 import Entities.Builders.PlayerBulletBuilder;
 import Entities.Bullets.ColdFireMaker;
@@ -17,7 +18,7 @@ public class IceWeaponCoin implements java.util.function.Consumer<Engine.Compone
     @Override
     public void accept(Transform originPoint) {
         PlayerShip player = PlayerShip.getInstance();
-        GameObject premio = GameObject.getRoot().addChild();
+        IGameObject premio = GameObject.getRoot().addChild();
         SpriteData sd = new SpriteData("icereward");
         WeaponReward rew = new WeaponReward(premio,sd);
         BulletDirector<PlayerBullet, PlayerBulletBuilder> director = new BulletDirector<PlayerBullet, PlayerBulletBuilder>();

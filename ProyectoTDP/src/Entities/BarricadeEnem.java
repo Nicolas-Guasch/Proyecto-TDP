@@ -1,12 +1,12 @@
 package Entities;
 
-import Engine.GameObject;
+import Engine.IGameObject;
 import EntitiesVisitor.BarricadeEnemVisitor;
 import EntitiesVisitor.VisitorEntity;
 
 public class BarricadeEnem extends Entity {
 
-	public BarricadeEnem(GameObject referenced) {
+	public BarricadeEnem(IGameObject referenced) {
 		super(referenced);
 		visitor = new BarricadeEnemVisitor();
 	}

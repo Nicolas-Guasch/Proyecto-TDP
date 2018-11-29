@@ -2,7 +2,7 @@ package Rewards;
 
 import Collisions.HitBox;
 import Collisions.HitBoxesManager;
-import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.Entity;
 import EntitiesVisitor.VisitorEntity;
 import RenderingSystem.Renderizable;
@@ -13,7 +13,7 @@ public class GenericReward extends Entity {
 
     private Renderizable renderer;
 
-    public GenericReward(GameObject referenced, VisitorEntity visitor, SpriteData sprite) {
+    public GenericReward(IGameObject referenced, VisitorEntity visitor, SpriteData sprite) {
         super(referenced);
         this.visitor = visitor;
 

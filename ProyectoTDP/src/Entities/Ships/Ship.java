@@ -1,9 +1,8 @@
 package Entities.Ships;
 
 import ADTs.IVector2;
-import ADTs.Vector2;
+import Engine.IGameObject;
 import Tools.AnimatorsVolatiles;
-import Engine.GameObject;
 import Entities.Entity;
 import Entities.Weapons.Weapon;
 import Entities.Weapons.Arsenal;
@@ -14,7 +13,7 @@ public abstract class Ship extends Entity implements IShip
     protected Arsenal weapons;
     private Pilot pilot;
 
-    protected Ship(GameObject referenced, Arsenal weapons) {
+    protected Ship(IGameObject referenced, Arsenal weapons) {
         super(referenced);
         this.weapons = weapons;
     }

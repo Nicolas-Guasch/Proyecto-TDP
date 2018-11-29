@@ -1,10 +1,10 @@
 package Entities.Ships;
 
-import Engine.GameObject;
+import Engine.IGameObject;
 import Entities.Weapons.Arsenal;
 
 public abstract class BaseEnemyShip extends Ship{
-    protected BaseEnemyShip(GameObject referenced, Arsenal weapons) {
+    protected BaseEnemyShip(IGameObject referenced, Arsenal weapons) {
         super(referenced, weapons);
     }
     public Arsenal getBagPack() {

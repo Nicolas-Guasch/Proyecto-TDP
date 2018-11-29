@@ -5,15 +5,13 @@ import Engine.Condition;
 import Engine.DoWhen;
 import Engine.GameObject;
 import ADTs.Vector2;
-import GameData.GameSettings;
+import Engine.IGameObject;
 import Scripts.AlwaysLateral;
 import RenderingSystem.Renderizable;
 import RenderingSystem.SpriteData;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
 
 public class UI
 {
@@ -97,7 +95,7 @@ public class UI
 
     private Condition moviblePrompt(SpriteData prompt,int por)
     {
-        GameObject goprompt = GameObject.getRoot().addChild();
+        IGameObject goprompt = GameObject.getRoot().addChild();
         AlwaysLateral al = new AlwaysLateral(Vector2.UP(3));
         Renderizable rend = new Renderizable(prompt);
         goprompt.transform().setZcomponent(2);

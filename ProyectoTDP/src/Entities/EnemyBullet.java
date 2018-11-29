@@ -1,13 +1,13 @@
 package Entities;
 
-import Engine.GameObject;
+import Engine.IGameObject;
 import EntitiesVisitor.EnemyBulletVisitor;
 import EntitiesVisitor.VisitorEntity;
 
 
 public class EnemyBullet extends Bullet {
 
-	public EnemyBullet(GameObject referenced) {
+	public EnemyBullet(IGameObject referenced) {
 		super(referenced);
 		visitor = new EnemyBulletVisitor(this);
 	}
