@@ -162,7 +162,7 @@ package Engine{
         +frameCounter():long
     }
 
-    KeyListener <|-- Transform
+    KeyListener <|-- CorePauser
     CorePauser -- "1" CorePauser:instance
     note left on link: static
     CorePauser -- "1" Core

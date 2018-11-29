@@ -1,21 +1,22 @@
 @startuml
 
 
-ParentGameObject -> GameObject : update()
-GameObject -> While_1 : update()
+
+":GameObject" -> "child:GameObject" as GameObject : update()
+GameObject -> "While_1:While" as While_1 : update()
     group if condition
-    While_1 -> RunnableX : run()
-    RunnableX -> ResourceY : use_and_modify()
-    RunnableX <<-- ResourceY
+    While_1 -> "RunnableX:Runnable" as RunnableX : run()
+    RunnableX -> Resource : use_and_modify()
+    RunnableX <<-- Resource
     While_1 <<-- RunnableX
     end
 GameObject <<-- While_1
-GameObject -> While_2 : update()
+GameObject -> "While_2:While" as While_2 : update()
     group if condition
-    While_2 -> RunnableZ : run()
-    RunnableZ -> ResourceY : use_and_modify()
-    RunnableZ <<-- ResourceY
-    While_2 <<-- RunnableX
+    While_2 -> "RunnableY:Runnable" as RunnableY : run()
+    RunnableY -> Resource : use_and_modify()
+    RunnableY <<-- Resource
+    While_2 <<-- RunnableY
     end
 GameObject <<-- While_2
 ParentGameObject <-- GameObject : update()
