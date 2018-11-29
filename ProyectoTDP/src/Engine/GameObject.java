@@ -141,7 +141,6 @@ public class GameObject implements IUpdatable, IGameObject {
 
             c.update();
         }
-        //TODO: hacer cola para add y remove
     }
 
     @Override

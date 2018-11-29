@@ -38,7 +38,7 @@ import Engine.Components.ITransform;
 public abstract class Component implements IActivable, IUpdatable
 {
 
-    private IGameObject _Node_I_gameObject = null;
+    private IGameObject _Node_gameObject = null;
 
     /*
     * these functions are optional to override
@@ -68,7 +68,7 @@ public abstract class Component implements IActivable, IUpdatable
     public final void DestroyComponent()
     {
         onDestroy();
-        _Node_I_gameObject = null;
+        _Node_gameObject = null;
     }
 
 
@@ -81,14 +81,14 @@ public abstract class Component implements IActivable, IUpdatable
     protected void setGameObject(IGameObject ref)
     {//readOnlySetter
 
-        if(_Node_I_gameObject == null)
+        if(_Node_gameObject == null)
         {
-            _Node_I_gameObject = ref;
+            _Node_gameObject = ref;
         }
     }
     public IGameObject gameObject()
     {
-        return _Node_I_gameObject; // must be always attatched
+        return _Node_gameObject; // must be always attatched
     }
 
 

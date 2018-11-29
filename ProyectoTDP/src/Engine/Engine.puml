@@ -75,6 +75,31 @@ package Engine{
         +setActive(a:boolean)+
     }
 
+    Interface IGameObject
+        {
+            +{static} getRoot():GameObject
+            -GameObject()
+            -GameObject(parent:GameObject)
+            +addHitBox(c:HitBox ):HitBox
+            +<S extends Component> addComponent(S c):S
+
+            +getComponents():Iterable<Component>
+            +void sendMessage( consumer:Consumer<Component>)
+
+            +<C extends Component> addChild(Iterable<C> components):GameObject
+            +addChild():GameObject
+            +removeComponent(c:Component )
+            +transform():Transform
+            +destroy()
+            -onDestroy:Action
+            +setOnDestroy(a:Action )
+            +getHitbox():HitBox
+            +size():int
+            -renderer:Renderizable
+            +setRenderer(rend:Renderizable)
+            +getRenderer():Renderizable
+        }
+
     GameObject -- "1" GameObject:root
     note left on link: static
     GameObject -- "*"GameObject:children,parent
@@ -95,21 +120,16 @@ package Engine{
         +<C extends Component> addChild(Iterable<C> components):GameObject
         +addChild():GameObject
         +removeComponent(c:Component )
-        +getParent():GameObject
-        +children():Iterable<GameObject>
         +transform():Transform
         +Update()
         +destroy()
         -onDestroy:Action
         +setOnDestroy(a:Action )
-        +SetEnabled(enabled:boolean)
         +getHitbox():HitBox
         +size():int
-        +SizeComps():int
         -renderer:Renderizable
         +setRenderer(rend:Renderizable)
         +getRenderer():Renderizable
-        +getChildren():Iterable<GameObject>
     }
 
     Component <|-- Transform
@@ -182,7 +202,7 @@ package Engine{
         -cond:boolean
         -condition:Condition
         -codeBlock:Action
-        +DoWhen(condition:Callable<Boolean>, Action action)
+        +DoWhen(condition:Condition, Action action)
         +update()+
     }
 
