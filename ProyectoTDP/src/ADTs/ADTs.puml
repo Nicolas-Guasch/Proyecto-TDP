@@ -1,117 +1,163 @@
 @startuml
 
-class Vector2{
-    +{static}ORIGIN() : Vector2
-    +{static}UP() : Vector2
-    +{static}DOWN() : Vector2
-    +{static}LEFT() : Vector2
-    +{static}RIGHT() : Vector2
-    +{static}UP(length : float) : Vector2
-    +{static}DOWN(length : float) : Vector2
-    +{static}LEFT(length : float) : Vector2
-    +{static}RIGHT(length : float) : Vector2
-    - {static} Epsilon:float = 0.01f
-    - x : float
-    - y : float
-    +{static} random() : Vector2
-    +{static} random(large: float) : Vector2
+package ADTs{
+    IVector2 <|-- Vector2
+    interface IVector2{
+        +x():float
+        +y():float
+        +sum(other : IVector2):IVector2
+        +sub(other : IVector2):IVector2
+        +scalarProd(other : IVector2):float
+        +length():float
+        +lengthSq():float
+        +div(real:float):IVector2
+        +prod(real:float):IVector2
+        +norma():IVector2
+        +rot(angle:float):IVector2
+        +get(double xx, double yy):IIVector2
+        +getAngle(other:IVector2):float
+        +rotateUnary(angle:float):IVector2
+        +getUnaryAngle(other:IVector2):float
+        +near(other:IVector2):boolean
+        +equals(other:IVector2):boolean ++
+        +swapped():IVector2
+        +mirrorY():IVector2
+        +mirrorX():IVector2
+        +withLength(length:float):IVector2
+        +getRight():IVector2
+        +getRight(length:float):IVector2
+        +distanceTo(other:IVector2):float
+        +half():IVector2
+        +isOver(other:IVector2):boolean
+        +isUnder(other:IVector2):boolean
+        +isLeft(other:IVector2):boolean
+        +isRight(other:IVector2):boolean
+        +v3(z:float):Vector3
+        +v3():Vector3
+        +withMaxLength(max:float):IVector2
+        +toDimension():Dimension
+    }
+
+    class Vector2{
+        +{static}ORIGIN() : IVector2
+        +{static}UP() : IVector2
+        +{static}DOWN() : IVector2
+        +{static}LEFT() : IVector2
+        +{static}RIGHT() : IVector2
+        +{static}UP(length : float) : IVector2
+        +{static}DOWN(length : float) : IVector2
+        +{static}LEFT(length : float) : IVector2
+        +{static}RIGHT(length : float) : IVector2
+        - {static} Epsilon:float = 0.01f
+        - x : float
+        - y : float
+        +{static} random() : IVector2
+        +{static} random(large: float) : IVector2
 
 
-    +x():float
-    +y():float
-    +Vector2(x1,y1 : double)
-    +Vector2(x1,y1 : float)
-    +sum(other : Vector2):Vector2
-    +sub(other : Vector2):Vector2
-    +scalarProd(other : Vector2):float
-    +length():float
-    +lengthSq():float
-    +div(real:float):Vector2
-    +prod(real:float):Vector2
-    +norma():Vector2
-    +rot(angle:float):Vector2
-    +get(double xx, double yy):IVector2
-    +getAngle(other:Vector2):float
-    +rotateUnary(angle:float):Vector2
-    +getUnaryAngle(other:Vector2):float
-    +near(other:Vector2):boolean
-    +equals(other:Vector2):boolean ++
-    +swapped():Vector2
-    +mirrorY():Vector2
-    +mirrorX():Vector2
-    +withLength(length:float):Vector2
-    +getRight():Vector2
-    +getRight(length:float):Vector2
-    +distanceTo(other:Vector2):float
-    +half():Vector2
-    +isOver(other:Vector2):boolean
-    +isUnder(other:Vector2):boolean
-    +isLeft(other:Vector2):boolean
-    +isRight(other:Vector2):boolean
-    +v3(z:float):Vector3
-    +v3():Vector3
-    +withMaxLength(max:float):Vector2
-    +toDimension():Dimension
-    +toString():String++
-}
+        +x():float
+        +y():float
+        +Vector2(x1,y1 : double)
+        +Vector2(x1,y1 : float)
+        +sum(other : IVector2):IVector2
+        +sub(other : IVector2):IVector2
+        +scalarProd(other : IVector2):float
+        +length():float
+        +lengthSq():float
+        +div(real:float):IVector2
+        +prod(real:float):IVector2
+        +norma():IVector2
+        +rot(angle:float):IVector2
+        +get(double xx, double yy):IIVector2
+        +getAngle(other:IVector2):float
+        +rotateUnary(angle:float):IVector2
+        +getUnaryAngle(other:IVector2):float
+        +near(other:IVector2):boolean
+        +equals(other:IVector2):boolean ++
+        +swapped():IVector2
+        +mirrorY():IVector2
+        +mirrorX():IVector2
+        +withLength(length:float):IVector2
+        +getRight():IVector2
+        +getRight(length:float):IVector2
+        +distanceTo(other:IVector2):float
+        +half():IVector2
+        +isOver(other:IVector2):boolean
+        +isUnder(other:IVector2):boolean
+        +isLeft(other:IVector2):boolean
+        +isRight(other:IVector2):boolean
+        +v3(z:float):Vector3
+        +v3():Vector3
+        +withMaxLength(max:float):IVector2
+        +toDimension():Dimension
+        +toString():String++
+    }
 
-interface IRect{
-    +max():IVector2
-    +prod(float factor):Rect
-}
+    interface IRect{
+        +max():IVector2
+        +prod(float factor):Rect
+    }
 
 
-IRect <|-- Rect
+    IRect <|-- Rect
 
-class Rect
-{
-    -min:Vector2
-    -max:Vector2
-    +Rect(max:Vector2,min:Vector2)
-    +max():Vector2
-    +prod(factor:float):Rect
-    +clone() : Rect +
-}
+    class Rect
+    {
+        -min:Vector2
+        -max:Vector2
+        +Rect(max:Vector2,min:Vector2)
+        +max():Vector2
+        +prod(factor:float):Rect
+        +clone() : Rect +
+    }
 
-interface IRowCol {
-    +getCol():int
-    +getRow():int
-}
+    interface IRowCol {
+        +getCol():int
+        +getRow():int
+    }
 
-IRowCol <|-- RowCol
+    IRowCol <|-- RowCol
 
-class RowCol
-{
-    -row:int
-    -col:int
-    + RowCol(row:int,col:int)
-    +getCol():int
-    +getRow():int
-}
+    class RowCol
+    {
+        -row:int
+        -col:int
+        + RowCol(row:int,col:int)
+        +getCol():int
+        +getRow():int
+    }
 
-ITuple <|-- Tuple
+    ITuple <|-- Tuple
 
-interface ITuple<T1,T2>{
-    get2():T2
-    get1():T1
-}
+    interface ITuple<T1,T2>{
+        get2():T2
+        get1():T1
+    }
 
-class Tuple<T1,T2>{
-    -element1:T1
-    -element2:T2
-    +Tuple(element1:T1,element2:T2)
-    +{static}<TA,TB> get(TA c1, TB c2) :Tuple<TA,TB>
-    + get2():T2
-    + get1():T1
-}
-class Vector3{
-    - x:float
-    - y:float
-    - z:float
-    +Vector3(x,y,z : float)
-    +{static} get(x,y,z : float) : Vector3
-    + xy():Vector2
-    + z():float
+    class Tuple<T1,T2>{
+        -element1:T1
+        -element2:T2
+        +Tuple(element1:T1,element2:T2)
+        +{static}<TA,TB> get(TA c1, TB c2) :Tuple<TA,TB>
+        + get2():T2
+        + get1():T1
+    }
+
+    interface IVector3 {
+        xy():IVector2
+        z():float
+    }
+    IVector3 <|-- Vector3
+
+    class Vector3{
+        - x:float
+        - y:float
+        - z:float
+        +Vector3(x,y,z : float)
+        +{static} get(x,y,z : float) : IVector3
+        + xy():IVector2
+        + z():float
+    }
 }
 
 @enduml

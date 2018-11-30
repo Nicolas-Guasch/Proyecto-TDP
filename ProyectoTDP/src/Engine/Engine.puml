@@ -93,6 +93,8 @@ package Engine{
             +getRenderer():Renderizable
         }
 
+    IGameObject <|-- GameObject
+
     GameObject -- "1" IGameObject:root
     note left on link: static
     GameObject -- "*"IGameObject:children,parent
@@ -204,10 +206,10 @@ package Engine{
     }
 
     Component <|-- DoWhen
+    DoWhen -- "1" Condition
+    DoWhen -- "1" Action
     class DoWhen {
         -cond:boolean
-        -condition:Condition
-        -codeBlock:Action
         +DoWhen(condition:Condition, Action action)
         +update()+
     }
@@ -224,11 +226,10 @@ package Engine{
 
 
     Component <|-- While
+    While -- "1" Condition
+    While -- "2" Action
     class While
     {
-        -condition:Condition
-        -codeBlock:Action
-        -onComplete:Action
         -cond:boolean
         -runs:boolean
 

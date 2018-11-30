@@ -7,64 +7,105 @@ skinparam classAttributeIconSize 0
 'skinparam pageBorderColor black
 
 package ADTs{
+    IVector2 <|-- Vector2
+    interface IVector2{
+        +x():float
+        +y():float
+        +sum(other : IVector2):IVector2
+        +sub(other : IVector2):IVector2
+        +scalarProd(other : IVector2):float
+        +length():float
+        +lengthSq():float
+        +div(real:float):IVector2
+        +prod(real:float):IVector2
+        +norma():IVector2
+        +rot(angle:float):IVector2
+        +get(double xx, double yy):IIVector2
+        +getAngle(other:IVector2):float
+        +rotateUnary(angle:float):IVector2
+        +getUnaryAngle(other:IVector2):float
+        +near(other:IVector2):boolean
+        +equals(other:IVector2):boolean ++
+        +swapped():IVector2
+        +mirrorY():IVector2
+        +mirrorX():IVector2
+        +withLength(length:float):IVector2
+        +getRight():IVector2
+        +getRight(length:float):IVector2
+        +distanceTo(other:IVector2):float
+        +half():IVector2
+        +isOver(other:IVector2):boolean
+        +isUnder(other:IVector2):boolean
+        +isLeft(other:IVector2):boolean
+        +isRight(other:IVector2):boolean
+        +v3(z:float):Vector3
+        +v3():Vector3
+        +withMaxLength(max:float):IVector2
+        +toDimension():Dimension
+    }
+
     class Vector2{
-        +{static}ORIGIN() : Vector2
-        +{static}UP() : Vector2
-        +{static}DOWN() : Vector2
-        +{static}LEFT() : Vector2
-        +{static}RIGHT() : Vector2
-        +{static}UP(length : float) : Vector2
-        +{static}DOWN(length : float) : Vector2
-        +{static}LEFT(length : float) : Vector2
-        +{static}RIGHT(length : float) : Vector2
+        +{static}ORIGIN() : IVector2
+        +{static}UP() : IVector2
+        +{static}DOWN() : IVector2
+        +{static}LEFT() : IVector2
+        +{static}RIGHT() : IVector2
+        +{static}UP(length : float) : IVector2
+        +{static}DOWN(length : float) : IVector2
+        +{static}LEFT(length : float) : IVector2
+        +{static}RIGHT(length : float) : IVector2
         - {static} Epsilon:float = 0.01f
         - x : float
         - y : float
-        +{static} random() : Vector2
-        +{static} random(large: float) : Vector2
+        +{static} random() : IVector2
+        +{static} random(large: float) : IVector2
 
 
         +x():float
         +y():float
         +Vector2(x1,y1 : double)
         +Vector2(x1,y1 : float)
-        +sum(other : Vector2):Vector2
-        +sub(other : Vector2):Vector2
-        +scalarProd(other : Vector2):float
+        +sum(other : IVector2):IVector2
+        +sub(other : IVector2):IVector2
+        +scalarProd(other : IVector2):float
         +length():float
         +lengthSq():float
-        +div(real:float):Vector2
-        +prod(real:float):Vector2
-        +norma():Vector2
-        +rot(angle:float):Vector2
-        +getAngle(other:Vector2):float
-        +rotateUnary(angle:float):Vector2
-        +getUnaryAngle(other:Vector2):float
-        +near(other:Vector2):boolean
-        +equals(other:Vector2):boolean ++
-        +swapped():Vector2
-        +mirrorY():Vector2
-        +mirrorX():Vector2
-        +withLength(length:float):Vector2
-        +getRight():Vector2
-        +getRight(length:float):Vector2
-        +distanceTo(other:Vector2):float
-        +half():Vector2
-        +isOver(other:Vector2):boolean
-        +isUnder(other:Vector2):boolean
-        +isLeft(other:Vector2):boolean
-        +isRight(other:Vector2):boolean
+        +div(real:float):IVector2
+        +prod(real:float):IVector2
+        +norma():IVector2
+        +rot(angle:float):IVector2
+        +get(double xx, double yy):IIVector2
+        +getAngle(other:IVector2):float
+        +rotateUnary(angle:float):IVector2
+        +getUnaryAngle(other:IVector2):float
+        +near(other:IVector2):boolean
+        +equals(other:IVector2):boolean ++
+        +swapped():IVector2
+        +mirrorY():IVector2
+        +mirrorX():IVector2
+        +withLength(length:float):IVector2
+        +getRight():IVector2
+        +getRight(length:float):IVector2
+        +distanceTo(other:IVector2):float
+        +half():IVector2
+        +isOver(other:IVector2):boolean
+        +isUnder(other:IVector2):boolean
+        +isLeft(other:IVector2):boolean
+        +isRight(other:IVector2):boolean
         +v3(z:float):Vector3
         +v3():Vector3
-        +withMaxLength(max:float):Vector2
+        +withMaxLength(max:float):IVector2
         +toDimension():Dimension
         +toString():String++
     }
-    interface IClonable<ClonableType>{
-        +clone():ClonableType
+
+    interface IRect{
+        +max():IVector2
+        +prod(float factor):Rect
     }
 
-    IClonable <|-- Rect
+
+    IRect <|-- Rect
 
     class Rect
     {
@@ -75,6 +116,14 @@ package ADTs{
         +prod(factor:float):Rect
         +clone() : Rect +
     }
+
+    interface IRowCol {
+        +getCol():int
+        +getRow():int
+    }
+
+    IRowCol <|-- RowCol
+
     class RowCol
     {
         -row:int
@@ -83,6 +132,14 @@ package ADTs{
         +getCol():int
         +getRow():int
     }
+
+    ITuple <|-- Tuple
+
+    interface ITuple<T1,T2>{
+        get2():T2
+        get1():T1
+    }
+
     class Tuple<T1,T2>{
         -element1:T1
         -element2:T2
@@ -91,15 +148,272 @@ package ADTs{
         + get2():T2
         + get1():T1
     }
+
+    interface IVector3 {
+        xy():IVector2
+        z():float
+    }
+    IVector3 <|-- Vector3
+
     class Vector3{
         - x:float
         - y:float
         - z:float
         +Vector3(x,y,z : float)
-        +{static} get(x,y,z : float) : Vector3
-        + xy():Vector2
+        +{static} get(x,y,z : float) : IVector3
+        + xy():IVector2
         + z():float
     }
+}
+
+
+package Engine{
+    interface IEngine{
+        +{abstract}suscribeToUpdate(object:IGameObject)
+        +{abstract}suscribeToUpdate(component:Component )
+        +{abstract}waitForFrames(action:Action, frames:int )
+        +{abstract}start();
+        +{abstract}Pauser():CorePauser
+        +{abstract}frameCounter():long
+    }
+
+    interface Action{
+        invoke()
+    }
+
+    IUpdatable <|-- Component
+    IUpdatable <|-- GameObject
+
+    interface IUpdatable {
+        +update():void
+    }
+
+    interface Condition{
+        +ask():boolean
+    }
+
+    Consumer <|-- OperationUpdate
+
+    class OperationUpdate{
+
+        -toUpdate:IUpdatable
+        +OperationUpdate(IUpdatable toUpdate)
+        +accept(Object o):void
+    }
+
+    IEngine <|-- MyEngine
+    MyEngine -- "1" Core
+    MyEngine -- "2" IBroadcaster
+    class MyEngine{
+        #MyEngine();
+        +suscribeToUpdate(object:IGameObject)+
+        +suscribeToUpdate(component:Component )+
+        +waitForFrames(action:Action , frames:int )+
+        +start();+
+        +Pauser():CorePauser+
+        +frameCounter():long+
+    }
+
+    interface IActivable{
+        isActive:boolean
+        setActive(a:boolean)
+    }
+
+    class Clock{
+        currentTimeNanos():long
+    }
+
+    IActivable <|-- Component
+    Component -- "1" IGameObject
+    abstract class Component{
+        -active:boolean=true
+        +start()
+        +update()
+        #frameCounter():long
+        +OnEnable()
+        +OnDisable()
+        +OnDestroy()
+        +DestroyComponent()
+        +DestroyComponent()
+        +transform():ITransform
+        #setGameObject(ref:IGameObject)
+        +gameObject():IGameObject
+        +isActive:boolean+
+        +setActive(a:boolean)+
+    }
+
+    Interface IGameObject
+        {
+            +addHitBox(c:HitBox ):HitBox
+            +addComponent(c:Component)
+            +getComponents():Iterable<Component>
+            +void sendMessage( consumer:Consumer<Component>)
+            +addChild():IGameObject
+            +removeComponent(c:Component )
+            +Transform():ITransform
+            +update()
+            +destroy()
+            +setOnDestroy(a:Action )
+            +getHitbox():HitBox
+            +size():int
+            +setRenderer(rend:Renderizable)
+            +getRenderer():Renderizable
+        }
+
+    IGameObject <|-- GameObject
+
+    GameObject -- "1" IGameObject:root
+    note left on link: static
+    GameObject -- "*"IGameObject:children,parent
+    GameObject -- "*"Component
+    GameObject -- "1"ITransform
+    GameObject -- "1"HitBox
+    class GameObject
+    {
+        +{static} getRoot():IGameObject
+        -GameObject()
+        -GameObject(parent:GameObject)
+        +addHitBox(c:HitBox ):HitBox
+        +addComponent(c:Component)
+        +getComponents():Iterable<Component>
+        +void sendMessage( consumer:Consumer<Component>)
+        +addChild():IGameObject
+        +removeComponent(c:Component )
+        +transform():ITransform
+        +Update()
+        +destroy()
+        -onDestroy:Action
+        +setOnDestroy(a:Action )
+        +getHitbox():HitBox
+        +size():int
+        -renderer:Renderizable
+        +setRenderer(rend:Renderizable)
+        +getRenderer():Renderizable
+    }
+
+    interface ITransform{
+        +position():IVector2
+        +position3():IVector3
+        +top():IVector2
+        +top(length:float):IVector2
+        +setPosition(position:IVector2)
+        +setTop(position:IVector2)
+        +rotate(angle:float)
+        +setFromPrototype(prototype:ITransform)
+        +moveTowards(direction:IVector2)
+        +getZcomponent():float
+        +setZcomponent(z:float)
+        +getLifetime():int
+    }
+
+    ITransform <|-- Transform
+    Component <|-- Transform
+    Transform -- "2"  IVector2: position,top
+    class Transform{
+        -ZCompontent:float
+        -lifetime:int
+
+        +Transform()
+        -Transform(position:IVector2)
+        +update()+
+        +position():IVector2
+        +position3():IVector3
+        +top():IVector2
+        +top(length:float):IVector2
+        +setPosition(position:IVector2)
+        +setTop(position:IVector2)
+        +rotate(angle:float)
+        +setFromPrototype(prototype:ITransform)
+        +moveTowards(direction:IVector2)
+        +getZcomponent():float
+        +setZcomponent()
+        +getLifetime():int
+    }
+
+    Core -- "1" Core:instance
+    note on link: static
+    Core -- "4" IBroadcaster
+    Core -- "2" Invoker
+    Core -- "*" Action: Actions for each frame
+    class Core{
+        -FPS:short
+        -paused:boolean
+        -currentFrame:long
+        -exit:boolean
+        -debt:long
+
+        #{static}getInstance():Core
+        -Core()
+        -clean()
+        -endOfFrame()
+        -mainLoop()
+        -sleep(time:long)
+        +Start()
+        +waitForSeconds(action:Action,seconds:float)
+        +waitForFrames(action:Action,frames:int)
+
+        +setPaused(p:boolean)
+        +isPaused():boolean
+        +frameCounter():long
+    }
+
+    KeyListener <|-- CorePauser
+    CorePauser -- "1" CorePauser:instance
+    note left on link: static
+    CorePauser -- "1" Core
+    class CorePauser
+    {
+        -paused = false:boolean
+        -CorePauser()
+        +{static} CorePauser Instance()
+
+        +keyTyped(e:KeyEvent )+
+        +keyPressed(e:KeyEvent ) +
+        +keyReleased(e:KeyEvent ) +
+    }
+
+    Component <|-- DoWhen
+    DoWhen -- "1" Condition
+    DoWhen -- "1" Action
+    class DoWhen {
+        -cond:boolean
+        +DoWhen(condition:Condition, Action action)
+        +update()+
+    }
+
+    EngineGetter -- "1" EngineGetter:instance
+    note left on link: static
+    EngineGetter -- "1" IEngine
+    class EngineGetter
+    {
+        + {static}  Instance():EngineGetter
+        - EngineGetter()
+        +get():IEngine
+    }
+
+
+    Component <|-- While
+    While -- "1" Condition
+    While -- "2" Action
+    class While
+    {
+        -cond:boolean
+        -runs:boolean
+
+        +While(condition:Condition ,codeBlock:Action)
+
+        +update()+
+        -checks():Boolean
+        +Excecute()
+
+        +OnComplete(onComplete:Action )
+    }
+
+
+
+
+
+
 }
 
 package AIs{
@@ -1220,251 +1534,7 @@ package GameData{
     MatchResult -- "1" ILostOrWin: Deriva
 }
 
-package Engine{
-    interface IEngine{
-        +{abstract}suscribeToUpdate(object:IGameObject)
-        +{abstract}suscribeToUpdate(component:Component )
-        +{abstract}waitForFrames(action:Action, frames:int )
-        +{abstract}start();
-        +{abstract}Pauser():CorePauser
-        +{abstract}frameCounter():long
-    }
 
-    interface Action{
-        invoke()
-    }
-
-    IUpdatable <|-- Component
-    IUpdatable <|-- GameObject
-
-    interface IUpdatable {
-        +update():void
-    }
-
-    interface Condition{
-        +ask():boolean
-    }
-
-    Consumer <|-- OperationUpdate
-
-    class OperationUpdate{
-
-        -toUpdate:IUpdatable
-        +OperationUpdate(IUpdatable toUpdate)
-        +accept(Object o):void
-    }
-
-    IEngine <|-- MyEngine
-    MyEngine -- "1" Core
-    MyEngine -- "2" IBroadcaster
-    class MyEngine{
-        #MyEngine();
-        +suscribeToUpdate(object:IGameObject)+
-        +suscribeToUpdate(component:Component )+
-        +waitForFrames(action:Action , frames:int )+
-        +start();+
-        +Pauser():CorePauser+
-        +frameCounter():long+
-    }
-
-    interface IActivable{
-        isActive:boolean
-        setActive(a:boolean)
-    }
-
-    class Clock{
-        currentTimeNanos():long
-    }
-
-    IActivable <|-- Component
-    Component -- "1" IGameObject
-    abstract class Component{
-        -active:boolean=true
-        +start()
-        +update()
-        #frameCounter():long
-        +OnEnable()
-        +OnDisable()
-        +OnDestroy()
-        +DestroyComponent()
-        +DestroyComponent()
-        +transform():ITransform
-        #setGameObject(ref:IGameObject)
-        +gameObject():IGameObject
-        +isActive:boolean+
-        +setActive(a:boolean)+
-    }
-
-    Interface IGameObject
-        {
-            +addHitBox(c:HitBox ):HitBox
-            +addComponent(c:Component)
-
-            +getComponents():Iterable<Component>
-            +void sendMessage( consumer:Consumer<Component>)
-
-            +addChild():IGameObject
-            +removeComponent(c:Component )
-            +Transform():ITransform
-            +update()
-            +destroy()
-            +setOnDestroy(a:Action )
-            +getHitbox():HitBox
-            +size():int
-            +setRenderer(rend:Renderizable)
-            +getRenderer():Renderizable
-        }
-
-    GameObject -- "1" IGameObject:root
-    note left on link: static
-    GameObject -- "*"IGameObject:children,parent
-    GameObject -- "*"Component
-    GameObject -- "1"ITransform
-    GameObject -- "1"HitBox
-    class GameObject
-    {
-        +{static} getRoot():IGameObject
-        -GameObject()
-        -GameObject(parent:GameObject)
-        +addHitBox(c:HitBox ):HitBox
-        +addComponent(c:Component)
-
-        +getComponents():Iterable<Component>
-        +void sendMessage( consumer:Consumer<Component>)
-
-        +addChild():IGameObject
-        +removeComponent(c:Component )
-        +transform():ITransform
-        +Update()
-        +destroy()
-        -onDestroy:Action
-        +setOnDestroy(a:Action )
-        +getHitbox():HitBox
-        +size():int
-        -renderer:Renderizable
-        +setRenderer(rend:Renderizable)
-        +getRenderer():Renderizable
-    }
-
-    interface ITransform{
-        +position():IVector2
-        +position3():IVector3
-        +top():IVector2
-        +top(length:float):IVector2
-        +setPosition(position:IVector2)
-        +setTop(position:IVector2)
-        +rotate(angle:float)
-        +setFromPrototype(prototype:ITransform)
-        +moveTowards(direction:IVector2)
-        +getZcomponent():float
-        +setZcomponent(z:float)
-        +getLifetime():int
-    }
-
-    ITransform <|-- Transform
-    Component <|-- Transform
-    Transform -- "2"  IVector2: position,top
-    class Transform{
-        -ZCompontent:float
-        -lifetime:int
-
-        +Transform()
-        -Transform(position:IVector2)
-        +update()+
-        +position():IVector2
-        +position3():IVector3
-        +top():IVector2
-        +top(length:float):IVector2
-        +setPosition(position:IVector2)
-        +setTop(position:IVector2)
-        +rotate(angle:float)
-        +setFromPrototype(prototype:ITransform)
-        +moveTowards(direction:IVector2)
-        +getZcomponent():float
-        +setZcomponent()
-        +getLifetime():int
-    }
-
-    Core -- "1" Core:instance
-    note on link: static
-    Core -- "4" IBroadcaster
-    Core -- "2" Invoker
-    Core -- "*" Action: Actions for each frame
-    class Core{
-        -FPS:short
-        -paused:boolean
-        -currentFrame:long
-        -exit:boolean
-        -debt:long
-
-        #{static}getInstance():Core
-        -Core()
-        -clean()
-        -endOfFrame()
-        -mainLoop()
-        -sleep(time:long)
-        +Start()
-        +waitForSeconds(action:Action,seconds:float)
-        +waitForFrames(action:Action,frames:int)
-
-        +setPaused(p:boolean)
-        +isPaused():boolean
-        +frameCounter():long
-    }
-
-    KeyListener <|-- CorePauser
-    CorePauser -- "1" CorePauser:instance
-    note left on link: static
-    CorePauser -- "1" Core
-    class CorePauser
-    {
-        -paused = false:boolean
-        -CorePauser()
-        +{static} CorePauser Instance()
-
-        +keyTyped(e:KeyEvent )+
-        +keyPressed(e:KeyEvent ) +
-        +keyReleased(e:KeyEvent ) +
-    }
-
-    Component <|-- DoWhen
-    class DoWhen {
-        -cond:boolean
-        -condition:Condition
-        -codeBlock:Action
-        +DoWhen(condition:Condition, Action action)
-        +update()+
-    }
-
-    EngineGetter -- "1" EngineGetter:instance
-    note left on link: static
-    EngineGetter -- "1" IEngine
-    class EngineGetter
-    {
-        + {static}  Instance():EngineGetter
-        - EngineGetter()
-        +get():IEngine
-    }
-
-
-    Component <|-- While
-    class While
-    {
-        -condition:Condition
-        -codeBlock:Action
-        -onComplete:Action
-        -cond:boolean
-        -runs:boolean
-
-        +While(condition:Condition ,codeBlock:Action)
-
-        +update()+
-        -checks():Boolean
-        +Excecute()
-
-        +OnComplete(onComplete:Action )
-    }
-}
 
 
 package Exceptions {
